@@ -1,0 +1,75 @@
+<!-- tag::simple[] -->
+<BindingSet xmlns="http://www.businesscode.de/schema/bcdui/bindings-1.0.0"
+            id="myReportData1" table="MB_TEST_DEMO_SHIPMENT">
+
+  <C isKey="true" id="transport_id" caption="Transport Id" type-name="VARCHAR">
+    <Column>ITEM_ID</Column>
+  </C>
+  <C id="orig_country" caption="Origin Country" type-name="VARCHAR">
+    <Column>ORIG_CTR</Column>
+  </C>
+  <C id="orig_area" caption="Origin Area" type-name="VARCHAR">
+    <Column>ORIG_GEO_1</Column>
+  </C>
+  <C id="dest_country" caption="Destination Country" type-name="VARCHAR">
+    <Column>DEST_CTR</Column>
+  </C>
+  <C id="dest_area" caption="Destination Area" type-name="VARCHAR">
+    <Column>DEST_GEO_1</Column>
+  </C>
+  <C id="product_code" caption="Product code" type-name="VARCHAR">
+    <Column>PRODUCT</Column>
+  </C>
+  <C id="dy" caption="Date" type-name="DATE">
+    <Column>dy</Column>
+  </C>
+  <C id="yr" caption="YR" type-name="INTEGER">
+    <Column>YR</Column>
+  </C>
+  <C id="mo" caption="MO" type-name="INTEGER">
+    <Column>MO</Column>
+  </C>
+  <C id="cost" caption="Cost">
+    <Column>cost</Column>
+  </C>
+  <C id="weight" caption="Weight">
+    <Column>weight</Column>
+  </C>
+  <C id="volume" caption="Volume">
+    <Column>shipment_size</Column>
+  </C>
+  <!-- end::simple[] -->
+
+  <!-- tag::relation[] -->
+  <Relation rightBindingSet="myCountryData" type="leftOuter">
+    <Imports>
+      <ImportItem name="orig_country_caption">
+        <BindingItemRef name="country_caption"/>
+      </ImportItem>
+    </Imports>
+    <Condition>
+      <IsEqual>
+        <BindingItemRef name="orig_country" side="left"/>
+        <BindingItemRef name="country_code" side="right"/>
+      </IsEqual>
+    </Condition>
+  </Relation>
+
+  <Relation rightBindingSet="myCountryData" type="leftOuter">
+    <Imports>
+      <ImportItem name="dest_country_caption">
+        <BindingItemRef name="country_caption"/>
+      </ImportItem>
+    </Imports>
+    <Condition>
+      <IsEqual>
+        <BindingItemRef name="dest_country" side="left"/>
+        <BindingItemRef name="country_code" side="right"/>
+      </IsEqual>
+    </Condition>
+  </Relation>
+  <!-- end::relation[] -->
+
+<!-- tag::closing[] -->
+</BindingSet>
+<!-- end::closing[] -->

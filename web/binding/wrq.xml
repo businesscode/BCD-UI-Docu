@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WrsRequest
+  xmlns="http://www.businesscode.de/schema/bcdui/wrs-request-1.0.0"
+  xmlns:f="http://www.businesscode.de/schema/bcdui/filter-1.0.0">
+  <Select>
+    <Columns>
+      <C bRef="orig_country"/>
+      <C bRef="dest_country">
+        <A name="caption" bRef="dest_country_caption"/> <!--1-->
+      </C>
+      <C bRef="dest_country_caption" aggr="max"/> <!--2-->
+      <C bRef="weight"/> <!--3-->
+      <C bRef="cost"/>
+      <C bRef="volume"/>
+    </Columns>
+    <From>
+      <BindingSet>myReportData2</BindingSet>
+    </From>
+    <f:Filter>
+      <f:Expression bRef="orig_country" op="=" value="FR"/>
+    </f:Filter>
+    <Grouping>
+      <C bRef="orig_country"/>
+      <C bRef="dest_country"/>
+    </Grouping>
+    <Ordering>
+      <C bRef="orig_country"/>
+      <C bRef="dest_country"/>
+    </Ordering>
+  </Select>
+</WrsRequest>

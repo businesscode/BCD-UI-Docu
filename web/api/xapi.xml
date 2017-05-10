@@ -1,0 +1,5 @@
+<Root xmlns:xapi="http://www.businesscode.de/schema/bcdui/xmlapi-1.0.0">
+  <xapi:Model id="myModelXapi" url="../sampleWrs.xml"/> <!--1-->
+  <h2>Some HTML here</h2> <!--2-->
+  <xapi:Renderer targetHtml="rendererXapiTh" inputModel="myModelXapi"/>
+</Root>

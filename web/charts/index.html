@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <title>BCD-UI Minimal Cube</title>
+  <script type="text/javascript" src="../bcdui/bcdui.js"></script>
+</head>
+<body>
+  <div id="bcdMainContainer">
+
+    <div id="bcdHeaderArea"><div id="bcdLogoImageArea"></div></div>
+    <div id="bcdSpacerArea"></div>
+
+    <div class="bcdContentContainer">
+
+      <div id="bcdSideBarContainer">
+        <div class="bcdSection">
+        </div>
+      </div>
+
+      <!-- tag::chartTH[] -->
+      <div id="bcdBodyContainer">
+        <div class="bcdCaption">Chart</div>
+        <div id="chartTH" style="width: 400px; height: 200px"></div> <!--1-->
+      </div>
+      <!-- end::chartTH[] -->
+    </div>
+
+  </div>
+  <script type="text/javascript">
+    // tag::chartJs[]
+    var chartConfig = new bcdui.core.SimpleModel( "chartConfig.xml" );
+    var chartData = new bcdui.core.SimpleModel( {id: "chartData", url: "../sampleWrs.xml" } ); // <1>
+    var chart = new bcdui.component.chart.XmlChart({ targetHtml: 'chartTH', config: chartConfig }); // <2>
+    // end::chartJs[]
+  </script>
+</body>
+</html>

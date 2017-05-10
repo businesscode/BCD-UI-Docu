@@ -1,0 +1,13 @@
+<Menu xmlns="http://www.businesscode.de/schema/bcdui/menu-1.0.0" id="gettingStarted" isDefault="true">
+  <Entry id="home"      caption="Home"       href="/"      title="start screen"/>
+  <Entry id="tutorials" caption="Tutorials">
+    <Entry id="scorecard"   caption="Scorecard"    href="/scorecard"   title="Click here for Scorecard"/>
+    <Entry id="minimalCube" caption="Minimal Cube" href="/minimalCube" title="Click here for Minimal Cube"/>
+    <Entry id="widgets" caption="Widgets" href="/widgets" title="Click here for Widgets">
+      <Entry id="button"       caption="Button"       href="/widgets/button"/>
+      <Entry id="singleSelect" caption="SingleSelect" href="/widgets/singleSelect"/>
+      <Entry id="multiSelect"  caption="MultiSelect"  href="/widgets/multiSelect"/>
+    </Entry>
+  </Entry>
+  <Entry id="logout" caption="Logout"       href="/logout" title="Click here to logout"/>
+</Menu>

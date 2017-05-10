@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BindingSet xmlns="http://www.businesscode.de/schema/bcdui/bindings-1.0.0"
+            id="bcd_sc_kpi" table="MB_TEST_KPI_MO"> <!--1-->
+
+  <C id="yr"         caption="Year"          type-name="INTEGER"> <Column>YR</Column> </C> <!--2-->
+  <C id="mo"         caption="Month"         type-name="INTEGER"> <Column>MO</Column> </C>
+  <C id="mo_caption" caption="Month Caption" aggr="none">
+    <Column>max(CASE WHEN MO=1 THEN 'Jan' WHEN MO=2 THEN 'Feb' WHEN MO=3 THEN 'Mar' WHEN MO=4 THEN 'Apr' WHEN MO=5 THEN 'Mai' WHEN MO=6 THEN 'Jun' WHEN MO=7 THEN 'Jul' WHEN MO=8 THEN 'Aug' WHEN MO=9 THEN 'Sep' WHEN MO=10 THEN 'Oct' WHEN MO=11 THEN 'Nov' WHEN MO=12 THEN 'Dez' END) OVER (PARTITION BY mo)</Column>
+  </C>
+  <C id="orig_country"     caption="Orig Ctr."        type-name="VARCHAR"> <Column>ORIG_CTR</Column>         </C>
+  <C id="orig_area"        caption="Orig Area"        type-name="VARCHAR"> <Column>ORIG_GEO_1</Column>       </C>
+  <C id="orig_center"      caption="Orig Center"      type-name="VARCHAR"> <Column>ORIG_GEO_2</Column>       </C>
+  <C id="product"          caption="Product"          type-name="VARCHAR"> <Column>PRODUCT</Column>          </C>
+  <C id="customer"         caption="Customer"         type-name="INTEGER"> <Column>CUSTOMER</Column>         </C>
+
+  <C id="bcd_measure_id"   caption="bcd_measure_id"   type-name="VARCHAR"> <Column>BCD_MEASURE_ID</Column>   </C> <!--3-->
+
+  <C id="i"                caption="I">                                    <Column>I</Column>                </C> <!--4-->
+  <C id="t"                caption="T">                                    <Column>T</Column>                </C>
+
+</BindingSet>

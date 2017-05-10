@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wrs:Wrs xmlns:wrs="http://www.businesscode.de/schema/bcdui/wrs-1.0.0">
+
+  <wrs:Header>
+    <wrs:Columns>
+      <wrs:C pos="1" id="kpi_id" caption="KPI" dimId="kpi_id">
+        <wrs:A name="parentId" id="parentId"/>    <!--1-->
+      </wrs:C>
+      <wrs:C pos="2" id="value" caption="value" />
+    </wrs:Columns>
+  </wrs:Header>
+
+  <wrs:Data>
+    <wrs:R>
+      <wrs:C>Root</wrs:C>                         <!--2-->
+      <wrs:C>100%</wrs:C>
+    </wrs:R>
+
+    <wrs:R>
+      <wrs:C parentId="Root">Child X</wrs:C>      <!--3-->
+      <wrs:C>50%</wrs:C>
+    </wrs:R>
+
+    <wrs:R>
+      <wrs:C parentId="Child X">Child 2a</wrs:C>
+      <wrs:C>25%</wrs:C>
+    </wrs:R>
+  </wrs:Data>
+
+</wrs:Wrs>

@@ -1,0 +1,21 @@
+<Wrs xmlns="http://www.businesscode.de/schema/bcdui/wrs-1.0.0">
+  <Header>
+    <Columns>
+      <C pos="1" id="CTR" dimId="CTR" caption="Country" type-name="VARCHAR"/>
+      <C pos="2" id="CW"  dimId="CW"  caption="C/W"     type-name="INTEGER"/>
+      <C pos="3" id="LOW"             caption="Low"     type-name="NUMERIC"/>
+      <C pos="4" id="HIGH"            caption="Heigh"   type-name="NUMERIC"/>
+      <C pos="5" id="HIGH2"           caption="Heigh 2" type-name="NUMERIC"/>
+    </Columns>
+  </Header>
+  <Data>
+    <R id="3"><C>DE</C><C>25</C><C>1321</C><C>1421</C><C>0</C></R>
+    <R id="4"><C>DE</C><C>26</C><C>1102</C><C>1202</C><C>20</C></R>
+    <R id="1"><C>BE</C><C>25</C><C>1200</C><C>1300</C><C>-20</C></R>
+    <R id="2"><C>BE</C><C>26</C><C>1234</C><C>1434</C><C>-15</C></R>
+    <R id="5"><C>FR</C><C>26</C><C>1234</C><C>1334</C><C>30.5</C></R>
+    <R id="7"><C>HU</C><C>26</C><C>1453</C><C>1553</C><C>52</C></R>
+    <R id="8"><C>HU</C><C>25</C><C>1862</C><C>1962</C><C>58</C></R>
+    <R id="6"><C>FR</C><C>25</C><C>1243</C><C>1343</C><C>45</C></R>
+  </Data>
+</Wrs>

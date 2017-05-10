@@ -1,0 +1,5 @@
+<Root xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cust="http://www.businesscode.de/schema/bcdui/customization-1.0.0"> <!--1-->
+  <h2>Some HTML content</h2> <!--2-->
+  <cust:MyRenderer targetHtml="rendererDslTh" dataUrl="../sampleWrs.xml"/> <!--3-->
+</Root>

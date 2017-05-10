@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SubjectSettingsConfig xmlns="http://www.businesscode.de/schema/bcdui/subjectsettings-1.0.0">
+  <SubjectFilterTypes>
+  </SubjectFilterTypes>
+  <Authentication>
+    <SubjectSettings/>
+  </Authentication>
+  <SubjectSettings>
+    <Jdbc><DefaultDataSource/></Jdbc>
+  </SubjectSettings>
+</SubjectSettingsConfig>

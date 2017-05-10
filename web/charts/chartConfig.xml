@@ -1,0 +1,23 @@
+<chart:Chart xmlns:chart="http://www.businesscode.de/schema/bcdui/charts-1.0.0"
+             title="Revenue vs. Volume">
+
+  <chart:XAxis caption="Country">
+    <chart:Categories modelId="chartData" nodes="/wrs:Wrs/wrs:Data/wrs:R/wrs:C[1]"/> <!--1-->
+  </chart:XAxis>
+
+  <chart:YAxis1 caption="Revenue" unit="€"/> <!--2-->
+  <chart:YAxis2 caption="Volume" unit="cbm"/>
+
+  <chart:Series>
+
+    <chart:Series rgb="rgb(220,0,0)" caption="Volume" chartType="AREACHART"> <!--3-->
+      <chart:YData modelId="chartData" nodes="/wrs:Wrs/wrs:Data/wrs:R/wrs:C[3]"/>
+    </chart:Series>
+
+    <chart:Series rgb="#0000EE" caption="Revenue" chartType="LINECHART" yAxis1Or2="2">
+      <chart:YData modelId="chartData" nodes="/wrs:Wrs/wrs:Data/wrs:R/wrs:C[2]"/>
+    </chart:Series>
+
+  </chart:Series>
+
+</chart:Chart>

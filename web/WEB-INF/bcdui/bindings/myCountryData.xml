@@ -1,0 +1,9 @@
+<BindingSet xmlns="http://www.businesscode.de/schema/bcdui/bindings-1.0.0"
+            id="myCountryData" table="mb_test_md_join">
+  <C id="country_code" isKey="true" caption="Country">
+    <Column>country_code</Column>
+  </C>
+  <C id="country_caption" caption="Country Caption">
+    <Column>country_name</Column>
+  </C>
+</BindingSet>
