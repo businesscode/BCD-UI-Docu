@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Namespace: status</title>
+    <title>Class: Status</title>
     
     
     
@@ -309,6 +309,8 @@
             
                 <li data-name="bcdui.component.scorecardConfigurator.getNavPath"><a href="bcdui.component.scorecardConfigurator.html#.getNavPath">getNavPath</a></li>
             
+                <li data-name="bcdui.component.scorecardConfigurator.reDisplay"><a href="bcdui.component.scorecardConfigurator.html#.reDisplay">reDisplay</a></li>
+            
             </ul>
             <ul class="events itemMembers">
             
@@ -608,7 +610,7 @@
     
         <li class="item" data-name="bcdui.core.status">
             <span class="title">
-                <a href="bcdui.core.status.html">bcdui.core.status</a>
+                <a href="bcdui.core.status_.html">bcdui.core.status</a>
                 
                 <span class="static">static</span>
                 
@@ -4005,7 +4007,7 @@
     
         <li class="item" data-name="bcdui.core.Status">
             <span class="title">
-                <a href="bcdui.core.Status_.html">bcdui.core.Status</a>
+                <a href="bcdui.core.Status.html">bcdui.core.Status</a>
                 
             </span>
             <ul class="members itemMembers">
@@ -4018,13 +4020,13 @@
             
             <span class="subtitle">Methods</span>
             
-                <li data-name="bcdui.core.Status#equals"><a href="bcdui.core.Status_.html#equals">equals</a></li>
+                <li data-name="bcdui.core.Status#equals"><a href="bcdui.core.Status.html#equals">equals</a></li>
             
-                <li data-name="bcdui.core.Status#getCode"><a href="bcdui.core.Status_.html#getCode">getCode</a></li>
+                <li data-name="bcdui.core.Status#getCode"><a href="bcdui.core.Status.html#getCode">getCode</a></li>
             
-                <li data-name="bcdui.core.Status#getDescription"><a href="bcdui.core.Status_.html#getDescription">getDescription</a></li>
+                <li data-name="bcdui.core.Status#getDescription"><a href="bcdui.core.Status.html#getDescription">getDescription</a></li>
             
-                <li data-name="bcdui.core.Status#toString"><a href="bcdui.core.Status_.html#toString">toString</a></li>
+                <li data-name="bcdui.core.Status#toString"><a href="bcdui.core.Status.html#toString">toString</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -5021,7 +5023,7 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="bcdui.core.status.html">Namespace: status</h1>
+        <h1 class="page-title" data-filename="bcdui.core.Status.html">Class: Status</h1>
         
 
 
@@ -5032,8 +5034,10 @@
     <h2>
         <span class="ancestors"><a href="bcdui.html">bcdui</a><a href="bcdui.core.html">.core</a>.</span>
     
-    status
+    Status
     </h2>
+    
+        <div class="class-description">An abstract base class, representing a Status.See <a href="bcdui.core.status_.html">bcdui.core.status</a> for concrete sub classes.</div>
     
 </header>  
 
@@ -5043,10 +5047,33 @@
     
     
         
-            <div class="description">A namespace containing a set of status classes used by the BCD-UI system. They areused by the subclasses of the <a href="bcdui.core.AbstractExecutable.html">AbstractExecutable</a> to implement their statussystem. See <a href="bcdui.core.AbstractExecutable.html#getStatus">getStatus()</a>.</P>The statuses are useful during debugging, if parts of the page do not get ready. Normally, after loading and processing, all AbstractExecutable reach <a href="bcdui.core.AbstractExecutable.html#isReady">.isReady()</a>  === true, if everything is OK.It depends on the exact concrete subclass of AbstractExecutable, which of the statuses below means successful final, i.e. isReady(). You can retrieve this final-success status via <a href="bcdui.core.AbstractExecutable.html#getReadyStatus">.getReadyStatus()</a> of the subclass.</div>
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="Status">
+            
+            <span class="type-signature ">abstract</span>new bcdui.core.Status<span class="signature">()</span>
+        </h4>
+    
         
+        <div class="tag-source">
+            <a href="global.html#bcduiCore-debug.js">bcduiCore-debug.js</a>, <a href="global.html#bcduiCore-debug.js#line1818">line 1818</a>
+        </div>
         
-        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
 <dl class="details">
     
         
@@ -5071,8 +5098,20 @@
     
 </dl>
 
-        
-        
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
     
     </div>
     
@@ -5083,72 +5122,403 @@
     
     
     
-        <h3 class="subsection-title">Classes</h3>
+    
+    
+    
+    
+    
+    
+        <h3 class="subsection-title">Methods</h3>
         
         <dl>
-            <dt><a href="bcdui.core.status.ChainLoadedStatus.html">ChainLoadedStatus</a></dt>
-            <dd></dd>
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="equals">
+            
+            equals<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{boolean}</span>
+        </h4>
+    
         
-            <dt><a href="bcdui.core.status.ChainLoadingFailed.html">ChainLoadingFailed</a></dt>
-            <dd></dd>
+        <div class="tag-source">
+            <a href="global.html#bcduiCore-debug.js">bcduiCore-debug.js</a>, <a href="global.html#bcduiCore-debug.js#line1843">line 1843</a>
+        </div>
         
-            <dt><a href="bcdui.core.status.ChainStylesheetLoadingFailed.html">ChainStylesheetLoadingFailed</a></dt>
-            <dd></dd>
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Test the status for logical equivalence to another status object. Usuallythis function should test if the target status is of the same class asthis status.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
         
-            <dt><a href="bcdui.core.status.InitializedStatus.html">InitializedStatus</a></dt>
-            <dd></dd>
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
         
-            <dt><a href="bcdui.core.status.LoadedStatus.html">LoadedStatus</a></dt>
-            <dd></dd>
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        boolean
+                        
+                    
+            </td>
+            <td class="description last">True, if the specified status object represents the samelogical status as the current one.</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
         
-            <dt><a href="bcdui.core.status.LoadFailedStatus.html">LoadFailedStatus</a></dt>
-            <dd></dd>
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getCode">
+            
+            getCode<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{String}</span>
+        </h4>
+    
         
-            <dt><a href="bcdui.core.status.LoadingStatus.html">LoadingStatus</a></dt>
-            <dd></dd>
+        <div class="tag-source">
+            <a href="global.html#bcduiCore-debug.js">bcduiCore-debug.js</a>, <a href="global.html#bcduiCore-debug.js#line1823">line 1823</a>
+        </div>
         
-            <dt><a href="bcdui.core.status.NullStatus.html">NullStatus</a></dt>
-            <dd></dd>
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
         
-            <dt><a href="bcdui.core.status.RefreshingModelUpdaters.html">RefreshingModelUpdaters</a></dt>
-            <dd></dd>
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
         
-            <dt><a href="bcdui.core.status.RefreshingModelUpdaters.html">RefreshingModelUpdaters</a></dt>
-            <dd></dd>
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        String
+                        
+                    
+            </td>
+            <td class="description last">A short code for the Status which can be used for debugging.</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
         
-            <dt><a href="bcdui.core.status.SavedStatus.html">SavedStatus</a></dt>
-            <dd></dd>
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getDescription">
+            
+            getDescription<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{String}</span>
+        </h4>
+    
         
-            <dt><a href="bcdui.core.status.SaveFailedStatus.html">SaveFailedStatus</a></dt>
-            <dd></dd>
+        <div class="tag-source">
+            <a href="global.html#bcduiCore-debug.js">bcduiCore-debug.js</a>, <a href="global.html#bcduiCore-debug.js#line1831">line 1831</a>
+        </div>
         
-            <dt><a href="bcdui.core.status.SavingStatus.html">SavingStatus</a></dt>
-            <dd></dd>
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
         
-            <dt><a href="bcdui.core.status.TransformedStatus.html">TransformedStatus</a></dt>
-            <dd></dd>
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
         
-            <dt><a href="bcdui.core.status.TransformFailedStatus.html">TransformFailedStatus</a></dt>
-            <dd></dd>
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        String
+                        
+                    
+            </td>
+            <td class="description last">A longer description of the Status.</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
         
-            <dt><a href="bcdui.core.status.TransformingStatus.html">TransformingStatus</a></dt>
-            <dd></dd>
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="toString">
+            
+            toString<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{String}</span>
+        </h4>
+    
         
-            <dt><a href="bcdui.core.status.URLAvailableStatus.html">URLAvailableStatus</a></dt>
-            <dd></dd>
+        <div class="tag-source">
+            <a href="global.html#bcduiCore-debug.js">bcduiCore-debug.js</a>, <a href="global.html#bcduiCore-debug.js#line1851">line 1851</a>
+        </div>
         
-            <dt><a href="bcdui.core.status.WaitingForParametersStatus.html">WaitingForParametersStatus</a></dt>
-            <dd></dd>
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
         
-            <dt><a href="bcdui.core.status.WaitingForUncomittedChanges.html">WaitingForUncomittedChanges</a></dt>
-            <dd></dd>
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        String
+                        
+                    
+            </td>
+            <td class="description last">A debug string summarizing this status object.</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
         </dl>
-    
-    
-    
-    
-    
-    
     
     
     
@@ -5165,7 +5535,7 @@
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Tue May 09 2017 16:31:25 GMT+0200 (Mitteleuropäische Sommerzeit)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Wed May 10 2017 14:23:01 GMT+0200 (Mitteleuropäische Sommerzeit)
         </footer>
     </div>
 </div>
