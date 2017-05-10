@@ -74,6 +74,10 @@ task collectDocu( type: Copy ) {
 
   def bcduiDocuFolder = '../BCD-UI/Docu/build/htmldocs'
 
+  doFirst {
+    delete 'docs'
+  }
+
   if( ! file(bcduiDocuFolder).exists() )
     logger.warn("$bcduiDocuFolder not found, only collecting tutorial")
 
