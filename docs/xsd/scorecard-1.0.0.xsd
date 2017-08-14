@@ -24,6 +24,7 @@
   xmlns:chain="http://www.businesscode.de/schema/bcdui/chain-1.0.0"
   xmlns:b="http://www.businesscode.de/schema/bcdui/bindings-1.0.0"
   xmlns:dm="http://www.businesscode.de/schema/bcdui/dimmeas-1.0.0"
+  xmlns:scc="http://www.businesscode.de/schema/bcdui/scorecard-1.0.0"
   xmlns:wrq="http://www.businesscode.de/schema/bcdui/wrs-request-1.0.0">
 
 
@@ -317,6 +318,40 @@
         </xs:complexType>
       </xs:element>
 
+      <xs:element name="TopNDimMembers" minOccurs="0">
+        <xs:annotation><xs:documentation>
+          Defines a restriction on dimension members after the kpi dimension. Only those will be included, which have the highest/lowest value of the provided aspect.
+        </xs:documentation></xs:annotation>
+        <xs:complexType>
+          <xs:sequence maxOccurs="1">
+            <xs:element name="TopNDimMember" maxOccurs="1">
+              <xs:complexType>
+                <xs:sequence maxOccurs="1">
+                  <xs:element ref="scc:AspectRef" maxOccurs="1"/>
+                </xs:sequence>
+                <xs:attribute name="n" type="xs:integer" use="required">
+                  <xs:annotation><xs:documentation>
+                    Number of rows to be shown
+                  </xs:documentation></xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="tb" default="top">
+                  <xs:annotation><xs:documentation>
+                    Top or bottom, i.e. highest or lowest will be shown.
+                  </xs:documentation></xs:annotation>
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:enumeration value="top"/>
+                      <xs:enumeration value="bottom"/>
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:attribute>
+              </xs:complexType>
+              <xs:unique name="aspectRefUnique"><xs:selector xpath="scc:AspectRef"/><xs:field xpath="@idRef"/></xs:unique>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
     </xs:sequence>
 
     <xs:attribute name="removeEmptyCells">
@@ -390,6 +425,16 @@
       </xs:complexContent>
     </xs:complexType>
   </xs:element>
+  
+  <xs:simpleType name="TypeSortAttr">
+    <xs:annotation><xs:documentation>
+      Whether and how to sort dimension member values
+    </xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ascending"/>
+      <xs:enumeration value="descending"/>
+    </xs:restriction>
+  </xs:simpleType>
 
   <!-- Types for AspectRef and AspectKpi -->
   <xs:complexType name="AspectAbstractBaseType">
@@ -425,6 +470,11 @@
           <xs:attribute name="caption" type="xs:string" use="optional">
             <xs:annotation><xs:documentation>To overwrite for this scorecard the caption of Kpi aspect, default is given in Kpi definition.</xs:documentation></xs:annotation>
           </xs:attribute>
+          <xs:attribute name="sort" type="tns:TypeSortAttr" default="ascending">
+            <xs:annotation><xs:documentation>
+              Whether and how (ascending/descending) to sort aspect member values.
+            </xs:documentation></xs:annotation>
+          </xs:attribute>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -445,6 +495,11 @@
           </xs:attribute>
           <xs:attribute name="caption" type="xs:string" use="optional">
             <xs:annotation><xs:documentation>To overwrite caption of Aspect's definition.</xs:documentation></xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="sort" type="tns:TypeSortAttr" default="ascending">
+            <xs:annotation><xs:documentation>
+              Whether and how (ascending/descending) to sort aspect member values.
+            </xs:documentation></xs:annotation>
           </xs:attribute>
         </xs:extension>
       </xs:complexContent>
@@ -710,8 +765,9 @@
         </xs:element>
         <xs:element name="BcdAspectWrqBuilder" minOccurs="0">
           <xs:annotation><xs:documentation>
-            Use BCD-UI's convenience default WrqBuilder, its attributes and scc:Property childs configure it.
-            In addition, if scc:Layout//scc:AspectRef[@id=$thisId]/@repeatOnPeriods is true, in a scorecard with period breakdown, an aspect not having time in its dimension, is repeated for each period.
+            In many casey you can use BCD-UI's convenience default WrqBuilder and, configure it.
+            If scc:Layout//scc:AspectRef[@id=$thisId]/@allPeriods is false, an Aspect having no time breakdown is not repeated per period but only shown once, for the last period.
+            Note: If there is no data at all for the last period, the Aspect is also not shown.
           </xs:documentation></xs:annotation>
           <xs:complexType>
             <xs:sequence>
@@ -807,6 +863,21 @@
     <xs:attribute name="caption">
       <xs:annotation>
         <xs:documentation>Caption or lookup key for the caption for i18n</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="rowAspect">
+      <xs:annotation>
+        <xs:documentation>Set to true if aspect can be used as a row aspect</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="removeEmptyRows">
+      <xs:annotation>
+        <xs:documentation>
+          If true, this aspect alone should not cause a dimension-combinations to survive, which do not have data otherwise.
+          Take for example a target, then a country maybe should be not shown, if there is only target but no performance data.
+          This is especially the case if the aspect was only inherited (denormalized) downwards during join,
+          that way it can establish rows for kpi-dimension combinations, for which there will never be performance data.
+        </xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>

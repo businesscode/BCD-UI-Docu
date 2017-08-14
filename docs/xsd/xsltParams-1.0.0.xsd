@@ -89,19 +89,19 @@
       <element name="FilterXPath" type="tns:FilterXPathParamType" minOccurs="0" maxOccurs="unbounded">
         <annotation><documentation>Filter XPath</documentation></annotation>
       </element>
-      <element name="OrderRowsAndCols" type="tns:OrderRowsAndCols" minOccurs="0" maxOccurs="unbounded">
+      <element name="OrderRowsAndCols" type="tns:OrderRowsAndColsType" minOccurs="0" maxOccurs="unbounded">
         <annotation>
           <documentation>Ordering of rows and columns</documentation>
         </annotation>
       </element>
-      <element name="ColDims" type="tns:ColDims" minOccurs="0" maxOccurs="unbounded">
+      <element name="ColDims" type="tns:ColDimsType" minOccurs="0" maxOccurs="unbounded">
         <annotation>
           <documentation>Creating a Wrs with col dimensions from a standard Wrs</documentation>
         </annotation>
       </element>
       <element name="RemoveEmptyCells" type="tns:RemoveEmptyCellsParamType" minOccurs="0" maxOccurs="unbounded">
         <annotation>
-          <documentation>Parameters for removeEmptyCells. If enabled, rows and cols holding no measures are removed from Wrs. This is aware of column dimensions.</documentation>
+          <documentation>Parameters for removeEmptyCells. If enabled, rows and cols holding no measures are removed from Wrs.</documentation>
         </annotation>
       </element>
       <element name="HtmlBuilder" type="tns:HtmlBuilderParamType" minOccurs="0" maxOccurs="unbounded">
@@ -270,6 +270,12 @@
           <element name="ShowAllOption" default="false" type="string" minOccurs="0">
             <annotation><documentation>
               Is need to show "show all items" on pager instead of page view
+            </documentation></annotation>
+          </element>
+          <element name="AddRowCounter" default="false" type="boolean" minOccurs="0">
+            <annotation><documentation>
+              If enabled, the resulting Wrs will contain an extra leading wrs:C indicating
+              the row count. The i18n key for caption used is 'bcd_Report_RowCounterCaption'.
             </documentation></annotation>
           </element>
         </sequence>
@@ -502,7 +508,7 @@
   </complexType>
 
   <!-- Order rows and columns -->
-  <complexType name="OrderRowsAndCols">
+  <complexType name="OrderRowsAndColsType">
     <complexContent>
       <extension base="tns:BaseParamType">
 
@@ -571,9 +577,8 @@
 
   </complexType>
 
-
   <!-- xp:ColDims -->
-  <complexType name="ColDims">
+  <complexType name="ColDimsType">
     <annotation><documentation>Parameters creating column row- and dimensions from a standard Wrs document</documentation></annotation>
     <sequence>
       <element name="Measures">
@@ -631,6 +636,16 @@
         <attribute name="apply">
           <annotation><documentation>
             Currently only 'rowCol' is allowed, all other values will disable this functionality.
+          </documentation></annotation>
+        </attribute>
+        <attribute name="ignoreCols">
+          <annotation><documentation>
+            Space separated list of cols pos, which are ignored in the _test_ for skipping rows.
+          </documentation></annotation>
+        </attribute>
+        <attribute name="ignoreValueIds">
+          <annotation><documentation>
+            Space separated list of @valueIds, i.e. cols, which are ignored in the _test_ for skipping rows.
           </documentation></annotation>
         </attribute>
       </extension>

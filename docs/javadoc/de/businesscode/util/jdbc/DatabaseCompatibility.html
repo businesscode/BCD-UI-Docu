@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":9,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":9,"i11":10};
+var methods = {"i0":10,"i1":9,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":9,"i12":10};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -49,7 +49,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../de/businesscode/util/jdbc/Closer.html" title="class in de.businesscode.util.jdbc"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li>Next&nbsp;Class</li>
+<li><a href="../../../../de/businesscode/util/jdbc/SQLDetailException.html" title="class in de.businesscode.util.jdbc"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../index.html?de/businesscode/util/jdbc/DatabaseCompatibility.html" target="_top">Frames</a></li>
@@ -206,34 +206,42 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../de/businesscode/util/jdbc/DatabaseCompatibility.html#castToVarchar-de.businesscode.bcdui.binding.BindingSet-int-java.lang.String-">castToVarchar</a></span>(<a href="../../../../de/businesscode/bcdui/binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&nbsp;bindingSet,
+             int&nbsp;origJdbcDataType,
+             java.lang.String&nbsp;expr)</code>
+<div class="block">Wraps the expression so that the result is of type VARCHAR or CHAR</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../de/businesscode/util/jdbc/DatabaseCompatibility.html#clear--">clear</a></span>()</code>
 <div class="block">clear caches</div>
 </td>
 </tr>
-<tr id="i1" class="rowColor">
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../de/businesscode/util/jdbc/DatabaseCompatibility.html#dbAllowsMultiWithClauses-de.businesscode.bcdui.binding.BindingSet-">dbAllowsMultiWithClauses</a></span>(<a href="../../../../de/businesscode/bcdui/binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&nbsp;bs)</code>
 <div class="block">Some data bases only allow for a single select clause</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../de/businesscode/util/jdbc/DatabaseCompatibility.html#dbNeedsColumnListInWithClause-de.businesscode.bcdui.binding.BindingSet-">dbNeedsColumnListInWithClause</a></span>(<a href="../../../../de/businesscode/bcdui/binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&nbsp;bs)</code>
 <div class="block">If the database used for the selected BindingSet needs an extra column list for with clauses</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../de/businesscode/util/jdbc/DatabaseCompatibility.html#dbNeedsVarcharCastForConcatInTopN-de.businesscode.bcdui.binding.BindingSet-">dbNeedsVarcharCastForConcatInTopN</a></span>(<a href="../../../../de/businesscode/bcdui/binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&nbsp;resultingBindingSet)</code>&nbsp;</td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../de/businesscode/util/jdbc/DatabaseCompatibility.html#dbOnlyKnowsWithRollup-de.businesscode.bcdui.binding.BindingSet-">dbOnlyKnowsWithRollup</a></span>(<a href="../../../../de/businesscode/bcdui/binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&nbsp;resultingBindingSet)</code>
 <div class="block">MySql does not support ANSI GROUPING SETS and ROLLUP but only a custom WITH ROLLUP without a column list</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../de/businesscode/util/jdbc/DatabaseCompatibility.html#dbOrderByNullsLast-de.businesscode.bcdui.binding.BindingSet-java.lang.String-boolean-java.lang.StringBuffer-">dbOrderByNullsLast</a></span>(<a href="../../../../de/businesscode/bcdui/binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&nbsp;resultingBindingSet,
                   java.lang.String&nbsp;colExpr,
@@ -243,31 +251,31 @@ extends java.lang.Object</pre>
  Sadly, of these, only oracle allows NULLS FIRST/LAST in ORDER BY</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>java.util.Map&lt;java.lang.String,java.lang.String&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../de/businesscode/util/jdbc/DatabaseCompatibility.html#getAggrFktMapping-de.businesscode.bcdui.binding.BindingSet-">getAggrFktMapping</a></span>(<a href="../../../../de/businesscode/bcdui/binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&nbsp;resultingBindingSet)</code>
 <div class="block">For the simple @aggr shortcut this is the mapping to the corresponding SQL expression</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>java.util.Map&lt;java.lang.String,java.lang.String[]&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../de/businesscode/util/jdbc/DatabaseCompatibility.html#getCalcFktMapping-de.businesscode.bcdui.binding.BindingSet-">getCalcFktMapping</a></span>(<a href="../../../../de/businesscode/bcdui/binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&nbsp;resultingBindingSet)</code>&nbsp;</td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../de/businesscode/util/jdbc/DatabaseCompatibility.html#getDatabaseProductNameLC-de.businesscode.bcdui.binding.BindingSet-">getDatabaseProductNameLC</a></span>(<a href="../../../../de/businesscode/bcdui/binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&nbsp;bs)</code>
 <div class="block">Does not do much checking, but as all BindingSets are tested on start, the risk is low</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>java.util.Map&lt;java.lang.String,java.lang.String[]&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../de/businesscode/util/jdbc/DatabaseCompatibility.html#getDefaultCalcFktMapping--">getDefaultCalcFktMapping</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>static <a href="../../../../de/businesscode/util/jdbc/DatabaseCompatibility.html" title="class in de.businesscode.util.jdbc">DatabaseCompatibility</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../de/businesscode/util/jdbc/DatabaseCompatibility.html#getInstance--">getInstance</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>java.util.Set&lt;java.lang.String&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../de/businesscode/util/jdbc/DatabaseCompatibility.html#getReservedDBWords-de.businesscode.bcdui.binding.BindingSet-">getReservedDBWords</a></span>(<a href="../../../../de/businesscode/bcdui/binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&nbsp;bs)</code>&nbsp;</td>
 </tr>
@@ -529,6 +537,26 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
+<a name="castToVarchar-de.businesscode.bcdui.binding.BindingSet-int-java.lang.String-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>castToVarchar</h4>
+<pre>public&nbsp;java.lang.String&nbsp;castToVarchar(<a href="../../../../de/businesscode/bcdui/binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&nbsp;bindingSet,
+                                      int&nbsp;origJdbcDataType,
+                                      java.lang.String&nbsp;expr)</pre>
+<div class="block">Wraps the expression so that the result is of type VARCHAR or CHAR</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>bindingSet</code> - Used to derive database specific syntax</dd>
+<dd><code>origJdbcDataType</code> - Used to skip wrapping if already CHAR/VARCHAR and keep format YYYY-MMM-DDD for type date</dd>
+<dd><code>expr</code> - Expression to be wrapped</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Wrapped SQL expression</dd>
+</dl>
+</li>
+</ul>
 <a name="getDefaultCalcFktMapping--">
 <!--   -->
 </a>
@@ -601,7 +629,7 @@ extends java.lang.Object</pre>
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../de/businesscode/util/jdbc/Closer.html" title="class in de.businesscode.util.jdbc"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li>Next&nbsp;Class</li>
+<li><a href="../../../../de/businesscode/util/jdbc/SQLDetailException.html" title="class in de.businesscode.util.jdbc"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../index.html?de/businesscode/util/jdbc/DatabaseCompatibility.html" target="_top">Frames</a></li>

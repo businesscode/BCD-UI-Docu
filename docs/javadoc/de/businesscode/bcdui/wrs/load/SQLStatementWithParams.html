@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -128,8 +128,8 @@ extends java.lang.Object</pre>
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/wrs/load/SQLStatementWithParams.html#SQLStatementWithParams-java.lang.String-java.util.Collection-de.businesscode.bcdui.binding.BindingSet-">SQLStatementWithParams</a></span>(java.lang.String&nbsp;statement,
-                      java.util.Collection&lt;org.w3c.dom.Element&gt;&nbsp;filterItems,
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/wrs/load/SQLStatementWithParams.html#SQLStatementWithParams-java.lang.String-java.util.List-de.businesscode.bcdui.binding.BindingSet-">SQLStatementWithParams</a></span>(java.lang.String&nbsp;statement,
+                      java.util.List&lt;org.w3c.dom.Element&gt;&nbsp;filterItems,
                       <a href="../../../../../de/businesscode/bcdui/binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&nbsp;bindingSet)</code>&nbsp;</td>
 </tr>
 </table>
@@ -148,20 +148,26 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>java.util.Collection&lt;<a href="../../../../../de/businesscode/bcdui/binding/BindingItem.html" title="class in de.businesscode.bcdui.binding">BindingItem</a>&gt;</code></td>
+<td class="colFirst"><code>java.util.List&lt;<a href="../../../../../de/businesscode/bcdui/binding/BindingItem.html" title="class in de.businesscode.bcdui.binding">BindingItem</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/wrs/load/SQLStatementWithParams.html#getFilterBindingItems--">getFilterBindingItems</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>java.util.Collection&lt;org.w3c.dom.Element&gt;</code></td>
+<td class="colFirst"><code>java.util.List&lt;org.w3c.dom.Element&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/wrs/load/SQLStatementWithParams.html#getFilterItems--">getFilterItems</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code>java.util.Collection&lt;java.lang.String&gt;</code></td>
+<td class="colFirst"><code>java.util.List&lt;java.lang.String&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/wrs/load/SQLStatementWithParams.html#getFilterValues--">getFilterValues</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/wrs/load/SQLStatementWithParams.html#getStatement--">getStatement</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/wrs/load/SQLStatementWithParams.html#getStatementWithParams--">getStatementWithParams</a></span>()</code>
+<div class="block">Provides the statement with values filled in instead of showing '?'</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -185,14 +191,14 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="SQLStatementWithParams-java.lang.String-java.util.Collection-de.businesscode.bcdui.binding.BindingSet-">
+<a name="SQLStatementWithParams-java.lang.String-java.util.List-de.businesscode.bcdui.binding.BindingSet-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>SQLStatementWithParams</h4>
 <pre>public&nbsp;SQLStatementWithParams(java.lang.String&nbsp;statement,
-                              java.util.Collection&lt;org.w3c.dom.Element&gt;&nbsp;filterItems,
+                              java.util.List&lt;org.w3c.dom.Element&gt;&nbsp;filterItems,
                               <a href="../../../../../de/businesscode/bcdui/binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&nbsp;bindingSet)
                        throws <a href="../../../../../de/businesscode/bcdui/binding/exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></pre>
 <dl>
@@ -224,7 +230,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getFilterItems</h4>
-<pre>public&nbsp;java.util.Collection&lt;org.w3c.dom.Element&gt;&nbsp;getFilterItems()</pre>
+<pre>public&nbsp;java.util.List&lt;org.w3c.dom.Element&gt;&nbsp;getFilterItems()</pre>
 </li>
 </ul>
 <a name="getFilterValues--">
@@ -233,16 +239,29 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getFilterValues</h4>
-<pre>public&nbsp;java.util.Collection&lt;java.lang.String&gt;&nbsp;getFilterValues()</pre>
+<pre>public&nbsp;java.util.List&lt;java.lang.String&gt;&nbsp;getFilterValues()</pre>
 </li>
 </ul>
 <a name="getFilterBindingItems--">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>getFilterBindingItems</h4>
-<pre>public&nbsp;java.util.Collection&lt;<a href="../../../../../de/businesscode/bcdui/binding/BindingItem.html" title="class in de.businesscode.bcdui.binding">BindingItem</a>&gt;&nbsp;getFilterBindingItems()</pre>
+<pre>public&nbsp;java.util.List&lt;<a href="../../../../../de/businesscode/bcdui/binding/BindingItem.html" title="class in de.businesscode.bcdui.binding">BindingItem</a>&gt;&nbsp;getFilterBindingItems()</pre>
+</li>
+</ul>
+<a name="getStatementWithParams--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getStatementWithParams</h4>
+<pre>public&nbsp;java.lang.String&nbsp;getStatementWithParams()</pre>
+<div class="block">Provides the statement with values filled in instead of showing '?' for bound variables</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+</dl>
 </li>
 </ul>
 </li>

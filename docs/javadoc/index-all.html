@@ -121,6 +121,8 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/web/wrs/WrsAccessLogEvent.html#ACCESS_TYPE_WRS">ACCESS_TYPE_WRS</a></span> - Static variable in class de.businesscode.bcdui.web.wrs.<a href="de/businesscode/bcdui/web/wrs/WrsAccessLogEvent.html" title="class in de.businesscode.bcdui.web.wrs">WrsAccessLogEvent</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/businesscode/bcdui/web/wrs/WrsAccessLogEvent.html#ACCESS_TYPE_XLS">ACCESS_TYPE_XLS</a></span> - Static variable in class de.businesscode.bcdui.web.wrs.<a href="de/businesscode/bcdui/web/wrs/WrsAccessLogEvent.html" title="class in de.businesscode.bcdui.web.wrs">WrsAccessLogEvent</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/logging/AccessSqlLogger.html" title="class in de.businesscode.bcdui.logging"><span class="typeNameLink">AccessSqlLogger</span></a> - Class in <a href="de/businesscode/bcdui/logging/package-summary.html">de.businesscode.bcdui.logging</a></dt>
 <dd>
 <div class="block">logs <a href="de/businesscode/bcdui/logging/AccessSqlLogger.LogRecord.html" title="class in de.businesscode.bcdui.logging"><code>AccessSqlLogger.LogRecord</code></a> into database, binding set used is bcd_log_access,
@@ -263,8 +265,6 @@
 <dd>
 <div class="block">checks against local database if user exists, either with or without a password, according to the flag</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/businesscode/bcdui/subjectsettings/LoginServlet.html#AuthenticateErrorCodeToken">AuthenticateErrorCodeToken</a></span> - Static variable in class de.businesscode.bcdui.subjectsettings.<a href="de/businesscode/bcdui/subjectsettings/LoginServlet.html" title="class in de.businesscode.bcdui.subjectsettings">LoginServlet</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectSettingsConfig.html#authentication">authentication</a></span> - Variable in class de.businesscode.bcdui.subjectsettings.config.<a href="de/businesscode/bcdui/subjectsettings/config/SubjectSettingsConfig.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectSettingsConfig</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/subjectsettings/AuthenticationFilter.html" title="class in de.businesscode.bcdui.subjectsettings"><span class="typeNameLink">AuthenticationFilter</span></a> - Class in <a href="de/businesscode/bcdui/subjectsettings/package-summary.html">de.businesscode.bcdui.subjectsettings</a></dt>
@@ -483,8 +483,6 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.AssignableValues.html#bindingSet">bindingSet</a></span> - Variable in class de.businesscode.bcdui.subjectsettings.config.<a href="de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.AssignableValues.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectFilterType.AssignableValues</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.html#bindingSet">bindingSet</a></span> - Variable in class de.businesscode.bcdui.subjectsettings.config.<a href="de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectFilterType</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/wrs/save/XMLToDataBase.html#bindingSet">bindingSet</a></span> - Variable in class de.businesscode.bcdui.wrs.save.<a href="de/businesscode/bcdui/wrs/save/XMLToDataBase.html" title="class in de.businesscode.bcdui.wrs.save">XMLToDataBase</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/binding/BindingSet.SECURITY_OPS.html" title="enum in de.businesscode.bcdui.binding"><span class="typeNameLink">BindingSet.SECURITY_OPS</span></a> - Enum in <a href="de/businesscode/bcdui/binding/package-summary.html">de.businesscode.bcdui.binding</a></dt>
@@ -594,7 +592,7 @@
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/cache/CacheFactory.html" title="class in de.businesscode.bcdui.cache"><span class="typeNameLink">CacheFactory</span></a> - Class in <a href="de/businesscode/bcdui/cache/package-summary.html">de.businesscode.bcdui.cache</a></dt>
 <dd>
-<div class="block">Cache factory to managed BCD caches</div>
+<div class="block">Cache factory to BCD-UI managed caches, (currently backed by ehCache v2).</div>
 </dd>
 <dt><a href="de/businesscode/bcdui/web/servlets/CacheManager.html" title="class in de.businesscode.bcdui.web.servlets"><span class="typeNameLink">CacheManager</span></a> - Class in <a href="de/businesscode/bcdui/web/servlets/package-summary.html">de.businesscode.bcdui.web.servlets</a></dt>
 <dd>
@@ -630,6 +628,10 @@
 </dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/binding/generators/CaseWhenFromRel.html#CaseWhenFromRel-org.w3c.dom.Document-java.lang.String-java.util.Map-">CaseWhenFromRel(Document, String, Map&lt;String, Collection&lt;StandardBindingSet&gt;&gt;)</a></span> - Constructor for class de.businesscode.bcdui.binding.generators.<a href="de/businesscode/bcdui/binding/generators/CaseWhenFromRel.html" title="class in de.businesscode.bcdui.binding.generators">CaseWhenFromRel</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/businesscode/util/jdbc/DatabaseCompatibility.html#castToVarchar-de.businesscode.bcdui.binding.BindingSet-int-java.lang.String-">castToVarchar(BindingSet, int, String)</a></span> - Method in class de.businesscode.util.jdbc.<a href="de/businesscode/util/jdbc/DatabaseCompatibility.html" title="class in de.businesscode.util.jdbc">DatabaseCompatibility</a></dt>
+<dd>
+<div class="block">Wraps the expression so that the result is of type VARCHAR or CHAR</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/util/StandardNamespaceContext.html#CHAIN_NAMESPACE">CHAIN_NAMESPACE</a></span> - Static variable in class de.businesscode.util.<a href="de/businesscode/util/StandardNamespaceContext.html" title="class in de.businesscode.util">StandardNamespaceContext</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/util/StandardNamespaceContext.html#CHAIN_PREFIX">CHAIN_PREFIX</a></span> - Static variable in class de.businesscode.util.<a href="de/businesscode/util/StandardNamespaceContext.html" title="class in de.businesscode.util">StandardNamespaceContext</a></dt>
@@ -816,7 +818,8 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/util/XPathUtils.html#compile-java.lang.String-">compile(String)</a></span> - Static method in class de.businesscode.util.<a href="de/businesscode/util/XPathUtils.html" title="class in de.businesscode.util">XPathUtils</a></dt>
 <dd>
-<div class="block">compiles xpath to <code>XPathExpression</code> using builtin xpathfactory <code>XPathFactory.newXPath()</code></div>
+<div class="block">compiles xpath to <code>XPathExpression</code> using builtin xpathfactory <code>XPathFactory.newXPath()</code>
+ and <a href="de/businesscode/util/StandardNamespaceContext.html" title="class in de.businesscode.util"><code>StandardNamespaceContext</code></a> namespace context assigned.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/web/servlets/ZipLet.html#compress-java.lang.String-">compress(String)</a></span> - Static method in class de.businesscode.bcdui.web.servlets.<a href="de/businesscode/bcdui/web/servlets/ZipLet.html" title="class in de.businesscode.bcdui.web.servlets">ZipLet</a></dt>
 <dd>
@@ -941,8 +944,6 @@
 <dd>
 <div class="block">create data writer</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/businesscode/util/Utils.html#createDocumentBuilderFactory--">createDocumentBuilderFactory()</a></span> - Static method in class de.businesscode.util.<a href="de/businesscode/util/Utils.html" title="class in de.businesscode.util">Utils</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/menu/config/ObjectFactory.html#createEntry--">createEntry()</a></span> - Method in class de.businesscode.bcdui.menu.config.<a href="de/businesscode/bcdui/menu/config/ObjectFactory.html" title="class in de.businesscode.bcdui.menu.config">ObjectFactory</a></dt>
 <dd>
 <div class="block">Create an instance of <a href="de/businesscode/bcdui/menu/config/Entry.html" title="class in de.businesscode.bcdui.menu.config"><code>Entry</code></a></div>
@@ -1418,8 +1419,6 @@ and filters.</div>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/menu/MenuServlet.html#doGet-javax.servlet.http.HttpServletRequest-javax.servlet.http.HttpServletResponse-">doGet(HttpServletRequest, HttpServletResponse)</a></span> - Method in class de.businesscode.bcdui.menu.<a href="de/businesscode/bcdui/menu/MenuServlet.html" title="class in de.businesscode.bcdui.menu">MenuServlet</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="de/businesscode/bcdui/subjectsettings/LoginServlet.html#doGet-javax.servlet.http.HttpServletRequest-javax.servlet.http.HttpServletResponse-">doGet(HttpServletRequest, HttpServletResponse)</a></span> - Method in class de.businesscode.bcdui.subjectsettings.<a href="de/businesscode/bcdui/subjectsettings/LoginServlet.html" title="class in de.businesscode.bcdui.subjectsettings">LoginServlet</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/toolbox/TextToUrl.html#doGet-javax.servlet.http.HttpServletRequest-javax.servlet.http.HttpServletResponse-">doGet(HttpServletRequest, HttpServletResponse)</a></span> - Method in class de.businesscode.bcdui.toolbox.<a href="de/businesscode/bcdui/toolbox/TextToUrl.html" title="class in de.businesscode.bcdui.toolbox">TextToUrl</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/web/clientLogging/FrontendLogTransceiver.html#doGet-javax.servlet.http.HttpServletRequest-javax.servlet.http.HttpServletResponse-">doGet(HttpServletRequest, HttpServletResponse)</a></span> - Method in class de.businesscode.bcdui.web.clientLogging.<a href="de/businesscode/bcdui/web/clientLogging/FrontendLogTransceiver.html" title="class in de.businesscode.bcdui.web.clientLogging">FrontendLogTransceiver</a></dt>
@@ -1441,6 +1440,8 @@ and filters.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/web/wrs/CsvServlet.html#doGet-javax.servlet.http.HttpServletRequest-javax.servlet.http.HttpServletResponse-">doGet(HttpServletRequest, HttpServletResponse)</a></span> - Method in class de.businesscode.bcdui.web.wrs.<a href="de/businesscode/bcdui/web/wrs/CsvServlet.html" title="class in de.businesscode.bcdui.web.wrs">CsvServlet</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/businesscode/bcdui/web/wrs/Wrq2SqlServlet.html#doGet-javax.servlet.http.HttpServletRequest-javax.servlet.http.HttpServletResponse-">doGet(HttpServletRequest, HttpServletResponse)</a></span> - Method in class de.businesscode.bcdui.web.wrs.<a href="de/businesscode/bcdui/web/wrs/Wrq2SqlServlet.html" title="class in de.businesscode.bcdui.web.wrs">Wrq2SqlServlet</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/web/wrs/WrsServlet.html#doGet-javax.servlet.http.HttpServletRequest-javax.servlet.http.HttpServletResponse-">doGet(HttpServletRequest, HttpServletResponse)</a></span> - Method in class de.businesscode.bcdui.web.wrs.<a href="de/businesscode/bcdui/web/wrs/WrsServlet.html" title="class in de.businesscode.bcdui.web.wrs">WrsServlet</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/subjectsettings/JdbcRealm.html#doGetAuthenticationInfo-org.apache.shiro.authc.AuthenticationToken-">doGetAuthenticationInfo(AuthenticationToken)</a></span> - Method in class de.businesscode.bcdui.subjectsettings.<a href="de/businesscode/bcdui/subjectsettings/JdbcRealm.html" title="class in de.businesscode.bcdui.subjectsettings">JdbcRealm</a></dt>
@@ -1456,8 +1457,6 @@ and filters.</div>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/vfs/provider/database/DatabaseFileObject.html#doGetType--">doGetType()</a></span> - Method in class de.businesscode.bcdui.vfs.provider.database.<a href="de/businesscode/bcdui/vfs/provider/database/DatabaseFileObject.html" title="class in de.businesscode.bcdui.vfs.provider.database">DatabaseFileObject</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/vfs/provider/database/DatabaseFileObject.html#doListChildren--">doListChildren()</a></span> - Method in class de.businesscode.bcdui.vfs.provider.database.<a href="de/businesscode/bcdui/vfs/provider/database/DatabaseFileObject.html" title="class in de.businesscode.bcdui.vfs.provider.database">DatabaseFileObject</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="de/businesscode/bcdui/subjectsettings/LoginServlet.html#doPost-javax.servlet.http.HttpServletRequest-javax.servlet.http.HttpServletResponse-">doPost(HttpServletRequest, HttpServletResponse)</a></span> - Method in class de.businesscode.bcdui.subjectsettings.<a href="de/businesscode/bcdui/subjectsettings/LoginServlet.html" title="class in de.businesscode.bcdui.subjectsettings">LoginServlet</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/toolbox/TextToUrl.html#doPost-javax.servlet.http.HttpServletRequest-javax.servlet.http.HttpServletResponse-">doPost(HttpServletRequest, HttpServletResponse)</a></span> - Method in class de.businesscode.bcdui.toolbox.<a href="de/businesscode/bcdui/toolbox/TextToUrl.html" title="class in de.businesscode.bcdui.toolbox">TextToUrl</a></dt>
 <dd>&nbsp;</dd>
@@ -1524,6 +1523,14 @@ and filters.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/binding/exc/EmptyBindingSetException.html#EmptyBindingSetException-java.lang.String-">EmptyBindingSetException(String)</a></span> - Constructor for exception de.businesscode.bcdui.binding.exc.<a href="de/businesscode/bcdui/binding/exc/EmptyBindingSetException.html" title="class in de.businesscode.bcdui.binding.exc">EmptyBindingSetException</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/businesscode/util/xml/SecureXmlFactory.html#enableNamespaceAware-javax.xml.parsers.SAXParserFactory-">enableNamespaceAware(SAXParserFactory)</a></span> - Static method in class de.businesscode.util.xml.<a href="de/businesscode/util/xml/SecureXmlFactory.html" title="class in de.businesscode.util.xml">SecureXmlFactory</a></dt>
+<dd>
+<div class="block">fluent method to enable namespace awareness</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/businesscode/util/xml/SecureXmlFactory.html#enableNamespaceAware-javax.xml.parsers.DocumentBuilderFactory-">enableNamespaceAware(DocumentBuilderFactory)</a></span> - Static method in class de.businesscode.util.xml.<a href="de/businesscode/util/xml/SecureXmlFactory.html" title="class in de.businesscode.util.xml">SecureXmlFactory</a></dt>
+<dd>
+<div class="block">fluent method to enable namespace awareness</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/binding/write/WriteProcessingCallback.html#endDataRow-de.businesscode.bcdui.binding.write.WriteProcessingCallback.ROW_TYPE-java.util.List-java.util.List-">endDataRow(WriteProcessingCallback.ROW_TYPE, List&lt;String&gt;, List&lt;String&gt;)</a></span> - Method in class de.businesscode.bcdui.binding.write.<a href="de/businesscode/bcdui/binding/write/WriteProcessingCallback.html" title="class in de.businesscode.bcdui.binding.write">WriteProcessingCallback</a></dt>
 <dd>
 <div class="block">is called once WRS row has been read, the implementation may modify data provided,
@@ -1642,11 +1649,6 @@ and filters.</div>
 
  Clients can overwrite this method to implement same logic</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/businesscode/bcdui/subjectsettings/LoginServlet.html#executeRedirect-javax.servlet.http.HttpServletRequest-javax.servlet.http.HttpServletResponse-">executeRedirect(HttpServletRequest, HttpServletResponse)</a></span> - Method in class de.businesscode.bcdui.subjectsettings.<a href="de/businesscode/bcdui/subjectsettings/LoginServlet.html" title="class in de.businesscode.bcdui.subjectsettings">LoginServlet</a></dt>
-<dd>
-<div class="block">override to implement a custom redirection, the default implementation uses shiros last
- stored url accessed before the login screen</div>
-</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/logging/LogoutSqlLogger.html#executeStatement-java.lang.Object:A:A-">executeStatement(Object[][])</a></span> - Method in class de.businesscode.bcdui.logging.<a href="de/businesscode/bcdui/logging/LogoutSqlLogger.html" title="class in de.businesscode.bcdui.logging">LogoutSqlLogger</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/logging/SessionExpiredSqlLogger.html#executeStatement-java.lang.Object:A:A-">executeStatement(Object[][])</a></span> - Method in class de.businesscode.bcdui.logging.<a href="de/businesscode/bcdui/logging/SessionExpiredSqlLogger.html" title="class in de.businesscode.bcdui.logging">SessionExpiredSqlLogger</a></dt>
@@ -1655,7 +1657,7 @@ and filters.</div>
 <dd>
 <div class="block">Enum with all supported expires values.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/businesscode/bcdui/wrs/export/Wrs2Excel.html#export-java.io.Reader-java.io.OutputStream-de.businesscode.bcdui.wrs.IRequestOptions-">export(Reader, OutputStream, IRequestOptions)</a></span> - Method in class de.businesscode.bcdui.wrs.export.<a href="de/businesscode/bcdui/wrs/export/Wrs2Excel.html" title="class in de.businesscode.bcdui.wrs.export">Wrs2Excel</a></dt>
+<dt><span class="memberNameLink"><a href="de/businesscode/bcdui/wrs/export/Wrs2Excel.html#export-java.io.Reader-java.io.OutputStream-de.businesscode.bcdui.wrs.IRequestOptions-javax.servlet.http.HttpServletRequest-">export(Reader, OutputStream, IRequestOptions, HttpServletRequest)</a></span> - Method in class de.businesscode.bcdui.wrs.export.<a href="de/businesscode/bcdui/wrs/export/Wrs2Excel.html" title="class in de.businesscode.bcdui.wrs.export">Wrs2Excel</a></dt>
 <dd>
 <div class="block">exports data from wrsInputStream into new Excel file created from the excel target template and writes into excelOutputStream via streaming API</div>
 </dd>
@@ -1675,6 +1677,10 @@ and filters.</div>
 </a>
 <h2 class="title">F</h2>
 <dl>
+<dt><span class="memberNameLink"><a href="de/businesscode/util/StandardNamespaceContext.html#FAR_NAMESPACE">FAR_NAMESPACE</a></span> - Static variable in class de.businesscode.util.<a href="de/businesscode/util/StandardNamespaceContext.html" title="class in de.businesscode.util">StandardNamespaceContext</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/businesscode/util/StandardNamespaceContext.html#FAR_PREFIX">FAR_PREFIX</a></span> - Static variable in class de.businesscode.util.<a href="de/businesscode/util/StandardNamespaceContext.html" title="class in de.businesscode.util">StandardNamespaceContext</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/web/cacheControl/FileCachePersist.html" title="class in de.businesscode.bcdui.web.cacheControl"><span class="typeNameLink">FileCachePersist</span></a> - Class in <a href="de/businesscode/bcdui/web/cacheControl/package-summary.html">de.businesscode.bcdui.web.cacheControl</a></dt>
 <dd>
 <div class="block">This class implements the file system based caching store.</div>
@@ -1766,10 +1772,16 @@ and filters.</div>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/web/accessLogging/RequestHashGenerator.html#generateHash-javax.servlet.http.HttpServletRequest-">generateHash(HttpServletRequest)</a></span> - Static method in class de.businesscode.bcdui.web.accessLogging.<a href="de/businesscode/bcdui/web/accessLogging/RequestHashGenerator.html" title="class in de.businesscode.bcdui.web.accessLogging">RequestHashGenerator</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/businesscode/bcdui/wrs/load/Wrq2Sql.html#generateHavingClause-java.util.List-">generateHavingClause(List&lt;Element&gt;)</a></span> - Method in class de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/Wrq2Sql.html" title="class in de.businesscode.bcdui.wrs.load">Wrq2Sql</a></dt>
+<dd>
+<div class="block">Generates Having SQL clause</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/wrs/load/Wrq2Sql.html#generateOrderClause-java.util.List-">generateOrderClause(List&lt;Element&gt;)</a></span> - Method in class de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/Wrq2Sql.html" title="class in de.businesscode.bcdui.wrs.load">Wrq2Sql</a></dt>
 <dd>
 <div class="block">Generates Order-By clause</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/businesscode/bcdui/web/accessLogging/RequestHashGenerator.html#generatePageHash-javax.servlet.http.HttpServletRequest-">generatePageHash(HttpServletRequest)</a></span> - Static method in class de.businesscode.bcdui.web.accessLogging.<a href="de/businesscode/bcdui/web/accessLogging/RequestHashGenerator.html" title="class in de.businesscode.bcdui.web.accessLogging">RequestHashGenerator</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/web/cacheControl/ServerCachingFilter.html#generateRequestKey-javax.servlet.http.HttpServletRequest-">generateRequestKey(HttpServletRequest)</a></span> - Method in class de.businesscode.bcdui.web.cacheControl.<a href="de/businesscode/bcdui/web/cacheControl/ServerCachingFilter.html" title="class in de.businesscode.bcdui.web.cacheControl">ServerCachingFilter</a></dt>
 <dd>
 <div class="block">generates request URL which will be used to map request to cache, implementation can decide whether only the url part or parameters forms the key</div>
@@ -1778,9 +1790,12 @@ and filters.</div>
 <dd>
 <div class="block">Generates 'SELECT ' plus the select list</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/businesscode/bcdui/wrs/load/WrqFilter2Sql.html#generateSingleColumnExpression-de.businesscode.bcdui.wrs.load.WrqInfo-org.w3c.dom.Element-java.util.Collection-org.w3c.dom.Document-">generateSingleColumnExpression(WrqInfo, Element, Collection&lt;Element&gt;, Document)</a></span> - Static method in class de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqFilter2Sql.html" title="class in de.businesscode.bcdui.wrs.load">WrqFilter2Sql</a></dt>
+<dt><span class="memberNameLink"><a href="de/businesscode/bcdui/wrs/load/WrqFilter2Sql.html#generateSingleColumnExpression-de.businesscode.bcdui.wrs.load.WrqInfo-org.w3c.dom.Element-java.util.Collection-org.w3c.dom.Document-boolean-">generateSingleColumnExpression(WrqInfo, Element, Collection&lt;Element&gt;, Document, boolean)</a></span> - Static method in class de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqFilter2Sql.html" title="class in de.businesscode.bcdui.wrs.load">WrqFilter2Sql</a></dt>
 <dd>
-<div class="block">Helper for WHERE clause generation</div>
+<div class="block">Helper for WHERE clause generation
+ ignoreCase is only allowed for dimensions and non-numeric types
+ TODO If a non-dim bindingItem is used multiple times with different aggr in the select list, the aggr of the last one wins
+ This limitation could be removed by allowing to overwrite the aggr at the having-filter expression, for example</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/wrs/load/Wrq2Sql.html#generateStatement--">generateStatement()</a></span> - Method in class de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/Wrq2Sql.html" title="class in de.businesscode.bcdui.wrs.load">Wrq2Sql</a></dt>
 <dd>&nbsp;</dd>
@@ -1985,10 +2000,6 @@ and filters.</div>
 <dd>
 <div class="block">Ruft den Wert der bindingSet-Eigenschaft ab.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.html#getBindingSet--">getBindingSet()</a></span> - Method in class de.businesscode.bcdui.subjectsettings.config.<a href="de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectFilterType</a></dt>
-<dd>
-<div class="block">Ruft den Wert der bindingSet-Eigenschaft ab.</div>
-</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/vfs/provider/database/DatabaseFileObject.html#getBindingSet--">getBindingSet()</a></span> - Method in class de.businesscode.bcdui.vfs.provider.database.<a href="de/businesscode/bcdui/vfs/provider/database/DatabaseFileObject.html" title="class in de.businesscode.bcdui.vfs.provider.database">DatabaseFileObject</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/sqlengine/context/BindingSetContextObject.html#getBindingSet--">getBindingSet()</a></span> - Method in class de.businesscode.sqlengine.context.<a href="de/businesscode/sqlengine/context/BindingSetContextObject.html" title="class in de.businesscode.sqlengine.context">BindingSetContextObject</a></dt>
@@ -2017,6 +2028,8 @@ and filters.</div>
 <dd>
 <div class="block">Ruft den Wert der c-Eigenschaft ab.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/businesscode/bcdui/cache/CacheFactory.html#getCacheManager--">getCacheManager()</a></span> - Static method in class de.businesscode.bcdui.cache.<a href="de/businesscode/bcdui/cache/CacheFactory.html" title="class in de.businesscode.bcdui.cache">CacheFactory</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/util/jdbc/DatabaseCompatibility.html#getCalcFktMapping-de.businesscode.bcdui.binding.BindingSet-">getCalcFktMapping(BindingSet)</a></span> - Method in class de.businesscode.util.jdbc.<a href="de/businesscode/util/jdbc/DatabaseCompatibility.html" title="class in de.businesscode.util.jdbc">DatabaseCompatibility</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/util/Utils.html#getCalendar--">getCalendar()</a></span> - Static method in class de.businesscode.util.<a href="de/businesscode/util/Utils.html" title="class in de.businesscode.util">Utils</a></dt>
@@ -2357,11 +2370,19 @@ and filters.</div>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/wrs/load/WrqInfo.html#getFilterNode--">getFilterNode()</a></span> - Method in class de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/businesscode/bcdui/subjectsettings/SubjectSettings.html#getFilterType-de.businesscode.bcdui.subjectsettings.config.SubjectFilterType-">getFilterType(SubjectFilterType)</a></span> - Method in class de.businesscode.bcdui.subjectsettings.<a href="de/businesscode/bcdui/subjectsettings/SubjectSettings.html" title="class in de.businesscode.bcdui.subjectsettings">SubjectSettings</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/businesscode/bcdui/subjectsettings/SubjectSettings.html#getFilterTypeValue-org.apache.shiro.session.Session-de.businesscode.bcdui.subjectsettings.config.SubjectFilterType-">getFilterTypeValue(Session, SubjectFilterType)</a></span> - Method in class de.businesscode.bcdui.subjectsettings.<a href="de/businesscode/bcdui/subjectsettings/SubjectSettings.html" title="class in de.businesscode.bcdui.subjectsettings">SubjectSettings</a></dt>
+<dd>
+<div class="block">returns permission mapped for given filter type from the user session</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/wrs/load/SQLStatementWithParams.html#getFilterValues--">getFilterValues()</a></span> - Method in class de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/wrs/load/WrqInfo.html#getFullSelectListBRefs--">getFullSelectListBRefs()</a></span> - Method in class de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/el/StandardELContext.html#getFunctionMapper--">getFunctionMapper()</a></span> - Method in class de.businesscode.bcdui.el.<a href="de/businesscode/bcdui/el/StandardELContext.html" title="class in de.businesscode.bcdui.el">StandardELContext</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/businesscode/bcdui/wrs/export/Wrq2ExcelSheetDataWriter.html#getGenerator--">getGenerator()</a></span> - Method in class de.businesscode.bcdui.wrs.export.<a href="de/businesscode/bcdui/wrs/export/Wrq2ExcelSheetDataWriter.html" title="class in de.businesscode.bcdui.wrs.export">Wrq2ExcelSheetDataWriter</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/wrs/load/AbstractDataWriter.html#getGenerator--">getGenerator()</a></span> - Method in class de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/AbstractDataWriter.html" title="class in de.businesscode.bcdui.wrs.load">AbstractDataWriter</a></dt>
 <dd>&nbsp;</dd>
@@ -2374,6 +2395,10 @@ and filters.</div>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/wrs/load/WrqInfo.html#getGroupingNode--">getGroupingNode()</a></span> - Method in class de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/web/i18n/I18n.html#getGroupSeparator--">getGroupSeparator()</a></span> - Method in class de.businesscode.bcdui.web.i18n.<a href="de/businesscode/bcdui/web/i18n/I18n.html" title="class in de.businesscode.bcdui.web.i18n">I18n</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/businesscode/bcdui/wrs/load/WrqInfo.html#getHavingBRefs--">getHavingBRefs()</a></span> - Method in class de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/businesscode/bcdui/wrs/load/WrqInfo.html#getHavingNode--">getHavingNode()</a></span> - Method in class de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/menu/config/Entry.html#getHref--">getHref()</a></span> - Method in class de.businesscode.bcdui.menu.config.<a href="de/businesscode/bcdui/menu/config/Entry.html" title="class in de.businesscode.bcdui.menu.config">Entry</a></dt>
 <dd>
@@ -2586,6 +2611,8 @@ and filters.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/wrs/save/XMLToDataBase.LocationImpl.html#getLineNumber--">getLineNumber()</a></span> - Method in class de.businesscode.bcdui.wrs.save.<a href="de/businesscode/bcdui/wrs/save/XMLToDataBase.LocationImpl.html" title="class in de.businesscode.bcdui.wrs.save">XMLToDataBase.LocationImpl</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/businesscode/bcdui/wrs/export/Wrq2ExcelSheetDataWriter.html#getLoader--">getLoader()</a></span> - Method in class de.businesscode.bcdui.wrs.export.<a href="de/businesscode/bcdui/wrs/export/Wrq2ExcelSheetDataWriter.html" title="class in de.businesscode.bcdui.wrs.export">Wrq2ExcelSheetDataWriter</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/util/JNDIProvider.html#getLocalInstance-java.lang.String-">getLocalInstance(String)</a></span> - Static method in class de.businesscode.util.<a href="de/businesscode/util/JNDIProvider.html" title="class in de.businesscode.util">JNDIProvider</a></dt>
 <dd>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>
@@ -2655,6 +2682,8 @@ and filters.</div>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/subjectsettings/NoPermissionException.html#getMessage--">getMessage()</a></span> - Method in exception de.businesscode.bcdui.subjectsettings.<a href="de/businesscode/bcdui/subjectsettings/NoPermissionException.html" title="class in de.businesscode.bcdui.subjectsettings">NoPermissionException</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/web/errorLogging/ErrorLogEvent.html#getMessage--">getMessage()</a></span> - Method in class de.businesscode.bcdui.web.errorLogging.<a href="de/businesscode/bcdui/web/errorLogging/ErrorLogEvent.html" title="class in de.businesscode.bcdui.web.errorLogging">ErrorLogEvent</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/businesscode/util/jdbc/SQLDetailException.html#getMessage--">getMessage()</a></span> - Method in exception de.businesscode.util.jdbc.<a href="de/businesscode/util/jdbc/SQLDetailException.html" title="class in de.businesscode.util.jdbc">SQLDetailException</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/util/SOAPFaultMessage.html#getMessage--">getMessage()</a></span> - Method in class de.businesscode.util.<a href="de/businesscode/util/SOAPFaultMessage.html" title="class in de.businesscode.util">SOAPFaultMessage</a></dt>
 <dd>&nbsp;</dd>
@@ -2860,7 +2889,13 @@ and filters.</div>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/wrs/load/BindingItemWithMetaData.html#getQColumnExpressionWithAggr-java.lang.String-java.lang.String-">getQColumnExpressionWithAggr(String, String)</a></span> - Method in class de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/BindingItemWithMetaData.html" title="class in de.businesscode.bcdui.wrs.load">BindingItemWithMetaData</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/wrs/load/WrqBindingItem.html#getQColumnExpressionWithAggr--">getQColumnExpressionWithAggr()</a></span> - Method in class de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqBindingItem.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingItem</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the column expression with aggregation applied, if any is set</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/businesscode/bcdui/wrs/load/WrqBindingItem.html#getQColumnExpressionWithAggr-boolean-">getQColumnExpressionWithAggr(boolean)</a></span> - Method in class de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqBindingItem.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingItem</a></dt>
+<dd>
+<div class="block">Returns the column expression with aggregation applied, if any is set or if enforceAggr=true</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/toolbox/config/BareConfiguration.html#getRawDataSource-java.lang.String-">getRawDataSource(String)</a></span> - Method in class de.businesscode.bcdui.toolbox.config.<a href="de/businesscode/bcdui/toolbox/config/BareConfiguration.html" title="class in de.businesscode.bcdui.toolbox.config">BareConfiguration</a></dt>
 <dd>
 <div class="block">see <a href="de/businesscode/bcdui/toolbox/config/BareConfiguration.html#getRawDataSource-de.businesscode.bcdui.toolbox.config.ConfigurationProvider-java.lang.String-"><code>BareConfiguration.getRawDataSource(ConfigurationProvider, String)</code></a></div>
@@ -3067,6 +3102,8 @@ and filters.</div>
 <div class="block">Retrieves a session id from the session of given request, handles null-sessions with
  non stable IDs created locally and stored in request.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/businesscode/bcdui/wrs/load/WrqBindingItem.html#getSkipForTotals--">getSkipForTotals()</a></span> - Method in class de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqBindingItem.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingItem</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/binding/rel/Relation.html#getSourceBindingSet--">getSourceBindingSet()</a></span> - Method in class de.businesscode.bcdui.binding.rel.<a href="de/businesscode/bcdui/binding/rel/Relation.html" title="class in de.businesscode.bcdui.binding.rel">Relation</a></dt>
 <dd>
 <div class="block">Method getSourceBindingSet</div>
@@ -3125,6 +3162,10 @@ and filters.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/wrs/load/SQLStatementWithParams.html#getStatement--">getStatement()</a></span> - Method in class de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/businesscode/bcdui/wrs/load/SQLStatementWithParams.html#getStatementWithParams--">getStatementWithParams()</a></span> - Method in class de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a></dt>
+<dd>
+<div class="block">Provides the statement with values filled in instead of showing '?'</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/binding/write/WriteProcessing.html#getStylesheets--">getStylesheets()</a></span> - Method in class de.businesscode.bcdui.binding.write.<a href="de/businesscode/bcdui/binding/write/WriteProcessing.html" title="class in de.businesscode.bcdui.binding.write">WriteProcessing</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/binding/subjectFilter/jaxb/TypeSubjectFilterConnective.html#getSubjectFilterOrAndOrOr--">getSubjectFilterOrAndOrOr()</a></span> - Method in class de.businesscode.bcdui.binding.subjectFilter.jaxb.<a href="de/businesscode/bcdui/binding/subjectFilter/jaxb/TypeSubjectFilterConnective.html" title="class in de.businesscode.bcdui.binding.subjectFilter.jaxb">TypeSubjectFilterConnective</a></dt>
@@ -3221,6 +3262,10 @@ and filters.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/binding/subjectFilter/SubjectFilter.html#getType--">getType()</a></span> - Method in class de.businesscode.bcdui.binding.subjectFilter.<a href="de/businesscode/bcdui/binding/subjectFilter/SubjectFilter.html" title="class in de.businesscode.bcdui.binding.subjectFilter">SubjectFilter</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.html#getType--">getType()</a></span> - Method in class de.businesscode.bcdui.subjectsettings.config.<a href="de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectFilterType</a></dt>
+<dd>
+<div class="block">Ruft den Wert der type-Eigenschaft ab.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/toolbox/config/BareConfiguration.html#getUnmanagedConnection-java.lang.String-">getUnmanagedConnection(String)</a></span> - Method in class de.businesscode.bcdui.toolbox.config.<a href="de/businesscode/bcdui/toolbox/config/BareConfiguration.html" title="class in de.businesscode.bcdui.toolbox.config">BareConfiguration</a></dt>
 <dd>
 <div class="block">Takes a new connection from the specified DataSource.</div>
@@ -3299,9 +3344,7 @@ and filters.</div>
 <div class="block">Return the virtual dimension members for a bRef</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/cache/CacheFactory.html#getVFSCache--">getVFSCache()</a></span> - Static method in class de.businesscode.bcdui.cache.<a href="de/businesscode/bcdui/cache/CacheFactory.html" title="class in de.businesscode.bcdui.cache">CacheFactory</a></dt>
-<dd>
-<div class="block">Method getVFSCache</div>
-</dd>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/vfs/provider/database/VFSManagerFactory.html#getVFSCache--">getVFSCache()</a></span> - Static method in class de.businesscode.bcdui.vfs.provider.database.<a href="de/businesscode/bcdui/vfs/provider/database/VFSManagerFactory.html" title="class in de.businesscode.bcdui.vfs.provider.database">VFSManagerFactory</a></dt>
 <dd>
 <div class="block">gets VFS cahe instance</div>
@@ -3512,8 +3555,6 @@ and filters.</div>
 <div class="block">Java-Klasse für anonymous complex type.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/menu/config/Include.html#Include--">Include()</a></span> - Constructor for class de.businesscode.bcdui.menu.config.<a href="de/businesscode/bcdui/menu/config/Include.html" title="class in de.businesscode.bcdui.menu.config">Include</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="de/businesscode/bcdui/subjectsettings/LoginServlet.html#init-javax.servlet.ServletConfig-">init(ServletConfig)</a></span> - Method in class de.businesscode.bcdui.subjectsettings.<a href="de/businesscode/bcdui/subjectsettings/LoginServlet.html" title="class in de.businesscode.bcdui.subjectsettings">LoginServlet</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/toolbox/MapsRequestFilter.html#init-javax.servlet.FilterConfig-">init(FilterConfig)</a></span> - Method in class de.businesscode.bcdui.toolbox.<a href="de/businesscode/bcdui/toolbox/MapsRequestFilter.html" title="class in de.businesscode.bcdui.toolbox">MapsRequestFilter</a></dt>
 <dd>&nbsp;</dd>
@@ -3925,14 +3966,6 @@ and filters.</div>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/web/filters/RequestLifeCycleFilter.html#LOGGER_NAME">LOGGER_NAME</a></span> - Static variable in class de.businesscode.bcdui.web.filters.<a href="de/businesscode/bcdui/web/filters/RequestLifeCycleFilter.html" title="class in de.businesscode.bcdui.web.filters">RequestLifeCycleFilter</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="de/businesscode/bcdui/subjectsettings/LoginServlet.html" title="class in de.businesscode.bcdui.subjectsettings"><span class="typeNameLink">LoginServlet</span></a> - Class in <a href="de/businesscode/bcdui/subjectsettings/package-summary.html">de.businesscode.bcdui.subjectsettings</a></dt>
-<dd>
-<div class="block">Servlet for login and logout, depending on HTTP parameters using apache shiro frame work</div>
-</dd>
-<dt><span class="memberNameLink"><a href="de/businesscode/bcdui/subjectsettings/LoginServlet.html#LoginServlet--">LoginServlet()</a></span> - Constructor for class de.businesscode.bcdui.subjectsettings.<a href="de/businesscode/bcdui/subjectsettings/LoginServlet.html" title="class in de.businesscode.bcdui.subjectsettings">LoginServlet</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="de/businesscode/bcdui/subjectsettings/LoginServlet.AuthenticateErrorCode.html" title="enum in de.businesscode.bcdui.subjectsettings"><span class="typeNameLink">LoginServlet.AuthenticateErrorCode</span></a> - Enum in <a href="de/businesscode/bcdui/subjectsettings/package-summary.html">de.businesscode.bcdui.subjectsettings</a></dt>
-<dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/logging/LoginSqlLogger.html" title="class in de.businesscode.bcdui.logging"><span class="typeNameLink">LoginSqlLogger</span></a> - Class in <a href="de/businesscode/bcdui/logging/package-summary.html">de.businesscode.bcdui.logging</a></dt>
 <dd>
 <div class="block">logs <a href="de/businesscode/bcdui/logging/LoginSqlLogger.LogRecord.html" title="class in de.businesscode.bcdui.logging"><code>LoginSqlLogger.LogRecord</code></a> into database, binding set used is bcd_log_session,
@@ -3994,10 +4027,6 @@ and filters.</div>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/toolbox/MapsRequestFilter.html#MapsRequestFilter--">MapsRequestFilter()</a></span> - Constructor for class de.businesscode.bcdui.toolbox.<a href="de/businesscode/bcdui/toolbox/MapsRequestFilter.html" title="class in de.businesscode.bcdui.toolbox">MapsRequestFilter</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/toolbox/MapsRequestFilter.ParamAddedRequest.html" title="class in de.businesscode.bcdui.toolbox"><span class="typeNameLink">MapsRequestFilter.ParamAddedRequest</span></a> - Class in <a href="de/businesscode/bcdui/toolbox/package-summary.html">de.businesscode.bcdui.toolbox</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="de/businesscode/util/Utils.ServletInputStreamImpl.html#mark-int-">mark(int)</a></span> - Method in class de.businesscode.util.<a href="de/businesscode/util/Utils.ServletInputStreamImpl.html" title="class in de.businesscode.util">Utils.ServletInputStreamImpl</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="de/businesscode/util/Utils.ServletInputStreamImpl.html#markSupported--">markSupported()</a></span> - Method in class de.businesscode.util.<a href="de/businesscode/util/Utils.ServletInputStreamImpl.html" title="class in de.businesscode.util">Utils.ServletInputStreamImpl</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/binding/Bindings.html#MAX_PARALLEL_THREADS">MAX_PARALLEL_THREADS</a></span> - Static variable in class de.businesscode.bcdui.binding.<a href="de/businesscode/bcdui/binding/Bindings.html" title="class in de.businesscode.bcdui.binding">Bindings</a></dt>
 <dd>&nbsp;</dd>
@@ -4098,11 +4127,26 @@ and filters.</div>
 <dd>
 <div class="block">A boolean constraint matching the "not equal" condition.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/businesscode/util/xml/SecureXmlFactory.html#newDocumentBuilderFactory--">newDocumentBuilderFactory()</a></span> - Static method in class de.businesscode.util.xml.<a href="de/businesscode/util/xml/SecureXmlFactory.html" title="class in de.businesscode.util.xml">SecureXmlFactory</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/web/taglib/webpage/Functions.html#newId-java.lang.String-">newId(String)</a></span> - Static method in class de.businesscode.bcdui.web.taglib.webpage.<a href="de/businesscode/bcdui/web/taglib/webpage/Functions.html" title="class in de.businesscode.bcdui.web.taglib.webpage">Functions</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="de/businesscode/util/xml/SecureSAXParserFactory.html#newInstance--">newInstance()</a></span> - Static method in class de.businesscode.util.xml.<a href="de/businesscode/util/xml/SecureSAXParserFactory.html" title="class in de.businesscode.util.xml">SecureSAXParserFactory</a></dt>
+<dt><span class="memberNameLink"><a href="de/businesscode/util/xml/SecureXmlFactory.html#newSaxParserFactory--">newSaxParserFactory()</a></span> - Static method in class de.businesscode.util.xml.<a href="de/businesscode/util/xml/SecureXmlFactory.html" title="class in de.businesscode.util.xml">SecureXmlFactory</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/businesscode/util/xml/SecureXmlFactory.html#newSaxTransformerFactory--">newSaxTransformerFactory()</a></span> - Static method in class de.businesscode.util.xml.<a href="de/businesscode/util/xml/SecureXmlFactory.html" title="class in de.businesscode.util.xml">SecureXmlFactory</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/businesscode/util/xml/SecureXmlFactory.html#newTransformerFactory--">newTransformerFactory()</a></span> - Static method in class de.businesscode.util.xml.<a href="de/businesscode/util/xml/SecureXmlFactory.html" title="class in de.businesscode.util.xml">SecureXmlFactory</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/menu/config/Entry.html#newWindow">newWindow</a></span> - Variable in class de.businesscode.bcdui.menu.config.<a href="de/businesscode/bcdui/menu/config/Entry.html" title="class in de.businesscode.bcdui.menu.config">Entry</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/businesscode/util/xml/SecureXmlFactory.html#newXMLInputFactory--">newXMLInputFactory()</a></span> - Static method in class de.businesscode.util.xml.<a href="de/businesscode/util/xml/SecureXmlFactory.html" title="class in de.businesscode.util.xml">SecureXmlFactory</a></dt>
+<dd>
+<div class="block">Create an XMLInputFactory which is save against injection attacks
+ If you need XInclude, enable it explicitly after retrieving this</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/businesscode/util/xml/SecureXmlFactory.html#newXmlReader--">newXmlReader()</a></span> - Static method in class de.businesscode.util.xml.<a href="de/businesscode/util/xml/SecureXmlFactory.html" title="class in de.businesscode.util.xml">SecureXmlFactory</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/businesscode/util/XPathUtils.html#newXPath--">newXPath()</a></span> - Static method in class de.businesscode.util.<a href="de/businesscode/util/XPathUtils.html" title="class in de.businesscode.util">XPathUtils</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/util/XPathUtils.html#newXPathFactory--">newXPathFactory()</a></span> - Static method in class de.businesscode.util.<a href="de/businesscode/util/XPathUtils.html" title="class in de.businesscode.util">XPathUtils</a></dt>
 <dd>&nbsp;</dd>
@@ -4280,8 +4324,6 @@ and filters.</div>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/subjectsettings/config/Security.Operation.html#permission">permission</a></span> - Variable in class de.businesscode.bcdui.subjectsettings.config.<a href="de/businesscode/bcdui/subjectsettings/config/Security.Operation.html" title="class in de.businesscode.bcdui.subjectsettings.config">Security.Operation</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="de/businesscode/bcdui/subjectsettings/SubjectSettings.html#permissionAttributePrefix">permissionAttributePrefix</a></span> - Static variable in class de.businesscode.bcdui.subjectsettings.<a href="de/businesscode/bcdui/subjectsettings/SubjectSettings.html" title="class in de.businesscode.bcdui.subjectsettings">SubjectSettings</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/wrs/load/DataLoader.html#prepareStatement-java.sql.Connection-java.lang.String-">prepareStatement(Connection, String)</a></span> - Method in class de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/DataLoader.html" title="class in de.businesscode.bcdui.wrs.load">DataLoader</a></dt>
 <dd>
 <div class="block">Create the prepared statement
@@ -4360,12 +4402,6 @@ and filters.</div>
 </a>
 <h2 class="title">R</h2>
 <dl>
-<dt><span class="memberNameLink"><a href="de/businesscode/util/Utils.ServletInputStreamImpl.html#read--">read()</a></span> - Method in class de.businesscode.util.<a href="de/businesscode/util/Utils.ServletInputStreamImpl.html" title="class in de.businesscode.util">Utils.ServletInputStreamImpl</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="de/businesscode/util/Utils.ServletInputStreamImpl.html#read-byte:A-">read(byte[])</a></span> - Method in class de.businesscode.util.<a href="de/businesscode/util/Utils.ServletInputStreamImpl.html" title="class in de.businesscode.util">Utils.ServletInputStreamImpl</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="de/businesscode/util/Utils.ServletInputStreamImpl.html#read-byte:A-int-int-">read(byte[], int, int)</a></span> - Method in class de.businesscode.util.<a href="de/businesscode/util/Utils.ServletInputStreamImpl.html" title="class in de.businesscode.util">Utils.ServletInputStreamImpl</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/binding/Bindings.html#readAdditionalBindings--">readAdditionalBindings()</a></span> - Method in class de.businesscode.bcdui.binding.<a href="de/businesscode/bcdui/binding/Bindings.html" title="class in de.businesscode.bcdui.binding">Bindings</a></dt>
 <dd>
 <div class="block">Optional extension point</div>
@@ -4392,8 +4428,6 @@ and filters.</div>
 <dd>
 <div class="block">Optional extension point</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/businesscode/util/Utils.ServletInputStreamImpl.html#readLine-byte:A-int-int-">readLine(byte[], int, int)</a></span> - Method in class de.businesscode.util.<a href="de/businesscode/util/Utils.ServletInputStreamImpl.html" title="class in de.businesscode.util">Utils.ServletInputStreamImpl</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/binding/Bindings.html#readOnlyAttributeName">readOnlyAttributeName</a></span> - Static variable in class de.businesscode.bcdui.binding.<a href="de/businesscode/bcdui/binding/Bindings.html" title="class in de.businesscode.bcdui.binding">Bindings</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/toolbox/ServletUtils.html#reconstructURI-javax.servlet.http.HttpServletRequest-">reconstructURI(HttpServletRequest)</a></span> - Method in class de.businesscode.bcdui.toolbox.<a href="de/businesscode/bcdui/toolbox/ServletUtils.html" title="class in de.businesscode.bcdui.toolbox">ServletUtils</a></dt>
@@ -4461,6 +4495,8 @@ and filters.</div>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/util/StandardNamespaceContext.html#RENDERER_PREFIX">RENDERER_PREFIX</a></span> - Static variable in class de.businesscode.util.<a href="de/businesscode/util/StandardNamespaceContext.html" title="class in de.businesscode.util">StandardNamespaceContext</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/businesscode/bcdui/wrs/load/WrqInfo.html#reqHasGroupingFunction--">reqHasGroupingFunction()</a></span> - Method in class de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/wrs/specificSql/AbstractSqlGenerator.html#requestedBindingSetName">requestedBindingSetName</a></span> - Variable in class de.businesscode.bcdui.wrs.specificSql.<a href="de/businesscode/bcdui/wrs/specificSql/AbstractSqlGenerator.html" title="class in de.businesscode.bcdui.wrs.specificSql">AbstractSqlGenerator</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/web/accessLogging/RequestHashGenerator.html" title="class in de.businesscode.bcdui.web.accessLogging"><span class="typeNameLink">RequestHashGenerator</span></a> - Class in <a href="de/businesscode/bcdui/web/accessLogging/package-summary.html">de.businesscode.bcdui.web.accessLogging</a></dt>
@@ -4489,8 +4525,6 @@ and filters.</div>
 <dd>
 <div class="block">resets logging switch for current thread, which is usually:enabled</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/businesscode/util/Utils.ServletInputStreamImpl.html#reset--">reset()</a></span> - Method in class de.businesscode.util.<a href="de/businesscode/util/Utils.ServletInputStreamImpl.html" title="class in de.businesscode.util">Utils.ServletInputStreamImpl</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/wrs/export/AbstractExcelSheetDataWriter.html#resetColCursor--">resetColCursor()</a></span> - Method in class de.businesscode.bcdui.wrs.export.<a href="de/businesscode/bcdui/wrs/export/AbstractExcelSheetDataWriter.html" title="class in de.businesscode.bcdui.wrs.export">AbstractExcelSheetDataWriter</a></dt>
 <dd>
 <div class="block">reset column cursor to <a href="de/businesscode/bcdui/wrs/export/AbstractExcelSheetDataWriter.html#setStartColIdx-int-"><code>AbstractExcelSheetDataWriter.setStartColIdx(int)</code></a> , such as <code>de.businesscode.bcdui.wrs.export.Wrs2Excel.WrsContainerParser#writeCell(String, Map)</code> would start writing with a first column</div>
@@ -4570,12 +4604,12 @@ and filters.</div>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/util/StandardNamespaceContext.html#SCORECARD_PREFIX">SCORECARD_PREFIX</a></span> - Static variable in class de.businesscode.util.<a href="de/businesscode/util/StandardNamespaceContext.html" title="class in de.businesscode.util">StandardNamespaceContext</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="de/businesscode/util/xml/SecureSAXParserFactory.html" title="class in de.businesscode.util.xml"><span class="typeNameLink">SecureSAXParserFactory</span></a> - Class in <a href="de/businesscode/util/xml/package-summary.html">de.businesscode.util.xml</a></dt>
+<dt><a href="de/businesscode/util/xml/SecureXmlFactory.html" title="class in de.businesscode.util.xml"><span class="typeNameLink">SecureXmlFactory</span></a> - Class in <a href="de/businesscode/util/xml/package-summary.html">de.businesscode.util.xml</a></dt>
 <dd>
-<div class="block">Factory for <code>SAXParserFactory</code> preventing XXE attacks, according to
- <a href="https://www.owasp.org/index.php/XML_External_Entity_(XXE)_Prevention_Cheat_Sheet#Java">OWASP Cheat Sheet</a></div>
+<div class="block">Factory methods preventing XXE attacks, according to <a href="https://www.owasp.org/index.php/XML_External_Entity_(XXE)_Prevention_Cheat_Sheet#Java">OWASP
+ Cheat Sheet</a></div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/businesscode/util/xml/SecureSAXParserFactory.html#SecureSAXParserFactory--">SecureSAXParserFactory()</a></span> - Constructor for class de.businesscode.util.xml.<a href="de/businesscode/util/xml/SecureSAXParserFactory.html" title="class in de.businesscode.util.xml">SecureSAXParserFactory</a></dt>
+<dt><span class="memberNameLink"><a href="de/businesscode/util/xml/SecureXmlFactory.html#SecureXmlFactory--">SecureXmlFactory()</a></span> - Constructor for class de.businesscode.util.xml.<a href="de/businesscode/util/xml/SecureXmlFactory.html" title="class in de.businesscode.util.xml">SecureXmlFactory</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/subjectsettings/config/Security.html" title="class in de.businesscode.bcdui.subjectsettings.config"><span class="typeNameLink">Security</span></a> - Class in <a href="de/businesscode/bcdui/subjectsettings/config/package-summary.html">de.businesscode.bcdui.subjectsettings.config</a></dt>
 <dd>
@@ -4620,7 +4654,9 @@ and filters.</div>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/binding/exc/SecurityMissingForBindingException.html#SecurityMissingForBindingException-de.businesscode.bcdui.binding.BindingSet-java.lang.String-">SecurityMissingForBindingException(BindingSet, String)</a></span> - Constructor for exception de.businesscode.bcdui.binding.exc.<a href="de/businesscode/bcdui/binding/exc/SecurityMissingForBindingException.html" title="class in de.businesscode.bcdui.binding.exc">SecurityMissingForBindingException</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/wrs/load/WrqInfo.html#selectAllBindingItems--">selectAllBindingItems()</a></span> - Method in class de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">No binding items are explicitly given in select clause, collect here all the BindingSet has to offer</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/wrs/specificSql/AbstractSqlGenerator.html#selectedBindingItems">selectedBindingItems</a></span> - Variable in class de.businesscode.bcdui.wrs.specificSql.<a href="de/businesscode/bcdui/wrs/specificSql/AbstractSqlGenerator.html" title="class in de.businesscode.bcdui.wrs.specificSql">AbstractSqlGenerator</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/wrs/specificSql/AbstractSqlGenerator.html#selectStatementWithParams">selectStatementWithParams</a></span> - Variable in class de.businesscode.bcdui.wrs.specificSql.<a href="de/businesscode/bcdui/wrs/specificSql/AbstractSqlGenerator.html" title="class in de.businesscode.bcdui.wrs.specificSql">AbstractSqlGenerator</a></dt>
@@ -4655,8 +4691,6 @@ and filters.</div>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/web/wrs/SylkServlet.html#service-javax.servlet.http.HttpServletRequest-javax.servlet.http.HttpServletResponse-">service(HttpServletRequest, HttpServletResponse)</a></span> - Method in class de.businesscode.bcdui.web.wrs.<a href="de/businesscode/bcdui/web/wrs/SylkServlet.html" title="class in de.businesscode.bcdui.web.wrs">SylkServlet</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/web/servlets/ZipLet.ServletContextXMLBaseAttributeResolver.html#ServletContextXMLBaseAttributeResolver-javax.servlet.ServletContext-">ServletContextXMLBaseAttributeResolver(ServletContext)</a></span> - Constructor for class de.businesscode.bcdui.web.servlets.<a href="de/businesscode/bcdui/web/servlets/ZipLet.ServletContextXMLBaseAttributeResolver.html" title="class in de.businesscode.bcdui.web.servlets">ZipLet.ServletContextXMLBaseAttributeResolver</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="de/businesscode/util/Utils.ServletInputStreamImpl.html#ServletInputStreamImpl-java.io.InputStream-">ServletInputStreamImpl(InputStream)</a></span> - Constructor for class de.businesscode.util.<a href="de/businesscode/util/Utils.ServletInputStreamImpl.html" title="class in de.businesscode.util">Utils.ServletInputStreamImpl</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/toolbox/ServletUtils.html" title="class in de.businesscode.bcdui.toolbox"><span class="typeNameLink">ServletUtils</span></a> - Class in <a href="de/businesscode/bcdui/toolbox/package-summary.html">de.businesscode.bcdui.toolbox</a></dt>
 <dd>&nbsp;</dd>
@@ -4767,10 +4801,6 @@ and filters.</div>
 <div class="block">set binding-set this instance operates on</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.AssignableValues.html#setBindingSet-java.lang.Object-">setBindingSet(Object)</a></span> - Method in class de.businesscode.bcdui.subjectsettings.config.<a href="de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.AssignableValues.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectFilterType.AssignableValues</a></dt>
-<dd>
-<div class="block">Legt den Wert der bindingSet-Eigenschaft fest.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.html#setBindingSet-java.lang.String-">setBindingSet(String)</a></span> - Method in class de.businesscode.bcdui.subjectsettings.config.<a href="de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectFilterType</a></dt>
 <dd>
 <div class="block">Legt den Wert der bindingSet-Eigenschaft fest.</div>
 </dd>
@@ -5188,6 +5218,10 @@ and filters.</div>
 <dd>
 <div class="block">Legt den Wert der type-Eigenschaft fest.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.html#setType-java.lang.String-">setType(String)</a></span> - Method in class de.businesscode.bcdui.subjectsettings.config.<a href="de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectFilterType</a></dt>
+<dd>
+<div class="block">Legt den Wert der type-Eigenschaft fest.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/binding/write/WriteProcessingCallback.html#setValueBean-de.businesscode.bcdui.wrs.save.ServerSideValueBean-">setValueBean(ServerSideValueBean)</a></span> - Method in class de.businesscode.bcdui.binding.write.<a href="de/businesscode/bcdui/binding/write/WriteProcessingCallback.html" title="class in de.businesscode.bcdui.binding.write">WriteProcessingCallback</a></dt>
 <dd>
 <div class="block">sets the valuebean</div>
@@ -5239,8 +5273,6 @@ and filters.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/util/SingletonHolder.html#SingletonHolder--">SingletonHolder()</a></span> - Constructor for class de.businesscode.util.<a href="de/businesscode/util/SingletonHolder.html" title="class in de.businesscode.util">SingletonHolder</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="de/businesscode/util/Utils.ServletInputStreamImpl.html#skip-long-">skip(long)</a></span> - Method in class de.businesscode.util.<a href="de/businesscode/util/Utils.ServletInputStreamImpl.html" title="class in de.businesscode.util">Utils.ServletInputStreamImpl</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/util/StandardNamespaceContext.html#SOAPENV_NAMESPACE">SOAPENV_NAMESPACE</a></span> - Static variable in class de.businesscode.util.<a href="de/businesscode/util/StandardNamespaceContext.html" title="class in de.businesscode.util">StandardNamespaceContext</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/util/StandardNamespaceContext.html#SOAPENV_PREFIX">SOAPENV_PREFIX</a></span> - Static variable in class de.businesscode.util.<a href="de/businesscode/util/StandardNamespaceContext.html" title="class in de.businesscode.util">StandardNamespaceContext</a></dt>
@@ -5278,11 +5310,13 @@ and filters.</div>
 <dd>
 <div class="block">the interface for condition generator in SQL clause.</div>
 </dd>
-<dt><a href="de/businesscode/bcdui/wrs/save/SQLDetailException.html" title="class in de.businesscode.bcdui.wrs.save"><span class="typeNameLink">SQLDetailException</span></a> - Exception in <a href="de/businesscode/bcdui/wrs/save/package-summary.html">de.businesscode.bcdui.wrs.save</a></dt>
+<dt><a href="de/businesscode/util/jdbc/SQLDetailException.html" title="class in de.businesscode.util.jdbc"><span class="typeNameLink">SQLDetailException</span></a> - Exception in <a href="de/businesscode/util/jdbc/package-summary.html">de.businesscode.util.jdbc</a></dt>
 <dd>
 <div class="block">An exception with SQL details, which may not be save to be included in the message to the client</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/businesscode/bcdui/wrs/save/SQLDetailException.html#SQLDetailException-java.lang.String-java.lang.Exception-">SQLDetailException(String, Exception)</a></span> - Constructor for exception de.businesscode.bcdui.wrs.save.<a href="de/businesscode/bcdui/wrs/save/SQLDetailException.html" title="class in de.businesscode.bcdui.wrs.save">SQLDetailException</a></dt>
+<dt><span class="memberNameLink"><a href="de/businesscode/util/jdbc/SQLDetailException.html#SQLDetailException-java.lang.String-java.sql.SQLException-">SQLDetailException(String, SQLException)</a></span> - Constructor for exception de.businesscode.util.jdbc.<a href="de/businesscode/util/jdbc/SQLDetailException.html" title="class in de.businesscode.util.jdbc">SQLDetailException</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/businesscode/util/jdbc/SQLDetailException.html#SQLDetailException-java.lang.String-java.lang.String-java.sql.SQLException-">SQLDetailException(String, String, SQLException)</a></span> - Constructor for exception de.businesscode.util.jdbc.<a href="de/businesscode/util/jdbc/SQLDetailException.html" title="class in de.businesscode.util.jdbc">SQLDetailException</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/sqlengine/SQLEngine.html" title="class in de.businesscode.sqlengine"><span class="typeNameLink">SQLEngine</span></a> - Class in <a href="de/businesscode/sqlengine/package-summary.html">de.businesscode.sqlengine</a></dt>
 <dd>
@@ -5309,7 +5343,7 @@ and filters.</div>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/wrs/load/SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load"><span class="typeNameLink">SQLStatementWithParams</span></a> - Class in <a href="de/businesscode/bcdui/wrs/load/package-summary.html">de.businesscode.bcdui.wrs.load</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="de/businesscode/bcdui/wrs/load/SQLStatementWithParams.html#SQLStatementWithParams-java.lang.String-java.util.Collection-de.businesscode.bcdui.binding.BindingSet-">SQLStatementWithParams(String, Collection&lt;Element&gt;, BindingSet)</a></span> - Constructor for class de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a></dt>
+<dt><span class="memberNameLink"><a href="de/businesscode/bcdui/wrs/load/SQLStatementWithParams.html#SQLStatementWithParams-java.lang.String-java.util.List-de.businesscode.bcdui.binding.BindingSet-">SQLStatementWithParams(String, List&lt;Element&gt;, BindingSet)</a></span> - Constructor for class de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/logging/SqlToDatabaseLogger.html" title="class in de.businesscode.bcdui.logging"><span class="typeNameLink">SqlToDatabaseLogger</span></a> - Class in <a href="de/businesscode/bcdui/logging/package-summary.html">de.businesscode.bcdui.logging</a></dt>
 <dd>
@@ -5639,6 +5673,8 @@ and filters.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/binding/subjectFilter/jaxb/TypeSubjectFilter.html#type">type</a></span> - Variable in class de.businesscode.bcdui.binding.subjectFilter.jaxb.<a href="de/businesscode/bcdui/binding/subjectFilter/jaxb/TypeSubjectFilter.html" title="class in de.businesscode.bcdui.binding.subjectFilter.jaxb">TypeSubjectFilter</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.html#type">type</a></span> - Variable in class de.businesscode.bcdui.subjectsettings.config.<a href="de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectFilterType</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/binding/subjectFilter/jaxb/TypeSubjectFilter.html" title="class in de.businesscode.bcdui.binding.subjectFilter.jaxb"><span class="typeNameLink">TypeSubjectFilter</span></a> - Class in <a href="de/businesscode/bcdui/binding/subjectFilter/jaxb/package-summary.html">de.businesscode.bcdui.binding.subjectFilter.jaxb</a></dt>
 <dd>
 <div class="block">Java-Klasse fï¿½r TypeSubjectFilter complex type.</div>
@@ -5677,11 +5713,6 @@ and filters.</div>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/util/Utils.html#Utils--">Utils()</a></span> - Constructor for class de.businesscode.util.<a href="de/businesscode/util/Utils.html" title="class in de.businesscode.util">Utils</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="de/businesscode/util/Utils.ServletInputStreamImpl.html" title="class in de.businesscode.util"><span class="typeNameLink">Utils.ServletInputStreamImpl</span></a> - Class in <a href="de/businesscode/util/package-summary.html">de.businesscode.util</a></dt>
-<dd>
-<div class="block">A useful helper for overwriting the input Wrs in a filter for example
- TODO In the long run, BCD-UI should allow passing DOM documents as such around, without "hiding them" in a wrapped ServletInputStream</div>
-</dd>
 </dl>
 <a name="I:V">
 <!--   -->
@@ -5713,10 +5744,6 @@ and filters.</div>
 <div class="block">Returns the enum constant of this type with the specified name.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/logging/LoginSqlLogger.LOGIN_RESULTS.html#valueOf-java.lang.String-">valueOf(String)</a></span> - Static method in enum de.businesscode.bcdui.logging.<a href="de/businesscode/bcdui/logging/LoginSqlLogger.LOGIN_RESULTS.html" title="enum in de.businesscode.bcdui.logging">LoginSqlLogger.LOGIN_RESULTS</a></dt>
-<dd>
-<div class="block">Returns the enum constant of this type with the specified name.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="de/businesscode/bcdui/subjectsettings/LoginServlet.AuthenticateErrorCode.html#valueOf-java.lang.String-">valueOf(String)</a></span> - Static method in enum de.businesscode.bcdui.subjectsettings.<a href="de/businesscode/bcdui/subjectsettings/LoginServlet.AuthenticateErrorCode.html" title="enum in de.businesscode.bcdui.subjectsettings">LoginServlet.AuthenticateErrorCode</a></dt>
 <dd>
 <div class="block">Returns the enum constant of this type with the specified name.</div>
 </dd>
@@ -5757,11 +5784,6 @@ the order they are declared.</div>
 the order they are declared.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/logging/LoginSqlLogger.LOGIN_RESULTS.html#values--">values()</a></span> - Static method in enum de.businesscode.bcdui.logging.<a href="de/businesscode/bcdui/logging/LoginSqlLogger.LOGIN_RESULTS.html" title="enum in de.businesscode.bcdui.logging">LoginSqlLogger.LOGIN_RESULTS</a></dt>
-<dd>
-<div class="block">Returns an array containing the constants of this enum type, in
-the order they are declared.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="de/businesscode/bcdui/subjectsettings/LoginServlet.AuthenticateErrorCode.html#values--">values()</a></span> - Static method in enum de.businesscode.bcdui.subjectsettings.<a href="de/businesscode/bcdui/subjectsettings/LoginServlet.AuthenticateErrorCode.html" title="enum in de.businesscode.bcdui.subjectsettings">LoginServlet.AuthenticateErrorCode</a></dt>
 <dd>
 <div class="block">Returns an array containing the constants of this enum type, in
 the order they are declared.</div>
@@ -6044,18 +6066,31 @@ the order they are declared.</div>
 <dd>
 <div class="block">We are initialized for each Wrq request</div>
 </dd>
+<dt><a href="de/businesscode/bcdui/web/wrs/Wrq2SqlServlet.html" title="class in de.businesscode.bcdui.web.wrs"><span class="typeNameLink">Wrq2SqlServlet</span></a> - Class in <a href="de/businesscode/bcdui/web/wrs/package-summary.html">de.businesscode.bcdui.web.wrs</a></dt>
+<dd>
+<div class="block">Returns the generated SQL statement for a Wrq.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/businesscode/bcdui/web/wrs/Wrq2SqlServlet.html#Wrq2SqlServlet--">Wrq2SqlServlet()</a></span> - Constructor for class de.businesscode.bcdui.web.wrs.<a href="de/businesscode/bcdui/web/wrs/Wrq2SqlServlet.html" title="class in de.businesscode.bcdui.web.wrs">Wrq2SqlServlet</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/wrs/load/WrqBindingItem.html" title="class in de.businesscode.bcdui.wrs.load"><span class="typeNameLink">WrqBindingItem</span></a> - Class in <a href="de/businesscode/bcdui/wrs/load/package-summary.html">de.businesscode.bcdui.wrs.load</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/wrs/load/WrqBindingItem.html#WrqBindingItem-de.businesscode.bcdui.wrs.load.WrqInfo-org.w3c.dom.Element-java.lang.String-boolean-">WrqBindingItem(WrqInfo, Element, String, boolean)</a></span> - Constructor for class de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqBindingItem.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingItem</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Used to derive a BindingItem from a wrs:C, it is combined with the info from the BindingSet but the WrsRequest provided info wins in case of conflict</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/wrs/load/WrqBindingItem.html#WrqBindingItem-de.businesscode.bcdui.wrs.load.WrqInfo-org.w3c.dom.Element-java.lang.String-boolean-de.businesscode.bcdui.wrs.load.WrqBindingItem-">WrqBindingItem(WrqInfo, Element, String, boolean, WrqBindingItem)</a></span> - Constructor for class de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqBindingItem.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingItem</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Used to derive a BindingItem from a wrs:C/wrs:A, it is combined with the info from the BindingSet but the WrsRequest provided info wins in case of conflict
+ If parentWrqC is not null, then this is a wrs:A</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/wrs/load/WrqBindingItem.html#WrqBindingItem-de.businesscode.bcdui.wrs.load.WrqInfo-java.lang.String-java.lang.String-java.lang.String-de.businesscode.bcdui.wrs.load.WrqBindingItem-java.lang.String-">WrqBindingItem(WrqInfo, String, String, String, WrqBindingItem, String)</a></span> - Constructor for class de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqBindingItem.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingItem</a></dt>
 <dd>
 <div class="block">Used for creating an artificial wrs:A attribute</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/businesscode/bcdui/wrs/load/WrqBindingItem.html#WrqBindingItem-de.businesscode.bcdui.wrs.load.WrqInfo-de.businesscode.bcdui.binding.BindingItem-java.lang.String-boolean-">WrqBindingItem(WrqInfo, BindingItem, String, boolean)</a></span> - Constructor for class de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqBindingItem.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingItem</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Used for creating a BindingItem from the info of a BindingSet</div>
+</dd>
 <dt><a href="de/businesscode/bcdui/wrs/load/WrqCalc2Sql.html" title="class in de.businesscode.bcdui.wrs.load"><span class="typeNameLink">WrqCalc2Sql</span></a> - Class in <a href="de/businesscode/bcdui/wrs/load/package-summary.html">de.businesscode.bcdui.wrs.load</a></dt>
 <dd>
 <div class="block">Parses a Wrq and outputs SQL</div>
@@ -6067,7 +6102,7 @@ the order they are declared.</div>
 <div class="block">Parses a f:Filter expression and returns the SQL Where expression
  Initially taken from WrsSqlGenerator.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/businesscode/bcdui/wrs/load/WrqFilter2Sql.html#WrqFilter2Sql-de.businesscode.bcdui.wrs.load.WrqInfo-">WrqFilter2Sql(WrqInfo)</a></span> - Constructor for class de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqFilter2Sql.html" title="class in de.businesscode.bcdui.wrs.load">WrqFilter2Sql</a></dt>
+<dt><span class="memberNameLink"><a href="de/businesscode/bcdui/wrs/load/WrqFilter2Sql.html#WrqFilter2Sql-de.businesscode.bcdui.wrs.load.WrqInfo-org.w3c.dom.Element-boolean-">WrqFilter2Sql(WrqInfo, Element, boolean)</a></span> - Constructor for class de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqFilter2Sql.html" title="class in de.businesscode.bcdui.wrs.load">WrqFilter2Sql</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/wrs/load/WrqGroupBy2Sql.html" title="class in de.businesscode.bcdui.wrs.load"><span class="typeNameLink">WrqGroupBy2Sql</span></a> - Class in <a href="de/businesscode/bcdui/wrs/load/package-summary.html">de.businesscode.bcdui.wrs.load</a></dt>
 <dd>

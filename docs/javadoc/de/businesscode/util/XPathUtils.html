@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":9,"i1":9};
+var methods = {"i0":9,"i1":9,"i2":9};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -48,7 +48,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../de/businesscode/util/Utils.ServletInputStreamImpl.html" title="class in de.businesscode.util"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../de/businesscode/util/Utils.html" title="class in de.businesscode.util"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li>Next&nbsp;Class</li>
 </ul>
 <ul class="navList">
@@ -148,10 +148,15 @@ extends java.lang.Object</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>static javax.xml.xpath.XPathExpression</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../de/businesscode/util/XPathUtils.html#compile-java.lang.String-">compile</a></span>(java.lang.String&nbsp;xpath)</code>
-<div class="block">compiles xpath to <code>XPathExpression</code> using builtin xpathfactory <code>XPathFactory.newXPath()</code></div>
+<div class="block">compiles xpath to <code>XPathExpression</code> using builtin xpathfactory <code>XPathFactory.newXPath()</code>
+ and <a href="../../../de/businesscode/util/StandardNamespaceContext.html" title="class in de.businesscode.util"><code>StandardNamespaceContext</code></a> namespace context assigned.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
+<td class="colFirst"><code>static javax.xml.xpath.XPath</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../de/businesscode/util/XPathUtils.html#newXPath--">newXPath</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>static javax.xml.xpath.XPathFactory</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../de/businesscode/util/XPathUtils.html#newXPathFactory--">newXPathFactory</a></span>()</code>&nbsp;</td>
 </tr>
@@ -209,6 +214,19 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
+<a name="newXPath--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>newXPath</h4>
+<pre>public static&nbsp;javax.xml.xpath.XPath&nbsp;newXPath()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>new <code>XPath</code> with <a href="../../../de/businesscode/util/StandardNamespaceContext.html" title="class in de.businesscode.util"><code>StandardNamespaceContext</code></a> assigned</dd>
+</dl>
+</li>
+</ul>
 <a name="compile-java.lang.String-">
 <!--   -->
 </a>
@@ -216,7 +234,8 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>compile</h4>
 <pre>public static&nbsp;javax.xml.xpath.XPathExpression&nbsp;compile(java.lang.String&nbsp;xpath)</pre>
-<div class="block">compiles xpath to <code>XPathExpression</code> using builtin xpathfactory <code>XPathFactory.newXPath()</code></div>
+<div class="block">compiles xpath to <code>XPathExpression</code> using builtin xpathfactory <code>XPathFactory.newXPath()</code>
+ and <a href="../../../de/businesscode/util/StandardNamespaceContext.html" title="class in de.businesscode.util"><code>StandardNamespaceContext</code></a> namespace context assigned.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>xpath</code> - </dd>
@@ -254,7 +273,7 @@ extends java.lang.Object</pre>
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../de/businesscode/util/Utils.ServletInputStreamImpl.html" title="class in de.businesscode.util"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../de/businesscode/util/Utils.html" title="class in de.businesscode.util"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li>Next&nbsp;Class</li>
 </ul>
 <ul class="navList">

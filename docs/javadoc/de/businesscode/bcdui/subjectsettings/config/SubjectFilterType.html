@@ -120,13 +120,6 @@ extends java.lang.Object</pre>
      &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
        &lt;sequence>
          &lt;element name="Caption" type="{http://www.w3.org/2001/XMLSchema}anyType" minOccurs="0"/>
-         &lt;element name="BindingSet" minOccurs="0">
-           &lt;simpleType>
-             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}NCName">
-               &lt;minLength value="1"/>
-             &lt;/restriction>
-           &lt;/simpleType>
-         &lt;/element>
          &lt;element name="BindingItems">
            &lt;complexType>
              &lt;complexContent>
@@ -162,6 +155,7 @@ extends java.lang.Object</pre>
        &lt;/sequence>
        &lt;attribute name="op" type="{http://www.businesscode.de/schema/bcdui/subjectsettings-1.0.0}TypeSQLOperators" default="=" />
        &lt;attribute name="name" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
+       &lt;attribute name="type" type="{http://www.w3.org/2001/XMLSchema}string" />
      &lt;/restriction>
    &lt;/complexContent>
  &lt;/complexType>
@@ -220,20 +214,20 @@ extends java.lang.Object</pre>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.html#bindingItems">bindingItems</a></span></code>&nbsp;</td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>protected java.lang.String</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.html#bindingSet">bindingSet</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
 <td class="colFirst"><code>protected java.lang.Object</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.html#caption">caption</a></span></code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>protected java.lang.String</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.html#name">name</a></span></code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>protected java.lang.String</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.html#op">op</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected java.lang.String</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.html#type">type</a></span></code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -280,27 +274,27 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code>java.lang.String</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.html#getBindingSet--">getBindingSet</a></span>()</code>
-<div class="block">Ruft den Wert der bindingSet-Eigenschaft ab.</div>
-</td>
-</tr>
-<tr id="i3" class="rowColor">
 <td class="colFirst"><code>java.lang.Object</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.html#getCaption--">getCaption</a></span>()</code>
 <div class="block">Ruft den Wert der caption-Eigenschaft ab.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.html#getName--">getName</a></span>()</code>
 <div class="block">Ruft den Wert der name-Eigenschaft ab.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.html#getOp--">getOp</a></span>()</code>
 <div class="block">Ruft den Wert der op-Eigenschaft ab.</div>
+</td>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.html#getType--">getType</a></span>()</code>
+<div class="block">Ruft den Wert der type-Eigenschaft ab.</div>
 </td>
 </tr>
 <tr id="i6" class="altColor">
@@ -317,26 +311,26 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.html#setBindingSet-java.lang.String-">setBindingSet</a></span>(java.lang.String&nbsp;value)</code>
-<div class="block">Legt den Wert der bindingSet-Eigenschaft fest.</div>
-</td>
-</tr>
-<tr id="i9" class="rowColor">
-<td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.html#setCaption-java.lang.Object-">setCaption</a></span>(java.lang.Object&nbsp;value)</code>
 <div class="block">Legt den Wert der caption-Eigenschaft fest.</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.html#setName-java.lang.String-">setName</a></span>(java.lang.String&nbsp;value)</code>
 <div class="block">Legt den Wert der name-Eigenschaft fest.</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.html#setOp-java.lang.String-">setOp</a></span>(java.lang.String&nbsp;value)</code>
 <div class="block">Legt den Wert der op-Eigenschaft fest.</div>
+</td>
+</tr>
+<tr id="i11" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.html#setType-java.lang.String-">setType</a></span>(java.lang.String&nbsp;value)</code>
+<div class="block">Legt den Wert der type-Eigenschaft fest.</div>
 </td>
 </tr>
 </table>
@@ -370,15 +364,6 @@ extends java.lang.Object</pre>
 <pre>protected&nbsp;java.lang.Object caption</pre>
 </li>
 </ul>
-<a name="bindingSet">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>bindingSet</h4>
-<pre>protected&nbsp;java.lang.String bindingSet</pre>
-</li>
-</ul>
 <a name="bindingItems">
 <!--   -->
 </a>
@@ -409,10 +394,19 @@ extends java.lang.Object</pre>
 <a name="name">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>name</h4>
 <pre>protected&nbsp;java.lang.String name</pre>
+</li>
+</ul>
+<a name="type">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>type</h4>
+<pre>protected&nbsp;java.lang.String type</pre>
 </li>
 </ul>
 </li>
@@ -467,36 +461,6 @@ extends java.lang.Object</pre>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>value</code> - allowed object is
      <code>Object</code></dd>
-</dl>
-</li>
-</ul>
-<a name="getBindingSet--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getBindingSet</h4>
-<pre>public&nbsp;java.lang.String&nbsp;getBindingSet()</pre>
-<div class="block">Ruft den Wert der bindingSet-Eigenschaft ab.</div>
-<dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>possible object is
-     <code>String</code></dd>
-</dl>
-</li>
-</ul>
-<a name="setBindingSet-java.lang.String-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>setBindingSet</h4>
-<pre>public&nbsp;void&nbsp;setBindingSet(java.lang.String&nbsp;value)</pre>
-<div class="block">Legt den Wert der bindingSet-Eigenschaft fest.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>value</code> - allowed object is
-     <code>String</code></dd>
 </dl>
 </li>
 </ul>
@@ -608,11 +572,41 @@ extends java.lang.Object</pre>
 <a name="setName-java.lang.String-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>setName</h4>
 <pre>public&nbsp;void&nbsp;setName(java.lang.String&nbsp;value)</pre>
 <div class="block">Legt den Wert der name-Eigenschaft fest.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>value</code> - allowed object is
+     <code>String</code></dd>
+</dl>
+</li>
+</ul>
+<a name="getType--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getType</h4>
+<pre>public&nbsp;java.lang.String&nbsp;getType()</pre>
+<div class="block">Ruft den Wert der type-Eigenschaft ab.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>possible object is
+     <code>String</code></dd>
+</dl>
+</li>
+</ul>
+<a name="setType-java.lang.String-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>setType</h4>
+<pre>public&nbsp;void&nbsp;setType(java.lang.String&nbsp;value)</pre>
+<div class="block">Legt den Wert der type-Eigenschaft fest.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>value</code> - allowed object is

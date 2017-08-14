@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -194,20 +194,28 @@ implements <a href="../../../../../de/businesscode/bcdui/wrs/load/IDataWriter.ht
 </td>
 </tr>
 <tr id="i2" class="altColor">
+<td class="colFirst"><code><a href="../../../../../de/businesscode/bcdui/wrs/load/ISqlGenerator.html" title="interface in de.businesscode.bcdui.wrs.load">ISqlGenerator</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/wrs/export/Wrq2ExcelSheetDataWriter.html#getGenerator--">getGenerator</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code><a href="../../../../../de/businesscode/bcdui/wrs/load/DataLoader.html" title="class in de.businesscode.bcdui.wrs.load">DataLoader</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/wrs/export/Wrq2ExcelSheetDataWriter.html#getLoader--">getLoader</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/wrs/export/Wrq2ExcelSheetDataWriter.html#getRowCount--">getRowCount</a></span>()</code>
 <div class="block"><a href="../../../../../de/businesscode/bcdui/wrs/load/IDataWriter.html" title="interface in de.businesscode.bcdui.wrs.load"><code>IDataWriter</code></a>
  Number of rows written</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/wrs/export/Wrq2ExcelSheetDataWriter.html#process--">process</a></span>()</code>
 <div class="block"><a href="../../../../../de/businesscode/bcdui/wrs/export/AbstractExcelSheetDataWriter.html" title="class in de.businesscode.bcdui.wrs.export"><code>AbstractExcelSheetDataWriter</code></a>
  Execute Wrq and write result to sheet</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/wrs/export/Wrq2ExcelSheetDataWriter.html#write-de.businesscode.bcdui.wrs.IRequestOptions-de.businesscode.bcdui.wrs.load.ISqlGenerator-java.sql.ResultSet-long-">write</a></span>(<a href="../../../../../de/businesscode/bcdui/wrs/IRequestOptions.html" title="interface in de.businesscode.bcdui.wrs">IRequestOptions</a>&nbsp;options,
      <a href="../../../../../de/businesscode/bcdui/wrs/load/ISqlGenerator.html" title="interface in de.businesscode.bcdui.wrs.load">ISqlGenerator</a>&nbsp;generator,
@@ -279,6 +287,24 @@ implements <a href="../../../../../de/businesscode/bcdui/wrs/load/IDataWriter.ht
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a name="getLoader--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getLoader</h4>
+<pre>public&nbsp;<a href="../../../../../de/businesscode/bcdui/wrs/load/DataLoader.html" title="class in de.businesscode.bcdui.wrs.load">DataLoader</a>&nbsp;getLoader()</pre>
+</li>
+</ul>
+<a name="getGenerator--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getGenerator</h4>
+<pre>public&nbsp;<a href="../../../../../de/businesscode/bcdui/wrs/load/ISqlGenerator.html" title="interface in de.businesscode.bcdui.wrs.load">ISqlGenerator</a>&nbsp;getGenerator()</pre>
+</li>
+</ul>
 <a name="process--">
 <!--   -->
 </a>

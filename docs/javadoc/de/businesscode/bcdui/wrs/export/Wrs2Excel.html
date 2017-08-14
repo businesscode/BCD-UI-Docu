@@ -177,9 +177,10 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/wrs/export/Wrs2Excel.html#export-java.io.Reader-java.io.OutputStream-de.businesscode.bcdui.wrs.IRequestOptions-">export</a></span>(java.io.Reader&nbsp;wrsReader,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/wrs/export/Wrs2Excel.html#export-java.io.Reader-java.io.OutputStream-de.businesscode.bcdui.wrs.IRequestOptions-javax.servlet.http.HttpServletRequest-">export</a></span>(java.io.Reader&nbsp;wrsReader,
       java.io.OutputStream&nbsp;excelOutputStream,
-      <a href="../../../../../de/businesscode/bcdui/wrs/IRequestOptions.html" title="interface in de.businesscode.bcdui.wrs">IRequestOptions</a>&nbsp;options)</code>
+      <a href="../../../../../de/businesscode/bcdui/wrs/IRequestOptions.html" title="interface in de.businesscode.bcdui.wrs">IRequestOptions</a>&nbsp;options,
+      javax.servlet.http.HttpServletRequest&nbsp;req)</code>
 <div class="block">exports data from wrsInputStream into new Excel file created from the excel target template and writes into excelOutputStream via streaming API</div>
 </td>
 </tr>
@@ -241,7 +242,7 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="export-java.io.Reader-java.io.OutputStream-de.businesscode.bcdui.wrs.IRequestOptions-">
+<a name="export-java.io.Reader-java.io.OutputStream-de.businesscode.bcdui.wrs.IRequestOptions-javax.servlet.http.HttpServletRequest-">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -249,7 +250,8 @@ extends java.lang.Object</pre>
 <h4>export</h4>
 <pre>public&nbsp;void&nbsp;export(java.io.Reader&nbsp;wrsReader,
                    java.io.OutputStream&nbsp;excelOutputStream,
-                   <a href="../../../../../de/businesscode/bcdui/wrs/IRequestOptions.html" title="interface in de.businesscode.bcdui.wrs">IRequestOptions</a>&nbsp;options)
+                   <a href="../../../../../de/businesscode/bcdui/wrs/IRequestOptions.html" title="interface in de.businesscode.bcdui.wrs">IRequestOptions</a>&nbsp;options,
+                   javax.servlet.http.HttpServletRequest&nbsp;req)
             throws java.lang.Exception</pre>
 <div class="block">exports data from wrsInputStream into new Excel file created from the excel target template and writes into excelOutputStream via streaming API</div>
 <dl>

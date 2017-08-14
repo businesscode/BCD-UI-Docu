@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":9,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":10,"i22":10,"i23":10,"i24":10,"i25":10,"i26":10,"i27":10,"i28":10,"i29":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":9,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":10,"i22":10,"i23":10,"i24":10,"i25":10,"i26":10,"i27":10,"i28":10,"i29":10,"i30":10,"i31":10};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -157,14 +157,18 @@ implements <a href="../../../../../de/businesscode/bcdui/wrs/load/WrsBindingItem
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/wrs/load/WrqBindingItem.html#WrqBindingItem-de.businesscode.bcdui.wrs.load.WrqInfo-de.businesscode.bcdui.binding.BindingItem-java.lang.String-boolean-">WrqBindingItem</a></span>(<a href="../../../../../de/businesscode/bcdui/wrs/load/WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a>&nbsp;wrqInfo,
               <a href="../../../../../de/businesscode/bcdui/binding/BindingItem.html" title="class in de.businesscode.bcdui.binding">BindingItem</a>&nbsp;bi,
               java.lang.String&nbsp;alias,
-              boolean&nbsp;enforceAggr)</code>&nbsp;</td>
+              boolean&nbsp;enforceAggr)</code>
+<div class="block">Used for creating a BindingItem from the info of a BindingSet</div>
+</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>protected </code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/wrs/load/WrqBindingItem.html#WrqBindingItem-de.businesscode.bcdui.wrs.load.WrqInfo-org.w3c.dom.Element-java.lang.String-boolean-">WrqBindingItem</a></span>(<a href="../../../../../de/businesscode/bcdui/wrs/load/WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a>&nbsp;wrqInfo,
               org.w3c.dom.Element&nbsp;elem,
               java.lang.String&nbsp;alias,
-              boolean&nbsp;enforceAggr)</code>&nbsp;</td>
+              boolean&nbsp;enforceAggr)</code>
+<div class="block">Used to derive a BindingItem from a wrs:C, it is combined with the info from the BindingSet but the WrsRequest provided info wins in case of conflict</div>
+</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>protected </code></td>
@@ -172,7 +176,10 @@ implements <a href="../../../../../de/businesscode/bcdui/wrs/load/WrsBindingItem
               org.w3c.dom.Element&nbsp;elem,
               java.lang.String&nbsp;alias,
               boolean&nbsp;enforceAggr,
-              <a href="../../../../../de/businesscode/bcdui/wrs/load/WrqBindingItem.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingItem</a>&nbsp;parentWrqC)</code>&nbsp;</td>
+              <a href="../../../../../de/businesscode/bcdui/wrs/load/WrqBindingItem.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingItem</a>&nbsp;parentWrqC)</code>
+<div class="block">Used to derive a BindingItem from a wrs:C/wrs:A, it is combined with the info from the BindingSet but the WrsRequest provided info wins in case of conflict
+ If parentWrqC is not null, then this is a wrs:A</div>
+</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>protected </code></td>
@@ -266,72 +273,84 @@ implements <a href="../../../../../de/businesscode/bcdui/wrs/load/WrsBindingItem
 </tr>
 <tr id="i14" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/wrs/load/WrqBindingItem.html#getQColumnExpressionWithAggr--">getQColumnExpressionWithAggr</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/wrs/load/WrqBindingItem.html#getQColumnExpressionWithAggr--">getQColumnExpressionWithAggr</a></span>()</code>
+<div class="block">Returns the column expression with aggregation applied, if any is set</div>
+</td>
 </tr>
 <tr id="i15" class="rowColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/wrs/load/WrqBindingItem.html#getQColumnExpressionWithAggr-boolean-">getQColumnExpressionWithAggr</a></span>(boolean&nbsp;enforceAggr)</code>
+<div class="block">Returns the column expression with aggregation applied, if any is set or if enforceAggr=true</div>
+</td>
+</tr>
+<tr id="i16" class="altColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/wrs/load/WrqBindingItem.html#getSkipForTotals--">getSkipForTotals</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i17" class="rowColor">
 <td class="colFirst"><code>java.util.List&lt;java.lang.String&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/wrs/load/WrqBindingItem.html#getSplitColumnExpression--">getSplitColumnExpression</a></span>()</code>
 <div class="block">Used to identify column reference parts in a SQL Column expressions to allow for prepending table alias <code>BindingUtils.splitColumnExpression</code></div>
 </td>
 </tr>
-<tr id="i16" class="altColor">
+<tr id="i18" class="altColor">
 <td class="colFirst"><code>java.util.List&lt;java.lang.String&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/wrs/load/WrqBindingItem.html#getSplitColumnExpression-boolean-">getSplitColumnExpression</a></span>(boolean&nbsp;applyVdm)</code>
 <div class="block">Used to identify column reference parts in a SQL Column expressions to allow for prepending table alias <code>BindingUtils.splitColumnExpression</code></div>
 </td>
 </tr>
-<tr id="i17" class="rowColor">
+<tr id="i19" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/wrs/load/WrqBindingItem.html#getTableAlias--">getTableAlias</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i18" class="altColor">
+<tr id="i20" class="altColor">
 <td class="colFirst"><code>java.util.Collection&lt;<a href="../../../../../de/businesscode/bcdui/wrs/load/WrsBindingItem.html" title="interface in de.businesscode.bcdui.wrs.load">WrsBindingItem</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/wrs/load/WrqBindingItem.html#getWrsAAttributes--">getWrsAAttributes</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i19" class="rowColor">
+<tr id="i21" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/wrs/load/WrqBindingItem.html#getWrsAName--">getWrsAName</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i20" class="altColor">
+<tr id="i22" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/wrs/load/WrqBindingItem.html#hasAColumReference--">hasAColumReference</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i21" class="rowColor">
+<tr id="i23" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/wrs/load/WrqBindingItem.html#hasWrsAAttributes--">hasWrsAAttributes</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i22" class="altColor">
+<tr id="i24" class="altColor">
 <td class="colFirst"><code>java.lang.Boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/wrs/load/WrqBindingItem.html#isEscapeXML--">isEscapeXML</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i23" class="rowColor">
+<tr id="i25" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/wrs/load/WrqBindingItem.html#isNumeric--">isNumeric</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i24" class="altColor">
+<tr id="i26" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/wrs/load/WrqBindingItem.html#isOrderByDescending--">isOrderByDescending</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i25" class="rowColor">
+<tr id="i27" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/wrs/load/WrqBindingItem.html#setColumnExpression-java.lang.String-">setColumnExpression</a></span>(java.lang.String&nbsp;cE)</code>
 <div class="block">Derive the column expression<
  Note that for VDM, this relies on plainColumnExpression and jdbcDataType being set already to this.</div>
 </td>
 </tr>
-<tr id="i26" class="altColor">
+<tr id="i28" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/wrs/load/WrqBindingItem.html#setColumnNumber-int-">setColumnNumber</a></span>(int&nbsp;columnNumber)</code>&nbsp;</td>
 </tr>
-<tr id="i27" class="rowColor">
+<tr id="i29" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/wrs/load/WrqBindingItem.html#setOrderByDescending-boolean-">setOrderByDescending</a></span>(boolean&nbsp;isDescending)</code>&nbsp;</td>
 </tr>
-<tr id="i28" class="altColor">
+<tr id="i30" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/wrs/load/WrqBindingItem.html#setTableAlias-java.lang.String-">setTableAlias</a></span>(java.lang.String&nbsp;tableAlias)</code>&nbsp;</td>
 </tr>
-<tr id="i29" class="rowColor">
+<tr id="i31" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/wrs/load/WrqBindingItem.html#toXML-javax.xml.stream.XMLStreamWriter-boolean-">toXML</a></span>(javax.xml.stream.XMLStreamWriter&nbsp;writer,
      boolean&nbsp;withColumnExpression)</code>&nbsp;</td>
@@ -386,6 +405,7 @@ implements <a href="../../../../../de/businesscode/bcdui/wrs/load/WrsBindingItem
                          java.lang.String&nbsp;alias,
                          boolean&nbsp;enforceAggr)
                   throws java.lang.Exception</pre>
+<div class="block">Used to derive a BindingItem from a wrs:C, it is combined with the info from the BindingSet but the WrsRequest provided info wins in case of conflict</div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>java.lang.Exception</code></dd>
@@ -404,7 +424,15 @@ implements <a href="../../../../../de/businesscode/bcdui/wrs/load/WrsBindingItem
                          boolean&nbsp;enforceAggr,
                          <a href="../../../../../de/businesscode/bcdui/wrs/load/WrqBindingItem.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingItem</a>&nbsp;parentWrqC)
                   throws java.lang.Exception</pre>
+<div class="block">Used to derive a BindingItem from a wrs:C/wrs:A, it is combined with the info from the BindingSet but the WrsRequest provided info wins in case of conflict
+ If parentWrqC is not null, then this is a wrs:A</div>
 <dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>wrqInfo</code> - </dd>
+<dd><code>elem</code> - </dd>
+<dd><code>alias</code> - </dd>
+<dd><code>enforceAggr</code> - </dd>
+<dd><code>parentWrqC</code> - </dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>java.lang.Exception</code></dd>
 </dl>
@@ -444,6 +472,14 @@ implements <a href="../../../../../de/businesscode/bcdui/wrs/load/WrsBindingItem
                          <a href="../../../../../de/businesscode/bcdui/binding/BindingItem.html" title="class in de.businesscode.bcdui.binding">BindingItem</a>&nbsp;bi,
                          java.lang.String&nbsp;alias,
                          boolean&nbsp;enforceAggr)</pre>
+<div class="block">Used for creating a BindingItem from the info of a BindingSet</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>wrqInfo</code> - </dd>
+<dd><code>bi</code> - </dd>
+<dd><code>alias</code> - </dd>
+<dd><code>enforceAggr</code> - </dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -675,6 +711,23 @@ implements <a href="../../../../../de/businesscode/bcdui/wrs/load/WrsBindingItem
 <li class="blockList">
 <h4>getQColumnExpressionWithAggr</h4>
 <pre>public&nbsp;java.lang.String&nbsp;getQColumnExpressionWithAggr()</pre>
+<div class="block">Returns the column expression with aggregation applied, if any is set</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+</dl>
+</li>
+</ul>
+<a name="getQColumnExpressionWithAggr-boolean-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getQColumnExpressionWithAggr</h4>
+<pre>public&nbsp;java.lang.String&nbsp;getQColumnExpressionWithAggr(boolean&nbsp;enforceAggr)</pre>
+<div class="block">Returns the column expression with aggregation applied, if any is set or if enforceAggr=true</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+</dl>
 </li>
 </ul>
 <a name="hasAColumReference--">
@@ -802,6 +855,15 @@ implements <a href="../../../../../de/businesscode/bcdui/wrs/load/WrsBindingItem
 <li class="blockList">
 <h4>getBoundVariables</h4>
 <pre>public&nbsp;java.util.List&lt;org.w3c.dom.Element&gt;&nbsp;getBoundVariables()</pre>
+</li>
+</ul>
+<a name="getSkipForTotals--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getSkipForTotals</h4>
+<pre>public&nbsp;java.lang.String&nbsp;getSkipForTotals()</pre>
 </li>
 </ul>
 <a name="isNumeric--">

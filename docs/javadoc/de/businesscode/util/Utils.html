@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":9,"i1":9,"i2":9,"i3":9,"i4":9,"i5":9,"i6":9,"i7":9,"i8":9,"i9":9,"i10":9,"i11":9};
+var methods = {"i0":9,"i1":9,"i2":9,"i3":9,"i4":9,"i5":9,"i6":9,"i7":9,"i8":9,"i9":9,"i10":9};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -49,7 +49,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../de/businesscode/util/ThreadUtils.html" title="class in de.businesscode.util"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../de/businesscode/util/Utils.ServletInputStreamImpl.html" title="class in de.businesscode.util"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../de/businesscode/util/XPathUtils.html" title="class in de.businesscode.util"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../index.html?de/businesscode/util/Utils.html" target="_top">Frames</a></li>
@@ -73,7 +73,7 @@ var activeTableTab = "activeTableTab";
 <div>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
-<li><a href="#nested.class.summary">Nested</a>&nbsp;|&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
@@ -116,28 +116,6 @@ extends java.lang.Object</pre>
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
-<!-- ======== NESTED CLASS SUMMARY ======== -->
-<ul class="blockList">
-<li class="blockList"><a name="nested.class.summary">
-<!--   -->
-</a>
-<h3>Nested Class Summary</h3>
-<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Nested Class Summary table, listing nested classes, and an explanation">
-<caption><span>Nested Classes</span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colLast" scope="col">Class and Description</th>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static class&nbsp;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../de/businesscode/util/Utils.ServletInputStreamImpl.html" title="class in de.businesscode.util">Utils.ServletInputStreamImpl</a></span></code>
-<div class="block">A useful helper for overwriting the input Wrs in a filter for example
- TODO In the long run, BCD-UI should allow passing DOM documents as such around, without "hiding them" in a wrapped ServletInputStream</div>
-</td>
-</tr>
-</table>
-</li>
-</ul>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.summary">
@@ -168,35 +146,31 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>static javax.xml.parsers.DocumentBuilderFactory</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../de/businesscode/util/Utils.html#createDocumentBuilderFactory--">createDocumentBuilderFactory</a></span>()</code>&nbsp;</td>
-</tr>
-<tr id="i1" class="rowColor">
 <td class="colFirst"><code>static javax.xml.stream.XMLStreamWriter</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../de/businesscode/util/Utils.html#createStreamWriter-java.io.OutputStream-">createStreamWriter</a></span>(java.io.OutputStream&nbsp;os)</code>
 <div class="block">creates <code>XMLStreamWriter</code> for given stream</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i1" class="rowColor">
 <td class="colFirst"><code>static javax.xml.stream.XMLStreamWriter</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../de/businesscode/util/Utils.html#createStreamWriter-java.io.Writer-">createStreamWriter</a></span>(java.io.Writer&nbsp;w)</code>
 <div class="block">creates <code>XMLStreamWriter</code> for given stream</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>static javax.xml.stream.XMLStreamWriter</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../de/businesscode/util/Utils.html#generateUnClosableWriter-javax.xml.stream.XMLStreamWriter-">generateUnClosableWriter</a></span>(javax.xml.stream.XMLStreamWriter&nbsp;source)</code>
 <div class="block">puts the provided XMLStreamWriter into uncloseable wrap so that the writeStartDocument and writeEndDocument events are ignored,
  additionally it implements xmlns-awareness and propagate to setDefaultNamespace() if "xmlns" prefix is set for an element</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../de/businesscode/util/Utils.html#getBCDUIVersion--">getBCDUIVersion</a></span>()</code>
 <div class="block">Read the Implementation-Version attribute from manifest</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>static java.util.Calendar</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../de/businesscode/util/Utils.html#getCalendar--">getCalendar</a></span>()</code>
 <div class="block">this returns an ISO compatible calendar. especially
@@ -204,19 +178,19 @@ extends java.lang.Object</pre>
  and <code>getMinimalDaysInFirstWeek() == 4</code> are true.</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>static java.util.Calendar</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../de/businesscode/util/Utils.html#getCalendar-java.util.Locale-">getCalendar</a></span>(java.util.Locale&nbsp;locale)</code>
 <div class="block">Method getCalendar</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>static java.util.Calendar</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../de/businesscode/util/Utils.html#getDefaultCalendar-java.util.Locale-">getDefaultCalendar</a></span>(java.util.Locale&nbsp;lang)</code>
 <div class="block">privides the default Calendar object with preset GERMAN locale.</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../de/businesscode/util/Utils.html#getSessionId-javax.servlet.http.HttpServletRequest-boolean-">getSessionId</a></span>(javax.servlet.http.HttpServletRequest&nbsp;httpServletRequest,
             boolean&nbsp;forceSessionCreate)</code>
@@ -224,18 +198,18 @@ extends java.lang.Object</pre>
  non stable IDs created locally and stored in request.</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../de/businesscode/util/Utils.html#injectDOMContentInXMLStreamWriter-javax.xml.stream.XMLStreamWriter-org.w3c.dom.Node-">injectDOMContentInXMLStreamWriter</a></span>(javax.xml.stream.XMLStreamWriter&nbsp;writer,
                                  org.w3c.dom.Node&nbsp;node)</code>&nbsp;</td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../de/businesscode/util/Utils.html#serializeElement-org.w3c.dom.Document-">serializeElement</a></span>(org.w3c.dom.Document&nbsp;doc)</code>
 <div class="block">serializes a Document to string</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../de/businesscode/util/Utils.html#serializeElement-org.w3c.dom.Element-">serializeElement</a></span>(org.w3c.dom.Element&nbsp;element)</code>
 <div class="block">serializes a Node to string</div>
@@ -454,19 +428,6 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
-<a name="createDocumentBuilderFactory--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>createDocumentBuilderFactory</h4>
-<pre>public static&nbsp;javax.xml.parsers.DocumentBuilderFactory&nbsp;createDocumentBuilderFactory()</pre>
-<dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>a <code>DocumentBuilderFactory</code> which is X-include and Namespace aware</dd>
-</dl>
-</li>
-</ul>
 <a name="getSessionId-javax.servlet.http.HttpServletRequest-boolean-">
 <!--   -->
 </a>
@@ -524,7 +485,7 @@ extends java.lang.Object</pre>
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../de/businesscode/util/ThreadUtils.html" title="class in de.businesscode.util"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../de/businesscode/util/Utils.ServletInputStreamImpl.html" title="class in de.businesscode.util"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../de/businesscode/util/XPathUtils.html" title="class in de.businesscode.util"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../index.html?de/businesscode/util/Utils.html" target="_top">Frames</a></li>
@@ -548,7 +509,7 @@ extends java.lang.Object</pre>
 <div>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
-<li><a href="#nested.class.summary">Nested</a>&nbsp;|&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>

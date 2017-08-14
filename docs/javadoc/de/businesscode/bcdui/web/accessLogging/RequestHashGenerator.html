@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":9};
+var methods = {"i0":9,"i1":9};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -172,6 +172,10 @@ extends java.lang.Object</pre>
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/web/accessLogging/RequestHashGenerator.html#generateHash-javax.servlet.http.HttpServletRequest-">generateHash</a></span>(javax.servlet.http.HttpServletRequest&nbsp;request)</code>&nbsp;</td>
 </tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>static java.lang.String</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/web/accessLogging/RequestHashGenerator.html#generatePageHash-javax.servlet.http.HttpServletRequest-">generatePageHash</a></span>(javax.servlet.http.HttpServletRequest&nbsp;request)</code>&nbsp;</td>
+</tr>
 </table>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
@@ -248,7 +252,7 @@ extends java.lang.Object</pre>
 <a name="generateHash-javax.servlet.http.HttpServletRequest-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>generateHash</h4>
 <pre>public static&nbsp;java.lang.String&nbsp;generateHash(javax.servlet.http.HttpServletRequest&nbsp;request)</pre>
@@ -257,6 +261,21 @@ extends java.lang.Object</pre>
 <dd><code>request</code> - </dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>a unique (not strictly) number based on hashing a cleaned up referer or a random number</dd>
+</dl>
+</li>
+</ul>
+<a name="generatePageHash-javax.servlet.http.HttpServletRequest-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>generatePageHash</h4>
+<pre>public static&nbsp;java.lang.String&nbsp;generatePageHash(javax.servlet.http.HttpServletRequest&nbsp;request)</pre>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>request</code> - </dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a unique (not strictly) number based on currentTime and random number</dd>
 </dl>
 </li>
 </ul>

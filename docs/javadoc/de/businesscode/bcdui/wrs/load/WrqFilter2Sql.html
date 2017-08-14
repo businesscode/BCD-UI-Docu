@@ -130,7 +130,9 @@ extends java.lang.Object</pre>
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/wrs/load/WrqFilter2Sql.html#WrqFilter2Sql-de.businesscode.bcdui.wrs.load.WrqInfo-">WrqFilter2Sql</a></span>(<a href="../../../../../de/businesscode/bcdui/wrs/load/WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a>&nbsp;wrqInfo)</code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/wrs/load/WrqFilter2Sql.html#WrqFilter2Sql-de.businesscode.bcdui.wrs.load.WrqInfo-org.w3c.dom.Element-boolean-">WrqFilter2Sql</a></span>(<a href="../../../../../de/businesscode/bcdui/wrs/load/WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a>&nbsp;wrqInfo,
+             org.w3c.dom.Element&nbsp;root,
+             boolean&nbsp;useAggr)</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -149,11 +151,15 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>protected static java.lang.String</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/wrs/load/WrqFilter2Sql.html#generateSingleColumnExpression-de.businesscode.bcdui.wrs.load.WrqInfo-org.w3c.dom.Element-java.util.Collection-org.w3c.dom.Document-">generateSingleColumnExpression</a></span>(<a href="../../../../../de/businesscode/bcdui/wrs/load/WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a>&nbsp;wrqInfo,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../de/businesscode/bcdui/wrs/load/WrqFilter2Sql.html#generateSingleColumnExpression-de.businesscode.bcdui.wrs.load.WrqInfo-org.w3c.dom.Element-java.util.Collection-org.w3c.dom.Document-boolean-">generateSingleColumnExpression</a></span>(<a href="../../../../../de/businesscode/bcdui/wrs/load/WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a>&nbsp;wrqInfo,
                               org.w3c.dom.Element&nbsp;item,
                               java.util.Collection&lt;org.w3c.dom.Element&gt;&nbsp;elementList,
-                              org.w3c.dom.Document&nbsp;ownerDocument)</code>
-<div class="block">Helper for WHERE clause generation</div>
+                              org.w3c.dom.Document&nbsp;ownerDocument,
+                              boolean&nbsp;useAggr)</code>
+<div class="block">Helper for WHERE clause generation
+ ignoreCase is only allowed for dimensions and non-numeric types
+ TODO If a non-dim bindingItem is used multiple times with different aggr in the select list, the aggr of the last one wins
+ This limitation could be removed by allowing to overwrite the aggr at the having-filter expression, for example</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
@@ -182,13 +188,15 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="WrqFilter2Sql-de.businesscode.bcdui.wrs.load.WrqInfo-">
+<a name="WrqFilter2Sql-de.businesscode.bcdui.wrs.load.WrqInfo-org.w3c.dom.Element-boolean-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>WrqFilter2Sql</h4>
-<pre>public&nbsp;WrqFilter2Sql(<a href="../../../../../de/businesscode/bcdui/wrs/load/WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a>&nbsp;wrqInfo)
+<pre>public&nbsp;WrqFilter2Sql(<a href="../../../../../de/businesscode/bcdui/wrs/load/WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a>&nbsp;wrqInfo,
+                     org.w3c.dom.Element&nbsp;root,
+                     boolean&nbsp;useAggr)
               throws javax.xml.xpath.XPathExpressionException</pre>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
@@ -218,7 +226,7 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
-<a name="generateSingleColumnExpression-de.businesscode.bcdui.wrs.load.WrqInfo-org.w3c.dom.Element-java.util.Collection-org.w3c.dom.Document-">
+<a name="generateSingleColumnExpression-de.businesscode.bcdui.wrs.load.WrqInfo-org.w3c.dom.Element-java.util.Collection-org.w3c.dom.Document-boolean-">
 <!--   -->
 </a>
 <ul class="blockListLast">
@@ -227,9 +235,13 @@ extends java.lang.Object</pre>
 <pre>protected static&nbsp;java.lang.String&nbsp;generateSingleColumnExpression(<a href="../../../../../de/businesscode/bcdui/wrs/load/WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a>&nbsp;wrqInfo,
                                                                  org.w3c.dom.Element&nbsp;item,
                                                                  java.util.Collection&lt;org.w3c.dom.Element&gt;&nbsp;elementList,
-                                                                 org.w3c.dom.Document&nbsp;ownerDocument)
+                                                                 org.w3c.dom.Document&nbsp;ownerDocument,
+                                                                 boolean&nbsp;useAggr)
                                                           throws <a href="../../../../../de/businesscode/bcdui/binding/exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></pre>
-<div class="block">Helper for WHERE clause generation</div>
+<div class="block">Helper for WHERE clause generation
+ ignoreCase is only allowed for dimensions and non-numeric types
+ TODO If a non-dim bindingItem is used multiple times with different aggr in the select list, the aggr of the last one wins
+ This limitation could be removed by allowing to overwrite the aggr at the having-filter expression, for example</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>wrqInfo</code> - </dd>

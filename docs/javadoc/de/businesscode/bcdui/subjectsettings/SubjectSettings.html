@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":9,"i1":10,"i2":10,"i3":9};
+var methods = {"i0":10,"i1":10,"i2":9,"i3":10,"i4":10,"i5":9};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -74,13 +74,13 @@ var activeTableTab = "activeTableTab";
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li><a href="#nested.classes.inherited.from.class.de.businesscode.bcdui.subjectsettings.config.SubjectSettingsConfig">Nested</a>&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#fields.inherited.from.class.de.businesscode.bcdui.subjectsettings.config.SubjectSettingsConfig">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -144,17 +144,6 @@ extends <a href="../../../../de/businesscode/bcdui/subjectsettings/config/Subjec
 <!--   -->
 </a>
 <h3>Field Summary</h3>
-<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
-<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colLast" scope="col">Field and Description</th>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static java.lang.String</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../de/businesscode/bcdui/subjectsettings/SubjectSettings.html#permissionAttributePrefix">permissionAttributePrefix</a></span></code>&nbsp;</td>
-</tr>
-</table>
 <ul class="blockList">
 <li class="blockList"><a name="fields.inherited.from.class.de.businesscode.bcdui.subjectsettings.config.SubjectSettingsConfig">
 <!--   -->
@@ -199,18 +188,29 @@ extends <a href="../../../../de/businesscode/bcdui/subjectsettings/config/Subjec
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../de/businesscode/bcdui/subjectsettings/SubjectSettings.html#getFilterType-de.businesscode.bcdui.subjectsettings.config.SubjectFilterType-">getFilterType</a></span>(<a href="../../../../de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectFilterType</a>&nbsp;subjectFilterType)</code>&nbsp;</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../de/businesscode/bcdui/subjectsettings/SubjectSettings.html#getFilterTypeValue-org.apache.shiro.session.Session-de.businesscode.bcdui.subjectsettings.config.SubjectFilterType-">getFilterTypeValue</a></span>(org.apache.shiro.session.Session&nbsp;session,
+                  <a href="../../../../de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectFilterType</a>&nbsp;subjectFilterType)</code>
+<div class="block">returns permission mapped for given filter type from the user session</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>static <a href="../../../../de/businesscode/bcdui/subjectsettings/SubjectSettings.html" title="class in de.businesscode.bcdui.subjectsettings">SubjectSettings</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../de/businesscode/bcdui/subjectsettings/SubjectSettings.html#getInstance--">getInstance</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i1" class="rowColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code><a href="../../../../de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectFilterType</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../de/businesscode/bcdui/subjectsettings/SubjectSettings.html#getSubjectFilterTypeByName-java.lang.String-">getSubjectFilterTypeByName</a></span>(java.lang.String&nbsp;type)</code>&nbsp;</td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../de/businesscode/bcdui/subjectsettings/SubjectSettings.html#isWasConfigured--">isWasConfigured</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>static boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../de/businesscode/bcdui/subjectsettings/SubjectSettings.html#rightsInDbAvailable--">rightsInDbAvailable</a></span>()</code>&nbsp;</td>
 </tr>
@@ -237,27 +237,6 @@ extends <a href="../../../../de/businesscode/bcdui/subjectsettings/config/Subjec
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
-<!-- ============ FIELD DETAIL =========== -->
-<ul class="blockList">
-<li class="blockList"><a name="field.detail">
-<!--   -->
-</a>
-<h3>Field Detail</h3>
-<a name="permissionAttributePrefix">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>permissionAttributePrefix</h4>
-<pre>public static final&nbsp;java.lang.String permissionAttributePrefix</pre>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../constant-values.html#de.businesscode.bcdui.subjectsettings.SubjectSettings.permissionAttributePrefix">Constant Field Values</a></dd>
-</dl>
-</li>
-</ul>
-</li>
-</ul>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.detail">
@@ -317,10 +296,43 @@ extends <a href="../../../../de/businesscode/bcdui/subjectsettings/config/Subjec
 <a name="rightsInDbAvailable--">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>rightsInDbAvailable</h4>
 <pre>public static&nbsp;boolean&nbsp;rightsInDbAvailable()</pre>
+</li>
+</ul>
+<a name="getFilterType-de.businesscode.bcdui.subjectsettings.config.SubjectFilterType-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getFilterType</h4>
+<pre>public&nbsp;java.lang.String&nbsp;getFilterType(<a href="../../../../de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectFilterType</a>&nbsp;subjectFilterType)</pre>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>subjectFilterType</code> - </dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>filter type literal, which is either defined by filter type name or explicit type</dd>
+</dl>
+</li>
+</ul>
+<a name="getFilterTypeValue-org.apache.shiro.session.Session-de.businesscode.bcdui.subjectsettings.config.SubjectFilterType-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getFilterTypeValue</h4>
+<pre>public&nbsp;java.lang.String&nbsp;getFilterTypeValue(org.apache.shiro.session.Session&nbsp;session,
+                                           <a href="../../../../de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectFilterType</a>&nbsp;subjectFilterType)</pre>
+<div class="block">returns permission mapped for given filter type from the user session</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>session</code> - - which may be null, then this method returns null</dd>
+<dd><code>subjectFilterType</code> - - to lookup permission for in the session</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>value for the permission or null if none found</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -377,13 +389,13 @@ extends <a href="../../../../de/businesscode/bcdui/subjectsettings/config/Subjec
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li><a href="#nested.classes.inherited.from.class.de.businesscode.bcdui.subjectsettings.config.SubjectSettingsConfig">Nested</a>&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#fields.inherited.from.class.de.businesscode.bcdui.subjectsettings.config.SubjectSettingsConfig">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
