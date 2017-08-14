@@ -68,7 +68,7 @@ task buildTutorial ( type: org.asciidoctor.gradle.AsciidoctorTask ) {
 // This collects BCD-UI docu (tutorial, js-api, java-api) to /docs
 // This task requires BCD-UI cloned next to BCD-UI-Docu and task bcduiBuildDocu being executed there already
 // GitHub pages is setup to use /docs
-task collectDocu( type: Copy ) {
+task updateDocs( type: Copy ) {
   group 'bcdui'
   dependsOn buildTutorial
 

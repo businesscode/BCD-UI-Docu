@@ -7,7 +7,6 @@ BCD-UI supports security with the following features
 
 * https:// hosting, partly or complete
 * Company authentication and authorization mechanisms like central LDAP and single login can be applied
-* Windows single-sign-on
 * SQL injection prevention
 * no-cache no-store to protect secure data on shared computers, see <<DocCaching,caching>>
 * Integration of link:https://shiro.apache.org/[Apache Shiro] access rules
@@ -18,6 +17,7 @@ BCD-UI supports security with the following features
    *** Trigger additional actions when writing to a BindingSet, including data historization
  ** <<DocWidgets,Menu>> structure shown to the user, for example whether admin pages are offered for navigation,
    see @rights attribute in link:https://github.com/businesscode/BCD-UI/blob/master/Docu/xsd/menu-1.0.0.xsd[menu-1.0.0.xsd^]
+* Windows single-sign-on for EnterpriseEdition
 
 === Security access filter
 
