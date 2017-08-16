@@ -78,7 +78,7 @@ dependencies {
 ==== Configure Gradle support for the project
 
 Before we can use the gradle file within eclipse, we have to add the "Gradle Nature" to the GettingStarted project. So select the project,
-open the context menu and choose Configure-&gt;Add Gradle Nature.
+open the context menu and choose Configure->Add Gradle Nature.
 
 
 ==== Refresh dependencies

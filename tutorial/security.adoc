@@ -156,7 +156,7 @@ You may also provide your own LoginServlet or Realm for a custom setup of derivi
 Please check Shiro documentation for more options.
 
 
-==== Kerberos / Windows SSO / Windows Authentication
+==== Kerberos / Windows SSO / Windows Authentication (EnterpriseEdition)
 
 BCDUI provides transparent integration for authentication against Windows Active Directory (or any other Directory service) via Kerberos protocol
 for web applications running Tomcat v7 or greater.

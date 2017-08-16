@@ -275,7 +275,7 @@ Further details on web row set and the filters can be found <<DocXmlData,here>>
 The user can limit the data retrieved from the database by using filter widgets.
 Many filters show lists of values to choose from that are based on reference data.
 
-The filter in this example is a link:../jsdoc/bcdui.widget.SingleSelect.html[bcdui.core.SingleSelect^], which uses a list of countries from which the user can choose.
+The filter in this example is a link:../jsdoc/bcdui.widgetNg.html#.createSingleSelect[Single Select:^], which uses a list of countries from which the user can choose.
 A BCD-UI model holds data in the from of XML for further usage.
 To add a model with the available data, add the following code to your script block:
 
