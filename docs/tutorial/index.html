@@ -576,7 +576,7 @@ table.CodeRay td.code>pre{padding:0}
 </style>
 <script type="application/javascript">
   // Only show matching toc entries (and their ancestors)
-  window.addEventListener( "load", function() {
+  window.addEventListener( "DOMContentLoaded", function() {
     // Create an input filed for search term
     var toc = document.getElementById("toc");
 
@@ -856,7 +856,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_login_form_and_logging">Login form and logging</a></li>
 <li><a href="#_define_users_in_web_xml">Define users in web.xml</a></li>
 <li><a href="#_define_users_in_database">Define users in database</a></li>
-<li><a href="#_kerberos_windows_sso_windows_authentication">Kerberos / Windows SSO / Windows Authentication</a></li>
+<li><a href="#_kerberos_windows_sso_windows_authentication_enterpriseedition">Kerberos / Windows SSO / Windows Authentication (EnterpriseEdition)</a></li>
 </ul>
 </li>
 </ul>
@@ -1979,7 +1979,7 @@ So in our example the filter f:Filter leads translated to</p>
 Many filters show lists of values to choose from that are based on reference data.</p>
 </div>
 <div class="paragraph">
-<p>The filter in this example is a <a href="../jsdoc/bcdui.widget.SingleSelect.html" target="_blank">bcdui.core.SingleSelect</a>, which uses a list of countries from which the user can choose.
+<p>The filter in this example is a <a href="../jsdoc/bcdui.widgetNg.html#.createSingleSelect" target="_blank">Single Select:</a>, which uses a list of countries from which the user can choose.
 A BCD-UI model holds data in the from of XML for further usage.
 To add a model with the available data, add the following code to your script block:</p>
 </div>
@@ -6095,9 +6095,6 @@ Here you may also call apply-templates to resolve nested XAPI calls in a more co
 <p>Company authentication and authorization mechanisms like central LDAP and single login can be applied</p>
 </li>
 <li>
-<p>Windows single-sign-on</p>
-</li>
-<li>
 <p>SQL injection prevention</p>
 </li>
 <li>
@@ -6132,6 +6129,9 @@ see @rights attribute in <a href="https://github.com/businesscode/BCD-UI/blob/ma
 </li>
 </ul>
 </div>
+</li>
+<li>
+<p>Windows single-sign-on for EnterpriseEdition</p>
 </li>
 </ul>
 </div>
@@ -6434,7 +6434,7 @@ Please check Shiro documentation for more options.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_kerberos_windows_sso_windows_authentication">Kerberos / Windows SSO / Windows Authentication</h4>
+<h4 id="_kerberos_windows_sso_windows_authentication_enterpriseedition">Kerberos / Windows SSO / Windows Authentication (EnterpriseEdition)</h4>
 <div class="paragraph">
 <p>BCDUI provides transparent integration for authentication against Windows Active Directory (or any other Directory service) via Kerberos protocol
 for web applications running Tomcat v7 or greater.
@@ -8270,7 +8270,7 @@ dependencies {
 <h4 id="_configure_gradle_support_for_the_project">Configure Gradle support for the project</h4>
 <div class="paragraph">
 <p>Before we can use the gradle file within eclipse, we have to add the "Gradle Nature" to the GettingStarted project. So select the project,
-open the context menu and choose Configure-&gt;Add Gradle Nature.</p>
+open the context menu and choose Configure&#8594;Add Gradle Nature.</p>
 </div>
 </div>
 <div class="sect3">
@@ -8452,49 +8452,61 @@ Example:</p>
 <div class="sect2">
 <h3 id="_compatibility">26.1. Compatibility</h3>
 <div class="paragraph">
-<p>As of 2013 BCD-UI works without modifications within the following environments</p>
+<p>As of 2017 BCD-UI works without modifications within the following environments</p>
 </div>
 <div class="ulist">
+<div class="title">Server</div>
 <ul>
 <li>
-<p>JDK 1.6 update 6 and up</p>
+<p>JDK 8+ (= and later versions)</p>
 </li>
 <li>
-<p>Application Server: Tomcat 6.13 and up</p>
-</li>
-<li>
-<p>Internet Explorer 6, 7, 8 and up</p>
-</li>
-<li>
-<p>FireFox 3 and up</p>
-</li>
-<li>
-<p>Safari 5.0.5 and up and Chrome 3.0 and up</p>
-</li>
-<li>
-<p>Teradata 10 and up</p>
-</li>
-<li>
-<p>Oracle 9i and up including Oracle 10g ExpressEdition</p>
+<p>Application Server: Tomcat 7.0.63+, other servers please contact BusinessCode</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>It makes use of current versions of technologies</p>
-</div>
 <div class="ulist">
+<div class="title">Browser</div>
 <ul>
 <li>
-<p>JDBC, Servlet, JSP and JAXB</p>
+<p>Internet Explorer 11, previous versions on request</p>
+</li>
+<li>
+<p>Edge please contact BusinessCode</p>
+</li>
+<li>
+<p>Recent Firefox, Safari and Chrome</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">Database</div>
+<ul>
+<li>
+<p>Oracle 9i and up including Oracle 10g ExpressEdition</p>
+</li>
+<li>
+<p>Postgres 9.2+</p>
+</li>
+<li>
+<p>SQLServer 2016+</p>
+</li>
+<li>
+<p>Teradata 10+ in EnterpriseEdition</p>
+</li>
+<li>
+<p>MySQL with limitations, please contact BusinessCode</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">It makes use of current versions of technologies and specs</div>
+<ul>
+<li>
+<p>JavaEE web profile, JDBC, Servlet, JSP and JAXB</p>
 </li>
 <li>
 <p>ECMA/JS, DHTML, CSS, HTML and JSON</p>
-</li>
-<li>
-<p>ANT, CVS and Eclipse</p>
-</li>
-<li>
-<p>Openlayers, prototype.js and scriptaculous</p>
 </li>
 <li>
 <p>SVG and VML</p>
@@ -8503,19 +8515,13 @@ Example:</p>
 <p>XML, XSLT and XSD</p>
 </li>
 <li>
-<p>WFS, WMS and OGC specifications</p>
+<p>Ajax, webservices and XForms architecture, EXSLT</p>
 </li>
 <li>
-<p>Ajax, webservices and XForms architecture, sxslt</p>
+<p>Apache commons, jQuery and various other open source libraries</p>
 </li>
 <li>
-<p>Apache commons</p>
-</li>
-<li>
-<p>JUnit, Selenium</p>
-</li>
-<li>
-<p>SQL Workbench, Sparx EA, utilities of Oracle and Teradata</p>
+<p>Gradle, Eclipse and IntelliJ IDEA, git</p>
 </li>
 </ul>
 </div>
@@ -8547,9 +8553,6 @@ Example:</p>
 </li>
 <li>
 <p>Chrome/WebKit: don&#8217;t support bookmark via javascript at all</p>
-</li>
-<li>
-<p>IE 6,7 always and 8,9 in quirks mode do change @href and @src into absolute paths ("http://..") when written via innerHTML=. This can lead to issues with image references and pdf export.</p>
 </li>
 <li>
 <p>IE seems to handle position() in xsl:key/@match expressions wrong. Sample: match="/*/Something[@pos&gt;3][position()&lt;2]". It will find an empty list instead of a lost with two elements.</p>
@@ -8617,8 +8620,8 @@ Use xsl:stylesheet/@bcdxml:wrsHeaderIsEnough to minimize the input for example f
 </li>
 <li>
 <p>All known namespace declarations are repeated on the highest node of each subtree of explicitly written elements.
-For example $lt;wrs:C/&gt; will hold all such namespacen-odes if all elements above are created via xsl:element or xsl:copy.
-As a workaround, write the root node (in this case wrs:Wrs) also explicitly $lt;wrs:Wrs&gt;&#8230;&#8203;$lt;/wrs:Wrs&gt;, then this is the highest and they will ony
+For example &lt;wrs:C/&gt; will hold all such namespace-nodes if all elements above are created via xsl:element or xsl:copy.
+As a workaround, write the root node (in this case wrs:Wrs) also explicitly &lt;wrs:Wrs&gt;&#8230;&#8203;&lt;/wrs:Wrs&gt;, then this is the highest and they will ony
 appear once. Because Webkit is sensitive against documents with a large serialization representation this improves performance.</p>
 </li>
 </ul>

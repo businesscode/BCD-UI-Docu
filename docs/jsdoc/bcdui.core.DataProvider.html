@@ -5418,7 +5418,7 @@ map or set to the "id" if there is no "args.name" value in the map.
     <div class="description">
         A globally unique id of the object. DataProviders do also register themselves at <a href="bcdui.factory.html#.objectRegistry">bcdui.factory.objectRegistry</a> when an id is provided to the constructor. 
 This id is only needed in declarative contexts, like jsp or, when a DataProvider is accessed in a xPath like <bcd-input targetModelId="$myModelId/ns:Root/ns:MyValue"/>.
-If not provided in the constructor, an id is set but the object is not automatically registered.
+If not provided in the constructor, a random id starting with 'bcd' is set, but the object is not automatically registered.
     </div>
     
     
@@ -7103,7 +7103,7 @@ or immediately (but still async) when the AbstractExecutable is already ready
     
         
         <div class="tag-source">
-            <a href="global.html#bcduiCore-debug.js">bcduiCore-debug.js</a>, <a href="global.html#bcduiCore-debug.js#line3389">line 3389</a>
+            <a href="global.html#bcduiCore-debug.js">bcduiCore-debug.js</a>, <a href="global.html#bcduiCore-debug.js#line3390">line 3390</a>
         </div>
         
     </div>
@@ -7812,7 +7812,7 @@ Please note: the callback routines are always called asynchronously (even if rea
     
         
         <div class="tag-source">
-            <a href="global.html#bcduiCore-debug.js">bcduiCore-debug.js</a>, <a href="global.html#bcduiCore-debug.js#line3326">line 3326</a>
+            <a href="global.html#bcduiCore-debug.js">bcduiCore-debug.js</a>, <a href="global.html#bcduiCore-debug.js#line3327">line 3327</a>
         </div>
         
     </div>
@@ -7937,7 +7937,7 @@ single node or null if query fails
     
         
         <div class="tag-source">
-            <a href="global.html#bcduiCore-debug.js">bcduiCore-debug.js</a>, <a href="global.html#bcduiCore-debug.js#line3336">line 3336</a>
+            <a href="global.html#bcduiCore-debug.js">bcduiCore-debug.js</a>, <a href="global.html#bcduiCore-debug.js#line3337">line 3337</a>
         </div>
         
     </div>
@@ -8222,7 +8222,7 @@ text value stored at xPath (or null if nothing found and no defaultValue supplie
     
         
         <div class="tag-source">
-            <a href="global.html#bcduiCore-debug.js">bcduiCore-debug.js</a>, <a href="global.html#bcduiCore-debug.js#line3312">line 3312</a>
+            <a href="global.html#bcduiCore-debug.js">bcduiCore-debug.js</a>, <a href="global.html#bcduiCore-debug.js#line3313">line 3313</a>
         </div>
         
     </div>
@@ -8385,7 +8385,7 @@ text value stored at xPath (or null if nothing found and no defaultValue supplie
     
         
         <div class="tag-source">
-            <a href="global.html#bcduiCore-debug.js">bcduiCore-debug.js</a>, <a href="global.html#bcduiCore-debug.js#line3355">line 3355</a>
+            <a href="global.html#bcduiCore-debug.js">bcduiCore-debug.js</a>, <a href="global.html#bcduiCore-debug.js#line3356">line 3356</a>
         </div>
         
     </div>
@@ -8780,7 +8780,7 @@ text value stored at xPath (or null if nothing found and no defaultValue supplie
     
         
         <div class="tag-source">
-            <a href="global.html#bcduiCore-debug.js">bcduiCore-debug.js</a>, <a href="global.html#bcduiCore-debug.js#line3345">line 3345</a>
+            <a href="global.html#bcduiCore-debug.js">bcduiCore-debug.js</a>, <a href="global.html#bcduiCore-debug.js#line3346">line 3346</a>
         </div>
         
     </div>
@@ -9082,7 +9082,7 @@ Usually this method will only be called by the library but you can use it to re-
     
         
         <div class="tag-source">
-            <a href="global.html#bcduiCore-debug.js">bcduiCore-debug.js</a>, <a href="global.html#bcduiCore-debug.js#line3292">line 3292</a>
+            <a href="global.html#bcduiCore-debug.js">bcduiCore-debug.js</a>, <a href="global.html#bcduiCore-debug.js#line3293">line 3293</a>
         </div>
         
     </div>
@@ -9157,7 +9157,8 @@ After the operation the xPath (with the optional value) is guaranteed to exist (
                 xPath pointing to the node which is set to the value value or plain xPath to be created if not there. 
    It tries to reuse all matching parts that are already there. If you provide for example "/n:Root/n:MyElem/@attr1" and there is already "/n:Root/n:MyElem@attr1", then ""/n:Root/n:MyElem" will be "re-used" and get a second attribute attr1.
    Many expressions are allowed, for example "/n:Root/n:MyElem[@attr1='attr1Value']/n:SubElem" is also ok.
-   By nature, some xPath expressions are not allowed, for example using '//' or "/n:Root/n:MyElem/[@attr1 or @attr2]/n:SubElem" is obviously not unambiguous enough and will throw an error.</td>
+   By nature, some xPath expressions are not allowed, for example using '//' or "/n:Root/n:MyElem/[@attr1 or @attr2]/n:SubElem" is obviously not unambiguous enough and will throw an error.
+   This method is Wrs aware, use for example '/wrs:Wrs/wrs:Data/wrs:*[2]/wrs:C[3]' as xPath and it will turn wrs:R[wrs:C] into wrs:M[wrs:C and wrs:O], see Wrs format.</td>
         </tr>
 	
 	
@@ -9191,7 +9192,7 @@ After the operation the xPath (with the optional value) is guaranteed to exist (
                         
                     
                 
-                Optional value which should be written, for example to "/n:Root/n:MyElem/@attr" or with "/n:Root/n:MyElem" as the element's text content. 
+                Optional value which should be written, for example to "/n:Root/n:MyElem/@attr" or with "/n:Root/n:MyElem" as the element's text content.
    If not provided, the xPath contains all values like in "/n:Root/n:MyElem[@attr='a' and @attr1='b']" or needs none like "/n:Root/n:MyElem"</td>
         </tr>
 	
