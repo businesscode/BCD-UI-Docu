@@ -324,7 +324,7 @@ bcdui.widgetNg.createSingleSelect({
   targetHtml: 'country',
   targetModelXPath: "/*/f:Filter/f:Expression[@bRef = 'country' and @op = '=']/@value",
   optionsModelXPath: "$countriesModel/countries/item"
-)};
+});
 ----
 
 The widget has an optionsModelXPath argument that specifies the data source for the options from which the user can select a value.

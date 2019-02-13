@@ -39,7 +39,7 @@ This is all that is required to use BCD-UI in your application.
 
 Add logging configuration::
 Copy log4j.properties from link:https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/log4j.properties[BCD-UI/Server/configFiles/log4j.properties, window="_blank"]
-to your project's src folder, this sets logging to a reasonable level.
+to your project's src folder, this sets logging to a reasonable level. Ensure that this src folder is actually added as source folder in your java build path.
 
 Add BCD-UI java sources:: 
 Please note this is not possible if the BCD-UI library is fetched via grade dependencies. +
