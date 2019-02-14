@@ -87,7 +87,7 @@ StaticModel:: Receiving its data in form of a string or JSON.
 ModelWrapper:: Executes a chain of transformations like XSLTs on its input data.
 The input model is not changed.
 
-ModelUpdater:: Similar to ModelUpdater but replaces the target model's content with the transformation result.
+ModelUpdater:: Similar to ModelWrapper but replaces the target model's content with the transformation result.
 
 Renderer:: Executes a chain of transformations like XSLTs and inserts the result into the page's HTML at targetHtml.
 The input model is not changed.
