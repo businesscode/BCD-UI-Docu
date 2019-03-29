@@ -155,6 +155,110 @@ These permissions are checked for example by the security filter when accessing 
 You may also provide your own LoginServlet or Realm for a custom setup of deriving users and their attributes.
 Please check Shiro documentation for more options.
 
+==== OAuth2 / Azure / Google
+
+BCD-UI provides Shiro integrated implementation for general OAuth2 authentication (referred to as oauth in this docu) and ready-to-use modules for Azure and Google integration.
+OAuth integration is currently limited to authentication only, the permissions for authorization are managed by application through subjectsettings.
+
+. Prerequisites
+.. Register your client application to Azure/Google/x to obtain a client and a client secret. For Google we use 'email' scope and for Azure 'https://graph.microsoft.com/user.read' but you can override and use whatever you prefer to use for authentication.
+
+=== Configuration
+
+Provided configurations will authenticate user and set the principal to user's email.
+
+. Sample configuration for Azure
++
+in your web.xml, Shiro configuration
++
+[source]
+----
+[main]
+..
+
+## Azure OAuth
+oauthcAzure = de.businesscode.bcdui.security.shiro.oauth2.azure.AzureAuthenticatingFilter
+oauthcAzure.authorizeEndpoint = https://login.microsoftonline.com/your_tenant_id/oauth2/v2.0/authorize
+oauthcAzure.clientId = your_client_id
+oauthcAzure.redirectUrl = http://localhost:8080/application
+oauthcAzure.successUrl = /
+oauthcAzureRealm = de.businesscode.bcdui.security.shiro.oauth2.azure.AzureRealm
+oauthcAzureRealm.clientSecret = your_client_secret
+oauthcAzureRealm.tokenEndpoint = https://login.microsoftonline.com/your_tenant_id/oauth2/v2.0/token
+
+..
+
+[urls]
+/oauth = oauthcAzure
+..
+----
+
+. Sample configuration for Google
++
+in your web.xml, Shiro configuration
++
+[source]
+----
+[main]
+..
+
+## Google
+oauthcGoogle = de.businesscode.bcdui.security.shiro.oauth2.google.GoogleAuthenticatingFilter
+oauthcGoogle.authorizeEndpoint = https://accounts.google.com/o/oauth2/v2/auth
+oauthcGoogle.clientId = your_client_id
+oauthcGoogle.redirectUrl = http://localhost:8080/application
+oauthcGoogle.successUrl = /
+oauthcGoogleRealm = de.businesscode.bcdui.security.shiro.oauth2.google.GoogleRealm
+oauthcGoogleRealm.clientSecret = your_client_secret
+..
+
+[urls]
+/oauth = oauthcGoogle
+..
+----
+. Sample configuration for multiple authenticators
++
+in your web.xml, Shiro configuration
++
+[source]
+----
+[main]
+..
+
+## Azure
+oauthcAzure = de.businesscode.bcdui.security.shiro.oauth2.azure.AzureAuthenticatingFilter
+# required since we bind both to same url
+oauthcAzure.optionalProviderId = azure
+oauthcAzure.authorizeEndpoint = https://login.microsoftonline.com/your_tenant_id/oauth2/v2.0/authorize
+oauthcAzure.clientId = your_client_id
+oauthcAzure.redirectUrl = http://localhost:8080/application
+oauthcAzure.successUrl = /
+oauthcAzureRealm = de.businesscode.bcdui.security.shiro.oauth2.azure.AzureRealm
+oauthcAzureRealm.clientSecret = your_client_secret
+oauthcAzureRealm.tokenEndpoint = https://login.microsoftonline.com/your_tenant_id/oauth2/v2.0/token
+# required due to multiple authenticators
+oauthcAzureRealm.authenticator = $oauthcAzure
+
+## Google
+oauthcGoogle = de.businesscode.bcdui.security.shiro.oauth2.google.GoogleAuthenticatingFilter
+# required since we bind both to same url
+oauthcGoogle.optionalProviderId = google
+oauthcGoogle.authorizeEndpoint = https://accounts.google.com/o/oauth2/v2/auth
+oauthcGoogle.clientId = your_client_id
+oauthcGoogle.redirectUrl = http://localhost:8080/application
+oauthcGoogle.successUrl = /
+oauthcGoogleRealm = de.businesscode.bcdui.security.shiro.oauth2.google.GoogleRealm
+oauthcGoogleRealm.clientSecret = your_client_secret
+# required due to multiple authenticators
+oauthcGoogleRealm.authenticator = $oauthcGoogle
+
+..
+
+[urls]
+# since both filters map same url, control via url parameter 'oauth-provider-id' which filter to active by providing providerId, i.e. ?oauth-provider-id=azure
+/oauth = oauthcAzure, oauthcGoogle
+..
+----
 
 ==== Kerberos / Windows SSO / Windows Authentication (EnterpriseEdition)
 
