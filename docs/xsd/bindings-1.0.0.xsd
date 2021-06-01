@@ -172,6 +172,12 @@
         Note that 'none' is also allowed: When reading the BindingItem in an aggregation, the aggregation function must be hard-coded in b:BindingItem/b:Column.
       </xs:documentation></xs:annotation>
     </xs:attribute>
+    <xs:attribute name="skipStartupRead" type="xs:boolean" default="false">
+      <xs:annotation><xs:documentation>
+        Skip reading this column on startup with a dummy request.
+        All other items are read on startup. Attributes like type-name are set from this reading if they are not given in the BindingSet document.
+      </xs:documentation></xs:annotation>
+    </xs:attribute>
     <xs:anyAttribute namespace="http://www.businesscode.de/schema/bcdui/customization-1.0.0" processContents="skip">
       <xs:annotation><xs:documentation>
         this namespace, with well-known prefix 'cust' may be used to define custom attributes to access them on the client
@@ -185,6 +191,7 @@
     <xs:attribute name="scale"        type="xs:integer">
       <xs:annotation>
         <xs:documentation>
+          Requires type-name to be set to a numeric type!
           A) If abs(scale)&lt; 10 the number of decimal digits. If positive padded with trailing 0.
           B) If abs(scale)> 10 then rounded to the nearest multiple of scale, negative here is only allowed for scale = 10 pow n.
           C) Samples (in US format) for 14990.404: scale 2 -> 1490.40, scale -2 -> 1490.4, scale 1000 -> 15,000, scale -1000 -> 1.5.
@@ -233,6 +240,12 @@
       <xs:element name="And" type="tns:TypeSubjectFilterConnective"></xs:element>
       <xs:element name="Or" type="tns:TypeSubjectFilterConnective"></xs:element>
     </xs:choice>
+    <xs:attribute name="skipWriteCheck" default="false" type="xs:boolean">
+      <xs:annotation><xs:documentation>
+        When writing to a Binding-Set usually the subject filters are applied the way that user can only write values he would be also able to read.
+        You can suppress this check in case there are incompatible cases, by setting this flag to true
+      </xs:documentation></xs:annotation>
+    </xs:attribute>
   </xs:complexType>
 
   <xs:complexType name="TypeSubjectFilterConnective">
@@ -256,8 +269,14 @@
           </xs:documentation>
         </xs:annotation>
         <xs:complexType>
-          <xs:attribute name="name" use="required" type="xs:string" fixed="write">
-            <xs:annotation><xs:documentation>only -write- operation is currently supported</xs:documentation></xs:annotation>
+          <xs:attribute name="name" use="required">
+            <xs:annotation><xs:documentation>write: any data manipulating operation, read: any data read operation</xs:documentation></xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="write"/>
+                <xs:enumeration value="read"/>
+              </xs:restriction>
+            </xs:simpleType>
           </xs:attribute>
           <xs:attribute name="permission" type="xs:string" use="required">
             <xs:annotation>
@@ -297,6 +316,7 @@
       <xs:enumeration value="DISTINCT" />
       <xs:enumeration value="DOUBLE" />
       <xs:enumeration value="FLOAT" />
+      <xs:enumeration value="GEOMETRY" />
       <xs:enumeration value="INTEGER" />
       <xs:enumeration value="JAVA_OBJECT" />
       <xs:enumeration value="LONGNVARCHAR" />
@@ -512,6 +532,11 @@
                 <xs:documentation>A 1:[0..1] relationship.</xs:documentation>
               </xs:annotation>
             </xs:enumeration>
+            <xs:enumeration value="rightOuter">
+              <xs:annotation>
+                <xs:documentation>A [0..1]:1 relationship.</xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
             <xs:enumeration value="inner">
               <xs:annotation>
                 <xs:documentation>
@@ -584,8 +609,7 @@
         </xs:annotation>
         <xs:complexType>
           <xs:sequence>
-            <xs:element name="BindingItemRef" type="tns:TypeBindingItemRef"/>
-            <xs:element name="BindingItemRef" type="tns:TypeBindingItemRef"/>
+            <xs:element name="BindingItemRef" type="tns:TypeBindingItemRef" minOccurs="2" maxOccurs="2"/>
           </xs:sequence>
           <xs:attribute name="negate" default="false" type="xs:boolean" />
         </xs:complexType>
@@ -599,8 +623,7 @@
         </xs:annotation>
         <xs:complexType>
           <xs:sequence>
-            <xs:element name="BindingItemRef" type="tns:TypeBindingItemRef"/>
-            <xs:element name="BindingItemRef" type="tns:TypeBindingItemRef"/>
+            <xs:element name="BindingItemRef" type="tns:TypeBindingItemRef" minOccurs="2" maxOccurs="2"/>
           </xs:sequence>
           <xs:attribute name="negate" default="false" type="xs:boolean" />
         </xs:complexType>
@@ -614,8 +637,7 @@
         </xs:annotation>
         <xs:complexType>
           <xs:sequence>
-            <xs:element name="BindingItemRef" type="tns:TypeBindingItemRef"/>
-            <xs:element name="BindingItemRef" type="tns:TypeBindingItemRef"/>
+            <xs:element name="BindingItemRef" type="tns:TypeBindingItemRef" minOccurs="2" maxOccurs="2"/>
           </xs:sequence>
           <xs:attribute name="negate" default="false" type="xs:boolean" />
         </xs:complexType>
@@ -629,8 +651,7 @@
         </xs:annotation>
         <xs:complexType>
           <xs:sequence>
-            <xs:element name="BindingItemRef" type="tns:TypeBindingItemRef"/>
-            <xs:element name="BindingItemRef" type="tns:TypeBindingItemRef"/>
+            <xs:element name="BindingItemRef" type="tns:TypeBindingItemRef" minOccurs="2" maxOccurs="2"/>
           </xs:sequence>
           <xs:attribute name="negate" default="false" type="xs:boolean" />
         </xs:complexType>
@@ -644,8 +665,7 @@
         </xs:annotation>
         <xs:complexType>
           <xs:sequence>
-            <xs:element name="BindingItemRef" type="tns:TypeBindingItemRef"/>
-            <xs:element name="BindingItemRef" type="tns:TypeBindingItemRef"/>
+            <xs:element name="BindingItemRef" type="tns:TypeBindingItemRef" minOccurs="2" maxOccurs="2"/>
           </xs:sequence>
           <xs:attribute name="negate" default="false" type="xs:boolean" />
         </xs:complexType>
@@ -661,6 +681,21 @@
           <xs:sequence>
             <xs:element name="BindingItemRef" type="tns:TypeBindingItemRef"/>
           </xs:sequence>
+          <xs:attribute name="negate" default="false" type="xs:boolean" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="IsLike">
+        <xs:annotation>
+          <xs:documentation>
+            SQL LIKE operator. The second BindingItemRef can be concatenated with @prependToSecond and / or @appendToSecond, for example "appendToSecond='%'" leads to "tp.col_name||'%'"
+          </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="BindingItemRef" type="tns:TypeBindingItemRef" minOccurs="2" maxOccurs="2"/>
+          </xs:sequence>
+          <xs:attribute name="prependToSecond" default="" type="xs:string" />
+          <xs:attribute name="appendToSecond" default="" type="xs:string" />
           <xs:attribute name="negate" default="false" type="xs:boolean" />
         </xs:complexType>
       </xs:element>

@@ -138,12 +138,30 @@
         defined by 'country' acl.
       </documentation></annotation>
     </attribute>
+    <attribute name="isClientControlled" use="optional" type="boolean" default="false">
+      <annotation><documentation>
+        Allows this subject filter to be set/overridden from client, such filters shall not be used to restrict access to data 
+        or operations as they are inherently insecure.
+      </documentation></annotation>
+    </attribute>
+    <attribute name="isNullAllowsAccess" use="optional" type="boolean" default="false">
+      <annotation><documentation>
+      Enables null-value evaluation on data to be filtered. i.e. when using boolish security flags like 'isRestricted' you can set it to null value
+      and set this attribute to true to allow accessing the data.
+      </documentation></annotation>
+    </attribute>
   </complexType>
 
   <complexType name="AuthenticationType">
+    <annotation><documentation>
+    defines authentication method
+    </documentation></annotation>
     <sequence>
       <element name="Ldap" minOccurs="0" maxOccurs="0"/>
       <element name="SubjectSettings" minOccurs="0">
+        <annotation><documentation>
+        enable SubjectSettings for authentication, please set Shiro realm to de.businesscode.bcdui.subjectsettings.JdbcRealm
+        </documentation></annotation>
         <complexType/>
       </element>
     </sequence>
@@ -176,7 +194,9 @@
       <enumeration value="&lt;="/>
       <enumeration value="&lt;>"/>
       <enumeration value="like"/>
+      <enumeration value="notLike"/>
       <enumeration value="in"/>
+      <enumeration value="notIn"/>
       <enumeration value="bitand"/>
     </restriction>
   </simpleType>

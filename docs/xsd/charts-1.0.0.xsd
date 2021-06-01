@@ -37,7 +37,7 @@
   <xs:complexType name="Chart">
     <xs:sequence>
       <xs:annotation><xs:documentation>content of Chart Node</xs:documentation></xs:annotation>
-      <xs:element name="XAxis" type="tns:XAxis"></xs:element>
+      <xs:element name="XAxis" type="tns:XAxis" minOccurs="0"></xs:element>
       <xs:element name="YAxis1" type="tns:YAxis1"></xs:element>
       <xs:element name="YAxis2" type="tns:YAxis2" minOccurs="0" maxOccurs="1"></xs:element>
 
@@ -85,10 +85,16 @@
         <xs:documentation>Title shown at the top of the chart</xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    <xs:attribute name="isSvg" type="xs:boolean" use="optional">
+    <xs:attribute name="showLegend" use="optional">
       <xs:annotation>
-        <xs:documentation>If true, SVG is enforced, otherwise the browser's default is used'</xs:documentation>
+        <xs:documentation>Position of where to show legend, if not set, no legend is shown.</xs:documentation>
       </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="bottom"/>
+          <xs:enumeration value="right"/>
+        </xs:restriction>
+      </xs:simpleType>
     </xs:attribute>
     <xs:attribute name="showAxes" type="xs:boolean" use="optional">
       <xs:annotation>
@@ -161,6 +167,9 @@
           <xs:enumeration value="suppress"></xs:enumeration>
           <xs:enumeration value="vertical-ideographic"></xs:enumeration>
           <xs:enumeration value="horizontal"></xs:enumeration>
+          <xs:enumeration value="25deg"></xs:enumeration>
+          <xs:enumeration value="35deg"></xs:enumeration>
+          <xs:enumeration value="45deg"></xs:enumeration>
         </xs:restriction>
       </xs:simpleType>
     </xs:attribute>
@@ -177,7 +186,7 @@
   <xs:complexType name="XAxis">
     <xs:annotation><xs:documentation>Element defines the x-axis</xs:documentation></xs:annotation>
     <xs:choice>
-      <xs:element name="Categories" type="tns:Categories"></xs:element>
+      <xs:element name="Categories" type="tns:Categories" maxOccurs="unbounded"></xs:element>
       <xs:element name="XValues" type="tns:XValues"></xs:element>
     </xs:choice>
     <xs:attributeGroup ref="tns:AxisAttrs"></xs:attributeGroup>
@@ -213,17 +222,22 @@
   <!-- ===================================================================== -->
   <xs:simpleType name="chartType">
     <xs:annotation>
-      <xs:documentation>well-known chart types</xs:documentation>
+      <xs:documentation>Well-known chart types. 'radar' is only available by bcdChart2</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:string">
       <xs:enumeration value="LINECHART"/>
       <xs:enumeration value="AREACHART"/>
       <xs:enumeration value="BARCHART"/>
+      <xs:enumeration value="BARCHARTHORIZONTAL"/>
       <xs:enumeration value="PIECHART"/>
       <xs:enumeration value="SCATTEREDCHART"/>
       <xs:enumeration value="POINTCHART"/>
       <xs:enumeration value="MARIMEKKOCHART"/>
       <xs:enumeration value="GAUGECHART"/>
+      <xs:enumeration value="SUNBURSTCHART"/>
+      <xs:enumeration value="RADARCHART"/>
+      <xs:enumeration value="POLARCHART"/>
+      <xs:enumeration value="BOXPLOT"/>
     </xs:restriction>
   </xs:simpleType>
 
@@ -248,8 +262,30 @@
     </xs:annotation>
 
     <xs:sequence maxOccurs="unbounded" minOccurs="1">
+      <xs:element name="XValues" type="tns:XValues" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>XValues per series. This is currently only available for polar charts.</xs:documentation>
+      </xs:annotation>
+      </xs:element>
       <xs:element name="YData" type="tns:YData"></xs:element>
       <xs:element name="Colors" type="tns:Colors" minOccurs="0"></xs:element>
+      <xs:element name="BarWaterfall" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>If the series is a BARCHART, turn it into a waterfall bar chart (bcduiChart2 only).</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:attribute name="downRgb" type="tns:colorValue">
+            <xs:annotation>
+              <xs:documentation>Color of bars with negative values. The ones with positive values get the normal series color.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="showTotal" type="xs:boolean">
+            <xs:annotation>
+              <xs:documentation>Add an artificial category 'Total' at the end.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
     </xs:sequence>
 
     <xs:attribute name="id" type="xs:ID">
@@ -260,7 +296,7 @@
 
     <xs:attribute name="chartType" use="optional" type="tns:chartType" default="LINECHART">
       <xs:annotation>
-        <xs:documentation>One of the well-known chart types, if not set - LINECHART</xs:documentation>
+        <xs:documentation>One of the well-known chart types, if not set - LINECHART. BARCHARTHORIZONTAL is only available in echarts implementation.</xs:documentation>
       </xs:annotation>
     </xs:attribute>
 
@@ -301,6 +337,14 @@
 
     <xs:attribute name="showPoints" type="xs:boolean" use="optional">
       <xs:annotation><xs:documentation>If false, for line charts no points are shown</xs:documentation></xs:annotation>
+    </xs:attribute>
+
+    <xs:attribute name="boxPlotOutliers" type="xs:boolean" use="optional" default="false">
+      <xs:annotation><xs:documentation>When set to true, BoxPlotChart shows outliners, too.</xs:documentation></xs:annotation>
+    </xs:attribute>
+
+    <xs:attribute name="polarNoGap" type="xs:boolean" use="optional" default="true">
+      <xs:annotation><xs:documentation>When set to false, Polarchart does not close the drawn lines/areas.</xs:documentation></xs:annotation>
     </xs:attribute>
 
     <xs:attribute name="width" type="xs:decimal">
@@ -350,6 +394,11 @@
         <xs:documentation>An JS expression returing the source data doc</xs:documentation>
       </xs:annotation>
     </xs:attribute>
+
+    <xs:attribute name="distinct" type="xs:boolean" use="optional" default="false">
+      <xs:annotation><xs:documentation>For handling more categories > 1 (Grouped XAxis). Set this to true if the values should be made distinct</xs:documentation></xs:annotation>
+    </xs:attribute>
+
     <xs:attribute name="nodes" use="optional">
       <xs:annotation>
         <xs:documentation>An XPath expression applied to the source data returning the values</xs:documentation>
@@ -358,7 +407,7 @@
     <xs:attribute name="modelId" use="optional">
       <xs:annotation>
         <xs:documentation>
-          A model which contain the source data doc. in this case we don´t need
+          A model which contain the source data doc. in this case we don't need
           to provide a JS Expression like sourceDocJS="myModel.dataDoc". However
           modelId="myModel" should be sufficient
         </xs:documentation>
@@ -400,7 +449,7 @@
     <xs:attribute name="modelId" use="optional">
       <xs:annotation>
         <xs:documentation>
-          A model which contain the source data doc. in this case we don´t need
+          A model which contain the source data doc. in this case we don't need
           to provide a JS Expression like sourceDocJS="myModel.dataDoc". However
           modelId="myModel" is sufficient
         </xs:documentation>
@@ -450,6 +499,13 @@
     <xs:annotation>
       <xs:documentation>Providing color values for each x value.</xs:documentation>
     </xs:annotation>
+    <xs:sequence maxOccurs="unbounded" >
+      <xs:element name="Value" type="tns:colorValue">
+        <xs:annotation>
+          <xs:documentation>color as hexadecimal value</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
 
     <xs:attributeGroup ref="tns:XValuesAttrs"></xs:attributeGroup>
   </xs:complexType>
@@ -554,7 +610,7 @@
     </xs:annotation>
 
     <xs:restriction base="xs:string">
-      <xs:pattern value="#[a-fA-F0-9]{6}"></xs:pattern>
+      <xs:pattern value="#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})"></xs:pattern>
     </xs:restriction>
   </xs:simpleType>
 

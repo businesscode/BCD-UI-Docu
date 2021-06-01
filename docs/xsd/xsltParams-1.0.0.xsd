@@ -627,6 +627,14 @@
       </element>
 
     </sequence>
+    <attribute name="paramSetId" type="string" use="optional">
+      <annotation><documentation>
+        Optional. Per default the stylesheet finds its parameter in the paramModel by element name.
+        For example [orderCols.xslt] will use the [OrderCols] element.
+        Use this attribute if multiple [OrderCols] steps share the same paramModel, which then contains multiple [OrderCols] elements.
+        If [OrderCols] has an attribute paramSetId, it must match the optional paramSetId parameter of the stylesheet.
+      </documentation></annotation>
+    </attribute>
   </complexType>
 
   <!-- RemoveEmptyCells param Type -->
@@ -657,6 +665,14 @@
     <complexContent>
       <extension base="tns:BaseParamType">
         <sequence>
+          <element name="NumberFormattingOption" minOccurs="0">
+            <simpleType>
+              <restriction base="string">
+                <enumeration value="standard"><annotation><documentation>the standard number formatting indicating negative numbers by minus sign, i.e. -1,234.56</documentation></annotation></enumeration>
+                <enumeration value="accounting"><annotation><documentation>the accounting number formatting, wrapping negative numbers in brackets, i.e. (1,234.56)</documentation></annotation></enumeration>
+              </restriction>
+            </simpleType>
+          </element>
           <element name="HeaderColsCount"     type="integer" minOccurs="0"/>
           <element name="HeaderColsAreUnique" type="boolean" minOccurs="0"/>
           <element name="TotalColumnText"     type="string" minOccurs="0"/>
