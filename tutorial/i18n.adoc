@@ -12,7 +12,7 @@ Translation for static HTML contents can be triggered separately.
 
 ==== I18n Setup
 
-In order to setup BCD-UI internationalization either you have to declare a BindingSet @id=bcdui_i18n
+In order to  set up BCD-UI internationalization either you have to declare a BindingSet @id=bcdui_i18n
 or save a static file at /myProject/bcdui/conf/messages.xml in WRS format according to BindingSet @id=bcdui_i18n with i18n messages,
 a sample is under BCD-UI/src/js/i18n/messages.xml.
 

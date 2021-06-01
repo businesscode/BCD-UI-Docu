@@ -1,34 +1,26 @@
 [[DocSimpleReq]]
 == Your first BCD-UI page
 
-In this section we start creating a small BCD-UI application and explain some core concepts. +
-Before you start, make sure you have a Java EE web application with BCD-UI prepared. +
-In case you start from scratch, you may follow <<DocGettingStarted,these>> steps to set you environment up.
+In this section we create a small BCD-UI application and explain some core concepts. +
 
 === Overview
 
-This section shows how to setup a BCD-UI page, load some data and display it.
-
 These are the steps of this section:
 
-. Page Setup: Set HTML frame for over-all layout
-. Use a _SimpleModel_: to load static daa from an XML file
-. Add a _Renderer_: The Renderer transforms the xml data to HTML
-. Use an _AutoModel_: The AutoModel dynamically loads data from the database
-. Add a _PeriodChooser_: Add a date chooser and an apply button that reloads the page with the selected date period
-. Add a _SingleSelect_: This allows you to define which data is taken into account for the report.
-. Run the report and use the filters to
+. Page Setup: Set an HTML frame for over-all layout
+. Use a _SimpleModel_ to load static data from an XML file
+. Add a _Renderer_ to transform data to HTML
+. Use an _AutoModel_ to dynamically load data from the database
+. Add a _PeriodChooser_ an apply button to reload the page with data of the selected date
+. Use a _SingleSelect_ to further filter the data
 
-Later we will add a login and continue extending tha app.
 
 === Step by step
 
 ==== Set the page up
 
-To create an HTML carrier page, add WebContent/simpleReq/index.html to your application.
-To add BCD-UI capability for JavaScript to your page, start with the following code.
-It basically holds the BCD-UI theme layout containers and includes the library, you may ignore some parts for now.
-During the next steps in this section, we will add some components.
+While you are totally free in your page layout, here makes sense to use BCD-UI's default layout as a start. +
+Add WebContent/simpleReq/index.html with BCD-UI capability to your application and adjust the urls at the beginning from `./` to `../`
 
 // tag::blankBcduiPage[]
 .A blank BCD-UI page
@@ -36,81 +28,93 @@ During the next steps in this section, we will add some components.
 ----
 include::../web/blankPage.html[]
 ----
-<1> Load BCD-UI library
-<2> This we call 'SideBar', this is where we will later place the report filters
-<3> Here we will place the data output and show the guiStatus' content
-<4> Any of your local Javascript code goes here
+<1> Loads BCD-UI library including theme
+<2> Root of page structure of BCD-UI theme
+<3> Menu will go here
+<4> This we call 'SideBar', this is where we will later place the report filters
+<5> Here we will place the data output and show the guiStatus' content
+<6> Here we will display out output
+<7> Any of your local JavaScript code goes here
 // end::blankBcduiPage[]
 
-Now you already have an empty but styled page, open it in a browser.
+Now we already have an empty but fully styled page, open it in a browser.
 
 image::images/simpleReq_blankPage.png[]
 
-If you lack the styling, it is likely that bcdui/bcdui.js could not be loaded.
-In that case, your application lacks bcdui.jar, see <<DocAppsetup,application setup>>.
-For more information about the blank carrier page, see <<DocThemes,theme>>.
+TIP: BCD-UI theme has 2 parts. +
+One is responsible for the overall page layout and seen here. It is fully optional, use your favorite structure and classes for this. +
+The part that styles widgets and components is mandatory but fully independent of this.
 
-==== Add some static data
+==== Add static data
 
-We start by loading a static file and displaying its content.
-
-Create a file `myData.xml` with the following content:
+Add a file `staticData.xml` with the following content to the /simpleReq:
 
 [source,xml]
 ----
 include::../web/sampleWrs.xml[]
 ----
 
-NOTE: Above XML is a sample of a BCD-UI _Web Row Set_ Wrs, which is per default used to transfer data from and to the client.
-Many parts of BCD-UI understand this format and show smart behaviour if you use it.
+NOTE: Above XML is a sample of a BCD-UI's _WebRowSet_ format Wrs, which is used to transfer data. +
+Many parts of BCD-UI understand this format and show smart behaviour if you use it also for static files.
 
-Now add the following code to the script block at end of the page:
+Now add the following script block to end of the page:
 
-.Fastes way to load static data
+.Load static data
 [source,javascript]
-var fixData = new bcdui.core.SimpleModel( "myData.xml" );
+var staticData = new bcdui.core.SimpleModel("staticData.xml");
 
-A link:../jsdoc/bcdui.core.SimpleModel.html[bcdui.core.SimpleModel^] is used to load data from the server or a file.
-It will not start loading, until the data is actually used, which is the case when you add a renderer in the next step.
+A link:../jsdoc/bcdui.core.SimpleModel.html[bcdui.core.SimpleModel^] is used to load data from the server.
+Like all models it is loaded lazy, so it is not loaded to the client until a displaying component requests it.
 
 ==== Add a Renderer
 
-The next step is to create a link:../jsdoc/bcdui.core.Renderer.html[bcdui.core.Renderer^] and let it display our data.
-The renderer accepts any DataProvider like the SimpleModel from the previous section plus an HTML element id (targetHtml) where
-the output is to be displayed.
+Create a link:../jsdoc/bcdui.core.Renderer.html[bcdui.core.Renderer^] to display the data.
+A _Renderer_ expects a _DataProvider_ (our SimpleModel is a _DataProvider_) plus an HTML element id (targetHtml) where the show the output.
 
-NOTE: The link:../jsdoc/bcdui.core.DataProvider.html[bcdui.core.DataProvider^] is a core concept.
-It is the base class of all models, which are able to provide data for processing or rendering, like SimpleModel or AutoModel (see below).
-Understanding DataProviders is a big step towards understanding BCD-UI client side.
-
-By default the result is rendered as simple table. It is possible to write custom xslt files to create different html.
-Add this to the script section or your page:
-
-.A typical renderer
+.A typical renderer created with JavaScript
 [source,javascript]
-var renderer =  new bcdui.core.Renderer({
-  inputModel: fixData,
-  targetHtml: "myData"
+var renderer = new bcdui.core.Renderer({
+  inputModel: staticData,
+  targetHtml: "myDataDiv"
 });
 
-The page now looks like this:
+NOTE: By default, the result is rendered as a plain table. You will often want to provide some other layout. To do this, you create a custom XSLTs JavaScript or doT.js file turning Wrs into HTML and provide it to the renderer.
+
+The result is:
 
 image::images/simpleReq_renderer_only.png[]
 
-Congratulation, This is already your first BCD-UI page!
+Congratulations, this is already your first BCD-UI page!
+
+===== Use an HTML custom tag instead
+
+You can also use a custom HTML tag to create a renderer. The advantage is that it goes right where it will appear. To do this, replace `<div id="myDataDiv"></div>` with
+
+.A typical renderer created with JavaScript
+[source,html]
+<bcd-renderer inputModel="staticData"></bcd-renderer>
+
+While the JavaScript version above references the JavaScript variable `staticData` directly, the custom tag only knows the id of the input model. You register your DataProviders simply by giving them an `ìd`:
+[source,javascript]
+var staticData = new bcdui.core.SimpleModel({ id: "staticData", url: "staticData.xml" });
+
+While the JavaScript variable and the id are both `staticData` in this example, they are completely separate things and do not need to be identical.
+
 
 ==== Load data from database
 
 Instead of reading the data from a static file, we will now access the database.
 
-===== Add a BindingSet
+===== Connect to a database
 
-<<DocBinding,BindingSets>> connect BCD-UI to yout database. Each table or view accessed is covered by a BindingSet.
+<<DocBinding,BindingSets>> connect BCD-UI to your database. Each database access is mediated by a BindingSet. For the following you obviously need a database and some data. Please identify or create a table with some columns including a date column. Make sure to also have the right database driver in your java dependencies
+
+Add the following as testData.xml to `WEB-INF/bcdui/bindings`, and adjust it to your table.
 
 [source,xml]
 ----
 <BindingSet xmlns="http://www.businesscode.de/schema/bcdui/bindings-1.0.0"
-  id="testData" table="test_data"> <!--1--> <!--2-->
+  id="carRepairs" table="car_repairs"> <!--1--> <!--2-->
 
   <C id="id" caption="Id" isKey="true"> <!--3-->
     <Column>id</Column> <!--4-->
@@ -141,70 +145,55 @@ Instead of reading the data from a static file, we will now access the database.
 <4> The real column name in you database
 <5> You may also use a valid column expression here
 
-Create a similar file in `WEB-INF/bcdui/bindings` and name it testData.xml.
+===== Create an AutoModel
 
-NOTE: By convention, the BindingSet's filename is the same as the binding set's `id` plus `.xml` extension.
-
-The BindingSet is validated and enriched by database catalog information during the startup of the web application.
-So typos in column names or not existing columns are detected already. The output can be found in the tomcat console.
-
-----
-2017-03-08 10:59:31  ReadBindingSet: BindingSet 'test_data': org.postgresql.util.PSQLException: ERROR: column t3.unicorns_feeded does not exist
-----
-
-In case a binding set is not correct, it is ignored by BCD-UI so that any access to it would lead to a BindingNotFoundException.
-
-===== Add an AutoModel
-
-The following javascript code creates an link:../jsdoc/bcdui.core.AutoModel.html[bcdui.core.AutoModel^].
-The AutoModel sends a WRS-Request referencing the BindingSet and retrieves the columns dy, country, station, carsSold and carsRepaired from our test data.
-Please adjust the column names and binding set id to the ones you used before. +
-The requested data can be filtered by country or dy. We will create the filters later in this section.
-Please note that the AutoModel is not limiting data so far, everything is loaded.
+The following link:../jsdoc/bcdui.core.AutoModel.html[bcdui.core.AutoModel] sends a request referencing a _BindingSet_ and retrieves the listed _BindingItems_ from your data. +
+The requested data can be filtered by country or by dy. We will add filters later.
 
 Add this to the script block at the end of the page:
 
 .For simple requests, AutoModels may be enough
 [source,javascript]
 ----
-var myModel = new bcdui.core.AutoModel({
+var carRepairs = new bcdui.core.AutoModel({
   bRefs: "dy country station carsSold carsRepaired",
   filterBRefs: "country dy",
-  bindingSetId: "testData",
+  bindingSetId: "carRepairs",
   isDistinct: true
 });
 ----
 
-To let the renderer show this data instead of the static XML above, change the renderer's input parameter to `inputModel: myModel`. +
+To let the renderer show this data, change the renderer's parameter to `inputModel: carRepairs`. +
 
 Reload the page: Now you are already using your database!
 
 ==== Add a PeriodChooser
-In this section we add a period chooser link:../jsdoc/bcdui.widget.PeriodChooser.html[bcdui.core.PeriodChooser^] to our page so that we can retrieve a subset of our data by specifying a date range and an apply button to start the reload of the page with the filter set by the user.
+In this section we add a link:../jsdoc/bcdui.widget.PeriodChooser.html[bcdui.widget.PeriodChooser^] to retrieve a subset of our data specified by a date range. We also add an apply button to reload the page with this filter setting.
 
+To place the period chooser and the apply button on the page, add the two sections like the following to the element with class bcd\__sidebar-left__inner.
+
+.Section in the sidebar
 [source,html]
 ----
-<div class="bcdSection">
-  <span class="bcdCaption">Date</span>
-  <div class="bcdItem">
-    <div id="periodChooser"/>
+<section>
+  <div class="bcd__form-group">
+    <label for="s1">Period Chooser</label>
+    <div class="bcd__select-container">
+      <div id="periodChooserDiv"></div>
+    </div>
   </div>
-  <div class="bcdItem">
-    <div id="apply"/>
-  </div>
-</div>
+</section>
 ----
 
-To place the period chooser and the apply button widget, add the two divs to your bcdSideBarContainer.
-The chooser and the button are then created via the JavaScript API as follows:
+The chooser and the button are then created with JavaScript as follows:
 
 .Sample for creating widgets via JavaScript
 [source,javascript]
 ----
 bcdui.widget.createPeriodChooser({
-  targetModelXPath: "$guiStatus/*/f:Filter/f:And[@id = 'myPeriodChooser']", <1>
-  targetHtml: 'periodChooser', <2>
-  isWeekSelectable: true <3>
+  targetModelXPath: "$guiStatus/*/f:Filter/f:And[@id = 'myPeriodChooser']", // <1>
+  targetHtml: 'periodChooser', // <2>
+  isWeekSelectable: true // <3>
 });
 bcdui.widgetNg.createButton({
   onClickAction: bcdui.core.lifecycle.applyAction,
@@ -212,150 +201,115 @@ bcdui.widgetNg.createButton({
   caption: 'Apply'
 });
 ----
-<1> This does tell the PeriodChooser to write its selected result into the model named guiStatus
+<1> This tells the PeriodChooser to write its selected result into the model named guiStatus
 <2> This is the HTML element where the widget is displayed
 <3> These are further widget specific settings
 
-The PeriodChooser works on well-known bRef, like `dy, mo, yr` with an optional postfix to support date field detection in calculations.
-Assuming you have a date column in your data, name it `dy`.
+Voila! data loaded from database with a filter.
 
-.It is mandatory to mame date related columns `dy, cw, cwyr, mo, qr, yr` with an optional postix
+image::images/simpleReq_period_chooser.png[]
+
+NOTE: The PeriodChooser works on well-known _BindingItem_ names to support automatic date calculations. It is mandatory to name date related BindingSet items on of `dy, cw, cwyr, mo, qr, yr` with an optional postfix.
 [source,xml]
-..<C id="dy"><Column>booking_date</Column></C>
+<C id="dy"><Column>booking_date</Column></C>
 
-Please add the above javascript snippets to the script section.
-The arguments for both are the targetHtml, which are the respective divs inside which we want to create the widgets.
-For the period chooser there is also targetModelXPath, which specifies the root node of the period filter in the guiStatus model (which is by default the target xml model for our widgets).
-To get an impression on how this guiStatus model looks like, we add the following debugging utility to the javascript section in our page:
+
+==== The important _guiStatus_
+BCD-UI creates a page-wide singleton model named `guiStatus`, accessible via `bcdui.wkModels.guiStatus` (or by name), which serves as the default place to store user interaction.
+
+To get an impression on how this guiStatus model looks like, add the following debugging utility to the JavaScript section in our page. Also add the target div with id `myGuiStatusDiv` in the main area within bcd__content-container:
 
 [source,javascript]
 ----
 bcdui.widget.visualizeXml.visualizeModel({
-  inputModel: bcdui.wkModels.guiStatus, 
-  targetHtml: "myGuiStatus"
+  inputModel: bcdui.wkModels.guiStatus,
+  targetHtml: "myGuiStatusDiv"
 });
 ----
 
-This utility widget simply displays the content of the guiStatus singleton to div#myGuiStatus.
-A sample guiStatus with a specified period is shown here:
+This utility widget simply displays the content of the guiStatus to div#myGuiStatusDiv. Play with the period chooser and see the filter change. +
+This is done with the help of _two-way binding_ of widgets and models. If the widget changes the model changes, but if the model changes it also propagates the changes back to the widget. We see more of this in the coming section.
 
-[source,xml]
-----
-<guiStatus:Status xmlns:guiStatus="http://www.businesscode.de/schema/bcdui/guiStatus-1.0.0"> <!--1-->
-  <f:Filter xmlns:f="http://www.businesscode.de/schema/bcdui/filter-1.0.0"> <!--2-->
-    <f:And id="myPeriodChooser" bcdPostfix="" isValid="true" dateFrom="2017-01-01" dateTo="2017-01-31"> <!--3-->
-      <f:Expression bRef="dy" op="&gt;=" value="2017-01-01"/>
-      <f:Expression bRef="dy" op="&lt;=" value="2017-01-31"/>
-    </f:And>
-  </f:Filter>
-</guiStatus:Status>
-----
-<1> This model is created by BCD-UI on page load time and can be found at bcdui.wkModels.guiStatus or by name guiStatus
-<2> guiStatus:Status/f:Filter is the per convention the default place for widgets. It is controlled by the targetModelXPath parameter that you provide
-<3> This node and its children is written by our PeriodChooser once a value is selected
+image::images/simpleReq_guiStatusWidget.png[]
 
-When the apply button is clicked, the guiStatus document is used for loading data once the page is reentered.
-You should see than that the url has a guiStatus parameter with the compressed guiStatus.
+When the apply button is clicked, the _guiStatus_ document is sent to the sever, which uses f:Filter for limiting loaded data.
+You should see that the url has a guiStatus parameter with the (compressed) guiStatus.
 
-NOTE: BCD-UI creates a page-wide singleton named `guiStatus`, accessible via bcdui.wkModels.guiStatus
-and it serves per convention as the default place to store user interaction.
-
-AutoModel translates f:Filter elements stored in `guiStatus` into an SQL `WHERE` condition clause on the server side, see its `filterBRef` parameter.
-So when you setup a widget to create a filter, the targetXPath argument describes what filter elements are written to the guiStatus.
-In short the attribute bRef of a f:Filter expression specifies which column we want to use in a filter.
-So in our example the filter f:Filter leads translated to
+So when you set up a widget to create a filter, the targetXPath argument describes what filter elements are written to the guiStatus.
+So our example filter f:Filter translates to
 
 [source,sql]
-SELECT ... FROM your_table WHERE .. ( dy_columnname BETWEEN '2017-01-01' AND '2017-01-31' );
+SELECT ... FROM mytable WHERE booking_date BETWEEN '2021-01-01' AND '2021-01-31';
 
-Further details on web row set and the filters can be found <<DocXmlData,here>>
+Further details on Wrs requests and f:Filters can be found <<DocXmlData,below>>
+
+In praxis, you will debug the _guiStatus_ by opening the JavaScript console of your browser and entering
+----
+bcdui.wkModels.guiStatus.getData()
+----
+you can then see the content written by the period chooser
+
+image::images/simpleReq_debugGuistatus.png[]
 
 ==== Add a SingleSelect
 
-The user can limit the data retrieved from the database by using filter widgets.
-Many filters show lists of values to choose from that are based on reference data.
+We do now add a more complex filter link:../jsdoc/bcdui.widgetNg.html#.createSingleSelect[bcdui.widgetNg.SingleSelect:^], which is using data for displaying a selection to the user.
 
-The filter in this example is a link:../jsdoc/bcdui.widgetNg.html#.createSingleSelect[Single Select:^], which uses a list of countries from which the user can choose.
-A BCD-UI model holds data in the from of XML for further usage.
-To add a model with the available data, add the following code to your script block:
+Create a model from small static inline data with country data. Depending on your data you want to filter you may adjust this to some other values.
 
-.Create a model from small static inline data
+.StaticModel for inline data
 [source,javascript]
 ----
-var staticModel = new bcdui.core.StaticModel({
+var countriesModel= new bcdui.core.StaticModel({
   id: "countriesModel",
-  data: '<countries><item caption="Germany">DE</item><item caption="France">FR</item>'+
-        '<item caption="USA">US</item><item caption="Spain">ES</item></countries>'
+  data: '<Wrs xmlns="http://www.businesscode.de/schema/bcdui/wrs-1.0.0"><Data>' +
+      ' <R><C caption="Germany">DE</C></R>' +
+      ' <R><C caption="USA">US</C></R>' +
+      ' <R><C caption="Spain">ES</C></R>' +
+      '</Data></Wrs>'
 });
 ----
 
-The link:../jsdoc/bcdui.core.StaticModel.html[bcdui.core.StaticModel^] used in this example has a static string which is parsed and available as DOM document.
+The link:../jsdoc/bcdui.core.StaticModel.html[bcdui.core.StaticModel^] gets a static inline string which is parsed and made available. The `id` attribute makes the model available not only as a JavaScript object but also by name. We make use of that below.
 
-[source,xml]
-----
-<countries>
-  <item caption="Germany">DE</item>
-  <item caption="France">FR</item>
-  <item caption="USA">US</item>
-  <item caption="Spain">ES</item>
-</countries>
-----
+The SingleSelect widget we want to use here must be added to bcd\__sidebar-left__inner div, similar for the apply button and the period chooser.
 
-The SingleSelect widget we want to use here must be added to the bcdSideBarContainer div, similar for the apply button and the period chooser.
-
-[source,html]
-----
-<div id="bcdSideBarContainer">
-  <div class="bcdSection">
-    <span class="bcdCaption">Country</span>
-    <div class="bcdItem">
-      <div id="country"/>
-    </div>
-    ...
-  </div>
-</div>
-----
-
-The SingleSelect widget is again created with javascript in the script block:
+The SingleSelect widget is again created with JavaScript in the script block. Note that the values available are defined as XPath expressions into the model. You should make yourself familiar with XPaths as they are used quite often..
 
 [source,javascript]
 ----
 bcdui.widgetNg.createSingleSelect({
-  targetHtml: 'country',
+  targetHtml: 'countryChooserDiv',
   targetModelXPath: "/*/f:Filter/f:Expression[@bRef = 'country' and @op = '=']/@value",
-  optionsModelXPath: "$countriesModel/countries/item"
+  optionsModelXPath: "$countriesModel/wrs:Wrs/wrs:Data/wrs:R/wrs:C/@caption",
+  optionsModelRelativeValueXPath: ".."
 });
 ----
 
-The widget has an optionsModelXPath argument that specifies the data source for the options from which the user can select a value.
-In our example, the list of countries is taken from a StaticModel, please note that the optionsModelXPath is a string attribute,
-therefore we have to set an explicit id for the StaticModel, we choose 'countriesModel'.
+The optional optionsModelXPath argument specifies the data source for the options presented to the user.
+Because optionsModelXPath is a string attribute we have to set an explicit id for the StaticModel. We choose 'countriesModel'.
 
-NOTE: References to a DataProviders in xpaths are always built with a `$` followed by the DataProvider's id, like `$myDataModel`.
-
-To let the xpath access all countries, we set `$countriesModel/countries/item`.
+NOTE: References to a DataProviders in XPaths are built with a `$` followed by the DataProvider's id, like `$countriesModel`.
 
 .Sample for HTML custom elements
 [source,html]
 ----
-<div class="bcdSection">
-  <span class="bcdCaption">Country</span>
-  <div class="bcdItem">
-    <bcd-singleselectng
-        targetModelXPath="/*/f:Filter/f:Expression[@bRef = 'country' and @op = '=']/@value"
-        optionsModelXPath="$countriesModel/countries/item"/>
-  </div>
+<label>Country</label>
+<div class="bcd__select-container">
+  <bcd-singleselectng
+      targetModelXPath = "/*/f:Filter/f:Expression[@bRef = 'country' and @op = '=']/@value"
+      optionsModelXPath = "$countriesModel/wrs:Wrs/wrs:Data/wrs:R/wrs:C/@caption",
+      optionsModelRelativeValueXPath = ".."></bcd-singleselectng>
 </div>
 ----
 
-The chosen item will be stored in the guiStatus (default) target model using the targetXPath position.
-In this case we write a "country" filter.
+The chosen item will be stored in the guiStatus (because it's the default) using the targetXPath position.
+In this case we write a filter on the "country" _BindingItem_.
 You can find more about widgets <<DocWidgets,here>>.
 
-==== Run your report
-
-Congratulations. These were all steps required to setup a filter demo page you can now open
-http://localhost:8080/GettingStarted/simpleReq/index.html to see your report. +
-(Please adapt the URL, if necessary, if your Tomcat listens on a different port.)
-
 image::images/simpleReq_simpleReq.png[]
+
+==== Two-way binding of widgets
+If you have both versions of the country chooser (JavaScript and custom HTML) on the page, you will notice that they are always in sync. That is, if you change one, the other changes as well. This shows an important feature of BCD-UI. +
+When a chooser is writing to its target model, which is _guiStatus_ here since it is the default for widgets, the _guiStatus_ informs all listeners depending on it about a change. This gives them the chance to reflect the value correctly at any time. +
+While here the target model is the _guiStatus_, this concept works with any of your models.

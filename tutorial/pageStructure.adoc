@@ -33,7 +33,7 @@ Page-Interaction phase::
 ** Changes to the UI, like chooser settings or sorting per default lead to changes in the guiStatus.
 ** Changes to business data will be stored separate DataProviders.
 ** Please note, no change of model data triggers any change of any view per se. +
-Instead you setup listeners, that inform Renderer to refresh, if needed.
+Instead you  set up listeners, that inform Renderer to refresh, if needed.
 * A _save_ on a DataProvider event will sending the data to the associated web-service, usually WrsServlet, which then stores the data into the database.
 * Other activities like in-place drill down will lead to additional data being loaded.
 
@@ -51,7 +51,7 @@ The guiStatus is a standard StaticModel, but is object of the following extra-ha
 * They have the fixed id _guiStatus_ / _guiStatusEstablished_
 * It is initialized during page load with the guiStatus URL parameter of the page and executed.
 It is guaranteed to be _ready_ when executing code in `bcdui.core.ready( function() { myCode } )`.
-* It is the default target model for widgets, i.e. it applies if an xpath does not start with an explicit $modelId
+* It is the default target model for widgets, i.e. it applies if an XPath does not start with an explicit $modelId
 * It is an implicit parameter to all transformations, for example in XSLT it can be access with +
 `<xsl:param name="guiStatus"/>;`
 * The link:https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.lifecycle.html#.applyAction[applyAction^] appends its content to the url of the called page
@@ -106,9 +106,9 @@ You can find the API documentation here link:../jsdoc/bcdui.core.DataProvider.ht
 
 `bcdui.factory.objectRegistry` is a singleton constructed by BCD-UI in page load.
 Objects are registered if they get an explicit id assigned. +
-DataProviders are plain javascript objects, which you can use via their javascript API.
+DataProviders are plain JavaScript objects, which you can use via their JavaScript API.
 But whenever you want to address a DataProvider by id in a declarative API, you need to give the DataProvider an explicit id on creation.
-Examples are HTML Custom Element parameters or an xpath in targetModelXPath. +
+Examples are HTML Custom Element parameters or an XPath in targetModelXPath. +
 If you provide such an id parameter, the object is centrally registered and can be retrieved by its id later.
 
 [source,javascript]
@@ -122,9 +122,9 @@ var m22 = bcdui.factory.objectRegistry.getObject("myId"); // <5>
 ----
 <1> Standard way, no id assigned, the object is not registered
 <2> An id is assigned for access from declarative APIs. The object is automatically registered.
-<3> Ase the StaticModel from Javascript
-<4> Access by id in an xpath, for example a targetModelXpath of a widget
-<5> Retrieve the Javascript object from the `bcdui.factory.objectRegistry`, resulting to m22 === m2.
+<3> Ase the StaticModel from JavaScript
+<4> Access by id in an XPath, for example a targetModelXpath of a widget
+<5> Retrieve the JavaScript object from the `bcdui.factory.objectRegistry`, resulting to m22 === m2.
 
 ===== Dependency Tree
 

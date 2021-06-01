@@ -66,7 +66,7 @@ image::./images/xsltLibrary_unsorted.png[]
 
 ==== Javascript counterparts
 
-Many of these also have counterparts in Javascript at `bcdui.wrs.wrsUtil`. For example
+Many of these also have counterparts in JavaScript at `bcdui.wrs.wrsUtil`. For example
 
 .Sample for using bcdui.wrs.wrsUtil
 [source,javascript]

@@ -9,8 +9,8 @@ Server side logging:: log4j.propertes file in call path allows fine grained cont
 Endless waiting renderers:: use  `bcdui.factory.objectRegistry.getWaitingIds()`  to detect ids of renderer/wrapper, waiting for yet non-exisiting ids.
 Find out which BindingItems a binding set has:: de.businesscode.bcdui.binding.Bindings.getInstance().get("b4_bsg_tte", java.util.Arrays.asList("cage_dy"))
 And to read information about a specific one:: de.businesscode.bcdui.binding.Bindings.getInstance().get("b4_bsg_tte", java.util.Arrays.asList("cage_dy")).get("cage_dy").getJDBCDataTypeName()
-Use the browser developer console to examine client issues:: Most modern browser have a console, where you can execute issue javascript commands to examine object status
-Use request parameter debug=true:: The debug request parameter makes the application more picky about javascript parameters and turns on client logging that might help.
+Use the browser developer console to examine client issues:: Most modern browser have a console, where you can execute issue JavaScript commands to examine object status
+Use request parameter debug=true:: The debug request parameter makes the application more picky about JavaScript parameters and turns on client logging that might help.
 
 === Common error messages
 

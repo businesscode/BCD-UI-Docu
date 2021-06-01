@@ -8,7 +8,7 @@ Commonly they store their state, the user's selection in a target model (by defa
 The `targetModelXPath` parameter points to the exact place where data is stored.
 Widgets usually work in 2 ways.
 If the user clicks/selects/does an action on it, the target value changes.
-On the other hand, when you change the value from outside, e.g. via javascript,
+On the other hand, when you change the value from outside, e.g. via JavaScript,
 the widget should update itself visually to be in sync with the value.
 
 Some widgets have an options model reference as data source, for example entries in a drop down box.
@@ -60,10 +60,10 @@ bcdui.widgetNg.createSingleSelect( {
 <xapi:SingleSelect id="myId" ... />
 ----
 
-Using Javascript and HTML Custom Elements is by far the most common way.
+Using JavaScript and HTML Custom Elements is by far the most common way.
 
-NOTE: While you can create widges from javascript, HTML custom elements, XSLT, XAPI and jsp, the result and behavior is exactly the same.
-You can easily derive the parameters from the javascript api documentation.
+NOTE: While you can create widges from JavaScript, HTML custom elements, XSLT, XAPI and jsp, the result and behavior is exactly the same.
+You can easily derive the parameters from the JavaScript api documentation.
 
 === Overview bcdui.WidgetNg
 

@@ -182,7 +182,7 @@ The server responses technical errors via SOAP 1.2 fault
 
 === Cell addressing
 
-Identifying the right column can be done via its hard-coded position in an xPath
+Identifying the right column can be done via its hard-coded position in an XPath
 
 [source,javascript]
 ----
@@ -191,7 +191,7 @@ Identifying the right column can be done via its hard-coded position in an xPath
 ----
 
 This is easy but also easily breaks and is hard to read.
-Thus, it is better to identify a column via its logical name 'CP_DESC', this will work in an xPath outside and inside of XSLT:
+Thus, it is better to identify a column via its logical name 'CP_DESC', this will work in an XPath outside and inside of XSLT:
 
 [source,javascript]
 ----

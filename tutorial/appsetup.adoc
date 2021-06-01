@@ -1,96 +1,95 @@
 [[DocAppsetup]]
 == Application Setup
 
-Here we assume you have you environment with Java and optionally Eclipse or another IDE already setup, otherwise see <<DocBootstrap,here>>.
+A BCD-UI application is a regular Jakarta EE application. These steps are show how to add BCD-UI to an existing web application project.
 
-=== Application Setup
+There are many good tutorials for each IDE on how to set up a web application, for Eclipse you could follow https://medium.com/@zandra.harner/setting-up-the-develop-environment-for-lop-a-web-application-in-eclipse-ide-7f3a36eddf60[this] one on Medium.
 
-A BCD-UI application is a regular Java EE application, web container is enough.
-Follow these steps to add BCD-UI capability.
+We suggest to, before adding BCD-UI to it, test your web application without BCD-UI. Open a page, maybe call a test Servlet. If your application runs without BCD-UI then it will also run with BCD-UI.
 
-==== Set up a standard web project in Eclipse
+=== Adding BCD-UI
 
-If you do not already have a Java EE application, create a new one (menu:File[New>Dynamic Web project]).
-You will need to make your application server aware of the new project. (This step is not directly related to BCD-UI.)
-For tomcat either add a context file to your tomcat's config folder, having docBase pointing to your project.
-Or add the project to the Tomcat started with Eclipse via WTP methods, by going to the server in the _Servers_ view and choose menu:Right Click[Add and Remove...]. +
-For your new application add the database connections to context.xml, they will be used by BCD-UI.
+. Add BCD-UI jars +
+See https://github.com/businesscode/maven-repo for maven and gradle.
++
+.For example for gradle add
+[source,gradle]
+----
+dependencies {
+  repositories {
+    mavenCentral()
+    maven {
+      url "https://github.com/businesscode/maven-repo/raw/master"
+    }
+    implementation 'de.businesscode.bcdui:bcd-ui-core:5.5.0-SNAPSHOT'
+    implementation 'de.businesscode.bcdui:bcd-ui-theme-bcd:5.5.0-SNAPSHOT'
+  }
+}
+----
+If you prefer you may also download the BCD-UI's jars and their dependencies mentioned in https://github.com/businesscode/BCD-UI/blob/master/Docu/development/bcdui_dependencies.gradle[BCD-UI/Docu/development/bcdui_dependencies.gradle] and put them into WEB-INF/lib. +
++
+NOTE: These two jars not only hold all Java classes for the server but also all client side sources of BCD-UI like JavaScript and XSLT. BCD-UI makes sure they are served to the client along with your client side sources which are placed were you would usually place them.
 
-==== Steps to add BCD-UI to your application
+. Add Entries to web.xml +
+To register BCD-UI's servlets and filters, add the entries from link:https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/web.xml[BCD-UI/Server/configFiles/web.xml, window="_blank"] to your web.xml. +
+When you upgrade to a new version of BCD-UI check in https://github.com/businesscode/BCD-UI/blob/master/Docu/releaseNotes.adoc[release notes] whether it changed.
 
-Option 1 for adding jars: Use gradle or maven::
-Instead of manually copying BCD-UI and 3rd-party jars it is also possible to use a build tool with dependencies.
-This document describes the procedure for <<DocGradle,gradle>> you can also easily derive the settings for maven from this.
+. Create an empty WEB-INF/bcdui/bindings +
+All configuration files for BCD-UI are located at WEB-INF/bcdui. Create an empty `WEB-INF/bcdui/bindings` folder, later you'll add <<DocBinding,Bindings>> here.
 
-Option 2 for adding jars: Manually::
-BCD-UI comes packed as jars, which need to be made available in WEB-INF/lib to the application.
-Two jars are needed, one is bcdui.jar and bcdui_theme_bcd.jar. The latter is theme-dependent. +
-These (about 28) 3rd party libraries link:https://github.com/businesscode/BCD-UI/blob/master/Docu/development/dependencies.gradle[BCD-UI/blob/master/Docu/development/dependencies.gradle, window="_blank"] are needed, copy them into your project's WEB-INF/lib folder.
+. Add logging configuration +
+Copy link:https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/log4j2.xml[BCD-UI/Server/configFiles/log4j2.xml, window="_blank"]
+to your project's src/main/resources folder.
 
-Add Entries to web.xml::
-To register BCD-UI servlets and filters, add the entries from link:https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/web.xml[BCD-UI/Server/configFiles/web.xml, window="_blank"] to your web.xml.
+. Add entries for the database +
+See link:https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/tomcat/context.xml[context.xml] for entries for several databases for Tomcat. +
+The jndi entry
++
+[source,xml]
+----
+ <Environment name="bcdui/defaultConnection" type="java.lang.String" value="jdbc/connectionXX"/>
+----
+is important as it denotes the connection used of none is explicitly given in a BindingSet.
 
-Create an empty WEB-INF/bcdui/bindings::
-All configuration files for BCD-UI are located at WEB-INF/bcdui. Create an empty `WEB-INF/bcdui/bindings` folder, later you add <<DocBinding,Bindings>> here.
+////
+TODO
+==== Optionally
 
-This is all that is required to use BCD-UI in your application.
-
-==== Optional steps
-
-Add logging configuration::
-Copy log4j.properties from link:https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/log4j.properties[BCD-UI/Server/configFiles/log4j.properties, window="_blank"]
-to your project's src folder, this sets logging to a reasonable level. Ensure that this src folder is actually added as source folder in your java build path.
-
-Add BCD-UI java sources:: 
-Please note this is not possible if the BCD-UI library is fetched via grade dependencies. +
+Add BCD-UI Java sources::
 For debugging of server components it might be helpful to add the java sources of BCD-UI to the eclipse workspace.
 The easiest way is to download or git-clone the BCD-UI project from github to an extra folder outside of your workspace.
 Then configure the source location via menu:Right-Click-Project(Build Path>Configure Build Path), by selecting bcdui-core.jar
-and assign the `Server/src/main/java` of the download location as source attachment.
+and assign `Server/src/main/java` of the download location as source attachment.
 
 image::images/appsetup_addSources.png[]
+////
 
 === BCD-UI folder layout
 
-While in Eclipse you will only see some jars, the web.xml entries plus configuration files at _WEB-INF/bcdui_,
-BCD-UI logically follows the follwing layout.
-
-==== Application server's view
-
-From the application server's point of view, several resources like js files and servlets are mapped to `/bcdui` as if they where physically located there.
-The StaticResourceServlet maps static resources to `/bcdui` and Java EE standard mechanisms are mapping the tags and servlets.
+BCD-UI follows standard Java Web Application layout. +
+One thing less common though is that the JavaScript and other static sources come with the 2 BCD-UI jars mentioned. So they are in these jars in WEB-INF/lib and not in your web content folder next to WEB-INF. +
+StaticResourceServlet of BCD-UI assures that for the client it looks as if they were there though.
 
 [cols="1 m,1 m,1 m,1 m,2 m,5"]
 |===
 2+|Project/||| s|Eclipse project
-||src/||| s|Project java sources
-|| 2+|log4j.properties| s|Logging settings, a useful default can be found in BCD-UI/resources
-|| 3+|de/businesscode/bcdui/ s|BCD-UI's java classes, found in bcdui.jar.
-| 2+|WebContent/|| s|Webapp itself, used by Eclipse WTP, can also be Project/webContent
-|||...|| s|Project's HTML pages etc
-|||bcdui/|| s|BCD-UI's main folder
+||src/main/||| s|
+|||java/|| s|Project java sources
+|||resources/ 2+|log4j.properties s|Logging settings
+| 2+|WebContent/|| s|Webapp itself
+|||...|| s|Project's HTML pages, JaavaScript etc
+|||bcdui/|| s|BCD-UI's virtual main folder, blended here by a Servlet
 ||||js/| s|JS library mapped from bcd-ui-core.jar
 ||||xslt/| s|XSLT library mapped from bcd-ui-core.jar
 ||||theme/| s|Themes library mapped from bcd-ui-theme.jar
 ||||servlets/| s|BCD-UI's servlets are mapped here
 || 2+|WEB-INF/||
-||||bcdui/| s|Configuration for library
+||||bcdui/| s|Configuration for BCD-UI
 |||||bindings/ s|Project's BCD-UI BindingSets are put here
 ||||lib/||
 |||||... s|3rd party and project libs
 |||||bcd-ui-core.jar s|Java classes and static sources (js,xslt) mapped to /bcdui
 |||||bcd-ui-theme.jar s|Themes, mapped to /bcdui/theme at runtime
 ||||web.xml| s|Contains some BCD-UI library related entries
-|| 3+|META-INF/context.xml s|Optionally here, containing JDBC database connections
+|| 3+|META-INF/context.xml s|Containing JDBC database connections
 |===
-
-==== Overwriting BCD-UI with own sources
-
-Knowing this physical project structure allows you to overwrite sources of BCD-UI selectively.
-
-Java resources:: Just add a java class with the same package and class name as found in BCD-UI to your local project.
-The application server's class loader will take care to give your source precedence.
-
-Static resources:: Static resources like js, images or xslt are overwritten with the help of StaticResourceServlet.
-To do so add a folder `WebContent/bcduiOverwrite` to the root of your project.
-Below this, just put the overwriting source with the same name and folder location as the overwritten file.

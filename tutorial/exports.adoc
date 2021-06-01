@@ -46,8 +46,8 @@ The PeriodChooser will add a node to f:Filter:
 [source,xml]
 ----
 <f:And id="dy">
-  <f:Expression bRef="dy" op="&gt;=" value="2017-09-14"/>
-  <f:Expression bRef="dy" op="&lt;=" value="2017-09-14"/>
+  <f:Expression bRef="dy" op="&gt;=" value="2021-09-14"/>
+  <f:Expression bRef="dy" op="&lt;=" value="2021-09-14"/>
 </f:And>
 ----
 As you can see by executing `wrq.getData()` or `wrq.promptData()` in the browser console after selecting a date.
@@ -64,7 +64,7 @@ Plus there might be additional filters needed that you provide.
 .DE, North, AWS are filters coming from the cell's position
 image::images/detail_export.png[]
 
-Luckily BCD-UI provides you everything to quickly setup such a cube cell detail export.
+Luckily BCD-UI provides you everything to quickly  set up such a cube cell detail export.
 First of all you need a way to execute the detail export on a specific cell.
 This is done by adding the Detail Export functionality in the context menu.
 The default context menu lists it, too.

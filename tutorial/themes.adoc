@@ -71,7 +71,7 @@ This is a typical compiled style .jar package structure:
 ==== Page structuring
 
 BCD-UI follows a 960 grid system based layout.
-The following shows a standard html page which includes the library (and so it includes the styles, too) with footer, body and sidebar areas.
+The following shows a standard HTML page which includes the library (and so it includes the styles, too) with footer, body and sidebar areas.
 
 [source,html]
 ----

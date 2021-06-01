@@ -20,7 +20,7 @@ Only tables and columns with a binding can be accessed by a BCD-UI application.
 This mechanism enables the server to limit the data access of the front end
 and provides meta information about the database columns.
 
-Bindings are maintained as xml files in WEB-INF/bcd/bindings in the following form:
+Bindings are maintained as XML files in WEB-INF/bcd/bindings in the following form:
 A simple binding looks like the following:
 
 [source,xml]
@@ -132,7 +132,7 @@ See above configuration for an example.
 ===== WrsModificationCallback
 
 WrsModificationCallback is a general implementation of de.businesscode.bcdui.binding.write.WriteProcessingCallback offering WRS values manipulation on the server.
-The class is setup using parameters in the Binding definition document. Please consult the API documentation on class de.businesscode.bcdui.binding.write.WrsModificationCallback for
+The class is  set up using parameters in the Binding definition document. Please consult the API documentation on class de.businesscode.bcdui.binding.write.WrsModificationCallback for
 further information.
 
 In short, this callback allows you to provide server-side or constant values for WRS data, to either coalesce it with data sent from client and
@@ -217,7 +217,7 @@ as appropriate. See class documentation for more information.
 ==== BindingInclude / XInclude
 
 Recurring groups of BindingItems, for examples sets of levels of a dimension or sets of measures do not need to be repeated in all
-BindingSets but can be included on xml level via xi:include.
+BindingSets but can be included on XML level via xi:include.
 If you use `b:BindingInclude` as root, the BindingSet will not be instantiated itself but is only for importing it elsewhere.
 
 ==== Relations

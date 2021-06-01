@@ -63,12 +63,12 @@ A login page is a standard page with two plain inputs:
 ----
 include::../web/login.html[tag=inputs]
 ----
-We are not using BCD-UI buttons here but plain html ones here, because we made the library accessible to already authenticated users only.
+We are not using BCD-UI buttons here but plain HTML ones here, because we made the library accessible to already authenticated users only.
 
 . Login logging +
 By adding `bcd_log_login` BindingSet to your application, all login attempts and their result is logged into the corresponding table.
 
-To setup users and their authorization, you can choose the simple setup by hard-coding them in web.xml
+To  set up users and their authorization, you can choose the simple setup by hard-coding them in web.xml
 or maintaining them in the database.
 
 ==== Define users in web.xml

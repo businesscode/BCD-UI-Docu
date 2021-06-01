@@ -19,7 +19,7 @@ For example drilling from an item of the chart or exporting data can be develope
 
 === Usage
 
-To use a chart, you need to setup a chart configuration, provide the data and create the chart itself.
+To use a chart, you need to  set up a chart configuration, provide the data and create the chart itself.
 
 Create a file with a sample chart configuration like this:
 [source,xml]
@@ -41,7 +41,7 @@ NOTE: Charts require an explicit size of their target HTML element.
 Set it either inside the chart definition or assign it via CSS.
 Otherwise 'No data' may be shown though there is data
 
-And add this Javascript code:
+And add this JavaScript code:
 [source,javascript]
 ----
 include::../web/charts/index.html[tag=chartJs]

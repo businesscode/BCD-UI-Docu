@@ -559,7 +559,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#_step_by_step">2.1. Step by step</a>
 <ul class="sectlevel3">
-<li><a href="#_connect_the_application_to_a_database">Connect the application to a database</a></li>
 <li><a href="#_create_simple_request_page">Create Simple Request Page</a></li>
 </ul>
 </li>
@@ -575,9 +574,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_add_a_renderer">Add a Renderer</a></li>
 <li><a href="#_load_data_from_database">Load data from database</a></li>
 <li><a href="#_add_a_periodchooser">Add a PeriodChooser</a></li>
+<li><a href="#_the_important_guistatus">The important <em>guiStatus</em></a></li>
 <li><a href="#_add_a_singleselect">Add a SingleSelect</a></li>
-<li><a href="#_run_your_report">Run your report</a></li>
-<li><a href="#_the_guistatus">The <em>guiStatus</em></a></li>
+<li><a href="#_two_way_binding_of_widgets">Two-way binding of widgets</a></li>
 </ul>
 </li>
 </ul>
@@ -877,26 +876,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#DocBootstrap">22. Bootstrap</a>
 <ul class="sectlevel2">
 <li><a href="#_get_the_tools">22.1. Get the tools</a></li>
-<li><a href="#_xml_schema_xsd_catalog">22.2. XML schema xsd catalog</a>
-<ul class="sectlevel3">
-<li><a href="#_javascript_api_stubs">JavaScript Api stubs</a></li>
-<li><a href="#_html_5_custom_elements">HTML 5 Custom Elements</a></li>
-</ul>
-</li>
+<li><a href="#_xml_schema_xsd_catalog">22.2. XML schema xsd catalog</a></li>
 </ul>
 </li>
 <li><a href="#DocAppsetup">23. Application Setup</a>
 <ul class="sectlevel2">
-<li><a href="#_adding_bcd_ui">23.1. Adding BCD-UI</a>
-<ul class="sectlevel3">
-<li><a href="#_optionally">Optionally</a></li>
-</ul>
-</li>
-<li><a href="#_bcd_ui_folder_layout">23.2. BCD-UI folder layout</a>
-<ul class="sectlevel3">
-<li><a href="#_overwriting_bcd_ui_with_own_sources">Overwriting BCD-UI with own sources</a></li>
-</ul>
-</li>
+<li><a href="#_adding_bcd_ui">23.1. Adding BCD-UI</a></li>
+<li><a href="#_bcd_ui_folder_layout">23.2. BCD-UI folder layout</a></li>
 </ul>
 </li>
 <li><a href="#DocGradle">24. Use Gradle to setup a BCD-UI project</a>
@@ -991,33 +977,32 @@ by defining dimensions and measures and filter data by time and location like th
 </div>
 </div>
 <div class="paragraph">
-<p>You will be surprised how easy that is achieved with BCD-UI.
+<p>You will be surprised how easy you achieve that with BCD-UI.<br>
 And going further and tweak the application to your needs is where BCD-UI continues supporting you,
-so you can provide solutions with higher complexity with less effort and less bugs and performance issues than ever.</p>
+so you can provide solutions with higher complexity with less effort, less bugs and less performance issues than ever.</p>
 </div>
 <div class="paragraph">
-<p>With BCD-UI you are free to extend in any direction needed using standard technologies,
-and you are not limited to BCD-UI components,
-but often you will find an 80% solution already provided ready-to-use.</p>
+<p>With BCD-UI you are free to extend in any direction needed using standard technologies.
+While you are not at all limited to BCD-UI components, you will often find an 80% solution already provided ready-to-use.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_what_about_jquery_or_angular">1.2. What about jQuery or Angular?</h3>
 <div class="paragraph">
 <p>Good question, should you not rather use jQuery?
-In fact, when using BCD-UI you will be using jQuery a lot directly and indirectly as BCD-UI itself is built with the help of jQuery and understands jQuery objects.
-And while not using Angular directly, BCD-UI uses <em>web-components</em>, which is also the basis for Angular modules
-and you will find, the basic approach of Angular of dealing with data the on client and building reusable modules is very similar.</p>
+In fact, when using BCD-UI you will be using jQuery a lot directly and indirectly as BCD-UI itself is built with the help of jQuery and understands jQuery objects.<br>
+And while not using Angular directly, BCD-UI uses <em>web-components</em>, which is also the basis for Angular modules,
+and you will find the basic approach of Angular when dealing with data the on client and building reusable modules is very similar.</p>
 </div>
 <div class="paragraph">
-<p>Yet, both libraries, like many others, limit themselves to low-level development issues.
+<p>Yet, both libraries, like many others, limit themselves to somewhat low-level development and client side topics.<br>
 jQuery thankfully provides an API, which should have been part of the browser already, plus a rich set of UI-widgets.
-Angular brings architecture to a JavaScript client, where before many solutions tried without.
-Both is very important for emerging enterprise applications and both is also part of BCD-UI.</p>
+Angular brought architecture to a JavaScript client, where before many solutions tried without.
+Both aspects are very important for enterprise applications and both are also part of BCD-UI.</p>
 </div>
 <div class="paragraph">
 <p>But in the end, they do not provide you with database access, components on higher abstraction levels,
-security or ready-to-use components and leave these complex parts for you to solve.
+security or ready-to-use components and leave these complex parts for you to be solved.<br>
 Still, BCD-UI combines freely with of today&#8217;s standard libraries, as is itself comprised of standard technologies easy to integrate with everything else.</p>
 </div>
 </div>
@@ -1025,11 +1010,11 @@ Still, BCD-UI combines freely with of today&#8217;s standard libraries, as is it
 <h3 id="_is_there_commercial_support">1.3. Is there commercial support?</h3>
 <div class="paragraph">
 <p>Commercial support for BCD-UI if necessary can be provided by <a href="http://www.business-code.de" target="_blank" rel="noopener">BusinessCode GmbH</a>, an independent software vendor in Germany.
-We already delivered literally hundreds of solutions in the past years based on different versions of BCD-UI,
+We already delivered literally hundreds of solutions based on different versions of BCD-UI,
 ranging from temporary installations to cover transitions up to a number of large scale installations
 with over 10.000 distinct users for enterprise-critical scenarios.
 There is even a BCD-UI Enterprise Edition: BCD-UI-EE available, providing even more features and full life-cycle support.
-In most cases we think though the Community Edition available on GitHub is fully supporting you use case.</p>
+In most cases we think though the Community Edition available on GitHub and described here is fully supporting you use case.</p>
 </div>
 </div>
 </div>
@@ -1038,11 +1023,11 @@ In most cases we think though the Community Edition available on GitHub is fully
 <h2 id="DocGettingStarted">2. Getting Started</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To start developing with BCD-UI, just follow these three steps:</p>
+<p>To start developing with BCD-UI, just follow these steps:</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">Setup your development environment </dt>
+<dt class="hdlist1">Set up your development environment </dt>
 <dd>
 <div class="ulist">
 <ul>
@@ -1055,34 +1040,41 @@ In most cases we think though the Community Edition available on GitHub is fully
 </ul>
 </div>
 </dd>
-<dt class="hdlist1">Setup a web application using BCD-UI</dt>
+<dt class="hdlist1">Set up a web application using BCD-UI</dt>
 <dd>
 <div class="ulist">
 <ul>
 <li>
-<p>Create a standard web application with your IDE</p>
+<p>Create a standard web application with your IDE, test it</p>
 </li>
 <li>
-<p>Add bcd-ui-core.jar and bcd-ui-theme.jar and their dependencies to WEB-INF/lib.</p>
+<p>Add bcd-ui-core.jar and bcd-ui-theme.jar to your dependencies</p>
 </li>
 <li>
 <p>Copy some entries into your web.xml</p>
 </li>
 <li>
-<p>This is all. See chapter <a href="#DocAppsetup">Application Setup</a> for these steps, where we also discuss the internal layout of BCD-UI files and how to overwrite them.</p>
+<p>Define database connection and default in context.xml</p>
 </li>
 </ul>
 </div>
 </dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>This is all. See chapter <a href="#DocAppsetup">Application Setup</a> for these steps. There we also discuss the internal layout of BCD-UI jar files.</p>
+</div>
+<div class="dlist">
+<dl>
 <dt class="hdlist1">Add pages to your web application </dt>
 <dd>
 <div class="ulist">
 <ul>
 <li>
-<p>BCD-UI pages are just plain standard HTML pages and a single bcdui.js file being loaded</p>
+<p>BCD-UI pages are just plain standard HTML pages, and a single bcdui.js file being loaded</p>
 </li>
 <li>
-<p>See chapter <a href="#DocSimpleReq">Simple request</a> and later chapter <a href="#DocMinimalCube">Minimal Cube</a> for this</p>
+<p>See chapter <a href="#DocSimpleReq">Simple request</a> or <a href="#DocMinimalCube">Minimal Cube</a> for this</p>
 </li>
 </ul>
 </div>
@@ -1093,170 +1085,6 @@ In most cases we think though the Community Edition available on GitHub is fully
 <h3 id="_step_by_step">2.1. Step by step</h3>
 <div class="paragraph">
 <p>Once your application is set up following <a href="#DocAppsetup">Application Setup</a>, you can start developing.</p>
-</div>
-<div class="sect3">
-<h4 id="_connect_the_application_to_a_database">Connect the application to a database</h4>
-<div class="paragraph">
-<p>For the next steps use any database you have access to.<br>
-Add your database connection to WebContent/META-INF/context.xml.<br>
-For some databases we recommend specific additional attributes for full support, please have a look at
-<a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/tomcat/context.xml" target="_blank" rel="noopener">BCD-UI/Server/configFiles/tomcat/context.xml</a> for a sample context.xml.</p>
-</div>
-<div class="paragraph">
-<p>While you will choose some tables in your database to play with, in the following examples we just assume there is table "test_data" containing data shown in the following table:</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.667%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">id</th>
-<th class="tableblock halign-left valign-top">dy</th>
-<th class="tableblock halign-left valign-top">country</th>
-<th class="tableblock halign-left valign-top">station</th>
-<th class="tableblock halign-left valign-top">cars_sold</th>
-<th class="tableblock halign-left valign-top">cars_repaired</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">10001</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2021-01-01</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DE</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Cologne</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">50.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">25.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">10002</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2021-01-02</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">FR</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Paris</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">66.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">10003</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2021-01-03</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DE</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Berlin</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">75.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">334.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">10004</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2021-01-04</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">US</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">New York</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">17.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">43.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">10005</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2021-02-05</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DE</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Cologne</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">29.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">43.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">10006</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2021-02-06</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ES</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Barcelona</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">27.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">10.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">10007</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2021-02-07</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DE</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Cologne</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">21.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">13.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>A <a href="#DocBinding">BindingSet</a> makes BCD-UI aware of a table and looks like this:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;BindingSet</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.businesscode.de/schema/bcdui/bindings-1.0.0</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">testData</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">table</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">test_data</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-  <span class="tag">&lt;C</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Id</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">isKey</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-    <span class="tag">&lt;Column&gt;</span>id<span class="tag">&lt;/Column&gt;</span>
-  <span class="tag">&lt;/C&gt;</span>
-  <span class="tag">&lt;C</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">dy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Dy</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-    <span class="tag">&lt;Column&gt;</span>dy<span class="tag">&lt;/Column&gt;</span>
-  <span class="tag">&lt;/C&gt;</span>
-  <span class="tag">&lt;C</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">country</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Country</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-    <span class="tag">&lt;Column&gt;</span>country<span class="tag">&lt;/Column&gt;</span>
-  <span class="tag">&lt;/C&gt;</span>
-  <span class="tag">&lt;C</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">station</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Station</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-    <span class="tag">&lt;Column&gt;</span>station<span class="tag">&lt;/Column&gt;</span>
-  <span class="tag">&lt;/C&gt;</span>
-  <span class="tag">&lt;C</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">carsSold</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Cars sold</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-    <span class="tag">&lt;Column&gt;</span>cars_sold<span class="tag">&lt;/Column&gt;</span>
-  <span class="tag">&lt;/C&gt;</span>
-  <span class="tag">&lt;C</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">carsRepaired</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Cars repaired</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-    <span class="tag">&lt;Column&gt;</span>cars_repaired<span class="tag">&lt;/Column&gt;</span>
-  <span class="tag">&lt;/C&gt;</span>
-<span class="tag">&lt;/BindingSet&gt;</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Add this file to <code>WEB-INF/bcdui/bindings</code> or any sub-folder and name it testData.xml. Adjust it to your table.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Each BindingSet is validated and enriched during startup of the application with database catalog information like column type etc.<br>
-So there is no need to fill all attributes but whatever you set here wins of the catalog information.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Typos in column names or not existing columns are detected already on startup of an application to avoid surprises after rollout.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>2021-03-08 10:59:31  ReadBindingSet: BindingSet 'test_data': org.postgresql.util.PSQLException: ERROR: column t3.unicorns_feeded does not exist</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Important for our next steps is the <code>id</code> of each <em>BindingItem</em>. It is used in the code and provides a nice abstraction layer for namings.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Give columns in different tables with the same data the same <code>id</code>. This is not only easier to read but also eases exports and drill-overs etc with BCD-UI.
-</td>
-</tr>
-</table>
-</div>
 </div>
 <div class="sect3">
 <h4 id="_create_simple_request_page">Create Simple Request Page</h4>
@@ -1271,7 +1099,7 @@ Give columns in different tables with the same data the same <code>id</code>. Th
 <h2 id="DocSimpleReq">3. Your first BCD-UI page</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In this section we start creating a small BCD-UI application and explain some core concepts.<br></p>
+<p>In this section we create a small BCD-UI application and explain some core concepts.<br></p>
 </div>
 <div class="sect2">
 <h3 id="_overview_2">3.1. Overview</h3>
@@ -1306,7 +1134,8 @@ Give columns in different tables with the same data the same <code>id</code>. Th
 <div class="sect3">
 <h4 id="_set_the_page_up">Set the page up</h4>
 <div class="paragraph">
-<p>Add WebContent/simpleReq/index.html with BCD-UI capability to your application.</p>
+<p>While you are totally free in your page layout, here makes sense to use BCD-UI&#8217;s default layout as a start.<br>
+Add WebContent/simpleReq/index.html with BCD-UI capability to your application and adjust the urls at the beginning from <code>./</code> to <code>../</code></p>
 </div>
 <div class="listingblock">
 <div class="title">A blank BCD-UI page</div>
@@ -1343,36 +1172,102 @@ Give columns in different tables with the same data the same <code>id</code>. Th
 29
 30
 <strong class="highlighted">31</strong>
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
 </pre></td>
   <td class="code"><pre><span class="doctype">&lt;!DOCTYPE HTML&gt;</span>
 <span class="tag">&lt;html&gt;</span>
 <span class="tag">&lt;head&gt;</span>
   <span class="tag">&lt;meta</span> <span class="attribute-name">charset</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">UTF-8</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-  <span class="tag">&lt;title&gt;</span>BCD-UI Tutorial<span class="tag">&lt;/title&gt;</span>
-  <span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/javascript</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">../bcdui/bcdui.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
+  <span class="tag">&lt;title&gt;</span>Blank Page<span class="tag">&lt;/title&gt;</span>
+  <span class="tag">&lt;link</span> <span class="attribute-name">rel</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">shortcut icon</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">./favicon.ico</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/javascript</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">./bcdui/bcdui.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
 <span class="tag">&lt;/head&gt;</span>
 <span class="tag">&lt;body&gt;</span>
-  <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdMainContainer</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span> <i class="conum" data-value="2"></i><b>(2)</b>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__outer-wrapper</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span> <i class="conum" data-value="2"></i><b>(2)</b>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__wrapper</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__horizontal-split</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
 
-    <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdHeaderArea</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdLogoImageArea</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span><span class="tag">&lt;/div&gt;</span>
-    <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdSpacerArea</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
-
-    <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdContentContainer</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-      <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdSideBarContainer</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span> <i class="conum" data-value="3"></i><b>(3)</b>
-        <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdSection</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+      <span class="comment">&lt;!-- Header --&gt;</span>
+      <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__header</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__header__upper</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+          <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__header__logo</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;img</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">../bcdui/theme/images/bcd_logo.png</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">alt</span>=<span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
+          <span class="tag">&lt;div&gt;</span><span class="tag">&lt;/div&gt;</span>
         <span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__header__navigation</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span> <i class="conum" data-value="3"></i><b>(3)</b>
       <span class="tag">&lt;/div&gt;</span>
 
-      <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdBodyContainer</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span> <i class="conum" data-value="4"></i><b>(4)</b>
-        <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdCaption</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Page Caption<span class="tag">&lt;/div&gt;</span>
-        <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">myDataDiv</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
-        <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">myGuiStatus</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
+      <span class="comment">&lt;!-- Main area --&gt;</span>
+      <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__vertical-split</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+
+        <span class="comment">&lt;!-- Sidebar --&gt;</span> <i class="conum" data-value="4"></i><b>(4)</b>
+        <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__sidebar-left</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+          <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__sidebar-left__inner</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+            <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__sidebar-left-collaps-toggle-wrapper</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__sidebar-left-collaps-toggle bcd__sidebar-left-collaps-toggle--collapsed</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;i</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">fas fa-caret-left</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/i&gt;</span><span class="tag">&lt;/button&gt;</span><span class="tag">&lt;/div&gt;</span>
+
+            <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__form-container</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+              <span class="comment">&lt;!-- place your sidebar widgets here --&gt;</span>
+            <span class="tag">&lt;/div&gt;</span>
+
+          <span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;/div&gt;</span>
+
+        <span class="comment">&lt;!-- Main content area --&gt;</span> <i class="conum" data-value="5"></i><b>(5)</b>
+        <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__content-container</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+          <span class="tag">&lt;h1&gt;</span>Blank Page<span class="tag">&lt;/h1&gt;</span>
+
+          <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">myDataDiv</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span> <i class="conum" data-value="6"></i><b>(6)</b>
+        <span class="tag">&lt;/div&gt;</span>
+
       <span class="tag">&lt;/div&gt;</span>
+
+      <span class="comment">&lt;!-- Footer --&gt;</span>
+      <span class="tag">&lt;footer&gt;</span>
+        <span class="tag">&lt;p&gt;</span><span class="entity">&amp;copy;</span> 2021 BusinessCode GmbH<span class="tag">&lt;/p&gt;</span>
+        <span class="tag">&lt;nav&gt;</span>
+          <span class="tag">&lt;ul&gt;</span>
+            <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Imprint<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+            <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Privacy<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+          <span class="tag">&lt;/ul&gt;</span>
+        <span class="tag">&lt;/nav&gt;</span>
+      <span class="tag">&lt;/footer&gt;</span>
     <span class="tag">&lt;/div&gt;</span>
-
   <span class="tag">&lt;/div&gt;</span>
-  <span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/javascript</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span> <i class="conum" data-value="5"></i><b>(5)</b>
-<span class="inline">  </span><span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+<i class="conum" data-value="7"></i><b>(7)</b>
+<span class="tag">&lt;script&gt;</span>
+<span class="tag">&lt;/script&gt;</span>
 <span class="tag">&lt;/body&gt;</span>
 <span class="tag">&lt;/html&gt;</span></pre></td>
 </tr></table></code></pre>
@@ -1390,14 +1285,22 @@ Give columns in different tables with the same data the same <code>id</code>. Th
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>This we call 'SideBar', this is where we will later place the report filters</td>
+<td>Menu will go here</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>Here we will place the data output and show the guiStatus' content</td>
+<td>This we call 'SideBar', this is where we will later place the report filters</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Here we will place the data output and show the guiStatus' content</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Here we will display out output</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
 <td>Any of your local JavaScript code goes here</td>
 </tr>
 </table>
@@ -1417,8 +1320,9 @@ Give columns in different tables with the same data the same <code>id</code>. Th
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-BCD-UI theme has 2 parts. One is responsible for the overall page layout and seen here. It is fully optional, use your favorite structure and classes for this.<br>
-The part that styles widgets and components is fully independent of this.
+BCD-UI theme has 2 parts.<br>
+One is responsible for the overall page layout and seen here. It is fully optional, use your favorite structure and classes for this.<br>
+The part that styles widgets and components is mandatory but fully independent of this.
 </td>
 </tr>
 </table>
@@ -1427,7 +1331,7 @@ The part that styles widgets and components is fully independent of this.
 <div class="sect3">
 <h4 id="_add_static_data">Add static data</h4>
 <div class="paragraph">
-<p>Add a file <code>staticData.xml</code> with the following content:</p>
+<p>Add a file <code>staticData.xml</code> with the following content to the /simpleReq:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1479,7 +1383,7 @@ Many parts of BCD-UI understand this format and show smart behaviour if you use 
 </div>
 <div class="paragraph">
 <p>A <a href="../jsdoc/bcdui.core.SimpleModel.html" target="_blank" rel="noopener">bcdui.core.SimpleModel</a> is used to load data from the server.
-It is loaded lazy, so it is not loaded to the client until a displaying component requests it.</p>
+Like all models it is loaded lazy, so it is not loaded to the client until a displaying component requests it.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1497,8 +1401,17 @@ A <em>Renderer</em> expects a <em>DataProvider</em> (our SimpleModel is a <em>Da
 });</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>By default, the result is rendered as a plain table. You will often want to provide some other layout. To do this, you create a custom XSLTs JavaScript or doT.js file turning Wrs into HTML and provide it to the renderer.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+By default, the result is rendered as a plain table. You will often want to provide some other layout. To do this, you create a custom XSLTs JavaScript or doT.js file turning Wrs into HTML and provide it to the renderer.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>The result is:</p>
@@ -1509,7 +1422,7 @@ A <em>Renderer</em> expects a <em>DataProvider</em> (our SimpleModel is a <em>Da
 </div>
 </div>
 <div class="paragraph">
-<p>Congratulation, This is already your first BCD-UI page!</p>
+<p>Congratulations, this is already your first BCD-UI page!</p>
 </div>
 <div class="sect4">
 <h5 id="_use_an_html_custom_tag_instead">Use an HTML custom tag instead</h5>
@@ -1531,7 +1444,7 @@ A <em>Renderer</em> expects a <em>DataProvider</em> (our SimpleModel is a <em>Da
 </div>
 </div>
 <div class="paragraph">
-<p>While the JavaScript variable and the id are both <code>staticData</code> here, they are completely separate things and do not need to be identical.</p>
+<p>While the JavaScript variable and the id are both <code>staticData</code> in this example, they are completely separate things and do not need to be identical.</p>
 </div>
 </div>
 </div>
@@ -1541,12 +1454,12 @@ A <em>Renderer</em> expects a <em>DataProvider</em> (our SimpleModel is a <em>Da
 <p>Instead of reading the data from a static file, we will now access the database.</p>
 </div>
 <div class="sect4">
-<h5 id="_add_a_bindingset">Add a BindingSet</h5>
+<h5 id="_connect_to_a_database">Connect to a database</h5>
 <div class="paragraph">
-<p><a href="#DocBinding">BindingSets</a> connect BCD-UI to your database. Each database access is mediated by a BindingSet.</p>
+<p><a href="#DocBinding">BindingSets</a> connect BCD-UI to your database. Each database access is mediated by a BindingSet. For the following you obviously need a database and some data. Please identify or create a table with some columns including a date column. Make sure to also have the right database driver in your java dependencies</p>
 </div>
 <div class="paragraph">
-<p>If you did not already, add the following as testData.xml to <code>WEB-INF/bcdui/bindings</code>.</p>
+<p>Add the following as testData.xml to <code>WEB-INF/bcdui/bindings</code>, and adjust it to your table.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1605,8 +1518,8 @@ A <em>Renderer</em> expects a <em>DataProvider</em> (our SimpleModel is a <em>Da
 <div class="sect4">
 <h5 id="_create_an_automodel">Create an AutoModel</h5>
 <div class="paragraph">
-<p>The following <a href="../jsdoc/bcdui.core.AutoModel.html">bcdui.core.AutoModel</a> sends a WRS-Request referencing a <em>BindingSet</em> and retrieves the listed columns from our test data.
-The requested data can be filtered by country or by dy. We will create the filters later.</p>
+<p>The following <a href="../jsdoc/bcdui.core.AutoModel.html">bcdui.core.AutoModel</a> sends a request referencing a <em>BindingSet</em> and retrieves the listed <em>BindingItems</em> from your data.<br>
+The requested data can be filtered by country or by dy. We will add filters later.</p>
 </div>
 <div class="paragraph">
 <p>Add this to the script block at the end of the page:</p>
@@ -1636,19 +1549,19 @@ The requested data can be filtered by country or by dy. We will create the filte
 <p>In this section we add a <a href="../jsdoc/bcdui.widget.PeriodChooser.html" target="_blank" rel="noopener">bcdui.widget.PeriodChooser</a> to retrieve a subset of our data specified by a date range. We also add an apply button to reload the page with this filter setting.</p>
 </div>
 <div class="paragraph">
-<p>To place the period chooser and the apply button on the page, add the two divs to your bcdSideBarContainer.</p>
+<p>To place the period chooser and the apply button on the page, add the two sections like the following to the element with class bcd__sidebar-left__inner.</p>
 </div>
 <div class="listingblock">
+<div class="title">Section in the sidebar</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdSection</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-  <span class="tag">&lt;span</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdCaption</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Date<span class="tag">&lt;/span&gt;</span>
-  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdItem</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-    <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">periodChooser</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
+<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;section&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__form-group</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;label</span> <span class="attribute-name">for</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">s1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Period Chooser<span class="tag">&lt;/label&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__select-container</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+      <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">periodChooserDiv</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
   <span class="tag">&lt;/div&gt;</span>
-  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdItem</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-    <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">apply</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
-  <span class="tag">&lt;/div&gt;</span>
-<span class="tag">&lt;/div&gt;</span></code></pre>
+<span class="tag">&lt;/section&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1673,7 +1586,7 @@ bcdui.widgetNg.createButton({
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>This does tell the PeriodChooser to write its selected result into the model named guiStatus</td>
+<td>This tells the PeriodChooser to write its selected result into the model named guiStatus</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -1693,11 +1606,11 @@ bcdui.widgetNg.createButton({
 <img src="images/simpleReq_period_chooser.png" alt="simpleReq period chooser">
 </div>
 </div>
-<div class="admonitionblock tip">
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
 The PeriodChooser works on well-known <em>BindingItem</em> names to support automatic date calculations. It is mandatory to name date related BindingSet items on of <code>dy, cw, cwyr, mo, qr, yr</code> with an optional postfix.
@@ -1712,58 +1625,100 @@ The PeriodChooser works on well-known <em>BindingItem</em> names to support auto
 </div>
 </div>
 <div class="sect3">
+<h4 id="_the_important_guistatus">The important <em>guiStatus</em></h4>
+<div class="paragraph">
+<p>BCD-UI creates a page-wide singleton model named <code>guiStatus</code>, accessible via <code>bcdui.wkModels.guiStatus</code> (or by name), which serves as the default place to store user interaction.</p>
+</div>
+<div class="paragraph">
+<p>To get an impression on how this guiStatus model looks like, add the following debugging utility to the JavaScript section in our page. Also add the target div with id <code>myGuiStatusDiv</code> in the main area within bcd__content-container:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">bcdui.widget.visualizeXml.visualizeModel({
+  <span class="key">inputModel</span>: bcdui.wkModels.guiStatus,
+  <span class="key">targetHtml</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myGuiStatusDiv</span><span class="delimiter">&quot;</span></span>
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This utility widget simply displays the content of the guiStatus to div#myGuiStatusDiv. Play with the period chooser and see the filter change.<br>
+This is done with the help of <em>two-way binding</em> of widgets and models. If the widget changes the model changes, but if the model changes it also propagates the changes back to the widget. We see more of this in the coming section.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/simpleReq_guiStatusWidget.png" alt="simpleReq guiStatusWidget">
+</div>
+</div>
+<div class="paragraph">
+<p>When the apply button is clicked, the <em>guiStatus</em> document is sent to the sever, which uses f:Filter for limiting loaded data.
+You should see that the url has a guiStatus parameter with the (compressed) guiStatus.</p>
+</div>
+<div class="paragraph">
+<p>So when you set up a widget to create a filter, the targetXPath argument describes what filter elements are written to the guiStatus.
+So our example filter f:Filter translates to</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="sql"><span class="class">SELECT</span> ... <span class="keyword">FROM</span> mytable <span class="keyword">WHERE</span> booking_date <span class="keyword">BETWEEN</span> <span class="string"><span class="delimiter">'</span><span class="content">2021-01-01</span><span class="delimiter">'</span></span> <span class="keyword">AND</span> <span class="string"><span class="delimiter">'</span><span class="content">2021-01-31</span><span class="delimiter">'</span></span>;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Further details on Wrs requests and f:Filters can be found <a href="#DocXmlData">below</a></p>
+</div>
+<div class="paragraph">
+<p>In praxis, you will debug the <em>guiStatus</em> by opening the JavaScript console of your browser and entering</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>bcdui.wkModels.guiStatus.getData()</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>you can then see the content written by the period chooser</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/simpleReq_debugGuistatus.png" alt="simpleReq debugGuistatus">
+</div>
+</div>
+</div>
+<div class="sect3">
 <h4 id="_add_a_singleselect">Add a SingleSelect</h4>
 <div class="paragraph">
 <p>We do now add a more complex filter <a href="../jsdoc/bcdui.widgetNg.html#.createSingleSelect" target="_blank" rel="noopener">bcdui.widgetNg.SingleSelect:</a>, which is using data for displaying a selection to the user.</p>
 </div>
+<div class="paragraph">
+<p>Create a model from small static inline data with country data. Depending on your data you want to filter you may adjust this to some other values.</p>
+</div>
 <div class="listingblock">
-<div class="title">Create a model from small static inline data with country data</div>
+<div class="title">StaticModel for inline data</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> staticModel = <span class="keyword">new</span> bcdui.core.StaticModel({
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> countriesModel= <span class="keyword">new</span> bcdui.core.StaticModel({
   <span class="key">id</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">countriesModel</span><span class="delimiter">&quot;</span></span>,
-  <span class="key">data</span>: <span class="string"><span class="delimiter">'</span><span class="content">&lt;countries&gt;&lt;item caption=&quot;Germany&quot;&gt;DE&lt;/item&gt;&lt;item caption=&quot;France&quot;&gt;FR&lt;/item&gt;</span><span class="delimiter">'</span></span>+
-        <span class="string"><span class="delimiter">'</span><span class="content">&lt;item caption=&quot;USA&quot;&gt;US&lt;/item&gt;&lt;item caption=&quot;Spain&quot;&gt;ES&lt;/item&gt;&lt;/countries&gt;</span><span class="delimiter">'</span></span>
+  <span class="key">data</span>: <span class="string"><span class="delimiter">'</span><span class="content">&lt;Wrs xmlns=&quot;http://www.businesscode.de/schema/bcdui/wrs-1.0.0&quot;&gt;&lt;Data&gt;</span><span class="delimiter">'</span></span> +
+      <span class="string"><span class="delimiter">'</span><span class="content"> &lt;R&gt;&lt;C caption=&quot;Germany&quot;&gt;DE&lt;/C&gt;&lt;/R&gt;</span><span class="delimiter">'</span></span> +
+      <span class="string"><span class="delimiter">'</span><span class="content"> &lt;R&gt;&lt;C caption=&quot;USA&quot;&gt;US&lt;/C&gt;&lt;/R&gt;</span><span class="delimiter">'</span></span> +
+      <span class="string"><span class="delimiter">'</span><span class="content"> &lt;R&gt;&lt;C caption=&quot;Spain&quot;&gt;ES&lt;/C&gt;&lt;/R&gt;</span><span class="delimiter">'</span></span> +
+      <span class="string"><span class="delimiter">'</span><span class="content">&lt;/Data&gt;&lt;/Wrs&gt;</span><span class="delimiter">'</span></span>
 });</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>The <a href="../jsdoc/bcdui.core.StaticModel.html" target="_blank" rel="noopener">bcdui.core.StaticModel</a> gets a static inline string which is parsed and made available. The <code>id</code> attribute makes the model available not only as a JavaScript object but also by name. We make use of that below.</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;countries&gt;</span>
-  <span class="tag">&lt;item</span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Germany</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>DE<span class="tag">&lt;/item&gt;</span>
-  <span class="tag">&lt;item</span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">France</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>FR<span class="tag">&lt;/item&gt;</span>
-  <span class="tag">&lt;item</span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">USA</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>US<span class="tag">&lt;/item&gt;</span>
-  <span class="tag">&lt;item</span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Spain</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>ES<span class="tag">&lt;/item&gt;</span>
-<span class="tag">&lt;/countries&gt;</span></code></pre>
-</div>
+<div class="paragraph">
+<p>The SingleSelect widget we want to use here must be added to bcd__sidebar-left__inner div, similar for the apply button and the period chooser.</p>
 </div>
 <div class="paragraph">
-<p>The SingleSelect widget we want to use here must be added to the bcdSideBarContainer div, similar for the apply button and the period chooser.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdSideBarContainer</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdSection</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-    <span class="tag">&lt;span</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdCaption</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Country<span class="tag">&lt;/span&gt;</span>
-    <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdItem</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-      <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">country</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-    <span class="tag">&lt;/div&gt;</span>
-    ...
-  <span class="tag">&lt;/div&gt;</span>
-<span class="tag">&lt;/div&gt;</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The SingleSelect widget is again created with JavaScript in the script block:</p>
+<p>The SingleSelect widget is again created with JavaScript in the script block. Note that the values available are defined as XPath expressions into the model. You should make yourself familiar with XPaths as they are used quite often..</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="javascript">bcdui.widgetNg.createSingleSelect({
-  <span class="key">targetHtml</span>: <span class="string"><span class="delimiter">'</span><span class="content">country</span><span class="delimiter">'</span></span>,
+  <span class="key">targetHtml</span>: <span class="string"><span class="delimiter">'</span><span class="content">countryChooserDiv</span><span class="delimiter">'</span></span>,
   <span class="key">targetModelXPath</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">/*/f:Filter/f:Expression[@bRef = 'country' and @op = '=']/@value</span><span class="delimiter">&quot;</span></span>,
-  <span class="key">optionsModelXPath</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">$countriesModel/countries/item</span><span class="delimiter">&quot;</span></span>
+  <span class="key">optionsModelXPath</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">$countriesModel/wrs:Wrs/wrs:Data/wrs:R/wrs:C/@caption</span><span class="delimiter">&quot;</span></span>,
+  <span class="key">optionsModelRelativeValueXPath</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">..</span><span class="delimiter">&quot;</span></span>
 });</code></pre>
 </div>
 </div>
@@ -1783,19 +1738,15 @@ References to a DataProviders in XPaths are built with a <code>$</code> followed
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>To let the XPath access all countries, we set <code>$countriesModel/countries/item</code>.</p>
-</div>
 <div class="listingblock">
 <div class="title">Sample for HTML custom elements</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdSection</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-  <span class="tag">&lt;span</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdCaption</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Country<span class="tag">&lt;/span&gt;</span>
-  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdItem</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-    <span class="tag">&lt;bcd-singleselectng</span>
-        <span class="attribute-name">targetModelXPath</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/*/f:Filter/f:Expression[@bRef = 'country' and @op = '=']/@value</span><span class="delimiter">&quot;</span></span>
-        <span class="attribute-name">optionsModelXPath</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">$countriesModel/countries/item</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-  <span class="tag">&lt;/div&gt;</span>
+<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;label&gt;</span>Country<span class="tag">&lt;/label&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__select-container</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;bcd-singleselectng</span>
+      <span class="attribute-name">targetModelXPath</span> = <span class="string"><span class="delimiter">&quot;</span><span class="content">/*/f:Filter/f:Expression[@bRef = 'country' and @op = '=']/@value</span><span class="delimiter">&quot;</span></span>
+      <span class="attribute-name">optionsModelXPath</span> = <span class="string"><span class="delimiter">&quot;</span><span class="content">$countriesModel/wrs:Wrs/wrs:Data/wrs:R/wrs:C/@caption</span><span class="delimiter">&quot;</span></span><span class="error">,</span>
+      <span class="attribute-name">optionsModelRelativeValueXPath</span> = <span class="string"><span class="delimiter">&quot;</span><span class="content">..</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/bcd-singleselectng&gt;</span>
 <span class="tag">&lt;/div&gt;</span></code></pre>
 </div>
 </div>
@@ -1804,13 +1755,6 @@ References to a DataProviders in XPaths are built with a <code>$</code> followed
 In this case we write a filter on the "country" <em>BindingItem</em>.
 You can find more about widgets <a href="#DocWidgets">here</a>.</p>
 </div>
-</div>
-<div class="sect3">
-<h4 id="_run_your_report">Run your report</h4>
-<div class="paragraph">
-<p>Congratulations. These were all steps required to set up a filter demo page. You can now open
-<a href="http://localhost:8080/GettingStarted/simpleReq/index.html" class="bare">http://localhost:8080/GettingStarted/simpleReq/index.html</a> to see your report.<br></p>
-</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/simpleReq_simpleReq.png" alt="simpleReq simpleReq">
@@ -1818,81 +1762,11 @@ You can find more about widgets <a href="#DocWidgets">here</a>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_the_guistatus">The <em>guiStatus</em></h4>
+<h4 id="_two_way_binding_of_widgets">Two-way binding of widgets</h4>
 <div class="paragraph">
-<p>Please add the above JavaScript snippets to the script section.
-For the period chooser there is also targetModelXPath, which specifies the root node of the period filter in the guiStatus model (which is by default the target xml model for our widgets).
-To get an impression on how this guiStatus model looks like, we add the following debugging utility to the JavaScript section in our page:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript">bcdui.widget.visualizeXml.visualizeModel({
-  <span class="key">inputModel</span>: bcdui.wkModels.guiStatus,
-  <span class="key">targetHtml</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myGuiStatus</span><span class="delimiter">&quot;</span></span>
-});</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This utility widget simply displays the content of the guiStatus to div#myGuiStatus.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-BCD-UI creates a page-wide singleton named <code>guiStatus</code>, accessible via bcdui.wkModels.guiStatus or by name which serves as the default place to store user interaction.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>A sample guiStatus with a specified period is shown here:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;guiStatus:Status</span> <span class="attribute-name">xmlns:guiStatus</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.businesscode.de/schema/bcdui/guiStatus-1.0.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
-  <span class="tag">&lt;f:Filter</span> <span class="attribute-name">xmlns:f</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.businesscode.de/schema/bcdui/filter-1.0.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span> <i class="conum" data-value="2"></i><b>(2)</b>
-    <span class="tag">&lt;f:And</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">myPeriodChooser</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">bcdPostfix</span>=<span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">isValid</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">dateFrom</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">2021-01-01</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">dateTo</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">2021-01-31</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span> <i class="conum" data-value="3"></i><b>(3)</b>
-      <span class="tag">&lt;f:Expression</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">dy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">op</span>=<span class="string"><span class="delimiter">&quot;</span><span class="entity">&amp;gt;</span><span class="content">=</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">2021-01-01</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-      <span class="tag">&lt;f:Expression</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">dy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">op</span>=<span class="string"><span class="delimiter">&quot;</span><span class="entity">&amp;lt;</span><span class="content">=</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">2021-01-31</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-    <span class="tag">&lt;/f:And&gt;</span>
-  <span class="tag">&lt;/f:Filter&gt;</span>
-<span class="tag">&lt;/guiStatus:Status&gt;</span></code></pre>
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>guiStatus model is created by BCD-UI on page load time</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>guiStatus:Status/f:Filter is the per convention the default place for widgets. It is controlled by the targetModelXPath parameter that you provide</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>This node tree is written by our PeriodChooser once a value is selected</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>When the apply button is clicked, the guiStatus document is sent to the sever, and it uses f:Filter for limiting loaded data.
-You should see that the url has a guiStatus parameter with the (compressed) guiStatus.</p>
-</div>
-<div class="paragraph">
-<p>So when you set up a widget to create a filter, the targetXPath argument describes what filter elements are written to the guiStatus.
-So our example filter f:Filter translates to</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="sql"><span class="class">SELECT</span> ... <span class="keyword">FROM</span> mytable <span class="keyword">WHERE</span> booking_date <span class="keyword">BETWEEN</span> <span class="string"><span class="delimiter">'</span><span class="content">2021-01-01</span><span class="delimiter">'</span></span> <span class="keyword">AND</span> <span class="string"><span class="delimiter">'</span><span class="content">2021-01-31</span><span class="delimiter">'</span></span>;</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Further details on Wrs requests and f:Filters can be found <a href="#DocXmlData">below</a></p>
+<p>If you have both versions of the country chooser (JavaScript and custom HTML) on the page, you will notice that they are always in sync. That is, if you change one, the other changes as well. This shows an important feature of BCD-UI.<br>
+When a chooser is writing to its target model, which is <em>guiStatus</em> here since it is the default for widgets, the <em>guiStatus</em> informs all listeners depending on it about a change. This gives them the chance to reflect the value correctly at any time.<br>
+While here the target model is the <em>guiStatus</em>, this concept works with any of your models.</p>
 </div>
 </div>
 </div>
@@ -2050,31 +1924,64 @@ create a file <code>WEB-INF/bcdui/bindings/myReportData1.xml</code> and adjust t
 <span class="tag">&lt;html&gt;</span>
 <span class="tag">&lt;head&gt;</span>
   <span class="tag">&lt;meta</span> <span class="attribute-name">charset</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">UTF-8</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-  <span class="tag">&lt;title&gt;</span>BCD-UI Tutorial<span class="tag">&lt;/title&gt;</span>
-  <span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/javascript</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">../bcdui/bcdui.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
+  <span class="tag">&lt;title&gt;</span>Blank Page<span class="tag">&lt;/title&gt;</span>
+  <span class="tag">&lt;link</span> <span class="attribute-name">rel</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">shortcut icon</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">./favicon.ico</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/javascript</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">./bcdui/bcdui.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
 <span class="tag">&lt;/head&gt;</span>
 <span class="tag">&lt;body&gt;</span>
-  <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdMainContainer</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span> <i class="conum" data-value="2"></i><b>(2)</b>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__outer-wrapper</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span> <i class="conum" data-value="2"></i><b>(2)</b>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__wrapper</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__horizontal-split</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
 
-    <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdHeaderArea</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdLogoImageArea</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span><span class="tag">&lt;/div&gt;</span>
-    <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdSpacerArea</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
-
-    <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdContentContainer</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-      <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdSideBarContainer</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span> <i class="conum" data-value="3"></i><b>(3)</b>
-        <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdSection</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+      <span class="comment">&lt;!-- Header --&gt;</span>
+      <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__header</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__header__upper</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+          <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__header__logo</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;img</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">../bcdui/theme/images/bcd_logo.png</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">alt</span>=<span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
+          <span class="tag">&lt;div&gt;</span><span class="tag">&lt;/div&gt;</span>
         <span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__header__navigation</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span> <i class="conum" data-value="3"></i><b>(3)</b>
       <span class="tag">&lt;/div&gt;</span>
 
-      <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdBodyContainer</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span> <i class="conum" data-value="4"></i><b>(4)</b>
-        <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdCaption</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Page Caption<span class="tag">&lt;/div&gt;</span>
-        <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">myDataDiv</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
-        <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">myGuiStatus</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
+      <span class="comment">&lt;!-- Main area --&gt;</span>
+      <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__vertical-split</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+
+        <span class="comment">&lt;!-- Sidebar --&gt;</span> <i class="conum" data-value="4"></i><b>(4)</b>
+        <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__sidebar-left</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+          <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__sidebar-left__inner</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+            <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__sidebar-left-collaps-toggle-wrapper</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__sidebar-left-collaps-toggle bcd__sidebar-left-collaps-toggle--collapsed</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;i</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">fas fa-caret-left</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/i&gt;</span><span class="tag">&lt;/button&gt;</span><span class="tag">&lt;/div&gt;</span>
+
+            <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__form-container</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+              <span class="comment">&lt;!-- place your sidebar widgets here --&gt;</span>
+            <span class="tag">&lt;/div&gt;</span>
+
+          <span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;/div&gt;</span>
+
+        <span class="comment">&lt;!-- Main content area --&gt;</span> <i class="conum" data-value="5"></i><b>(5)</b>
+        <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__content-container</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+          <span class="tag">&lt;h1&gt;</span>Blank Page<span class="tag">&lt;/h1&gt;</span>
+
+          <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">myDataDiv</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span> <i class="conum" data-value="6"></i><b>(6)</b>
+        <span class="tag">&lt;/div&gt;</span>
+
       <span class="tag">&lt;/div&gt;</span>
+
+      <span class="comment">&lt;!-- Footer --&gt;</span>
+      <span class="tag">&lt;footer&gt;</span>
+        <span class="tag">&lt;p&gt;</span><span class="entity">&amp;copy;</span> 2021 BusinessCode GmbH<span class="tag">&lt;/p&gt;</span>
+        <span class="tag">&lt;nav&gt;</span>
+          <span class="tag">&lt;ul&gt;</span>
+            <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Imprint<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+            <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Privacy<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+          <span class="tag">&lt;/ul&gt;</span>
+        <span class="tag">&lt;/nav&gt;</span>
+      <span class="tag">&lt;/footer&gt;</span>
     <span class="tag">&lt;/div&gt;</span>
-
   <span class="tag">&lt;/div&gt;</span>
-  <span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/javascript</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span> <i class="conum" data-value="5"></i><b>(5)</b>
-<span class="inline">  </span><span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+<i class="conum" data-value="7"></i><b>(7)</b>
+<span class="tag">&lt;script&gt;</span>
+<span class="tag">&lt;/script&gt;</span>
 <span class="tag">&lt;/body&gt;</span>
 <span class="tag">&lt;/html&gt;</span></code></pre>
 </div>
@@ -4213,31 +4120,64 @@ This is a blank empty page with all major parts:</p>
 <span class="tag">&lt;html&gt;</span>
 <span class="tag">&lt;head&gt;</span>
   <span class="tag">&lt;meta</span> <span class="attribute-name">charset</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">UTF-8</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-  <span class="tag">&lt;title&gt;</span>BCD-UI Tutorial<span class="tag">&lt;/title&gt;</span>
-  <span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/javascript</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">../bcdui/bcdui.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
+  <span class="tag">&lt;title&gt;</span>Blank Page<span class="tag">&lt;/title&gt;</span>
+  <span class="tag">&lt;link</span> <span class="attribute-name">rel</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">shortcut icon</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">./favicon.ico</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/javascript</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">./bcdui/bcdui.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
 <span class="tag">&lt;/head&gt;</span>
 <span class="tag">&lt;body&gt;</span>
-  <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdMainContainer</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span> <i class="conum" data-value="2"></i><b>(2)</b>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__outer-wrapper</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span> <i class="conum" data-value="2"></i><b>(2)</b>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__wrapper</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__horizontal-split</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
 
-    <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdHeaderArea</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdLogoImageArea</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span><span class="tag">&lt;/div&gt;</span>
-    <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdSpacerArea</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
-
-    <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdContentContainer</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-      <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdSideBarContainer</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span> <i class="conum" data-value="3"></i><b>(3)</b>
-        <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdSection</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+      <span class="comment">&lt;!-- Header --&gt;</span>
+      <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__header</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__header__upper</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+          <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__header__logo</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;img</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">../bcdui/theme/images/bcd_logo.png</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">alt</span>=<span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
+          <span class="tag">&lt;div&gt;</span><span class="tag">&lt;/div&gt;</span>
         <span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__header__navigation</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span> <i class="conum" data-value="3"></i><b>(3)</b>
       <span class="tag">&lt;/div&gt;</span>
 
-      <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdBodyContainer</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span> <i class="conum" data-value="4"></i><b>(4)</b>
-        <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdCaption</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Page Caption<span class="tag">&lt;/div&gt;</span>
-        <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">myDataDiv</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
-        <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">myGuiStatus</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
+      <span class="comment">&lt;!-- Main area --&gt;</span>
+      <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__vertical-split</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+
+        <span class="comment">&lt;!-- Sidebar --&gt;</span> <i class="conum" data-value="4"></i><b>(4)</b>
+        <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__sidebar-left</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+          <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__sidebar-left__inner</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+            <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__sidebar-left-collaps-toggle-wrapper</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__sidebar-left-collaps-toggle bcd__sidebar-left-collaps-toggle--collapsed</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;i</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">fas fa-caret-left</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/i&gt;</span><span class="tag">&lt;/button&gt;</span><span class="tag">&lt;/div&gt;</span>
+
+            <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__form-container</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+              <span class="comment">&lt;!-- place your sidebar widgets here --&gt;</span>
+            <span class="tag">&lt;/div&gt;</span>
+
+          <span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;/div&gt;</span>
+
+        <span class="comment">&lt;!-- Main content area --&gt;</span> <i class="conum" data-value="5"></i><b>(5)</b>
+        <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__content-container</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+          <span class="tag">&lt;h1&gt;</span>Blank Page<span class="tag">&lt;/h1&gt;</span>
+
+          <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">myDataDiv</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span> <i class="conum" data-value="6"></i><b>(6)</b>
+        <span class="tag">&lt;/div&gt;</span>
+
       <span class="tag">&lt;/div&gt;</span>
+
+      <span class="comment">&lt;!-- Footer --&gt;</span>
+      <span class="tag">&lt;footer&gt;</span>
+        <span class="tag">&lt;p&gt;</span><span class="entity">&amp;copy;</span> 2021 BusinessCode GmbH<span class="tag">&lt;/p&gt;</span>
+        <span class="tag">&lt;nav&gt;</span>
+          <span class="tag">&lt;ul&gt;</span>
+            <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Imprint<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+            <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Privacy<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+          <span class="tag">&lt;/ul&gt;</span>
+        <span class="tag">&lt;/nav&gt;</span>
+      <span class="tag">&lt;/footer&gt;</span>
     <span class="tag">&lt;/div&gt;</span>
-
   <span class="tag">&lt;/div&gt;</span>
-  <span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/javascript</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span> <i class="conum" data-value="5"></i><b>(5)</b>
-<span class="inline">  </span><span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+<i class="conum" data-value="7"></i><b>(7)</b>
+<span class="tag">&lt;script&gt;</span>
+<span class="tag">&lt;/script&gt;</span>
 <span class="tag">&lt;/body&gt;</span>
 <span class="tag">&lt;/html&gt;</span></code></pre>
 </div>
@@ -7728,9 +7668,6 @@ line after the include statement</p>
 <li>
 <p>Install a Jakarta EE web server like Oracle WebLogic, IBM Websphere or JBoss, we assume Tomcat 8.5 in our examples</p>
 </li>
-<li>
-<p>Add Tomcat as a server to Eclipse <span class="menuseq"><b class="menu">File</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">New</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Server</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Apache</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Tomcat</b></span></p>
-</li>
 </ul>
 </div>
 <div class="admonitionblock tip">
@@ -7740,9 +7677,9 @@ line after the include statement</p>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-For performance reasons you should allow compression for static resources for Tomcat change in server.xml,
+For performance reasons you should allow compression for static resources.<br>
+For Tomcat adjust in server.xml,
 see <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/tomcat/server.xml" target="_blank" rel="noopener">BCD-UI/Server/configFiles/tomcat/server.xml</a>
-There the compression is turned on for a list of mime/types.
 </td>
 </tr>
 </table>
@@ -7773,48 +7710,6 @@ by linking to <code><a href="https://businesscode.github.io/BCD-UI-Docu/xsd/bcdu
 <img src="images/bootstrap_xmlSupport.png" alt="bootstrap xmlSupport">
 </div>
 </div>
-<div class="sect3">
-<h4 id="_javascript_api_stubs">JavaScript Api stubs</h4>
-<div class="paragraph">
-<p>BCD-UI provides JavaScript API. Add these to your IDE and you will have auto-complete while editing JavaScript.
-The JavaScript files can be obtained here: "ADD_LOCATION".
-For Eclipse the stubs can be added via <span class="menuseq"><b class="menu">Preferences</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">JavaScript</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Include Path</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">User Library</b></span>.
-First add a new library 'BCD-UI' and then add the folder containing the stubs you downloaded. (Add Folder&#8230;&#8203;)</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/bootstrap_addJsCodeCompletion.png" alt="bootstrap addJsCodeCompletion">
-</div>
-</div>
-<div class="paragraph">
-<p>will bring you, code completion and help tooltips while hovering with your mouse:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/bootstrap_jsCompletion.png" alt="bootstrap jsCompletion">
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_html_5_custom_elements">HTML 5 Custom Elements</h4>
-<div class="paragraph">
-<p>All BCD-UI widgets, components and even core objects come with an HTML custom element API. This is especially usefull for visible objects. To make for example the Eclipse editor aware of these, import <code><a href="https://businesscode.github.io/BCD-UI-Docu/xsd/bcduiCatalog.xml" class="bare">https://businesscode.github.io/BCD-UI-Docu/xsd/bcduiCatalog.xml</a></code> at <span class="menuseq"><b class="menu">Preferences</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Web</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">HTML Files</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Editor</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Templates</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Import&#8230;&#8203;</b></span>.
-The elements should then appear in the template list.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/bootstrap_htmlTemplates.png" alt="bootstrap htmlTemplates">
-</div>
-</div>
-<div class="paragraph">
-<p>While editing HTML files the templates popup can be opened with <span class="keyseq"><kbd>CTRL</kbd>+<kbd>SPACE</kbd></span> and the list of BCD-UI elements should be found as shown here:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/bootstrap_htmlTemplates_usage.png" alt="bootstrap htmlTemplates usage">
-</div>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -7822,77 +7717,87 @@ The elements should then appear in the template list.</p>
 <h2 id="DocAppsetup">23. Application Setup</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>A BCD-UI application is a regular Jakarta EE application. These steps are necessary to add BCD-UI to an existing web application project.<br>
-There are many good tutorials for each IDE on how to set up a web application, for Eclipse you could follow <a href="https://medium.com/@zandra.harner/setting-up-the-develop-environment-for-lop-a-web-application-in-eclipse-ide-7f3a36eddf60">this</a> one on Medium.</p>
+<p>A BCD-UI application is a regular Jakarta EE application. These steps are show how to add BCD-UI to an existing web application project.</p>
+</div>
+<div class="paragraph">
+<p>There are many good tutorials for each IDE on how to set up a web application, for Eclipse you could follow <a href="https://medium.com/@zandra.harner/setting-up-the-develop-environment-for-lop-a-web-application-in-eclipse-ide-7f3a36eddf60">this</a> one on Medium.</p>
+</div>
+<div class="paragraph">
+<p>We suggest to, before adding BCD-UI to it, test your web application without BCD-UI. Open a page, maybe call a test Servlet. If your application runs without BCD-UI then it will also run with BCD-UI.</p>
 </div>
 <div class="sect2">
 <h3 id="_adding_bcd_ui">23.1. Adding BCD-UI</h3>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Add BCD-UI and third-party jars to WEB-INF/lib</dt>
-<dd>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>Option 1<br></p>
-<div class="ulist">
-<ul>
-<li>
-<p>Download bcd-ui-core.jar and bcd-ui-theme.jar from <a href="https://github.com/businesscode/maven-repo/tree/master/de/businesscode/bcdui">here</a></p>
-</li>
-<li>
-<p>Add third party dependencies found here in <a href="https://github.com/businesscode/BCD-UI/blob/master/Docu/development/bcdui_dependencies.gradle">BCD-UI/Docu/development/bcdui_dependencies.gradle</a> by importing the gradle file (<code>apply from: 'bcdui_dependencies.gradle'</code> after applying the java plugin) or download them from maven central.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Option 2<br>
-When using maven or gradle, add a dependency to bcd-ui-core.jar and bcd-ui-theme.jar found here <a href="https://github.com/businesscode/maven-repo/tree/master/de/businesscode/bcdui">businesscode / maven-repo</a>, it knows all third-party dependencies.</p>
-</li>
-</ul>
-</div>
-</dd>
-<dt class="hdlist1">Add Entries to web.xml</dt>
-<dd>
-<p>To register BCD-UI servlets and filters, add the entries from <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/web.xml" target="_blank" rel="noopener">BCD-UI/Server/configFiles/web.xml</a> to your web.xml.<br>
-We keep that up-to-date, when you upgrade to a new version of BCD-UI check in <a href="https://github.com/businesscode/BCD-UI/blob/master/Docu/releaseNotes.adoc">release notes</a> whether it changed. This is also true for all other config file mentioned.</p>
-</dd>
-<dt class="hdlist1">Create an empty WEB-INF/bcdui/bindings</dt>
-<dd>
-<p>All configuration files for BCD-UI are located at WEB-INF/bcdui. Create an empty <code>WEB-INF/bcdui/bindings</code> folder, later you&#8217;ll add <a href="#DocBinding">Bindings</a> here.</p>
-</dd>
-<dt class="hdlist1">Add logging configuration</dt>
-<dd>
-<p>Copy <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/log4j2.xml" target="_blank" rel="noopener">BCD-UI/Server/configFiles/log4j2.xml</a>
-to your project&#8217;s src/resources folder.</p>
-</dd>
-</dl>
-</div>
-<div class="sect3">
-<h4 id="_optionally">Optionally</h4>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Add BCD-UI Java sources</dt>
-<dd>
-<p>For debugging of server components it might be helpful to add the java sources of BCD-UI to the eclipse workspace.
-The easiest way is to download or git-clone the BCD-UI project from github to an extra folder outside of your workspace.
-Then configure the source location via menu:Right-Click-Project(Build Path&gt;Configure Build Path), by selecting bcdui-core.jar
-and assign <code>Server/src/main/java</code> of the download location as source attachment.</p>
-</dd>
-</dl>
-</div>
-<div class="imageblock">
+<p>Add BCD-UI jars<br>
+See <a href="https://github.com/businesscode/maven-repo" class="bare">https://github.com/businesscode/maven-repo</a> for maven and gradle.</p>
+<div class="listingblock">
+<div class="title">For example for gradle add</div>
 <div class="content">
-<img src="images/appsetup_addSources.png" alt="appsetup addSources">
+<pre class="CodeRay highlight"><code data-lang="gradle">dependencies {
+  repositories {
+    mavenCentral()
+    maven {
+      url &quot;https://github.com/businesscode/maven-repo/raw/master&quot;
+    }
+    implementation 'de.businesscode.bcdui:bcd-ui-core:5.5.0-SNAPSHOT'
+    implementation 'de.businesscode.bcdui:bcd-ui-theme-bcd:5.5.0-SNAPSHOT'
+  }
+}</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>If you prefer you may also download the BCD-UI&#8217;s jars and their dependencies mentioned in <a href="https://github.com/businesscode/BCD-UI/blob/master/Docu/development/bcdui_dependencies.gradle">BCD-UI/Docu/development/bcdui_dependencies.gradle</a> and put them into WEB-INF/lib.<br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+These two jars not only hold all Java classes for the server but also all client side sources of BCD-UI like JavaScript and XSLT. BCD-UI makes sure they are served to the client along with your client side sources which are placed were you would usually place them.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Add Entries to web.xml<br>
+To register BCD-UI&#8217;s servlets and filters, add the entries from <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/web.xml" target="_blank" rel="noopener">BCD-UI/Server/configFiles/web.xml</a> to your web.xml.<br>
+When you upgrade to a new version of BCD-UI check in <a href="https://github.com/businesscode/BCD-UI/blob/master/Docu/releaseNotes.adoc">release notes</a> whether it changed.</p>
+</li>
+<li>
+<p>Create an empty WEB-INF/bcdui/bindings<br>
+All configuration files for BCD-UI are located at WEB-INF/bcdui. Create an empty <code>WEB-INF/bcdui/bindings</code> folder, later you&#8217;ll add <a href="#DocBinding">Bindings</a> here.</p>
+</li>
+<li>
+<p>Add logging configuration<br>
+Copy <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/log4j2.xml" target="_blank" rel="noopener">BCD-UI/Server/configFiles/log4j2.xml</a>
+to your project&#8217;s src/main/resources folder.</p>
+</li>
+<li>
+<p>Add entries for the database<br>
+See <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/tomcat/context.xml">context.xml</a> for entries for several databases for Tomcat.<br>
+The jndi entry</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"> <span class="tag">&lt;Environment</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdui/defaultConnection</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">java.lang.String</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">jdbc/connectionXX</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>is important as it denotes the connection used of none is explicitly given in a BindingSet.</p>
+</div>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_bcd_ui_folder_layout">23.2. BCD-UI folder layout</h3>
 <div class="paragraph">
-<p>BCD-UI follows standard Java Web Application layout of course. One thing less common though is that the JavaScript and other static sources come with the 2 BCD-UI jars mentioned. So they are in these jars in WEB-INF/lib and not in your web content folder next to WEB-INF.<br>
+<p>BCD-UI follows standard Java Web Application layout.<br>
+One thing less common though is that the JavaScript and other static sources come with the 2 BCD-UI jars mentioned. So they are in these jars in WEB-INF/lib and not in your web content folder next to WEB-INF.<br>
 StaticResourceServlet of BCD-UI assures that for the client it looks as if they were there though.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -7914,8 +7819,16 @@ StaticResourceServlet of BCD-UI assures that for the client it looks as if they 
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>src/</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>src/main/</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>java/</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Project java sources</strong></p></td>
@@ -7923,22 +7836,16 @@ StaticResourceServlet of BCD-UI assures that for the client it looks as if they 
 <tr>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>resources/</code></p></td>
 <td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>log4j.properties</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Logging settings, a useful default can be found in BCD-UI/resources</strong></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top" colspan="3"><p class="tableblock"><code>de/businesscode/bcdui/</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>BCD-UI&#8217;s java classes, found in bcdui.jar.</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Logging settings</strong></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>WebContent/</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Webapp itself, used by Eclipse WTP, can also be Project/webContent</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Webapp itself</strong></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -7946,7 +7853,7 @@ StaticResourceServlet of BCD-UI assures that for the client it looks as if they 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Project&#8217;s HTML pages etc</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Project&#8217;s HTML pages, JaavaScript etc</strong></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -7954,7 +7861,7 @@ StaticResourceServlet of BCD-UI assures that for the client it looks as if they 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>bcdui/</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>BCD-UI&#8217;s main folder</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>BCD-UI&#8217;s virtual main folder, blended here by a Servlet</strong></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -8001,7 +7908,7 @@ StaticResourceServlet of BCD-UI assures that for the client it looks as if they 
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>bcdui/</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Configuration for library</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Configuration for BCD-UI</strong></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -8055,31 +7962,10 @@ StaticResourceServlet of BCD-UI assures that for the client it looks as if they 
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top" colspan="3"><p class="tableblock"><code>META-INF/context.xml</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Optionally here, containing JDBC database connections</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Containing JDBC database connections</strong></p></td>
 </tr>
 </tbody>
 </table>
-<div class="sect3">
-<h4 id="_overwriting_bcd_ui_with_own_sources">Overwriting BCD-UI with own sources</h4>
-<div class="paragraph">
-<p>Knowing this physical project structure allows you to overwrite sources of BCD-UI selectively.</p>
-</div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Java resources</dt>
-<dd>
-<p>Just add a java class with the same package and class name as found in BCD-UI to your local project.
-The application server&#8217;s class loader will take care to give your source precedence over the ones found the jars.</p>
-</dd>
-<dt class="hdlist1">Static resources</dt>
-<dd>
-<p>Static resources like js, images or XSLT are overwritten with the help of StaticResourceServlet.
-To do so add a folder <code>WebContent/bcduiOverwrite</code> to the root of your project.
-Below this, just put the overwriting source with the same name and folder location as the overwritten file.</p>
-</dd>
-</dl>
-</div>
-</div>
 </div>
 </div>
 </div>

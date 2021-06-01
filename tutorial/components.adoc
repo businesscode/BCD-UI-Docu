@@ -3,7 +3,7 @@
 
 === Overview
 
-BCD-Suite contains the following ready-to-use components
+BCD-Suite contains several ready-to-use components. Here we describe the following, mode can be found in the online docu.
 
 <<DocCube,Cube>>:: Cubes provide an easy way for slicing and dicing data according to dimensions into a report table
 

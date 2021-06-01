@@ -40,7 +40,7 @@ As of 2017 BCD-UI works without modifications within the following environments
 * IE: innerHTML (used by renderer) for <script> and <style> tags require both to start with a scoped element, like  `<input type="hidden"/><script defer="false"...`  and the script tag in addition requires a defer="false" attribute
 * IE has a maximum URL length of 2083 bytes, others do not. When copying URLs from other browsers, they may be less compressed (because it was not necessary), so they may be too long.
 * FireFox: the bookmarks created with the bookmark tag open in a sidebar window by default, unless the bookmark property is adjusted manually by the user or if the bookmark is opened in a new tag
-* Chrome/WebKit: don't support bookmark via javascript at all
+* Chrome/WebKit: don't support bookmark via JavaScript at all
 * IE seems to handle position() in xsl:key/@match expressions wrong. Sample: match="/*/Something[@pos&gt;3][position()&lt;2]". It will find an empty list instead of a lost with two elements.
 * Due to a well-known bug in FireFox (at-least 10-24), you need to enable 3rd-party cookies or better add an exception for a webpage with BCD-UI. This flag is per default off ("disabled") since version 22.
 
@@ -48,14 +48,14 @@ As of 2017 BCD-UI works without modifications within the following environments
 
 Webkit browsers like Safari, Chrome and Opera compatibility requires the following to be taken into account
 
-* Declare all namespaces used by XSLT, since documents addressed via document() and xsl:import are included in the host xslt and
-elements with undeclared namespaces inherit the default namepace of the (possibly generated) host xslt
+* Declare all namespaces used by XSLT, since documents addressed via document() and xsl:import are included in the host XSLT and
+elements with undeclared namespaces inherit the default namepace of the (possibly generated) host XSLT
 * When using createElementWithPrototype or similar, always work with an explicit namespace, do not use the empty namespace. 
 * xsl:include is not supported (use xsl:import instead)
 * xsl:apply-imports is not supported. (normally xsl:apply-templates will be sufficient)
 * Do not use msxml:node-set(), declare and use exslt:node-set() even for IE.
-* When generating xslt with the help of xslt, use 'generateXSLT' as the generation mode
-* When generating xslt and matching on an input template xslt, be aware that those elements do not have xsl as namespace
+* When generating XSLT with the help of XSLT, use 'generateXSLT' as the generation mode
+* When generating XSLT and matching on an input template XSLT, be aware that those elements do not have xsl as namespace
 because they are embedded, use select="*[local-name()='output']" and so on instead.
 Also do not copy such elements into the output as they would keep the non-xsl namespace,
 create these elements with <xsl:element name="output" namespace="http://www.w3.org/1999/XSL/Transform"/> instead

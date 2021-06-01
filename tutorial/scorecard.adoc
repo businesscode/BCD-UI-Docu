@@ -60,9 +60,9 @@ include::../web/scorecard/scConfig.xml[]
 <6> Each KPI comes with its formula
 <7> `bcdSum` refers to a built-in aggregation, using sum and going on BindingSet bcd_sc_kpi
 <8> Categories allow to group KPIs in the layout
-<9> Beside build-in scc:Aspects and scc:Aggregators, you can setup your own here
+<9> Beside build-in scc:Aspects and scc:Aggregators, you can  set up your own here
 
-The content of the scc:ScorecardConfiguration is straight forward can easily be setup by a user or the wizard. +
+The content of the scc:ScorecardConfiguration is straight forward can easily be  set up by a user or the wizard. +
 The underlying definitions for scc:Aggregators and scc:Aspects can be seen in the source code and taken as a templyte for own ones.
 
 ==== Aggregators
