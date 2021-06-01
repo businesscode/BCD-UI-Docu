@@ -701,12 +701,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel3">
 <li><a href="#_defining_a_new_theme">Defining a new theme</a></li>
 <li><a href="#_themes_folder_structure">Themes folder structure</a></li>
-<li><a href="#_page_structuring">Page structuring</a></li>
-</ul>
-</li>
-<li><a href="#_theme_sample">9.3. Theme Sample</a>
-<ul class="sectlevel3">
-<li><a href="#_theme_sample_2">Theme Sample</a></li>
 </ul>
 </li>
 </ul>
@@ -1867,18 +1861,9 @@ We start with the BindingSet for the country list. Add the following file to <co
 </tr>
 </table>
 </div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-BindingSets are located in <code>WEB-INF/bcdui/bindings</code> or  sub-folder and are evaluated by BCD-UI on start time.
-Information like the data type can be given in the file, otherwise it is derived from the column&#8217;s physical data type. But you can always overwrite this in the BindingSet if you need to.
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>BindingSets are located in <code>WEB-INF/bcdui/bindings</code> or  sub-folder and are evaluated by BCD-UI on start time.
+Information like the data type can be given in the file, otherwise it is derived from the column&#8217;s physical data type. But you can always overwrite this in the BindingSet if you need to.</p>
 </div>
 <div class="paragraph">
 <p>To define a BindingSet for the table (or view) holding the data that shall be shown in a cube,
@@ -4275,119 +4260,6 @@ body {
   <span class="error">\</span>css                          &lt;--  Common css parts except page structure definition
     <span class="error">\</span>allStyles.css              &lt;--  compiled css file holding all styles
   <span class="error">\</span>images                       &lt;--  image container</code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_page_structuring">Page structuring</h4>
-<div class="paragraph">
-<p>BCD-UI follows a 960 grid system based layout.
-The following shows a standard HTML page which includes the library (and so it includes the styles, too) with footer, body and sidebar areas.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="html"><span class="doctype">&lt;!DOCTYPE HTML&gt;</span>
-<span class="tag">&lt;html&gt;</span>
-
-  <span class="tag">&lt;head&gt;</span>
-    <span class="tag">&lt;meta</span> <span class="attribute-name">charset</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">UTF-8</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/meta&gt;</span>
-    <span class="tag">&lt;title&gt;</span>Hello World Page<span class="tag">&lt;/title&gt;</span>
-    <span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/javascript</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">./bcdui/bcdui.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
-  <span class="tag">&lt;/head&gt;</span>
-
-  <span class="tag">&lt;body&gt;</span>
-
-    <span class="comment">&lt;!-- well known required divs --&gt;</span>
-    <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdContextMenuDiv</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">display</span>: <span class="value">none</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
-    <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdTooltipDiv</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">display</span>: <span class="value">none</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
-    <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdModalBoxDiv</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">display</span>: <span class="value">none</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
-
-    <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdMainContainer</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-      <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdHeaderArea</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdLogoImageArea</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span><span class="tag">&lt;/div&gt;</span>
-      <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdMenuBarArea</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="comment">&lt;!-- place your menu here --&gt;</span><span class="tag">&lt;/div&gt;</span>
-      <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdSpacerArea</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="comment">&lt;!-- mainly some vertical space or custom use --&gt;</span><span class="tag">&lt;/div&gt;</span>
-
-      <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdContentContainer</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-
-        <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdSideBarContainer</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-
-          <span class="comment">&lt;!-- place your sidebar sections and widgets here --&gt;</span>
-          <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdSection</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdSectionCaption</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Section 1<span class="tag">&lt;/div&gt;</span>
-            <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdItem</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-              <span class="tag">&lt;span</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdCaption</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Widget 1<span class="tag">&lt;/span&gt;</span>
-              <span class="tag">&lt;div&gt;</span><span class="comment">&lt;!-- add a widget here --&gt;</span><span class="tag">&lt;/div&gt;</span>
-              <span class="tag">&lt;span</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdCaption</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Widget 2<span class="tag">&lt;/span&gt;</span>
-              <span class="tag">&lt;div&gt;</span><span class="comment">&lt;!-- add a widget here --&gt;</span><span class="tag">&lt;/div&gt;</span>
-            <span class="tag">&lt;/div&gt;</span>
-          <span class="tag">&lt;/div&gt;</span>
-
-          <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdSection</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdSectionCaption</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Section 2<span class="tag">&lt;/div&gt;</span>
-            <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdItem</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-              <span class="tag">&lt;span</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdCaption</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Widget 3<span class="tag">&lt;/span&gt;</span>
-              <span class="tag">&lt;div&gt;</span><span class="comment">&lt;!-- add a widget here --&gt;</span><span class="tag">&lt;/div&gt;</span>
-              <span class="tag">&lt;span</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdCaption</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Widget 4<span class="tag">&lt;/span&gt;</span>
-              <span class="tag">&lt;div&gt;</span><span class="comment">&lt;!-- add a widget here --&gt;</span><span class="tag">&lt;/div&gt;</span>
-            <span class="tag">&lt;/div&gt;</span>
-          <span class="tag">&lt;/div&gt;</span>
-        <span class="tag">&lt;/div&gt;</span>
-
-        <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdBodyContainer</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-          <span class="comment">&lt;!-- place your main body information here --&gt;</span>
-          <span class="tag">&lt;span</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdCaption</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Hello World Page<span class="tag">&lt;/span&gt;</span>
-          <span class="tag">&lt;p&gt;</span>Hello World<span class="tag">&lt;/p&gt;</span>
-        <span class="tag">&lt;/div&gt;</span>
-
-      <span class="tag">&lt;/div&gt;</span>
-
-      <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdFooterArea</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="comment">&lt;!-- place your footer information here --&gt;</span><span class="tag">&lt;/div&gt;</span>
-    <span class="tag">&lt;/div&gt;</span>
-  <span class="tag">&lt;/body&gt;</span>
-<span class="tag">&lt;/html&gt;</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Content or theme setup styling is usually affecting the following ids:</p>
-</div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">bcdHeaderArea</dt>
-<dd>
-<p>A top area where usually a logo is placed (bcdLogoImageArea)</p>
-</dd>
-<dt class="hdlist1">bcdMenuBarArea</dt>
-<dd>
-<p>A top area below the header where commonly the menu bar is shown</p>
-</dd>
-<dt class="hdlist1">bcdSideBarContainer</dt>
-<dd>
-<p>The place where you add your sidebar widgets</p>
-</dd>
-<dt class="hdlist1">bcdBodyContainer bcdCaption</dt>
-<dd>
-<p>The title of the page is shown here</p>
-</dd>
-<dt class="hdlist1">bcdBodyContainer</dt>
-<dd>
-<p>Scorecards, cubes, the main content of your page should be here</p>
-</dd>
-<dt class="hdlist1">bcdFooterArea</dt>
-<dd>
-<p>An area at the bottom of the page.</p>
-</dd>
-</dl>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_theme_sample">9.3. Theme Sample</h3>
-<div class="sect3">
-<h4 id="_theme_sample_2">Theme Sample</h4>
-<div class="paragraph">
-<p>A sample page with header, menu, sidebar, body and footer.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/themes_examplePage.png" alt="themes examplePage">
 </div>
 </div>
 </div>
@@ -8043,8 +7915,8 @@ specified as dependencies and it is therefore easy to get the application setup.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript">apply plugin: <span class="string"><span class="delimiter">&quot;</span><span class="content">java</span><span class="delimiter">&quot;</span></span>
-apply plugin: <span class="string"><span class="delimiter">&quot;</span><span class="content">war</span><span class="delimiter">&quot;</span></span>
+<pre class="CodeRay highlight"><code data-lang="groovy">apply <span class="key">plugin</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">java</span><span class="delimiter">&quot;</span></span>
+apply <span class="key">plugin</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">war</span><span class="delimiter">&quot;</span></span>
 
 
 webAppDirName = <span class="string"><span class="delimiter">&quot;</span><span class="content">WebContent</span><span class="delimiter">&quot;</span></span>
@@ -8053,9 +7925,6 @@ war {
   baseName   = <span class="string"><span class="delimiter">&quot;</span><span class="content">GettingStarted</span><span class="delimiter">&quot;</span></span>
   includeEmptyDirs = <span class="predefined-constant">false</span>
 }
-dependencies {
-  repositories {
-    mavenCentral()
 dependencies {
   repositories {
     mavenCentral()

@@ -33,7 +33,7 @@ include::../web/WEB-INF/bcdui/bindings/myGeoData.xml[]
 <4> Each `bnd:C` is a _BindingItem_ represents an individual column, you give it a logical id and you can enforce some attributes
 <5> This is the column expression for the database, often simply the column name but in can also be something more complex like `substr(colame,2)`
 
-TIP: BindingSets are located in `WEB-INF/bcdui/bindings` or  sub-folder and are evaluated by BCD-UI on start time.
+BindingSets are located in `WEB-INF/bcdui/bindings` or  sub-folder and are evaluated by BCD-UI on start time.
 Information like the data type can be given in the file, otherwise it is derived from the column's physical data type. But you can always overwrite this in the BindingSet if you need to.
 
 To define a BindingSet for the table (or view) holding the data that shall be shown in a cube,

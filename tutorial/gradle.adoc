@@ -23,7 +23,7 @@ IDEA and eclipse come with gradle already. When using VC Code, install gradle an
 
 Create a build.gradle file in the root directory of your project.
 
-[source,javascript]
+[source,groovy]
 ----
 
 apply plugin: "java"
@@ -36,9 +36,6 @@ war {
   baseName   = "GettingStarted"
   includeEmptyDirs = false
 }
-dependencies {
-  repositories {
-    mavenCentral()
 dependencies {
   repositories {
     mavenCentral()
