@@ -885,7 +885,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_bcd_ui_folder_layout">23.2. BCD-UI folder layout</a></li>
 </ul>
 </li>
-<li><a href="#DocGradle">24. Use Gradle to setup a BCD-UI project</a>
+<li><a href="#DocGradle">24. Use Gradle to set up a BCD-UI project</a>
 <ul class="sectlevel2">
 <li><a href="#_overview_7">24.1. Overview</a></li>
 <li><a href="#_step_by_step_4">24.2. Step by Step</a>
@@ -1205,6 +1205,14 @@ Add WebContent/simpleReq/index.html with BCD-UI capability to your application a
 62
 63
 64
+65
+66
+67
+68
+69
+70
+71
+72
 </pre></td>
   <td class="code"><pre><span class="doctype">&lt;!DOCTYPE HTML&gt;</span>
 <span class="tag">&lt;html&gt;</span>
@@ -1238,6 +1246,14 @@ Add WebContent/simpleReq/index.html with BCD-UI capability to your application a
 
             <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__form-container</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
               <span class="comment">&lt;!-- place your sidebar widgets here --&gt;</span>
+              <span class="tag">&lt;section&gt;</span>
+                <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__form-group</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                  <span class="tag">&lt;label</span> <span class="attribute-name">for</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">s1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Apply<span class="tag">&lt;/label&gt;</span>
+                  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__select-container</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                    <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">applyDiv</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
+                   <span class="tag">&lt;/div&gt;</span>
+                <span class="tag">&lt;/div&gt;</span>
+              <span class="tag">&lt;/section&gt;</span>
             <span class="tag">&lt;/div&gt;</span>
 
           <span class="tag">&lt;/div&gt;</span>
@@ -1952,6 +1968,14 @@ create a file <code>WEB-INF/bcdui/bindings/myReportData1.xml</code> and adjust t
 
             <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__form-container</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
               <span class="comment">&lt;!-- place your sidebar widgets here --&gt;</span>
+              <span class="tag">&lt;section&gt;</span>
+                <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__form-group</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                  <span class="tag">&lt;label</span> <span class="attribute-name">for</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">s1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Apply<span class="tag">&lt;/label&gt;</span>
+                  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__select-container</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                    <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">applyDiv</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
+                   <span class="tag">&lt;/div&gt;</span>
+                <span class="tag">&lt;/div&gt;</span>
+              <span class="tag">&lt;/section&gt;</span>
             <span class="tag">&lt;/div&gt;</span>
 
           <span class="tag">&lt;/div&gt;</span>
@@ -4148,6 +4172,14 @@ This is a blank empty page with all major parts:</p>
 
             <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__form-container</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
               <span class="comment">&lt;!-- place your sidebar widgets here --&gt;</span>
+              <span class="tag">&lt;section&gt;</span>
+                <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__form-group</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                  <span class="tag">&lt;label</span> <span class="attribute-name">for</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">s1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Apply<span class="tag">&lt;/label&gt;</span>
+                  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__select-container</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                    <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">applyDiv</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
+                   <span class="tag">&lt;/div&gt;</span>
+                <span class="tag">&lt;/div&gt;</span>
+              <span class="tag">&lt;/section&gt;</span>
             <span class="tag">&lt;/div&gt;</span>
 
           <span class="tag">&lt;/div&gt;</span>
@@ -7970,7 +8002,7 @@ StaticResourceServlet of BCD-UI assures that for the client it looks as if they 
 </div>
 </div>
 <div class="sect1">
-<h2 id="DocGradle">24. Use Gradle to setup a BCD-UI project</h2>
+<h2 id="DocGradle">24. Use Gradle to set up a BCD-UI project</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_overview_7">24.1. Overview</h3>
@@ -7985,9 +8017,6 @@ specified as dependencies and it is therefore easy to get the application setup.
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Install Gradle plugin if necessary</p>
-</li>
-<li>
 <p>Add gradle.build to the project</p>
 </li>
 <li>
@@ -7998,25 +8027,19 @@ specified as dependencies and it is therefore easy to get the application setup.
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p>Each step is described in the following sub chapters.</p>
-</div>
 </div>
 <div class="sect2">
 <h3 id="_step_by_step_4">24.2. Step by Step</h3>
 <div class="sect3">
 <h4 id="_gradle_plugin">Gradle plugin</h4>
 <div class="paragraph">
-<p>Install a gradle plugin. The following steps depend on the BuildShip plugin. Other gradle plugins might be different.</p>
+<p>IDEA and eclipse come with gradle already. When using VC Code, install gradle and use it from command line.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_add_gradle_build_to_the_project">Add Gradle.build to the project</h4>
 <div class="paragraph">
-<p>The BCD-UI build process is implemented with gradle as an example, but can be built with any tool.
-So we first create a empty build.gradle file in the root directory of the GettingStarted project.
-Open the file for editing and paste the following content into the build.gradle file. The important part is that the configuration of webAppDirName is right.
-The biggest part of the build file are the dependencies.</p>
+<p>Create a build.gradle file in the root directory of your project.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8030,33 +8053,17 @@ war {
   baseName   = <span class="string"><span class="delimiter">&quot;</span><span class="content">GettingStarted</span><span class="delimiter">&quot;</span></span>
   includeEmptyDirs = <span class="predefined-constant">false</span>
 }
-<span class="comment">// 3rdParty jars</span>
-configurations { provided }
 dependencies {
   repositories {
     mavenCentral()
-  maven {
+dependencies {
+  repositories {
+    mavenCentral()
+    maven {
       url <span class="string"><span class="delimiter">&quot;</span><span class="content">https://github.com/businesscode/maven-repo/raw/master</span><span class="delimiter">&quot;</span></span>
     }
-    runtime <span class="string"><span class="delimiter">'</span><span class="content">commons-beanutils:commons-beanutils:1.8.3</span><span class="delimiter">'</span></span>
-    runtime <span class="string"><span class="delimiter">'</span><span class="content">commons-codec:commons-codec:1.9</span><span class="delimiter">'</span></span>
-    runtime <span class="string"><span class="delimiter">'</span><span class="content">commons-collections:commons-collections:3.2.1</span><span class="delimiter">'</span></span>
-    runtime <span class="string"><span class="delimiter">'</span><span class="content">commons-dbutils:commons-dbutils:1.5</span><span class="delimiter">'</span></span>
-    runtime <span class="string"><span class="delimiter">'</span><span class="content">commons-io:commons-io:2.0</span><span class="delimiter">'</span></span>
-    runtime <span class="string"><span class="delimiter">'</span><span class="content">commons-lang:commons-lang:2.4</span><span class="delimiter">'</span></span>
-    runtime <span class="string"><span class="delimiter">'</span><span class="content">commons-logging:commons-logging:1.1.1</span><span class="delimiter">'</span></span>
-    runtime <span class="string"><span class="delimiter">'</span><span class="content">commons-vfs:commons-vfs:1.0</span><span class="delimiter">'</span></span>
-    runtime <span class="string"><span class="delimiter">'</span><span class="content">log4j:log4j:1.2.17</span><span class="delimiter">'</span></span>
-    runtime <span class="string"><span class="delimiter">'</span><span class="content">net.sf.ehcache:ehcache-core:2.3.1</span><span class="delimiter">'</span></span>
-    runtime <span class="string"><span class="delimiter">'</span><span class="content">org.apache.shiro:shiro-all:1.3.2</span><span class="delimiter">'</span></span>
-    runtime <span class="string"><span class="delimiter">'</span><span class="content">org.apache.velocity:velocity:1.7</span><span class="delimiter">'</span></span>
-    runtime <span class="string"><span class="delimiter">'</span><span class="content">org.apache.poi:poi:3.14</span><span class="delimiter">'</span></span>
-    runtime <span class="string"><span class="delimiter">'</span><span class="content">org.apache.poi:poi-ooxml:3.14</span><span class="delimiter">'</span></span>
-    runtime <span class="string"><span class="delimiter">'</span><span class="content">org.apache.poi:poi-ooxml-schemas:3.14</span><span class="delimiter">'</span></span>
-    runtime <span class="string"><span class="delimiter">'</span><span class="content">org.slf4j:slf4j-api:1.6.1</span><span class="delimiter">'</span></span>
-    runtime <span class="string"><span class="delimiter">'</span><span class="content">org.slf4j:slf4j-log4j12:1.6.1</span><span class="delimiter">'</span></span>
-    runtime <span class="string"><span class="delimiter">'</span><span class="content">de.businesscode.bcdui:bcd-ui-theme-bcd:latest.integration</span><span class="delimiter">'</span></span>
-    compile <span class="string"><span class="delimiter">'</span><span class="content">de.businesscode.bcdui:latest.integration</span><span class="delimiter">'</span></span>
+    implementation <span class="string"><span class="delimiter">'</span><span class="content">de.businesscode.bcdui:bcd-ui-core:5.5.0-SNAPSHOT</span><span class="delimiter">'</span></span>
+    implementation <span class="string"><span class="delimiter">'</span><span class="content">de.businesscode.bcdui:bcd-ui-theme-bcd:5.5.0-SNAPSHOT</span><span class="delimiter">'</span></span>
   }
 }</code></pre>
 </div>
@@ -8066,14 +8073,13 @@ dependencies {
 <h4 id="_configure_gradle_support_for_the_project">Configure Gradle support for the project</h4>
 <div class="paragraph">
 <p>Before we can use the gradle file within eclipse, we have to add the "Gradle Nature" to the GettingStarted project. So select the project,
-open the context menu and choose Configure&#8594;Add Gradle Nature.</p>
+open the context menu and choose <span class="menuseq"><b class="menu">Configure</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Add Gradle Nature</b></span>.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_refresh_dependencies">Refresh dependencies</h4>
 <div class="paragraph">
-<p>Afterwards the context menu has a new entry for gradle and there we can invoke grade refresh. The menu entry is only visible when on project root or
-gradle.build file.
+<p>Afterwards the context menu has a new entry for gradle. Use it to refresh the project.
 This might take some time, because all libraries specified
 by the dependencies above will be loaded.</p>
 </div>
@@ -8083,7 +8089,7 @@ by the dependencies above will be loaded.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>After the gradle refresh, the GettingStarted project has its dependencies and these can be found in the project tree as shown in the following image.</p>
+<p>After gradle refresh, the project has its dependencies, and these can be found in the project tree as shown in the following image.</p>
 </div>
 <div class="imageblock">
 <div class="content">
