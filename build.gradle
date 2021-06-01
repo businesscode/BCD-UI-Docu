@@ -2,20 +2,19 @@
 // Required by build script to generate tutorial
 buildscript {
   repositories {
-    maven {
-      url "https://plugins.gradle.org/m2/"
-    }
   }
   dependencies {
-    classpath group: 'org.asciidoctor', name: 'asciidoctor-gradle-plugin', version: '1.5.3'
-    classpath group: 'org.asciidoctor', name: 'asciidoctorj-pdf', version: '1.5.0-alpha.14'
   }
 }
-apply plugin: "org.asciidoctor.convert"
+plugins {
+  id 'org.asciidoctor.jvm.convert' version '3.1.0'
+}
+
 apply plugin: "java"
 apply plugin: "war"
 apply plugin: 'idea'
 apply plugin: 'eclipse-wtp'
+import org.asciidoctor.gradle.jvm.AsciidoctorTask
 
 //*********************************************
 // Required to build a BCD-UI webapp
@@ -26,8 +25,8 @@ dependencies {
       url "https://github.com/businesscode/maven-repo/raw/master"
     }
     compileOnly group: 'javax.servlet', name: 'servlet-api', version: '2.4'
-    compile 'de.businesscode.bcdui:bcd-ui-core:5.0.1-SNAPSHOT'
-    runtime 'de.businesscode.bcdui:bcd-ui-theme-bcd:5.0.1-SNAPSHOT'
+    implementation 'de.businesscode.bcdui:bcd-ui-core:5.0.1-SNAPSHOT'
+    implementation 'de.businesscode.bcdui:bcd-ui-theme-bcd:5.0.1-SNAPSHOT'
   }
 }
 
@@ -35,37 +34,41 @@ dependencies {
 // Settings for creating a war
 webAppDirName = "web"
 war {
-  baseName   = "bcduidocu"
+  archiveBaseName   = "bcduidocu"
   includeEmptyDirs = false
 }
 
 
 //*********************************************
 // Generate tutorial HTML from all.adoc
-task buildTutorial ( type: org.asciidoctor.gradle.AsciidoctorTask ) {
+task buildTutorial(type: AsciidoctorTask) {
 
   ext.taskDestDirName = "$buildDir/htmldocs/tutorial"
   def taskSource      = "tutorial"
-
   // Resources under ./images/ are per default copied by AsciidoctorTask
-  configure {
     sources {
       include "index.adoc"
-    }
-    backends = ['html5'] // ['html5','pdf']
-    separateOutputDirs = false
+      }
+  baseDirFollowsSourceDir()
+  configure {
     attributes 'source-highlighter' : 'coderay',
             'coderay-linenums-mode' : 'table',
             icons                   : 'font',
             linkattrs               : true,
             encoding                : 'UTF-8'
-    sourceDir = file(taskSource)
     outputDir = file(taskDestDirName)
+    sourceDir = file(taskSource)
+
+  }
+  outputOptions {
+    backends = ['html5'] // ['html5','pdf']
+    separateOutputDirs = false
   }
 }
 
 //*********************************************
 // This collects BCD-UI docu (tutorial, js-api, java-api) to /docs
+// The resulting structure is aligned with GitHub
 // This task requires BCD-UI cloned next to BCD-UI-Docu and task bcduiBuildDocu being executed there already
 // GitHub pages is setup to use /docs
 task updateDocs( type: Copy ) {
@@ -79,7 +82,7 @@ task updateDocs( type: Copy ) {
   }
 
   if( ! file(bcduiDocuFolder).exists() )
-    logger.warn("$bcduiDocuFolder not found, only collecting tutorial")
+    logger.warn("$bcduiDocuFolder not found (execute bcduiBuildDocu in BCD-UI), only collecting tutorial")
 
   into 'docs' // This is a GitHub pages friendly location
 
@@ -113,6 +116,6 @@ eclipse {
 // Will then usually be http://localhost:8080/BCD-UI-Docu
 idea {
   module {
-    jdkName = '1.8'
+    jdkName = '11'
   }
 }
