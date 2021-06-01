@@ -1,0 +1,25 @@
+<BindingSet xmlns="http://www.businesscode.de/schema/bcdui/bindings-1.0.0"
+  id="carRepairs" table="test_data">  <!--(1)--> <!--(2)-->
+
+  <C id="id" caption="Id" isKey="true"> <!--(3)-->
+    <Column>id</Column> <!--(4)-->
+  </C>
+  <C id="dy" caption="Dy" type-name="DATE">
+    <Column>dy</Column>
+  </C>
+  <C id="yr" caption="Year">
+    <Column>EXTRACT( YEAR from dy)</Column> <!--(5)-->
+  </C>
+  <C id="country" caption="Country">
+    <Column>country</Column>
+  </C>
+  <C id="station" caption="Station">
+    <Column>station</Column>
+  </C>
+  <C id="carsSold" caption="Cars sold">
+    <Column>cars_sold</Column>
+  </C>
+  <C id="carsRepaired" caption="Cars repaired">
+    <Column>cars_repaired</Column>
+  </C>
+</BindingSet>
