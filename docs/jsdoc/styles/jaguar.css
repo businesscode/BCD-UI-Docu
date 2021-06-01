@@ -121,7 +121,8 @@ li {
 .main {
   padding: 20px 20px;
   margin-left: 350px;
-  width: 1024px;
+  max-width: 1280px;
+  width: 90%;
 }
 .main .page-title {
   display: none;
@@ -229,7 +230,7 @@ li {
 }
 .main .tag-source {
   font-size: 12px;
-  display: none;
+  color: #888;
 }
 .main dt.tag-source {
   margin-top: 5px;
@@ -312,7 +313,6 @@ li {
   padding: 5px 3px;
 }
 .main table .name {
-  width: 110px;
 }
 .main table .type {
   width: 60px;
@@ -333,6 +333,10 @@ li {
 .main table.params .description {
   font-size: 12px;
 }
+.main table.params tr:nth-child(3) {
+  max-width: 20em;
+}
+
 .main table .optional {
   float: left;
   border-radius: 3px;
@@ -384,14 +388,20 @@ footer {
 
 
 #wrap {
-  width: 80%;
+  width: 95%;
   margin: 0 auto;
 }
 .navigation .search input {
   background-color: white;
 }
 .navigation li.item .title .static {
-  display: none;
+  display: block;
+  border-radius: 3px;
+  background-color: #ddd;
+  color: #fff;
+  font-size: 0.7em;
+  padding: 2px 4px;
+  float: right;
 }
 .main h4.name span.type-signature {
   background-color: #f8f8f8 !important;
@@ -418,7 +428,6 @@ code {
   color: #428bca;
 }
 .main table .type {
-  white-space: nowrap;
 }
 .main .nameContainer h4 {
   color: #ff7f00;
