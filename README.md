@@ -5,12 +5,12 @@ It is build with Java and Web technologies and provides powerful features common
 
 For more information see
 
-- The [Online tutorial](https://.docs/tutorial)
+- The [Online tutorial](https://businesscode.github.io/BCD-UI-Docu/tutorial/index.html)
   
-- The [JavaScript API](https://.docs/jsDoc)
+- The [JavaScript API](https://businesscode.github.io/BCD-UI-Docu/jsdoc/index.html)
   
-- The [Java API](https://.docs/javaDoc)
+- The [Java API](https://businesscode.github.io/BCD-UI-Docu/javadoc/index.html)
 
 - The [Git Repository](https://github.com/businesscode/BCD-UI)
 
-BCD-UI is open-source licensed under Apache-2.0 powered by BusinessCode GmbH, Germany
+BCD-UI is open-source licensed under Apache-2.0 and powered by [BusinessCode GmbH, Germany](https://www.business-code.de/).
