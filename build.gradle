@@ -24,9 +24,9 @@ dependencies {
     maven {
       url "https://github.com/businesscode/maven-repo/raw/master"
     }
-    compileOnly group: 'javax.servlet', name: 'servlet-api', version: '2.4'
-    implementation 'de.businesscode.bcdui:bcd-ui-core:5.0.1-SNAPSHOT'
-    implementation 'de.businesscode.bcdui:bcd-ui-theme-bcd:5.0.1-SNAPSHOT'
+    implementation 'de.businesscode.bcdui:bcd-ui-core:5.5.0-SNAPSHOT'
+    implementation 'de.businesscode.bcdui:bcd-ui-theme-bcd:5.5.0-SNAPSHOT'
+    implementation 'com.oracle.database.jdbc:ojdbc8:19.6.0.0'
   }
 }
 
