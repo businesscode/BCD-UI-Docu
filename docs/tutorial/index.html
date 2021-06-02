@@ -768,19 +768,19 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_security_overview">14.1. Security Overview</a></li>
 <li><a href="#_security_access_filter">14.2. Security access filter</a>
 <ul class="sectlevel3">
-<li><a href="#_developers_view">Developer&#8217;s view</a></li>
+<li><a href="#_developer_view">Developer view</a></li>
 <li><a href="#_shiro_permissions">Shiro permissions</a></li>
 <li><a href="#_login_form_and_logging">Login form and logging</a></li>
-<li><a href="#_define_users_in_web_xml">Define users in web.xml</a></li>
-<li><a href="#_define_users_in_database">Define users in database</a></li>
-<li><a href="#_oauth2_azure_google">OAuth2 / Azure / Google</a></li>
+<li><a href="#_page_access_rights">Page access rights</a></li>
 </ul>
 </li>
-<li><a href="#_configuration_2">14.3. Configuration</a>
-<ul class="sectlevel3">
-<li><a href="#_kerberos_windows_sso_windows_authentication_enterpriseedition">Kerberos / Windows SSO / Windows Authentication (EnterpriseEdition)</a></li>
-</ul>
-</li>
+<li><a href="#_define_users_in_web_xml">14.3. Define users in web.xml</a></li>
+<li><a href="#_define_users_in_database">14.4. Define users in database</a></li>
+<li><a href="#_subjectsettings_config">14.5. SubjectSettings config</a></li>
+<li><a href="#_user_related_bindingsets">14.6. User related BindingSets</a></li>
+<li><a href="#_custom_setup">14.7. Custom setup<br></a></li>
+<li><a href="#_oauth2_with_azure_google_etc">14.8. OAuth2 with Azure / Google etc</a></li>
+<li><a href="#_kerberos_windows_sso_windows_authentication">14.9. Kerberos / Windows SSO / Windows Authentication</a></li>
 </ul>
 </li>
 <li><a href="#DocCaching">15. Caching</a>
@@ -5830,7 +5830,7 @@ Each request is checked whether it addresses a</p>
 <p>For each url path you can also set required rights in the init-param section of IniShiroFilter in web.xml.</p>
 </div>
 <div class="sect3">
-<h4 id="_developers_view">Developer&#8217;s view</h4>
+<h4 id="_developer_view">Developer view</h4>
 <div class="paragraph">
 <p>Developers need to follow these rules to implement secure applications:</p>
 </div>
@@ -5893,7 +5893,7 @@ A login page is a standard page with two plain inputs:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>We are not using BCD-UI buttons here but plain HTML ones here, because we made the library accessible to already authenticated users only.</p>
+<p>Per default bcdui static resources are accessible without login, you can also use BCD-UI buttons if you want.</p>
 </div>
 </li>
 <li>
@@ -5903,106 +5903,89 @@ By adding <code>bcd_log_login</code> BindingSet to your application, all login a
 </ol>
 </div>
 <div class="paragraph">
-<p>To  set up users and their authorization, you can choose the simple setup by hard-coding them in web.xml
-or maintaining them in the database.</p>
+<p>To set up users and their authorization, you can choose the simple setup by hard-coding them in web.xml, by maintaining them in BCD-UI&#8217;s database or authenticated with oAuth (AD, Google, facebook etc) combined with rights maintained in your database.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_define_users_in_web_xml">Define users in web.xml</h4>
+<h4 id="_page_access_rights">Page access rights</h4>
 <div class="paragraph">
-<p>You can have an easy web.xml - only setup in the following way:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Enable IniShiroFilter in web.xml<br>
-And configure Shiro section next to the servlet:</p>
-<div class="listingblock">
-<div class="title">Remove all manager entries in that case from the [main] section, only keep</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"></code></pre>
-</div>
+<p>No matter which method you use for defining users and their roles, use the [urls] section in web.xml to define access to pages. It is easy to also adjust the menu to offer only allowed pages.</p>
 </div>
 <div class="listingblock">
-<div class="title">Add any users, their password and their roles:</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"></code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Define permissions of roles:</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Users with 'adminRole' also have the pages:admin right.
-The name of the right can be hierarchically as mentioned, you are free to name them.</p>
-</div>
-</li>
-<li>
-<p>Define access rights for urls:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"></code></pre>
+<pre class="CodeRay highlight"><code data-lang="xml">/cube/**              = authc  <i class="conum" data-value="1"></i><b>(1)</b>
+/api/**               = authc, perms[&quot;pages:admin&quot;] <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>bcdui/theme/** is anon, means needs no valid login. This is because we need the style on the login page already</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>login.html is authc and requires login</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>/logout triggers a logout, afterwards we are redirected to logout.redirectUrl, see [main] section</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="4"></i><b>4</b></td>
 <td>Here we define that any authenticated user can access /cube</td>
 </tr>
 <tr>
-<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
 <td>For /api/** we require login and a 'pages:admin' permission</td>
 </tr>
 </table>
 </div>
-</li>
-</ol>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_define_users_in_database">Define users in database</h4>
+<div class="sect2">
+<h3 id="_define_users_in_web_xml">14.3. Define users in web.xml</h3>
 <div class="paragraph">
-<p>Instead of having a static set of users and passwords in web.xml, can store users and passwords in the database.</p>
+<p>You can have an easy web.xml - only setup in the following way:</p>
+</div>
+<div class="listingblock">
+<div class="title">Add any users, their password and their roles:</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml">[users]
+admin    = pw123, adminRole
+cubeUser = pw456</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Define permissions of roles:</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml">[roles]
+adminRole = pages:admin</code></pre>
+</div>
 </div>
 <div class="paragraph">
-<p>The setup is similar to above, but the [main] section of web.xml looks like the following instead:</p>
+<p>Users with 'adminRole' also have the pages:admin right.</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Shiro sections in web.xml</p>
+</div>
+<div class="sect2">
+<h3 id="_define_users_in_database">14.4. Define users in database</h3>
 <div class="paragraph">
-<p>Enable the managers in the [main} section in addition to the url definitions</p>
+<p>Instead of having a static set of users and passwords in web.xml, you can store users and passwords in the database.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"></code></pre>
+<pre class="CodeRay highlight"><code data-lang="xml">#### Switch to BCD-UI well known BindingSets (bcd_sec_user[_settings|_roles])
+## for authentication and authorization supporting salted passwords, etc. (named option 2. above)
+## make sure you created an appropriate WEB-INF/bcdui/subjectSettings.xml as well if enabling
+# realmBcdJdbc = de.businesscode.bcdui.subjectsettings.JdbcRealm
+# For security reasons BindingItems of password and salt are blind in BindingSet. They are assumed to have columns name password/password_salt. Here you can overwrite that.
+# realmBcdJdbc.passwordColumnName     = password
+# realmBcdJdbc.passwordSaltColumnName = password_salt
+# realmBcdJdbc.hashIterations         = 1024
+# to disable salted passwords (discouraged) and for backwards compatibility set this flag, password is considered plain text then
+# realmBcdJdbc.hashSalted = false</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Make sure, $CATALINA_TMPDIR is writable for Tomcat, otherwise ehcache will complaint on start.<br>
-Keep [users] and [roles] sections empty and follow for [urls] the description given in the chapter above.</p>
+<p>Keep [users] and [roles] sections empty and follow for [urls] the description given in the chapter above.</p>
 </div>
-</li>
-<li>
-<p>SubjectSettings config<br>
-Add a file <code>WEB-INF/bcdui/subjectSettings.xml</code> with at least the following content:</p>
+</div>
+<div class="sect2">
+<h3 id="_subjectsettings_config">14.5. SubjectSettings config</h3>
+<div class="paragraph">
+<p>Add a file <code>WEB-INF/bcdui/subjectSettings.xml</code> with at least the following content:</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="preprocessor">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
@@ -6021,55 +6004,29 @@ Add a file <code>WEB-INF/bcdui/subjectSettings.xml</code> with at least the foll
 <div class="paragraph">
 <p>Later you can define BindingSet related security restrictions here.</p>
 </div>
-</li>
-<li>
-<p>User related BindingSets<br>
-Add bcd_sec_user and bcd_sec_user_settings BindingSets (and the corresponding tables).
-There is no prebuilt UI editor for these two tables but their content should be self-explanatory.
+</div>
+<div class="sect2">
+<h3 id="_user_related_bindingsets">14.6. User related BindingSets</h3>
+<div class="paragraph">
+<p>Add bcd_sec_user and bcd_sec_user_settings BindingSets (and the corresponding tables).
+There is no prebuilt UI editor for these two tables, but their content should be self-explanatory.
 All attributes and permissions assigned to a user in the table corresponding to <code>bcd_sec_user_settings</code> are read when the user logs in.
 These become in-memory subject settings, which can be used to query whether a user has a a certain permission.
 These permissions are checked for example by the security filter when accessing an url.</p>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. Layout of BindingSet bcd_sec_user_settings</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Column</th>
-<th class="tableblock halign-left valign-top">Content</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user_id</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Id of the user this permission is assigned to.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">right_type</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Id of the permission the values relate to.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">right_value</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A value for that right type. Note that (user_id, right_type) is not unique, thus you can assign multiple values here by repeating (user_id, right_type).</p></td>
-</tr>
-</tbody>
-</table>
-</li>
-<li>
-<p>Custom setup<br>
-You may also provide your own LoginServlet or Realm for a custom setup of deriving users and their attributes.
-Please check Shiro documentation for more options.</p>
-</li>
-</ol>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_oauth2_azure_google">OAuth2 / Azure / Google</h4>
+<div class="sect2">
+<h3 id="_custom_setup">14.7. Custom setup<br></h3>
 <div class="paragraph">
-<p>BCD-UI provides Shiro integrated implementation for general OAuth2 authentication (referred to as oauth in this docu) and ready-to-use modules for Azure and Google integration.
-OAuth integration is currently limited to authentication only, the permissions for authorization are managed by application through subjectsettings.</p>
+<p>You may also provide your own LoginServlet or Realm for a custom setup of deriving users and their attributes.
+Please check Shiro documentation for more options.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_oauth2_with_azure_google_etc">14.8. OAuth2 with Azure / Google etc</h3>
+<div class="paragraph">
+<p>BCD-UI provides Shiro integrated implementation for general OAuth2 authentication (referred to as oauth in this docu) and ready-to-use modules for Azure and Google integration.<br>
+Authentication is handled by OAuth, permissions are managed by application through <em>SsubjectSettings</em>.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -6083,349 +6040,42 @@ OAuth integration is currently limited to authentication only, the permissions f
 </ol>
 </div>
 </li>
-</ol>
+<li>
+<p>Configuration
+The web.xml <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/web.xml">template of BCD-UI</a> describes the setup, look for the following section</p>
+<div class="listingblock">
+<div class="title">oAuth sample with Azure</div>
+<div class="content">
+<pre class="CodeRay highlight"><code>        #### OAuth start (named option 2.2 above)
+        ## Use this to OAuth authenticate against Azure / Google. Make sure to enable /oauth in [url] section.
+        ## Some information is provided by OAuth provider when setting up ypur application there
+        ## Azure
+        # oauthcAzure                             = de.businesscode.bcdui.subjectsettings.oauth2.OAuthAuthenticatingFilter
+        # oauthcAzure.optionalProviderId          = azure
+        # oauthcAzure.authorizeEndpoint           =     # provided by Azure
+        # oauthcAzure.authScope                   = openid https://graph.microsoft.com/user.read
+        # oauthcAzure.clientId                    =     # provided by Azure
+        # oauthcAzure.redirectUrl                 = http://myapp.com/oauth  # Adjust and tell this Azure
+        # oauthcAzureRealm                        = de.businesscode.bcdui.subjectsettings.oauth2.OAuthRealm
+        # oauthcAzureRealm.authenticator          = $oauthcAzure
+        # oauthcAzureRealm.apiEndpoint            = https://graph.microsoft.com/v1.0/me/
+        # oauthcAzureRealm.clientSecret           =     # provided by Azure
+        # oauthcAzureRealm.tokenEndpoint          =     # provided by Azure
+        # oauthcAzureRealm.principalPropertyName  = userPrincipalName</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>That web.xml also holds description for oAuth with Google and combinations for multiple providers,</p>
+</div>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_configuration_2">14.3. Configuration</h3>
+<h3 id="_kerberos_windows_sso_windows_authentication">14.9. Kerberos / Windows SSO / Windows Authentication</h3>
 <div class="paragraph">
-<p>Provided configurations will authenticate user and set the principal to user&#8217;s email.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Sample configuration for Azure</p>
-<div class="paragraph">
-<p>in your web.xml, Shiro configuration</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code>[main]
-..
-
-## Azure OAuth
-oauthcAzure = de.businesscode.bcdui.security.shiro.oauth2.azure.AzureAuthenticatingFilter
-oauthcAzure.authorizeEndpoint = https://login.microsoftonline.com/your_tenant_id/oauth2/v2.0/authorize
-oauthcAzure.clientId = your_client_id
-oauthcAzure.redirectUrl = http://localhost:8080/application
-oauthcAzure.successUrl = /
-oauthcAzureRealm = de.businesscode.bcdui.security.shiro.oauth2.azure.AzureRealm
-oauthcAzureRealm.clientSecret = your_client_secret
-oauthcAzureRealm.tokenEndpoint = https://login.microsoftonline.com/your_tenant_id/oauth2/v2.0/token
-
-..
-
-[urls]
-/oauth = oauthcAzure
-..</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Sample configuration for Google</p>
-<div class="paragraph">
-<p>in your web.xml, Shiro configuration</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code>[main]
-..
-
-## Google
-oauthcGoogle = de.businesscode.bcdui.security.shiro.oauth2.google.GoogleAuthenticatingFilter
-oauthcGoogle.authorizeEndpoint = https://accounts.google.com/o/oauth2/v2/auth
-oauthcGoogle.clientId = your_client_id
-oauthcGoogle.redirectUrl = http://localhost:8080/application
-oauthcGoogle.successUrl = /
-oauthcGoogleRealm = de.businesscode.bcdui.security.shiro.oauth2.google.GoogleRealm
-oauthcGoogleRealm.clientSecret = your_client_secret
-..
-
-[urls]
-/oauth = oauthcGoogle
-..</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Sample configuration for multiple authenticators</p>
-<div class="paragraph">
-<p>in your web.xml, Shiro configuration</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code>[main]
-..
-
-## Azure
-oauthcAzure = de.businesscode.bcdui.security.shiro.oauth2.azure.AzureAuthenticatingFilter
-# required since we bind both to same url
-oauthcAzure.optionalProviderId = azure
-oauthcAzure.authorizeEndpoint = https://login.microsoftonline.com/your_tenant_id/oauth2/v2.0/authorize
-oauthcAzure.clientId = your_client_id
-oauthcAzure.redirectUrl = http://localhost:8080/application
-oauthcAzure.successUrl = /
-oauthcAzureRealm = de.businesscode.bcdui.security.shiro.oauth2.azure.AzureRealm
-oauthcAzureRealm.clientSecret = your_client_secret
-oauthcAzureRealm.tokenEndpoint = https://login.microsoftonline.com/your_tenant_id/oauth2/v2.0/token
-# required due to multiple authenticators
-oauthcAzureRealm.authenticator = $oauthcAzure
-
-## Google
-oauthcGoogle = de.businesscode.bcdui.security.shiro.oauth2.google.GoogleAuthenticatingFilter
-# required since we bind both to same url
-oauthcGoogle.optionalProviderId = google
-oauthcGoogle.authorizeEndpoint = https://accounts.google.com/o/oauth2/v2/auth
-oauthcGoogle.clientId = your_client_id
-oauthcGoogle.redirectUrl = http://localhost:8080/application
-oauthcGoogle.successUrl = /
-oauthcGoogleRealm = de.businesscode.bcdui.security.shiro.oauth2.google.GoogleRealm
-oauthcGoogleRealm.clientSecret = your_client_secret
-# required due to multiple authenticators
-oauthcGoogleRealm.authenticator = $oauthcGoogle
-
-..
-
-[urls]
-# since both filters map same url, control via url parameter 'oauth-provider-id' which filter to active by providing providerId, i.e. ?oauth-provider-id=azure
-/oauth = oauthcAzure, oauthcGoogle
-..</code></pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-<div class="sect3">
-<h4 id="_kerberos_windows_sso_windows_authentication_enterpriseedition">Kerberos / Windows SSO / Windows Authentication (EnterpriseEdition)</h4>
-<div class="paragraph">
-<p>BCDUI provides transparent integration for authentication against Windows Active Directory (or any other Directory service) via Kerberos protocol
-for web applications running Tomcat v7 or greater.
-In case this automatic authentication also fails, the system falls back to built-in form authentication.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Prerequisites</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Copy bcd-spnego-valve-[x.x.x].jar to into $TOMCAT_HOME/lib folder or any other folder known to Tomcat&#8217;s common-classloader.
-There are no side-effects of putting this library into tomcat.</p>
-</li>
-<li>
-<p>An existing service account on Active Directory, i.e. HTTP/tomcat1.virtual.business-code.de@VIRTUAL.BUSINESS-CODE.DE to be used by tomcat</p>
-</li>
-<li>
-<p>A .keytab file for that service account.</p>
-</li>
-<li>
-<p>Tomcat must be running on a remote machine from Active Directory perspective as well as from User&#8217;s perspective, otherwise SPNEGO on browser will fallback to proprietary NTLM, which is not supported.</p>
-</li>
-<li>
-<p>The hostname must be added to "Local Intranet" security zone for IE (Chrome uses same settings), for FF you have to enter configuration to add host to trusted sites.</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Tomcat Configuration for Kerberos</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Keytab from Domain Controller<br>
-Please ask your domain administrator to provide a keytab file for Tomcat service to connect to Domain Controller.</p>
-</li>
-<li>
-<p>Install Java 8 and Tomcat7 v.7.0.60 or newer</p>
-</li>
-<li>
-<p>Copy files from tomcat_lib/* to your $tomcat.home/lib</p>
-</li>
-<li>
-<p>Install JAAS/Kerberos configuration:<br>
-Copy your keytab file (which you have got in step 0) and tomcat_conf/*
-to your $catalina.base/conf folder and adjust the files to meet your environment configuration:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>file: jaas.conf, change following properties:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>principal &#8594; (put your principal here the keytab file was issued for)</p>
-</li>
-<li>
-<p>keytab &#8594; adjust path to reflect location of your keytab file<br></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>file: krb5.ini</p>
-<div class="ulist">
-<ul>
-<li>
-<p>change realm VIRTUAL.BUSINESS-CODE.DE to yours, realm names must be CAPITAL CASE.</p>
-</li>
-<li>
-<p>default_keytab_name -&gt; adjust path to reflect location of your keytab file</p>
-</li>
-<li>
-<p>[realms].&lt;YOUR_REALM&gt;.kdc -&gt; hostname of your domain controller</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Install SSO Test App:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>copy BCD-UI-SSO.war to $tomcat.base/webapps</p>
-</li>
-<li>
-<p>ensure the app is running by navigating in your browser to url: &lt;your-tomcat-hostname&gt;/BCD-UI-SSO</p>
-</li>
-<li>
-<p>you should see a page with a link "Enter Secured Page"<br>
-If you don&#8217;t see the page, check Tomcat logs.
-Most likely you have missed to copy extra library to tomcat as described in step 2.</p>
-</li>
-<li>
-<p>Please, don&#8217;t click the link yet.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Configure Browsers on Windows client machine with domain user to test SSO:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>For IE and Chrome ( chrome re-uses settings from IE ):</p>
-<div class="ulist">
-<ul>
-<li>
-<p>add &lt;your-tomcat-hostname&gt; to "Local intranet" security-zone</p>
-</li>
-<li>
-<p>ensure "Enable integrated windows authentication" is checked in Internet Options &#8594; Advanced &#8594; Security subtree</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>For Firefox:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>open about:config in your Firefox browser and change following options:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code>network.negotiate-auth.allow-non-fqdn     =&gt; true
-network.negotiate-auth.delegation-uris    =&gt; &lt;your-tomcat-hostname&gt;
-network.automatic-ntlm-auth.trusted-uris  =&gt; &lt;your-tomcat-hostname&gt;
-network.automatic-ntlm-auth.allow-proxies =&gt; True
-network.negotiate-auth.allow-proxies      =&gt; True</code></pre>
-</div>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Verify SSO on Windows client machine with domain user:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>after security settings changed, please restart the browser and navigate to url: &lt;your-tomcat-hostname&gt;/BCD-UI-SSO</p>
-</li>
-<li>
-<p>then click on "Enter Secured Page" link</p>
-</li>
-<li>
-<p>your should see one of the following:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>"SSO success", along with principal name.</p>
-</li>
-<li>
-<p>"SSO failed", which means that SSO has failed for some reason. Please consult tomcat logs for further information.
-In such a case the web application will trigger authentication on itself.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>In case you see HTTP-401 or some default authentication-failed screen or a browser
-pop-ups authentication dialog, then you most likely did not configure your browser properly (see step 5)</p>
-</li>
-</ul>
-</div>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Context (Webapp) Configuration</p>
-<div class="paragraph">
-<p>Extend your Context descriptor (context.xml) and register the Valve 'de.businesscode.bcdui.security.SpnegoValve':</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;Context&gt;</span>
-  <span class="tag">&lt;Valve</span> <span class="attribute-name">className</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">de.businesscode.bcdui.security.SpnegoValve</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-<span class="tag">&lt;/Context&gt;</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Now, the Valve is attached to request processing, yet without effect. We have to arm it in your web.xml. As such, please
-add following to your descriptor:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;security-role&gt;</span>
-  <span class="tag">&lt;role-name&gt;</span>*<span class="tag">&lt;/role-name&gt;</span>
-<span class="tag">&lt;/security-role&gt;</span><span class="tag">&lt;security-constraint&gt;</span>
-  <span class="tag">&lt;web-resource-collection&gt;</span>
-    <span class="tag">&lt;web-resource-name&gt;</span>SPNEGO AUTHENTICATION<span class="tag">&lt;/web-resource-name&gt;</span>
-    <span class="tag">&lt;url-pattern&gt;</span>/*<span class="tag">&lt;/url-pattern&gt;</span>
-  <span class="tag">&lt;/web-resource-collection&gt;</span>
-  <span class="tag">&lt;auth-constraint&gt;</span>
-    <span class="tag">&lt;role-name&gt;</span>*<span class="tag">&lt;/role-name&gt;</span>
-  <span class="tag">&lt;/auth-constraint&gt;</span>
-<span class="tag">&lt;/security-constraint&gt;</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>No &lt;login-config&gt; element is required here, since we have attached our Valve explicitely. Essentially, security-constraint/web-resource-collection/url-pattern
-shall match those secured by Shiro Filter. Once done you have enabled Windows/Kerberos SSO, which will fall back to form based authentication in any failure.</p>
-</div>
-</li>
-<li>
-<p>Finally, rewrite the default 'authc' filter in Shiro descriptor (inline in web.xml or shiro.ini) and add this line into [main] section:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code>[main]
-authc = de.businesscode.bcdui.subjectsettings.AuthenticationFilter
-realm = de.businesscode.bcdui.subjectsettings.JdbcRealm
-...</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>And follow the setup for Shiro section described in the chapters above.</p>
-</div>
-</li>
-</ol>
-</div>
+<p>BCDUI also provides transparent integration for authentication against Windows Active Directory (or any other Directory service) via Kerberos protocol.
+This is supported by the Enterprise Edition of BCD-UI, please contact BusinessCode GmbH for questions.</p>
 </div>
 </div>
 </div>

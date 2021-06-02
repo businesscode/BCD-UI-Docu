@@ -34,7 +34,7 @@ After login the original request is processed.
 
 For each url path you can also set required rights in the init-param section of IniShiroFilter in web.xml.
 
-==== Developer's view
+==== Developer view
 
 Developers need to follow these rules to implement secure applications:
 
@@ -63,70 +63,50 @@ A login page is a standard page with two plain inputs:
 ----
 include::../web/login.html[tag=inputs]
 ----
-We are not using BCD-UI buttons here but plain HTML ones here, because we made the library accessible to already authenticated users only.
+Per default bcdui static resources are accessible without login, you can also use BCD-UI buttons if you want.
 
 . Login logging +
 By adding `bcd_log_login` BindingSet to your application, all login attempts and their result is logged into the corresponding table.
 
-To  set up users and their authorization, you can choose the simple setup by hard-coding them in web.xml
-or maintaining them in the database.
+To set up users and their authorization, you can choose the simple setup by hard-coding them in web.xml, by maintaining them in BCD-UI's database or authenticated with oAuth (AD, Google, facebook etc) combined with rights maintained in your database.
 
-==== Define users in web.xml
-You can have an easy web.xml - only setup in the following way:
+==== Page access rights
+No matter which method you use for defining users and their roles, use the [urls] section in web.xml to define access to pages. It is easy to also adjust the menu to offer only allowed pages.
 
-. Enable IniShiroFilter in web.xml +
-And configure Shiro section next to the servlet:
-+
-.Remove all manager entries in that case from the [main] section, only keep
 [source,xml,indent=0]
 ----
-include::../web/WEB-INF/web.xml[tag=main]
+include::../web/WEB-INF/web.xml[tag=urls]
 ----
-+
+<1> Here we define that any authenticated user can access /cube
+<2> For /api/** we require login and a 'pages:admin' permission
+
+
+=== Define users in web.xml
+You can have an easy web.xml - only setup in the following way:
+
 .Add any users, their password and their roles:
 [source,xml,indent=0]
 ----
 include::../web/WEB-INF/web.xml[tag=users]
 ----
-+
+
 .Define permissions of roles:
 [source,xml,indent=0]
 ----
 include::../web/WEB-INF/web.xml[tag=roles]
 ----
 Users with 'adminRole' also have the pages:admin right.
-The name of the right can be hierarchically as mentioned, you are free to name them.
-. Define access rights for urls:
-+
+
+=== Define users in database
+Instead of having a static set of users and passwords in web.xml, you can store users and passwords in the database.
+
 [source,xml,indent=0]
 ----
-include::../web/WEB-INF/web.xml[tag=urls]
-----
-<1> bcdui/theme/** is anon, means needs no valid login. This is because we need the style on the login page already
-<2> login.html is authc and requires login
-<3> /logout triggers a logout, afterwards we are redirected to logout.redirectUrl, see [main] section
-<4> Here we define that any authenticated user can access /cube
-<5> For /api/** we require login and a 'pages:admin' permission
-
-==== Define users in database
-Instead of having a static set of users and passwords in web.xml, can store users and passwords in the database.
-
-The setup is similar to above, but the [main] section of web.xml looks like the following instead:
-
-. Shiro sections in web.xml
-+
-Enable the managers in the [main} section in addition to the url definitions
-+
-[source,xml,indent=0]
-----
-include::../web/WEB-INF/web.xml[tag=main]
-
 include::../web/WEB-INF/web.xml[tag=mainJdbcRealm]
 ----
-Make sure, $CATALINA_TMPDIR is writable for Tomcat, otherwise ehcache will complaint on start. +
 Keep [users] and [roles] sections empty and follow for [urls] the description given in the chapter above.
 
-. SubjectSettings config +
+=== SubjectSettings config
 Add a file `WEB-INF/bcdui/subjectSettings.xml` with at least the following content:
 +
 [source,xml,indent=0]
@@ -135,233 +115,36 @@ include::../web/WEB-INF/bcdui/subjectSettings.xml[]
 ----
 Later you can define BindingSet related security restrictions here.
 
-. User related BindingSets +
+=== User related BindingSets
 Add bcd_sec_user and bcd_sec_user_settings BindingSets (and the corresponding tables).
-There is no prebuilt UI editor for these two tables but their content should be self-explanatory.
+There is no prebuilt UI editor for these two tables, but their content should be self-explanatory.
 All attributes and permissions assigned to a user in the table corresponding to `bcd_sec_user_settings` are read when the user logs in.
 These become in-memory subject settings, which can be used to query whether a user has a a certain permission.
 These permissions are checked for example by the security filter when accessing an url.
-+
-.Layout of BindingSet bcd_sec_user_settings
-[options="header"]
-|===
-|Column|Content
-|user_id|Id of the user this permission is assigned to.
-|right_type|Id of the permission the values relate to.
-|right_value|A value for that right type. Note that (user_id, right_type) is not unique, thus you can assign multiple values here by repeating (user_id, right_type).
-|===
 
-. Custom setup +
+=== Custom setup +
 You may also provide your own LoginServlet or Realm for a custom setup of deriving users and their attributes.
 Please check Shiro documentation for more options.
 
-==== OAuth2 / Azure / Google
+=== OAuth2 with Azure / Google etc
 
-BCD-UI provides Shiro integrated implementation for general OAuth2 authentication (referred to as oauth in this docu) and ready-to-use modules for Azure and Google integration.
-OAuth integration is currently limited to authentication only, the permissions for authorization are managed by application through subjectsettings.
+BCD-UI provides Shiro integrated implementation for general OAuth2 authentication (referred to as oauth in this docu) and ready-to-use modules for Azure and Google integration. +
+Authentication is handled by OAuth, permissions are managed by application through _SsubjectSettings_.
 
 . Prerequisites
 .. Register your client application to Azure/Google/x to obtain a client and a client secret. For Google we use 'email' scope and for Azure 'https://graph.microsoft.com/user.read' but you can override and use whatever you prefer to use for authentication.
 
-=== Configuration
-
-Provided configurations will authenticate user and set the principal to user's email.
-
-. Sample configuration for Azure
+. Configuration
+The web.xml https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/web.xml[template of BCD-UI] describes the setup, look for the following section
 +
-in your web.xml, Shiro configuration
-+
+.oAuth sample with Azure
 [source]
 ----
-[main]
-..
-
-## Azure OAuth
-oauthcAzure = de.businesscode.bcdui.security.shiro.oauth2.azure.AzureAuthenticatingFilter
-oauthcAzure.authorizeEndpoint = https://login.microsoftonline.com/your_tenant_id/oauth2/v2.0/authorize
-oauthcAzure.clientId = your_client_id
-oauthcAzure.redirectUrl = http://localhost:8080/application
-oauthcAzure.successUrl = /
-oauthcAzureRealm = de.businesscode.bcdui.security.shiro.oauth2.azure.AzureRealm
-oauthcAzureRealm.clientSecret = your_client_secret
-oauthcAzureRealm.tokenEndpoint = https://login.microsoftonline.com/your_tenant_id/oauth2/v2.0/token
-
-..
-
-[urls]
-/oauth = oauthcAzure
-..
+include::../web/WEB-INF/web.xml[tag=oAuth]
 ----
+That web.xml also holds description for oAuth with Google and combinations for multiple providers,
 
-. Sample configuration for Google
-+
-in your web.xml, Shiro configuration
-+
-[source]
-----
-[main]
-..
+=== Kerberos / Windows SSO / Windows Authentication
 
-## Google
-oauthcGoogle = de.businesscode.bcdui.security.shiro.oauth2.google.GoogleAuthenticatingFilter
-oauthcGoogle.authorizeEndpoint = https://accounts.google.com/o/oauth2/v2/auth
-oauthcGoogle.clientId = your_client_id
-oauthcGoogle.redirectUrl = http://localhost:8080/application
-oauthcGoogle.successUrl = /
-oauthcGoogleRealm = de.businesscode.bcdui.security.shiro.oauth2.google.GoogleRealm
-oauthcGoogleRealm.clientSecret = your_client_secret
-..
-
-[urls]
-/oauth = oauthcGoogle
-..
-----
-. Sample configuration for multiple authenticators
-+
-in your web.xml, Shiro configuration
-+
-[source]
-----
-[main]
-..
-
-## Azure
-oauthcAzure = de.businesscode.bcdui.security.shiro.oauth2.azure.AzureAuthenticatingFilter
-# required since we bind both to same url
-oauthcAzure.optionalProviderId = azure
-oauthcAzure.authorizeEndpoint = https://login.microsoftonline.com/your_tenant_id/oauth2/v2.0/authorize
-oauthcAzure.clientId = your_client_id
-oauthcAzure.redirectUrl = http://localhost:8080/application
-oauthcAzure.successUrl = /
-oauthcAzureRealm = de.businesscode.bcdui.security.shiro.oauth2.azure.AzureRealm
-oauthcAzureRealm.clientSecret = your_client_secret
-oauthcAzureRealm.tokenEndpoint = https://login.microsoftonline.com/your_tenant_id/oauth2/v2.0/token
-# required due to multiple authenticators
-oauthcAzureRealm.authenticator = $oauthcAzure
-
-## Google
-oauthcGoogle = de.businesscode.bcdui.security.shiro.oauth2.google.GoogleAuthenticatingFilter
-# required since we bind both to same url
-oauthcGoogle.optionalProviderId = google
-oauthcGoogle.authorizeEndpoint = https://accounts.google.com/o/oauth2/v2/auth
-oauthcGoogle.clientId = your_client_id
-oauthcGoogle.redirectUrl = http://localhost:8080/application
-oauthcGoogle.successUrl = /
-oauthcGoogleRealm = de.businesscode.bcdui.security.shiro.oauth2.google.GoogleRealm
-oauthcGoogleRealm.clientSecret = your_client_secret
-# required due to multiple authenticators
-oauthcGoogleRealm.authenticator = $oauthcGoogle
-
-..
-
-[urls]
-# since both filters map same url, control via url parameter 'oauth-provider-id' which filter to active by providing providerId, i.e. ?oauth-provider-id=azure
-/oauth = oauthcAzure, oauthcGoogle
-..
-----
-
-==== Kerberos / Windows SSO / Windows Authentication (EnterpriseEdition)
-
-BCDUI provides transparent integration for authentication against Windows Active Directory (or any other Directory service) via Kerberos protocol
-for web applications running Tomcat v7 or greater.
-In case this automatic authentication also fails, the system falls back to built-in form authentication.
-
-. Prerequisites
-
-.. Copy bcd-spnego-valve-[x.x.x].jar to into $TOMCAT_HOME/lib folder or any other folder known to Tomcat's common-classloader.
-  There are no side-effects of putting this library into tomcat.
-.. An existing service account on Active Directory, i.e. HTTP/tomcat1.virtual.business-code.de@VIRTUAL.BUSINESS-CODE.DE to be used by tomcat
-.. A .keytab file for that service account.
-.. Tomcat must be running on a remote machine from Active Directory perspective as well as from User's perspective, otherwise SPNEGO on browser will fallback to proprietary NTLM, which is not supported.
-.. The hostname must be added to "Local Intranet" security zone for IE (Chrome uses same settings), for FF you have to enter configuration to add host to trusted sites.
-
-. Tomcat Configuration for Kerberos
-
-.. Keytab from Domain Controller +
-  Please ask your domain administrator to provide a keytab file for Tomcat service to connect to Domain Controller.
-.. Install Java 8 and Tomcat7 v.7.0.60 or newer
-.. Copy files from tomcat_lib/* to your $tomcat.home/lib
-.. Install JAAS/Kerberos configuration: +
-  Copy your keytab file (which you have got in step 0) and tomcat_conf/*
-  to your $catalina.base/conf folder and adjust the files to meet your environment configuration:
-  * file: jaas.conf, change following properties:
-  ** principal -> (put your principal here the keytab file was issued for)
-  ** keytab -> adjust path to reflect location of your keytab file +
-  * file: krb5.ini
-  ** change realm VIRTUAL.BUSINESS-CODE.DE to yours, realm names must be CAPITAL CASE.
-  ** default_keytab_name -&gt; adjust path to reflect location of your keytab file
-  ** [realms].&lt;YOUR_REALM&gt;.kdc -&gt; hostname of your domain controller
-.. Install SSO Test App:
-  * copy BCD-UI-SSO.war to $tomcat.base/webapps
-  * ensure the app is running by navigating in your browser to url: <your-tomcat-hostname>/BCD-UI-SSO
-  * you should see a page with a link "Enter Secured Page" +
-    If you don't see the page, check Tomcat logs.
-    Most likely you have missed to copy extra library to tomcat as described in step 2.
-  * Please, don't click the link yet.
-.. Configure Browsers on Windows client machine with domain user to test SSO:
-  * For IE and Chrome ( chrome re-uses settings from IE ):
-  ** add <your-tomcat-hostname> to "Local intranet" security-zone
-  ** ensure "Enable integrated windows authentication" is checked in Internet Options -> Advanced -> Security subtree
-  * For Firefox:
-  ** open about:config in your Firefox browser and change following options:
-+
-[source]
-----
-network.negotiate-auth.allow-non-fqdn     => true
-network.negotiate-auth.delegation-uris    => <your-tomcat-hostname>
-network.automatic-ntlm-auth.trusted-uris  => <your-tomcat-hostname>
-network.automatic-ntlm-auth.allow-proxies => True
-network.negotiate-auth.allow-proxies      => True
-----
-
-.. Verify SSO on Windows client machine with domain user:
-  * after security settings changed, please restart the browser and navigate to url: <your-tomcat-hostname>/BCD-UI-SSO
-  * then click on "Enter Secured Page" link
-  * your should see one of the following:
-  ** "SSO success", along with principal name.
-  ** "SSO failed", which means that SSO has failed for some reason. Please consult tomcat logs for further information.
-  In such a case the web application will trigger authentication on itself.
-  * In case you see HTTP-401 or some default authentication-failed screen or a browser
-  pop-ups authentication dialog, then you most likely did not configure your browser properly (see step 5)
-
-. Context (Webapp) Configuration
-+
-Extend your Context descriptor (context.xml) and register the Valve 'de.businesscode.bcdui.security.SpnegoValve':
-+
-[source,xml]
-----
-<Context>
-  <Valve className="de.businesscode.bcdui.security.SpnegoValve"/>
-</Context>
-----
-+
-Now, the Valve is attached to request processing, yet without effect. We have to arm it in your web.xml. As such, please
-add following to your descriptor:
-+
-[source,xml]
-----
-<security-role>
-  <role-name>*</role-name>
-</security-role><security-constraint>
-  <web-resource-collection>
-    <web-resource-name>SPNEGO AUTHENTICATION</web-resource-name>
-    <url-pattern>/*</url-pattern>
-  </web-resource-collection>
-  <auth-constraint>
-    <role-name>*</role-name>
-  </auth-constraint>
-</security-constraint>
-----
-No <login-config> element is required here, since we have attached our Valve explicitely. Essentially, security-constraint/web-resource-collection/url-pattern
-shall match those secured by Shiro Filter. Once done you have enabled Windows/Kerberos SSO, which will fall back to form based authentication in any failure.
-
-. Finally, rewrite the default 'authc' filter in Shiro descriptor (inline in web.xml or shiro.ini) and add this line into [main] section:
-+
-[source]
-----
-[main]
-authc = de.businesscode.bcdui.subjectsettings.AuthenticationFilter
-realm = de.businesscode.bcdui.subjectsettings.JdbcRealm
-...
-----
-And follow the setup for Shiro section described in the chapters above.
+BCDUI also provides transparent integration for authentication against Windows Active Directory (or any other Directory service) via Kerberos protocol.
+This is supported by the Enterprise Edition of BCD-UI, please contact BusinessCode GmbH for questions.
