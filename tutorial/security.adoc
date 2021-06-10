@@ -108,7 +108,8 @@ Keep [users] and [roles] sections empty and follow for [urls] the description gi
 
 === SubjectSettings config
 Add a file `WEB-INF/bcdui/subjectSettings.xml` with at least the following content:
-+
+
+.Switch on SubjectSettings
 [source,xml,indent=0]
 ----
 include::../web/WEB-INF/bcdui/subjectSettings.xml[]

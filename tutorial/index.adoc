@@ -17,6 +17,8 @@ include::minimalCube.adoc[]
 
 include::coreArtifacts.adoc[]
 
+include::pageStructure.adoc[]
+
 include::components.adoc[]
 
 :leveloffset: +1
@@ -32,8 +34,6 @@ include::charts.adoc[]
 :leveloffset: -1
 
 include::widgets.adoc[]
-
-include::pageStructure.adoc[]
 
 include::themes.adoc[]
 

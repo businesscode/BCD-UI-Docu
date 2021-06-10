@@ -7,66 +7,71 @@
   <script type="text/javascript" src="./bcdui/bcdui.js"></script> <!--1-->
 </head>
 <body>
-<div class="bcd__outer-wrapper"> <!--2-->
-  <div class="bcd__wrapper">
-    <div class="bcd__horizontal-split">
+  <div class="bcd__outer-wrapper"> <!--2-->
+    <div class="bcd__wrapper">
+      <div class="bcd__horizontal-split">
 
-      <!-- Header -->
-      <div class="bcd__header">
-        <div class="bcd__header__upper">
-          <div class="bcd__header__logo"><img src="../bcdui/theme/images/bcd_logo.png" alt=""></div>
-          <div></div>
-        </div>
-        <div class="bcd__header__navigation"></div> <!--3-->
-      </div>
-
-      <!-- Main area -->
-      <div class="bcd__vertical-split">
-
-        <!-- Sidebar --> <!--4-->
-        <div class="bcd__sidebar-left">
-          <div class="bcd__sidebar-left__inner">
-            <div class="bcd__sidebar-left-collaps-toggle-wrapper"><button class="bcd__sidebar-left-collaps-toggle bcd__sidebar-left-collaps-toggle--collapsed"><i class="fas fa-caret-left"></i></button></div>
-
-            <div class="bcd__form-container">
-              <!-- place your sidebar widgets here -->
-              <section>
-                <div class="bcd__form-group">
-                  <label for="s1">Apply</label>
-                  <div class="bcd__select-container">
-                    <div id="applyDiv"></div>
-                   </div>
-                </div>
-              </section>
-            </div>
-
+        <!-- Header -->
+        <div class="bcd__header">
+          <div class="bcd__header__upper">
+            <div class="bcd__header__logo"><img src="../bcdui/theme/images/bcd_logo.png" alt=""></div>
+            <div></div>
           </div>
+          <div class="bcd__header__navigation"></div> <!--3-->
         </div>
 
-        <!-- Main content area --> <!--5-->
-        <div class="bcd__content-container">
-          <h1>Blank Page</h1>
+        <!-- Main area -->
+        <div class="bcd__vertical-split">
 
-          <div id="myDataDiv"></div> <!--6-->
+          <!-- Left sidebar, there is also a right sidebar not shown here --> <!--4-->
+          <div class="bcd__sidebar-left">
+            <div class="bcd__sidebar-left__inner">
+              <div class="bcd__sidebar-left-collaps-toggle-wrapper"><button class="bcd__sidebar-left-collaps-toggle bcd__sidebar-left-collaps-toggle--collapsed"><i class="fas fa-caret-left"></i></button></div>
+
+              <div class="bcd__form-container">
+                <section>
+                  <div class="bcd__form-group">
+                    <div class="bcd__select-container">
+
+                      <!-- place your sidebar widgets here
+                      <bcd-inputNg label="my input"...></bcd-inputNg>
+                      -->
+
+                      <bcd-buttonNg caption="Apply" onClickAction="bcdui.core.lifecycle.applyAction()"></bcd-buttonNg>
+                     </div>
+                  </div>
+                </section>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Main content area --> <!--5-->
+          <div class="bcd__content-container">
+            <h1>Blank Page</h1>
+
+            <!-- place your main output here -->
+            <div id="myDataDiv"></div> <!--6-->
+          </div>
+
         </div>
 
+        <!-- Footer -->
+        <footer>
+          <p>&copy; 2021 BusinessCode GmbH</p>
+          <nav>
+            <ul>
+              <li><a href="#">Imprint</a></li>
+              <li><a href="#">Privacy</a></li>
+            </ul>
+          </nav>
+        </footer>
       </div>
-
-      <!-- Footer -->
-      <footer>
-        <p>&copy; 2021 BusinessCode GmbH</p>
-        <nav>
-          <ul>
-            <li><a href="#">Imprint</a></li>
-            <li><a href="#">Privacy</a></li>
-          </ul>
-        </nav>
-      </footer>
     </div>
   </div>
-</div>
-<!--7-->
-<script>
-</script>
+
+  <!-- Put all your JavaScript here --> <!--7-->
+  <script>
+  </script>
 </body>
 </html>

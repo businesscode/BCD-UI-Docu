@@ -1,17 +1,28 @@
 [[DocBootstrap]]
 == Bootstrap
 
-This chapter guides you through the steps of initially setting up your development environment for BCD-UI.
+This helps setting up your development environment for BCD-UI.
 
-=== Get the tools
+=== Getting the tools
 
 To start development with BCD-UI, first get the tools:
 
 * Make sure you have JDK 11 or higher
 * Install an IDE of your preference, we assume Eclipse in our samples.
-* Install a Jakarta EE web server like Oracle WebLogic, IBM Websphere or JBoss, we assume Tomcat 8.5 in our examples
+* Install a Jakarta EE web server like Oracle WebLogic, IBM Websphere or JBoss, we assume Tomcat 8.5or 9 in our examples
 
-TIP: For performance reasons you should allow compression for static resources. +
+[TIP]
+====
+If you are not already familiar with the concept if of Java Web Applications, you find many good tutorials. Here are some very short for Eclipse as Servlet in an Tomcat-combination:
+
+. Install https://www.eclipse.org/downloads/packages/[Eclipse IDE for Enterprise Java and Web Developers] and https://developers.redhat.com/products/openjdk/download[Java JDK]
+. Baeldung on https://www.baeldung.com/tomcat[installing Tomcat] and on https://www.baeldung.com/tomcat[connecting Eclipse with Tomcat]
+. Minimal steps to create a Java Servlet and a JQuery Ajax call https://www.journaldev.com/4742/jquery-ajax-jsp-servlet-java-example[tutorial]
+====
+
+
+=== Tomcat compress resources
+For performance reasons, you should allow compression for static resources. +
 For Tomcat adjust in server.xml,
 see link:https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/tomcat/server.xml[BCD-UI/Server/configFiles/tomcat/server.xml, window="_blank"]
 
