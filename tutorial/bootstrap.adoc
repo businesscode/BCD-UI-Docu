@@ -17,7 +17,8 @@ If you are not already familiar with the concept if of Java Web Applications, yo
 
 . Install https://www.eclipse.org/downloads/packages/[Eclipse IDE for Enterprise Java and Web Developers] and https://developers.redhat.com/products/openjdk/download[Java JDK]
 . Baeldung on https://www.baeldung.com/tomcat[installing Tomcat] and on https://www.baeldung.com/tomcat[connecting Eclipse with Tomcat]
-. Minimal steps to create a Java Servlet and a JQuery Ajax call https://www.journaldev.com/4742/jquery-ajax-jsp-servlet-java-example[tutorial]
+. Minimal sample creating a Java Servlet and a JQuery Ajax call  https://programming.vip/docs/servlet-processing-jquery-ajax-requests.html[tutorial]. +
+You won't have to develop Servlets when start using BCD-UI as it comes with Servlets and also, while BCD-UI uses jQuery internally, you may not need to use it directly. But an understanding of these technologies is definitely recommended.
 ====
 
 
