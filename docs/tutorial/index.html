@@ -607,7 +607,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#DocPageStructure">6. Client infrastructure</a>
 <ul class="sectlevel2">
 <li><a href="#_page_live_cycle">6.1. Page live-cycle</a></li>
-<li><a href="#_guistatus_singelton">6.2. guiStatus Singelton</a></li>
+<li><a href="#_guistatus_singleton">6.2. guiStatus Singleton</a></li>
 <li><a href="#DataProviders">6.3. DataProviders</a>
 <ul class="sectlevel3">
 <li><a href="#_available_data_providers">Available data providers</a></li>
@@ -740,7 +740,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_data_visualization">Data Visualization</a></li>
 <li><a href="#_parametrization">Parametrization</a></li>
 <li><a href="#_javascript_counterparts">Javascript counterparts</a></li>
-<li><a href="#_string_utilites">String Utilites</a></li>
+<li><a href="#_string_utilities">String Utilities</a></li>
 <li><a href="#_transformation_into_non_wrs">Transformation into non-WRS</a></li>
 </ul>
 </li>
@@ -904,7 +904,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#DocCompatibility">26. Compatibility</a>
 <ul class="sectlevel2">
 <li><a href="#_compatibility">26.1. Compatibility</a></li>
-<li><a href="#_known_browser_incompatibilites">26.2. Known browser incompatibilites</a></li>
+<li><a href="#_known_browser_incompatibilities">26.2. Known browser incompatibilities</a></li>
 <li><a href="#_working_with_webkit_browsers">26.3. Working with webkit browsers</a></li>
 </ul>
 </li>
@@ -951,12 +951,12 @@ It bases on HTML5 and Java technologies and provides many artifacts typically ne
 <p>Export of <a href="#DocExports">WYSIWYG and detail data</a></p>
 </li>
 <li>
-<p>Infrastructure for <a href="#DocI18n">internationalization</a>, <a href="#DocSecurity">security</a>, <a href="#DocThemes">themeing</a>, page lifcycle</p>
+<p>Infrastructure for <a href="#DocI18n">internationalization</a>, <a href="#DocSecurity">security</a>, <a href="#DocThemes">theming</a>, page lifecycle</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>and many more as you will learn in this tutorial.</p>
+<p>and many more, as you will learn in this tutorial.</p>
 </div>
 <div class="paragraph">
 <p>Assume you want to provide the user with the option of setting up a report
@@ -970,7 +970,7 @@ by defining dimensions and measures and filter data by time and location like th
 <div class="paragraph">
 <p>You will be surprised how easy you achieve that with BCD-UI.<br>
 And going further and tweak the application to your needs is where BCD-UI continues supporting you,
-so you can provide solutions with higher complexity with less effort, less bugs and less performance issues than ever.</p>
+so you can provide solutions with higher complexity with less effort, fewer bugs and less performance issues than ever.</p>
 </div>
 <div class="paragraph">
 <p>With BCD-UI you are free to extend in any direction needed using standard technologies.
@@ -1030,7 +1030,7 @@ If you don&#8217;t know how to make a vanilla application running with your IDE 
 </table>
 </div>
 <div class="paragraph">
-<p>Once you have your standard application running, just do these 4 steps detailed in <a href="#DocAppsetup">Application Setup</a> to turn it into a BCD-UI applcation</p>
+<p>Once you have your standard application running, just do these 4 steps detailed in <a href="#DocAppsetup">Application Setup</a> to turn it into a BCD-UI application</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1446,7 +1446,7 @@ By default, the result is rendered as a plain table. You will often want to prov
 </div>
 </div>
 <div class="paragraph">
-<p>While the JavaScript variable and the id are both <code>staticData</code> in this example, they are completely separate things and do not need to be identical.</p>
+<p>While the JavaScript variable, and the id are both <code>staticData</code> in this example, they are completely separate things and do not need to be identical.</p>
 </div>
 </div>
 </div>
@@ -1551,7 +1551,7 @@ The requested data can be filtered by country or by dy. We will add filters late
 <p>In this section we add a <a href="../jsdoc/bcdui.widget.PeriodChooser.html" target="_blank" rel="noopener">bcdui.widget.PeriodChooser</a> to retrieve a subset of our data specified by a date range. We also add an apply button to reload the page with this filter setting.</p>
 </div>
 <div class="paragraph">
-<p>To place the period chooser and the apply button on the page, add the two sections like the following to the element with class bcd__sidebar-left__inner.</p>
+<p>To place the period chooser, and the apply button on the page, add the two sections like the following to the element with class bcd__sidebar-left__inner.</p>
 </div>
 <div class="listingblock">
 <div class="title">Section in the sidebar</div>
@@ -1601,7 +1601,7 @@ bcdui.widgetNg.createButton({
 </table>
 </div>
 <div class="paragraph">
-<p>Voila! data loaded from database with a filter.</p>
+<p>Voilà! data loaded from database with a filter.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1845,11 +1845,11 @@ We start with the BindingSet for the country list. Add the following file to <co
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>Each <code>bnd:C</code> is a <em>BindingItem</em> represents an individual column, you give it a logical id and you can enforce some attributes</td>
+<td>Each <code>bnd:C</code> is a <em>BindingItem</em> represents an individual column, you give it a logical id, and you can enforce some attributes</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="5"></i><b>5</b></td>
-<td>This is the column expression for the database, often simply the column name but in can also be something more complex like <code>substr(colame,2)</code></td>
+<td>This is the column expression for the database, often simply the column name but in can also be something more complex like <code>substr(colname,2)</code></td>
 </tr>
 </table>
 </div>
@@ -2095,7 +2095,7 @@ We will add 2 widgets: A country chooser and a button to re-run the report.</p>
 </td>
 <td class="content">
 The <em>sidebar</em> is an extra area of the theme, often used for widgets.
-BCD-UI theme helps creating such an area, but there is no technical need to use it, you may place choosers anywhere on your page.
+BCD-UI theme helps to create such an area, but there is no technical need to use it, you may place choosers anywhere on your page.
 </td>
 </tr>
 </table>
@@ -2458,7 +2458,7 @@ All events are fully asynchronous.</p>
 </li>
 <li>
 <p><code>bcdui.wkModels.guiStatus</code> singleton, per default holding information of the user&#8217;s selection like chooser settings,
-is initialized from the guiStatus parameter of the pages&#8217;s URL.</p>
+is initialized from the guiStatus parameter of the page&#8217;s URL.</p>
 </li>
 <li>
 <p><code>bcdui.wkModels.guiStatusEstablished</code> singleton is constructed. It is a frozen copy of guiStatus</p>
@@ -2504,13 +2504,13 @@ See <a href="#DataProviders">chapter on DataProviders</a> below for more details
 </li>
 <li>
 <p>Please note, no change of model data triggers any change of any view per se.<br>
-Instead you  set up listeners, that inform Renderer to refresh, if needed.</p>
+Instead you set up listeners, that inform Renderer to refresh, if needed.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>A <em>save</em> on a DataProvider event will sending the data to the associated web-service, usually WrsServlet, which then stores the data into the database.</p>
+<p>A <em>save</em> on a DataProvider event will send the data to the associated web-service, usually WrsServlet, which then stores the data into the database.</p>
 </li>
 <li>
 <p>Other activities like in-place drill down will lead to additional data being loaded.</p>
@@ -2535,7 +2535,7 @@ Instead you  set up listeners, that inform Renderer to refresh, if needed.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_guistatus_singelton">6.2. guiStatus Singelton</h3>
+<h3 id="_guistatus_singleton">6.2. guiStatus Singleton</h3>
 <div class="paragraph">
 <p>BCD-UI instantiates a well-known <code>guiStatus</code> along with a frozen guiStatusEstablished copy in each page loading phase.
 The guiStatus is a standard StaticModel, but is object of the following extra-handling:</p>
@@ -2556,7 +2556,7 @@ It is guaranteed to be <em>ready</em> when executing code in <code>bcdui.core.re
 <p>It is the default target model for widgets, i.e. it applies if an XPath does not start with an explicit $modelId</p>
 </li>
 <li>
-<p>It is an implicit parameter to all transformations, for example in XSLT it can be access with<br>
+<p>It is an implicit parameter to all transformations, for example in XSLT it can be accessed with<br>
 <code>&lt;xsl:param name="guiStatus"/&gt;;</code></p>
 </li>
 <li>
@@ -2564,7 +2564,7 @@ It is guaranteed to be <em>ready</em> when executing code in <code>bcdui.core.re
 <div class="ulist">
 <ul>
 <li>
-<p>Base64 encoding is used to make it URL friendly and it is compressed to prevent it from exceeding IE&#8217;s URL length restriction</p>
+<p>Base64 encoding is used to make it URL friendly, and it is compressed to prevent it from exceeding IE&#8217;s URL length restriction</p>
 </li>
 </ul>
 </div>
@@ -2590,7 +2590,7 @@ DataProviders construct their data in different ways</p>
 <ul>
 <li>
 <p>Some DataProvider like SimpleModel send HTTP GET or POST request to the server when executed.
-This can be any URL for a static file for example or a <a href="#DocXmlData">request document</a> to WrsServlet.</p>
+This can be any URL for a static file for example, or a <a href="#DocXmlData">request document</a> to WrsServlet.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -2608,14 +2608,14 @@ The <a href="#DocBinding">BindingSets</a> translate the requested logical data i
 <div class="sect3">
 <h4 id="_available_data_providers">Available data providers</h4>
 <div class="paragraph">
-<p>This is the list of available data providers and their action on <code>execute()</code> to become <em>ready</em>.</p>
+<p>This is the list of available data providers, and their action on <code>execute()</code> to become <em>ready</em>.</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">SimpleModel</dt>
 <dd>
 <p>A load data from a url.
-The source can be static or a <a href="#DocXmlData">Wrs request document</a> to contact the WrsServlet.
+The source can be static, or a <a href="#DocXmlData">Wrs request document</a> to contact the WrsServlet.
 If it is in autoRefresh mode, it will reload whenever the request document changes.
 Auto-refresh mode is useful to load for small data immediately on user interaction.</p>
 </dd>
@@ -2639,7 +2639,7 @@ The input model is not changed.</p>
 </dd>
 <dt class="hdlist1">ConstantDataProvider</dt>
 <dd>
-<p>Holds a scalar data type String|Number|Boolean, usefull for parameters</p>
+<p>Holds a scalar data type String|Number|Boolean, useful for parameters</p>
 </dd>
 <dt class="hdlist1">PromptDataProvider</dt>
 <dd>
@@ -2726,7 +2726,7 @@ m2.onReady(
   }
 );
 
-<span class="comment">// Wait for multile DataProviders</span>
+<span class="comment">// Wait for multiple DataProviders</span>
 bcdui.factory.objectRegistry.withReadyObjects(  m1, m2, <i class="conum" data-value="6"></i><b>(6)</b>
   <span class="keyword">function</span>() {
     ...
@@ -2812,7 +2812,7 @@ For a sample page setup with a cube, please check this <a href="#DocMinimalCube"
 </div>
 </div>
 <div class="paragraph">
-<p>The dimensions and measures can either be preset during development or the user can be given a choice of dimensions and measures for his own selection.</p>
+<p>The dimensions and measures can either be preset during development, or the user can be given a choice of dimensions and measures for his own selection.</p>
 </div>
 <div class="sect4">
 <h5 id="_features">Features</h5>
@@ -2829,9 +2829,9 @@ For a sample page setup with a cube, please check this <a href="#DocMinimalCube"
 <dd>
 <p>None, one or many break down dimensions can be selected independently for rows and columns. In addition measures can be shown so that they are only broken down be row dimensions even if also column dimensions are selected.</p>
 </dd>
-<dt class="hdlist1">WYSIWYG export into PDF and spread sheets</dt>
+<dt class="hdlist1">WYSIWYG export into PDF and spreadsheets</dt>
 <dd>
-<p>The spread sheet export allows to further work wih the numbers. User formulas are be replaced by the calculation results.</p>
+<p>The spreadsheet export allows to further work wih the numbers. User formulas are be replaced by the calculation results.</p>
 </dd>
 <dt class="hdlist1">Sorting</dt>
 <dd>
@@ -2859,7 +2859,7 @@ For a sample page setup with a cube, please check this <a href="#DocMinimalCube"
 </dd>
 <dt class="hdlist1">Named templates</dt>
 <dd>
-<p>Named templates allow to offer common selections to the user</p>
+<p>Named templates allow offering common selections to the user</p>
 </dd>
 <dt class="hdlist1">Show numerator and denominator of percentage numbers and fractions in tool tips</dt>
 <dd>
@@ -2973,11 +2973,11 @@ You can provide a static one like this or let the user build one with the CubeCo
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>This are the actual applied dimensions of the report, they can be row, column or both (all)</td>
+<td>This are the actually applied dimensions of the report, they can be row, column or both (all)</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>This are the actual applied measures</td>
+<td>This are the actually applied measures</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
@@ -3009,7 +3009,7 @@ You can provide a static one like this or let the user build one with the CubeCo
 <h5 id="_cubeconfigurator">CubeConfigurator</h5>
 <div class="paragraph">
 <p>The cube:Layout part above can also be defined by the user via a drag-and-drop area.
-This sample shows the drag and drop user interface, also supporting ranking editing and a cube summary display.</p>
+This sample shows the drag and drop user interface, also supporting ranking editing, and a cube summary display.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -3050,7 +3050,7 @@ Because a ScoreCard covers overview about different aspects and different busine
 <dl>
 <dt class="hdlist1">Measures</dt>
 <dd>
-<p>Measures are aggregatable, often calculation, values, representing a measurable quantity like a count of pieces or sum of weight.
+<p>Measures can be aggregated, often calculation, values, representing a measurable quantity like a count of pieces or sum of weight.
 Measures and indicator measures form the base of KPIs.</p>
 </dd>
 <dt class="hdlist1">Indicator measures</dt>
@@ -3069,7 +3069,7 @@ Often it is associated with targets and other attributes.</p>
 <dd>
 <p>They describe what aspects of KPIs are shown on a ScoreCard.
 Typical aspects are performance or YTD, trends or achievements.
-Calculation rules of aspects are not dependent on a specific KPI but they can make use of KPI specific data and calculations.
+Calculation rules of aspects are not dependent on a specific KPI, but they can make use of KPI specific data and calculations.
 There are three types of aspects:</p>
 <div class="ulist">
 <ul>
@@ -3224,7 +3224,7 @@ A typical scorecard configuration has the following structure:</p>
 </tr>
 <tr>
 <td><i class="conum" data-value="8"></i><b>8</b></td>
-<td>Categories allow to group KPIs in the layout</td>
+<td>Categories allow grouping KPIs in the layout</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="9"></i><b>9</b></td>
@@ -3234,13 +3234,13 @@ A typical scorecard configuration has the following structure:</p>
 </div>
 <div class="paragraph">
 <p>The content of the scc:ScorecardConfiguration is straight forward can easily be  set up by a user or the wizard.<br>
-The underlying definitions for scc:Aggregators and scc:Aspects can be seen in the source code and taken as a templyte for own ones.</p>
+The underlying definitions for scc:Aggregators and scc:Aspects can be seen in the source code and taken as a template for own ones.</p>
 </div>
 <div class="sect4">
 <h5 id="_aggregators">Aggregators</h5>
 <div class="paragraph">
-<p>An aggregator describes how the system can retrieves measures from the database.
-It does so by providing a XSLT generating a <a href="#DocXmlData">WrsRequest</a>.
+<p>An aggregator describes how the system can retrieve measures from the database.
+It does so by providing an XSLT generating a <a href="#DocXmlData">WrsRequest</a>.
 The scorecard provides input to this XSLT at runtime, informing about the measures needed.
 It is also providing an optional <code>xsl:param name="customParameterModel"</code>, allowing to provide free additional information.
 In many cases, using the built-in scc:Aggregators will be sufficient.</p>
@@ -3264,7 +3264,7 @@ An aspect definition is valid across all KPIs. Aspects can provide their informa
 </dd>
 <dt class="hdlist1">Aspect Calc</dt>
 <dd>
-<p>A calculation on to of KPI performance and other aspects, for example the trend based on (performance) / (previous period performance) or the achievement based on performance and target.
+<p>A calculation on to of KPI performance and other aspects, for example the trend based on (performance) / (previous period performance), or the achievement based on performance and target.
 The calculation can reference values via:</p>
 <div class="ulist">
 <ul>
@@ -3349,7 +3349,7 @@ This can be done for any Wrs, may it be generated, loaded via a direct <a href="
 </div>
 </div>
 <div class="paragraph">
-<p>And it will display the data in the following way:</p>
+<p>and it will display the data in the following way:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -3433,7 +3433,7 @@ Charts do also support for user interaction.
 For example drilling from an item of the chart or exporting data can be developed.</p>
 </div>
 <div class="ulist">
-<div class="title">Some of the core features of BCD-UI graphs are</div>
+<div class="title">Some core features of BCD-UI charts are</div>
 <ul>
 <li>
 <p>Supporting all standard chart types: Pie, Line, Point, Area, Bar, Scattered, Stacked Bar and Stacked Area with 1 and 2 y-axes</p>
@@ -3538,7 +3538,7 @@ For example drilling from an item of the chart or exporting data can be develope
 <td class="content">
 Charts require an explicit size of their target HTML element.
 Set it either inside the chart definition or assign it via CSS.
-Otherwise 'No data' may be shown though there is data
+Otherwise, 'No data' may be shown though there is data
 </td>
 </tr>
 </table>
@@ -3592,7 +3592,7 @@ Note that we assigned an explicit id to the data as it is referenced via id from
 <h5 id="_scattered_chart">Scattered chart</h5>
 <div class="paragraph">
 <p>A scattered chart can display three values at a time, here the x-position of a circle shows the size of the customer,
-the y position shows the revenue done with the customer and the size of the circle shows the growth of the revenue done
+the y position shows the revenue done with the customer, and the size of the circle shows the growth of the revenue done
 with the customer in the last 12 months.</p>
 </div>
 <div class="imageblock">
@@ -4290,7 +4290,7 @@ a sample is under BCD-UI/src/js/i18n/messages.xml.</p>
 </div>
 <div class="paragraph">
 <p>The BindingSet and data table should have 3 columns named "key", "lang" and "value".
-The content of the "lang"-column can have values conform the java.util.Locale values or a value "default".
+The content of the "lang"-column can have values conform the java.util.Locale values, or a value "default".
 <strong>Defaults:</strong>
 * i18n model URL: /bcdui/servletsCached/WrsServlet/i18n - the mapping to the URL could be changed in web.xml</p>
 </div>
@@ -4309,7 +4309,7 @@ The content of the "lang"-column can have values conform the java.util.Locale va
 <h4 id="_i18n_on_client_side">I18n on client side</h4>
 <div class="paragraph">
 <p>The client is provided with an XML containing the translated values for the chosen language. The translation APIs are available in JS, XSLT or static HTML.
-Please note that the file is cached on the the client and thus does not harm performance.</p>
+Please note that the file is cached on the client and thus does not harm performance.</p>
 </div>
 <div class="paragraph">
 <p>The following fragment shows a sample I18n.xml file created by BCD-UI:</p>
@@ -4389,7 +4389,7 @@ as the translation kicks in automatically once the document has been loaded.</p>
 </div>
 <div class="paragraph">
 <p>The bcdui.i18n JS object is created by BCD-UI runtime.
-In addition we can translate HTML attributes by setting its names into @bcdTranslateAttrs,
+In addition, we can translate HTML attributes by setting its names into @bcdTranslateAttrs,
 like @bcdTranslateAttrs="alt" @alt="my Photo"</p>
 </div>
 </div>
@@ -4419,7 +4419,7 @@ has to be 'some.info|10|20'</p>
 <div class="sect2">
 <h3 id="_detail_exports">11.1. Detail exports</h3>
 <div class="paragraph">
-<p>BCD-UI supports export of detail data to spread sheets, this applies to free defined exports and to export from cube or scorecard.</p>
+<p>BCD-UI supports export of detail data to spreadsheets, this applies to free defined exports and to export from cube or scorecard.</p>
 </div>
 <div class="sect3">
 <h4 id="_sylk_slk_format">Sylk .slk format</h4>
@@ -4549,7 +4549,7 @@ Plus there might be additional filters needed that you provide.</p>
 </div>
 <div class="paragraph">
 <p>Luckily BCD-UI provides you everything to quickly  set up such a cube cell detail export.
-First of all you need a way to execute the detail export on a specific cell.
+First you need a way to execute the detail export on a specific cell.
 This is done by adding the Detail Export functionality in the context menu.
 The default context menu lists it, too.
 Secondly, your Cube / Scorecard configuration needs to list the columns to be exported.</p>
@@ -4597,7 +4597,7 @@ Secondly, your Cube / Scorecard configuration needs to list the columns to be ex
 </div>
 </div>
 <div class="paragraph">
-<p>You don&#8217;t want a general export list but a measure specific one:</p>
+<p>You don&#8217;t want a general export list, but a measure specific one:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4676,7 +4676,7 @@ If the url starts with a /, the current application path is used as a prefix.</p
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">Spread sheet</dt>
+<dt class="hdlist1">Spreadsheet</dt>
 <dd>
 <p>Spread sheet WYSIWYG exports are useful when the exported numbers are to be used in further calculations.</p>
 </dd>
@@ -4769,7 +4769,7 @@ Transpose grouping
 Validate
 </td>
 <td class="hdlist2">
-<p>Validates the data of the input WRS against the WRS header. Adds a validation-resule WRS into the input WRS' header. <code>validate/validate.xslt</code></p>
+<p>Validates the data of the input WRS against the WRS header. Adds a validation-result WRS into the input WRS' header. <code>validate/validate.xslt</code></p>
 </td>
 </tr>
 </table>
@@ -4831,7 +4831,7 @@ Merge
 Render
 </td>
 <td class="hdlist2">
-<p>Render a Wrs to HTML. This renderer is used by all components <code>renderer/htmlBuilder.xslt</code>.
+<p>Render a Wrs to HTML. This renderer is used by all components' <code>renderer/htmlBuilder.xslt</code>.
 This renderer per default sorts dimension rows and groups row and column headers to td spans.
 You can suppress by providing parameters, see below.</p>
 </td>
@@ -4897,11 +4897,11 @@ While this mechanism may look a bit over-sized in small samples, it scales great
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>If the parameters get longer, you will likely create an extra file, static or dynamically an not inline as shown here.</td>
+<td>If the parameters get longer, you will likely create an extra file, static or dynamically as shown here.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>HtmlBuilder will look for an <code>xp:HtmlBuilder</code> element with no or a matching <code>paramSetId</code> attribute</td>
+<td>HtmlBuilder will look for an <code>xp:HtmlBuilder</code> element with no, or a matching <code>paramSetId</code> attribute</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
@@ -4979,7 +4979,7 @@ While this mechanism may look a bit over-sized in small samples, it scales great
 </div>
 </div>
 <div class="sect3">
-<h4 id="_string_utilites">String Utilites</h4>
+<h4 id="_string_utilities">String Utilities</h4>
 <div class="paragraph">
 <p>Common string operations which do not come with XSLT-1.0 are provided via string utility template
 part of <code>bcdui/xslt/stringUtils.xslt</code>.</p>
@@ -5150,7 +5150,7 @@ Paste/Paste as new
 <div class="sect2">
 <h3 id="_using_exsltnode_set">12.3. Using exslt:node-set()</h3>
 <div class="paragraph">
-<p>Here we have are more complex sample, which makes use of tokenize but also <code>exslt:node-set()</code>.
+<p>Here we have a more complex sample, which makes use of tokenize but also <code>exslt:node-set()</code>.
 While this is not directly related to stringUtils.xslt, we take the chance to show this useful feature here.</p>
 </div>
 <div class="listingblock">
@@ -5217,11 +5217,11 @@ While this is not directly related to stringUtils.xslt, we take the chance to sh
 </tr>
 <tr>
 <td><i class="conum" data-value="6"></i><b>6</b></td>
-<td>Here, with the help of exslt:node-set(), we turn the returned string into a real DOM node set</td>
+<td>Here, with the help of exslt:node-set(), we turn the returned string into a real DOM nodeset</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="7"></i><b>7</b></td>
-<td>And we can then walk through the node set as if it was part of a parameter or the input document</td>
+<td>And we can then walk through the node set as if it was part of a parameter, or the input document</td>
 </tr>
 </table>
 </div>
@@ -5248,7 +5248,7 @@ While this is not directly related to stringUtils.xslt, we take the chance to sh
 <div class="ulist">
 <ul>
 <li>
-<p>JavaScript is the most common and most powerful way</p>
+<p>JavaScript is the most common, and most powerful way</p>
 </li>
 <li>
 <p>HTML Custom Elements are available for widgets and components, i.e. for all visible objects</p>
@@ -5311,7 +5311,7 @@ This way you are sure your targetHtml elements are created already:</p>
 They will become more and more common in the next time.</p>
 </div>
 <div class="ulist">
-<div class="title">General rules Rules</div>
+<div class="title">General Rules</div>
 <ul>
 <li>
 <p>There are custom tags for widgets, components and the renderer, i.e. for all objects creating visual output.</p>
@@ -5457,7 +5457,7 @@ Such an XSLT may look like this:</p>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Embed the tags in yout ordinary HTML output</td>
+<td>Embed the tags in your HTML output</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
@@ -5479,7 +5479,7 @@ Such an XSLT may look like this:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Then create a Renderer to show it and it will trigger the creation of the objects:</p>
+<p>Then create a Renderer to show it, and it will trigger the creation of the objects:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5704,7 +5704,7 @@ Here you may also call apply-templates to resolve nested XAPI calls in a more co
 </table>
 </div>
 <div class="paragraph">
-<p>Create a renderer with the dslRenderer.xslt as <code>chain</code> an die following as <code>inputModel</code></p>
+<p>Create a renderer with the dslRenderer.xslt as <code>chain</code> and the following as <code>inputModel</code></p>
 </div>
 <div class="listingblock">
 <div class="title">dsl.xml, calling your extension</div>
@@ -5826,7 +5826,7 @@ Each request is checked whether it addresses a</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>After login the original request is processed.</p>
+<p>After login, the original request is processed.</p>
 </div>
 <div class="paragraph">
 <p>For each url path you can also set required rights in the init-param section of IniShiroFilter in web.xml.</p>
@@ -5900,7 +5900,7 @@ A login page is a standard page with two plain inputs:</p>
 </li>
 <li>
 <p>Login logging<br>
-By adding <code>bcd_log_login</code> BindingSet to your application, all login attempts and their result is logged into the corresponding table.</p>
+By adding <code>bcd_log_login</code> BindingSet to your application, all login attempts, and their result is logged into the corresponding table.</p>
 </li>
 </ol>
 </div>
@@ -6011,7 +6011,7 @@ adminRole = pages:admin</code></pre>
 <p>Add bcd_sec_user and bcd_sec_user_settings BindingSets (and the corresponding tables).
 There is no prebuilt UI editor for these two tables, but their content should be self-explanatory.
 All attributes and permissions assigned to a user in the table corresponding to <code>bcd_sec_user_settings</code> are read when the user logs in.
-These become in-memory subject settings, which can be used to query whether a user has a a certain permission.
+These become in-memory subject settings, which can be used to query whether a user has a certain permission.
 These permissions are checked for example by the security filter when accessing an url.</p>
 </div>
 </div>
@@ -6026,7 +6026,7 @@ Please check Shiro documentation for more options.</p>
 <h3 id="_oauth2_with_azure_google_etc">14.8. OAuth2 with Azure / Google etc</h3>
 <div class="paragraph">
 <p>BCD-UI provides Shiro integrated implementation for general OAuth2 authentication (referred to as oauth in this docu) and ready-to-use modules for Azure and Google integration.<br>
-Authentication is handled by OAuth, permissions are managed by application through <em>SsubjectSettings</em>.</p>
+Authentication is handled by OAuth, permissions are managed by application through <em>SubjectSettings</em>.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -6146,7 +6146,7 @@ The response will have the <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-
 <div class="sect3">
 <h4 id="_disable_caching">Disable Caching</h4>
 <div class="paragraph">
-<p>During development, you do not usually have enable caching. For this case BCD-UI provides the possibility to enable/disable all caching settings.
+<p>During development, usually you do not enable caching. For this case BCD-UI provides the possibility to enable/disable all caching settings.
 To achieve this please define a environment entry within your context.xml file with the name: "bcdui/disableCache" like this:</p>
 </div>
 <div class="listingblock">
@@ -6169,7 +6169,7 @@ If an expression matches the request path, the filter takes no action.</p>
 </div>
 <div class="paragraph">
 <p>Static files can usually be cached. How long depends on when a re-deployment may happen.
-Typically if deployments happen over the week-end, set  <code>ExpiresAbsDow</code>  to 'Sat' as shown above.
+Typically, if deployments happen over the week-end, set  <code>ExpiresAbsDow</code>  to 'Sat' as shown above.
 To identify static files it is possible to define for which extensions the ClientCachingFilter applies via ExtensionsRestriction.</p>
 </div>
 <div class="paragraph">
@@ -6197,7 +6197,7 @@ The one initially enabled is optimized for development, caching only BCD-UI sour
 <div class="sect3">
 <h4 id="_other_headers">Other headers</h4>
 <div class="paragraph">
-<p>For the client side header it is also possible to define the response header value of value of cache-directive with the <code>cache-response-directive</code> parameter.
+<p>For the client side header it is also possible to define the response header value of cache-directive with the <code>cache-response-directive</code> parameter.
 See sample for no-cache below.
 The response will have the <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9" target="_blank" rel="noopener">HTTP Cache-Control</a> header be set accordingly.</p>
 </div>
@@ -6222,12 +6222,12 @@ Bindings are maintained in simple XML files at WEB-INF/bcdui/bindings and introd
 </dd>
 <dt class="hdlist1">Logical data types</dt>
 <dd>
-<p>Logical type of a BindingItem (column) and other meta information beyond database&#8217;s capability allow to adopt and overwrite a physical database.</p>
+<p>Logical type of BindingItem (column) and other meta information beyond database&#8217;s capability allow adopting and overwrite a physical database.</p>
 </dd>
 <dt class="hdlist1">Aggregation hierarchies - BindingGroups</dt>
 <dd>
 <p>The option to choose best fit among multiple tables depending on the actual BindingItems (columns) needed, similar to a materialized view or join view,
-i,e, for the current request the best fit (highest aggregation) table is chosen</p>
+i,e, for the current request the best fit (the highest aggregation) table is chosen</p>
 </dd>
 <dt class="hdlist1">Relations, i.e. Joins</dt>
 <dd>
@@ -6287,11 +6287,11 @@ A simple binding looks like the following:</p>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>Each <code>bnd:C</code> is a <em>BindingItem</em> represents an individual column, you give it a logical id and you can enforce some attributes</td>
+<td>Each <code>bnd:C</code> is a <em>BindingItem</em> represents an individual column, you give it a logical id, and you can enforce some attributes</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="5"></i><b>5</b></td>
-<td>This is the column expression for the database, often simply the column name but in can also be something more complex like <code>substr(colame,2)</code></td>
+<td>This is the column expression for the database, often simply the column name but in can also be something more complex like <code>substr(colname,2)</code></td>
 </tr>
 </table>
 </div>
@@ -6312,8 +6312,7 @@ This is configured by cooperation of the following three artifacts:</p>
 <li>
 <p>A scc:SubjectFilterType definition</p>
 <div class="paragraph">
-<p>A SubjectFilterType in WEB-INF/bcdui/subjectSettings.xml defines the BindingItem on which to apply the restriction
-and a BindingSet with the user&#8217;s rights, default is bcd_sec_user_settings.</p>
+<p>A SubjectFilterType in WEB-INF/bcdui/subjectSettings.xml defines the BindingItem on which to apply the restriction, and a BindingSet with the user&#8217;s rights, default is bcd_sec_user_settings.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6363,7 +6362,7 @@ Each row assigns an allowed country to a user for the geo:ctr right.</p>
 <div class="sect3">
 <h4 id="_bindings_write_protection">Bindings write-protection</h4>
 <div class="paragraph">
-<p>If (and only if) a WEB-INF/bcdui/subjectSettings.xml is present in a project, all BindingSets are write protected when accessed via Wrs.
+<p>If (and only if) a WEB-INF/bcdui/subjectSettings.xml is present in a project, all BindingSets are write-protected when accessed via Wrs.
 To allow a user to insert into or update a view/table behind a BindingSet, you must</p>
 </div>
 <div class="olist arabic">
@@ -6393,7 +6392,7 @@ To allow a user to insert into or update a view/table behind a BindingSet, you m
 </ol>
 </div>
 <div class="paragraph">
-<p>Currently BindingSets understand only one operation called <em>write</em> which protects ANY modification to a table (C-UD),
+<p>Currently, BindingSets understand only one operation called <em>write</em> which protects ANY modification to a table (C-UD),
 the <em>permission</em> takes a list (space separated) of permissions which are evaluated by Shiro, hence Shiro&#8217;s syntax
 can be applied here. <strong>Note:</strong> the list is inclusive, meaning that the operation is granted only in case the user
 retains ALL permissions listed. The permission list may also be empty or be absent at all, in such a case NO check is
@@ -6403,7 +6402,7 @@ done for this operation, thus it effectively disables write-protection.</p>
 <div class="sect3">
 <h4 id="_write_pre_processing">Write pre-processing</h4>
 <div class="paragraph">
-<p>The optional write pre-processing allows to enforce additional processing of data before it is written to the BindingSet.
+<p>The optional write pre-processing allows enforcing additional processing of data before it is written to the BindingSet.
 A project specific callback derived from the  <code>de.businesscode.bcdui.binding.write.WriteProcessingCallback</code>
 can be called to modify the data to be written, for example for security reasons.
 When multiple callbacks are configured, they are called in given order.
@@ -6431,7 +6430,7 @@ further information.</p>
 </div>
 <div class="paragraph">
 <p>In short, this callback allows you to provide server-side or constant values for WRS data, to either coalesce it with data sent from client and
-even to assure the data to exist whether is has been send from client or not. A sample:</p>
+even to assure the data to exist whether is has been sent from client or not. A sample:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6588,7 +6587,7 @@ BindingSetGroup is an EnterpriseEdition extension, not available for CommunityEd
 </table>
 </div>
 <div class="paragraph">
-<p>A BindingSetGroup allows to be treated as a BindingSet but the actual BindingSet used depends on the list of BindingItems being requested.
+<p>A BindingSetGroup allows to be treated as a BindingSet, but the actual BindingSet used depends on the list of BindingItems being requested.
 The first BindingSet in order providing all BindingItems is chosen. This allows for example to</p>
 </div>
 <div class="ulist">
@@ -6602,7 +6601,7 @@ The first BindingSet in order providing all BindingItems is chosen. This allows 
 </ul>
 </div>
 <div class="paragraph">
-<p>Therefore this feature is very useful for optimizing database performance.</p>
+<p>Therefore, this feature is very useful for optimizing database performance.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6634,7 +6633,7 @@ The first BindingSet in order providing all BindingItems is chosen. This allows 
 <p>The BCD-UI System uses the Jakarta EE Unified Expression Language to put Server-side Values into
 XML documents at various places. With this feature it is possible to create for example
 request documents with the period set to the current month or year. This is especially
-useful when such a request document is based on the guiStatus and therefore bookmarkable,
+useful when such a request document is based on the guiStatus and therefore can be bookmarked,
 because the bookmark could contain a dynamically changed date.</p>
 </div>
 <div class="sect3">
@@ -6942,7 +6941,7 @@ Between operator is not available, please use &#8230;&#8203; &lt;= &#8230;&#8203
 </div>
 <div class="paragraph">
 <p>This is easy but also easily breaks and is hard to read.
-Thus, it is better to identify a column via its logical name 'CP_DESC', this will work in an XPath outside and inside of XSLT:</p>
+Thus, it is better to identify a column via its logical name 'CP_DESC', this will work in an XPath outside and inside XSLT:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6993,22 +6992,22 @@ Thus, it is better to identify a column via its logical name 'CP_DESC', this wil
 <dl>
 <dt class="hdlist1">WrsServlet</dt>
 <dd>
-<p>Serves data in the form of a <a href="#DocXmlData">Wrs web row set</a> as reponse to a webrow set request.
+<p>Serves data in the form of a <a href="#DocXmlData">Wrs web row set</a> as response to a WebRowSet request.
 It is mapped twice to allow parts to be client side cached and other not to be cached.
 This is the only servlet used directly by non-BCD-UI library code.
 Maps to bcdui/servlets/wrsServlet and bcdui/servletsCached/WrsServlet.</p>
 </dd>
 <dt class="hdlist1">ClientCachingFilter</dt>
 <dd>
-<p>Allows to control <a href="#DocCaching">client-side caching</a>.
-Can be instantiated multiple times to allow different caching starategies for different parts.
+<p>Allows controlling <a href="#DocCaching">client-side caching</a>.
+Can be instantiated multiple times to allow different caching strategies for different parts.
 It is recommended to map to all static resources and to slow changing reference data served for example at bcdui/servletsCached/wrsServlet.
 Maps to parts to be cached as per project need.</p>
 </dd>
 </dl>
 </div>
 <div class="sect4">
-<h5 id="_backgound_servlets_and_filters">Backgound servlets and filters</h5>
+<h5 id="_background_servlets_and_filters">Background servlets and filters</h5>
 <div class="paragraph">
 <p>The following servlets do their work in background. Users of BCD-UI usually do not get in direct contact with them</p>
 </div>
@@ -7021,7 +7020,7 @@ Maps to parts to be cached as per project need.</p>
 <dt class="hdlist1">StaticResourceServlet</dt>
 <dd>
 <p>Severs static resources like js or img files from the library which are packaged in bcd.jar.
-They are mapped to there logical places and appear to be located at WebContent/bcdui.
+They are mapped to their logical places and appear to be located at WebContent/bcdui.
 Maps to bcd-ui library parts.</p>
 </dd>
 <dt class="hdlist1">BCDUIConfig</dt>
@@ -7096,7 +7095,7 @@ So you can e.g. create a model out of the stored data like this:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Writing can be achieved by sending a wrs request to the server, e.g. with the help of an automodel.</p>
+<p>Writing can be achieved by sending a wrs request to the server, e.g. with the help of an AutoModel.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7149,11 +7148,11 @@ You can do this by calling the CacheManager servlet with an action parameter:</p
 </dd>
 <dt class="hdlist1">Server side logging</dt>
 <dd>
-<p>log4j.propertes file in call path allows fine grained control of server side logging. Per default this is found in the /src/java folders of the template applications.</p>
+<p>log4j.properties file in call path allows fine-grained control of server side logging. Per default this is found in the /src/java folders of the template applications.</p>
 </dd>
 <dt class="hdlist1">Endless waiting renderers</dt>
 <dd>
-<p>use  <code>bcdui.factory.objectRegistry.getWaitingIds()</code>  to detect ids of renderer/wrapper, waiting for yet non-exisiting ids.</p>
+<p>use  <code>bcdui.factory.objectRegistry.getWaitingIds()</code>  to detect ids of renderer/wrapper, waiting for yet non-existing ids.</p>
 </dd>
 <dt class="hdlist1">Find out which BindingItems a binding set has</dt>
 <dd>
@@ -7180,12 +7179,12 @@ You can do this by calling the CacheManager servlet with an action parameter:</p
 <dl>
 <dt class="hdlist1">ERROR - Internal stylesheet error. this['node-set']= function (x) { return x; } 0 0 Unzip gui status</dt>
 <dd>
-<p>This error message occurs if an import of a stylesheet fails inside of an stylesheet. The nodeset function is usually the first
+<p>This error message occurs if an import of a stylesheet fails inside a stylesheet. The nodeset function is usually the first
 line after the include statement</p>
 </dd>
 <dt class="hdlist1">IE: An Invalid character was found in text content. Or: Switch from current encoding to specified encoding not supported.</dt>
 <dd>
-<p>Falsches encoding im xsl:output</p>
+<p>Wrong encoding im xsl:output</p>
 </dd>
 <dt class="hdlist1">FF: XSLT error codes (note, in general in IE the XSLT errors are much easier to debug)</dt>
 <dd>
@@ -7243,7 +7242,8 @@ line after the include statement</p>
 <p>Baeldung on <a href="https://www.baeldung.com/tomcat">installing Tomcat</a> and on <a href="https://www.baeldung.com/tomcat">connecting Eclipse with Tomcat</a></p>
 </li>
 <li>
-<p>Minimal steps to create a Java Servlet and a JQuery Ajax call <a href="https://www.journaldev.com/4742/jquery-ajax-jsp-servlet-java-example">tutorial</a></p>
+<p>Minimal sample creating a Java Servlet and a JQuery Ajax call  <a href="https://programming.vip/docs/servlet-processing-jquery-ajax-requests.html">tutorial</a>.<br>
+You won&#8217;t have to develop Servlets when start using BCD-UI as it comes with Servlets and also, while BCD-UI uses jQuery internally, you may not need to use it directly. But an understanding of these technologies is definitely recommended.</p>
 </li>
 </ol>
 </div>
@@ -7323,7 +7323,7 @@ See <a href="https://github.com/businesscode/maven-repo" class="bare">https://gi
 </div>
 </div>
 <div class="paragraph">
-<p>If you prefer you may also download the BCD-UI&#8217;s jars and their dependencies mentioned in <a href="https://github.com/businesscode/BCD-UI/blob/master/Docu/development/bcdui_dependencies.gradle">BCD-UI/Docu/development/bcdui_dependencies.gradle</a> and put them into WEB-INF/lib.<br></p>
+<p>If you prefer you may also download the BCD-UI&#8217;s jars, and their dependencies mentioned in <a href="https://github.com/businesscode/BCD-UI/blob/master/Docu/development/bcdui_dependencies.gradle">BCD-UI/Docu/development/bcdui_dependencies.gradle</a> and put them into WEB-INF/lib.<br></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -7428,7 +7428,7 @@ StaticResourceServlet of BCD-UI assures that for the client it looks as if they 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Project&#8217;s HTML pages, JaavaScript etc</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Project&#8217;s HTML pages, JavaScript etc</strong></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -7649,10 +7649,10 @@ by the dependencies above will be loaded.</p>
 <dl>
 <dt class="hdlist1">Bookmark feature</dt>
 <dd>
-<p>Each page together with its settings like filter choosers or which parts are opened or hided can be bookmarked.
+<p>Each page together with its settings like filter choosers or which parts are opened or hid. Can be bookmarked.
 Such a bookmark can be used as the starting point to enter the application and as a quick navigation link including
 previous settings.
-Additionally the link can be passed to others in case they have sufficient rights to enter the page.</p>
+Additionally, the link can be passed to others in case they have sufficient rights to enter the page.</p>
 </dd>
 </dl>
 </div>
@@ -7663,8 +7663,8 @@ Additionally the link can be passed to others in case they have sufficient right
 <p>Per default each request is associated with a transaction.
 Each server activity retrieves its connection from the request object, providing the data source name.
 All activities within the same request get the same connection when retrieving it from the request.
-The first database access in a request starts the transaction and the request finishes transaction with commit unless
-a ServletException is uncatched or a SOAPFault is returned, in this case a roll-back is executed.
+The first database access in a request starts the transaction, and the request finishes transaction with commit unless
+a ServletException is uncatched, or a SOAPFault is returned, in this case a roll-back is executed.
 Still, each step may itself decide to commit or rollback its work.</p>
 </div>
 <div class="paragraph">
@@ -7718,7 +7718,7 @@ readable.</p>
 <dl>
 <dt class="hdlist1">XInclude without any XPointer</dt>
 <dd>
-<p>This basic xinclude type is available on the server and on the client. These includes
+<p>This basic xinclude type is available on the server and on the client. These <code>includes</code>
 are replaced with the whole document available on the specified href.
 Example:</p>
 <div class="listingblock">
@@ -7794,16 +7794,16 @@ Example:</p>
 <div class="sect2">
 <h3 id="_compatibility">26.1. Compatibility</h3>
 <div class="paragraph">
-<p>As of 2017 BCD-UI works without modifications within the following environments</p>
+<p>As of 2021, BCD-UI works without modifications within the following environments</p>
 </div>
 <div class="ulist">
 <div class="title">Server</div>
 <ul>
 <li>
-<p>JDK 8+ (= and later versions)</p>
+<p>JDK 11+</p>
 </li>
 <li>
-<p>Application Server: Tomcat 7.0.63+, other servers please contact BusinessCode</p>
+<p>Tomcat 8.5+ and other servers with Jakarta EE web profile</p>
 </li>
 </ul>
 </div>
@@ -7811,13 +7811,10 @@ Example:</p>
 <div class="title">Browser</div>
 <ul>
 <li>
-<p>Internet Explorer 11, previous versions on request</p>
+<p>Recent Edge, Firefox, Safari and Chrome versions</p>
 </li>
 <li>
-<p>Edge please contact BusinessCode</p>
-</li>
-<li>
-<p>Recent Firefox, Safari and Chrome</p>
+<p>Internet Explorer 11</p>
 </li>
 </ul>
 </div>
@@ -7825,10 +7822,10 @@ Example:</p>
 <div class="title">Database</div>
 <ul>
 <li>
-<p>Oracle 9i and up including Oracle 10g ExpressEdition</p>
+<p>Oracle 11+</p>
 </li>
 <li>
-<p>Postgres 9.2+</p>
+<p>Postgres 10+</p>
 </li>
 <li>
 <p>SQLServer 2016+</p>
@@ -7845,19 +7842,16 @@ Example:</p>
 <div class="title">It makes use of current versions of technologies and specs</div>
 <ul>
 <li>
-<p>JavaEE web profile, JDBC, Servlet, JSP and JAXB</p>
+<p>Java Jakarta EE web profile, JDBC, Servlet, JAXB and optionally JSP</p>
 </li>
 <li>
-<p>ECMA/JS, DHTML, CSS, HTML and JSON</p>
+<p>ECMA/JS, DHTML, CSS, HTML, JSON and SVG</p>
 </li>
 <li>
-<p>SVG and VML</p>
+<p>XML, XSLT, XPath and XSD</p>
 </li>
 <li>
-<p>XML, XSLT and XSD</p>
-</li>
-<li>
-<p>Ajax, webservices and XForms architecture, EXSLT</p>
+<p>Ajax, webservices, XForms architecture and EXSLT</p>
 </li>
 <li>
 <p>Apache commons, jQuery and various other open source libraries</p>
@@ -7869,14 +7863,14 @@ Example:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_known_browser_incompatibilites">26.2. Known browser incompatibilites</h3>
+<h3 id="_known_browser_incompatibilities">26.2. Known browser incompatibilities</h3>
 <div class="ulist">
 <ul>
 <li>
 <p>favicon.ico is picked up by FireFox when found in webapp root, ie does not do this</p>
 </li>
 <li>
-<p>IE does not allow to set name attribute via DOM (helper function in corePackage.js)</p>
+<p>IE does not allow setting the name attribute via DOM (helper function in corePackage.js)</p>
 </li>
 <li>
 <p>FireFox throws exception when writing &lt;input&gt;text&lt;/input&gt;, this is in sync with the specs</p>
@@ -7885,7 +7879,7 @@ Example:</p>
 <p>IE ignores overflow when filter is set in css</p>
 </li>
 <li>
-<p>IE: innerHTML (used by renderer) for &lt;script&gt; and &lt;style&gt; tags require both to start with a scoped element, like  <code>&lt;input type="hidden"/&gt;&lt;script defer="false"&#8230;&#8203;</code>  and the script tag in addition requires a defer="false" attribute</p>
+<p>IE: innerHTML (used by renderer) for &lt;script&gt; and &lt;style&gt; tags require both to start with a scoped element, like  <code>&lt;input type="hidden"/&gt;&lt;script defer="false"&#8230;&#8203;</code> and the script tag in addition requires a defer="false" attribute</p>
 </li>
 <li>
 <p>IE has a maximum URL length of 2083 bytes, others do not. When copying URLs from other browsers, they may be less compressed (because it was not necessary), so they may be too long.</p>
@@ -7897,7 +7891,7 @@ Example:</p>
 <p>Chrome/WebKit: don&#8217;t support bookmark via JavaScript at all</p>
 </li>
 <li>
-<p>IE seems to handle position() in xsl:key/@match expressions wrong. Sample: match="/*/Something[@pos&gt;3][position()&lt;2]". It will find an empty list instead of a lost with two elements.</p>
+<p>IE seems to handle position() in xsl:key/@match expressions wrong. Sample: match="/*/Something[@pos&gt;3][position()&lt;2]". It will find an empty list instead of a list with two elements.</p>
 </li>
 <li>
 <p>Due to a well-known bug in FireFox (at-least 10-24), you need to enable 3rd-party cookies or better add an exception for a webpage with BCD-UI. This flag is per default off ("disabled") since version 22.</p>
@@ -7914,7 +7908,7 @@ Example:</p>
 <ul>
 <li>
 <p>Declare all namespaces used by XSLT, since documents addressed via document() and xsl:import are included in the host XSLT and
-elements with undeclared namespaces inherit the default namepace of the (possibly generated) host XSLT</p>
+elements with undeclared namespaces inherit the default namespace of the (possibly generated) host XSLT</p>
 </li>
 <li>
 <p>When using createElementWithPrototype or similar, always work with an explicit namespace, do not use the empty namespace.</p>
@@ -7944,7 +7938,7 @@ create these elements with &lt;xsl:element name="output" namespace="http://www.w
 <p>When a node is provided to the XSLT processor as input, that node becomes the document root, for Gecko and IE "/" remains the root.</p>
 </li>
 <li>
-<p>Mix of constant strings and AVT (Attribute Value Template) is not allowed. So use attr="{concat('abc ', $var)}" instead ofattr="abc {$var}" for webkit."</p>
+<p>Mix of constant strings and AVT (Attribute Value Template) is not allowed. So use attr="{concat('abc ', $var)}" instead of attr="abc {$var}" for webkit."</p>
 </li>
 <li>
 <p>For Webkit the imports are resolved by BCD-UI. This is done by including the imported stylesheet leaving out templates with the same
@@ -7963,8 +7957,8 @@ Use xsl:stylesheet/@bcdxml:wrsHeaderIsEnough to minimize the input for example f
 <li>
 <p>All known namespace declarations are repeated on the highest node of each subtree of explicitly written elements.
 For example &lt;wrs:C/&gt; will hold all such namespace-nodes if all elements above are created via xsl:element or xsl:copy.
-As a workaround, write the root node (in this case wrs:Wrs) also explicitly &lt;wrs:Wrs&gt;&#8230;&#8203;&lt;/wrs:Wrs&gt;, then this is the highest and they will ony
-appear once. Because Webkit is sensitive against documents with a large serialization representation this improves performance.</p>
+As a workaround, write the root node (in this case wrs:Wrs) also explicitly &lt;wrs:Wrs&gt;&#8230;&#8203;&lt;/wrs:Wrs&gt;, then this is the highest, and they will ony
+appear once. This improves performance, because Webkit is sensitive against documents with a large serialization representation.</p>
 </li>
 </ul>
 </div>
@@ -7977,9 +7971,9 @@ appear once. Because Webkit is sensitive against documents with a large serializ
 <div class="sect2">
 <h3 id="_configuration_overview">27.1. Configuration overview</h3>
 <div class="paragraph">
-<p>BCD-UI obtains its configuration from the parameters from JNDI context (as specifided by servlet container) for the backend-part
+<p>BCD-UI obtains its configuration from the parameters from JNDI context (as specified by servlet container) for the backend-part
 and provides client configuration parameters for the client part. The de.businesscode.bcdui.toolbox.Configuration is the API to retrieve
-that configuration. Additionally the Configuration class maintains de.businesscode.bcdui.toolbox.config.DbProperties instance for
+that configuration. Additionally, the Configuration class maintains de.businesscode.bcdui.toolbox.config.DbProperties instance for
 well-known scopes: server and client allowing dynamic configuration.</p>
 </div>
 <div class="dlist">
@@ -7987,7 +7981,7 @@ well-known scopes: server and client allowing dynamic configuration.</p>
 <dt class="hdlist1">'server' scope</dt>
 <dd>
 <p>are JNDI defined parameters, additionally parameters from database (DbProperties) with scope "server", DbProperties parameters
-have precedence over JDNI defined parameters. Please always define a TYPE for this scope and stick to same type as originally
+have precedence over JNDI defined parameters. Please always define a TYPE for this scope and stick to same type as originally
 defined in context.xml when overriding parameters.</p>
 </dd>
 <dt class="hdlist1">'client' scope</dt>
@@ -8005,8 +7999,8 @@ and the property value is ALWAYS exposed as a String, hence the value must not b
 <p>Setting up the DbProperties to be transparently reflected by the de.businesscode.bcdui.toolbox.Configuration API is a matter
 of exposing the "bcd_db_properties" BindingSet. Configuration class will auto-detect this BindingSet upon initialization and if found, will
 initialize the DbProperties instance. DbProperties may refresh the configuration from Database asynchronously every period given to
-refresh or the refresh can be controlled programmatically. This class is NOT a singleton so may be reused in projects, it takes a
-BindingSet of kind "bcd_db_properties" to initialize. The Configuration class yields an instance of DbProperties stuck to wellknown
+refresh, or the refresh can be controlled programmatically. This class is NOT a singleton so may be reused in projects, it takes a
+BindingSet of kind "bcd_db_properties" to initialize. The Configuration class yields an instance of DbProperties stuck to well-known
 BindingSet "bcd_db_properties".</p>
 </div>
 <div class="paragraph">
@@ -8028,14 +8022,14 @@ BindingSet "bcd_db_properties".</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">SCOPE</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">this is a scope for this parameter. When working with de.businesscode.bcdui.toolbox.Configuration, the&#8217;re two well defined scopes: server, client.
+<td class="tableblock halign-left valign-top"><p class="tableblock">this is a scope for this parameter. When working with de.businesscode.bcdui.toolbox.Configuration, there are two well-defined scopes: server, client.
 While the server scope parameters are accessible through:</p>
 <p class="tableblock">* de.businesscode.bcdui.toolbox.Configuration.getConfigurationParameter(String)
 * de.businesscode.bcdui.toolbox.Configuration.getConfigurationParameter(String, T)
 * de.businesscode.bcdui.toolbox.Configuration.getConfigurationParameterOrNull(String id)</p>
 <p class="tableblock">the client scope parameters can be retrieved via de.businesscode.bcdui.toolbox.Configuration.getClientParameters(),
 those are also exposed to the client and available in the bcdui.config JS object.</p>
-<p class="tableblock">The TYPE is obligatory for the parameter in server scope, while for client scope parameters the TYPE is ignored and the
+<p class="tableblock">The TYPE is obligatory for the parameter in server scope, while for client scope parameters the TYPE is ignored, and the
 value is always exposed as a string.</p></td>
 </tr>
 <tr>
@@ -8043,15 +8037,15 @@ value is always exposed as a string.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Parameter name. This is unique to the scope. For server scope the parameter names should follow JNDI naming convention like
 the parameters defined in context.xml, because those parameters are merged while parameters from database overwrite those
 defined statically. Pay attention to the TYPE here, as it has to be same as defined in context.xml</p>
-<p class="tableblock">For client scope you may take any name adhering to JS veriable name syntax, so dots, spaces etc are not allowed.</p></td>
+<p class="tableblock">For client scope you may take any name adhering to JS variable name syntax, so dots, spaces etc are not allowed.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TYPE</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The type of a parameter value. While client-scope parameters do not have typed values (the value is always exposed as a string),
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of parameter value. While client-scope parameters do not have typed values (the value is always exposed as a string),
 server scope parameters values are parsed into given type (which is a fully qualified class name). The value evaluation happens
 via reflection API and the only method target class has to expose is a static valueOf(String value) method.</p>
-<p class="tableblock">Hence a type 'java.lang.Boolean' for parameter name 'myBoolean' would evaluate the value 'true' to Boolean.TRUE, such that
-de.businesscode.bcdui.toolbox.Configuration.getConfigurationParameter('myBoolean', false) would return Boolean.TRUE wheras
+<p class="tableblock">Hence, a type 'java.lang.Boolean' for parameter name 'myBoolean' would evaluate the value 'true' to Boolean.TRUE, such that
+de.businesscode.bcdui.toolbox.Configuration.getConfigurationParameter('myBoolean', false) would return Boolean.TRUE whereas
 de.businesscode.bcdui.toolbox.Configuration.getConfigurationParameter('myBoolean', "false") would throw a ClassCastException
 trying to cast Boolean to a String.</p>
 <p class="tableblock">Therefore, the type has to be really accurate and match types used in context.xml.</p></td>

@@ -2289,6 +2289,8 @@
             
                 <li data-name="bcdui.component.chart.ChartEchart.saveAsImage"><a href="bcdui.component.chart.ChartEchart.html#.saveAsImage">saveAsImage</a></li>
             
+                <li data-name="bcdui.component.chart.ChartEchart#getData"><a href="bcdui.component.chart.ChartEchart.html#getData">getData</a></li>
+            
             </ul>
             <ul class="events itemMembers">
             
@@ -2316,6 +2318,8 @@
                 <li data-name="bcdui.component.chart.ChartEchart.saveAsImage"><a href="bcdui.component.chart.ChartEchart.html#.saveAsImage">saveAsImage</a></li>
             
                 <li data-name="bcdui.component.chart.ChartEchart.saveAsImage"><a href="bcdui.component.chart.ChartEchart.html#.saveAsImage">saveAsImage</a></li>
+            
+                <li data-name="bcdui.component.chart.ChartEchart#getData"><a href="bcdui.component.chart.ChartEchart.html#getData">getData</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -6609,7 +6613,7 @@
     
         
         <div class="tag-source">
-            component/grid/gridCreate.js, line 84
+            component/grid/gridCreate.js, line 101
         </div>
         
     </div>
@@ -7588,6 +7592,114 @@
         </tr>
 	
 	
+	
+        <tr>
+            
+                <td class="name"><code>serverSidedPagination</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                Set to true if you want to enable server sided pagination</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>paginationSize</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">integer</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    20
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                Set pagination page size (and enable pagination)</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>paginationAllPages</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                Set pagination show all option (and enable pagination)</td>
+        </tr>
+	
+	
 	</tbody>
 </table>
             </td>
@@ -8269,7 +8381,7 @@ for parameters to load and when the chain has already loaded.
     
         
         <div class="tag-source">
-            component/grid/gridCreate.js, line 2784
+            component/grid/gridCreate.js, line 3008
         </div>
         
     </div>
@@ -9214,7 +9326,7 @@ Allows also to provide instead of the boolean forced an args object with
     
         
         <div class="tag-source">
-            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line701">line 701</a>
+            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line702">line 702</a>
         </div>
         
     </div>
@@ -9411,7 +9523,7 @@ model.fire(); // console prints '4'</code></pre>
     
         
         <div class="tag-source">
-            component/grid/gridCreate.js, line 2798
+            component/grid/gridCreate.js, line 3076
         </div>
         
     </div>
@@ -9753,7 +9865,7 @@ not produce HTML (output="html").</td>
     
         
         <div class="tag-source">
-            component/grid/gridCreate.js, line 2806
+            component/grid/gridCreate.js, line 3084
         </div>
         
     </div>
@@ -10563,7 +10675,7 @@ returned by the "getFailedStatus" method.
     
         
         <div class="tag-source">
-            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line690">line 690</a>
+            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line691">line 691</a>
         </div>
         
     </div>
@@ -10767,7 +10879,7 @@ status as returned by "getReadyStatus".
     
         
         <div class="tag-source">
-            component/grid/gridCreate.js, line 2700
+            component/grid/gridCreate.js, line 2924
         </div>
         
     </div>
@@ -10838,7 +10950,7 @@ status as returned by "getReadyStatus".
     
         
         <div class="tag-source">
-            component/grid/gridCreate.js, line 2721
+            component/grid/gridCreate.js, line 2945
         </div>
         
     </div>
@@ -11159,7 +11271,7 @@ or immediately (but still async) when the AbstractExecutable is already ready
     
         
         <div class="tag-source">
-            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line544">line 544</a>
+            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line545">line 545</a>
         </div>
         
     </div>
@@ -11872,7 +11984,7 @@ Please note: the callback routines are always called asynchronously (even if rea
     
         
         <div class="tag-source">
-            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line478">line 478</a>
+            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line479">line 479</a>
         </div>
         
     </div>
@@ -12034,7 +12146,7 @@ single node or null if query fails
     
         
         <div class="tag-source">
-            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line490">line 490</a>
+            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line491">line 491</a>
         </div>
         
     </div>
@@ -12196,7 +12308,7 @@ node list or empty list if query fails
     
         
         <div class="tag-source">
-            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line409">line 409</a>
+            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line410">line 410</a>
         </div>
         
     </div>
@@ -12462,7 +12574,7 @@ again.
     
         
         <div class="tag-source">
-            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line460">line 460</a>
+            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line461">line 461</a>
         </div>
         
     </div>
@@ -12661,7 +12773,7 @@ again.
     
         
         <div class="tag-source">
-            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line510">line 510</a>
+            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line511">line 511</a>
         </div>
         
     </div>
@@ -13062,7 +13174,7 @@ again.
     
         
         <div class="tag-source">
-            component/grid/gridCreate.js, line 2762
+            component/grid/gridCreate.js, line 2986
         </div>
         
     </div>
@@ -13208,7 +13320,7 @@ again.
     
         
         <div class="tag-source">
-            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line500">line 500</a>
+            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line501">line 501</a>
         </div>
         
     </div>
@@ -13409,7 +13521,7 @@ of the transformation chain.
     
         
         <div class="tag-source">
-            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line674">line 674</a>
+            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line675">line 675</a>
         </div>
         
     </div>
@@ -13739,7 +13851,7 @@ of the transformation chain.
     
         
         <div class="tag-source">
-            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line436">line 436</a>
+            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line437">line 437</a>
         </div>
         
     </div>

@@ -2289,6 +2289,8 @@
             
                 <li data-name="bcdui.component.chart.ChartEchart.saveAsImage"><a href="bcdui.component.chart.ChartEchart.html#.saveAsImage">saveAsImage</a></li>
             
+                <li data-name="bcdui.component.chart.ChartEchart#getData"><a href="bcdui.component.chart.ChartEchart.html#getData">getData</a></li>
+            
             </ul>
             <ul class="events itemMembers">
             
@@ -2316,6 +2318,8 @@
                 <li data-name="bcdui.component.chart.ChartEchart.saveAsImage"><a href="bcdui.component.chart.ChartEchart.html#.saveAsImage">saveAsImage</a></li>
             
                 <li data-name="bcdui.component.chart.ChartEchart.saveAsImage"><a href="bcdui.component.chart.ChartEchart.html#.saveAsImage">saveAsImage</a></li>
+            
+                <li data-name="bcdui.component.chart.ChartEchart#getData"><a href="bcdui.component.chart.ChartEchart.html#getData">getData</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -8731,7 +8735,7 @@ Group level does not appear in Level drop down but can be used as a dependency l
     
         
         <div class="tag-source">
-            widget/widgetPackage.js, line 2617
+            widget/widgetPackage.js, line 2629
         </div>
         
     </div>
@@ -9046,7 +9050,7 @@ Group level does not appear in Level drop down but can be used as a dependency l
     
         
         <div class="tag-source">
-            widget/widgetPackage.js, line 2706
+            widget/widgetPackage.js, line 2718
         </div>
         
     </div>
@@ -11915,7 +11919,7 @@ the given target HTML element. This input field can be a text box or a combo box
     
         
         <div class="tag-source">
-            widget/widgetPackage.js, line 2938
+            widget/widgetPackage.js, line 2950
         </div>
         
     </div>
@@ -13875,7 +13879,7 @@ The period chooser outputs to args.targetModelXPath, which may point to any mode
     
         
         <div class="tag-source">
-            widget/widgetPackage.js, line 2168
+            widget/widgetPackage.js, line 2169
         </div>
         
     </div>
@@ -14187,7 +14191,7 @@ The period chooser outputs to args.targetModelXPath, which may point to any mode
                         
                     
                 
-                Function (colIdx, colValue) which returns the rendered caption for the cell. By default standard wrs @caption, wrs:references and unit/scale handling is supported already</td>
+                Function (colIdx, colValue) which returns the rendered caption for the cell. By default standard wrs @caption, wrs:references and unit/scale handling is supported already. Deprecated (prefer valueCaptionProvider parameter).</td>
         </tr>
 	
 	
@@ -14221,7 +14225,41 @@ The period chooser outputs to args.targetModelXPath, which may point to any mode
                         
                     
                 
-                Function (colIdx) which needs to return a wrs:C array which holds the valid values for the current column. Use this to e.g. only show prefiltered values</td>
+                Function (colIdx) which needs to return a wrs:C array which holds the valid values for the current column. Use this to e.g. only show prefiltered values . Deprecated (prefer valueCaptionProvider parameter).</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>valueCaptionProvider</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                Function (inputModel, colIdx) which needs to return a Promise which resolves with an array of objects {value, caption, isFiltered}</td>
         </tr>
 	
 	
@@ -15075,7 +15113,7 @@ The period chooser outputs to args.targetModelXPath, which may point to any mode
     
         
         <div class="tag-source">
-            widget/widgetPackage.js, line 3061
+            widget/widgetPackage.js, line 3073
         </div>
         
     </div>
@@ -15249,7 +15287,7 @@ string containing the current navPath for your selected values
     
         
         <div class="tag-source">
-            widget/widgetPackage.js, line 2969
+            widget/widgetPackage.js, line 2981
         </div>
         
     </div>
@@ -15447,7 +15485,7 @@ widgets themselves and does not use the navPath model which represents the capti
     
         
         <div class="tag-source">
-            widget/widgetPackage.js, line 2917
+            widget/widgetPackage.js, line 2929
         </div>
         
     </div>
@@ -15646,7 +15684,7 @@ string of found widgetCaption or empty string
     
         
         <div class="tag-source">
-            widget/widgetPackage.js, line 2899
+            widget/widgetPackage.js, line 2911
         </div>
         
     </div>
@@ -15785,7 +15823,7 @@ string of found widgetCaption or empty string
     
         
         <div class="tag-source">
-            widget/widgetPackage.js, line 2908
+            widget/widgetPackage.js, line 2920
         </div>
         
     </div>
@@ -15924,7 +15962,7 @@ string of found widgetCaption or empty string
     
         
         <div class="tag-source">
-            widget/widgetPackage.js, line 3271
+            widget/widgetPackage.js, line 3283
         </div>
         
     </div>
