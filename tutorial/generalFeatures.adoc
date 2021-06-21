@@ -3,18 +3,18 @@
 
 === General Features
 
-Bookmark feature:: Each page together with its settings like filter choosers or which parts are opened or hided can be bookmarked.
+Bookmark feature:: Each page together with its settings like filter choosers or which parts are opened or hid. Can be bookmarked.
 Such a bookmark can be used as the starting point to enter the application and as a quick navigation link including
 previous settings.
-Additionally the link can be passed to others in case they have sufficient rights to enter the page.
+Additionally, the link can be passed to others in case they have sufficient rights to enter the page.
 
 === Transactions and connection pooling
 
 Per default each request is associated with a transaction.
 Each server activity retrieves its connection from the request object, providing the data source name.
 All activities within the same request get the same connection when retrieving it from the request.
-The first database access in a request starts the transaction and the request finishes transaction with commit unless
-a ServletException is uncatched or a SOAPFault is returned, in this case a roll-back is executed.
+The first database access in a request starts the transaction, and the request finishes transaction with commit unless
+a ServletException is uncatched, or a SOAPFault is returned, in this case a roll-back is executed.
 Still, each step may itself decide to commit or rollback its work.
 
 
@@ -46,7 +46,7 @@ readable.
 There are three kinds of XML inclusion supported by BCD-UI:
 
 XInclude without any XPointer:: 
-This basic xinclude type is available on the server and on the client. These includes
+This basic xinclude type is available on the server and on the client. These `includes`
 are replaced with the whole document available on the specified href.
 Example:
 +

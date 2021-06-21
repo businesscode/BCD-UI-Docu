@@ -30,7 +30,7 @@ The response will have the link:http://www.w3.org/Protocols/rfc2616/rfc2616-sec1
 
 ==== Disable Caching
 
-During development, you do not usually have enable caching. For this case BCD-UI provides the possibility to enable/disable all caching settings.
+During development, usually you do not enable caching. For this case BCD-UI provides the possibility to enable/disable all caching settings.
 To achieve this please define a environment entry within your context.xml file with the name: "bcdui/disableCache" like this:
 
 [source,xml]
@@ -48,7 +48,7 @@ Client filters also allow an ExcludeUrls parameter with a space separated list o
 If an expression matches the request path, the filter takes no action.
 
 Static files can usually be cached. How long depends on when a re-deployment may happen.
-Typically if deployments happen over the week-end, set  `ExpiresAbsDow`  to 'Sat' as shown above.
+Typically, if deployments happen over the week-end, set  `ExpiresAbsDow`  to 'Sat' as shown above.
 To identify static files it is possible to define for which extensions the ClientCachingFilter applies via ExtensionsRestriction.
 
 In a reporting environment, reporting and reference data can often be cached until the next morning.
@@ -65,7 +65,7 @@ The one initially enabled is optimized for development, caching only BCD-UI sour
 
 ==== Other headers
 
-For the client side header it is also possible to define the response header value of value of cache-directive with the `cache-response-directive` parameter.
+For the client side header it is also possible to define the response header value of cache-directive with the `cache-response-directive` parameter.
 See sample for no-cache below.
 The response will have the link:http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9[HTTP Cache-Control, window="_blank"] header be set accordingly.
 

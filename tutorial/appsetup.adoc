@@ -26,7 +26,7 @@ dependencies {
   }
 }
 ----
-If you prefer you may also download the BCD-UI's jars and their dependencies mentioned in https://github.com/businesscode/BCD-UI/blob/master/Docu/development/bcdui_dependencies.gradle[BCD-UI/Docu/development/bcdui_dependencies.gradle] and put them into WEB-INF/lib. +
+If you prefer you may also download the BCD-UI's jars, and their dependencies mentioned in https://github.com/businesscode/BCD-UI/blob/master/Docu/development/bcdui_dependencies.gradle[BCD-UI/Docu/development/bcdui_dependencies.gradle] and put them into WEB-INF/lib. +
 +
 NOTE: These two jars not only hold all Java classes for the server but also all client side sources of BCD-UI like JavaScript and XSLT. BCD-UI makes sure they are served to the client along with your client side sources which are placed were you would usually place them.
 
@@ -77,7 +77,7 @@ StaticResourceServlet of BCD-UI assures that for the client it looks as if they 
 |||java/|| s|Project java sources
 |||resources/ 2+|log4j.properties s|Logging settings
 | 2+|WebContent/|| s|Webapp itself
-|||...|| s|Project's HTML pages, JaavaScript etc
+|||...|| s|Project's HTML pages, JavaScript etc
 |||bcdui/|| s|BCD-UI's virtual main folder, blended here by a Servlet
 ||||js/| s|JS library mapped from bcd-ui-core.jar
 ||||xslt/| s|XSLT library mapped from bcd-ui-core.jar

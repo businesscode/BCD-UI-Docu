@@ -30,8 +30,8 @@ include::../web/WEB-INF/bcdui/bindings/myGeoData.xml[]
 <1> BindingSet root element namespace need to be correct
 <2> `id` is the logical name within the application
 <3> `table` is the physical name of the table or view it the database
-<4> Each `bnd:C` is a _BindingItem_ represents an individual column, you give it a logical id and you can enforce some attributes
-<5> This is the column expression for the database, often simply the column name but in can also be something more complex like `substr(colame,2)`
+<4> Each `bnd:C` is a _BindingItem_ represents an individual column, you give it a logical id, and you can enforce some attributes
+<5> This is the column expression for the database, often simply the column name but in can also be something more complex like `substr(colname,2)`
 
 BindingSets are located in `WEB-INF/bcdui/bindings` or  sub-folder and are evaluated by BCD-UI on start time.
 Information like the data type can be given in the file, otherwise it is derived from the column's physical data type. But you can always overwrite this in the BindingSet if you need to.
@@ -88,7 +88,7 @@ include::../web/minimalCube/index.html[tag=geoChooserTH]
 <2> This is where the country chooser goes
 
 NOTE: The _sidebar_ is an extra area of the theme, often used for widgets.
-BCD-UI theme helps creating such an area, but there is no technical need to use it, you may place choosers anywhere on your page.
+BCD-UI theme helps to create such an area, but there is no technical need to use it, you may place choosers anywhere on your page.
 
 Create the widgets:
 

@@ -15,9 +15,9 @@ Some of BCD-UI's features are:
 * Several elaborated <<DocWidgets,widgets>> needed in enterprise environments with two-way bindings to the data models
 * Ready-to-use components like <<DocCube,pivot reports>>, <<DocCharts,charts>>, <<DocScorecard,scorecards>>, smart data uploading and editable data grids to name some
 * Export of <<DocExports,WYSIWYG and detail data>>
-* Infrastructure for <<DocI18n,internationalization>>, <<DocSecurity,security>>, <<DocThemes,themeing>>, page lifcycle
+* Infrastructure for <<DocI18n,internationalization>>, <<DocSecurity,security>>, <<DocThemes,theming>>, page lifecycle
 
-and many more as you will learn in this tutorial.
+and many more, as you will learn in this tutorial.
 
 Assume you want to provide the user with the option of setting up a report
 by defining dimensions and measures and filter data by time and location like this:
@@ -26,7 +26,7 @@ image::images/about_pivot.png[Sample page with a pivot report,800,532]
 
 You will be surprised how easy you achieve that with BCD-UI. +
 And going further and tweak the application to your needs is where BCD-UI continues supporting you,
-so you can provide solutions with higher complexity with less effort, less bugs and less performance issues than ever.
+so you can provide solutions with higher complexity with less effort, fewer bugs and less performance issues than ever.
 
 With BCD-UI you are free to extend in any direction needed using standard technologies.
 While you are not at all limited to BCD-UI components, you will often find an 80% solution already provided ready-to-use.

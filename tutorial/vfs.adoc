@@ -31,7 +31,7 @@ So you can e.g. create a model out of the stored data like this:
 new bcdui.core.SimpleModel({url: bcdui.contextPath + '/vfs/reports/myTestCube/layouts.xml'})
 ----
 
-Writing can be achieved by sending a wrs request to the server, e.g. with the help of an automodel.
+Writing can be achieved by sending a wrs request to the server, e.g. with the help of an AutoModel.
 
 [source,javascript]
 ----

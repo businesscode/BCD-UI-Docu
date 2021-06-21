@@ -17,7 +17,7 @@ Order and filter columns:: Only include listed columns the order given by the pa
 Pagination:: Limit and access data with a given page size `wrs/paginate.xslt`
 Join to Wrs:: Join two Wrs over data keys, supports _inner_, _left outer_ and _cross_ joins. `wrs/join.xslt`
 Transpose grouping:: Transpose a dimension column into a row (i.e. it becomes a column dimension). All data cells are adjusted accordingly. `wrs/transposeGrouping.xslt`
-Validate:: Validates the data of the input WRS against the WRS header. Adds a validation-resule WRS into the input WRS' header. `validate/validate.xslt`
+Validate:: Validates the data of the input WRS against the WRS header. Adds a validation-result WRS into the input WRS' header. `validate/validate.xslt`
 
 ==== Data Manipulation
 
@@ -31,7 +31,7 @@ Merge:: Merge one WRS into another. Existing rows (same row-id) will be modified
 ==== Data Visualization
 
 [horizontal]
-Render:: Render a Wrs to HTML. This renderer is used by all components `renderer/htmlBuilder.xslt`.
+Render:: Render a Wrs to HTML. This renderer is used by all components' `renderer/htmlBuilder.xslt`.
 This renderer per default sorts dimension rows and groups row and column headers to td spans.
 You can suppress by providing parameters, see below.
 Number formatting:: Formats the data according to their format defined in the WRS header (scale, unit, later also i18n). `renderer/numberFormatting.xslt`
@@ -56,8 +56,8 @@ Switching off sorting and row/col span building for HtmlBuilder with XsltParamet
 ----
 include::../web/xsltLibrary/index.html[tag=xsltParam]
 ----
-<1> If the parameters get longer, you will likely create an extra file, static or dynamically an not inline as shown here.
-<2> HtmlBuilder will look for an `xp:HtmlBuilder` element with no or a matching `paramSetId` attribute
+<1> If the parameters get longer, you will likely create an extra file, static or dynamically as shown here.
+<2> HtmlBuilder will look for an `xp:HtmlBuilder` element with no, or a matching `paramSetId` attribute
 <3> Element and parameter names and meaning can be found in xsltParams-1.0.0.xsd
 <4> Name of the parameter with the parameters is always `paramModel`
 
@@ -110,7 +110,7 @@ Note the two deleted rows at the beginning in the two inserted rows after.
 
 See documentation of link:https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.wrs.wrsUtil.html[bcdui.wrsUtil package^] for more information and other helpers.
 
-==== String Utilites
+==== String Utilities
 
 Common string operations which do not come with XSLT-1.0 are provided via string utility template
 part of `bcdui/xslt/stringUtils.xslt`.
@@ -153,7 +153,7 @@ Later versions of BCD-UI are likely to support transformations to CSV, Sylk and 
 
 === Using exslt:node-set()
 
-Here we have are more complex sample, which makes use of tokenize but also `exslt:node-set()`.
+Here we have a more complex sample, which makes use of tokenize but also `exslt:node-set()`.
 While this is not directly related to stringUtils.xslt, we take the chance to show this useful feature here.
 
 .XSLT using node-set()
@@ -166,8 +166,8 @@ include::../web/xsltLibrary/nodeSetSample.xslt[]
 <3> This magic line makes exslt:node-set() available in Internet Explorer
 <4> This is the string which we will split into DOM nodes
 <5> Call tokenizer named template from stringUtils.xslt, it will return a Wrs like string
-<6> Here, with the help of exslt:node-set(), we turn the returned string into a real DOM node set
-<7> And we can then walk through the node set as if it was part of a parameter or the input document
+<6> Here, with the help of exslt:node-set(), we turn the returned string into a real DOM nodeset
+<7> And we can then walk through the node set as if it was part of a parameter, or the input document
 
 === XSD Schema
 

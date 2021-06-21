@@ -8,7 +8,7 @@ For example a report allowing to order or filter data can be enhanced by a chart
 Charts do also support for user interaction.
 For example drilling from an item of the chart or exporting data can be developed.
 
-.Some of the core features of BCD-UI graphs are
+.Some core features of BCD-UI charts are
 * Supporting all standard chart types: Pie, Line, Point, Area, Bar, Scattered, Stacked Bar and Stacked Area with 1 and 2 y-axes
 * Sensitive to user interaction like hover and click on individual bars or pieces in a pie chart
 * Supporting on-the-fly creation and modification on the client
@@ -39,7 +39,7 @@ include::../web/charts/index.html[tag=chartTH]
 
 NOTE: Charts require an explicit size of their target HTML element.
 Set it either inside the chart definition or assign it via CSS.
-Otherwise 'No data' may be shown though there is data
+Otherwise, 'No data' may be shown though there is data
 
 And add this JavaScript code:
 [source,javascript]
@@ -65,7 +65,7 @@ image::images/charts_chart2Axes.png[]
 ==== Scattered chart
 
 A scattered chart can display three values at a time, here the x-position of a circle shows the size of the customer,
-the y position shows the revenue done with the customer and the size of the circle shows the growth of the revenue done
+the y position shows the revenue done with the customer, and the size of the circle shows the growth of the revenue done
 with the customer in the last 12 months.
 
 image::images/charts_scattered.png[]

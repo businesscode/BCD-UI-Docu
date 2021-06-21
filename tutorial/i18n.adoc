@@ -17,7 +17,7 @@ or save a static file at /myProject/bcdui/conf/messages.xml in WRS format accord
 a sample is under BCD-UI/src/js/i18n/messages.xml.
 
 The BindingSet and data table should have 3 columns named "key", "lang" and "value".
-The content of the "lang"-column can have values conform the java.util.Locale values or a value "default".
+The content of the "lang"-column can have values conform the java.util.Locale values, or a value "default".
 *Defaults:*
 * i18n model URL: /bcdui/servletsCached/WrsServlet/i18n - the mapping to the URL could be changed in web.xml
 
@@ -30,7 +30,7 @@ The content of the "lang"-column can have values conform the java.util.Locale va
 ==== I18n on client side
 
 The client is provided with an XML containing the translated values for the chosen language. The translation APIs are available in JS, XSLT or static HTML.
-Please note that the file is cached on the the client and thus does not harm performance.
+Please note that the file is cached on the client and thus does not harm performance.
 
 
 The following fragment shows a sample I18n.xml file created by BCD-UI:
@@ -111,7 +111,7 @@ Please note that you don't need to trigger translation of static HTML via JS-API
 as the translation kicks in automatically once the document has been loaded.
 
 The bcdui.i18n JS object is created by BCD-UI runtime.
-In addition we can translate HTML attributes by setting its names into @bcdTranslateAttrs,
+In addition, we can translate HTML attributes by setting its names into @bcdTranslateAttrs,
 like @bcdTranslateAttrs="alt" @alt="my Photo"
 
 ==== I18n during data access

@@ -5,7 +5,7 @@
 
 Core objects, widgets and components can be created in different APIs, all leading to the same resulting object.
 
-* JavaScript is the most common and most powerful way
+* JavaScript is the most common, and most powerful way
 * HTML Custom Elements are available for widgets and components, i.e. for all visible objects
 * JSP provides wrapper for object creation
 * For XSLT named templates are available for creation of thr objects
@@ -41,7 +41,7 @@ include::../web/api/index.html[tag=jscode]
 HTML5 Custom Elements look like standard HTML tags but provide custom functionality.
 They will become more and more common in the next time.
 
-.General rules Rules
+.General Rules
 * There are custom tags for widgets, components and the renderer, i.e. for all objects creating visual output.
 * The naming of the tags follows the naming of the JavaScript API, preceded by 'bcd-'.
 * The output is placed at the location of the tag, i.e. no targetHtml is necessary
@@ -100,7 +100,7 @@ Such an XSLT may look like this:
 include::../web/api/xsltApiSample.xslt[]
 ----
 <1> Import bcdui/core/core.xslt, bcdui/widget/widget.xslt, bcdui/widgetNg/widgetNg.xslt and or , bcdui/component/component.xslt
-<2> Embed the tags in yout ordinary HTML output
+<2> Embed the tags in your HTML output
 <3> The XSLT template names follow the js API names in lower case
 <4> The parameter names follow the js API
 
@@ -110,7 +110,7 @@ First create a place where to show the result:
 include::../web/api/index.html[tag=rendererXsltTh]
 ----
 
-Then create a Renderer to show it and it will trigger the creation of the objects:
+Then create a Renderer to show it, and it will trigger the creation of the objects:
 [source,javascript]
 ----
 include::../web/api/index.html[tag=rendererXslt]
@@ -179,7 +179,7 @@ Here you may also call apply-templates to resolve nested XAPI calls in a more co
 <4> Here the value of your 'dataUrl' parameter is passed
 <5> Standard handling of XAPI
 
-Create a renderer with the dslRenderer.xslt as `chain` an die following as `inputModel`
+Create a renderer with the dslRenderer.xslt as `chain` and the following as `inputModel`
 
 .dsl.xml, calling your extension
 [source,xml]

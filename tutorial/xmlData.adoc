@@ -191,7 +191,7 @@ Identifying the right column can be done via its hard-coded position in an XPath
 ----
 
 This is easy but also easily breaks and is hard to read.
-Thus, it is better to identify a column via its logical name 'CP_DESC', this will work in an XPath outside and inside of XSLT:
+Thus, it is better to identify a column via its logical name 'CP_DESC', this will work in an XPath outside and inside XSLT:
 
 [source,javascript]
 ----

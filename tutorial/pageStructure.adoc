@@ -15,7 +15,7 @@ Page-Loading phase::
 . The page is loaded by the browser
 . BCD-UI live-cycle artifacts are constructed
 . `bcdui.wkModels.guiStatus` singleton, per default holding information of the user's selection like chooser settings,
-is initialized from the guiStatus parameter of the pages's URL.
+is initialized from the guiStatus parameter of the page's URL.
 . `bcdui.wkModels.guiStatusEstablished` singleton is constructed. It is a frozen copy of guiStatus
 . Any ModelUpdater on guiStatus and guiStatusEstablished are executed and then both become _ready_
 . Renderer on the page responsible for building the visible parts like widgets, edit grids and reports execute themselves.
@@ -33,15 +33,15 @@ Page-Interaction phase::
 ** Changes to the UI, like chooser settings or sorting per default lead to changes in the guiStatus.
 ** Changes to business data will be stored separate DataProviders.
 ** Please note, no change of model data triggers any change of any view per se. +
-Instead you  set up listeners, that inform Renderer to refresh, if needed.
-* A _save_ on a DataProvider event will sending the data to the associated web-service, usually WrsServlet, which then stores the data into the database.
+Instead you set up listeners, that inform Renderer to refresh, if needed.
+* A _save_ on a DataProvider event will send the data to the associated web-service, usually WrsServlet, which then stores the data into the database.
 * Other activities like in-place drill down will lead to additional data being loaded.
 
 Page-Leaving phase::
 * Pressing apply, menu navigation or drill-over events will cause the browser to leave the page.
 * A call to link:https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.lifecycle.html#.applyAction[applyAction^] will in addition append the current guiStatus as a parameter to the called URL, thus the new page will initialize its settings according to the chooser of the calling page.
 
-=== guiStatus Singelton
+=== guiStatus Singleton
 
 BCD-UI instantiates a well-known `guiStatus` along with a frozen guiStatusEstablished copy in each page loading phase.
 The guiStatus is a standard StaticModel, but is object of the following extra-handling:
@@ -52,10 +52,10 @@ The guiStatus is a standard StaticModel, but is object of the following extra-ha
 * It is initialized during page load with the guiStatus URL parameter of the page and executed.
 It is guaranteed to be _ready_ when executing code in `bcdui.core.ready( function() { myCode } )`.
 * It is the default target model for widgets, i.e. it applies if an XPath does not start with an explicit $modelId
-* It is an implicit parameter to all transformations, for example in XSLT it can be access with +
+* It is an implicit parameter to all transformations, for example in XSLT it can be accessed with +
 `<xsl:param name="guiStatus"/>;`
 * The link:https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.lifecycle.html#.applyAction[applyAction^] appends its content to the url of the called page
-** Base64 encoding is used to make it URL friendly and it is compressed to prevent it from exceeding IE's URL length restriction
+** Base64 encoding is used to make it URL friendly, and it is compressed to prevent it from exceeding IE's URL length restriction
 * guiStatusEstablished reflects best the values of the page loading phase and is not influenced by later user activity
 * On server side it is decompressed and decoded by a servlet filter and provided via +
 `getHttpRequest().getAttribute("guiStatusDoc");`
@@ -68,17 +68,17 @@ All these objects offer a getData() method returning their data (XML, String etc
 DataProviders construct their data in different ways
 
 * Some DataProvider like SimpleModel send HTTP GET or POST request to the server when executed.
-  This can be any URL for a static file for example or a <<DocXmlData,request document>> to WrsServlet.
+  This can be any URL for a static file for example, or a <<DocXmlData,request document>> to WrsServlet.
   ** On server side for each request, the web services evaluate the request documents and consult the binding definitions for the appropriate places in connected databases.
     The <<DocBinding,BindingSets>> translate the requested logical data ids into physical databases, views, tables and columns.
 * Some DataProviders, like the ModelWrapper, apply XSLTs and another transformation rules to their input data and provide the result as their data.
 
 ==== Available data providers
 
-This is the list of available data providers and their action on `execute()` to become _ready_.
+This is the list of available data providers, and their action on `execute()` to become _ready_.
 
 SimpleModel:: A load data from a url.
-The source can be static or a <<DocXmlData,Wrs request document>> to contact the WrsServlet.
+The source can be static, or a <<DocXmlData,Wrs request document>> to contact the WrsServlet.
 If it is in autoRefresh mode, it will reload whenever the request document changes.
 Auto-refresh mode is useful to load for small data immediately on user interaction.
 
@@ -92,7 +92,7 @@ ModelUpdater:: Similar to ModelWrapper but replaces the target model's content w
 Renderer:: Executes a chain of transformations like XSLTs and inserts the result into the page's HTML at targetHtml.
 The input model is not changed.
 
-ConstantDataProvider:: Holds a scalar data type String|Number|Boolean, usefull for parameters
+ConstantDataProvider:: Holds a scalar data type String|Number|Boolean, useful for parameters
 
 PromptDataProvider:: Prompts the user for a string input.
 
@@ -150,7 +150,7 @@ m2.onReady(
   }
 );
 
-// Wait for multile DataProviders
+// Wait for multiple DataProviders
 bcdui.factory.objectRegistry.withReadyObjects(  m1, m2, // <6>
   function() {
     ...

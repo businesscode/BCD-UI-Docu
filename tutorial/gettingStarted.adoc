@@ -7,7 +7,7 @@ For the following, we assume you already have a blank application running.
 TIP: If you don't know how to make a vanilla application running with your IDE and Tomcat, have a look at the <<DocBootstrap,Bootstrap>> chapter.
 
 
-Once you have your standard application running, just do these 4 steps detailed in <<DocAppsetup,Application Setup>> to turn it into a BCD-UI applcation
+Once you have your standard application running, just do these 4 steps detailed in <<DocAppsetup,Application Setup>> to turn it into a BCD-UI application
 
 * Add bcd-ui-core.jar and bcd-ui-theme.jar to your dependencies
 * Copy some entries into your web.xml

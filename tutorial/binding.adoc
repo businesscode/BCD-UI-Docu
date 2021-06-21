@@ -7,9 +7,9 @@ A BindingSet defines the logical view of a table or view of a database.
 Bindings are maintained in simple XML files at WEB-INF/bcdui/bindings and introduce the following capabilities:
 
 Logical naming:: Logical names for views, tables (BindingSet) and columns (BindingItem) ease the understanding harmonizing of the data model.
-Logical data types:: Logical type of a BindingItem (column) and other meta information beyond database's capability allow to adopt and overwrite a physical database.
+Logical data types:: Logical type of BindingItem (column) and other meta information beyond database's capability allow adopting and overwrite a physical database.
 Aggregation hierarchies - BindingGroups:: The option to choose best fit among multiple tables depending on the actual BindingItems (columns) needed, similar to a materialized view or join view,
-i,e, for the current request the best fit (highest aggregation) table is chosen
+i,e, for the current request the best fit (the highest aggregation) table is chosen
 Relations, i.e. Joins:: The option to do joins only if needed based on the actual BindingItem (column) addressed
 Row level security:: The option to enforce constraints (Filter) on the SQL queries like user rights or language
 Server values:: The option to enforce values server-side, for example the user's id.
@@ -30,8 +30,8 @@ include::../web/WEB-INF/bcdui/bindings/myGeoData.xml[]
 <1> BindingSet root element namespace need to be correct
 <2> `id` is the logical name within the application
 <3> `table` is the physical name of the table or view it the database
-<4> Each `bnd:C` is a _BindingItem_ represents an individual column, you give it a logical id and you can enforce some attributes
-<5> This is the column expression for the database, often simply the column name but in can also be something more complex like `substr(colame,2)`
+<4> Each `bnd:C` is a _BindingItem_ represents an individual column, you give it a logical id, and you can enforce some attributes
+<5> This is the column expression for the database, often simply the column name but in can also be something more complex like `substr(colname,2)`
 
 === BindingSet features
 
@@ -45,8 +45,7 @@ This is configured by cooperation of the following three artifacts:
 
 . A scc:SubjectFilterType definition
 +
-A SubjectFilterType in WEB-INF/bcdui/subjectSettings.xml defines the BindingItem on which to apply the restriction
-and a BindingSet with the user's rights, default is bcd_sec_user_settings.
+A SubjectFilterType in WEB-INF/bcdui/subjectSettings.xml defines the BindingItem on which to apply the restriction, and a BindingSet with the user's rights, default is bcd_sec_user_settings.
 +
 [source,xml]
 ----
@@ -88,7 +87,7 @@ Each row assigns an allowed country to a user for the geo:ctr right.
 
 ==== Bindings write-protection
 
-If (and only if) a WEB-INF/bcdui/subjectSettings.xml is present in a project, all BindingSets are write protected when accessed via Wrs.
+If (and only if) a WEB-INF/bcdui/subjectSettings.xml is present in a project, all BindingSets are write-protected when accessed via Wrs.
 To allow a user to insert into or update a view/table behind a BindingSet, you must
 
 . Define that the BindingSet is write-able via an bnd:SubjectSettings/bnd:Security/bnd:Operation entry
@@ -110,7 +109,7 @@ To configure security on your binding do the following:
 +
 . Provide the user with sufficient rights
 
-Currently BindingSets understand only one operation called _write_ which protects ANY modification to a table (C-UD),
+Currently, BindingSets understand only one operation called _write_ which protects ANY modification to a table (C-UD),
 the _permission_ takes a list (space separated) of permissions which are evaluated by Shiro, hence Shiro's syntax
 can be applied here. *Note:* the list is inclusive, meaning that the operation is granted only in case the user
 retains ALL permissions listed. The permission list may also be empty or be absent at all, in such a case NO check is
@@ -118,7 +117,7 @@ done for this operation, thus it effectively disables write-protection.
 
 ==== Write pre-processing
 
-The optional write pre-processing allows to enforce additional processing of data before it is written to the BindingSet.
+The optional write pre-processing allows enforcing additional processing of data before it is written to the BindingSet.
 A project specific callback derived from the  `de.businesscode.bcdui.binding.write.WriteProcessingCallback` 
 can be called to modify the data to be written, for example for security reasons.
 When multiple callbacks are configured, they are called in given order.
@@ -136,7 +135,7 @@ The class is  set up using parameters in the Binding definition document. Please
 further information.
 
 In short, this callback allows you to provide server-side or constant values for WRS data, to either coalesce it with data sent from client and
-even to assure the data to exist whether is has been send from client or not. A sample:
+even to assure the data to exist whether is has been sent from client or not. A sample:
 
 [source,xml]
 ----
@@ -235,13 +234,13 @@ to the BindingSet sample from chapter <<DocMinimalCube,Minimal Cube>> and you ca
 [WARNING]
 BindingSetGroup is an EnterpriseEdition extension, not available for CommunityEdition.
 
-A BindingSetGroup allows to be treated as a BindingSet but the actual BindingSet used depends on the list of BindingItems being requested.
+A BindingSetGroup allows to be treated as a BindingSet, but the actual BindingSet used depends on the list of BindingItems being requested.
 The first BindingSet in order providing all BindingItems is chosen. This allows for example to
 
 * Redirect a request to the table with the highest aggregation level providing all required dimensions
 * Redirect a request to a table with the right dimensions, for example cw vs. month.
 
-Therefore this feature is very useful for optimizing database performance.
+Therefore, this feature is very useful for optimizing database performance.
 
 [source,xml]
 ----

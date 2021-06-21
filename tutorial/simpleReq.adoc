@@ -98,7 +98,7 @@ While the JavaScript version above references the JavaScript variable `staticDat
 [source,javascript]
 var staticData = new bcdui.core.SimpleModel({ id: "staticData", url: "staticData.xml" });
 
-While the JavaScript variable and the id are both `staticData` in this example, they are completely separate things and do not need to be identical.
+While the JavaScript variable, and the id are both `staticData` in this example, they are completely separate things and do not need to be identical.
 
 
 ==== Load data from database
@@ -170,7 +170,7 @@ Reload the page: Now you are already using your database!
 ==== Add a PeriodChooser
 In this section we add a link:../jsdoc/bcdui.widget.PeriodChooser.html[bcdui.widget.PeriodChooser^] to retrieve a subset of our data specified by a date range. We also add an apply button to reload the page with this filter setting.
 
-To place the period chooser and the apply button on the page, add the two sections like the following to the element with class bcd\__sidebar-left__inner.
+To place the period chooser, and the apply button on the page, add the two sections like the following to the element with class bcd\__sidebar-left__inner.
 
 .Section in the sidebar
 [source,html]
@@ -205,7 +205,7 @@ bcdui.widgetNg.createButton({
 <2> This is the HTML element where the widget is displayed
 <3> These are further widget specific settings
 
-Voila! data loaded from database with a filter.
+Voilà! data loaded from database with a filter.
 
 image::images/simpleReq_period_chooser.png[]
 

@@ -11,7 +11,7 @@ image::images/scorecard_scoreCardPart.png[]
 
 .Some Terminology
 
-Measures:: Measures are aggregatable, often calculation, values, representing a measurable quantity like a count of pieces or sum of weight.
+Measures:: Measures can be aggregated, often calculation, values, representing a measurable quantity like a count of pieces or sum of weight.
 Measures and indicator measures form the base of KPIs.
 
 Indicator measures:: Indicator measures are special boolean measures, representing for example a process compliance.
@@ -24,7 +24,7 @@ Often it is associated with targets and other attributes.
 
 Aspects:: They describe what aspects of KPIs are shown on a ScoreCard.
 Typical aspects are performance or YTD, trends or achievements.
-Calculation rules of aspects are not dependent on a specific KPI but they can make use of KPI specific data and calculations.
+Calculation rules of aspects are not dependent on a specific KPI, but they can make use of KPI specific data and calculations.
 There are three types of aspects:
 
 * Kpi aspects modify the KPI calculation in some way, for example YTD or previous-period performance and re-execute the clients KPI calculation.
@@ -59,16 +59,16 @@ include::../web/scorecard/scConfig.xml[]
 <5> KPI definitions, usually, this is included via xi:include from a separate file because it is reused
 <6> Each KPI comes with its formula
 <7> `bcdSum` refers to a built-in aggregation, using sum and going on BindingSet bcd_sc_kpi
-<8> Categories allow to group KPIs in the layout
+<8> Categories allow grouping KPIs in the layout
 <9> Beside build-in scc:Aspects and scc:Aggregators, you can  set up your own here
 
 The content of the scc:ScorecardConfiguration is straight forward can easily be  set up by a user or the wizard. +
-The underlying definitions for scc:Aggregators and scc:Aspects can be seen in the source code and taken as a templyte for own ones.
+The underlying definitions for scc:Aggregators and scc:Aspects can be seen in the source code and taken as a template for own ones.
 
 ==== Aggregators
 
-An aggregator describes how the system can retrieves measures from the database.
-It does so by providing a XSLT generating a <<DocXmlData,WrsRequest>>.
+An aggregator describes how the system can retrieve measures from the database.
+It does so by providing an XSLT generating a <<DocXmlData,WrsRequest>>.
 The scorecard provides input to this XSLT at runtime, informing about the measures needed.
 It is also providing an optional `xsl:param name="customParameterModel"`, allowing to provide free additional information.
 In many cases, using the built-in scc:Aggregators will be sufficient.
@@ -80,7 +80,7 @@ An aspect definition is valid across all KPIs. Aspects can provide their informa
 
 Aspect WrqModifier:: Provides a means of generating a new request from an aggregator's request, for example to the KPI table for previous period performance.
 Aspect WrqBuilder:: Provides a means of generating a new request from scratch, for example to a table with target information.
-Aspect Calc:: A calculation on to of KPI performance and other aspects, for example the trend based on (performance) / (previous period performance) or the achievement based on performance and target.
+Aspect Calc:: A calculation on to of KPI performance and other aspects, for example the trend based on (performance) / (previous period performance), or the achievement based on performance and target.
 The calculation can reference values via:
 * `calc:KpiRef` refers to the KPIs performance, i.e. to the KPI's definition.
 * `calc:AspectRef idRef="asp_` refers to the result of the aspect with the id _aspId_ for the current KPI.

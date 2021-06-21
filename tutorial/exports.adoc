@@ -3,7 +3,7 @@
 
 === Detail exports
 
-BCD-UI supports export of detail data to spread sheets, this applies to free defined exports and to export from cube or scorecard.
+BCD-UI supports export of detail data to spreadsheets, this applies to free defined exports and to export from cube or scorecard.
 
 ==== Sylk .slk format
 
@@ -65,7 +65,7 @@ Plus there might be additional filters needed that you provide.
 image::images/detail_export.png[]
 
 Luckily BCD-UI provides you everything to quickly  set up such a cube cell detail export.
-First of all you need a way to execute the detail export on a specific cell.
+First you need a way to execute the detail export on a specific cell.
 This is done by adding the Detail Export functionality in the context menu.
 The default context menu lists it, too.
 Secondly, your Cube / Scorecard configuration needs to list the columns to be exported.
@@ -106,7 +106,7 @@ If you need additional filters, define a detail export filter on measure or KPI 
 </dm:Measure>
 ----
 
-You don't want a general export list but a measure specific one:
+You don't want a general export list, but a measure specific one:
 
 [source,xml]
 ----
@@ -178,7 +178,7 @@ If the url starts with a /, the current application path is used as a prefix.
 
 The BCD-UI contains two kinds of WYSIWYG (what-you-see-is-what-you-get) exports:
 
-Spread sheet:: Spread sheet WYSIWYG exports are useful when the exported numbers are to be used in further calculations.
+Spreadsheet:: Spread sheet WYSIWYG exports are useful when the exported numbers are to be used in further calculations.
 PDF:: PDF WYSIWYG exports are useful when the formatting of the report including coloring is the core requirement. +
 Export to PDf and image is available in BCD-UI-EE Enterprise Edition only.
 

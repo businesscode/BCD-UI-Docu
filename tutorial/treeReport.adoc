@@ -19,7 +19,7 @@ from a Wrq or a CubeModel for example, then you can  set up a Render chain like 
 ----
 include::../web/treeReport/index.html[tag=dynTreeRenderer]
 ----
-And it will display the data in the following way:
+and it will display the data in the following way:
 
 image::./images/treeReport_treeView.png[]
 

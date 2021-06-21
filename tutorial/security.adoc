@@ -30,7 +30,7 @@ Each request is checked whether it addresses a
  ** No valid session but auto-login: Auto-login is available through the use of HTTP cookies.
  ** No valid session: The filter will re-direct the request to the login page to establish a valid session with a valid login.
 
-After login the original request is processed.
+After login, the original request is processed.
 
 For each url path you can also set required rights in the init-param section of IniShiroFilter in web.xml.
 
@@ -66,7 +66,7 @@ include::../web/login.html[tag=inputs]
 Per default bcdui static resources are accessible without login, you can also use BCD-UI buttons if you want.
 
 . Login logging +
-By adding `bcd_log_login` BindingSet to your application, all login attempts and their result is logged into the corresponding table.
+By adding `bcd_log_login` BindingSet to your application, all login attempts, and their result is logged into the corresponding table.
 
 To set up users and their authorization, you can choose the simple setup by hard-coding them in web.xml, by maintaining them in BCD-UI's database or authenticated with oAuth (AD, Google, facebook etc) combined with rights maintained in your database.
 
@@ -120,7 +120,7 @@ Later you can define BindingSet related security restrictions here.
 Add bcd_sec_user and bcd_sec_user_settings BindingSets (and the corresponding tables).
 There is no prebuilt UI editor for these two tables, but their content should be self-explanatory.
 All attributes and permissions assigned to a user in the table corresponding to `bcd_sec_user_settings` are read when the user logs in.
-These become in-memory subject settings, which can be used to query whether a user has a a certain permission.
+These become in-memory subject settings, which can be used to query whether a user has a certain permission.
 These permissions are checked for example by the security filter when accessing an url.
 
 === Custom setup +
@@ -130,7 +130,7 @@ Please check Shiro documentation for more options.
 === OAuth2 with Azure / Google etc
 
 BCD-UI provides Shiro integrated implementation for general OAuth2 authentication (referred to as oauth in this docu) and ready-to-use modules for Azure and Google integration. +
-Authentication is handled by OAuth, permissions are managed by application through _SsubjectSettings_.
+Authentication is handled by OAuth, permissions are managed by application through _SubjectSettings_.
 
 . Prerequisites
 .. Register your client application to Azure/Google/x to obtain a client and a client secret. For Google we use 'email' scope and for Azure 'https://graph.microsoft.com/user.read' but you can override and use whatever you prefer to use for authentication.
