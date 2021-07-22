@@ -4,21 +4,17 @@
 At its core, a BCD-UI application is a standard Jakarta EE web application.
 For the following, we assume you already have a blank application running.
 
-TIP: If you don't know how to make a vanilla application running with your IDE and Tomcat, have a look at the <<DocBootstrap,Bootstrap>> chapter.
+If you are not an experienced Java web application developer, make sure you have a plain Java web application running before you turn it into a BCD-UI application. +
 
+TIP: If you don't know how to make a vanilla application running with your IDE and Tomcat, check the <<DocBootstrap,Bootstrap>> chapter.
 
-Once you have your standard application running, just do these 4 steps detailed in <<DocAppsetup,Application Setup>> to turn it into a BCD-UI application
+To turn a plain into a BCD-UI application, just do these 4 steps, detailed out in <<DocAppsetup,Application Setup>>, to turn it into a BCD-UI application
 
-* Add bcd-ui-core.jar and bcd-ui-theme.jar to your dependencies
+* Add bcd-ui-core.jar and bcd-ui-theme.jar, and their dependencies
 * Copy some entries into your web.xml
 * Define database connection and default in context.xml
 * Add log4j2.xml
 
 and you are read to go.
-
-TIP: You may have a look in <<DocBootstrap,Bootstrap>> on how to improve Eclipse and Tomcat support for BCD-UI.
-
-
-==== Create Simple Request Page
 
 Let's continue by creating our <<DocSimpleReq,first page>> with BCD-UI.

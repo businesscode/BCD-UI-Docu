@@ -555,11 +555,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_is_there_commercial_support">1.3. Is there commercial support?</a></li>
 </ul>
 </li>
-<li><a href="#DocGettingStarted">2. Getting Started</a>
-<ul class="sectlevel3">
-<li><a href="#_create_simple_request_page">Create Simple Request Page</a></li>
-</ul>
-</li>
+<li><a href="#DocGettingStarted">2. Getting Started</a></li>
 <li><a href="#DocSimpleReq">3. Your first BCD-UI page</a>
 <ul class="sectlevel2">
 <li><a href="#_overview_2">3.1. Overview</a></li>
@@ -1004,6 +1000,9 @@ In most cases we think though the Community Edition available on GitHub and desc
 <p>At its core, a BCD-UI application is a standard Jakarta EE web application.
 For the following, we assume you already have a blank application running.</p>
 </div>
+<div class="paragraph">
+<p>If you are not an experienced Java web application developer, make sure you have a plain Java web application running before you turn it into a BCD-UI application.<br></p>
+</div>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -1011,18 +1010,18 @@ For the following, we assume you already have a blank application running.</p>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-If you don&#8217;t know how to make a vanilla application running with your IDE and Tomcat, have a look at the <a href="#DocBootstrap">Bootstrap</a> chapter.
+If you don&#8217;t know how to make a vanilla application running with your IDE and Tomcat, check the <a href="#DocBootstrap">Bootstrap</a> chapter.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Once you have your standard application running, just do these 4 steps detailed in <a href="#DocAppsetup">Application Setup</a> to turn it into a BCD-UI application</p>
+<p>To turn a plain into a BCD-UI application, just do these 4 steps, detailed out in <a href="#DocAppsetup">Application Setup</a>, to turn it into a BCD-UI application</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Add bcd-ui-core.jar and bcd-ui-theme.jar to your dependencies</p>
+<p>Add bcd-ui-core.jar and bcd-ui-theme.jar, and their dependencies</p>
 </li>
 <li>
 <p>Copy some entries into your web.xml</p>
@@ -1038,23 +1037,8 @@ If you don&#8217;t know how to make a vanilla application running with your IDE 
 <div class="paragraph">
 <p>and you are read to go.</p>
 </div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-You may have a look in <a href="#DocBootstrap">Bootstrap</a> on how to improve Eclipse and Tomcat support for BCD-UI.
-</td>
-</tr>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_create_simple_request_page">Create Simple Request Page</h4>
 <div class="paragraph">
 <p>Let&#8217;s continue by creating our <a href="#DocSimpleReq">first page</a> with BCD-UI.</p>
-</div>
 </div>
 </div>
 </div>
@@ -1310,8 +1294,8 @@ Add WebContent/simpleReq/index.html with BCD-UI capability to your application a
 </td>
 <td class="content">
 BCD-UI theme has 2 parts.<br>
-One is responsible for the overall page layout and seen here. It is fully optional, use your favorite structure and classes for this.<br>
-The part that styles widgets and components is mandatory but fully independent of this.
+The part that is responsible for the overall page layout and structure is shown here. Usage of this part is optional. You can also use your favorite page structure and css instead.<br>
+The part that styles widgets and components is mandatory to style these artifacts.
 </td>
 </tr>
 </table>
@@ -2275,13 +2259,13 @@ You can now test the report!</p>
 <div class="ulist">
 <ul>
 <li>
+<p><a href="#DocCoreArtifacts">BCD-UI core concepts</a></p>
+</li>
+<li>
 <p><a href="#DocExports">More about the Cube and export</a></p>
 </li>
 <li>
 <p><a href="#DocCharts">Charts</a></p>
-</li>
-<li>
-<p><a href="#DocMenu">Menu</a></p>
 </li>
 </ul>
 </div>
@@ -7135,7 +7119,7 @@ You can do this by calling the CacheManager servlet with an action parameter:</p
 </dd>
 <dt class="hdlist1">Server side logging</dt>
 <dd>
-<p>log4j.properties file in call path allows fine-grained control of server side logging. Per default this is found in the /src/java folders of the template applications.</p>
+<p>log4j2.xml file in call path allows fine-grained control of server side logging. Per default this is found in the /src/java folders of the template applications.</p>
 </dd>
 <dt class="hdlist1">Endless waiting renderers</dt>
 <dd>
@@ -7282,7 +7266,7 @@ by linking to <code><a href="https://businesscode.github.io/BCD-UI-Docu/xsd/bcdu
 <p>A BCD-UI application is a regular Jakarta EE application. These steps are show how to add BCD-UI to an existing web application project.</p>
 </div>
 <div class="paragraph">
-<p>There are many good tutorials for each IDE on how to set up such a web application. For Eclipse you could follow <a href="https://medium.com/@zandra.harner/setting-up-the-develop-environment-for-lop-a-web-application-in-eclipse-ide-7f3a36eddf60">this</a> one on Medium.</p>
+<p>There are many good tutorials for each IDE on how to set up such a web application. For Eclipse, you could follow <a href="https://medium.com/@zandra.harner/setting-up-the-develop-environment-for-lop-a-web-application-in-eclipse-ide-7f3a36eddf60">this</a> one on Medium.</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -7291,7 +7275,7 @@ by linking to <code><a href="https://businesscode.github.io/BCD-UI-Docu/xsd/bcdu
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-Before adding BCD-UI to your project, make sure you test your plain web application. Open a page, call a test Servlet, all without BCD-UI. You should be familiar with running a web application without BCD-UI as it&#8217;s the bases for BCD-UI.
+Before adding BCD-UI to your project, make sure you test your plain web application. Open a page, call a test Servlet, all without BCD-UI. You should be familiar with running a web application without BCD-UI as it is the bases for BCD-UI.
 </td>
 </tr>
 </table>
@@ -7302,8 +7286,11 @@ Before adding BCD-UI to your project, make sure you test your plain web applicat
 <ol class="arabic">
 <li>
 <p>Add BCD-UI jars<br>
-See <a href="https://github.com/businesscode/maven-repo" class="bare">https://github.com/businesscode/maven-repo</a> for maven and gradle.
-Add a <code>build.gradle</code> file as shown there to your project root.</p>
+In this tutorial we use <a href="https://docs.gradle.org/current/userguide/userguide.html">Gradle</a> build tool for defining dependencies. Don&#8217;t be afraid, you do not need to know much about Gradle to follow this tutorial.<br>
+Eclipse (<em>Buildship</em> plugin installed per default) and IDEA support gradle out of the box. For Visual Studio Code, add the <em>Gradle</em> extension.<br></p>
+<div class="paragraph">
+<p>Add a <code>build.gradle</code> file as shown here <a href="https://github.com/businesscode/maven-repo" class="bare" target="_blank" rel="noopener">https://github.com/businesscode/maven-repo</a> to your project root.</p>
+</div>
 <div class="paragraph">
 <p>When working with Eclipse, open <span class="menuseq"><b class="menu">File</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Import&#8230;&#8203;|Existing Gradle Project</b></span> and select your project root. It worked when you see BCD and all of its dependencies under <code>Project and External Dependencies</code>.</p>
 </div>
@@ -7325,7 +7312,7 @@ These two jars not only hold all Java classes for the server but also all client
 </table>
 </div>
 <div class="paragraph">
-<p>If you prefer to go without maven, you may also download the BCD-UI&#8217;s jars, and their dependencies mentioned in <a href="https://github.com/businesscode/BCD-UI/blob/master/Docu/development/bcdui_dependencies.gradle">BCD-UI/Docu/development/bcdui_dependencies.gradle</a> and put them into WEB-INF/lib manually.</p>
+<p>If you prefer to go without Gradle, you may also manually download the BCD-UI&#8217;s jars, and their dependencies mentioned in <a href="https://github.com/businesscode/BCD-UI/blob/master/Docu/development/bcdui_dependencies.gradle">BCD-UI/Docu/development/bcdui_dependencies.gradle</a> and put them into WEB-INF/lib. But this is not recommended.</p>
 </div>
 </li>
 <li>
@@ -7362,26 +7349,44 @@ The jndi entry</p>
 <div class="sect2">
 <h3 id="_bcd_ui_folder_layout">23.2. BCD-UI folder layout</h3>
 <div class="paragraph">
-<p>BCD-UI follows standard Java Web Application layout.<br>
-One thing less common though is that the JavaScript and other static sources come with the 2 BCD-UI jars mentioned. So they are in these jars in WEB-INF/lib and not in your web content folder next to WEB-INF.<br>
-StaticResourceServlet of BCD-UI assures that for the client it looks as if they were there though.</p>
+<p>BCD-UI follows standard Java Web Application layout.</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+One thing less common though is that the JavaScript and other static sources come with the 2 BCD-UI jars mentioned. So they are in these jars which itself is in <code>WEB-INF/lib</code>. As you know, usually the browser cannot request any content from <code>WEB-INF/</code> directly, for example a css file. But BCD-UI&#8217;s built-in StaticResourceServlet serves these files from the jar at the virtual folders <code>/bcdui/js</code>, <code>/bcdui/xslt</code> etc.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Take a moment to understand the structure and what to expect physically in Eclipse (<strong>strong font</strong>) and what parts are only virtually there, once deployed (<em>italic font</em>).</p>
+</div>
+<table class="tableblock frame-all grid-rows stretch">
 <colgroup>
-<col style="width: 9.0909%;">
-<col style="width: 9.0909%;">
-<col style="width: 9.0909%;">
-<col style="width: 9.0909%;">
-<col style="width: 18.1818%;">
-<col style="width: 45.4546%;">
+<col style="width: 4.7619%;">
+<col style="width: 9.5238%;">
+<col style="width: 9.5238%;">
+<col style="width: 9.5238%;">
+<col style="width: 19.0476%;">
+<col style="width: 47.6191%;">
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>Project/</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="4"><p class="tableblock"><code>Project/</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Eclipse project</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>build.gradle</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Taking care for jars below <a href="https://github.com/businesscode/maven-repo">template</a></strong></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -7389,7 +7394,7 @@ StaticResourceServlet of BCD-UI assures that for the client it looks as if they 
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Project&#8217;s server side resources</strong></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -7402,9 +7407,15 @@ StaticResourceServlet of BCD-UI assures that for the client it looks as if they 
 <tr>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>resources/</code></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>log4j.properties</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Logging settings</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="3"><p class="tableblock"><code>resources/</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Project&#8217;s static server side resources</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>log4j2.xml</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Logging settings <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/log4j2_debug_.xml">template</a></strong></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -7427,7 +7438,7 @@ StaticResourceServlet of BCD-UI assures that for the client it looks as if they 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>bcdui/</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>BCD-UI&#8217;s virtual main folder, blended here by a Servlet</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>BCD-UI&#8217;s virtual main folder for client resources, blended here by a Servlet:</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -7435,7 +7446,7 @@ StaticResourceServlet of BCD-UI assures that for the client it looks as if they 
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>js/</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>JS library mapped from bcd-ui-core.jar</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>JS library mapped from bcd-ui-core.jar</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -7443,7 +7454,7 @@ StaticResourceServlet of BCD-UI assures that for the client it looks as if they 
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>xslt/</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>XSLT library mapped from bcd-ui-core.jar</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>XSLT library mapped from bcd-ui-core.jar</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -7451,15 +7462,14 @@ StaticResourceServlet of BCD-UI assures that for the client it looks as if they 
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>theme/</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Themes library mapped from bcd-ui-theme.jar</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Themes library mapped from bcd-ui-theme.jar</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>servlets/</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>BCD-UI&#8217;s servlets are mapped here</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>servlets/</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>BCD-UI&#8217;s servlets are mapped here</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -7482,7 +7492,7 @@ StaticResourceServlet of BCD-UI assures that for the client it looks as if they 
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>bindings/</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Project&#8217;s BCD-UI BindingSets are put here</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Project&#8217;s BCD-UI <a href="#DocBinding">BindingSets</a> are put here</strong></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -7490,7 +7500,7 @@ StaticResourceServlet of BCD-UI assures that for the client it looks as if they 
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>lib/</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Gradle virtually puts the content here:</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -7498,7 +7508,7 @@ StaticResourceServlet of BCD-UI assures that for the client it looks as if they 
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>3rd party and project libs</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>3rd party and project libs</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -7506,7 +7516,7 @@ StaticResourceServlet of BCD-UI assures that for the client it looks as if they 
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>bcd-ui-core.jar</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Java classes and static sources (js,xslt) mapped to /bcdui</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Java classes and static sources (js,xslt) virtually mapped to and served to the client from <code>/bcdui/</code> at runtime</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -7514,7 +7524,7 @@ StaticResourceServlet of BCD-UI assures that for the client it looks as if they 
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>bcd-ui-theme.jar</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Themes, mapped to /bcdui/theme at runtime</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Themes, mapped to /bcdui/theme at runtime</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -7522,16 +7532,27 @@ StaticResourceServlet of BCD-UI assures that for the client it looks as if they 
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>web.xml</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Contains some BCD-UI library related entries</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Contains some BCD-UI library related entries <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/web.xml">template</a></strong></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top" colspan="3"><p class="tableblock"><code>META-INF/context.xml</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Containing JDBC database connections</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>META-INF/</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>context.xml</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Contains JDBC database connections <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/tomcat/context.xml">template</a></strong></p></td>
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>This tutorial itself is built around a fully functional BCD-UI application, which you inspect here <a href="https://github.com/businesscode/BCD-UI-Docu" class="bare">https://github.com/businesscode/BCD-UI-Docu</a>.</p>
+</div>
 </div>
 </div>
 </div>

@@ -3,16 +3,18 @@
 
 A BCD-UI application is a regular Jakarta EE application. These steps are show how to add BCD-UI to an existing web application project.
 
-There are many good tutorials for each IDE on how to set up such a web application. For Eclipse you could follow https://medium.com/@zandra.harner/setting-up-the-develop-environment-for-lop-a-web-application-in-eclipse-ide-7f3a36eddf60[this] one on Medium.
+There are many good tutorials for each IDE on how to set up such a web application. For Eclipse, you could follow https://medium.com/@zandra.harner/setting-up-the-develop-environment-for-lop-a-web-application-in-eclipse-ide-7f3a36eddf60[this] one on Medium.
 
 [IMPORTANT]
-Before adding BCD-UI to your project, make sure you test your plain web application. Open a page, call a test Servlet, all without BCD-UI. You should be familiar with running a web application without BCD-UI as it's the bases for BCD-UI.
+Before adding BCD-UI to your project, make sure you test your plain web application. Open a page, call a test Servlet, all without BCD-UI. You should be familiar with running a web application without BCD-UI as it is the bases for BCD-UI.
 
 === Adding BCD-UI
 
 . Add BCD-UI jars +
-See https://github.com/businesscode/maven-repo for maven and gradle.
-Add a `build.gradle` file as shown there to your project root.
+In this tutorial we use https://docs.gradle.org/current/userguide/userguide.html[Gradle] build tool for defining dependencies. Don't be afraid, you do not need to know much about Gradle to follow this tutorial. +
+Eclipse (__Buildship__ plugin installed per default) and IDEA support gradle out of the box. For Visual Studio Code, add the __Gradle__ extension. +
++
+Add a `build.gradle` file as shown here https://github.com/businesscode/maven-repo[ window="_blank"] to your project root.
 +
 When working with Eclipse, open menu:File[Import...|Existing Gradle Project] and select your project root. It worked when you see BCD and all of its dependencies under `Project and External Dependencies`.
 +
@@ -20,7 +22,7 @@ image::images/eclipse_dependencies.png[width=50%, align="center"]
 +
 TIP: These two jars not only hold all Java classes for the server but also all client side sources of BCD-UI like JavaScript and XSLT. BCD-UI has a Servlet that makes sure they are served to the client along with your client side sources, which are placed were you would usually place them.
 +
-If you prefer to go without maven, you may also download the BCD-UI's jars, and their dependencies mentioned in https://github.com/businesscode/BCD-UI/blob/master/Docu/development/bcdui_dependencies.gradle[BCD-UI/Docu/development/bcdui_dependencies.gradle] and put them into WEB-INF/lib manually.
+If you prefer to go without Gradle, you may also manually download the BCD-UI's jars, and their dependencies mentioned in https://github.com/businesscode/BCD-UI/blob/master/Docu/development/bcdui_dependencies.gradle[BCD-UI/Docu/development/bcdui_dependencies.gradle] and put them into WEB-INF/lib. But this is not recommended.
 +
 
 . Add Entries to web.xml +
@@ -60,30 +62,38 @@ image::images/appsetup_addSources.png[]
 
 === BCD-UI folder layout
 
-BCD-UI follows standard Java Web Application layout. +
-One thing less common though is that the JavaScript and other static sources come with the 2 BCD-UI jars mentioned. So they are in these jars in WEB-INF/lib and not in your web content folder next to WEB-INF. +
-StaticResourceServlet of BCD-UI assures that for the client it looks as if they were there though.
+BCD-UI follows standard Java Web Application layout.
 
-[cols="1 m,1 m,1 m,1 m,2 m,5"]
+IMPORTANT: One thing less common though is that the JavaScript and other static sources come with the 2 BCD-UI jars mentioned. So they are in these jars which itself is in `WEB-INF/lib`. As you know, usually the browser cannot request any content from `WEB-INF/` directly, for example a css file. But BCD-UI's built-in StaticResourceServlet serves these files from the jar at the virtual folders `/bcdui/js`, `/bcdui/xslt` etc.
+
+Take a moment to understand the structure and what to expect physically in Eclipse (*strong font*) and what parts are only virtually there, once deployed (__italic font__).
+
+[grid=rows]
+[cols=" m,2 m,2 m,2 m,4 m,10"]
 |===
-2+|Project/||| s|Eclipse project
-||src/main/||| s|
+4+|Project/||
+| 2+|build.gradle|| s|Taking care for jars below https://github.com/businesscode/maven-repo[template]
+||src/main/||| s|Project's server side resources
 |||java/|| s|Project java sources
-|||resources/ 2+|log4j.properties s|Logging settings
+|| 3+|resources/ s|Project's static server side resources
+||| 2+|log4j2.xml s|Logging settings https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/log4j2_debug_.xml[template]
 | 2+|WebContent/|| s|Webapp itself
 |||...|| s|Project's HTML pages, JavaScript etc
-|||bcdui/|| s|BCD-UI's virtual main folder, blended here by a Servlet
-||||js/| s|JS library mapped from bcd-ui-core.jar
-||||xslt/| s|XSLT library mapped from bcd-ui-core.jar
-||||theme/| s|Themes library mapped from bcd-ui-theme.jar
-||||servlets/| s|BCD-UI's servlets are mapped here
+|||bcdui/|| e|BCD-UI's virtual main folder for client resources, blended here by a Servlet:
+||||js/| e|JS library mapped from bcd-ui-core.jar
+||||xslt/| e|XSLT library mapped from bcd-ui-core.jar
+||||theme/| e|Themes library mapped from bcd-ui-theme.jar
+||| 2+|servlets/ e|BCD-UI's servlets are mapped here
 || 2+|WEB-INF/||
 ||||bcdui/| s|Configuration for BCD-UI
-|||||bindings/ s|Project's BCD-UI BindingSets are put here
-||||lib/||
-|||||... s|3rd party and project libs
-|||||bcd-ui-core.jar s|Java classes and static sources (js,xslt) mapped to /bcdui
-|||||bcd-ui-theme.jar s|Themes, mapped to /bcdui/theme at runtime
-||||web.xml| s|Contains some BCD-UI library related entries
-|| 3+|META-INF/context.xml s|Containing JDBC database connections
+|||||bindings/ s|Project's BCD-UI <<DocBinding,BindingSets>> are put here
+||||lib/| e|Gradle virtually puts the content here:
+|||||... e|3rd party and project libs
+|||||bcd-ui-core.jar e|Java classes and static sources (js,xslt) virtually mapped to and served to the client from `/bcdui/` at runtime
+|||||bcd-ui-theme.jar e|Themes, mapped to /bcdui/theme at runtime
+||||web.xml| s|Contains some BCD-UI library related entries https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/web.xml[template]
+|| 2+|META-INF/||
+||| 2+|context.xml s|Contains JDBC database connections https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/tomcat/context.xml[template]
 |===
+
+This tutorial itself is built around a fully functional BCD-UI application, which you inspect here https://github.com/businesscode/BCD-UI-Docu.

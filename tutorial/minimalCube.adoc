@@ -163,6 +163,6 @@ image::images/minimalCube_cube.png[]
 
 ==== Where to go from here
 
+* <<DocCoreArtifacts,BCD-UI core concepts>>
 * <<DocExports,More about the Cube and export>>
 * <<DocCharts,Charts>>
-* <<DocMenu,Menu>>

@@ -42,8 +42,8 @@ Now we already have an empty but fully styled page, open it in a browser.
 image::images/simpleReq_blankPage.png[]
 
 TIP: BCD-UI theme has 2 parts. +
-One is responsible for the overall page layout and seen here. It is fully optional, use your favorite structure and classes for this. +
-The part that styles widgets and components is mandatory but fully independent of this.
+The part that is responsible for the overall page layout and structure is shown here. Usage of this part is optional. You can also use your favorite page structure and css instead. +
+The part that styles widgets and components is mandatory to style these artifacts.
 
 ==== Add static data
 
