@@ -143,12 +143,12 @@ In your version you may want to extend this by your DSL functionality.
 ----
 include::../web/api/xapiMinimalRenderer.xslt[]
 ----
-<1> Add an html namespace so that we can copy that later 1:1
+<1> Add a html namespace so that we can copy that later 1:1
 <2> Import needed XSLT (see comment above XSLT API)
 <3> You can freely mix and nest with HTML here
 <4> Here we make sure we copy HTML content 1:1
 
-And use the standard way to apply this stylesheet to the xapi file. Make sure you created the targetHtml before
+Then use the standard way to apply this stylesheet to the xapi file. Make sure you created the targetHtml before
 [source,javascript]
 ----
 include::../web/api/index.html[tag=rendererXapi]
@@ -175,7 +175,7 @@ include::../web/api/dslRenderer.xslt[]
 <1> Use `xmlns:cust=http://www.businesscode.de/schema/bcdui/customization-1.0.0` namespace for your extensions as it is known to the browser's XPath, BCD-UI adds it there.
 <2> This is where your DSL is handled, note the 'cust' namespace. You can create any HTML content and BCD-UI objects here. +
 Here you may also call apply-templates to resolve nested XAPI calls in a more complex sample.
-<3> Internally it will translate to calls to XSLT API
+<3> Internally it will translate into calls to XSLT API
 <4> Here the value of your 'dataUrl' parameter is passed
 <5> Standard handling of XAPI
 

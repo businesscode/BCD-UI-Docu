@@ -24,7 +24,7 @@ by defining dimensions and measures and filter data by time and location like th
 
 image::images/about_pivot.png[Sample page with a pivot report,800,532]
 
-You will be surprised how easy you achieve that with BCD-UI. +
+You will be surprised how easy you achieve this with BCD-UI. +
 And going further and tweak the application to your needs is where BCD-UI continues supporting you,
 so you can provide solutions with higher complexity with less effort, fewer bugs and less performance issues than ever.
 

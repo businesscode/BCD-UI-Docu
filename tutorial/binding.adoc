@@ -39,7 +39,7 @@ include::../web/WEB-INF/bcdui/bindings/myGeoData.xml[]
 
 When reading from a BindingSet via Wrs, the access can be limited for a user on row-level.
 For example a user may only see entries for UK even if the query does not have this restriction.
-With the same method, a user's language setting can be applied to a i18n caption lookup table in the background.
+With the same method, a user's language setting can be applied to an i18n caption lookup table in the background.
 This is done via a server-side added where constraint depending on user settings.
 This is configured by cooperation of the following three artifacts:
 
@@ -74,7 +74,9 @@ In the restricted BindingSet you just need to refer to such a SubjectFilterType 
   <C id="country">..</C>
   <!-- all C's etc ... -->
   <SubjectSettings>
-    <SubjectFilter type="geo:ctr"/>
+    <SubjectFilters>
+      <SubjectFilter type="geo:ctr"/>
+    </SubjectFilters>
   </SubjectSettings>
 </BindingSet>
 ----
@@ -90,13 +92,13 @@ Each row assigns an allowed country to a user for the geo:ctr right.
 If (and only if) a WEB-INF/bcdui/subjectSettings.xml is present in a project, all BindingSets are write-protected when accessed via Wrs.
 To allow a user to insert into or update a view/table behind a BindingSet, you must
 
-. Define that the BindingSet is write-able via an bnd:SubjectSettings/bnd:Security/bnd:Operation entry
+. Define that the BindingSet is write-able via a bnd:SubjectSettings/bnd:Security/bnd:Operation entry
 +
 To configure security on your binding do the following:
 +
 [source,xml]
 ----
-<BindingSet xmlns="http://www.businesscode.de/schema/bcdui/bindings-1.0.0">
+<BindingSet xmlns="http://www.businesscode.de/schema/bcdui/bindings-1.0.0" id="myBindingSetId">
   <!-- all C's etc ... -->
   <SubjectSettings>
     <Security>
@@ -121,7 +123,7 @@ The optional write pre-processing allows enforcing additional processing of data
 A project specific callback derived from the  `de.businesscode.bcdui.binding.write.WriteProcessingCallback` 
 can be called to modify the data to be written, for example for security reasons.
 When multiple callbacks are configured, they are called in given order.
-An callback receives the following events:
+A callback receives the following events:
 
 * endHeader
 * endDataRow

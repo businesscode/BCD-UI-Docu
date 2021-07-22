@@ -14,8 +14,7 @@ Use request parameter debug=true:: The debug request parameter makes the applica
 
 === Common error messages
 
-ERROR - Internal stylesheet error. this['node-set']= function (x) { return x; } 0 0 Unzip gui status:: This error message occurs if an import of a stylesheet fails inside a stylesheet. The nodeset function is usually the first
- line after the include statement
+ERROR - Internal stylesheet error. this['node-set']= function (x) { return x; } 0 0 Unzip gui status:: This error message occurs if an import of a stylesheet fails inside a stylesheet. The nodeset function is usually the first line after the `include` statement
 IE: An Invalid character was found in text content. Or: Switch from current encoding to specified encoding not supported.:: Wrong encoding im xsl:output
 FF: XSLT error codes (note, in general in IE the XSLT errors are much easier to debug):: link:https://developer.mozilla.org/en/Table_Of_Errors#XSLT_Errors[FF XSLT error codes, window="_blank"]
 IE: stack overflow at line: 0:: Is often related to an IE caching issue, in many cases it goes away with caching being enabled.

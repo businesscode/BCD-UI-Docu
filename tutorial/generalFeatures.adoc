@@ -22,8 +22,7 @@ In case the client wants multiple writes to become part of one database transact
 
 === XML Inclusion
 
-The BCD-UI library makes use of XML inclusion to support some advanced XML features. These includes
-are allowed in XML files read on the server and also on the client. The main reasons to use XML
+The BCD-UI library makes use of XML inclusion to support some advanced XML features. These `include` are allowed in XML files read on the server and also on the client. The main reasons to use XML
 inclusion are as follows:
 
 ==== Use cases
@@ -46,23 +45,21 @@ readable.
 There are three kinds of XML inclusion supported by BCD-UI:
 
 XInclude without any XPointer:: 
-This basic xinclude type is available on the server and on the client. These `includes`
-are replaced with the whole document available on the specified href.
+This basic xinclude type is available on the server and on the client. These `include` are replaced with the whole document available on the specified href.
 Example:
 +
 [source,xml]
 ----
-<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" href="myDoc.xml"/>
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="myDoc.xml"/>
 ----
 +
 XInclude with XPointer element() Scheme:: 
-This xinclude is also available on the server and client and it offers the selection
-of one single XML element to be included.
+This xinclude is also available on the server and client, and it offers the selection of one single XML element to be included.
 Example:
 +
 [source,xml]
 ----
-<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" href="myDoc.xml" xpointer="element(/1/2)"/>
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="myDoc.xml" xpointer="element(/1/2)"/>
 ----
 +
 XInclude with XPointer xpointer() Scheme:: 
@@ -73,7 +70,7 @@ Example:
 +
 [source,xml]
 ----
-<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" href="myDoc.xml" xpointer="xpointer(/*/Country[. = 'DE']/City)"/>
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="myDoc.xml" xpointer="xpointer(/*/Country[. = 'DE']/City)"/>
 ----
 +
 bcdxml:include:: 
@@ -84,14 +81,14 @@ Example:
 +
 [source,xml]
 ----
-<bcdxml:include xmlns:bcdxml="http://www.businesscode.de/schema/bcdui/bcdxml-1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" href="myDoc.xml" xpointer="xpointer(/*/*)"/>
+<bcdxml:include xmlns:bcdxml="http://www.businesscode.de/schema/bcdui/bcdxml-1.0.0" href="myDoc.xml" xpointer="xpointer(/*/*)"/>
 ----
 +
 Example with nested status document:
 +
 [source,xml]
 ----
-<bcdxml:include xmlns:bcdxml="http://www.businesscode.de/schema/bcdui/bcdxml-1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" href="myDoc.xml">
+<bcdxml:include xmlns:bcdxml="http://www.businesscode.de/schema/bcdui/bcdxml-1.0.0" href="myDoc.xml">
   <Status xmlns="http://www.businesscode.de/schema/bcdui/guiStatus-1.0.0">
     <Filter xmlns="http://www.businesscode.de/schema/bcdui/filter-1.0.0">
       <And id="period">

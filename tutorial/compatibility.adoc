@@ -35,7 +35,7 @@ As of 2021, BCD-UI works without modifications within the following environments
 * IE does not allow setting the name attribute via DOM (helper function in corePackage.js)
 * FireFox throws exception when writing <input>text</input>, this is in sync with the specs
 * IE ignores overflow when filter is set in css
-* IE: innerHTML (used by renderer) for <script> and <style> tags require both to start with a scoped element, like  `<input type="hidden"/><script defer="false"...` and the script tag in addition requires a defer="false" attribute
+* IE: innerHTML (used by renderer) for <script> and <style> tags require both to start with a scoped element, like  `<input type="hidden"/><script defer="false"...`, and the script tag in addition requires an `defer="false"` attribute
 * IE has a maximum URL length of 2083 bytes, others do not. When copying URLs from other browsers, they may be less compressed (because it was not necessary), so they may be too long.
 * FireFox: the bookmarks created with the bookmark tag open in a sidebar window by default, unless the bookmark property is adjusted manually by the user or if the bookmark is opened in a new tag
 * Chrome/WebKit: don't support bookmark via JavaScript at all

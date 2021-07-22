@@ -56,7 +56,7 @@ All available variables can be found in _constants.scss.
 
 ==== Themes folder structure
 
-This is a typical compiled style .jar package structure:
+This is the .jar package structure of the compiled style:
 
 [source,javascript]
 ----

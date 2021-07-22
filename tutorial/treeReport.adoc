@@ -25,7 +25,7 @@ image::./images/treeReport_treeView.png[]
 
 === Trees of variable depths
 
-There is also support for a tree with unknown depth, where each row has a an id column with an optional `parentId` attribute.
+There is also support for a tree with unknown depth, where each row has an id column with an optional `parentId` attribute.
 
 [source,xml]
 ----

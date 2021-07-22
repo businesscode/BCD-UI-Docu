@@ -41,7 +41,7 @@ NOTE: Charts require an explicit size of their target HTML element.
 Set it either inside the chart definition or assign it via CSS.
 Otherwise, 'No data' may be shown though there is data
 
-And add this JavaScript code:
+Then add this JavaScript code:
 [source,javascript]
 ----
 include::../web/charts/index.html[tag=chartJs]
@@ -58,7 +58,7 @@ image::images/charts_sample.png[]
 
 ==== Charts with 2 axes
 
-This sample shows a graph with to different axes and a fly-over on the a chart line when hovering with the mouse over the chart.
+This sample shows a graph with to different axes, and a fly-over on the chart line when hovering with the mouse over the chart.
 
 image::images/charts_chart2Axes.png[]
 
@@ -84,7 +84,7 @@ image::images/charts_chartWithLegend.png[]
 
 ==== More examples
 
-There are even more charts available, like stacked bar charts, gauge, marimekko and multi color line charts.
+There are even more charts available, like stacked bar charts, gauge, marimekko and multicolor line charts.
 
 image::images/charts_examples.png[]
 

@@ -133,7 +133,7 @@ BCD-UI provides Shiro integrated implementation for general OAuth2 authenticatio
 Authentication is handled by OAuth, permissions are managed by application through _SubjectSettings_.
 
 . Prerequisites
-.. Register your client application to Azure/Google/x to obtain a client and a client secret. For Google we use 'email' scope and for Azure 'https://graph.microsoft.com/user.read' but you can override and use whatever you prefer to use for authentication.
+.. Register your client application to Azure/Google/x to obtain a client and a client secret. For Google, we use 'email' scope and for Azure `https://graph.microsoft.com/user.read`, but you can override this and use whatever you prefer to use for authentication.
 
 . Configuration
 The web.xml https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/web.xml[template of BCD-UI] describes the setup, look for the following section

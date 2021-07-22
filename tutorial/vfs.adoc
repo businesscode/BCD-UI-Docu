@@ -5,7 +5,7 @@
 
 The Virtual File System (VFS) allows you to store resources in the database and make them available like real physical resources.
 
-As an example you can take the cube template editor. It makes use of the VFS. The report layout is stored in the database as an XML file which can be
+As an example, you can take the cube template editor. It makes use of the VFS. The report layout is stored in the database as an XML file which can be
 accessed at runtime via the path "/vfs/reports/myTestCube/layouts.xml".
 You can even store, modify, reload <<DocBinding,binding files>> in the database. They will have a higher priority than static ones with the same id.
 
@@ -37,12 +37,13 @@ Writing can be achieved by sending a wrs request to the server, e.g. with the he
 ----
 var vfs = new bcdui.core.AutoModel({bindingSetId: "bcd_virtualFileSystem", bRefs: "path resourceClob" });
 vfs.execute();
-/* now modify your path in that model (/*/wrs:Data/wrs:R/wrs:C[1]) and resourceClob (/*/wrs:Data/wrs:R/wrs:C[2]) */
-/* and store it back via sendData*/
+// Now modify the path (at /*/wrs:Data/wrs:R/wrs:C[1])
+// and the value of the resourceClob (at /*/wrs:Data/wrs:R/wrs:C[2])
+// and store it back via sendData
 vfs.sendData();
 ----
 
-After writing data to the VFS you might need to refresh the cache to make the changes active.
+After writing data to the VFS, you might need to refresh the cache to make the changes active.
 You can do this by calling the CacheManager servlet with an action parameter:
 
 [source,javascript]

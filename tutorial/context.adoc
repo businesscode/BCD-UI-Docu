@@ -64,7 +64,7 @@ security.
 ==== EL variables and functions
 
 The EL context defined by BCDUI offers access to the "request" and "session" variables. If the
-EL occurs within an XML document it also defines a "document" variable pointing to the DOM
+EL occurs within an XML document, it also defines a "document" variable pointing to the DOM
 document. These variables "request" and "session" variables work similar to the ones defined
 in JSP so that Expressions can be re-used. The context also contains the functions declared in
 webpage.tld to makes it even more compatible with JSP.

@@ -1,7 +1,7 @@
 [[DocBootstrap]]
 == Bootstrap
 
-This helps setting up your development environment for BCD-UI.
+This helps to set up your development environment for BCD-UI.
 
 === Getting the tools
 
@@ -13,7 +13,7 @@ To start development with BCD-UI, first get the tools:
 
 [TIP]
 ====
-If you are not already familiar with the concept if of Java Web Applications, you find many good tutorials. Here are some very short for Eclipse as Servlet in an Tomcat-combination:
+If you are not already familiar with the concept if of Java Web Applications, you find many good tutorials. Here are some very short for Eclipse as Servlet in a Tomcat-combination:
 
 . Install https://www.eclipse.org/downloads/packages/[Eclipse IDE for Enterprise Java and Web Developers] and https://developers.redhat.com/products/openjdk/download[Java JDK]
 . Baeldung on https://www.baeldung.com/tomcat[installing Tomcat] and on https://www.baeldung.com/tomcat[connecting Eclipse with Tomcat]

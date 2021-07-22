@@ -124,5 +124,5 @@ To achieve this, create a Binding, joining the event data with the translation t
 ==== i18n interpolation
 
 Interpolation supported, lets assume we want to have a message like 'Value must be between 10 and 20', where 10 and 20 are provided during translation.
-To achieve that the caption shall read: 'Value must be between {0,integer} and {1,integer}', the message key may be 'my.info' and msgkey parameter
+To achieve that the caption shall read: 'Value must be between {0,integer} and {1,integer}', the message key may be 'my.info' and `msgkey` parameter
 has to be 'some.info|10|20'

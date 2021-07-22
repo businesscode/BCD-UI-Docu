@@ -124,7 +124,7 @@ If your BindingItems are different, adjust them here.
 include::../web/minimalCube/cubeConfiguration.xml[]
 ----
 
-Further options available for cubes are described <<DocCube,here>>.
+More options available for cubes are described <<DocCube,here>>.
 
 We already prepared the HTML to contain a div with id `myData`, this is where we will show our cube's output. +
 Add the following to the script at the page bottom:

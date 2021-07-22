@@ -31,7 +31,7 @@ The response will have the link:http://www.w3.org/Protocols/rfc2616/rfc2616-sec1
 ==== Disable Caching
 
 During development, usually you do not enable caching. For this case BCD-UI provides the possibility to enable/disable all caching settings.
-To achieve this please define a environment entry within your context.xml file with the name: "bcdui/disableCache" like this:
+To achieve this please define an environment entry within your context.xml file with the name: "bcdui/disableCache" like this:
 
 [source,xml]
 ----

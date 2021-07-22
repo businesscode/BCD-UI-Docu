@@ -148,7 +148,7 @@ You can also export data as Excel Hyperlink cells.
 To do this, add a `wrq:A` attribute named "bcdSylkUrl" to the cell, the cell's value is appended to the provided URL.
 If the url starts with a /, the current application path is used as a prefix.
 
-.Detail export with a cell with an URL
+.Detail export with a cell with a URL
 [source,xml]
 ----
 <dm:Measure xmlns:dm="http://www.businesscode.de/schema/bcdui/dimmeas-1.0.0"
