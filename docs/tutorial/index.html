@@ -876,24 +876,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_bcd_ui_folder_layout">23.2. BCD-UI folder layout</a></li>
 </ul>
 </li>
-<li><a href="#DocGradle">24. Use Gradle to set up a BCD-UI project</a>
+<li><a href="#DocGeneralFeatures">24. General Features</a>
 <ul class="sectlevel2">
-<li><a href="#_overview_7">24.1. Overview</a></li>
-<li><a href="#_step_by_step_3">24.2. Step by Step</a>
-<ul class="sectlevel3">
-<li><a href="#_gradle_plugin">Gradle plugin</a></li>
-<li><a href="#_add_gradle_build_to_the_project">Add Gradle.build to the project</a></li>
-<li><a href="#_configure_gradle_support_for_the_project">Configure Gradle support for the project</a></li>
-<li><a href="#_refresh_dependencies">Refresh dependencies</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#DocGeneralFeatures">25. General Features</a>
-<ul class="sectlevel2">
-<li><a href="#_general_features">25.1. General Features</a></li>
-<li><a href="#_transactions_and_connection_pooling">25.2. Transactions and connection pooling</a></li>
-<li><a href="#_xml_inclusion">25.3. XML Inclusion</a>
+<li><a href="#_general_features">24.1. General Features</a></li>
+<li><a href="#_transactions_and_connection_pooling">24.2. Transactions and connection pooling</a></li>
+<li><a href="#_xml_inclusion">24.3. XML Inclusion</a>
 <ul class="sectlevel3">
 <li><a href="#_use_cases">Use cases</a></li>
 <li><a href="#_implementation_2">Implementation</a></li>
@@ -901,17 +888,17 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </li>
-<li><a href="#DocCompatibility">26. Compatibility</a>
+<li><a href="#DocCompatibility">25. Compatibility</a>
 <ul class="sectlevel2">
-<li><a href="#_compatibility">26.1. Compatibility</a></li>
-<li><a href="#_known_browser_incompatibilities">26.2. Known browser incompatibilities</a></li>
-<li><a href="#_working_with_webkit_browsers">26.3. Working with webkit browsers</a></li>
+<li><a href="#_compatibility">25.1. Compatibility</a></li>
+<li><a href="#_known_browser_incompatibilities">25.2. Known browser incompatibilities</a></li>
+<li><a href="#_working_with_webkit_browsers">25.3. Working with webkit browsers</a></li>
 </ul>
 </li>
-<li><a href="#DocConfiguration">27. Configuration</a>
+<li><a href="#DocConfiguration">26. Configuration</a>
 <ul class="sectlevel2">
-<li><a href="#_configuration_overview">27.1. Configuration overview</a></li>
-<li><a href="#_dbproperties_setup">27.2. DbProperties setup</a></li>
+<li><a href="#_configuration_overview">26.1. Configuration overview</a></li>
+<li><a href="#_dbproperties_setup">26.2. DbProperties setup</a></li>
 </ul>
 </li>
 </ul>
@@ -7295,10 +7282,19 @@ by linking to <code><a href="https://businesscode.github.io/BCD-UI-Docu/xsd/bcdu
 <p>A BCD-UI application is a regular Jakarta EE application. These steps are show how to add BCD-UI to an existing web application project.</p>
 </div>
 <div class="paragraph">
-<p>There are many good tutorials for each IDE on how to set up a web application, for Eclipse you could follow <a href="https://medium.com/@zandra.harner/setting-up-the-develop-environment-for-lop-a-web-application-in-eclipse-ide-7f3a36eddf60">this</a> one on Medium.</p>
+<p>There are many good tutorials for each IDE on how to set up such a web application. For Eclipse you could follow <a href="https://medium.com/@zandra.harner/setting-up-the-develop-environment-for-lop-a-web-application-in-eclipse-ide-7f3a36eddf60">this</a> one on Medium.</p>
 </div>
-<div class="paragraph">
-<p>We suggest to, before adding BCD-UI to it, test your web application without BCD-UI. Open a page, maybe call a test Servlet. If your application runs without BCD-UI then it will also run with BCD-UI.</p>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Before adding BCD-UI to your project, make sure you test your plain web application. Open a page, call a test Servlet, all without BCD-UI. You should be familiar with running a web application without BCD-UI as it&#8217;s the bases for BCD-UI.
+</td>
+</tr>
+</table>
 </div>
 <div class="sect2">
 <h3 id="_adding_bcd_ui">23.1. Adding BCD-UI</h3>
@@ -7306,41 +7302,36 @@ by linking to <code><a href="https://businesscode.github.io/BCD-UI-Docu/xsd/bcdu
 <ol class="arabic">
 <li>
 <p>Add BCD-UI jars<br>
-See <a href="https://github.com/businesscode/maven-repo" class="bare">https://github.com/businesscode/maven-repo</a> for maven and gradle.</p>
-<div class="listingblock">
-<div class="title">For example for gradle add</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="gradle">dependencies {
-  repositories {
-    mavenCentral()
-    maven {
-      url &quot;https://github.com/businesscode/maven-repo/raw/master&quot;
-    }
-    implementation 'de.businesscode.bcdui:bcd-ui-core:5.5.0-SNAPSHOT'
-    implementation 'de.businesscode.bcdui:bcd-ui-theme-bcd:5.5.0-SNAPSHOT'
-  }
-}</code></pre>
-</div>
-</div>
+See <a href="https://github.com/businesscode/maven-repo" class="bare">https://github.com/businesscode/maven-repo</a> for maven and gradle.
+Add a <code>build.gradle</code> file as shown there to your project root.</p>
 <div class="paragraph">
-<p>If you prefer you may also download the BCD-UI&#8217;s jars, and their dependencies mentioned in <a href="https://github.com/businesscode/BCD-UI/blob/master/Docu/development/bcdui_dependencies.gradle">BCD-UI/Docu/development/bcdui_dependencies.gradle</a> and put them into WEB-INF/lib.<br></p>
+<p>When working with Eclipse, open <span class="menuseq"><b class="menu">File</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Import&#8230;&#8203;|Existing Gradle Project</b></span> and select your project root. It worked when you see BCD and all of its dependencies under <code>Project and External Dependencies</code>.</p>
 </div>
-<div class="admonitionblock note">
+<div class="imageblock text-center">
+<div class="content">
+<img src="images/eclipse_dependencies.png" alt="eclipse dependencies" width="50%">
+</div>
+</div>
+<div class="admonitionblock tip">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-These two jars not only hold all Java classes for the server but also all client side sources of BCD-UI like JavaScript and XSLT. BCD-UI makes sure they are served to the client along with your client side sources which are placed were you would usually place them.
+These two jars not only hold all Java classes for the server but also all client side sources of BCD-UI like JavaScript and XSLT. BCD-UI has a Servlet that makes sure they are served to the client along with your client side sources, which are placed were you would usually place them.
 </td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>If you prefer to go without maven, you may also download the BCD-UI&#8217;s jars, and their dependencies mentioned in <a href="https://github.com/businesscode/BCD-UI/blob/master/Docu/development/bcdui_dependencies.gradle">BCD-UI/Docu/development/bcdui_dependencies.gradle</a> and put them into WEB-INF/lib manually.</p>
 </div>
 </li>
 <li>
 <p>Add Entries to web.xml<br>
 To register BCD-UI&#8217;s servlets and filters, add the entries from <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/web.xml" target="_blank" rel="noopener">BCD-UI/Server/configFiles/web.xml</a> to your web.xml.<br>
+Now comment out the &lt;filter&gt; bcdui4.ShiroFilter including its &lt;filter-mapping&gt;. Otherwise, you will be redirected to a login.htm page, which you do not have yet.<br>
 When you upgrade to a new version of BCD-UI check in <a href="https://github.com/businesscode/BCD-UI/blob/master/Docu/releaseNotes.adoc">release notes</a> whether it changed.</p>
 </li>
 <li>
@@ -7545,106 +7536,10 @@ StaticResourceServlet of BCD-UI assures that for the client it looks as if they 
 </div>
 </div>
 <div class="sect1">
-<h2 id="DocGradle">24. Use Gradle to set up a BCD-UI project</h2>
+<h2 id="DocGeneralFeatures">24. General Features</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_overview_7">24.1. Overview</h3>
-<div class="paragraph">
-<p>This section it about building a simple BCD-UI project with <a href="https://gradle.org/" target="_blank" rel="noopener">gradle</a>.
-All libraries required are
-specified as dependencies and it is therefore easy to get the application setup.</p>
-</div>
-<div class="paragraph">
-<p>The following steps are necessary in general:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Add gradle.build to the project</p>
-</li>
-<li>
-<p>Configure gradle support for the project</p>
-</li>
-<li>
-<p>Refresh dependencies</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_step_by_step_3">24.2. Step by Step</h3>
-<div class="sect3">
-<h4 id="_gradle_plugin">Gradle plugin</h4>
-<div class="paragraph">
-<p>IDEA and eclipse come with gradle already. When using VC Code, install gradle and use it from command line.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_add_gradle_build_to_the_project">Add Gradle.build to the project</h4>
-<div class="paragraph">
-<p>Create a build.gradle file in the root directory of your project.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">apply <span class="key">plugin</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">java</span><span class="delimiter">&quot;</span></span>
-apply <span class="key">plugin</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">war</span><span class="delimiter">&quot;</span></span>
-
-
-webAppDirName = <span class="string"><span class="delimiter">&quot;</span><span class="content">WebContent</span><span class="delimiter">&quot;</span></span>
-
-war {
-  baseName   = <span class="string"><span class="delimiter">&quot;</span><span class="content">GettingStarted</span><span class="delimiter">&quot;</span></span>
-  includeEmptyDirs = <span class="predefined-constant">false</span>
-}
-dependencies {
-  repositories {
-    mavenCentral()
-    maven {
-      url <span class="string"><span class="delimiter">&quot;</span><span class="content">https://github.com/businesscode/maven-repo/raw/master</span><span class="delimiter">&quot;</span></span>
-    }
-    implementation <span class="string"><span class="delimiter">'</span><span class="content">de.businesscode.bcdui:bcd-ui-core:5.5.0-SNAPSHOT</span><span class="delimiter">'</span></span>
-    implementation <span class="string"><span class="delimiter">'</span><span class="content">de.businesscode.bcdui:bcd-ui-theme-bcd:5.5.0-SNAPSHOT</span><span class="delimiter">'</span></span>
-  }
-}</code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_configure_gradle_support_for_the_project">Configure Gradle support for the project</h4>
-<div class="paragraph">
-<p>Before we can use the gradle file within eclipse, we have to add the "Gradle Nature" to the GettingStarted project. So select the project,
-open the context menu and choose <span class="menuseq"><b class="menu">Configure</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Add Gradle Nature</b></span>.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_refresh_dependencies">Refresh dependencies</h4>
-<div class="paragraph">
-<p>Afterwards the context menu has a new entry for gradle. Use it to refresh the project.
-This might take some time, because all libraries specified
-by the dependencies above will be loaded.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/gradle_gradle_refresh_project.png" alt="gradle gradle refresh project">
-</div>
-</div>
-<div class="paragraph">
-<p>After gradle refresh, the project has its dependencies, and these can be found in the project tree as shown in the following image.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/gradle_references.png" alt="gradle references">
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="DocGeneralFeatures">25. General Features</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_general_features">25.1. General Features</h3>
+<h3 id="_general_features">24.1. General Features</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Bookmark feature</dt>
@@ -7658,7 +7553,7 @@ Additionally, the link can be passed to others in case they have sufficient righ
 </div>
 </div>
 <div class="sect2">
-<h3 id="_transactions_and_connection_pooling">25.2. Transactions and connection pooling</h3>
+<h3 id="_transactions_and_connection_pooling">24.2. Transactions and connection pooling</h3>
 <div class="paragraph">
 <p>Per default each request is associated with a transaction.
 Each server activity retrieves its connection from the request object, providing the data source name.
@@ -7672,7 +7567,7 @@ Still, each step may itself decide to commit or rollback its work.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xml_inclusion">25.3. XML Inclusion</h3>
+<h3 id="_xml_inclusion">24.3. XML Inclusion</h3>
 <div class="paragraph">
 <p>The BCD-UI library makes use of XML inclusion to support some advanced XML features. These includes
 are allowed in XML files read on the server and also on the client. The main reasons to use XML
@@ -7789,10 +7684,10 @@ Example:</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="DocCompatibility">26. Compatibility</h2>
+<h2 id="DocCompatibility">25. Compatibility</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_compatibility">26.1. Compatibility</h3>
+<h3 id="_compatibility">25.1. Compatibility</h3>
 <div class="paragraph">
 <p>As of 2021, BCD-UI works without modifications within the following environments</p>
 </div>
@@ -7863,7 +7758,7 @@ Example:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_known_browser_incompatibilities">26.2. Known browser incompatibilities</h3>
+<h3 id="_known_browser_incompatibilities">25.2. Known browser incompatibilities</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -7900,7 +7795,7 @@ Example:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_working_with_webkit_browsers">26.3. Working with webkit browsers</h3>
+<h3 id="_working_with_webkit_browsers">25.3. Working with webkit browsers</h3>
 <div class="paragraph">
 <p>Webkit browsers like Safari, Chrome and Opera compatibility requires the following to be taken into account</p>
 </div>
@@ -7966,10 +7861,10 @@ appear once. This improves performance, because Webkit is sensitive against docu
 </div>
 </div>
 <div class="sect1">
-<h2 id="DocConfiguration">27. Configuration</h2>
+<h2 id="DocConfiguration">26. Configuration</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_configuration_overview">27.1. Configuration overview</h3>
+<h3 id="_configuration_overview">26.1. Configuration overview</h3>
 <div class="paragraph">
 <p>BCD-UI obtains its configuration from the parameters from JNDI context (as specified by servlet container) for the backend-part
 and provides client configuration parameters for the client part. The de.businesscode.bcdui.toolbox.Configuration is the API to retrieve
@@ -7994,7 +7889,7 @@ and the property value is ALWAYS exposed as a String, hence the value must not b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_dbproperties_setup">27.2. DbProperties setup</h3>
+<h3 id="_dbproperties_setup">26.2. DbProperties setup</h3>
 <div class="paragraph">
 <p>Setting up the DbProperties to be transparently reflected by the de.businesscode.bcdui.toolbox.Configuration API is a matter
 of exposing the "bcd_db_properties" BindingSet. Configuration class will auto-detect this BindingSet upon initialization and if found, will
@@ -8063,7 +7958,7 @@ The server scope value follows rules for its TYPE</p></td>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-06-10 12:18:05 +0200
+Last updated 2021-07-22 15:39:46 +0200
 </div>
 </div>
 <style>

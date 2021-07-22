@@ -7340,7 +7340,8 @@
                         
                     
                 
-                custom filter element (f:And, f:Or, f:Not, f:Expression) which is connected via f:And to other filters</td>
+                custom filter element (f:And, f:Or, f:Not, f:Expression) in wrs-filter format, see filter-1.0.0.xsd.
+   This node can also easily be created in place with <a href="bcdui.util.xml.html#.parseFilterExpression">bcdui.util.xml.parseFilterExpression</a>, see sample below.</td>
         </tr>
 	
 	
@@ -7632,7 +7633,7 @@
                         
                     
                 
-                dataprovider holding the request url (by default taken from the underlying simple model url)</td>
+                DataProvider holding the request url (by default taken from the underlying simple model url)</td>
         </tr>
 	
 	
@@ -7694,7 +7695,7 @@
 
     
     <pre class="prettyprint"><code>// Create a simple AutoModel, reading distinct bindingItems 'country', 'region' and 'city' from BindingSet 'md_geo'
-var am = new bcdui.core.AutoModel({ bindingSetId: "md_geo", bRefs: "country region city", isDistinct: true, filterElement:bcdui.util.xml.parseFilterExpression("country='DE'") });</code></pre>
+var am = new bcdui.core.AutoModel({ bindingSetId: "md_geo", bRefs: "country region city", isDistinct: true, filterElement: bcdui.util.xml.parseFilterExpression("country='DE'") });</code></pre>
     
 
     

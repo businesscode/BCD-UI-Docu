@@ -3,35 +3,29 @@
 
 A BCD-UI application is a regular Jakarta EE application. These steps are show how to add BCD-UI to an existing web application project.
 
-There are many good tutorials for each IDE on how to set up a web application, for Eclipse you could follow https://medium.com/@zandra.harner/setting-up-the-develop-environment-for-lop-a-web-application-in-eclipse-ide-7f3a36eddf60[this] one on Medium.
+There are many good tutorials for each IDE on how to set up such a web application. For Eclipse you could follow https://medium.com/@zandra.harner/setting-up-the-develop-environment-for-lop-a-web-application-in-eclipse-ide-7f3a36eddf60[this] one on Medium.
 
-We suggest to, before adding BCD-UI to it, test your web application without BCD-UI. Open a page, maybe call a test Servlet. If your application runs without BCD-UI then it will also run with BCD-UI.
+[IMPORTANT]
+Before adding BCD-UI to your project, make sure you test your plain web application. Open a page, call a test Servlet, all without BCD-UI. You should be familiar with running a web application without BCD-UI as it's the bases for BCD-UI.
 
 === Adding BCD-UI
 
 . Add BCD-UI jars +
 See https://github.com/businesscode/maven-repo for maven and gradle.
+Add a `build.gradle` file as shown there to your project root.
 +
-.For example for gradle add
-[source,gradle]
-----
-dependencies {
-  repositories {
-    mavenCentral()
-    maven {
-      url "https://github.com/businesscode/maven-repo/raw/master"
-    }
-    implementation 'de.businesscode.bcdui:bcd-ui-core:5.5.0-SNAPSHOT'
-    implementation 'de.businesscode.bcdui:bcd-ui-theme-bcd:5.5.0-SNAPSHOT'
-  }
-}
-----
-If you prefer you may also download the BCD-UI's jars, and their dependencies mentioned in https://github.com/businesscode/BCD-UI/blob/master/Docu/development/bcdui_dependencies.gradle[BCD-UI/Docu/development/bcdui_dependencies.gradle] and put them into WEB-INF/lib. +
+When working with Eclipse, open menu:File[Import...|Existing Gradle Project] and select your project root. It worked when you see BCD and all of its dependencies under `Project and External Dependencies`.
 +
-NOTE: These two jars not only hold all Java classes for the server but also all client side sources of BCD-UI like JavaScript and XSLT. BCD-UI makes sure they are served to the client along with your client side sources which are placed were you would usually place them.
+image::images/eclipse_dependencies.png[width=50%, align="center"]
++
+TIP: These two jars not only hold all Java classes for the server but also all client side sources of BCD-UI like JavaScript and XSLT. BCD-UI has a Servlet that makes sure they are served to the client along with your client side sources, which are placed were you would usually place them.
++
+If you prefer to go without maven, you may also download the BCD-UI's jars, and their dependencies mentioned in https://github.com/businesscode/BCD-UI/blob/master/Docu/development/bcdui_dependencies.gradle[BCD-UI/Docu/development/bcdui_dependencies.gradle] and put them into WEB-INF/lib manually.
++
 
 . Add Entries to web.xml +
 To register BCD-UI's servlets and filters, add the entries from link:https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/web.xml[BCD-UI/Server/configFiles/web.xml, window="_blank"] to your web.xml. +
+Now comment out the <filter> bcdui4.ShiroFilter including its <filter-mapping>. Otherwise, you will be redirected to a login.htm page, which you do not have yet. +
 When you upgrade to a new version of BCD-UI check in https://github.com/businesscode/BCD-UI/blob/master/Docu/releaseNotes.adoc[release notes] whether it changed.
 
 . Create an empty WEB-INF/bcdui/bindings +
