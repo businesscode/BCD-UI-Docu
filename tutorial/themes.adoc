@@ -37,7 +37,7 @@ After setting up the variables, the file holds includes to the default generic s
 
 So if your company layout needs a general coloring of green and red, you modify the 2 variables $corporate-color and $corporate-color-alt. And maybe your body background should be a fixed image, then you can overwrite the body style after importing the default ones.
 
-[source,scss]
+[source,css]
 ----
 [...]
 $corporate-color-alt:       #FF0000;  // my new alternative color is red
@@ -58,13 +58,10 @@ All available variables can be found in _constants.scss.
 
 This is the .jar package structure of the compiled style:
 
-[source,javascript]
+[source]
 ----
-
 \theme
   \css                          <--  Common css parts except page structure definition
     \allStyles.css              <--  compiled css file holding all styles
   \images                       <--  image container
-
 ----
-

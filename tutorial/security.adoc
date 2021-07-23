@@ -14,7 +14,7 @@ BCD-UI supports security with the following features
  ** <<DocBinding,BindingSets>>
    *** Restrict write access
    *** Advanced row-level security support for all databases
-   *** Trigger additional actions when writing to a BindingSet, including data historization
+   *** Trigger additional actions when writing to a BindingSet, including keeping a history of data changes
  ** <<DocWidgets,Menu>> structure shown to the user, for example whether admin pages are offered for navigation,
    see @rights attribute in link:https://github.com/businesscode/BCD-UI/blob/master/Docu/xsd/menu-1.0.0.xsd[menu-1.0.0.xsd^]
 * Windows single-sign-on for EnterpriseEdition
@@ -71,7 +71,7 @@ By adding `bcd_log_login` BindingSet to your application, all login attempts, an
 To set up users and their authorization, you can choose the simple setup by hard-coding them in web.xml, by maintaining them in BCD-UI's database or authenticated with oAuth (AD, Google, facebook etc) combined with rights maintained in your database.
 
 ==== Page access rights
-No matter which method you use for defining users and their roles, use the [urls] section in web.xml to define access to pages. It is easy to also adjust the menu to offer only allowed pages.
+No matter which method you use for defining users and their roles, use the [urls] section in web.xml to define access permissions needed for pages. It is easy to also adjust the menu to offer only allowed pages.
 
 [source,xml,indent=0]
 ----
@@ -97,7 +97,7 @@ include::../web/WEB-INF/web.xml[tag=roles]
 ----
 Users with 'adminRole' also have the pages:admin right.
 
-=== Define users in database
+=== Define users in the database
 Instead of having a static set of users and passwords in web.xml, you can store users and passwords in the database.
 
 [source,xml,indent=0]
@@ -136,14 +136,15 @@ Authentication is handled by OAuth, permissions are managed by application throu
 .. Register your client application to Azure/Google/x to obtain a client and a client secret. For Google, we use 'email' scope and for Azure `https://graph.microsoft.com/user.read`, but you can override this and use whatever you prefer to use for authentication.
 
 . Configuration
-The web.xml https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/web.xml[template of BCD-UI] describes the setup, look for the following section
++
+The web.xml https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/web.xml[template of BCD-UI] describes the setup, more about this the following section
 +
 .oAuth sample with Azure
 [source]
 ----
-include::../web/WEB-INF/web.xml[tag=oAuth]
+include::../web/WEB-INF/web.xml[tag=oAuth,indent=0]
 ----
-That web.xml also holds description for oAuth with Google and combinations for multiple providers,
+The mentioned template web.xml also describes oAuth with Google and how to combine multiple providers,
 
 === Kerberos / Windows SSO / Windows Authentication
 

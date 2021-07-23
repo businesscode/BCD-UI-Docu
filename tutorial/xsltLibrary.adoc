@@ -31,7 +31,7 @@ Merge:: Merge one WRS into another. Existing rows (same row-id) will be modified
 ==== Data Visualization
 
 [horizontal]
-Render:: Render a Wrs to HTML. This renderer is used by all components' `renderer/htmlBuilder.xslt`.
+Render:: Render a Wrs to HTML. This renderer is used per default by all components: `renderer/htmlBuilder.xslt`.
 This renderer per default sorts dimension rows and groups row and column headers to td spans.
 You can suppress by providing parameters, see below.
 Number formatting:: Formats the data according to their format defined in the WRS header (scale, unit, later also i18n). `renderer/numberFormatting.xslt`
@@ -84,11 +84,11 @@ leads to
     <TransactionsNumber>2</TransactionsNumber>
     <TransactionsNumber>1</TransactionsNumber>
     <Columns>
-      <C pos="1" id="CTR" dimId="CTR" caption="Country" type-name="VARCHAR"/>
-      <C pos="2" id="CW"  dimId="CW"  caption="C/W"     type-name="INTEGER"/>
-      <C pos="3" id="LOW"             caption="Low"     type-name="NUMERIC"/>
-      <C pos="4" id="HIGH"            caption="Heigh"   type-name="NUMERIC"/>
-      <C pos="5" id="HIGH2"           caption="Heigh 2" type-name="NUMERIC"/>
+      <C pos="1" id="CTR" dimId="CTR" caption="Country"  type-name="VARCHAR"/>
+      <C pos="2" id="CW"  dimId="CW"  caption="C/W"      type-name="INTEGER"/>
+      <C pos="3" id="LOW"             caption="Low"      type-name="NUMERIC"/>
+      <C pos="4" id="HIGH"            caption="Height"   type-name="NUMERIC"/>
+      <C pos="5" id="HIGH2"           caption="Height 2" type-name="NUMERIC"/>
     </Columns>
   </Header>
   <Data newSelection="1 3 5 3">
@@ -141,7 +141,14 @@ include::../web/xsltLibrary/stringReplaceSample.xslt[]
 ==== Transformation into non-WRS
 
 These XSLT translate between a simplified clipboard format and WRS.
-The in/output is &lt;Wrs xmlns:wrs=".."&gt;&lt;Data&gt;&lt;R&gt;&lt;D/&gt;..&lt;D/&gt;&lt;/R&gt;&lt;R&gt;&lt;D/&gt;..&lt;D/&gt;&lt;/R&gt;..&lt;/Data&gt;&lt;/Wrs&gt;without any header.
+The in/output is
+[source,xml]
+----
+<Wrs xmlns:wrs="..">
+  <Data><R><D/>..<D/></R><R><D/>..<D/></R>..</Data>
+</Wrs>
+----
+without any header.
 A js function is responsible for transforming csv from clipboard from and into the simplified format.
 
 [horizontal]

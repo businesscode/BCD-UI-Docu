@@ -75,7 +75,7 @@
         <!-- tag::oAuth[] -->
         #### OAuth start (named option 2.2 above)
         ## Use this to OAuth authenticate against Azure / Google. Make sure to enable /oauth in [url] section.
-        ## Some information is provided by OAuth provider when setting up ypur application there
+        ## Some information is provided by OAuth provider when setting up your application there
         ## Azure
         # oauthcAzure                             = de.businesscode.bcdui.subjectsettings.oauth2.OAuthAuthenticatingFilter
         # oauthcAzure.optionalProviderId          = azure

@@ -53,7 +53,7 @@ TODO
 
 Add BCD-UI Java sources::
 For debugging of server components it might be helpful to add the java sources of BCD-UI to the eclipse workspace.
-The easiest way is to download or git-clone the BCD-UI project from github to an extra folder outside of your workspace.
+The easiest way is to download or git-clone the BCD-UI project from GitHub to an extra folder outside your workspace.
 Then configure the source location via menu:Right-Click-Project(Build Path>Configure Build Path), by selecting bcdui-core.jar
 and assign `Server/src/main/java` of the download location as source attachment.
 
@@ -80,7 +80,7 @@ Take a moment to understand the structure and what to expect physically in Eclip
 | 2+|WebContent/|| s|Webapp itself
 |||...|| s|Project's HTML pages, JavaScript etc
 |||bcdui/|| e|BCD-UI's virtual main folder for client resources, blended here by a Servlet:
-||||js/| e|JS library mapped from bcd-ui-core.jar
+||||js/| e|JavaScript library mapped from bcd-ui-core.jar
 ||||xslt/| e|XSLT library mapped from bcd-ui-core.jar
 ||||theme/| e|Themes library mapped from bcd-ui-theme.jar
 ||| 2+|servlets/ e|BCD-UI's servlets are mapped here

@@ -15,9 +15,7 @@ This is the only servlet used directly by non-BCD-UI library code.
 Maps to bcdui/servlets/wrsServlet and bcdui/servletsCached/WrsServlet.
 ClientCachingFilter:: Allows controlling <<DocCaching,client-side caching>>.
 Can be instantiated multiple times to allow different caching strategies for different parts.
-It is recommended to map to all static resources and to slow changing reference data served for example at bcdui/servletsCached/wrsServlet.
-Maps to parts to be cached as per project need.
-
+It is recommended to cover all static resources and only slowly changing reference data for example at bcdui/servletsCached/wrsServlet.
 
 ===== Background servlets and filters
 

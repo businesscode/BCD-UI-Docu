@@ -667,7 +667,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_overview_bcdui_widget">8.3. Overview bcdui.widget</a>
 <ul class="sectlevel3">
 <li><a href="#_blind_updown">Blind UpDown</a></li>
-<li><a href="#_contex_menu">Contex Menu</a></li>
+<li><a href="#_context_menu">Context Menu</a></li>
 <li><a href="#_dimension_chooser">Dimension Chooser</a></li>
 <li><a href="#_formula_editor">Formula Editor</a></li>
 <li><a href="#_input_field">Input Field</a></li>
@@ -767,7 +767,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </ul>
 </li>
 <li><a href="#_define_users_in_web_xml">14.3. Define users in web.xml</a></li>
-<li><a href="#_define_users_in_database">14.4. Define users in database</a></li>
+<li><a href="#_define_users_in_the_database">14.4. Define users in the database</a></li>
 <li><a href="#_subjectsettings_config">14.5. SubjectSettings config</a></li>
 <li><a href="#_user_related_bindingsets">14.6. User related BindingSets</a></li>
 <li><a href="#_custom_setup">14.7. Custom setup<br></a></li>
@@ -855,7 +855,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#DocDebug">21. Debugging</a>
 <ul class="sectlevel2">
-<li><a href="#_debug_facilities">21.1. Debug facilities</a></li>
+<li><a href="#_support_for_debugging">21.1. Support for debugging</a></li>
 <li><a href="#_common_error_messages">21.2. Common error messages</a></li>
 </ul>
 </li>
@@ -3259,14 +3259,20 @@ The calculation can reference values via:</p>
 <div class="listingblock">
 <div class="title">Sample for a trend Aspect:</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;scc:Aspect</span> <span class="attribute-name">xmlns:scc</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.businesscode.de/schema/bcdui/scorecard-1.0.0</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:calc</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.businesscode.de/schema/bcdui/calc-1.0.0</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">trend</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Trend</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-  <span class="tag">&lt;calc:Calc&gt;</span>
-    <span class="tag">&lt;calc:Div&gt;</span>
-      <span class="tag">&lt;calc:KpiRef</span><span class="tag">/&gt;</span>
-      <span class="tag">&lt;calc:AspectRef</span> <span class="attribute-name">idRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">asp_previousPeriod_kpi_$</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-    <span class="tag">&lt;/calc:Div&gt;</span>
-  <span class="tag">&lt;/calc:Calc&gt;</span>
-<span class="tag">&lt;/scc:Aspect&gt;</span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;scc:Aspects</span>
+  <span class="attribute-name">xmlns:scc</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.businesscode.de/schema/bcdui/scorecard-1.0.0</span><span class="delimiter">&quot;</span></span>
+  <span class="attribute-name">xmlns:calc</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.businesscode.de/schema/bcdui/calc-1.0.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+
+  <span class="tag">&lt;scc:Aspect</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">trend</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Trend</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;calc:Calc&gt;</span>
+      <span class="tag">&lt;calc:Div&gt;</span>
+        <span class="tag">&lt;calc:KpiRef</span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;calc:AspectRef</span> <span class="attribute-name">idRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">asp_previousPeriod_kpi_$</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+      <span class="tag">&lt;/calc:Div&gt;</span>
+    <span class="tag">&lt;/calc:Calc&gt;</span>
+  <span class="tag">&lt;/scc:Aspect&gt;</span>
+
+<span class="tag">&lt;/scc:Aspects&gt;</span></code></pre>
 </div>
 </div>
 </div>
@@ -3714,7 +3720,7 @@ On the other hand, when you change the value from outside, e.g. via JavaScript,
 the widget should update itself visually to be in sync with the value.</p>
 </div>
 <div class="paragraph">
-<p>Some widgets have an options model reference as data source, for example entries in a drop down box.
+<p>Some widgets have an options model reference as data source, for example entries in a drop-down box.
 The option model is referenced via <code>optionsModelXPath</code> and optional <code>optionsModelRelativeValueXPath</code>.
 They point to value and caption information used for the widget.</p>
 </div>
@@ -3768,7 +3774,7 @@ All are expecting the same set of parameters. When using js, providing <code>tar
 <div class="listingblock">
 <div class="title">Called from XAPI</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;xapi:SingleSelect</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">myId</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">...</span> <span class="tag">/&gt;</span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;xapi:SingleSelect</span> <span class="attribute-name">targetModelXPath</span> = <span class="string"><span class="delimiter">&quot;</span><span class="content">/*/f:Filter/f:Expression[@bRef = 'orig_ctr' and @op = '=']/@value</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3781,7 +3787,7 @@ All are expecting the same set of parameters. When using js, providing <code>tar
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-While you can create widges from JavaScript, HTML custom elements, XSLT, XAPI and jsp, the result and behavior is exactly the same.
+While you can create widgets from JavaScript, HTML custom elements, XSLT, XAPI and jsp, the result and behavior is exactly the same.
 You can easily derive the parameters from the JavaScript api documentation.
 </td>
 </tr>
@@ -3810,7 +3816,7 @@ You can easily derive the parameters from the JavaScript api documentation.
 </div>
 </div>
 <div class="paragraph">
-<p><a href="../jsdoc/bcdui.widgetNg.html#.createCheckbox" target="_blank" rel="noopener">Checkbox:</a> A checkbox widget which allows a on/off (true/false, 1/0) switch</p>
+<p><a href="../jsdoc/bcdui.widgetNg.html#.createCheckbox" target="_blank" rel="noopener">Checkbox:</a> A checkbox widget which allows an on/off (true/false, 1/0) switch</p>
 </div>
 </div>
 <div class="sect3">
@@ -3865,7 +3871,7 @@ You can easily derive the parameters from the JavaScript api documentation.
 </div>
 </div>
 <div class="paragraph">
-<p><a href="../jsdoc/bcdui.widgetNg.html#.createSingleSelect" target="_blank" rel="noopener">Single Select:</a> A drop down selector</p>
+<p><a href="../jsdoc/bcdui.widgetNg.html#.createSingleSelect" target="_blank" rel="noopener">Single Select:</a> A drop-down selector</p>
 </div>
 </div>
 <div class="sect3">
@@ -3876,7 +3882,7 @@ You can easily derive the parameters from the JavaScript api documentation.
 </div>
 </div>
 <div class="paragraph">
-<p><a href="../jsdoc/bcdui.widgetNg.html#.createSuggestInput" target="_blank" rel="noopener">Suggest Input:</a> A drop down selector with autocompletion functionality and custom rendering</p>
+<p><a href="../jsdoc/bcdui.widgetNg.html#.createSuggestInput" target="_blank" rel="noopener">Suggest Input:</a> A drop-down selector with autocompletion functionality and custom rendering</p>
 </div>
 </div>
 <div class="sect3">
@@ -3905,7 +3911,7 @@ You can easily derive the parameters from the JavaScript api documentation.
 </div>
 </div>
 <div class="sect3">
-<h4 id="_contex_menu">Contex Menu</h4>
+<h4 id="_context_menu">Context Menu</h4>
 <div class="imageblock">
 <div class="content">
 <img src="images/widgets_w_contextMenu.png" alt="widgets w contextMenu">
@@ -4054,7 +4060,7 @@ It is picked-up on next restart.</p>
 </div>
 </div>
 <div class="paragraph">
-<p><a href="../jsdoc/bcdui.widget.html#.createTabMenu" target="_blank" rel="noopener">Tab:</a> Tabs allow to switch different views of the same data or between different data within a page</p>
+<p><a href="../jsdoc/bcdui.widget.html#.createTabMenu" target="_blank" rel="noopener">Tab:</a> Tabs allow switching between different views of the same data or between different data within a page</p>
 </div>
 </div>
 <div class="sect3">
@@ -4206,16 +4212,16 @@ After setting up the variables, the file holds includes to the default generic s
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="scss">[...]
-$corporate-color-alt:       #FF0000;  // my new alternative color is red
-$corporate-color:           #00FF00;  // my new main color is green
-[...]
-@import '../../../generic/theme/sass/_standardPage.scss';
-[...]
-body {
-  background: #f1f1f1 url(&quot;../images/bg.jpg&quot;) no-repeat center 0 fixed; // and do some overwriting with a fixed image
+<pre class="CodeRay highlight"><code data-lang="css">[<span class="attribute-name">...</span>]
+<span class="error">$</span><span class="tag">corporate-color-alt</span>:       <span class="color">#FF0000</span>;  // <span class="tag">my</span> <span class="tag">new</span> <span class="tag">alternative</span> <span class="tag">color</span> <span class="tag">is</span> <span class="tag">red</span>
+<span class="error">$</span><span class="tag">corporate-color</span>:           <span class="color">#00FF00</span>;  // <span class="tag">my</span> <span class="tag">new</span> <span class="tag">main</span> <span class="tag">color</span> <span class="tag">is</span> <span class="tag">green</span>
+[<span class="attribute-name">...</span>]
+<span class="directive">@import</span> <span class="string"><span class="delimiter">'</span><span class="content">../../../generic/theme/sass/_standardPage.scss</span><span class="delimiter">'</span></span>;
+[<span class="attribute-name">...</span>]
+<span class="tag">body</span> {
+  <span class="key">background</span>: <span class="color">#f1f1f1</span> <span class="function"><span class="delimiter">url(</span><span class="content">&quot;../images/bg.jpg&quot;</span><span class="delimiter">)</span></span> <span class="value">no-repeat</span> <span class="value">center</span> <span class="float">0</span> <span class="value">fixed</span>; // <span class="key">and</span> <span class="key">do</span> <span class="key">some</span> <span class="key">overwriting</span> <span class="key">with</span> <span class="key">a</span> <span class="key">fixed</span> <span class="key">image</span>
 }
-[...]</code></pre>
+[<span class="attribute-name">...</span>]</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4229,10 +4235,10 @@ body {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><span class="error">\</span>theme
-  <span class="error">\</span>css                          &lt;--  Common css parts except page structure definition
-    <span class="error">\</span>allStyles.css              &lt;--  compiled css file holding all styles
-  <span class="error">\</span>images                       &lt;--  image container</code></pre>
+<pre class="CodeRay highlight"><code>\theme
+  \css                          &lt;--  Common css parts except page structure definition
+    \allStyles.css              &lt;--  compiled css file holding all styles
+  \images                       &lt;--  image container</code></pre>
 </div>
 </div>
 </div>
@@ -4318,20 +4324,17 @@ The following fragment shows how to use i18n translation XSLT API for table data
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><span class="tag">&lt;xsl:import</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">i18nUtilsTemplate.xslt</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-...
-&lt;xsl:param name=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdI18nModel</span><span class="delimiter">&quot;</span></span> select=<span class="string"><span class="delimiter">&quot;</span><span class="content">//*[1=2]</span><span class="delimiter">&quot;</span></span>/&gt;
-...
-&lt;xsl:template match=<span class="string"><span class="delimiter">&quot;</span><span class="content">wrs:C</span><span class="delimiter">&quot;</span></span>&gt;
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;xsl:import</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">i18nUtilsTemplate.xslt</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+<span class="tag">&lt;xsl:param</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdI18nModel</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">select</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">//*[1=2]</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+
+<span class="tag">&lt;xsl:template</span> <span class="attribute-name">match</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">wrs:C</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
   <span class="tag">&lt;td&gt;</span>
     <span class="comment">&lt;!-- get value of a key --&gt;</span>
     <span class="tag">&lt;xsl:call-template</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">getMessageByKey</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
       <span class="tag">&lt;xsl:with-param</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">key</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>bcd_autoCompletionBox_emptyValue<span class="tag">&lt;/xsl:with-param&gt;</span>
     <span class="tag">&lt;/xsl:call-template&gt;</span>
   <span class="tag">&lt;/td&gt;</span>
-&lt;<span class="regexp"><span class="delimiter">/</span><span class="content">xsl:template&gt;
-...
-</span></span></code></pre>
+<span class="tag">&lt;/xsl:template&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4557,7 +4560,7 @@ Secondly, your Cube / Scorecard configuration needs to list the columns to be ex
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dm:Measure</span> <span class="attribute-name">xmlns:dm</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.businesscode.de/schema/bcdui/dimmeas-1.0.0</span><span class="delimiter">&quot;</span></span>
   <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">m01_i</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Bkg Ref</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
   <span class="tag">&lt;calc:Calc</span> <span class="attribute-name">type-name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">NUMERIC</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:calc</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.businesscode.de/schema/bcdui/calc-1.0.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-    <span class="tag">&lt;calc:ValueRef</span> <span class="attribute-name">idRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">m01_i</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">aggr</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">sum</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Bkg Ref</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;calc:ValueRef</span> <span class="attribute-name">idRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">m01_i</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">aggr</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">sum</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
   <span class="tag">&lt;/calc:Calc&gt;</span>
   <span class="tag">&lt;dm:DetailData&gt;</span>
     <span class="tag">&lt;f:Filter</span> <span class="attribute-name">xmlns:f</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.businesscode.de/schema/bcdui/filter-1.0.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
@@ -4576,7 +4579,7 @@ Secondly, your Cube / Scorecard configuration needs to list the columns to be ex
   <span class="attribute-name">xmlns:wrq</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.businesscode.de/schema/bcdui/wrs-request-1.0.0</span><span class="delimiter">&quot;</span></span>
   <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">m01_i</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Bkg Ref</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
   <span class="tag">&lt;calc:Calc</span> <span class="attribute-name">type-name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">NUMERIC</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:calc</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.businesscode.de/schema/bcdui/calc-1.0.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-    <span class="tag">&lt;calc:ValueRef</span> <span class="attribute-name">idRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">m01_i</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">aggr</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">sum</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Bkg Ref</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;calc:ValueRef</span> <span class="attribute-name">idRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">m01_i</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">aggr</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">sum</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
   <span class="tag">&lt;/calc:Calc&gt;</span>
   <span class="tag">&lt;dm:DetailData&gt;</span>
     <span class="tag">&lt;dm:Columns&gt;</span>
@@ -4802,7 +4805,7 @@ Merge
 Render
 </td>
 <td class="hdlist2">
-<p>Render a Wrs to HTML. This renderer is used by all components' <code>renderer/htmlBuilder.xslt</code>.
+<p>Render a Wrs to HTML. This renderer is used per default by all components: <code>renderer/htmlBuilder.xslt</code>.
 This renderer per default sorts dimension rows and groups row and column headers to td spans.
 You can suppress by providing parameters, see below.</p>
 </td>
@@ -4919,11 +4922,11 @@ While this mechanism may look a bit over-sized in small samples, it scales great
     <span class="tag">&lt;TransactionsNumber&gt;</span>2<span class="tag">&lt;/TransactionsNumber&gt;</span>
     <span class="tag">&lt;TransactionsNumber&gt;</span>1<span class="tag">&lt;/TransactionsNumber&gt;</span>
     <span class="tag">&lt;Columns&gt;</span>
-      <span class="tag">&lt;C</span> <span class="attribute-name">pos</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CTR</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">dimId</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CTR</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Country</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">type-name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">VARCHAR</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-      <span class="tag">&lt;C</span> <span class="attribute-name">pos</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">2</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CW</span><span class="delimiter">&quot;</span></span>  <span class="attribute-name">dimId</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CW</span><span class="delimiter">&quot;</span></span>  <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">C/W</span><span class="delimiter">&quot;</span></span>     <span class="attribute-name">type-name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">INTEGER</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-      <span class="tag">&lt;C</span> <span class="attribute-name">pos</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">3</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">LOW</span><span class="delimiter">&quot;</span></span>             <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Low</span><span class="delimiter">&quot;</span></span>     <span class="attribute-name">type-name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">NUMERIC</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-      <span class="tag">&lt;C</span> <span class="attribute-name">pos</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">4</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">HIGH</span><span class="delimiter">&quot;</span></span>            <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Heigh</span><span class="delimiter">&quot;</span></span>   <span class="attribute-name">type-name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">NUMERIC</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-      <span class="tag">&lt;C</span> <span class="attribute-name">pos</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">5</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">HIGH2</span><span class="delimiter">&quot;</span></span>           <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Heigh 2</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">type-name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">NUMERIC</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+      <span class="tag">&lt;C</span> <span class="attribute-name">pos</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CTR</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">dimId</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CTR</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Country</span><span class="delimiter">&quot;</span></span>  <span class="attribute-name">type-name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">VARCHAR</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+      <span class="tag">&lt;C</span> <span class="attribute-name">pos</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">2</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CW</span><span class="delimiter">&quot;</span></span>  <span class="attribute-name">dimId</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CW</span><span class="delimiter">&quot;</span></span>  <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">C/W</span><span class="delimiter">&quot;</span></span>      <span class="attribute-name">type-name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">INTEGER</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+      <span class="tag">&lt;C</span> <span class="attribute-name">pos</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">3</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">LOW</span><span class="delimiter">&quot;</span></span>             <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Low</span><span class="delimiter">&quot;</span></span>      <span class="attribute-name">type-name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">NUMERIC</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+      <span class="tag">&lt;C</span> <span class="attribute-name">pos</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">4</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">HIGH</span><span class="delimiter">&quot;</span></span>            <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Height</span><span class="delimiter">&quot;</span></span>   <span class="attribute-name">type-name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">NUMERIC</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+      <span class="tag">&lt;C</span> <span class="attribute-name">pos</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">5</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">HIGH2</span><span class="delimiter">&quot;</span></span>           <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Height 2</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">type-name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">NUMERIC</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
     <span class="tag">&lt;/Columns&gt;</span>
   <span class="tag">&lt;/Header&gt;</span>
   <span class="tag">&lt;Data</span> <span class="attribute-name">newSelection</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1 3 5 3</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
@@ -5090,7 +5093,17 @@ nthToken
 <h4 id="_transformation_into_non_wrs">Transformation into non-WRS</h4>
 <div class="paragraph">
 <p>These XSLT translate between a simplified clipboard format and WRS.
-The in/output is &lt;Wrs xmlns:wrs=".."&gt;&lt;Data&gt;&lt;R&gt;&lt;D/&gt;..&lt;D/&gt;&lt;/R&gt;&lt;R&gt;&lt;D/&gt;..&lt;D/&gt;&lt;/R&gt;..&lt;/Data&gt;&lt;/Wrs&gt;without any header.
+The in/output is</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;Wrs</span> <span class="attribute-name">xmlns:wrs</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">..</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;Data&gt;</span><span class="tag">&lt;R&gt;</span><span class="tag">&lt;D</span><span class="tag">/&gt;</span>..<span class="tag">&lt;D</span><span class="tag">/&gt;</span><span class="tag">&lt;/R&gt;</span><span class="tag">&lt;R&gt;</span><span class="tag">&lt;D</span><span class="tag">/&gt;</span>..<span class="tag">&lt;D</span><span class="tag">/&gt;</span><span class="tag">&lt;/R&gt;</span>..<span class="tag">&lt;/Data&gt;</span>
+<span class="tag">&lt;/Wrs&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>without any header.
 A js function is responsible for transforming csv from clipboard from and into the simplified format.</p>
 </div>
 <div class="hdlist">
@@ -5547,7 +5560,7 @@ In your version you may want to extend this by your DSL functionality.</p>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>You can freely mix and nest with HTML here</td>
+<td>You can freely mix in and nest with HTML</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
@@ -5749,7 +5762,7 @@ Here you may also call apply-templates to resolve nested XAPI calls in a more co
 <p>Advanced row-level security support for all databases</p>
 </li>
 <li>
-<p>Trigger additional actions when writing to a BindingSet, including data historization</p>
+<p>Trigger additional actions when writing to a BindingSet, including keeping a history of data changes</p>
 </li>
 </ul>
 </div>
@@ -5882,7 +5895,7 @@ By adding <code>bcd_log_login</code> BindingSet to your application, all login a
 <div class="sect3">
 <h4 id="_page_access_rights">Page access rights</h4>
 <div class="paragraph">
-<p>No matter which method you use for defining users and their roles, use the [urls] section in web.xml to define access to pages. It is easy to also adjust the menu to offer only allowed pages.</p>
+<p>No matter which method you use for defining users and their roles, use the [urls] section in web.xml to define access permissions needed for pages. It is easy to also adjust the menu to offer only allowed pages.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5929,7 +5942,7 @@ adminRole = pages:admin</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_define_users_in_database">14.4. Define users in database</h3>
+<h3 id="_define_users_in_the_database">14.4. Define users in the database</h3>
 <div class="paragraph">
 <p>Instead of having a static set of users and passwords in web.xml, you can store users and passwords in the database.</p>
 </div>
@@ -6012,31 +6025,33 @@ Authentication is handled by OAuth, permissions are managed by application throu
 </div>
 </li>
 <li>
-<p>Configuration
-The web.xml <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/web.xml">template of BCD-UI</a> describes the setup, look for the following section</p>
+<p>Configuration</p>
+<div class="paragraph">
+<p>The web.xml <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/web.xml">template of BCD-UI</a> describes the setup, more about this the following section</p>
+</div>
 <div class="listingblock">
 <div class="title">oAuth sample with Azure</div>
 <div class="content">
-<pre class="CodeRay highlight"><code>        #### OAuth start (named option 2.2 above)
-        ## Use this to OAuth authenticate against Azure / Google. Make sure to enable /oauth in [url] section.
-        ## Some information is provided by OAuth provider when setting up ypur application there
-        ## Azure
-        # oauthcAzure                             = de.businesscode.bcdui.subjectsettings.oauth2.OAuthAuthenticatingFilter
-        # oauthcAzure.optionalProviderId          = azure
-        # oauthcAzure.authorizeEndpoint           =     # provided by Azure
-        # oauthcAzure.authScope                   = openid https://graph.microsoft.com/user.read
-        # oauthcAzure.clientId                    =     # provided by Azure
-        # oauthcAzure.redirectUrl                 = http://myapp.com/oauth  # Adjust and tell this Azure
-        # oauthcAzureRealm                        = de.businesscode.bcdui.subjectsettings.oauth2.OAuthRealm
-        # oauthcAzureRealm.authenticator          = $oauthcAzure
-        # oauthcAzureRealm.apiEndpoint            = https://graph.microsoft.com/v1.0/me/
-        # oauthcAzureRealm.clientSecret           =     # provided by Azure
-        # oauthcAzureRealm.tokenEndpoint          =     # provided by Azure
-        # oauthcAzureRealm.principalPropertyName  = userPrincipalName</code></pre>
+<pre class="CodeRay highlight"><code>#### OAuth start (named option 2.2 above)
+## Use this to OAuth authenticate against Azure / Google. Make sure to enable /oauth in [url] section.
+## Some information is provided by OAuth provider when setting up your application there
+## Azure
+# oauthcAzure                             = de.businesscode.bcdui.subjectsettings.oauth2.OAuthAuthenticatingFilter
+# oauthcAzure.optionalProviderId          = azure
+# oauthcAzure.authorizeEndpoint           =     # provided by Azure
+# oauthcAzure.authScope                   = openid https://graph.microsoft.com/user.read
+# oauthcAzure.clientId                    =     # provided by Azure
+# oauthcAzure.redirectUrl                 = http://myapp.com/oauth  # Adjust and tell this Azure
+# oauthcAzureRealm                        = de.businesscode.bcdui.subjectsettings.oauth2.OAuthRealm
+# oauthcAzureRealm.authenticator          = $oauthcAzure
+# oauthcAzureRealm.apiEndpoint            = https://graph.microsoft.com/v1.0/me/
+# oauthcAzureRealm.clientSecret           =     # provided by Azure
+# oauthcAzureRealm.tokenEndpoint          =     # provided by Azure
+# oauthcAzureRealm.principalPropertyName  = userPrincipalName</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>That web.xml also holds description for oAuth with Google and combinations for multiple providers,</p>
+<p>The mentioned template web.xml also describes oAuth with Google and how to combine multiple providers,</p>
 </div>
 </li>
 </ol>
@@ -6291,7 +6306,6 @@ This is configured by cooperation of the following three artifacts:</p>
   <span class="tag">&lt;SubjectFilterTypes&gt;</span>
     <span class="tag">&lt;SubjectFilterType</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">geo:ctr</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
       <span class="tag">&lt;Caption&gt;</span>Countries<span class="tag">&lt;/Caption&gt;</span>
-      <span class="tag">&lt;BindingSet&gt;</span>countryRights<span class="tag">&lt;/BindingSet&gt;</span>
       <span class="tag">&lt;BindingItems&gt;</span>
         <span class="tag">&lt;C</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">country</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
       <span class="tag">&lt;/BindingItems&gt;</span>
@@ -6361,15 +6375,14 @@ To allow a user to insert into or update a view/table behind a BindingSet, you m
 </li>
 <li>
 <p>Provide the user with sufficient rights</p>
-</li>
-</ol>
-</div>
 <div class="paragraph">
 <p>Currently, BindingSets understand only one operation called <em>write</em> which protects ANY modification to a table (C-UD),
-the <em>permission</em> takes a list (space separated) of permissions which are evaluated by Shiro, hence Shiro&#8217;s syntax
-can be applied here. <strong>Note:</strong> the list is inclusive, meaning that the operation is granted only in case the user
-retains ALL permissions listed. The permission list may also be empty or be absent at all, in such a case NO check is
-done for this operation, thus it effectively disables write-protection.</p>
+the <em>permission</em> takes a list (space separated) of permissions which are evaluated by Shiro, hence Shiro&#8217;s syntax can be applied here.<br>
+<strong>Note:</strong> the list is inclusive, meaning that the operation is granted only in case the user
+retains ALL permissions listed. The permission list may also be empty or be absent at all, in such a case NO check is done for this operation, thus it effectively disables write-protection.</p>
+</div>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect3">
@@ -6619,9 +6632,7 @@ the following sections.</p>
 <dl>
 <dt class="hdlist1">Request document / GuiStatus</dt>
 <dd>
-<p>The request document can make use of the EL to fill in some values (usually filters)
-with server-side defaults.
-Example:</p>
+<p>The request document can make use of the EL to fill in some values (usually filters) with server-side defaults. Example:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;Status</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.businesscode.de/schema/bcdui/guiStatus-1.0.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
@@ -6634,26 +6645,21 @@ Example:</p>
 </dd>
 <dt class="hdlist1">WebRowSet Servlet</dt>
 <dd>
-<p>This use case is applied when saving a WebRowSet on the server which should contain
-server-defined values. Example</p>
+<p>This use case is applied when saving a WebRowSet on the server which should contain server-defined values. Example</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;Wrs</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.businesscode.de/schema/bcdui/wrs-1.0.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
   <span class="tag">&lt;RequestDocument</span><span class="tag">/&gt;</span>
   <span class="tag">&lt;Header&gt;</span>
     <span class="tag">&lt;Columns&gt;</span>
-      <span class="tag">&lt;C</span> <span class="attribute-name">pos</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-        <span class="tag">&lt;BindingItem</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">countryId</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-      <span class="tag">&lt;/C&gt;</span>
-      <span class="tag">&lt;C</span> <span class="attribute-name">pos</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">2</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-        <span class="tag">&lt;BindingItem</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">countryName</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-      <span class="tag">&lt;/C&gt;</span>
+      <span class="tag">&lt;C</span> <span class="attribute-name">pos</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">countryId</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+      <span class="tag">&lt;C</span> <span class="attribute-name">pos</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">2</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">countryName</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
     <span class="tag">&lt;/Columns&gt;</span>
   <span class="tag">&lt;/Header&gt;</span>
   <span class="tag">&lt;Data&gt;</span>
     <span class="tag">&lt;I&gt;</span>
-      <span class="tag">&lt;U&gt;</span>${bcdfn:generateId(&quot;dataIds&quot;)}<span class="tag">&lt;/U&gt;</span>
-      <span class="tag">&lt;U&gt;</span>New Country<span class="tag">&lt;/U&gt;</span>
+      <span class="tag">&lt;C&gt;</span>${bcdfn:generateId(&quot;dataIds&quot;)}<span class="tag">&lt;/C&gt;</span>
+      <span class="tag">&lt;C&gt;</span>New Country<span class="tag">&lt;/C&gt;</span>
     <span class="tag">&lt;/I&gt;</span>
   <span class="tag">&lt;/Data&gt;</span>
 <span class="tag">&lt;/Wrs&gt;</span></code></pre>
@@ -6908,8 +6914,7 @@ Between operator is not available, please use &#8230;&#8203; &lt;= &#8230;&#8203
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><span class="comment">/*/wrs:Data/wrs:R[1]/wrs:C[2]
-</span></code></pre>
+<pre class="CodeRay highlight"><code>/*/wrs:Data/wrs:R[1]/wrs:C[2]</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6918,7 +6923,7 @@ Thus, it is better to identify a column via its logical name 'CP_DESC', this wil
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><span class="comment">/*/wrs:Data/wrs:R[1]/wrs:C[number(/*/</span>wrs:Header/wrs:Columns/wrs:C[<span class="error">@</span>bRef=<span class="string"><span class="delimiter">'</span><span class="content">CP_DESC</span><span class="delimiter">'</span></span>]/<span class="error">@</span>pos)]/text()</code></pre>
+<pre class="CodeRay highlight"><code>/*/wrs:Data/wrs:R[1]/wrs:C[number(/*/wrs:Header/wrs:Columns/wrs:C[@bRef='CP_DESC']/@pos)]/text()</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6974,8 +6979,7 @@ Maps to bcdui/servlets/wrsServlet and bcdui/servletsCached/WrsServlet.</p>
 <dd>
 <p>Allows controlling <a href="#DocCaching">client-side caching</a>.
 Can be instantiated multiple times to allow different caching strategies for different parts.
-It is recommended to map to all static resources and to slow changing reference data served for example at bcdui/servletsCached/wrsServlet.
-Maps to parts to be cached as per project need.</p>
+It is recommended to cover all static resources and only slowly changing reference data for example at bcdui/servletsCached/wrsServlet.</p>
 </dd>
 </dl>
 </div>
@@ -7109,16 +7113,16 @@ You can do this by calling the CacheManager servlet with an action parameter:</p
 <h2 id="DocDebug">21. Debugging</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_debug_facilities">21.1. Debug facilities</h3>
+<h3 id="_support_for_debugging">21.1. Support for debugging</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">Unzip gui status</dt>
+<dt class="hdlist1">Unzip the gui status</dt>
 <dd>
-<p>To see the guiStatus used in requests in their uncompressed form, send it as  <code>data</code>  parameter to zipLet, for example  <code><a href="http://localhost:8080/webApp/bcdui/servlets/ZipLet?data=z2e-f7xPr3FQumlE&#8230;&#8203" class="bare">http://localhost:8080/webApp/bcdui/servlets/ZipLet?data=z2e-f7xPr3FQumlE&#8230;&#8203</a>;</code></p>
+<p>To see the guiStatus used in requests in their uncompressed form, send it as <code>data</code> parameter to the ZipLet servlet. For example: <code><a href="http://localhost:8080/webApp/bcdui/servlets/ZipLet?data=z2e-f7xPr3FQumlE&#8230;&#8203" class="bare">http://localhost:8080/webApp/bcdui/servlets/ZipLet?data=z2e-f7xPr3FQumlE&#8230;&#8203</a>;</code></p>
 </dd>
 <dt class="hdlist1">Monitor network traffic</dt>
 <dd>
-<p>Eclipse "TCP/IP Monitor" view as well as <a href="http://www.fiddler2.com/fiddler2" target="_blank" rel="noopener">Fiddler</a> can server as proxies to monitor network traffic exchanged between browser and server.</p>
+<p>Eclipse "TCP/IP Monitor" view as well as highly recommended <a href="https://www.telerik.com/fiddler" target="_blank" rel="noopener">Fiddler</a> tool can server as proxies to monitor network traffic exchanged between browser and server.</p>
 </dd>
 <dt class="hdlist1">Server side logging</dt>
 <dd>
@@ -7132,13 +7136,22 @@ You can do this by calling the CacheManager servlet with an action parameter:</p
 <dd>
 <p>de.businesscode.bcdui.binding.Bindings.getInstance().get("b4_bsg_tte", java.util.Arrays.asList("cage_dy"))</p>
 </dd>
-<dt class="hdlist1">And to read information about a specific one</dt>
-<dd>
-<p>de.businesscode.bcdui.binding.Bindings.getInstance().get("b4_bsg_tte", java.util.Arrays.asList("cage_dy")).get("cage_dy").getJDBCDataTypeName()</p>
-</dd>
+<dt class="hdlist1">Read information about a specific BindingItem</dt>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">de.businesscode.bcdui.binding.Bindings.getInstance()
+    .get(<span class="string"><span class="delimiter">&quot;</span><span class="content">b4_bsg_tte</span><span class="delimiter">&quot;</span></span>, java.util.Arrays.asList(<span class="string"><span class="delimiter">&quot;</span><span class="content">cage_dy</span><span class="delimiter">&quot;</span></span>))
+    .get(<span class="string"><span class="delimiter">&quot;</span><span class="content">cage_dy</span><span class="delimiter">&quot;</span></span>)
+    .getJDBCDataTypeName()</code></pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
 <dt class="hdlist1">Use the browser developer console to examine client issues</dt>
 <dd>
-<p>Most modern browser have a console, where you can execute issue JavaScript commands to examine object status</p>
+<p>All modern browser have a console, where you can execute issue JavaScript commands to examine object status</p>
 </dd>
 <dt class="hdlist1">Use request parameter debug=true</dt>
 <dd>
@@ -7159,9 +7172,10 @@ You can do this by calling the CacheManager servlet with an action parameter:</p
 <dd>
 <p>Wrong encoding im xsl:output</p>
 </dd>
-<dt class="hdlist1">FF: XSLT error codes (note, in general in IE the XSLT errors are much easier to debug)</dt>
+<dt class="hdlist1">Mozilla FireFox</dt>
 <dd>
-<p><a href="https://developer.mozilla.org/en/Table_Of_Errors#XSLT_Errors" target="_blank" rel="noopener">FF XSLT error codes</a></p>
+<p>In general use IE tfor debugging XSLT, it will give better error messages.<br>
+One thing specific about Mozilla: If your stylesheet&#8217;s output produces multiple top-level elements (which is not allowed), Firefox does not throw an error like IE for the same output but wrap the output into an artificial root element instead.</p>
 </dd>
 <dt class="hdlist1">IE: stack overflow at line: 0</dt>
 <dd>
@@ -7448,7 +7462,7 @@ One thing less common though is that the JavaScript and other static sources com
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>js/</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>JS library mapped from bcd-ui-core.jar</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>JavaScript library mapped from bcd-ui-core.jar</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -7653,7 +7667,7 @@ Example:</p>
 </div>
 </div>
 </dd>
-<dt class="hdlist1">XInclude with XPointer xpointer() Scheme</dt>
+<dt class="hdlist1">XInclude with xpointer() Scheme</dt>
 <dd>
 <p>The BCD-UI client processor also supports xincludes with a limited set of the xpointer()
 Scheme. It supports all XPointers corresponding to one single XPath. With this XPath the
@@ -7685,7 +7699,7 @@ Example:</p>
   <span class="tag">&lt;Status</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.businesscode.de/schema/bcdui/guiStatus-1.0.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
     <span class="tag">&lt;Filter</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.businesscode.de/schema/bcdui/filter-1.0.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
       <span class="tag">&lt;And</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">period</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-        <span class="tag">&lt;Expression</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">dy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">op</span>=<span class="string"><span class="delimiter">&quot;</span><span class="entity">&amp;gt;</span><span class="content">=</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">2010-01-01</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;Expression</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">dy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">op</span>=<span class="string"><span class="delimiter">&quot;</span></span><span class="error">&gt;</span>=&quot; value=&quot;2010-01-01&quot;/<span class="error">&gt;</span>
         <span class="tag">&lt;Expression</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">dy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">op</span>=<span class="string"><span class="delimiter">&quot;</span><span class="entity">&amp;lt;</span><span class="content">=</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">2010-12-31</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
       <span class="tag">&lt;/And&gt;</span>
     <span class="tag">&lt;/Filter&gt;</span>
@@ -7937,7 +7951,7 @@ BindingSet "bcd_db_properties".</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">SCOPE</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">this is a scope for this parameter. When working with de.businesscode.bcdui.toolbox.Configuration, there are two well-defined scopes: server, client.
+<td class="tableblock halign-left valign-top"><p class="tableblock">this is a scope for this parameter. When working with <code>de.businesscode.bcdui.toolbox.Configuration</code>, there are two well-defined scopes: server, client.
 While the server scope parameters are accessible through:</p>
 <p class="tableblock">* de.businesscode.bcdui.toolbox.Configuration.getConfigurationParameter(String)
 * de.businesscode.bcdui.toolbox.Configuration.getConfigurationParameter(String, T)

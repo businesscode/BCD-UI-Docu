@@ -38,7 +38,7 @@ the bcd_db_properties table has following column definition:
 
 |===
 |SCOPE|
-this is a scope for this parameter. When working with de.businesscode.bcdui.toolbox.Configuration, there are two well-defined scopes: server, client.
+this is a scope for this parameter. When working with `de.businesscode.bcdui.toolbox.Configuration`, there are two well-defined scopes: server, client.
 While the server scope parameters are accessible through:
 
 

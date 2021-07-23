@@ -53,7 +53,6 @@ A SubjectFilterType in WEB-INF/bcdui/subjectSettings.xml defines the BindingItem
   <SubjectFilterTypes>
     <SubjectFilterType name="geo:ctr">
       <Caption>Countries</Caption>
-      <BindingSet>countryRights</BindingSet>
       <BindingItems>
         <C bRef="country"/>
       </BindingItems>
@@ -110,12 +109,11 @@ To configure security on your binding do the following:
 ----
 +
 . Provide the user with sufficient rights
-
++
 Currently, BindingSets understand only one operation called _write_ which protects ANY modification to a table (C-UD),
-the _permission_ takes a list (space separated) of permissions which are evaluated by Shiro, hence Shiro's syntax
-can be applied here. *Note:* the list is inclusive, meaning that the operation is granted only in case the user
-retains ALL permissions listed. The permission list may also be empty or be absent at all, in such a case NO check is
-done for this operation, thus it effectively disables write-protection.
+the _permission_ takes a list (space separated) of permissions which are evaluated by Shiro, hence Shiro's syntax can be applied here. +
+*Note:* the list is inclusive, meaning that the operation is granted only in case the user
+retains ALL permissions listed. The permission list may also be empty or be absent at all, in such a case NO check is done for this operation, thus it effectively disables write-protection.
 
 ==== Write pre-processing
 

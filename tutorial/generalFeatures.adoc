@@ -62,7 +62,7 @@ Example:
 <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="myDoc.xml" xpointer="element(/1/2)"/>
 ----
 +
-XInclude with XPointer xpointer() Scheme:: 
+XInclude with xpointer() Scheme::
 The BCD-UI client processor also supports xincludes with a limited set of the xpointer()
 Scheme. It supports all XPointers corresponding to one single XPath. With this XPath the
 target document is then filtered before it is inserted at the xinclude.
@@ -92,7 +92,7 @@ Example with nested status document:
   <Status xmlns="http://www.businesscode.de/schema/bcdui/guiStatus-1.0.0">
     <Filter xmlns="http://www.businesscode.de/schema/bcdui/filter-1.0.0">
       <And id="period">
-        <Expression bRef="dy" op="&gt;=" value="2010-01-01"/>
+        <Expression bRef="dy" op=">=" value="2010-01-01"/>
         <Expression bRef="dy" op="&lt;=" value="2010-12-31"/>
       </And>
     </Filter>

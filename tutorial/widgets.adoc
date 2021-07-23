@@ -11,7 +11,7 @@ If the user clicks/selects/does an action on it, the target value changes.
 On the other hand, when you change the value from outside, e.g. via JavaScript,
 the widget should update itself visually to be in sync with the value.
 
-Some widgets have an options model reference as data source, for example entries in a drop down box.
+Some widgets have an options model reference as data source, for example entries in a drop-down box.
 The option model is referenced via `optionsModelXPath` and optional `optionsModelRelativeValueXPath`.
 They point to value and caption information used for the widget.
 
@@ -57,12 +57,12 @@ bcdui.widgetNg.createSingleSelect( {
 .Called from XAPI
 [source,xml]
 ----
-<xapi:SingleSelect id="myId" ... />
+<xapi:SingleSelect targetModelXPath = "/*/f:Filter/f:Expression[@bRef = 'orig_ctr' and @op = '=']/@value" />
 ----
 
 Using JavaScript and HTML Custom Elements is by far the most common way.
 
-NOTE: While you can create widges from JavaScript, HTML custom elements, XSLT, XAPI and jsp, the result and behavior is exactly the same.
+NOTE: While you can create widgets from JavaScript, HTML custom elements, XSLT, XAPI and jsp, the result and behavior is exactly the same.
 You can easily derive the parameters from the JavaScript api documentation.
 
 === Overview bcdui.WidgetNg
@@ -75,7 +75,7 @@ link:../jsdoc/bcdui.widgetNg.html#.createButton[Button:^] A button widget for a 
 ==== Checkbox
 
 image::images/widgets_ng_checkbox.png[]
-link:../jsdoc/bcdui.widgetNg.html#.createCheckbox[Checkbox:^] A checkbox widget which allows a on/off (true/false, 1/0) switch
+link:../jsdoc/bcdui.widgetNg.html#.createCheckbox[Checkbox:^] A checkbox widget which allows an on/off (true/false, 1/0) switch
 
 ==== Connectable
 
@@ -100,12 +100,12 @@ link:../jsdoc/bcdui.widgetNg.html#.createSideBySideChooser[SideBySide Chooser:^]
 ==== Single Select
 
 image::images/widgets_ng_singleSelect.png[]
-link:../jsdoc/bcdui.widgetNg.html#.createSingleSelect[Single Select:^] A drop down selector
+link:../jsdoc/bcdui.widgetNg.html#.createSingleSelect[Single Select:^] A drop-down selector
 
 ==== Suggest Input
 
 image::images/widgets_ng_suggestInput.png[]
-link:../jsdoc/bcdui.widgetNg.html#.createSuggestInput[Suggest Input:^] A drop down selector with autocompletion functionality and custom rendering
+link:../jsdoc/bcdui.widgetNg.html#.createSuggestInput[Suggest Input:^] A drop-down selector with autocompletion functionality and custom rendering
 
 ==== Text Area
 
@@ -119,7 +119,7 @@ link:../jsdoc/bcdui.widgetNg.html#.createTextArea[Text Area:^] A (resizable) tex
 image::images/widgets_w_blindUpDown.png[]
 link:../jsdoc/bcdui.widget.html#.createBlindUpDownArea[Blind UpDown:^] A collapsable/expandable area
 
-==== Contex Menu
+==== Context Menu
 
 image::images/widgets_w_contextMenu.png[]
 link:../jsdoc/bcdui.widget.html#.createContextMenu[Context Menu:^] A context menu which can be linked to a cell
@@ -191,7 +191,7 @@ link:../jsdoc/bcdui.widget.html#.createSingleSelect[Single Select:^] A radio but
 ==== Tab
 
 image::images/widgets_w_tab.png[]
-link:../jsdoc/bcdui.widget.html#.createTabMenu[Tab:^] Tabs allow to switch different views of the same data or between different data within a page
+link:../jsdoc/bcdui.widget.html#.createTabMenu[Tab:^] Tabs allow switching between different views of the same data or between different data within a page
 
 ==== Tooltip
 

@@ -184,7 +184,7 @@ The server responses technical errors via SOAP 1.2 fault
 
 Identifying the right column can be done via its hard-coded position in an XPath
 
-[source,javascript]
+[source]
 ----
 /*/wrs:Data/wrs:R[1]/wrs:C[2]
 
@@ -193,7 +193,7 @@ Identifying the right column can be done via its hard-coded position in an XPath
 This is easy but also easily breaks and is hard to read.
 Thus, it is better to identify a column via its logical name 'CP_DESC', this will work in an XPath outside and inside XSLT:
 
-[source,javascript]
+[source]
 ----
 /*/wrs:Data/wrs:R[1]/wrs:C[number(/*/wrs:Header/wrs:Columns/wrs:C[@bRef='CP_DESC']/@pos)]/text()
 

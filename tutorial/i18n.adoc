@@ -67,12 +67,11 @@ In case you have a mass of data to translate (i.e. contents of a table), then yo
 translating explicitly via XSLT i18n API:
 The following fragment shows how to use i18n translation XSLT API for table data translation:
 
-[source,javascript]
+[source,xml]
 ----
 <xsl:import href="i18nUtilsTemplate.xslt"/>
-...
 <xsl:param name="bcdI18nModel" select="//*[1=2]"/>
-...
+
 <xsl:template match="wrs:C">
   <td>
     <!-- get value of a key -->
@@ -81,8 +80,6 @@ The following fragment shows how to use i18n translation XSLT API for table data
     </xsl:call-template>
   </td>
 </xsl:template>
-...
-
 ----
 
 This is more performant than implicit 'bcdTranslate' for big number of elements.

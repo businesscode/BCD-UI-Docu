@@ -145,7 +145,7 @@ include::../web/api/xapiMinimalRenderer.xslt[]
 ----
 <1> Add a html namespace so that we can copy that later 1:1
 <2> Import needed XSLT (see comment above XSLT API)
-<3> You can freely mix and nest with HTML here
+<3> You can freely mix in and nest with HTML
 <4> Here we make sure we copy HTML content 1:1
 
 Then use the standard way to apply this stylesheet to the xapi file. Make sure you created the targetHtml before

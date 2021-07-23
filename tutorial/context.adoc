@@ -14,9 +14,7 @@ because the bookmark could contain a dynamically changed date.
 There are some XML documents where the EL can be used. These documents are described in
 the following sections.
 
-Request document / GuiStatus:: The request document can make use of the EL to fill in some values (usually filters)
-with server-side defaults.
-Example:
+Request document / GuiStatus:: The request document can make use of the EL to fill in some values (usually filters) with server-side defaults. Example:
 +
 [source,xml]
 ----
@@ -27,8 +25,7 @@ Example:
 </Status>
 ----
 +
-WebRowSet Servlet:: This use case is applied when saving a WebRowSet on the server which should contain
-server-defined values. Example
+WebRowSet Servlet:: This use case is applied when saving a WebRowSet on the server which should contain server-defined values. Example
 +
 [source,xml]
 ----
@@ -36,18 +33,14 @@ server-defined values. Example
   <RequestDocument/>
   <Header>
     <Columns>
-      <C pos="1">
-        <BindingItem id="countryId"/>
-      </C>
-      <C pos="2">
-        <BindingItem id="countryName"/>
-      </C>
+      <C pos="1" id="countryId"/>
+      <C pos="2" id="countryName"/>
     </Columns>
   </Header>
   <Data>
     <I>
-      <U>${bcdfn:generateId("dataIds")}</U>
-      <U>New Country</U>
+      <C>${bcdfn:generateId("dataIds")}</C>
+      <C>New Country</C>
     </I>
   </Data>
 </Wrs>
