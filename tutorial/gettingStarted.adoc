@@ -28,6 +28,6 @@ Target audience of this tutorial are developers already developing Java web appl
 . Operate a standard SQL database and have some tables with data, for example https://www.postgresqltutorial.com/[Postgres, window="_blank"]
 . Know how to use https://developer.mozilla.org/en-US/docs/Web/JavaScript[JavaScript, window="_blank"]
 . Have an understanding of HTML, css, XML, Ajax
-. Be able to read and write XPath https://www.w3schools.com/xml/xpath_intro.asp[into, window="_blank"] and XSLT https://www.w3schools.com/xml/xsl_intro.asp[short, window="_blank"] or {xslt-deep-link}[in depth, window="_blank"]
+. Be able to read and write XPath https://www.zyte.com/blog/an-introduction-to-xpath-with-examples/[intro, window="_blank"] and XSLT https://www.w3schools.com/xml/xsl_intro.asp[short, window="_blank"] or {xslt-deep-link}[in depth, window="_blank"]
 
 Let's continue by creating our <<DocSimpleReq,first page>> with BCD-UI.
