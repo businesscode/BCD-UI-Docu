@@ -64,7 +64,9 @@ Now add the following script block to end of the page:
 var staticData = new bcdui.core.SimpleModel("staticData.xml");
 
 A link:../jsdoc/bcdui.core.SimpleModel.html[bcdui.core.SimpleModel^] is used to load data from the server.
-Like all models it is loaded lazy, so it is not loaded to the client until a displaying component requests it.
+Like all models it is loaded lazy, so it is not loaded to the client until a displaying component requests it. +
+
+TIP: There is a full Javascript API link:https://businesscode.github.io/BCD-UI-Docu/jsdoc/[online Documentation^] for all classes used in the tutorial..
 
 ==== Add a Renderer
 

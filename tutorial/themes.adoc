@@ -16,7 +16,7 @@ This is a blank empty page with all major parts:
 include::../web/blankPage.html[]
 ----
 
-Default styles:: The theme css files are compiled from scss, see link:http://sass-lang.com[]. +
+Default styles:: The theme css files are compiled from scss, see link:https://sass-lang.com[window=_blank]. +
 BCD-UI's scss files include a default styling for all widget, component, modules and general page layout.
 
 ==== Adjusting

@@ -17,17 +17,26 @@ To turn a plain into a BCD-UI application, just do these 4 steps, detailed out i
 
 and you are read to go.
 
-==== Required knowledge
+=== Useful resources
+
+==== Standard technologies
 Target audience of this tutorial are developers already developing Java web applications. You should already be able to
 
 // Store link in a var because underscores need special handling
 :xslt-deep-link: https://edutechwiki.unige.ch/en/XSLT_Tutorial_-_Basics
 
-. Create and understand Java Jakarta web applications https://happycoding.io/tutorials/java-server/[intro, window="_blank"]
-. Run Tomcat together with you favorite IDE, for example https://www.baeldung.com/eclipse-tomcat[with Eclipse, window="_blank"]
-. Operate a standard SQL database and have some tables with data, for example https://www.postgresqltutorial.com/[Postgres, window="_blank"]
-. Know how to use https://developer.mozilla.org/en-US/docs/Web/JavaScript[JavaScript, window="_blank"]
+. Create and understand Java Jakarta web applications link:https://happycoding.io/tutorials/java-server/[intro^]
+. Run Tomcat together with you favorite IDE, for example link:https://www.baeldung.com/eclipse-tomcat[with Eclipse^]
+. Operate a standard SQL database and have some tables with data, for example link:https://www.postgresqltutorial.com/[Postgres^]
+. Know how to use link:https://developer.mozilla.org/en-US/docs/Web/JavaScript[JavaScript^]
 . Have an understanding of HTML, css, XML, Ajax
-. Be able to read and write XPath https://www.zyte.com/blog/an-introduction-to-xpath-with-examples/[intro, window="_blank"] and XSLT https://www.w3schools.com/xml/xsl_intro.asp[short, window="_blank"] or {xslt-deep-link}[in depth, window="_blank"]
+. Be able to read and write XPath link:https://www.zyte.com/blog/an-introduction-to-xpath-with-examples/[intro^] and XSLT link:https://www.w3schools.com/xml/xsl_intro.asp[short^] or {xslt-deep-link}[in depth^]
 
 Let's continue by creating our <<DocSimpleReq,first page>> with BCD-UI.
+
+==== BCD-UI related links
+
+. BCD-UI's link:https://businesscode.github.io/BCD-UI-Docu[full documentation^] including this tutorial and Java API
+. BCD-UI's link:https://businesscode.github.io/BCD-UI-Docu/jsdoc[JavaScript API^]
+. BCD-UI's link:https://github.com/businesscode/BCD-UI[project page^] on GitHub
+. link:https://www.business-code.de[BusinessCode GmbH^], the company behind BCD-UI

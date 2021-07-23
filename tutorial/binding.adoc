@@ -43,7 +43,7 @@ With the same method, a user's language setting can be applied to an i18n captio
 This is done via a server-side added where constraint depending on user settings.
 This is configured by cooperation of the following three artifacts:
 
-. A scc:SubjectFilterType definition
+. A sec:SubjectFilterType definition
 +
 A SubjectFilterType in WEB-INF/bcdui/subjectSettings.xml defines the BindingItem on which to apply the restriction, and a BindingSet with the user's rights, default is bcd_sec_user_settings.
 +

@@ -15,9 +15,9 @@ To start development with BCD-UI, first get the tools:
 ====
 If you are not already familiar with the concept if of Java Web Applications, you find many good tutorials. Here are some very short for Eclipse as Servlet in a Tomcat-combination:
 
-. Install https://www.eclipse.org/downloads/packages/[Eclipse IDE for Enterprise Java and Web Developers] and https://developers.redhat.com/products/openjdk/download[Java JDK]
-. Baeldung on https://www.baeldung.com/tomcat[installing Tomcat] and on https://www.baeldung.com/eclipse-tomcat[connecting Eclipse with Tomcat]
-. Minimal sample creating a Java Servlet and a JQuery Ajax call  https://programming.vip/docs/servlet-processing-jquery-ajax-requests.html[tutorial]. +
+. Install link:https://www.eclipse.org/downloads/packages/[Eclipse IDE for Enterprise Java and Web Developers^] and link:https://developers.redhat.com/products/openjdk/download[Java JDK^]
+. Baeldung on link:https://www.baeldung.com/tomcat[installing Tomcat^] and on link:https://www.baeldung.com/eclipse-tomcat[connecting Eclipse with Tomcat^]
+. Minimal sample creating a Java Servlet and a JQuery Ajax call link:https://programming.vip/docs/servlet-processing-jquery-ajax-requests.html[tutorial^]. +
 You won't have to develop Servlets when start using BCD-UI as it comes with Servlets and also, while BCD-UI uses jQuery internally, you may not need to use it directly. But an understanding of these technologies is definitely recommended.
 ====
 
@@ -25,12 +25,12 @@ You won't have to develop Servlets when start using BCD-UI as it comes with Serv
 === Tomcat compress resources
 For performance reasons, you should allow compression for static resources. +
 For Tomcat adjust in server.xml,
-see link:https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/tomcat/server.xml[BCD-UI/Server/configFiles/tomcat/server.xml, window="_blank"]
+see link:https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/tomcat/server.xml[BCD-UI/Server/configFiles/tomcat/server.xml^]
 
 === XML schema xsd catalog
 
 Adding the XML schema catalog of BCD-UI to your workspace will support you in creating XML configuration files for BCD-UI
-by linking to `https://businesscode.github.io/BCD-UI-Docu/xsd/bcduiCatalog.xml`
+by linking to link:https://businesscode.github.io/BCD-UI-Docu/xsd/bcduiCatalog.xml[window=_blank]
 
 For Tomcat, follow these steps:
 

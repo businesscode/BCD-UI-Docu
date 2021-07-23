@@ -9,7 +9,7 @@ BCD-UI supports security with the following features
 * Company authentication and authorization mechanisms like central LDAP and single login can be applied
 * SQL injection prevention
 * no-cache no-store to protect secure data on shared computers, see <<DocCaching,caching>>
-* Integration of link:https://shiro.apache.org/[Apache Shiro] access rules
+* Integration of link:https://shiro.apache.org/[Apache Shiro^] access rules
 * Easy declarative user rights for:
  ** <<DocBinding,BindingSets>>
    *** Restrict write access
@@ -137,7 +137,7 @@ Authentication is handled by OAuth, permissions are managed by application throu
 
 . Configuration
 +
-The web.xml https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/web.xml[template of BCD-UI] describes the setup, more about this the following section
+The web.xml link:https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/web.xml[template of BCD-UI] describes the setup, more about this the following section
 +
 .oAuth sample with Azure
 [source]

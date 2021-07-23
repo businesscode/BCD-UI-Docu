@@ -551,13 +551,18 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#DocAbout">1. About BCD-UI 5</a>
 <ul class="sectlevel2">
 <li><a href="#_overview">1.1. Overview</a></li>
-<li><a href="#_what_about_jquery_or_angular">1.2. What about jQuery or Angular?</a></li>
+<li><a href="#_what_about_jquery_angular_vue_js_etc">1.2. What about jQuery, Angular, Vue.js etc?</a></li>
 <li><a href="#_is_there_commercial_support">1.3. Is there commercial support?</a></li>
 </ul>
 </li>
 <li><a href="#DocGettingStarted">2. Getting Started</a>
+<ul class="sectlevel2">
+<li><a href="#_useful_resources">2.1. Useful resources</a>
 <ul class="sectlevel3">
-<li><a href="#_required_knowledge">Required knowledge</a></li>
+<li><a href="#_standard_technologies">Standard technologies</a></li>
+<li><a href="#_bcd_ui_related_links">BCD-UI related links</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#DocSimpleReq">3. Your first BCD-UI page</a>
@@ -965,7 +970,7 @@ While you are not at all limited to BCD-UI components, you will often find an 80
 </div>
 </div>
 <div class="sect2">
-<h3 id="_what_about_jquery_or_angular">1.2. What about jQuery or Angular?</h3>
+<h3 id="_what_about_jquery_angular_vue_js_etc">1.2. What about jQuery, Angular, Vue.js etc?</h3>
 <div class="paragraph">
 <p>Good question, should you not rather use jQuery?
 In fact, when using BCD-UI you will be using jQuery a lot directly and indirectly as BCD-UI itself is built with the help of jQuery and understands jQuery objects.<br>
@@ -1041,8 +1046,10 @@ If you don&#8217;t know how to make a vanilla application running with your IDE 
 <div class="paragraph">
 <p>and you are read to go.</p>
 </div>
+<div class="sect2">
+<h3 id="_useful_resources">2.1. Useful resources</h3>
 <div class="sect3">
-<h4 id="_required_knowledge">Required knowledge</h4>
+<h4 id="_standard_technologies">Standard technologies</h4>
 <div class="paragraph">
 <p>Target audience of this tutorial are developers already developing Java web applications. You should already be able to</p>
 </div>
@@ -1070,6 +1077,26 @@ If you don&#8217;t know how to make a vanilla application running with your IDE 
 </div>
 <div class="paragraph">
 <p>Let&#8217;s continue by creating our <a href="#DocSimpleReq">first page</a> with BCD-UI.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_bcd_ui_related_links">BCD-UI related links</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>BCD-UI&#8217;s <a href="https://businesscode.github.io/BCD-UI-Docu" target="_blank" rel="noopener">full documentation</a> including this tutorial and Java API</p>
+</li>
+<li>
+<p>BCD-UI&#8217;s <a href="https://businesscode.github.io/BCD-UI-Docu/jsdoc" target="_blank" rel="noopener">JavaScript API</a></p>
+</li>
+<li>
+<p>BCD-UI&#8217;s <a href="https://github.com/businesscode/BCD-UI" target="_blank" rel="noopener">project page</a> on GitHub</p>
+</li>
+<li>
+<p><a href="https://www.business-code.de" target="_blank" rel="noopener">BusinessCode GmbH</a>, the company behind BCD-UI</p>
+</li>
+</ol>
+</div>
 </div>
 </div>
 </div>
@@ -1344,7 +1371,7 @@ The part that styles widgets and components is mandatory to style these artifact
   <span class="tag">&lt;Header&gt;</span>
     <span class="tag">&lt;Columns&gt;</span>
       <span class="tag">&lt;C</span> <span class="attribute-name">pos</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ctr</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">dimId</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ctr</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Country</span><span class="delimiter">&quot;</span></span>   <span class="attribute-name">type-name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">VARCHAR</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-      <span class="tag">&lt;C</span> <span class="attribute-name">pos</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">2</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">cw</span><span class="delimiter">&quot;</span></span>              <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">C/W</span><span class="delimiter">&quot;</span></span>       <span class="attribute-name">type-name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">INTEGER</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+      <span class="tag">&lt;C</span> <span class="attribute-name">pos</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">2</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">cw</span><span class="delimiter">&quot;</span></span>              <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CW</span><span class="delimiter">&quot;</span></span>        <span class="attribute-name">type-name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">INTEGER</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
       <span class="tag">&lt;C</span> <span class="attribute-name">pos</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">3</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">low</span><span class="delimiter">&quot;</span></span>             <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Low</span><span class="delimiter">&quot;</span></span>       <span class="attribute-name">type-name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">NUMERIC</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
       <span class="tag">&lt;C</span> <span class="attribute-name">pos</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">4</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">height</span><span class="delimiter">&quot;</span></span>          <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Height</span><span class="delimiter">&quot;</span></span>    <span class="attribute-name">type-name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">NUMERIC</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
       <span class="tag">&lt;C</span> <span class="attribute-name">pos</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">5</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">height2</span><span class="delimiter">&quot;</span></span>         <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Height 2</span><span class="delimiter">&quot;</span></span>  <span class="attribute-name">type-name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">NUMERIC</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
@@ -1388,7 +1415,19 @@ Many parts of BCD-UI understand this format and show smart behaviour if you use 
 </div>
 <div class="paragraph">
 <p>A <a href="../jsdoc/bcdui.core.SimpleModel.html" target="_blank" rel="noopener">bcdui.core.SimpleModel</a> is used to load data from the server.
-Like all models it is loaded lazy, so it is not loaded to the client until a displaying component requests it.</p>
+Like all models it is loaded lazy, so it is not loaded to the client until a displaying component requests it.<br></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+There is a full Javascript API <a href="https://businesscode.github.io/BCD-UI-Docu/jsdoc/" target="_blank" rel="noopener">online Documentation</a> for all classes used in the tutorial..
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
@@ -4214,7 +4253,7 @@ This is a blank empty page with all major parts:</p>
 <dl>
 <dt class="hdlist1">Default styles</dt>
 <dd>
-<p>The theme css files are compiled from scss, see <a href="http://sass-lang.com" class="bare">http://sass-lang.com</a>.<br>
+<p>The theme css files are compiled from scss, see <a href="https://sass-lang.com" class="bare" target="_blank" rel="noopener">https://sass-lang.com</a>.<br>
 BCD-UI&#8217;s scss files include a default styling for all widget, component, modules and general page layout.</p>
 </dd>
 </dl>
@@ -5777,7 +5816,7 @@ Here you may also call apply-templates to resolve nested XAPI calls in a more co
 <p>no-cache no-store to protect secure data on shared computers, see <a href="#DocCaching">caching</a></p>
 </li>
 <li>
-<p>Integration of <a href="https://shiro.apache.org/">Apache Shiro</a> access rules</p>
+<p>Integration of <a href="https://shiro.apache.org/" target="_blank" rel="noopener">Apache Shiro</a> access rules</p>
 </li>
 <li>
 <p>Easy declarative user rights for:</p>
@@ -6328,7 +6367,7 @@ This is configured by cooperation of the following three artifacts:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>A scc:SubjectFilterType definition</p>
+<p>A sec:SubjectFilterType definition</p>
 <div class="paragraph">
 <p>A SubjectFilterType in WEB-INF/bcdui/subjectSettings.xml defines the BindingItem on which to apply the restriction, and a BindingSet with the user&#8217;s rights, default is bcd_sec_user_settings.</p>
 </div>
@@ -7255,13 +7294,13 @@ One thing specific about Mozilla: If your stylesheet&#8217;s output produces mul
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Install <a href="https://www.eclipse.org/downloads/packages/">Eclipse IDE for Enterprise Java and Web Developers</a> and <a href="https://developers.redhat.com/products/openjdk/download">Java JDK</a></p>
+<p>Install <a href="https://www.eclipse.org/downloads/packages/" target="_blank" rel="noopener">Eclipse IDE for Enterprise Java and Web Developers</a> and <a href="https://developers.redhat.com/products/openjdk/download" target="_blank" rel="noopener">Java JDK</a></p>
 </li>
 <li>
-<p>Baeldung on <a href="https://www.baeldung.com/tomcat">installing Tomcat</a> and on <a href="https://www.baeldung.com/eclipse-tomcat">connecting Eclipse with Tomcat</a></p>
+<p>Baeldung on <a href="https://www.baeldung.com/tomcat" target="_blank" rel="noopener">installing Tomcat</a> and on <a href="https://www.baeldung.com/eclipse-tomcat" target="_blank" rel="noopener">connecting Eclipse with Tomcat</a></p>
 </li>
 <li>
-<p>Minimal sample creating a Java Servlet and a JQuery Ajax call  <a href="https://programming.vip/docs/servlet-processing-jquery-ajax-requests.html">tutorial</a>.<br>
+<p>Minimal sample creating a Java Servlet and a JQuery Ajax call <a href="https://programming.vip/docs/servlet-processing-jquery-ajax-requests.html" target="_blank" rel="noopener">tutorial</a>.<br>
 You won&#8217;t have to develop Servlets when start using BCD-UI as it comes with Servlets and also, while BCD-UI uses jQuery internally, you may not need to use it directly. But an understanding of these technologies is definitely recommended.</p>
 </li>
 </ol>
@@ -7283,7 +7322,7 @@ see <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFil
 <h3 id="_xml_schema_xsd_catalog">22.3. XML schema xsd catalog</h3>
 <div class="paragraph">
 <p>Adding the XML schema catalog of BCD-UI to your workspace will support you in creating XML configuration files for BCD-UI
-by linking to <code><a href="https://businesscode.github.io/BCD-UI-Docu/xsd/bcduiCatalog.xml" class="bare">https://businesscode.github.io/BCD-UI-Docu/xsd/bcduiCatalog.xml</a></code></p>
+by linking to <a href="https://businesscode.github.io/BCD-UI-Docu/xsd/bcduiCatalog.xml" class="bare" target="_blank" rel="noopener">https://businesscode.github.io/BCD-UI-Docu/xsd/bcduiCatalog.xml</a></p>
 </div>
 <div class="paragraph">
 <p>For Tomcat, follow these steps:</p>
@@ -7314,7 +7353,7 @@ by linking to <code><a href="https://businesscode.github.io/BCD-UI-Docu/xsd/bcdu
 <p>A BCD-UI application is a regular Jakarta EE application. These steps are show how to add BCD-UI to an existing web application project.</p>
 </div>
 <div class="paragraph">
-<p>There are many good tutorials for each IDE on how to set up such a web application. For Eclipse, you could follow <a href="https://medium.com/@zandra.harner/setting-up-the-develop-environment-for-lop-a-web-application-in-eclipse-ide-7f3a36eddf60">this</a> one on Medium.</p>
+<p>There are many good tutorials for each IDE on how to set up such a web application. For Eclipse, you could follow <a href="https://medium.com/@zandra.harner/setting-up-the-develop-environment-for-lop-a-web-application-in-eclipse-ide-7f3a36eddf60" target="_blank" rel="noopener">this</a> one on Medium.</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -7334,7 +7373,7 @@ Before adding BCD-UI to your project, make sure you test your plain web applicat
 <ol class="arabic">
 <li>
 <p>Add BCD-UI jars<br>
-In this tutorial we use <a href="https://docs.gradle.org/current/userguide/userguide.html">Gradle</a> build tool for defining dependencies. Don&#8217;t be afraid, you do not need to know much about Gradle to follow this tutorial.<br>
+In this tutorial we use <a href="https://docs.gradle.org/current/userguide/userguide.html" target="_blank" rel="noopener">Gradle</a> build tool for defining dependencies. Don&#8217;t be afraid, you do not need to know much about Gradle to follow this tutorial.<br>
 Eclipse (<em>Buildship</em> plugin installed per default) and IDEA support gradle out of the box. For Visual Studio Code, add the <em>Gradle</em> extension.<br></p>
 <div class="paragraph">
 <p>Add a <code>build.gradle</code> file as shown here <a href="https://github.com/businesscode/maven-repo" class="bare" target="_blank" rel="noopener">https://github.com/businesscode/maven-repo</a> to your project root.</p>
@@ -7360,14 +7399,14 @@ These two jars not only hold all Java classes for the server but also all client
 </table>
 </div>
 <div class="paragraph">
-<p>If you prefer to go without Gradle, you may also manually download the BCD-UI&#8217;s jars, and their dependencies mentioned in <a href="https://github.com/businesscode/BCD-UI/blob/master/Docu/development/bcdui_dependencies.gradle">BCD-UI/Docu/development/bcdui_dependencies.gradle</a> and put them into WEB-INF/lib. But this is not recommended.</p>
+<p>If you prefer to go without Gradle, you may also manually download the BCD-UI&#8217;s jars, and their dependencies mentioned in <a href="https://github.com/businesscode/BCD-UI/blob/master/Docu/development/bcdui_dependencies.gradle" target="_blank" rel="noopener">BCD-UI/Docu/development/bcdui_dependencies.gradle</a> and put them into WEB-INF/lib. But this is not recommended.</p>
 </div>
 </li>
 <li>
 <p>Add Entries to web.xml<br>
 To register BCD-UI&#8217;s servlets and filters, add the entries from <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/web.xml" target="_blank" rel="noopener">BCD-UI/Server/configFiles/web.xml</a> to your web.xml.<br>
 Now comment out the &lt;filter&gt; bcdui4.ShiroFilter including its &lt;filter-mapping&gt;. Otherwise, you will be redirected to a login.htm page, which you do not have yet.<br>
-When you upgrade to a new version of BCD-UI check in <a href="https://github.com/businesscode/BCD-UI/blob/master/Docu/releaseNotes.adoc">release notes</a> whether it changed.</p>
+When you upgrade to a new version of BCD-UI check in <a href="https://github.com/businesscode/BCD-UI/blob/master/Docu/releaseNotes.adoc" target="_blank" rel="noopener">release notes</a> whether it changed.</p>
 </li>
 <li>
 <p>Create an empty WEB-INF/bcdui/bindings<br>
@@ -7375,12 +7414,12 @@ All configuration files for BCD-UI are located at WEB-INF/bcdui. Create an empty
 </li>
 <li>
 <p>Add logging configuration<br>
-Copy <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/log4j2.xml" target="_blank" rel="noopener">BCD-UI/Server/configFiles/log4j2.xml</a>
-to your project&#8217;s src/main/resources folder.</p>
+Copy <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/log4j2_debug_.xml" target="_blank" rel="noopener">BCD-UI/Server/configFiles/log4j2_debug_.xml</a>
+to your project&#8217;s src/main/resources folder and rename it to log4j2.xml.</p>
 </li>
 <li>
 <p>Add entries for the database<br>
-See <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/tomcat/context.xml">context.xml</a> for entries for several databases for Tomcat.<br>
+See <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/tomcat/context.xml" target="_blank" rel="noopener">context.xml</a> for entries for several databases for Tomcat.<br>
 The jndi entry</p>
 <div class="listingblock">
 <div class="content">
@@ -7434,7 +7473,7 @@ One thing less common though is that the JavaScript and other static sources com
 <td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>build.gradle</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Taking care for jars below <a href="https://github.com/businesscode/maven-repo">template</a></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Taking care for jars below <a href="https://github.com/businesscode/maven-repo" target="_blank" rel="noopener">template</a></strong></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -7463,7 +7502,7 @@ One thing less common though is that the JavaScript and other static sources com
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>log4j2.xml</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Logging settings <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/log4j2_debug_.xml">template</a></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Logging settings <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/log4j2_debug_.xml" target="_blank" rel="noopener">template</a></strong></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -7580,7 +7619,7 @@ One thing less common though is that the JavaScript and other static sources com
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>web.xml</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Contains some BCD-UI library related entries <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/web.xml">template</a></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Contains some BCD-UI library related entries <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/web.xml" target="_blank" rel="noopener">template</a></strong></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -7594,12 +7633,12 @@ One thing less common though is that the JavaScript and other static sources com
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>context.xml</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Contains JDBC database connections <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/tomcat/context.xml">template</a></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Contains JDBC database connections <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/tomcat/context.xml" target="_blank" rel="noopener">template</a></strong></p></td>
 </tr>
 </tbody>
 </table>
 <div class="paragraph">
-<p>This tutorial itself is built around a fully functional BCD-UI application, which you inspect here <a href="https://github.com/businesscode/BCD-UI-Docu" class="bare">https://github.com/businesscode/BCD-UI-Docu</a>.</p>
+<p>This tutorial itself is built around a fully functional BCD-UI application, which you inspect here <a href="https://github.com/businesscode/BCD-UI-Docu" class="bare" target="_blank" rel="noopener">https://github.com/businesscode/BCD-UI-Docu</a>.</p>
 </div>
 </div>
 </div>
@@ -7948,7 +7987,7 @@ defined in context.xml when overriding parameters.</p>
 <dt class="hdlist1">'client' scope</dt>
 <dd>
 <p>The only way to enable configuration to be set to client is to enable DbProperties, the client parameters are held in "client" scope.
-These properties are emitted by the BCDUIConfig servlet and exposed into bcdui.config JS object. The TYPE for client-scope property is NOT evaluated,
+These properties are emitted by the BCDUIConfig servlet and exposed into <code>bcdui.config</code> JS object. The TYPE for client-scope property is NOT evaluated,
 and the property value is ALWAYS exposed as a String, hence the value must not be quoted.</p>
 </dd>
 </dl>
@@ -7989,7 +8028,7 @@ While the server scope parameters are accessible through:</p>
 * de.businesscode.bcdui.toolbox.Configuration.getConfigurationParameter(String, T)
 * de.businesscode.bcdui.toolbox.Configuration.getConfigurationParameterOrNull(String id)</p>
 <p class="tableblock">the client scope parameters can be retrieved via de.businesscode.bcdui.toolbox.Configuration.getClientParameters(),
-those are also exposed to the client and available in the bcdui.config JS object.</p>
+those are also exposed to the client and available in the <code>bcdui.config</code> JS object.</p>
 <p class="tableblock">The TYPE is obligatory for the parameter in server scope, while for client scope parameters the TYPE is ignored, and the
 value is always exposed as a string.</p></td>
 </tr>

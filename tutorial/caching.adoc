@@ -26,7 +26,7 @@ ExpiresRelTime::  number of hours/min/sec starting from the request, like "01:00
 CacheRequestDirective::  native HTTP1.1 header string to be set in Cache-Control header
 
 There can be multiple space separated values for ExpiresAbsTime and ExpiresAbsDow, like "00:00:00 12:00:00", the next matching one is used for the response expires.
-The response will have the link:http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.21[HTTP Expires, window="_blank"] header be set accordingly.
+The response will have the link:http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.21[HTTP Expires^] header be set accordingly.
 
 ==== Disable Caching
 
@@ -67,5 +67,5 @@ The one initially enabled is optimized for development, caching only BCD-UI sour
 
 For the client side header it is also possible to define the response header value of cache-directive with the `cache-response-directive` parameter.
 See sample for no-cache below.
-The response will have the link:http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9[HTTP Cache-Control, window="_blank"] header be set accordingly.
+The response will have the link:http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9[HTTP Cache-Control^] header be set accordingly.
 

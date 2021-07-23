@@ -31,7 +31,7 @@ so you can provide solutions with higher complexity with less effort, fewer bugs
 With BCD-UI you are free to extend in any direction needed using standard technologies.
 While you are not at all limited to BCD-UI components, you will often find an 80% solution already provided ready-to-use.
 
-=== What about jQuery or Angular?
+=== What about jQuery, Angular, Vue.js etc?
 
 Good question, should you not rather use jQuery?
 In fact, when using BCD-UI you will be using jQuery a lot directly and indirectly as BCD-UI itself is built with the help of jQuery and understands jQuery objects. +
