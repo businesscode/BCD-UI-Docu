@@ -1,11 +1,11 @@
 <Wrs xmlns="http://www.businesscode.de/schema/bcdui/wrs-1.0.0">
   <Header>
     <Columns>
-      <C pos="1" id="CTR" dimId="CTR" caption="Country" type-name="VARCHAR"/>
-      <C pos="2" id="CW"              caption="C/W"     type-name="INTEGER"/>
-      <C pos="3" id="LOW"             caption="Low"     type-name="NUMERIC"/>
-      <C pos="4" id="HIGH"            caption="Heigh"   type-name="NUMERIC"/>
-      <C pos="5" id="HIGH2"           caption="Heigh2"  type-name="NUMERIC"/>
+      <C pos="1" id="ctr" dimId="ctr" caption="Country"  type-name="VARCHAR"/>
+      <C pos="2" id="cw"              caption="CW"       type-name="INTEGER"/>
+      <C pos="3" id="low"             caption="Low"      type-name="NUMERIC"/>
+      <C pos="4" id="height"          caption="Height"   type-name="NUMERIC"/>
+      <C pos="5" id="height2"         caption="Height 2" type-name="NUMERIC"/>
     </Columns>
   </Header>
   <Data>
