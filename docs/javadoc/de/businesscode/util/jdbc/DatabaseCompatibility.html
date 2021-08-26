@@ -13,7 +13,8 @@
 <!--[if IE]>
 <script type="text/javascript" src="../../../../jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="../../../../jquery/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="../../../../jquery/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="../../../../jquery/jquery-migrate-3.0.1.js"></script>
 <script type="text/javascript" src="../../../../jquery/jquery-ui.js"></script>
 </head>
 <body>
@@ -26,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":9,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":9,"i14":10,"i15":10};
+var data = {"i0":10,"i1":9,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":9,"i16":10,"i17":10};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -323,11 +324,29 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i8" class="altColor">
+<td class="colFirst"><code>byte[]</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getBlob(java.lang.String,java.sql.ResultSet,int)">getBlob</a></span>&#8203;(java.lang.String&nbsp;bindingSetName,
+       java.sql.ResultSet&nbsp;rs,
+       int&nbsp;column)</code></th>
+<td class="colLast">
+<div class="block">returns the blob column data as a byte array</div>
+</td>
+</tr>
+<tr id="i9" class="rowColor">
+<td class="colFirst"><code>java.io.InputStream</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getBlobInputStream(java.lang.String,java.sql.ResultSet,int)">getBlobInputStream</a></span>&#8203;(java.lang.String&nbsp;bindingSetName,
+                  java.sql.ResultSet&nbsp;rs,
+                  int&nbsp;column)</code></th>
+<td class="colLast">
+<div class="block">returns the blob column data as an inputstream</div>
+</td>
+</tr>
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>java.util.Map&lt;java.lang.String,&#8203;java.lang.String[]&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getCalcFktMapping(de.businesscode.bcdui.binding.BindingSet)">getCalcFktMapping</a></span>&#8203;(<a href="../../bcdui/binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&nbsp;resultingBindingSet)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getClob(java.lang.String,java.sql.ResultSet,int)">getClob</a></span>&#8203;(java.lang.String&nbsp;bindingSetName,
        java.sql.ResultSet&nbsp;rs,
@@ -336,7 +355,7 @@ extends java.lang.Object</pre>
 <div class="block">returns the clob column data as a string</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>java.io.InputStream</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getClobInputStream(java.lang.String,java.sql.ResultSet,int)">getClobInputStream</a></span>&#8203;(java.lang.String&nbsp;bindingSetName,
                   java.sql.ResultSet&nbsp;rs,
@@ -345,29 +364,29 @@ extends java.lang.Object</pre>
 <div class="block">returns the clob column data as an inputstream</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getDatabaseProductNameLC(de.businesscode.bcdui.binding.BindingSet)">getDatabaseProductNameLC</a></span>&#8203;(<a href="../../bcdui/binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&nbsp;bs)</code></th>
 <td class="colLast">
 <div class="block">Does not do much checking, but as all BindingSets are tested on start, the risk is low</div>
 </td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i14" class="altColor">
 <td class="colFirst"><code>java.util.Map&lt;java.lang.String,&#8203;java.lang.String[]&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getDefaultCalcFktMapping()">getDefaultCalcFktMapping</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code>static <a href="DatabaseCompatibility.html" title="class in de.businesscode.util.jdbc">DatabaseCompatibility</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getInstance()">getInstance</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i16" class="altColor">
 <td class="colFirst"><code>java.util.Set&lt;java.lang.String&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getReservedDBWords(de.businesscode.bcdui.binding.BindingSet)">getReservedDBWords</a></span>&#8203;(<a href="../../bcdui/binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&nbsp;bs)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i15" class="rowColor">
+<tr id="i17" class="rowColor">
 <td class="colFirst"><code>java.util.Map&lt;java.lang.String,&#8203;java.lang.String[]&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSpatialFktMapping(de.businesscode.bcdui.binding.BindingSet)">getSpatialFktMapping</a></span>&#8203;(<a href="../../bcdui/binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&nbsp;resultingBindingSet)</code></th>
 <td class="colLast">
@@ -761,10 +780,33 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
+<a id="getBlob(java.lang.String,java.sql.ResultSet,int)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getBlob</h4>
+<pre class="methodSignature">public&nbsp;byte[]&nbsp;getBlob&#8203;(java.lang.String&nbsp;bindingSetName,
+                      java.sql.ResultSet&nbsp;rs,
+                      int&nbsp;column)
+               throws java.lang.Exception</pre>
+<div class="block">returns the blob column data as a byte array</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>bindingSetName</code> - the name of the currently used binding set</dd>
+<dd><code>rs</code> - the current result set</dd>
+<dd><code>column</code> - the index of the columns within the result set</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>byte array with data</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>java.lang.Exception</code></dd>
+</dl>
+</li>
+</ul>
 <a id="getClobInputStream(java.lang.String,java.sql.ResultSet,int)">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>getClobInputStream</h4>
 <pre class="methodSignature">public&nbsp;java.io.InputStream&nbsp;getClobInputStream&#8203;(java.lang.String&nbsp;bindingSetName,
@@ -779,6 +821,29 @@ extends java.lang.Object</pre>
 <dd><code>column</code> - the index of the columns within the result set</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>clob data as an inputstream</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>java.lang.Exception</code></dd>
+</dl>
+</li>
+</ul>
+<a id="getBlobInputStream(java.lang.String,java.sql.ResultSet,int)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getBlobInputStream</h4>
+<pre class="methodSignature">public&nbsp;java.io.InputStream&nbsp;getBlobInputStream&#8203;(java.lang.String&nbsp;bindingSetName,
+                                              java.sql.ResultSet&nbsp;rs,
+                                              int&nbsp;column)
+                                       throws java.lang.Exception</pre>
+<div class="block">returns the blob column data as an inputstream</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>bindingSetName</code> - the name of the currently used binding set</dd>
+<dd><code>rs</code> - the current result set</dd>
+<dd><code>column</code> - the index of the columns within the result set</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>blob data as an inputstream</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>java.lang.Exception</code></dd>
 </dl>
