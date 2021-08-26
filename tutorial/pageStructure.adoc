@@ -136,7 +136,7 @@ See the following examples:
 ----
 // Dependency tree is automatically taken care for from BCD-UI objects
 var m1 = new bcdui.core.SimpleModel({ url: "mydata.xml" }); // <1>
-var mw1 = new bcdui.core.ModelWrapper({ inputMidel: m1 }); // <2>
+var mw1 = new bcdui.core.ModelWrapper({ inputModel: m1, chain: function(doc, args) { return doc; } }); // <2>
 
 // When accessing from js, you need to make sure the DataProvider is ready
 var m2 = new bcdui.core.SimpleModel({ url: "mydata.xml" });
@@ -159,7 +159,7 @@ bcdui.factory.objectRegistry.withReadyObjects(  m1, m2, // <6>
 ----
 <1> SimpleModel will nor load until execute() is called by someone
 <2> BCD-UI objects will call execute() on any of their input, of it finds it not _ready_.
-Here mw1 will execute m1 and wait for m1 to become ready before continuing with its own action.
+Here mw1 will execute m1 and wait for m1 to become ready before continuing with its own action. Chain can be one or more js function(s) or xslt stylesheet(s) which does some actual transformation on the document.
 <3> The newly created SimpleModel m2 is not ready to be used, getData() will return null
 <4> Call execute() explicit in this situation and wait for it to become ready
 <5> Note, execute() is always asynchronous, except for StaticModel

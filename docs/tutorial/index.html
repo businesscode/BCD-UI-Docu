@@ -2751,7 +2751,7 @@ See the following examples:</p>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="javascript"><span class="comment">// Dependency tree is automatically taken care for from BCD-UI objects</span>
 <span class="keyword">var</span> m1 = <span class="keyword">new</span> bcdui.core.SimpleModel({ <span class="key">url</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">mydata.xml</span><span class="delimiter">&quot;</span></span> }); <i class="conum" data-value="1"></i><b>(1)</b>
-<span class="keyword">var</span> mw1 = <span class="keyword">new</span> bcdui.core.ModelWrapper({ <span class="key">inputMidel</span>: m1 }); <i class="conum" data-value="2"></i><b>(2)</b>
+<span class="keyword">var</span> mw1 = <span class="keyword">new</span> bcdui.core.ModelWrapper({ <span class="key">inputModel</span>: m1, <span class="function">chain</span>: <span class="keyword">function</span>(doc, args) { <span class="keyword">return</span> doc; } }); <i class="conum" data-value="2"></i><b>(2)</b>
 
 <span class="comment">// When accessing from js, you need to make sure the DataProvider is ready</span>
 <span class="keyword">var</span> m2 = <span class="keyword">new</span> bcdui.core.SimpleModel({ <span class="key">url</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">mydata.xml</span><span class="delimiter">&quot;</span></span> });
@@ -2782,7 +2782,7 @@ bcdui.factory.objectRegistry.withReadyObjects(  m1, m2, <i class="conum" data-va
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
 <td>BCD-UI objects will call execute() on any of their input, of it finds it not <em>ready</em>.
-Here mw1 will execute m1 and wait for m1 to become ready before continuing with its own action.</td>
+Here mw1 will execute m1 and wait for m1 to become ready before continuing with its own action. Chain can be one or more js function(s) or xslt stylesheet(s) which does some actual transformation on the document.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
