@@ -271,6 +271,10 @@
             </ul>
             <ul class="methods itemMembers">
             
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="bcdui.component.docUpload.getUploadOverview"><a href="bcdui.component.docUpload.html#.getUploadOverview">getUploadOverview</a></li>
+            
             </ul>
             <ul class="events itemMembers">
             
@@ -2717,12 +2721,40 @@
             </ul>
         </li>
     
-        <li class="item" data-name="bcdui.component.docUpload~bcdui.component.docUpload.Uploader">
+        <li class="item" data-name="bcdui.component.docUpload.Uploader">
             <span class="title">
-                <a href="bcdui.component.docUpload-bcdui.component.docUpload.Uploader.html">bcdui.component.docUpload~bcdui.component.docUpload.Uploader</a>
+                <a href="bcdui.component.docUpload.Uploader.html">bcdui.component.docUpload.Uploader</a>
                 
             </span>
             <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#chainLoadedStatus"><a href="bcdui.component.docUpload.Uploader.html#chainLoadedStatus">chainLoadedStatus</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#chainLoadingFailed"><a href="bcdui.component.docUpload.Uploader.html#chainLoadingFailed">chainLoadingFailed</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#chainStylesheetLoadingFailed"><a href="bcdui.component.docUpload.Uploader.html#chainStylesheetLoadingFailed">chainStylesheetLoadingFailed</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#id"><a href="bcdui.component.docUpload.Uploader.html#id">id</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#initializedStatus"><a href="bcdui.component.docUpload.Uploader.html#initializedStatus">initializedStatus</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#loadFailedStatus"><a href="bcdui.component.docUpload.Uploader.html#loadFailedStatus">loadFailedStatus</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#loadingStatus"><a href="bcdui.component.docUpload.Uploader.html#loadingStatus">loadingStatus</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#savedStatus"><a href="bcdui.component.docUpload.Uploader.html#savedStatus">savedStatus</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#saveFailedStatus"><a href="bcdui.component.docUpload.Uploader.html#saveFailedStatus">saveFailedStatus</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#transformedStatus"><a href="bcdui.component.docUpload.Uploader.html#transformedStatus">transformedStatus</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#transformFailedStatus"><a href="bcdui.component.docUpload.Uploader.html#transformFailedStatus">transformFailedStatus</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#transformingStatus"><a href="bcdui.component.docUpload.Uploader.html#transformingStatus">transformingStatus</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#waitingForParametersStatus"><a href="bcdui.component.docUpload.Uploader.html#waitingForParametersStatus">waitingForParametersStatus</a></li>
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -2732,6 +2764,82 @@
             
             </ul>
             <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#addDataProvider"><a href="bcdui.component.docUpload.Uploader.html#addDataProvider">addDataProvider</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#addStatusListener"><a href="bcdui.component.docUpload.Uploader.html#addStatusListener">addStatusListener</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#debugIsWaitingFor"><a href="bcdui.component.docUpload.Uploader.html#debugIsWaitingFor">debugIsWaitingFor</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#debugStatus"><a href="bcdui.component.docUpload.Uploader.html#debugStatus">debugStatus</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#execute"><a href="bcdui.component.docUpload.Uploader.html#execute">execute</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#fetchData"><a href="bcdui.component.docUpload.Uploader.html#fetchData">fetchData</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#fire"><a href="bcdui.component.docUpload.Uploader.html#fire">fire</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#getData"><a href="bcdui.component.docUpload.Uploader.html#getData">getData</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#getDataProviderByName"><a href="bcdui.component.docUpload.Uploader.html#getDataProviderByName">getDataProviderByName</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#getFailedStatus"><a href="bcdui.component.docUpload.Uploader.html#getFailedStatus">getFailedStatus</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#getName"><a href="bcdui.component.docUpload.Uploader.html#getName">getName</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#getPrimaryModel"><a href="bcdui.component.docUpload.Uploader.html#getPrimaryModel">getPrimaryModel</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#getReadyStatus"><a href="bcdui.component.docUpload.Uploader.html#getReadyStatus">getReadyStatus</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#getStatus"><a href="bcdui.component.docUpload.Uploader.html#getStatus">getStatus</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#getTargetHtml"><a href="bcdui.component.docUpload.Uploader.html#getTargetHtml">getTargetHtml</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#getUploadInfo"><a href="bcdui.component.docUpload.Uploader.html#getUploadInfo">getUploadInfo</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#hasFailed"><a href="bcdui.component.docUpload.Uploader.html#hasFailed">hasFailed</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#isClear"><a href="bcdui.component.docUpload.Uploader.html#isClear">isClear</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#isReady"><a href="bcdui.component.docUpload.Uploader.html#isReady">isReady</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#onceReady"><a href="bcdui.component.docUpload.Uploader.html#onceReady">onceReady</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#onChange"><a href="bcdui.component.docUpload.Uploader.html#onChange">onChange</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#onReady"><a href="bcdui.component.docUpload.Uploader.html#onReady">onReady</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#promptData"><a href="bcdui.component.docUpload.Uploader.html#promptData">promptData</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#query"><a href="bcdui.component.docUpload.Uploader.html#query">query</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#queryNodes"><a href="bcdui.component.docUpload.Uploader.html#queryNodes">queryNodes</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#read"><a href="bcdui.component.docUpload.Uploader.html#read">read</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#reloadStylesheets"><a href="bcdui.component.docUpload.Uploader.html#reloadStylesheets">reloadStylesheets</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#remove"><a href="bcdui.component.docUpload.Uploader.html#remove">remove</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#removeDataListener"><a href="bcdui.component.docUpload.Uploader.html#removeDataListener">removeDataListener</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#removeStatusListener"><a href="bcdui.component.docUpload.Uploader.html#removeStatusListener">removeStatusListener</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#sendData"><a href="bcdui.component.docUpload.Uploader.html#sendData">sendData</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#serialize"><a href="bcdui.component.docUpload.Uploader.html#serialize">serialize</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#setPrimaryModel"><a href="bcdui.component.docUpload.Uploader.html#setPrimaryModel">setPrimaryModel</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#setStatus"><a href="bcdui.component.docUpload.Uploader.html#setStatus">setStatus</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#setTargetHtml"><a href="bcdui.component.docUpload.Uploader.html#setTargetHtml">setTargetHtml</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#toString"><a href="bcdui.component.docUpload.Uploader.html#toString">toString</a></li>
+            
+                <li data-name="bcdui.component.docUpload.Uploader#write"><a href="bcdui.component.docUpload.Uploader.html#write">write</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -7135,7 +7243,7 @@ The Y coordinate where the event has been triggered.
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Thu Aug 26 2021 12:02:18 GMT+0200 (GMT+02:00)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Mon Aug 30 2021 11:19:56 GMT+0200 (GMT+02:00)
         </footer>
     </div>
 </div>
