@@ -16,7 +16,11 @@ Eclipse (__Buildship__ plugin installed per default) and IDEA support gradle out
 +
 Add a `build.gradle` file as shown here link:https://github.com/businesscode/maven-repo[window="_blank"] to your project root.
 +
-When working with Eclipse, open menu:File[Import...|Existing Gradle Project] and select your project root. It worked when you see BCD and all of its dependencies under `Project and External Dependencies`.
+When working with Eclipse, open menu:File[Import...|Existing Gradle Project] and select your project root, if your project is already in Eclipse Workspace, then add "Gradle Nature" to the project and trigger "Gradle-Refresh".
++
+TIP: we refer to `webAppDirName = "WebContent"` as the content directory in the gradle file, please ensure it matches your web module configuration.
++
+It worked when you see BCD and all of its dependencies under `Project and External Dependencies`.
 +
 image::images/eclipse_dependencies.png[width=50%, align="center"]
 +
