@@ -114,7 +114,8 @@ Add a file `WEB-INF/bcdui/subjectSettings.xml` with at least the following conte
 ----
 include::../web/WEB-INF/bcdui/subjectSettings.xml[]
 ----
-Later you can define BindingSet related security restrictions here.
+Later you can define BindingSet related security restrictions here as described
+in <<DocBinding,BindingSet Features / Row-Level-Security>>
 
 === User related BindingSets
 Add bcd_sec_user and bcd_sec_user_settings BindingSets (and the corresponding tables).
