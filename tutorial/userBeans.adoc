@@ -1,0 +1,97 @@
+[[UserBeans]]
+== User Beans
+
+bcdUserBean are name/value pairs which can be set client sided. You define the name and the value by calling the mapped
+SessionAttributesManager servlet with name and value attributes:
+
+For example for a mapped servlet you would set "country" to "DE"
+"localhost:8080/YourProject/SessionAttributesManager?value=DE&name=country"
+
+The servlet is mapped via a web.xml entry:
+[source,xml]
+  <servlet>
+    <servlet-name>bcdui4.SessionAttributesManager</servlet-name>
+    <servlet-class>de.businesscode.bcdui.web.servlets.SessionAttributesManager</servlet-class>
+    <init-param>
+      <param-name>ALLOWED_ATTRIBUTES</param-name>
+      <param-value>...</param-value>
+    </init-param>
+    <init-param>
+      <param-name>ALLOWED_VALUES</param-name>
+      <param-value>...</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>bcdui4.SessionAttributesManager</servlet-name>
+    <url-pattern>/SessionAttributesManager/*</url-pattern>
+  </servlet-mapping>
+
+ALLOWED_ATTRIBUTES is a comma separated list of allowed names.
+Example: <param-value>country, instanceId, language</param-value>
+You can only set values for names which are listed here.
+
+ALLOWED_VALUES is also a comma separated list of allowed name:values entries where values are space separated.
+Example: <param-value>country:DE FR ES, language:en,fr,latin</param-value>
+You can only set such values by calling the servlet or you have them as user rights in your bcd_sec_user_settings
+table. As user right, your names are prefixed with "bcdUserBean:", so e.g. you have
+
+right_type: bcdUserBean:language right_value:latin
+
+
+==== Default Values:
+
+If you haven't set any bean name/value yet and want to access it, a default value is chosen and returned.
+This is either the alphabetically first entry from ALLOWED_VALUES for the given name or the alphabetically first entry
+from bcd_sec_user_settings for the requested bcdUserBean:name. In the latter case this can be "*". If no default can
+be found an empty string is returned
+
+
+==== URL Usage:
+
+You can use the beans in an URL, like "http://localhost:8080/myApp/${bcdUserBean.pageId}/index.html". The expression is
+replaced with the value and forwarded. Of course multiple expressions are possible. A value of "*" will be replaced with
+an empty string, in case the url then holds "//" somewhere, this will be cleaned up to "/".
+Ensure that the url is excluded from caching, otherwise you'd have to hit F5 after switching the bean and accessing
+the page.
+
+
+==== Read/Write security:
+
+Bean values can be also used for server sided read/write protection (see SubjectSettings). For this, you can define
+a SubjectFilterType as you know it from subject settings. The name needs to be prefixed with "bcdUserBean:".
+
+Example:
+
+[source,xml]
+  <SubjectFilterType name="bcdUserBean:country">
+    <Caption>country via bcdUserBean</Caption>
+    <BindingItems>
+      <C bRef="country"/>
+    </BindingItems>
+  </SubjectFilterType>
+
+And in a binding you can reference it the usual way then:
+
+[source,xml]
+  <SubjectSettings>
+   <Security><Operation permission="allAllowed" name="write"/></Security>
+    <SubjectFilters>
+      <SubjectFilter type="bcdUserBean:country"/>
+    </SubjectFilters>
+  </SubjectSettings>
+
+
+==== Setting a bean programmatically:
+
+[source,java]
+import org.apache.shiro.SecurityUtils;
+public static final String BCD_EL_USER_BEAN = "bcdUserBean";
+Subject subject = SecurityUtils.getSubject();
+boolean gotSession = (subject != null && subject.getSession() != null);
+HashMap<String, String> bean = gotSession ? (HashMap<String, String>)subject.getSession().getAttribute(BCD_EL_USER_BEAN) : null;
+if (bean == null)
+  bean = new HashMap<>();
+bean.put("newName", "newValue");
+if (gotSession)
+  subject.getSession().setAttribute(BCD_EL_USER_BEAN, bean);

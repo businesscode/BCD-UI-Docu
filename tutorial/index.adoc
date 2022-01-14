@@ -47,6 +47,8 @@ include::api.adoc[]
 
 include::security.adoc[]
 
+include::userBeans.adoc[]
+
 include::caching.adoc[]
 
 include::binding.adoc[]
