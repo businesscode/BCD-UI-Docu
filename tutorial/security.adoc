@@ -32,13 +32,13 @@ Each request is checked whether it addresses a
 
 After login, the original request is processed.
 
-For each url path you can also set required rights in the init-param section of IniShiroFilter in web.xml.
+For each url path you can also set required rights in the shiro.ini file.
 
 ==== Developer view
 
 Developers need to follow these rules to implement secure applications:
 
-* Enable IniShiroFilter security filter in web.xml to enforce login for non-public areas
+* Enable ShiroFilter security filter in web.xml to enforce login for non-public areas
 * Configure the CachingFilter to send user dependent and sensitive data with `no-cache`
 * Invalidate sessionId on log-off and session timeout explicitly
 * The system supports deep links, i.e. redirecting to the originally requested page after login +
@@ -68,41 +68,41 @@ Per default bcdui static resources are accessible without login, you can also us
 . Login logging +
 By adding `bcd_log_login` BindingSet to your application, all login attempts, and their result is logged into the corresponding table.
 
-To set up users and their authorization, you can choose the simple setup by hard-coding them in web.xml, by maintaining them in BCD-UI's database or authenticated with oAuth (AD, Google, facebook etc) combined with rights maintained in your database.
+To set up users and their authorization, you can choose the simple setup by hard-coding them in shiro.ini, by maintaining them in BCD-UI's database or authenticated with oAuth (AD, Google, facebook etc) combined with rights maintained in your database.
 
 ==== Page access rights
-No matter which method you use for defining users and their roles, use the [urls] section in web.xml to define access permissions needed for pages. It is easy to also adjust the menu to offer only allowed pages.
+No matter which method you use for defining users and their roles, use the [urls] section in shiro.ini to define access permissions needed for pages. It is easy to also adjust the menu to offer only allowed pages.
 
 [source,xml,indent=0]
 ----
-include::../web/WEB-INF/web.xml[tag=urls]
+include::../web/WEB-INF/shiro.ini[tag=urls]
 ----
 <1> Here we define that any authenticated user can access /cube
 <2> For /api/** we require login and a 'pages:admin' permission
 
 
-=== Define users in web.xml
-You can have an easy web.xml - only setup in the following way:
+=== Define users in shiro.ini
+You can have an easy shiro.ini - only setup in the following way:
 
 .Add any users, their password and their roles:
 [source,xml,indent=0]
 ----
-include::../web/WEB-INF/web.xml[tag=users]
+include::../web/WEB-INF/shiro.ini[tag=users]
 ----
 
 .Define permissions of roles:
 [source,xml,indent=0]
 ----
-include::../web/WEB-INF/web.xml[tag=roles]
+include::../web/WEB-INF/shiro.ini[tag=roles]
 ----
 Users with 'adminRole' also have the pages:admin right.
 
 === Define users in the database
-Instead of having a static set of users and passwords in web.xml, you can store users and passwords in the database.
+Instead of having a static set of users and passwords in shiro.ini, you can store users and passwords in the database.
 
 [source,xml,indent=0]
 ----
-include::../web/WEB-INF/web.xml[tag=mainJdbcRealm]
+include::../web/WEB-INF/shiro.ini[tag=mainJdbcRealm]
 ----
 Keep [users] and [roles] sections empty and follow for [urls] the description given in the chapter above.
 
@@ -138,14 +138,14 @@ Authentication is handled by OAuth, permissions are managed by application throu
 
 . Configuration
 +
-The web.xml link:https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/web.xml[template of BCD-UI] describes the setup, more about this the following section
+The shiro.ini link:https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/shiro.ini[template of BCD-UI] describes the setup, more about this the following section
 +
 .oAuth sample with Azure
 [source]
 ----
-include::../web/WEB-INF/web.xml[tag=oAuth,indent=0]
+include::../web/WEB-INF/shiro.xml[tag=oAuth,indent=0]
 ----
-The mentioned template web.xml also describes oAuth with Google and how to combine multiple providers,
+The mentioned template shiro.xml also describes oAuth with Google and how to combine multiple providers,
 
 === Kerberos / Windows SSO / Windows Authentication
 
