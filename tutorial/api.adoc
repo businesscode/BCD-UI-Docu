@@ -38,11 +38,11 @@ include::../web/api/index.html[tag=jscode]
 
 === HTML5 Custom Elements API
 
-HTML5 Custom Elements look like standard HTML tags but provide custom functionality.
+HTML5 Custom Elements look like standard HTML tags, but provide custom functionality.
 They will become more and more common in the next time.
 
 .General Rules
-* There are custom tags for widgets, components and the renderer, i.e. for all objects creating visual output.
+* There are HTML Custom Elements for widgets, components and the renderer, i.e. for all objects creating visual output.
 * The naming of the tags follows the naming of the JavaScript API, preceded by 'bcd-'.
 * The output is placed at the location of the tag, i.e. no targetHtml is necessary
 * To reference other objects, for example DataProviders, you need to give those objects and explicit id

@@ -1,7 +1,7 @@
 [[DocCompatibility]]
 == Compatibility
 
-=== Compatibility
+=== Compatibility of BCD-UI
 
 As of 2021, BCD-UI works without modifications within the following environments
 
@@ -28,8 +28,9 @@ As of 2021, BCD-UI works without modifications within the following environments
 * Apache commons, jQuery and various other open source libraries
 * Gradle, Eclipse and IntelliJ IDEA, git
 
+=== Developing for specific browsers
 
-=== Known browser incompatibilities
+==== Known browser limitations
 
 * favicon.ico is picked up by FireFox when found in webapp root, ie does not do this
 * IE does not allow setting the name attribute via DOM (helper function in corePackage.js)
@@ -42,9 +43,9 @@ As of 2021, BCD-UI works without modifications within the following environments
 * IE seems to handle position() in xsl:key/@match expressions wrong. Sample: match="/*/Something[@pos&gt;3][position()&lt;2]". It will find an empty list instead of a list with two elements.
 * Due to a well-known bug in FireFox (at-least 10-24), you need to enable 3rd-party cookies or better add an exception for a webpage with BCD-UI. This flag is per default off ("disabled") since version 22.
 
-=== Working with webkit browsers
+==== Working with webkit browsers
 
-Webkit browsers like Safari, Chrome and Opera compatibility requires the following to be taken into account
+Webkit/Chromium based browsers like Edge, Safari, Chrome and Opera compatibility requires the following to be taken into account
 
 * Declare all namespaces used by XSLT, since documents addressed via document() and xsl:import are included in the host XSLT and
 elements with undeclared namespaces inherit the default namespace of the (possibly generated) host XSLT

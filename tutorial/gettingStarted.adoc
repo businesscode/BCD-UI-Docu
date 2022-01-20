@@ -2,20 +2,20 @@
 == Getting Started
 
 At its core, a BCD-UI application is a standard Jakarta EE web application.
-For the following, we assume you already have a blank application running.
 
 If you are not an experienced Java web application developer, make sure you have a plain Java web application running before you turn it into a BCD-UI application. +
+For the following, we assume you already have a blank application running.
 
 TIP: If you don't know how to make a vanilla application running with your IDE and Tomcat, check the <<DocBootstrap,Bootstrap>> chapter.
 
-To turn a plain into a BCD-UI application, just do these 4 steps, detailed out in <<DocAppsetup,Application Setup>>, to turn it into a BCD-UI application
+To turn a plain application into a BCD-UI application, just do these 4 steps, detailed out in <<DocAppsetup,Application Setup>>
 
-* Add bcd-ui-core.jar and bcd-ui-theme.jar, and their dependencies
+* Add bcd-ui-core.jar and bcd-ui-theme.jar, and their Java dependencies
 * Copy some entries into your web.xml
-* Define database connection and default in context.xml
+* Define database connection in context.xml
 * Add log4j2.xml
 
-and you are read to go.
+and you are done.
 
 === Useful resources
 
@@ -26,8 +26,8 @@ Target audience of this tutorial are developers already developing Java web appl
 :xslt-deep-link: https://edutechwiki.unige.ch/en/XSLT_Tutorial_-_Basics
 
 . Create and understand Java Jakarta web applications link:https://happycoding.io/tutorials/java-server/[intro^]
-. Run Tomcat together with you favorite IDE, for example link:https://www.baeldung.com/eclipse-tomcat[with Eclipse^]
-. Operate a standard SQL database and have some tables with data, for example link:https://www.postgresqltutorial.com/[Postgres^]
+. Run Tomcat together with your favorite IDE, for example link:https://www.baeldung.com/eclipse-tomcat[with Eclipse^]
+. Hav access to a standard SQL database and have some tables with data, for example link:https://www.postgresqltutorial.com/[Postgres^]
 . Know how to use link:https://developer.mozilla.org/en-US/docs/Web/JavaScript[JavaScript^]
 . Have an understanding of HTML, css, XML, Ajax
 . Be able to read and write XPath link:https://www.zyte.com/blog/an-introduction-to-xpath-with-examples/[intro^] and XSLT link:https://www.w3schools.com/xml/xsl_intro.asp[short^] or {xslt-deep-link}[in depth^]
