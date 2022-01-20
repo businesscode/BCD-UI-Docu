@@ -2319,6 +2319,38 @@
             
                 <li data-name="bcdui.component.chart.ChartEchart.saveAsImage"><a href="bcdui.component.chart.ChartEchart.html#.saveAsImage">saveAsImage</a></li>
             
+                <li data-name="bcdui.component.chart.ChartEchart.saveAsImage"><a href="bcdui.component.chart.ChartEchart.html#.saveAsImage">saveAsImage</a></li>
+            
+                <li data-name="bcdui.component.chart.ChartEchart#getData"><a href="bcdui.component.chart.ChartEchart.html#getData">getData</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="bcdui.component.chart.ChartEchart">
+            <span class="title">
+                <a href="bcdui.component.chart.ChartEchart.html">bcdui.component.chart.ChartEchart</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="bcdui.component.chart.ChartEchart.saveAsImage"><a href="bcdui.component.chart.ChartEchart.html#.saveAsImage">saveAsImage</a></li>
+            
+                <li data-name="bcdui.component.chart.ChartEchart.saveAsImage"><a href="bcdui.component.chart.ChartEchart.html#.saveAsImage">saveAsImage</a></li>
+            
                 <li data-name="bcdui.component.chart.ChartEchart#getData"><a href="bcdui.component.chart.ChartEchart.html#getData">getData</a></li>
             
             </ul>
@@ -6786,7 +6818,7 @@ These are mainly JavaScript wrappers around XML library found a bcdui/xslt</div>
     
         
         <div class="tag-source">
-            wrs/wrsUtilPackage.js, line 1423
+            wrs/wrsUtilPackage.js, line 1427
         </div>
         
     </div>
@@ -9370,7 +9402,7 @@ See <a href="bcdui.wrs.wrsUtil.html#.restore">restore()</a> on how the change hi
     
         
         <div class="tag-source">
-            wrs/wrsUtilPackage.js, line 1367
+            wrs/wrsUtilPackage.js, line 1371
         </div>
         
     </div>
@@ -10540,7 +10572,7 @@ See <a href="bcdui.wrs.wrsUtil.html#.restore">restore()</a> on how the change hi
     
         
         <div class="tag-source">
-            wrs/wrsUtilPackage.js, line 1467
+            wrs/wrsUtilPackage.js, line 1471
         </div>
         
     </div>
@@ -11497,7 +11529,7 @@ See <a href="bcdui.wrs.wrsUtil.html#.restore">restore()</a> on how the change hi
     
         
         <div class="tag-source">
-            wrs/wrsUtilPackage.js, line 1297
+            wrs/wrsUtilPackage.js, line 1301
         </div>
         
     </div>
@@ -11506,11 +11538,6 @@ See <a href="bcdui.wrs.wrsUtil.html#.restore">restore()</a> on how the change hi
 </dt>
 <dd>
     
-    
-    <div class="description">
-        POSTs one or mode WRS documents to well known WrsServlet URL
-Multiple document are handled by WrsServlet in one transaction,
-    </div>
     
 
     
@@ -11546,7 +11573,7 @@ Multiple document are handled by WrsServlet in one transaction,
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type"><a href="global.html#PostWrsParam">PostWrsParam</a></span>
 |
 
 <span class="param-type">XMLDocument</span>
@@ -11568,188 +11595,7 @@ Multiple document are handled by WrsServlet in one transaction,
             
             <td class="description last">
                 
-                DataProvider(s), Document(s) or a parameter object with the following properties
-                
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>wrsDoc</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">XMLDocument</span>
-|
-
-<span class="param-type">Array.&lt;XMLDocument></span>
-|
-
-<span class="param-type"><a href="bcdui.core.DataProvider.html">bcdui.core.DataProvider</a></span>
-|
-
-<span class="param-type">Array.&lt;<a href="bcdui.core.DataProvider.html">bcdui.core.DataProvider</a>></span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                    
-                    
-                        
-                    
-                
-                Document(s) / DataProvider</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>onSuccess</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                Callback on success, is called after successful POST or if POST was not issued due to to changes in the document</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>onFailure</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                Callback on failure, is called if error occurs</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>onWrsValidationFailure</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                Callback on serverside validate failure, if omitted the onFailure is used in case of validation failures</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>uri</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                An URI (i.e. SomeDoc) which is appended as pathInfo to WrsServlet
-
-you can also simply provide one argument: wrsDoc or array thereof, which is then POSTed</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-            </td>
+                DataProvider(s), Document(s) or a parameter object</td>
         </tr>
 	
 	

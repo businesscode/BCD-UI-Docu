@@ -13,8 +13,7 @@
 <!--[if IE]>
 <script type="text/javascript" src="../../../../jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="../../../../jquery/jquery-3.3.1.js"></script>
-<script type="text/javascript" src="../../../../jquery/jquery-migrate-3.0.1.js"></script>
+<script type="text/javascript" src="../../../../jquery/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="../../../../jquery/jquery-ui.js"></script>
 </head>
 <body>
@@ -122,17 +121,16 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </tr>
 <tbody>
 <tr class="altColor">
-<th class="colFirst" scope="row"><a href="BindingAliasMap.html" title="class in de.businesscode.bcdui.binding">BindingAliasMap</a></th>
-<td class="colLast">
-<div class="block">This class is a static class that holds a hashmap which translates a binding set id
- to an t123123 which can be used as table alias in sql statements.</div>
-</td>
-</tr>
-<tr class="rowColor">
 <th class="colFirst" scope="row"><a href="BindingItem.html" title="class in de.businesscode.bcdui.binding">BindingItem</a></th>
 <td class="colLast">
 <div class="block">The BindingItem class represents a mapping from a logical name to a <br>
  database column.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<th class="colFirst" scope="row"><a href="BindingItemFromRel.html" title="class in de.businesscode.bcdui.binding">BindingItemFromRel</a></th>
+<td class="colLast">
+<div class="block">Represents a BindingItem coming form a BindingSet Relation</div>
 </td>
 </tr>
 <tr class="altColor">
@@ -148,8 +146,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <tr class="altColor">
 <th class="colFirst" scope="row"><a href="SimpleBindingItem.html" title="class in de.businesscode.bcdui.binding">SimpleBindingItem</a></th>
 <td class="colLast">
-<div class="block">Base class for BindingItems read from a BindingSet definition
- See also WrqBindingItem for the analogy used during actual statement</div>
+<div class="block">Base class for BindingItems read from a BindingSet definition or calc:Calc of a Wrs
+ It becomes member of a (Wrs|Standard)BindingSet
+ See also WrqBindingItem for the analogy used during actual statement representing the output</div>
 </td>
 </tr>
 <tr class="rowColor">

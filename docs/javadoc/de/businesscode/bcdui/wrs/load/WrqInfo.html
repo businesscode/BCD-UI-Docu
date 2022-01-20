@@ -13,8 +13,7 @@
 <!--[if IE]>
 <script type="text/javascript" src="../../../../../jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="../../../../../jquery/jquery-3.3.1.js"></script>
-<script type="text/javascript" src="../../../../../jquery/jquery-migrate-3.0.1.js"></script>
+<script type="text/javascript" src="../../../../../jquery/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="../../../../../jquery/jquery-ui.js"></script>
 </head>
 <body>
@@ -27,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":10,"i22":10,"i23":10,"i24":10,"i25":10,"i26":10,"i27":10,"i28":10,"i29":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":10,"i22":10,"i23":10,"i24":10,"i25":10,"i26":10,"i27":10,"i28":10,"i29":10,"i30":10,"i31":10,"i32":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -90,13 +89,13 @@ loadScripts(document, 'script');</script>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -142,6 +141,29 @@ extends java.lang.Object</pre>
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
+<!-- =========== FIELD SUMMARY =========== -->
+<section role="region">
+<ul class="blockList">
+<li class="blockList"><a id="field.summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<table class="memberSummary">
+<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colSecond" scope="col">Field</th>
+<th class="colLast" scope="col">Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="SqlFromSubSelect.html" title="class in de.businesscode.bcdui.wrs.load">SqlFromSubSelect</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#currentSelect">currentSelect</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
+</section>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <section role="region">
 <ul class="blockList">
@@ -156,9 +178,11 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(org.w3c.dom.Document,de.businesscode.bcdui.binding.Bindings)">WrqInfo</a></span>&#8203;(org.w3c.dom.Document&nbsp;wrq,
-       <a href="../../binding/Bindings.html" title="class in de.businesscode.bcdui.binding">Bindings</a>&nbsp;bindings)</code></th>
-<td class="colLast">&nbsp;</td>
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(de.businesscode.bcdui.wrs.load.SqlFromSubSelect,org.w3c.dom.Element)">WrqInfo</a></span>&#8203;(<a href="SqlFromSubSelect.html" title="class in de.businesscode.bcdui.wrs.load">SqlFromSubSelect</a>&nbsp;currentSelect,
+       org.w3c.dom.Element&nbsp;selectElem)</code></th>
+<td class="colLast">
+<div class="block">Constructor from currentSelect as context and our wrq:Select element</div>
+</td>
 </tr>
 </table>
 </li>
@@ -194,8 +218,8 @@ extends java.lang.Object</pre>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i3" class="rowColor">
-<td class="colFirst"><code>java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getBindingSetId()">getBindingSetId</a></span>()</code></th>
+<td class="colFirst"><code><a href="SqlFromSubSelect.html" title="class in de.businesscode.bcdui.wrs.load">SqlFromSubSelect</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getCurrentSelect()">getCurrentSelect</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i4" class="altColor">
@@ -211,7 +235,7 @@ extends java.lang.Object</pre>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i6" class="altColor">
-<td class="colFirst"><code>protected java.util.LinkedHashSet&lt;java.lang.String&gt;</code></td>
+<td class="colFirst"><code>java.util.LinkedHashSet&lt;java.lang.String&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getFullSelectListBRefs()">getFullSelectListBRefs</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
@@ -241,106 +265,117 @@ extends java.lang.Object</pre>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i12" class="altColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getJdbcResourceName()">getJdbcResourceName</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Convenience method</div>
+</td>
+</tr>
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getNextColumnNumber()">getNextColumnNumber</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i14" class="altColor">
 <td class="colFirst"><code><a href="../../binding/BindingItem.html" title="class in de.businesscode.bcdui.binding">BindingItem</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getNoMetaDataBindingItem(java.lang.String)">getNoMetaDataBindingItem</a></span>&#8203;(java.lang.String&nbsp;id)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code>protected java.util.LinkedHashSet&lt;java.lang.String&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getOrderingBRefs()">getOrderingBRefs</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i15" class="rowColor">
+<tr id="i16" class="altColor">
 <td class="colFirst"><code>org.w3c.dom.Document</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getOwnerDocument()">getOwnerDocument</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i16" class="altColor">
-<td class="colFirst"><code>protected java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRequestedBindingSetName()">getRequestedBindingSetName</a></span>()</code></th>
-<td class="colLast">
-<div class="block">This is the binding set / group named in the Wrq</div>
-</td>
-</tr>
 <tr id="i17" class="rowColor">
-<td class="colFirst"><code><a href="../../binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a></code></td>
+<td class="colFirst"><code><a href="WrqBindingSet.html" title="interface in de.businesscode.bcdui.wrs.load">WrqBindingSet</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getResultingBindingSet()">getResultingBindingSet</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i18" class="altColor">
-<td class="colFirst"><code>org.w3c.dom.NodeList</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSelectNodes()">getSelectNodes</a></span>()</code></th>
+<td class="colFirst"><code>org.w3c.dom.Element</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSelectNode()">getSelectNode</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i19" class="rowColor">
+<td class="colFirst"><code><a href="SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSQLSelectWithParams()">getSQLSelectWithParams</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i20" class="altColor">
 <td class="colFirst"><code>protected int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getStartRow()">getStartRow</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i20" class="altColor">
+<tr id="i21" class="rowColor">
 <td class="colFirst"><code>org.w3c.dom.NodeList</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTopNs()">getTopNs</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i21" class="rowColor">
+<tr id="i22" class="altColor">
 <td class="colFirst"><code>protected java.util.LinkedHashSet&lt;java.lang.String&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getUserSelectListBRefs()">getUserSelectListBRefs</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i22" class="altColor">
+<tr id="i23" class="rowColor">
 <td class="colFirst"><code>java.util.Map&lt;java.lang.String,&#8203;java.util.Set&lt;java.lang.String&gt;&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVdm(java.lang.String)">getVdm</a></span>&#8203;(java.lang.String&nbsp;bRef)</code></th>
 <td class="colLast">
 <div class="block">Return the virtual dimension members for a bRef</div>
 </td>
 </tr>
-<tr id="i23" class="rowColor">
+<tr id="i24" class="altColor">
 <td class="colFirst"><code>java.util.Map&lt;java.lang.String,&#8203;java.lang.String&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVirtualBRefs()">getVirtualBRefs</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i24" class="altColor">
+<tr id="i25" class="rowColor">
+<td class="colFirst"><code><a href="WrqGroupBy2Sql.html" title="class in de.businesscode.bcdui.wrs.load">WrqGroupBy2Sql</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getWrqGroupBy2Sql()">getWrqGroupBy2Sql</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i26" class="altColor">
 <td class="colFirst"><code>protected java.util.LinkedList&lt;<a href="WrsBindingItem.html" title="interface in de.businesscode.bcdui.wrs.load">WrsBindingItem</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getWrsCOnlySelectListBRefs()">getWrsCOnlySelectListBRefs</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i25" class="rowColor">
+<tr id="i27" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initMetaData()">initMetaData</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Initializes internal data structures for this Wrq
- - The resulting BindingSet
- - All bRefs used and their WrqBindingItem
- - bRefs used in the select list
- - bRefs used in group by</div>
+<div class="block">Initializes internal data structures for s single wrq:Select</div>
 </td>
 </tr>
-<tr id="i26" class="altColor">
+<tr id="i28" class="altColor">
 <td class="colFirst"><code>protected boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isEmpty()">isEmpty</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i27" class="rowColor">
+<tr id="i29" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#reqHasGroupBy()">reqHasGroupBy</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i28" class="altColor">
+<tr id="i30" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#reqHasGroupingFunction()">reqHasGroupingFunction</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i29" class="rowColor">
+<tr id="i31" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#selectAllBindingItems()">selectAllBindingItems</a></span>()</code></th>
 <td class="colLast">
 <div class="block">No binding items are explicitly given in select clause, collect here all the BindingSet has to offer</div>
 </td>
+</tr>
+<tr id="i32" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setReqHasGroupingFunction(java.lang.Boolean)">setReqHasGroupingFunction</a></span>&#8203;(java.lang.Boolean&nbsp;reqHasGroupingFunction)</code></th>
+<td class="colLast">&nbsp;</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -359,6 +394,25 @@ extends java.lang.Object</pre>
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
+<!-- ============ FIELD DETAIL =========== -->
+<section role="region">
+<ul class="blockList">
+<li class="blockList"><a id="field.detail">
+<!--   -->
+</a>
+<h3>Field Detail</h3>
+<a id="currentSelect">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>currentSelect</h4>
+<pre>protected final&nbsp;<a href="SqlFromSubSelect.html" title="class in de.businesscode.bcdui.wrs.load">SqlFromSubSelect</a> currentSelect</pre>
+</li>
+</ul>
+</li>
+</ul>
+</section>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <section role="region">
 <ul class="blockList">
@@ -366,19 +420,20 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a id="&lt;init&gt;(org.w3c.dom.Document,de.businesscode.bcdui.binding.Bindings)">
+<a id="&lt;init&gt;(de.businesscode.bcdui.wrs.load.SqlFromSubSelect,org.w3c.dom.Element)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>WrqInfo</h4>
-<pre>public&nbsp;WrqInfo&#8203;(org.w3c.dom.Document&nbsp;wrq,
-               <a href="../../binding/Bindings.html" title="class in de.businesscode.bcdui.binding">Bindings</a>&nbsp;bindings)
+<pre>public&nbsp;WrqInfo&#8203;(<a href="SqlFromSubSelect.html" title="class in de.businesscode.bcdui.wrs.load">SqlFromSubSelect</a>&nbsp;currentSelect,
+               org.w3c.dom.Element&nbsp;selectElem)
         throws java.lang.Exception</pre>
+<div class="block">Constructor from currentSelect as context and our wrq:Select element</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>wrq</code> - </dd>
-<dd><code>bindings</code> - A parameter and not Bindings.getInstance() because we may be called in batch mode</dd>
+<dd><code>currentSelect</code> - </dd>
+<dd><code>selectElem</code> - </dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>java.lang.Exception</code></dd>
 </dl>
@@ -394,20 +449,6 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a id="getRequestedBindingSetName()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getRequestedBindingSetName</h4>
-<pre class="methodSignature">protected&nbsp;java.lang.String&nbsp;getRequestedBindingSetName()</pre>
-<div class="block">This is the binding set / group named in the Wrq</div>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="ISqlGenerator.html#getRequestedBindingSetName()"><code>ISqlGenerator.getRequestedBindingSetName()</code></a></dd>
-</dl>
-</li>
-</ul>
 <a id="getStartRow()">
 <!--   -->
 </a>
@@ -445,7 +486,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getFullSelectListBRefs</h4>
-<pre class="methodSignature">protected&nbsp;java.util.LinkedHashSet&lt;java.lang.String&gt;&nbsp;getFullSelectListBRefs()</pre>
+<pre class="methodSignature">public&nbsp;java.util.LinkedHashSet&lt;java.lang.String&gt;&nbsp;getFullSelectListBRefs()</pre>
 </li>
 </ul>
 <a id="getUserSelectListBRefs()">
@@ -516,17 +557,10 @@ extends java.lang.Object</pre>
 <h4>initMetaData</h4>
 <pre class="methodSignature">protected&nbsp;void&nbsp;initMetaData()
                      throws java.lang.Exception</pre>
-<div class="block">Initializes internal data structures for this Wrq
- - The resulting BindingSet
- - All bRefs used and their WrqBindingItem
- - bRefs used in the select list
- - bRefs used in group by</div>
+<div class="block">Initializes internal data structures for s single wrq:Select</div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>java.lang.Exception</code></dd>
-<dd><code>javax.xml.parsers.ParserConfigurationException</code></dd>
-<dd><code>java.io.IOException</code></dd>
-<dd><code>org.xml.sax.SAXException</code></dd>
 </dl>
 </li>
 </ul>
@@ -574,27 +608,13 @@ extends java.lang.Object</pre>
 <pre class="methodSignature">public&nbsp;org.w3c.dom.Document&nbsp;getOwnerDocument()</pre>
 </li>
 </ul>
-<a id="getSelectNodes()">
+<a id="getSelectNode()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>getSelectNodes</h4>
-<pre class="methodSignature">public&nbsp;org.w3c.dom.NodeList&nbsp;getSelectNodes()</pre>
-</li>
-</ul>
-<a id="getBindingSetId()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getBindingSetId</h4>
-<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getBindingSetId()
-                                 throws javax.xml.xpath.XPathExpressionException</pre>
-<dl>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>javax.xml.xpath.XPathExpressionException</code></dd>
-</dl>
+<h4>getSelectNode</h4>
+<pre class="methodSignature">public&nbsp;org.w3c.dom.Element&nbsp;getSelectNode()</pre>
 </li>
 </ul>
 <a id="getAllBRefAggrs()">
@@ -690,7 +710,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getResultingBindingSet</h4>
-<pre class="methodSignature">public&nbsp;<a href="../../binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&nbsp;getResultingBindingSet()</pre>
+<pre class="methodSignature">public&nbsp;<a href="WrqBindingSet.html" title="interface in de.businesscode.bcdui.wrs.load">WrqBindingSet</a>&nbsp;getResultingBindingSet()</pre>
 </li>
 </ul>
 <a id="getGroupingBRefs()">
@@ -729,10 +749,50 @@ extends java.lang.Object</pre>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;reqHasGroupBy()</pre>
 </li>
 </ul>
+<a id="setReqHasGroupingFunction(java.lang.Boolean)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setReqHasGroupingFunction</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setReqHasGroupingFunction&#8203;(java.lang.Boolean&nbsp;reqHasGroupingFunction)</pre>
+</li>
+</ul>
+<a id="getJdbcResourceName()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getJdbcResourceName</h4>
+<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getJdbcResourceName()</pre>
+<div class="block">Convenience method</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+</dl>
+</li>
+</ul>
+<a id="getCurrentSelect()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getCurrentSelect</h4>
+<pre class="methodSignature">public&nbsp;<a href="SqlFromSubSelect.html" title="class in de.businesscode.bcdui.wrs.load">SqlFromSubSelect</a>&nbsp;getCurrentSelect()</pre>
+</li>
+</ul>
+<a id="getSQLSelectWithParams()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getSQLSelectWithParams</h4>
+<pre class="methodSignature">public&nbsp;<a href="SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a>&nbsp;getSQLSelectWithParams()</pre>
+</li>
+</ul>
 <a id="getVdm(java.lang.String)">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>getVdm</h4>
 <pre class="methodSignature">public&nbsp;java.util.Map&lt;java.lang.String,&#8203;java.util.Set&lt;java.lang.String&gt;&gt;&nbsp;getVdm&#8203;(java.lang.String&nbsp;bRef)</pre>
@@ -742,6 +802,15 @@ extends java.lang.Object</pre>
 <dd><code>bRef</code> - </dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 </dl>
+</li>
+</ul>
+<a id="getWrqGroupBy2Sql()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getWrqGroupBy2Sql</h4>
+<pre class="methodSignature">public&nbsp;<a href="WrqGroupBy2Sql.html" title="class in de.businesscode.bcdui.wrs.load">WrqGroupBy2Sql</a>&nbsp;getWrqGroupBy2Sql()</pre>
 </li>
 </ul>
 </li>
@@ -797,13 +866,13 @@ extends java.lang.Object</pre>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>

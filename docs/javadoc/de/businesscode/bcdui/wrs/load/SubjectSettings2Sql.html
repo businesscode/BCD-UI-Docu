@@ -13,8 +13,7 @@
 <!--[if IE]>
 <script type="text/javascript" src="../../../../../jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="../../../../../jquery/jquery-3.3.1.js"></script>
-<script type="text/javascript" src="../../../../../jquery/jquery-migrate-3.0.1.js"></script>
+<script type="text/javascript" src="../../../../../jquery/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="../../../../../jquery/jquery-ui.js"></script>
 </head>
 <body>
@@ -140,7 +139,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 extends java.lang.Object
 implements <a href="SqlConditionGenerator.html" title="interface in de.businesscode.bcdui.wrs.load">SqlConditionGenerator</a></pre>
 <div class="block">Returns a where clause based on the SubjectFilters of the BindingSet and the current Subject's permissions Initially taken from WrsSqlGenerator. For change
- history see there</div>
+ history see there
+ We are instantiated per SQL generation for a SubjectFilters</div>
 </li>
 </ul>
 </div>
@@ -161,9 +161,11 @@ implements <a href="SqlConditionGenerator.html" title="interface in de.businessc
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(de.businesscode.bcdui.binding.BindingSet,de.businesscode.bcdui.wrs.load.WrqInfo,java.util.List)">SubjectSettings2Sql</a></span>&#8203;(<a href="../../binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&nbsp;bindingSet,
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(de.businesscode.bcdui.binding.BindingSet,de.businesscode.bcdui.wrs.load.WrqInfo,java.util.List,java.lang.String,java.lang.String)">SubjectSettings2Sql</a></span>&#8203;(<a href="../../binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&nbsp;bindingSet,
                    <a href="WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a>&nbsp;wrqInfo,
-                   java.util.List&lt;org.w3c.dom.Element&gt;&nbsp;boundVariables)</code></th>
+                   java.util.List&lt;org.w3c.dom.Element&gt;&nbsp;boundVariables,
+                   java.lang.String&nbsp;wrqAlias,
+                   java.lang.String&nbsp;sqlAlias)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -228,7 +230,7 @@ implements <a href="SqlConditionGenerator.html" title="interface in de.businessc
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a id="&lt;init&gt;(de.businesscode.bcdui.binding.BindingSet,de.businesscode.bcdui.wrs.load.WrqInfo,java.util.List)">
+<a id="&lt;init&gt;(de.businesscode.bcdui.binding.BindingSet,de.businesscode.bcdui.wrs.load.WrqInfo,java.util.List,java.lang.String,java.lang.String)">
 <!--   -->
 </a>
 <ul class="blockListLast">
@@ -236,7 +238,14 @@ implements <a href="SqlConditionGenerator.html" title="interface in de.businessc
 <h4>SubjectSettings2Sql</h4>
 <pre>public&nbsp;SubjectSettings2Sql&#8203;(<a href="../../binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&nbsp;bindingSet,
                            <a href="WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a>&nbsp;wrqInfo,
-                           java.util.List&lt;org.w3c.dom.Element&gt;&nbsp;boundVariables)</pre>
+                           java.util.List&lt;org.w3c.dom.Element&gt;&nbsp;boundVariables,
+                           java.lang.String&nbsp;wrqAlias,
+                           java.lang.String&nbsp;sqlAlias)
+                    throws <a href="../../binding/exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></pre>
+<dl>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="../../binding/exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></code></dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -287,7 +296,7 @@ implements <a href="SqlConditionGenerator.html" title="interface in de.businessc
 <dd><code>subjectSettingsClause</code> - - to generate condition into</dd>
 <dd><code>subject</code> - - current subject</dd>
 <dd><code>ft</code> - - filter type to generate condition from</dd>
-<dd><code>preparedStatementParams</code> - - the parameter list</dd>
+<dd><code>boundVariables</code> - </dd>
 <dd><code>filterType</code> - - filter type name</dd>
 <dd><code>permissions</code> - - permissions granted by subject</dd>
 <dd><code>columnExpression</code> - - the column expression to participate in condition</dd>

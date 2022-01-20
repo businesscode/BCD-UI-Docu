@@ -2319,6 +2319,38 @@
             
                 <li data-name="bcdui.component.chart.ChartEchart.saveAsImage"><a href="bcdui.component.chart.ChartEchart.html#.saveAsImage">saveAsImage</a></li>
             
+                <li data-name="bcdui.component.chart.ChartEchart.saveAsImage"><a href="bcdui.component.chart.ChartEchart.html#.saveAsImage">saveAsImage</a></li>
+            
+                <li data-name="bcdui.component.chart.ChartEchart#getData"><a href="bcdui.component.chart.ChartEchart.html#getData">getData</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="bcdui.component.chart.ChartEchart">
+            <span class="title">
+                <a href="bcdui.component.chart.ChartEchart.html">bcdui.component.chart.ChartEchart</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="bcdui.component.chart.ChartEchart.saveAsImage"><a href="bcdui.component.chart.ChartEchart.html#.saveAsImage">saveAsImage</a></li>
+            
+                <li data-name="bcdui.component.chart.ChartEchart.saveAsImage"><a href="bcdui.component.chart.ChartEchart.html#.saveAsImage">saveAsImage</a></li>
+            
                 <li data-name="bcdui.component.chart.ChartEchart#getData"><a href="bcdui.component.chart.ChartEchart.html#getData">getData</a></li>
             
             </ul>
@@ -7915,7 +7947,7 @@ null if there has not been any.</td>
     
         
         <div class="tag-source">
-            <a href="global.html#core/abstractExecutable.js">core/abstractExecutable.js</a>, <a href="global.html#core/abstractExecutable.js#line210">line 210</a>
+            <a href="global.html#core/abstractExecutable.js">core/abstractExecutable.js</a>, <a href="global.html#core/abstractExecutable.js#line216">line 216</a>
         </div>
         
     </div>
@@ -7924,13 +7956,6 @@ null if there has not been any.</td>
 </dt>
 <dd>
     
-    
-    <div class="description">
-        Adds a status listener to this object which will be informed in case of status
-transitions. The status listener must listen to either one specific event or
-all events.
-Call <a href="bcdui.core.AbstractExecutable.html#removeStatusListener">removeStatusListener()</a> to remove the listener.
-    </div>
     
 
     
@@ -7972,7 +7997,7 @@ Call <a href="bcdui.core.AbstractExecutable.html#removeStatusListener">removeSta
 <span class="param-type">StatusListener</span>
 |
 
-<span class="param-type">object</span>
+<span class="param-type"><a href="global.html#AddStatusListenerParam">AddStatusListenerParam</a></span>
 
 
             
@@ -7982,137 +8007,7 @@ Call <a href="bcdui.core.AbstractExecutable.html#removeStatusListener">removeSta
             
             <td class="description last">
                 
-                Either a function executed on all status transitions <p/>or a parameter map with the following properties:
-                
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		<th>Default</th>
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>listener</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-|
-
-<span class="param-type"><a href="bcdui.core.StatusListener.html">bcdui.core.StatusListener</a></span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                    
-                        
-                    
-                
-                A function or StatusListener object representing the listener action.</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>status</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type"><a href="bcdui.core.Status_.html">bcdui.core.Status</a></span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                The status it should listen to. 
-  If it is missing the listener is executed on all status transitions, otherwise it is executed when the status is set to the specified status.</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>onlyOnce</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                    false
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                A boolean variable indicating that the listener should be automatically removed after it has been executed.</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-            </td>
+                Either a function executed on all status transitions or a parameter map</td>
         </tr>
 	
 	
@@ -8172,7 +8067,7 @@ Call <a href="bcdui.core.AbstractExecutable.html#removeStatusListener">removeSta
     
         
         <div class="tag-source">
-            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line350">line 350</a>
+            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line354">line 354</a>
         </div>
         
     </div>
@@ -8270,7 +8165,7 @@ Call <a href="bcdui.core.AbstractExecutable.html#removeStatusListener">removeSta
     
         
         <div class="tag-source">
-            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line363">line 363</a>
+            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line367">line 367</a>
         </div>
         
     </div>
@@ -8368,7 +8263,7 @@ Call <a href="bcdui.core.AbstractExecutable.html#removeStatusListener">removeSta
     
         
         <div class="tag-source">
-            <a href="global.html#core/transformationChain.js">core/transformationChain.js</a>, <a href="global.html#core/transformationChain.js#line1006">line 1006</a>
+            <a href="global.html#core/transformationChain.js">core/transformationChain.js</a>, <a href="global.html#core/transformationChain.js#line1013">line 1013</a>
         </div>
         
     </div>
@@ -8377,11 +8272,6 @@ Call <a href="bcdui.core.AbstractExecutable.html#removeStatusListener">removeSta
 </dt>
 <dd>
     
-    
-    <div class="description">
-        Overwrites inherited execute(forced)
-Allows also to provide instead of the boolean forced an args object with
-    </div>
     
 
     
@@ -8420,7 +8310,7 @@ Allows also to provide instead of the boolean forced an args object with
 <span class="param-type">boolean</span>
 |
 
-<span class="param-type">Object</span>
+<span class="param-type"><a href="global.html#ExecuteParam">ExecuteParam</a></span>
 
 
             
@@ -8430,120 +8320,7 @@ Allows also to provide instead of the boolean forced an args object with
             
             <td class="description last">
                 
-                forced or args:
-                
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>fn</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                A function called once when the object becomes ready again. Called immediately if we are already ready && shouldRefresh==false</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>partialHtmlTargets</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                Space separated list of html element ids. If given, only these elements within targetHmtlElement of the render
-        are touched in the DOM tree, plus the chain gets the parameter bcdPartialHtmlTargets set to this value. Valid for this one call only, cleared after.</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>shouldRefresh</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                "false" if this method should do nothing when the object is already in the ready status. Default is "true"false".</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-            </td>
+                either true for forced or parameter map</td>
         </tr>
 	
 	
@@ -8603,7 +8380,7 @@ Allows also to provide instead of the boolean forced an args object with
     
         
         <div class="tag-source">
-            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line702">line 702</a>
+            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line716">line 716</a>
         </div>
         
     </div>
@@ -8713,7 +8490,7 @@ Allows also to provide instead of the boolean forced an args object with
     
         
         <div class="tag-source">
-            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line296">line 296</a>
+            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line300">line 300</a>
         </div>
         
     </div>
@@ -9338,7 +9115,7 @@ not produce HTML (output="html").</td>
     
         
         <div class="tag-source">
-            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line307">line 307</a>
+            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line311">line 311</a>
         </div>
         
     </div>
@@ -9674,7 +9451,7 @@ transformations are finished.
     
         
         <div class="tag-source">
-            <a href="global.html#core/abstractExecutable.js">core/abstractExecutable.js</a>, <a href="global.html#core/abstractExecutable.js#line366">line 366</a>
+            <a href="global.html#core/abstractExecutable.js">core/abstractExecutable.js</a>, <a href="global.html#core/abstractExecutable.js#line375">line 375</a>
         </div>
         
     </div>
@@ -9776,7 +9553,7 @@ transformations are finished.
     
         
         <div class="tag-source">
-            <a href="global.html#core/transformationChain.js">core/transformationChain.js</a>, <a href="global.html#core/transformationChain.js#line1053">line 1053</a>
+            <a href="global.html#core/transformationChain.js">core/transformationChain.js</a>, <a href="global.html#core/transformationChain.js#line1060">line 1060</a>
         </div>
         
     </div>
@@ -9849,7 +9626,7 @@ transformations are finished.
     
         
         <div class="tag-source">
-            <a href="global.html#core/abstractExecutable.js">core/abstractExecutable.js</a>, <a href="global.html#core/abstractExecutable.js#line386">line 386</a>
+            <a href="global.html#core/abstractExecutable.js">core/abstractExecutable.js</a>, <a href="global.html#core/abstractExecutable.js#line395">line 395</a>
         </div>
         
     </div>
@@ -9952,7 +9729,7 @@ returned by the "getFailedStatus" method.
     
         
         <div class="tag-source">
-            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line691">line 691</a>
+            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line705">line 705</a>
         </div>
         
     </div>
@@ -10055,7 +9832,7 @@ see <a href="bcdui.core.AbstractExecutable.html#isReady">isReady()</a> and <a hr
     
         
         <div class="tag-source">
-            <a href="global.html#core/abstractExecutable.js">core/abstractExecutable.js</a>, <a href="global.html#core/abstractExecutable.js#line376">line 376</a>
+            <a href="global.html#core/abstractExecutable.js">core/abstractExecutable.js</a>, <a href="global.html#core/abstractExecutable.js#line385">line 385</a>
         </div>
         
     </div>
@@ -10158,7 +9935,7 @@ status as returned by "getReadyStatus".
     
         
         <div class="tag-source">
-            <a href="global.html#core/abstractExecutable.js">core/abstractExecutable.js</a>, <a href="global.html#core/abstractExecutable.js#line545">line 545</a>
+            <a href="global.html#core/abstractExecutable.js">core/abstractExecutable.js</a>, <a href="global.html#core/abstractExecutable.js#line560">line 560</a>
         </div>
         
     </div>
@@ -10167,11 +9944,6 @@ status as returned by "getReadyStatus".
 </dt>
 <dd>
     
-    
-    <div class="description">
-        Add callback to AbstractExecutable which is triggered exactly once when ready state is reached
-or immediately (but still async) when the AbstractExecutable is already ready
-    </div>
     
 
     
@@ -10210,7 +9982,7 @@ or immediately (but still async) when the AbstractExecutable is already ready
 <span class="param-type">function</span>
 |
 
-<span class="param-type">Object</span>
+<span class="param-type"><a href="global.html#OnceReadyParam">OnceReadyParam</a></span>
 
 
             
@@ -10220,133 +9992,7 @@ or immediately (but still async) when the AbstractExecutable is already ready
             
             <td class="description last">
                 
-                Either a function to be called on ready status (i.e. onSuccess)<p/>or a parameter map with the following properties:
-                
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		<th>Default</th>
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>onSuccess</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                    
-                        
-                    
-                
-                callback function which is called when <a href="bcdui.core.AbstractExecutable.html">bcdui.core.AbstractExecutable</a> is or gets ready</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>onFailure</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                callback function which is called when <a href="bcdui.core.AbstractExecutable.html">bcdui.core.AbstractExecutable</a> gets into failed status</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>executeIfNotReady</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                    false
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                do execute <a href="bcdui.core.AbstractExecutable.html">bcdui.core.AbstractExecutable</a> if it's not ready</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-            </td>
+                Either a function to be called on ready status (i.e. onSuccess) or a parameter map</td>
         </tr>
 	
 	
@@ -10406,7 +10052,7 @@ or immediately (but still async) when the AbstractExecutable is already ready
     
         
         <div class="tag-source">
-            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line545">line 545</a>
+            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line559">line 559</a>
         </div>
         
     </div>
@@ -10415,13 +10061,6 @@ or immediately (but still async) when the AbstractExecutable is already ready
 </dt>
 <dd>
     
-    
-    <div class="description">
-        Adds a data listener to the DataProvider which can be triggered when the data (XML
-document) is changed. The listener offers two options: It can either be fired on
-any change or on a change in a specific XPath result.
-Note that no uniqueness check is done before adding the listener so it is possible to add the same listener twice or more times.
-    </div>
     
 
     
@@ -10460,7 +10099,7 @@ Note that no uniqueness check is done before adding the listener so it is possib
 <span class="param-type">function</span>
 |
 
-<span class="param-type">Object</span>
+<span class="param-type"><a href="global.html#OnChangeParam">OnChangeParam</a></span>
 
 
             
@@ -10475,167 +10114,7 @@ Note that no uniqueness check is done before adding the listener so it is possib
                         
                     
                 
-                Either a function to be called after changes <p/>or a parameter map with the following properties:
-                
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		<th>Default</th>
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>callback</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                    
-                        
-                    
-                
-                function to be called after changes</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>trackingXPath</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                xPath to monitor for changes</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>onlyOnce</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                    false
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                fire on each change or only once  (higher priority than listenerObject's onlyOnce)</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>id</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                listener id (only needed for removeDataListener usability)</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-            </td>
+                Either a function to be called after changes or a parameter map</td>
         </tr>
 	
 	
@@ -10725,7 +10204,7 @@ Note that no uniqueness check is done before adding the listener so it is possib
     
         
         <div class="tag-source">
-            <a href="global.html#core/abstractExecutable.js">core/abstractExecutable.js</a>, <a href="global.html#core/abstractExecutable.js#line574">line 574</a>
+            <a href="global.html#core/abstractExecutable.js">core/abstractExecutable.js</a>, <a href="global.html#core/abstractExecutable.js#line594">line 594</a>
         </div>
         
     </div>
@@ -10734,12 +10213,6 @@ Note that no uniqueness check is done before adding the listener so it is possib
 </dt>
 <dd>
     
-    
-    <div class="description">
-        Add callback for AbstractExecutables, which is triggered when ready state is reached
-
-Please note: the callback routines are always called asynchronously (even if ready state is already given)
-    </div>
     
 
     
@@ -10778,7 +10251,7 @@ Please note: the callback routines are always called asynchronously (even if rea
 <span class="param-type">function</span>
 |
 
-<span class="param-type">Object</span>
+<span class="param-type"><a href="global.html#OnReadyParam">OnReadyParam</a></span>
 
 
             
@@ -10788,205 +10261,7 @@ Please note: the callback routines are always called asynchronously (even if rea
             
             <td class="description last">
                 
-                Either a function to be called on ready status (i.e. onSuccess)<p/>or a parameter map with the following properties:
-                
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		<th>Default</th>
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>onSuccess</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                    
-                        
-                    
-                
-                callback function which is called when <a href="bcdui.core.AbstractExecutable.html">bcdui.core.AbstractExecutable</a> is or gets ready</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>onFailure</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                callback function which is called when <a href="bcdui.core.AbstractExecutable.html">bcdui.core.AbstractExecutable</a> gets into failed status</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>onlyOnce</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                    false
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                call callback only once or on each ready state</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>onlyFuture</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                    false
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                only future ready states will trigger the callback. Per default the callback is called immediately (but async), if the AbstractExecutable is already in ready state</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>executeIfNotReady</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                    false
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                do execute <a href="bcdui.core.AbstractExecutable.html">bcdui.core.AbstractExecutable</a> if it's not ready</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-            </td>
+                Either a function to be called on ready status (i.e. onSuccess) or a parameter map</td>
         </tr>
 	
 	
@@ -11046,7 +10321,7 @@ Please note: the callback routines are always called asynchronously (even if rea
     
         
         <div class="tag-source">
-            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line326">line 326</a>
+            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line330">line 330</a>
         </div>
         
     </div>
@@ -11119,7 +10394,7 @@ Please note: the callback routines are always called asynchronously (even if rea
     
         
         <div class="tag-source">
-            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line479">line 479</a>
+            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line483">line 483</a>
         </div>
         
     </div>
@@ -11281,7 +10556,7 @@ single node or null if query fails
     
         
         <div class="tag-source">
-            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line491">line 491</a>
+            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line495">line 495</a>
         </div>
         
     </div>
@@ -11443,7 +10718,7 @@ node list or empty list if query fails
     
         
         <div class="tag-source">
-            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line410">line 410</a>
+            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line414">line 414</a>
         </div>
         
     </div>
@@ -11709,7 +10984,7 @@ again.
     
         
         <div class="tag-source">
-            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line461">line 461</a>
+            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line465">line 465</a>
         </div>
         
     </div>
@@ -11908,7 +11183,7 @@ again.
     
         
         <div class="tag-source">
-            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line511">line 511</a>
+            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line521">line 521</a>
         </div>
         
     </div>
@@ -11917,10 +11192,6 @@ again.
 </dt>
 <dd>
     
-    
-    <div class="description">
-        Removes a data listener via its id or listener object / function.
-    </div>
     
 
     
@@ -11962,7 +11233,7 @@ again.
 <span class="param-type">function</span>
 |
 
-<span class="param-type">Object</span>
+<span class="param-type"><a href="global.html#RemoveDataListenerParam">RemoveDataListenerParam</a></span>
 
 
             
@@ -11972,89 +11243,7 @@ again.
             
             <td class="description last">
                 
-                Either a listener function or id <p/>or a parameter map with the following properties:
-                
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>id</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                listener id</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>callback</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                listener function</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-            </td>
+                Either a listener function or id or a parameter map</td>
         </tr>
 	
 	
@@ -12114,7 +11303,7 @@ again.
     
         
         <div class="tag-source">
-            <a href="global.html#core/abstractExecutable.js">core/abstractExecutable.js</a>, <a href="global.html#core/abstractExecutable.js#line229">line 229</a>
+            <a href="global.html#core/abstractExecutable.js">core/abstractExecutable.js</a>, <a href="global.html#core/abstractExecutable.js#line238">line 238</a>
         </div>
         
     </div>
@@ -12123,10 +11312,6 @@ again.
 </dt>
 <dd>
     
-    
-    <div class="description">
-        Removes the provided status listener from this instance, added via <a href="bcdui.core.AbstractExecutable.html#addStatusListener">addStatusListener()</a> before.
-    </div>
     
 
     
@@ -12168,7 +11353,7 @@ again.
 <span class="param-type">StatusListener</span>
 |
 
-<span class="param-type">Object</span>
+<span class="param-type"><a href="global.html#RemoveStatusListenerParam">RemoveStatusListenerParam</a></span>
 
 
             
@@ -12178,80 +11363,7 @@ again.
             
             <td class="description last">
                 
-                The listener to be removed. This can either be a function or a <a href="bcdui.core.StatusListener.html">StatusListener</a> or a parameter map. In the latter case the map
-  can contain the following fields
-                
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>listener</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-|
-
-<span class="param-type"><a href="bcdui.core.StatusListener.html">bcdui.core.StatusListener</a></span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                A function <p/>or StatusListener object representing the listener action.</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>status</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type"><a href="bcdui.core.Status_.html">bcdui.core.Status</a></span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                The status this listener is listening to. 
-  If it is missing the it is assumed that the listener belongs to the global scope.</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-            </td>
+                The listener to be removed. This can either be a function or a <a href="bcdui.core.StatusListener.html">StatusListener</a> or a parameter map.</td>
         </tr>
 	
 	
@@ -12384,7 +11496,7 @@ again.
     
         
         <div class="tag-source">
-            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line501">line 501</a>
+            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line505">line 505</a>
         </div>
         
     </div>
@@ -12585,7 +11697,7 @@ of the transformation chain.
     
         
         <div class="tag-source">
-            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line675">line 675</a>
+            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line689">line 689</a>
         </div>
         
     </div>
@@ -12699,7 +11811,7 @@ of the transformation chain.
     
         
         <div class="tag-source">
-            <a href="global.html#core/transformationChain.js">core/transformationChain.js</a>, <a href="global.html#core/transformationChain.js#line1062">line 1062</a>
+            <a href="global.html#core/transformationChain.js">core/transformationChain.js</a>, <a href="global.html#core/transformationChain.js#line1069">line 1069</a>
         </div>
         
     </div>
@@ -12915,7 +12027,7 @@ of the transformation chain.
     
         
         <div class="tag-source">
-            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line437">line 437</a>
+            <a href="global.html#core/dataProvider.js">core/dataProvider.js</a>, <a href="global.html#core/dataProvider.js#line441">line 441</a>
         </div>
         
     </div>

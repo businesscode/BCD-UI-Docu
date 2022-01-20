@@ -13,8 +13,7 @@
 <!--[if IE]>
 <script type="text/javascript" src="../../../../jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="../../../../jquery/jquery-3.3.1.js"></script>
-<script type="text/javascript" src="../../../../jquery/jquery-migrate-3.0.1.js"></script>
+<script type="text/javascript" src="../../../../jquery/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="../../../../jquery/jquery-ui.js"></script>
 </head>
 <body>
@@ -27,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":9,"i4":9,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":9,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":9,"i18":10,"i19":10,"i20":10,"i21":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":9,"i4":9,"i5":10,"i6":10,"i7":9,"i8":9,"i9":10,"i10":10,"i11":10,"i12":10,"i13":9,"i14":10,"i15":10,"i16":10,"i17":10,"i18":9,"i19":9,"i20":9,"i21":10,"i22":10,"i23":10,"i24":10};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -208,22 +207,12 @@ extends org.apache.shiro.realm.jdbc.JdbcRealm</pre>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#BCD_SEC_USER_PASSWORD_COLUMN_CONFIG_NAME">BCD_SEC_USER_PASSWORD_COLUMN_CONFIG_NAME</a></span></code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#BCD_SEC_USER_PASSWORD_COLUMN_NAME_DEFAULT">BCD_SEC_USER_PASSWORD_COLUMN_NAME_DEFAULT</a></span></code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#BCD_SEC_USER_PASSWORD_SALT_BINDINGITEM">BCD_SEC_USER_PASSWORD_SALT_BINDINGITEM</a></span></code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
 <tr class="altColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#BCD_SEC_USER_PASSWORD_SALT_COLUMN_CONFIG_NAME">BCD_SEC_USER_PASSWORD_SALT_COLUMN_CONFIG_NAME</a></span></code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#BCD_SEC_USER_PASSWORD_SALT_BINDINGITEM">BCD_SEC_USER_PASSWORD_SALT_BINDINGITEM</a></span></code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="rowColor">
@@ -338,23 +327,33 @@ extends org.apache.shiro.realm.jdbc.JdbcRealm</pre>
 </td>
 </tr>
 <tr id="i7" class="rowColor">
+<td class="colFirst"><code>static java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getConfigPasswordColumnName()">getConfigPasswordColumnName</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i8" class="altColor">
+<td class="colFirst"><code>static java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getConfigPasswordSaltColumnName()">getConfigPasswordSaltColumnName</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>org.apache.shiro.authc.credential.CredentialsMatcher</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getCredentialsMatcher()">getCredentialsMatcher</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>protected java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getCustomJdbcType(de.businesscode.bcdui.binding.BindingItem)">getCustomJdbcType</a></span>&#8203;(<a href="../binding/BindingItem.html" title="class in de.businesscode.bcdui.binding">BindingItem</a>&nbsp;bindingItem)</code></th>
 <td class="colLast">
 <div class="block">Support for type-name=OTHER, cust:type-name=uuid</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>protected javax.sql.DataSource</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getDataSource()">getDataSource</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>protected java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getDefineJdbcParameter(java.lang.String,java.lang.String)">getDefineJdbcParameter</a></span>&#8203;(java.lang.String&nbsp;columnExpression,
                       java.lang.String&nbsp;customType)</code></th>
@@ -362,29 +361,29 @@ extends org.apache.shiro.realm.jdbc.JdbcRealm</pre>
 <div class="block">support for custom jdbc type, do any explicit casts here</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code>static int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getHashIterations()">getHashIterations</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i14" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPasswordColumnName()">getPasswordColumnName</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPasswordSaltColumnName()">getPasswordSaltColumnName</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i16" class="altColor">
 <td class="colFirst"><code>protected java.util.Set&lt;java.lang.String&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPermissions(java.sql.Connection,java.lang.String,java.util.Collection)">getPermissions</a></span>&#8203;(java.sql.Connection&nbsp;con,
               java.lang.String&nbsp;userId,
               java.util.Collection&lt;java.lang.String&gt;&nbsp;roleNames)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i15" class="rowColor">
+<tr id="i17" class="rowColor">
 <td class="colFirst"><code>protected java.util.Set&lt;java.lang.String&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRoleNamesForUser(java.sql.Connection,java.lang.String)">getRoleNamesForUser</a></span>&#8203;(java.sql.Connection&nbsp;con,
                    java.lang.String&nbsp;userId)</code></th>
@@ -392,36 +391,41 @@ extends org.apache.shiro.realm.jdbc.JdbcRealm</pre>
 <div class="block">load roles from db</div>
 </td>
 </tr>
-<tr id="i16" class="altColor">
-<td class="colFirst"><code>boolean</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isHashSalted()">isHashSalted</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i17" class="rowColor">
+<tr id="i18" class="altColor">
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#main(java.lang.String%5B%5D)">main</a></span>&#8203;(java.lang.String[]&nbsp;args)</code></th>
 <td class="colLast">
 <div class="block">main helper to create passwords interactively or by argument</div>
 </td>
 </tr>
-<tr id="i18" class="altColor">
+<tr id="i19" class="rowColor">
+<td class="colFirst"><code>static void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setConfigPasswordColumnName(java.lang.String)">setConfigPasswordColumnName</a></span>&#8203;(java.lang.String&nbsp;configPasswordColumnName)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i20" class="altColor">
+<td class="colFirst"><code>static void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setConfigPasswordSaltColumnName(java.lang.String)">setConfigPasswordSaltColumnName</a></span>&#8203;(java.lang.String&nbsp;configPasswordSaltColumnName)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i21" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setHashIterations(int)">setHashIterations</a></span>&#8203;(int&nbsp;hashIterations)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i19" class="rowColor">
+<tr id="i22" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setPasswordColumnName(java.lang.String)">setPasswordColumnName</a></span>&#8203;(java.lang.String&nbsp;passwordColumnsName)</code></th>
 <td class="colLast">
 <div class="block">These setters are called from Shiro if realmBcdJdbc.</div>
 </td>
 </tr>
-<tr id="i20" class="altColor">
+<tr id="i23" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setPasswordSaltColumnName(java.lang.String)">setPasswordSaltColumnName</a></span>&#8203;(java.lang.String&nbsp;passwordSaltColumnName)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i21" class="rowColor">
+<tr id="i24" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#supports(org.apache.shiro.authc.AuthenticationToken)">supports</a></span>&#8203;(org.apache.shiro.authc.AuthenticationToken&nbsp;token)</code></th>
 <td class="colLast">
@@ -537,32 +541,6 @@ extends org.apache.shiro.realm.jdbc.JdbcRealm</pre>
 <dl>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../constant-values.html#de.businesscode.bcdui.subjectsettings.JdbcRealm.BCD_SEC_USER_PASSWORD_SALT_COLUMN_NAME_DEFAULT">Constant Field Values</a></dd>
-</dl>
-</li>
-</ul>
-<a id="BCD_SEC_USER_PASSWORD_COLUMN_CONFIG_NAME">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>BCD_SEC_USER_PASSWORD_COLUMN_CONFIG_NAME</h4>
-<pre>public static final&nbsp;java.lang.String BCD_SEC_USER_PASSWORD_COLUMN_CONFIG_NAME</pre>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../constant-values.html#de.businesscode.bcdui.subjectsettings.JdbcRealm.BCD_SEC_USER_PASSWORD_COLUMN_CONFIG_NAME">Constant Field Values</a></dd>
-</dl>
-</li>
-</ul>
-<a id="BCD_SEC_USER_PASSWORD_SALT_COLUMN_CONFIG_NAME">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>BCD_SEC_USER_PASSWORD_SALT_COLUMN_CONFIG_NAME</h4>
-<pre>public static final&nbsp;java.lang.String BCD_SEC_USER_PASSWORD_SALT_COLUMN_CONFIG_NAME</pre>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../constant-values.html#de.businesscode.bcdui.subjectsettings.JdbcRealm.BCD_SEC_USER_PASSWORD_SALT_COLUMN_CONFIG_NAME">Constant Field Values</a></dd>
 </dl>
 </li>
 </ul>
@@ -913,13 +891,40 @@ extends org.apache.shiro.realm.jdbc.JdbcRealm</pre>
 <pre class="methodSignature">public static&nbsp;int&nbsp;getHashIterations()</pre>
 </li>
 </ul>
-<a id="isHashSalted()">
+<a id="getConfigPasswordColumnName()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getConfigPasswordColumnName</h4>
+<pre class="methodSignature">public static&nbsp;java.lang.String&nbsp;getConfigPasswordColumnName()</pre>
+</li>
+</ul>
+<a id="setConfigPasswordColumnName(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setConfigPasswordColumnName</h4>
+<pre class="methodSignature">public static&nbsp;void&nbsp;setConfigPasswordColumnName&#8203;(java.lang.String&nbsp;configPasswordColumnName)</pre>
+</li>
+</ul>
+<a id="getConfigPasswordSaltColumnName()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getConfigPasswordSaltColumnName</h4>
+<pre class="methodSignature">public static&nbsp;java.lang.String&nbsp;getConfigPasswordSaltColumnName()</pre>
+</li>
+</ul>
+<a id="setConfigPasswordSaltColumnName(java.lang.String)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>isHashSalted</h4>
-<pre class="methodSignature">public&nbsp;boolean&nbsp;isHashSalted()</pre>
+<h4>setConfigPasswordSaltColumnName</h4>
+<pre class="methodSignature">public static&nbsp;void&nbsp;setConfigPasswordSaltColumnName&#8203;(java.lang.String&nbsp;configPasswordSaltColumnName)</pre>
 </li>
 </ul>
 </li>

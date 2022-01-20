@@ -13,8 +13,7 @@
 <!--[if IE]>
 <script type="text/javascript" src="../../../../../jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="../../../../../jquery/jquery-3.3.1.js"></script>
-<script type="text/javascript" src="../../../../../jquery/jquery-migrate-3.0.1.js"></script>
+<script type="text/javascript" src="../../../../../jquery/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="../../../../../jquery/jquery-ui.js"></script>
 </head>
 <body>
@@ -180,7 +179,8 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getConditionStatement(java.lang.String)">getConditionStatement</a></span>&#8203;(java.lang.String&nbsp;prepareCaseExpressionForAlias)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getConditionStatement(java.lang.String,boolean)">getConditionStatement</a></span>&#8203;(java.lang.String&nbsp;mainTableAlias,
+                     boolean&nbsp;isForJoinToCaseWhen)</code></th>
 <td class="colLast">
 <div class="block">Method getConditionStatement</div>
 </td>
@@ -275,13 +275,14 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
-<a id="getConditionStatement(java.lang.String)">
+<a id="getConditionStatement(java.lang.String,boolean)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>getConditionStatement</h4>
-<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getConditionStatement&#8203;(java.lang.String&nbsp;prepareCaseExpressionForAlias)
+<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getConditionStatement&#8203;(java.lang.String&nbsp;mainTableAlias,
+                                              boolean&nbsp;isForJoinToCaseWhen)
                                        throws <a href="../exc/BindingException.html" title="class in de.businesscode.bcdui.binding.exc">BindingException</a></pre>
 <div class="block">Method getConditionStatement</div>
 <dl>

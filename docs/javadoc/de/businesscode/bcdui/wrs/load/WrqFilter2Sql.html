@@ -13,8 +13,7 @@
 <!--[if IE]>
 <script type="text/javascript" src="../../../../../jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="../../../../../jquery/jquery-3.3.1.js"></script>
-<script type="text/javascript" src="../../../../../jquery/jquery-migrate-3.0.1.js"></script>
+<script type="text/javascript" src="../../../../../jquery/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="../../../../../jquery/jquery-ui.js"></script>
 </head>
 <body>
@@ -135,7 +134,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <pre>public class <span class="typeNameLabel">WrqFilter2Sql</span>
 extends java.lang.Object</pre>
 <div class="block">Parses a f:Filter expression and returns the SQL Where expression
- Initially taken from WrsSqlGenerator. For older change history, see there</div>
+ For older change history, see WrsSqlGenerator</div>
 </li>
 </ul>
 </div>
@@ -282,8 +281,9 @@ extends java.lang.Object</pre>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>wrqInfo</code> - </dd>
 <dd><code>item</code> - </dd>
-<dd><code>elementList</code> - </dd>
+<dd><code>boundVariables</code> - </dd>
 <dd><code>ownerDocument</code> - </dd>
+<dd><code>useAggr</code> - </dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="../../binding/exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></code></dd>

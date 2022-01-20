@@ -2319,6 +2319,38 @@
             
                 <li data-name="bcdui.component.chart.ChartEchart.saveAsImage"><a href="bcdui.component.chart.ChartEchart.html#.saveAsImage">saveAsImage</a></li>
             
+                <li data-name="bcdui.component.chart.ChartEchart.saveAsImage"><a href="bcdui.component.chart.ChartEchart.html#.saveAsImage">saveAsImage</a></li>
+            
+                <li data-name="bcdui.component.chart.ChartEchart#getData"><a href="bcdui.component.chart.ChartEchart.html#getData">getData</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="bcdui.component.chart.ChartEchart">
+            <span class="title">
+                <a href="bcdui.component.chart.ChartEchart.html">bcdui.component.chart.ChartEchart</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="bcdui.component.chart.ChartEchart.saveAsImage"><a href="bcdui.component.chart.ChartEchart.html#.saveAsImage">saveAsImage</a></li>
+            
+                <li data-name="bcdui.component.chart.ChartEchart.saveAsImage"><a href="bcdui.component.chart.ChartEchart.html#.saveAsImage">saveAsImage</a></li>
+            
                 <li data-name="bcdui.component.chart.ChartEchart#getData"><a href="bcdui.component.chart.ChartEchart.html#getData">getData</a></li>
             
             </ul>
@@ -8111,7 +8143,7 @@ appropriate 'bcdRowIdent/bcdColIdent' attributes of tr rows header columns.
                         
                     
                 
-                The xPath pointing to the root-node this widget will place entered selected items into. The underlying XML  format of data written is implemented by individual widget. If pointing into a Wrs, it switches to Wrs mode, i.e. the wrs:R will be marked as modified, target node will not be deleted. If you specify a targetmodelxpath, the box automatically acts as target.</td>
+                The targetModelXPath for the dimensionChooser acts slightly different than for other widgets. The path points a node which will hold the value for the selected level. The widget builds up filter expressions automatically, so your targetXPath doesn't need any f:Expression statements, e.g. /guiStatus:Status/guiStatus:Dimension[@id='dimensionChooser']/@value.</td>
         </tr>
 	
 	
@@ -8953,7 +8985,7 @@ Group level does not appear in Level drop down but can be used as a dependency l
 <span class="param-type">string</span>
 |
 
-<span class="param-type">object</span>
+<span class="param-type"><a href="bcdui.core.Renderer.html">bcdui.core.Renderer</a></span>
 
 
             
@@ -11641,7 +11673,7 @@ the given target HTML element. This input field can be a text box or a combo box
                         
                     
                 
-                The xPath pointing to the root-node this widget will place entered selected items into. The underlying XML  format of data written is implemented by individual widget. If pointing into a Wrs, it switches to Wrs mode, i.e. the wrs:R will be marked as modified, target node will not be deleted. If you specify a targetmodelxpath, the box automatically acts as target.</td>
+                The xPath pointing to the root-node this input widget will place entered selected items into. The underlying XML format of data written is implemented by individual widget. If pointing into a Wrs, it switches to Wrs mode, i.e. the wrs:R will be marked as modified, target node will not be deleted. If you specify a targetmodelxpath, the box automatically acts as target. Keep in mind when specifying a targetModelXPath for the multiSelect, you should use a f:Or in your expression. For example: /guiStatus:Status/f:Filter/f:Or/f:Expression[@bRef='country' and @op='=']/@value.</td>
         </tr>
 	
 	
@@ -12513,7 +12545,7 @@ The period chooser outputs to args.targetModelXPath, which may point to any mode
                         
                     
                 
-                The xPath pointing to the root-node where to place the selected value. Point to an f:And element, like "/guiStatus:Status/f:Filter/f:And[@id='myPeriod']" for example</td>
+                Unless you don't use the useSimpleXPath option, this targetModelXPath acts slightly different than for other widgets. You only define a root node like '/guiStatus:Status/f:Filter/f:And[@id='period']' here. The period chooser places its f:Expression elements below this given rootnode automatically. The number of expressions and how they are added depends on periodChooser settings (e.g. a range or writing mo/yr instead of yyyy-mm-dd etc.)</td>
         </tr>
 	
 	

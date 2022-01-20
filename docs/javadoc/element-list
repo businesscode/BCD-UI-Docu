@@ -16,6 +16,8 @@ de.businesscode.bcdui.subjectsettings.config
 de.businesscode.bcdui.subjectsettings.oauth2
 de.businesscode.bcdui.toolbox
 de.businesscode.bcdui.toolbox.config
+de.businesscode.bcdui.upload.data
+de.businesscode.bcdui.upload.data.steps
 de.businesscode.bcdui.vfs.provider.database
 de.businesscode.bcdui.vfs.web
 de.businesscode.bcdui.web
@@ -44,3 +46,4 @@ de.businesscode.util
 de.businesscode.util.jdbc
 de.businesscode.util.jdbc.wrapper
 de.businesscode.util.xml
+org.apache.shiro.realm

@@ -13,8 +13,7 @@
 <!--[if IE]>
 <script type="text/javascript" src="../../../../jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="../../../../jquery/jquery-3.3.1.js"></script>
-<script type="text/javascript" src="../../../../jquery/jquery-migrate-3.0.1.js"></script>
+<script type="text/javascript" src="../../../../jquery/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="../../../../jquery/jquery-ui.js"></script>
 </head>
 <body>
@@ -282,7 +281,7 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code><a href="BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a></code></td>
+<td class="colFirst"><code><a href="StandardBindingSet.html" title="class in de.businesscode.bcdui.binding">StandardBindingSet</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#get(java.lang.String)">get</a></span>&#8203;(java.lang.String&nbsp;bindingSetId)</code></th>
 <td class="colLast">
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>
@@ -291,7 +290,7 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code><a href="BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a></code></td>
+<td class="colFirst"><code><a href="StandardBindingSet.html" title="class in de.businesscode.bcdui.binding">StandardBindingSet</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#get(java.lang.String,java.util.Collection)">get</a></span>&#8203;(java.lang.String&nbsp;bindingSetId,
    java.util.Collection&lt;java.lang.String&gt;&nbsp;items)</code></th>
 <td class="colLast">
@@ -330,7 +329,7 @@ extends java.lang.Object</pre>
 <td class="colFirst"><code>protected void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initWarMap()">initWarMap</a></span>()</code></th>
 <td class="colLast">
-<div class="block">/* EnterpriseEdition has a more powerful BindigSet reader</div>
+<div class="block">/* EnterpriseEdition has a more powerful BindingSet reader</div>
 </td>
 </tr>
 <tr id="i8" class="altColor">
@@ -618,7 +617,7 @@ extends java.lang.Object</pre>
 <h4>initWarMap</h4>
 <pre class="methodSignature">protected&nbsp;void&nbsp;initWarMap()
                    throws <a href="exc/BindingException.html" title="class in de.businesscode.bcdui.binding.exc">BindingException</a></pre>
-<div class="block">/* EnterpriseEdition has a more powerful BindigSet reader</div>
+<div class="block">/* EnterpriseEdition has a more powerful BindingSet reader</div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="exc/BindingException.html" title="class in de.businesscode.bcdui.binding.exc">BindingException</a></code></dd>
@@ -684,8 +683,8 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>get</h4>
 <pre class="methodSignature">@Deprecated
-public&nbsp;<a href="BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&nbsp;get&#8203;(java.lang.String&nbsp;bindingSetId)
-               throws <a href="exc/BindingException.html" title="class in de.businesscode.bcdui.binding.exc">BindingException</a></pre>
+public&nbsp;<a href="StandardBindingSet.html" title="class in de.businesscode.bcdui.binding">StandardBindingSet</a>&nbsp;get&#8203;(java.lang.String&nbsp;bindingSetId)
+                       throws <a href="exc/BindingException.html" title="class in de.businesscode.bcdui.binding.exc">BindingException</a></pre>
 <div class="deprecationBlock"><span class="deprecatedLabel">Deprecated.</span>
 <div class="deprecationComment">This getter is deprecated because it prevents the BindingSetGroup feature from being totally transparent to the user.</div>
 </div>
@@ -722,9 +721,9 @@ public&nbsp;<a href="BindingSet.html" title="interface in de.businesscode.bcdui.
 <ul class="blockList">
 <li class="blockList">
 <h4>get</h4>
-<pre class="methodSignature">public&nbsp;<a href="BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&nbsp;get&#8203;(java.lang.String&nbsp;bindingSetId,
-                      java.util.Collection&lt;java.lang.String&gt;&nbsp;items)
-               throws <a href="exc/BindingException.html" title="class in de.businesscode.bcdui.binding.exc">BindingException</a></pre>
+<pre class="methodSignature">public&nbsp;<a href="StandardBindingSet.html" title="class in de.businesscode.bcdui.binding">StandardBindingSet</a>&nbsp;get&#8203;(java.lang.String&nbsp;bindingSetId,
+                              java.util.Collection&lt;java.lang.String&gt;&nbsp;items)
+                       throws <a href="exc/BindingException.html" title="class in de.businesscode.bcdui.binding.exc">BindingException</a></pre>
 <div class="block">EnterpriseEdition allows us to search for a "best-match" BindingSet here, which allows for deep optimizations at runtime</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>

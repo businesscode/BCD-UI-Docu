@@ -13,8 +13,7 @@
 <!--[if IE]>
 <script type="text/javascript" src="../../../../../jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="../../../../../jquery/jquery-3.3.1.js"></script>
-<script type="text/javascript" src="../../../../../jquery/jquery-migrate-3.0.1.js"></script>
+<script type="text/javascript" src="../../../../../jquery/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="../../../../../jquery/jquery-ui.js"></script>
 </head>
 <body>
@@ -27,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":9,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":10,"i22":10,"i23":10,"i24":10,"i25":10,"i26":10,"i27":10,"i28":10,"i29":10,"i30":10,"i31":10,"i32":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":9,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":10,"i22":10,"i23":10,"i24":10,"i25":10,"i26":10,"i27":10,"i28":10,"i29":10,"i30":10,"i31":10,"i32":10,"i33":10,"i34":10,"i35":10};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -139,6 +138,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <pre>public class <span class="typeNameLabel">WrqBindingItem</span>
 extends java.lang.Object
 implements <a href="WrsBindingItem.html" title="interface in de.businesscode.bcdui.wrs.load">WrsBindingItem</a></pre>
+<div class="block">Represents a BindingItem in a Wrq, it is it has knowledge of the underlying BindingItem and the current query
+ There can be multiple WrqBindingItem for a BindingItem(FromRel), to reflect different behaviora like aggr for example in select and in grouping clause</div>
 </li>
 </ul>
 </div>
@@ -184,7 +185,8 @@ implements <a href="WrsBindingItem.html" title="interface in de.businesscode.bcd
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>protected </code></td>
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(de.businesscode.bcdui.wrs.load.WrqInfo,de.businesscode.bcdui.binding.BindingItem,java.lang.String,boolean)">WrqBindingItem</a></span>&#8203;(<a href="WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a>&nbsp;wrqInfo,
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(de.businesscode.bcdui.wrs.load.WrqInfo,java.lang.String,de.businesscode.bcdui.binding.BindingItem,java.lang.String,boolean)">WrqBindingItem</a></span>&#8203;(<a href="WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a>&nbsp;wrqInfo,
+              java.lang.String&nbsp;id,
               <a href="../../binding/BindingItem.html" title="class in de.businesscode.bcdui.binding">BindingItem</a>&nbsp;bi,
               java.lang.String&nbsp;alias,
               boolean&nbsp;enforceAggr)</code></th>
@@ -260,147 +262,170 @@ implements <a href="WrsBindingItem.html" title="interface in de.businesscode.bcd
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i3" class="rowColor">
+<td class="colFirst"><code>java.lang.Object</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getAttribute(java.lang.String)">getAttribute</a></span>&#8203;(java.lang.String&nbsp;name)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>java.util.List&lt;org.w3c.dom.Element&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getBoundVariables()">getBoundVariables</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getCaption()">getCaption</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getColumnExpression()">getColumnExpression</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Return the physical DB column expression including virtual dimension member caused adjustments</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getColumnExpressionWithAggr()">getColumnExpressionWithAggr</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Returns the column expression with aggregation applied, if any is set</div>
+</td>
+</tr>
+<tr id="i8" class="altColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getColumnExpressionWithAggr(boolean)">getColumnExpressionWithAggr</a></span>&#8203;(boolean&nbsp;enforceAggr)</code></th>
+<td class="colLast">
+<div class="block">Returns the column expression with aggregation applied, if any is set or if enforceAggr=true</div>
+</td>
+</tr>
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getColumnNumber()">getColumnNumber</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>protected static java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getDefaultAggr(int)">getDefaultAggr</a></span>&#8203;(int&nbsp;dataType)</code></th>
 <td class="colLast">
 <div class="block">Usually, the aggregation is defined in the Wrq Element e for the column.</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getId()">getId</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getJDBCColumnScale()">getJDBCColumnScale</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code>java.lang.Integer</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getJDBCDataType()">getJDBCDataType</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i14" class="altColor">
 <td class="colFirst"><code><a href="WrqBindingItem.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingItem</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getParentWrsC()">getParentWrsC</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getQColumnExpression()">getQColumnExpression</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Return the column expression with the table alias</div>
 </td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i16" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getQColumnExpression(boolean)">getQColumnExpression</a></span>&#8203;(boolean&nbsp;applyVdm)</code></th>
 <td class="colLast">
 <div class="block">Return the column expression with the table alias</div>
 </td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i17" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getQColumnExpressionWithAggr()">getQColumnExpressionWithAggr</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Returns the column expression with aggregation applied, if any is set</div>
+<div class="block">Returns the column expression with table alias and with aggregation applied, if any is set</div>
 </td>
 </tr>
-<tr id="i15" class="rowColor">
+<tr id="i18" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getQColumnExpressionWithAggr(boolean)">getQColumnExpressionWithAggr</a></span>&#8203;(boolean&nbsp;enforceAggr)</code></th>
 <td class="colLast">
-<div class="block">Returns the column expression with aggregation applied, if any is set or if enforceAggr=true</div>
+<div class="block">Returns the column expression with table alias and with aggregation applied, if any is set or if enforceAggr=true</div>
 </td>
 </tr>
-<tr id="i16" class="altColor">
+<tr id="i19" class="rowColor">
 <td class="colFirst"><code><a href="../../binding/BindingItem.html" title="class in de.businesscode.bcdui.binding">BindingItem</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getReferenceBindingItem()">getReferenceBindingItem</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i17" class="rowColor">
+<tr id="i20" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSkipForTotals()">getSkipForTotals</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i18" class="altColor">
+<tr id="i21" class="rowColor">
 <td class="colFirst"><code>java.util.List&lt;java.lang.String&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSplitColumnExpression()">getSplitColumnExpression</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Used to identify column reference parts in a SQL Column expressions to allow for prepending table alias {@see BindingUtils.splitColumnExpression}</div>
 </td>
 </tr>
-<tr id="i19" class="rowColor">
+<tr id="i22" class="altColor">
 <td class="colFirst"><code>java.util.List&lt;java.lang.String&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSplitColumnExpression(boolean)">getSplitColumnExpression</a></span>&#8203;(boolean&nbsp;applyVdm)</code></th>
 <td class="colLast">
 <div class="block">Used to identify column reference parts in a SQL Column expressions to allow for prepending table alias {@see BindingUtils.splitColumnExpression}</div>
 </td>
 </tr>
-<tr id="i20" class="altColor">
+<tr id="i23" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTableAlias()">getTableAlias</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Usually the table alias is derived from the wrq-table alias with which this bindingItem is referenced
+ b.country will be taken from the table that is associated with the wrq table alias "b"
+ This value is created during each query.</div>
+</td>
 </tr>
-<tr id="i21" class="rowColor">
+<tr id="i24" class="altColor">
 <td class="colFirst"><code>java.util.Collection&lt;<a href="WrsBindingItem.html" title="interface in de.businesscode.bcdui.wrs.load">WrsBindingItem</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getWrsAAttributes()">getWrsAAttributes</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i22" class="altColor">
+<tr id="i25" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getWrsAName()">getWrsAName</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i23" class="rowColor">
-<td class="colFirst"><code>boolean</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hasAColumReference()">hasAColumReference</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i24" class="altColor">
-<td class="colFirst"><code>boolean</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hasWrsAAttributes()">hasWrsAAttributes</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i25" class="rowColor">
-<td class="colFirst"><code>java.lang.Boolean</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isEscapeXML()">isEscapeXML</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
 <tr id="i26" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isNumeric()">isNumeric</a></span>()</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hasAColumnReference()">hasAColumnReference</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i27" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isOrderByDescending()">isOrderByDescending</a></span>()</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hasWrsAAttributes()">hasWrsAAttributes</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i28" class="altColor">
+<td class="colFirst"><code>java.lang.Boolean</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isEscapeXML()">isEscapeXML</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i29" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isNumeric()">isNumeric</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i30" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isOrderByDescending()">isOrderByDescending</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i31" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setColumnExpression(java.lang.String)">setColumnExpression</a></span>&#8203;(java.lang.String&nbsp;cE)</code></th>
 <td class="colLast">
@@ -408,22 +433,22 @@ implements <a href="WrsBindingItem.html" title="interface in de.businesscode.bcd
  Note that for VDM, this relies on plainColumnExpression and jdbcDataType being set already to this.</div>
 </td>
 </tr>
-<tr id="i29" class="rowColor">
+<tr id="i32" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setColumnNumber(int)">setColumnNumber</a></span>&#8203;(int&nbsp;columnNumber)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i30" class="altColor">
+<tr id="i33" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setOrderByDescending(boolean)">setOrderByDescending</a></span>&#8203;(boolean&nbsp;isDescending)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i31" class="rowColor">
+<tr id="i34" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setTableAlias(java.lang.String)">setTableAlias</a></span>&#8203;(java.lang.String&nbsp;tableAlias)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setTableAliasOverwrite(java.lang.String)">setTableAliasOverwrite</a></span>&#8203;(java.lang.String&nbsp;tableAlias)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i32" class="altColor">
+<tr id="i35" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toXML(javax.xml.stream.XMLStreamWriter,boolean)">toXML</a></span>&#8203;(javax.xml.stream.XMLStreamWriter&nbsp;writer,
      boolean&nbsp;withColumnExpression)</code></th>
@@ -540,13 +565,14 @@ implements <a href="WrsBindingItem.html" title="interface in de.businesscode.bcd
 </dl>
 </li>
 </ul>
-<a id="&lt;init&gt;(de.businesscode.bcdui.wrs.load.WrqInfo,de.businesscode.bcdui.binding.BindingItem,java.lang.String,boolean)">
+<a id="&lt;init&gt;(de.businesscode.bcdui.wrs.load.WrqInfo,java.lang.String,de.businesscode.bcdui.binding.BindingItem,java.lang.String,boolean)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>WrqBindingItem</h4>
 <pre>protected&nbsp;WrqBindingItem&#8203;(<a href="WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a>&nbsp;wrqInfo,
+                         java.lang.String&nbsp;id,
                          <a href="../../binding/BindingItem.html" title="class in de.businesscode.bcdui.binding">BindingItem</a>&nbsp;bi,
                          java.lang.String&nbsp;alias,
                          boolean&nbsp;enforceAggr)</pre>
@@ -790,10 +816,13 @@ implements <a href="WrsBindingItem.html" title="interface in de.businesscode.bcd
 <ul class="blockList">
 <li class="blockList">
 <h4>getQColumnExpressionWithAggr</h4>
-<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getQColumnExpressionWithAggr()</pre>
-<div class="block">Returns the column expression with aggregation applied, if any is set</div>
+<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getQColumnExpressionWithAggr()
+                                              throws <a href="../../binding/exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></pre>
+<div class="block">Returns the column expression with table alias and with aggregation applied, if any is set</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="../../binding/exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -803,20 +832,49 @@ implements <a href="WrsBindingItem.html" title="interface in de.businesscode.bcd
 <ul class="blockList">
 <li class="blockList">
 <h4>getQColumnExpressionWithAggr</h4>
-<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getQColumnExpressionWithAggr&#8203;(boolean&nbsp;enforceAggr)</pre>
+<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getQColumnExpressionWithAggr&#8203;(boolean&nbsp;enforceAggr)
+                                              throws <a href="../../binding/exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></pre>
+<div class="block">Returns the column expression with table alias and with aggregation applied, if any is set or if enforceAggr=true</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="../../binding/exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></code></dd>
+</dl>
+</li>
+</ul>
+<a id="getColumnExpressionWithAggr()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getColumnExpressionWithAggr</h4>
+<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getColumnExpressionWithAggr()</pre>
+<div class="block">Returns the column expression with aggregation applied, if any is set</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+</dl>
+</li>
+</ul>
+<a id="getColumnExpressionWithAggr(boolean)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getColumnExpressionWithAggr</h4>
+<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getColumnExpressionWithAggr&#8203;(boolean&nbsp;enforceAggr)</pre>
 <div class="block">Returns the column expression with aggregation applied, if any is set or if enforceAggr=true</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 </dl>
 </li>
 </ul>
-<a id="hasAColumReference()">
+<a id="hasAColumnReference()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>hasAColumReference</h4>
-<pre class="methodSignature">public&nbsp;boolean&nbsp;hasAColumReference()</pre>
+<h4>hasAColumnReference</h4>
+<pre class="methodSignature">public&nbsp;boolean&nbsp;hasAColumnReference()</pre>
 </li>
 </ul>
 <a id="getQColumnExpression()">
@@ -825,10 +883,13 @@ implements <a href="WrsBindingItem.html" title="interface in de.businesscode.bcd
 <ul class="blockList">
 <li class="blockList">
 <h4>getQColumnExpression</h4>
-<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getQColumnExpression()</pre>
+<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getQColumnExpression()
+                                      throws <a href="../../binding/exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></pre>
 <div class="block">Return the column expression with the table alias</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="../../binding/exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -838,12 +899,15 @@ implements <a href="WrsBindingItem.html" title="interface in de.businesscode.bcd
 <ul class="blockList">
 <li class="blockList">
 <h4>getQColumnExpression</h4>
-<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getQColumnExpression&#8203;(boolean&nbsp;applyVdm)</pre>
+<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getQColumnExpression&#8203;(boolean&nbsp;applyVdm)
+                                      throws <a href="../../binding/exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></pre>
 <div class="block">Return the column expression with the table alias</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>applyVdm</code> - If false, virtual dimension members are ignored here</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="../../binding/exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -881,16 +945,18 @@ implements <a href="WrsBindingItem.html" title="interface in de.businesscode.bcd
 <ul class="blockList">
 <li class="blockList">
 <h4>getTableAlias</h4>
-<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getTableAlias()</pre>
-</li>
-</ul>
-<a id="setTableAlias(java.lang.String)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>setTableAlias</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;setTableAlias&#8203;(java.lang.String&nbsp;tableAlias)</pre>
+<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getTableAlias()
+                               throws <a href="../../binding/exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></pre>
+<div class="block">Usually the table alias is derived from the wrq-table alias with which this bindingItem is referenced
+ b.country will be taken from the table that is associated with the wrq table alias "b"
+ This value is created during each query. But here are two special cases:
+ tableAliasOverwrite allows to completely ignore this and fix out table alias by using setTableAliasOverwrite(). This is used for CTE fo example
+ tableAliasPostFix will be not empty in case the BindingItem comes from a Relation as it mist be the Relation-joined (as opposed to Wrq-joined) table</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="../../binding/exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></code></dd>
+</dl>
 </li>
 </ul>
 <a id="getParentWrsC()">
@@ -962,7 +1028,7 @@ implements <a href="WrsBindingItem.html" title="interface in de.businesscode.bcd
 <a id="isNumeric()">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>isNumeric</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;isNumeric()</pre>
@@ -970,6 +1036,24 @@ implements <a href="WrsBindingItem.html" title="interface in de.businesscode.bcd
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>true if the BindingItem represents a numeric value</dd>
 </dl>
+</li>
+</ul>
+<a id="getAttribute(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getAttribute</h4>
+<pre class="methodSignature">public&nbsp;java.lang.Object&nbsp;getAttribute&#8203;(java.lang.String&nbsp;name)</pre>
+</li>
+</ul>
+<a id="setTableAliasOverwrite(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>setTableAliasOverwrite</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setTableAliasOverwrite&#8203;(java.lang.String&nbsp;tableAlias)</pre>
 </li>
 </ul>
 </li>

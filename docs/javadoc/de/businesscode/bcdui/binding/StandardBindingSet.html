@@ -13,8 +13,7 @@
 <!--[if IE]>
 <script type="text/javascript" src="../../../../jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="../../../../jquery/jquery-3.3.1.js"></script>
-<script type="text/javascript" src="../../../../jquery/jquery-migrate-3.0.1.js"></script>
+<script type="text/javascript" src="../../../../jquery/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="../../../../jquery/jquery-ui.js"></script>
 </head>
 <body>
@@ -27,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":10,"i22":10,"i23":10,"i24":10,"i25":10,"i26":10,"i27":10,"i28":10,"i29":10,"i30":10,"i31":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":10,"i22":10,"i23":10,"i24":10,"i25":10,"i26":10,"i27":10,"i28":10,"i29":10,"i30":10,"i31":10,"i32":10,"i33":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -139,9 +138,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <pre>public class <span class="typeNameLabel">StandardBindingSet</span>
 extends java.lang.Object
 implements <a href="BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a></pre>
-<div class="block">A BindingSet is a mapping from names to BindingItems. It is read from <br>
- a static XML file by the Bindings class. This file must satisfy the <br>
- Schema bindings.xsd. <br></div>
+<div class="block">A BindingSet is a mapping from names to BindingItems. It is read from 
+ a static XML file by the Bindings class usually from WEB-INF/bindings
+ That file must satisfy the Schema bindings.xsd.</div>
 <dl>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="Bindings.html" title="class in de.businesscode.bcdui.binding"><code>Bindings</code></a>, 
@@ -201,6 +200,10 @@ implements <a href="BindingSet.html" title="interface in de.businesscode.bcdui.b
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(de.businesscode.bcdui.binding.StandardBindingSet)">StandardBindingSet</a></span>&#8203;(<a href="StandardBindingSet.html" title="class in de.businesscode.bcdui.binding">StandardBindingSet</a>&nbsp;bs)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.String)">StandardBindingSet</a></span>&#8203;(java.lang.String&nbsp;name)</code></th>
 <td class="colLast">
 <div class="block">StandardBindingSet</div>
@@ -265,13 +268,6 @@ implements <a href="BindingSet.html" title="interface in de.businesscode.bcdui.b
 </td>
 </tr>
 <tr id="i6" class="altColor">
-<td class="colFirst"><code>java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getAliasName()">getAliasName</a></span>()</code></th>
-<td class="colLast">
-<div class="block">Gets the unique alias name.</div>
-</td>
-</tr>
-<tr id="i7" class="rowColor">
 <td class="colFirst"><code><a href="BindingItem.html" title="class in de.businesscode.bcdui.binding">BindingItem</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getBindingItemFromRelation(de.businesscode.bcdui.binding.rel.Relation,java.lang.String)">getBindingItemFromRelation</a></span>&#8203;(<a href="rel/Relation.html" title="class in de.businesscode.bcdui.binding.rel">Relation</a>&nbsp;pRelation,
                           java.lang.String&nbsp;itemName)</code></th>
@@ -279,28 +275,26 @@ implements <a href="BindingSet.html" title="interface in de.businesscode.bcdui.b
 <div class="block">Method getBindingItemFromRelation</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>java.util.Collection&lt;java.lang.String&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getBindingItemNames()">getBindingItemNames</a></span>()</code></th>
 <td class="colLast">
 <div class="block">getBindingItemNames</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>java.util.Collection&lt;<a href="BindingItem.html" title="class in de.businesscode.bcdui.binding">BindingItem</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getBindingItems()">getBindingItems</a></span>()</code></th>
-<td class="colLast">
-<div class="block">getBindingItems</div>
-</td>
+<td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getDbSourceName()">getDbSourceName</a></span>()</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getJdbcResourceName()">getJdbcResourceName</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Gets the database name the table of the BindingSet is located in.</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code><a href="BindingItem.html" title="class in de.businesscode.bcdui.binding">BindingItem</a>[]</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getKeyBindingItems()">getKeyBindingItems</a></span>()</code></th>
 <td class="colLast">
@@ -308,48 +302,70 @@ implements <a href="BindingSet.html" title="interface in de.businesscode.bcdui.b
  may contain no entries.</div>
 </td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getName()">getName</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Gets the unique name of the BindingSet.</div>
 </td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>java.util.ArrayList&lt;<a href="rel/Relation.html" title="class in de.businesscode.bcdui.binding.rel">Relation</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRelations()">getRelations</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code><a href="../subjectsettings/config/Security.html" title="class in de.businesscode.bcdui.subjectsettings.config">Security</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSecurity()">getSecurity</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
+<tr id="i14" class="altColor">
+<td class="colFirst"><code><a href="../wrs/load/SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSQLStatementWithParams()">getSQLStatementWithParams</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Returns a table expression and if it is a complex one (subselect with where for example) it may come with variables to be bound as host variables</div>
+</td>
+</tr>
 <tr id="i15" class="rowColor">
+<td class="colFirst"><code><a href="../wrs/load/SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSubjectFilterExpression(de.businesscode.bcdui.wrs.load.WrqInfo,java.lang.String,java.lang.String)">getSubjectFilterExpression</a></span>&#8203;(<a href="../wrs/load/WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a>&nbsp;wrqInfo,
+                          java.lang.String&nbsp;wrqAlias,
+                          java.lang.String&nbsp;sqlAlias)</code></th>
+<td class="colLast">
+<div class="block">Generate the part of the where clause that is reflecting the bnd:BindingSet/bnd:SubjectSettings/bnd:SubjectFilters</div>
+</td>
+</tr>
+<tr id="i16" class="altColor">
 <td class="colFirst"><code><a href="subjectFilter/SubjectFilters.html" title="class in de.businesscode.bcdui.binding.subjectFilter">SubjectFilters</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSubjectFilters()">getSubjectFilters</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Gets the <a href="subjectFilter/SubjectFilters.html" title="class in de.businesscode.bcdui.binding.subjectFilter"><code>SubjectFilters</code></a> definition for this BindingSet which may be null.</div>
 </td>
 </tr>
-<tr id="i16" class="altColor">
-<td class="colFirst"><code>java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTableName()">getTableName</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
 <tr id="i17" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTableName(java.util.Collection)">getTableName</a></span>&#8203;(java.util.Collection&lt;java.lang.String&gt;&nbsp;reqBRefs)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTableReference()">getTableReference</a></span>()</code></th>
 <td class="colLast">
-<div class="block">returns table name by means requested binding items.</div>
+<div class="block">Returns a table reference.</div>
 </td>
 </tr>
 <tr id="i18" class="altColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTableReference(java.lang.String)">getTableReference</a></span>&#8203;(java.lang.String&nbsp;tableAlias)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i19" class="rowColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTableReference(java.util.Collection,java.lang.String)">getTableReference</a></span>&#8203;(java.util.Collection&lt;java.lang.String&gt;&nbsp;reqBRefs,
+                 java.lang.String&nbsp;tableAlias)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i20" class="altColor">
 <td class="colFirst"><code><a href="write/WriteProcessing.html" title="class in de.businesscode.bcdui.binding.write">WriteProcessing</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getWriteProcessing()">getWriteProcessing</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i19" class="rowColor">
+<tr id="i21" class="rowColor">
 <td class="colFirst"><code>java.util.List&lt;java.lang.Class&lt;? extends <a href="../wrs/load/modifier/Modifier.html" title="interface in de.businesscode.bcdui.wrs.load.modifier">Modifier</a>&gt;&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getWrqModifiers()">getWrqModifiers</a></span>()</code></th>
 <td class="colLast">
@@ -357,76 +373,76 @@ implements <a href="BindingSet.html" title="interface in de.businesscode.bcdui.b
  This is completely transparent to the caller, the answer Wrs does show the original WrsRequest</div>
 </td>
 </tr>
-<tr id="i20" class="altColor">
+<tr id="i22" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hasCustomItem()">hasCustomItem</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i21" class="rowColor">
+<tr id="i23" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hasItem(java.lang.String)">hasItem</a></span>&#8203;(java.lang.String&nbsp;id)</code></th>
 <td class="colLast">
 <div class="block">tells if this binding-set contains an item</div>
 </td>
 </tr>
-<tr id="i22" class="altColor">
+<tr id="i24" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hasKeyBindingItems()">hasKeyBindingItems</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Tests if the BindingSet hat key BindingItems.</div>
 </td>
 </tr>
-<tr id="i23" class="rowColor">
+<tr id="i25" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hasSubjectFilters()">hasSubjectFilters</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Tells if the binding set has subject filters.</div>
 </td>
 </tr>
-<tr id="i24" class="altColor">
+<tr id="i26" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isAllowSelectAllColumns()">isAllowSelectAllColumns</a></span>()</code></th>
 <td class="colLast">
 <div class="block">isAllowSelectAllColumns</div>
 </td>
 </tr>
-<tr id="i25" class="rowColor">
+<tr id="i27" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#putItem(de.businesscode.bcdui.binding.BindingItem)">putItem</a></span>&#8203;(<a href="BindingItem.html" title="class in de.businesscode.bcdui.binding">BindingItem</a>&nbsp;item)</code></th>
 <td class="colLast">
 <div class="block">putItem</div>
 </td>
 </tr>
-<tr id="i26" class="altColor">
+<tr id="i28" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setAllowSelectAllColumns(boolean)">setAllowSelectAllColumns</a></span>&#8203;(boolean&nbsp;allowSelectAllColumns)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i27" class="rowColor">
+<tr id="i29" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setDbSourceName(java.lang.String)">setDbSourceName</a></span>&#8203;(java.lang.String&nbsp;dbSourceName)</code></th>
 <td class="colLast">
 <div class="block">setDbSourceName</div>
 </td>
 </tr>
-<tr id="i28" class="altColor">
+<tr id="i30" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setHasCustomItem(boolean)">setHasCustomItem</a></span>&#8203;(boolean&nbsp;hasCustomItem)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i29" class="rowColor">
+<tr id="i31" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setSecurity(de.businesscode.bcdui.subjectsettings.config.Security)">setSecurity</a></span>&#8203;(<a href="../subjectsettings/config/Security.html" title="class in de.businesscode.bcdui.subjectsettings.config">Security</a>&nbsp;security)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i30" class="altColor">
+<tr id="i32" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setSubjectFilters(de.businesscode.bcdui.binding.subjectFilter.SubjectFilters)">setSubjectFilters</a></span>&#8203;(<a href="subjectFilter/SubjectFilters.html" title="class in de.businesscode.bcdui.binding.subjectFilter">SubjectFilters</a>&nbsp;subjectFilters)</code></th>
 <td class="colLast">
 <div class="block">sets the <a href="subjectFilter/SubjectFilters.html" title="class in de.businesscode.bcdui.binding.subjectFilter"><code>SubjectFilters</code></a></div>
 </td>
 </tr>
-<tr id="i31" class="rowColor">
+<tr id="i33" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setTableName(java.lang.String)">setTableName</a></span>&#8203;(java.lang.String&nbsp;tableName)</code></th>
 <td class="colLast">
@@ -460,7 +476,7 @@ implements <a href="BindingSet.html" title="interface in de.businesscode.bcdui.b
 <a id="&lt;init&gt;(java.lang.String)">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>StandardBindingSet</h4>
 <pre>public&nbsp;StandardBindingSet&#8203;(java.lang.String&nbsp;name)</pre>
@@ -469,6 +485,15 @@ implements <a href="BindingSet.html" title="interface in de.businesscode.bcdui.b
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>name</code> - </dd>
 </dl>
+</li>
+</ul>
+<a id="&lt;init&gt;(de.businesscode.bcdui.binding.StandardBindingSet)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>StandardBindingSet</h4>
+<pre>public&nbsp;StandardBindingSet&#8203;(<a href="StandardBindingSet.html" title="class in de.businesscode.bcdui.binding">StandardBindingSet</a>&nbsp;bs)</pre>
 </li>
 </ul>
 </li>
@@ -500,40 +525,33 @@ implements <a href="BindingSet.html" title="interface in de.businesscode.bcdui.b
 </dl>
 </li>
 </ul>
-<a id="getTableName()">
+<a id="getTableReference(java.lang.String)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>getTableName</h4>
-<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getTableName()</pre>
+<h4>getTableReference</h4>
+<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getTableReference&#8203;(java.lang.String&nbsp;tableAlias)</pre>
 <dl>
-<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="BindingSet.html#getTableName()">getTableName</a></code>&nbsp;in interface&nbsp;<code><a href="BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a></code></dd>
 <dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="BindingSet.html#getTableName()"><code>BindingSet.getTableName()</code></a></dd>
+<dd><a href="BindingSet.html#getTableReference()"><code>BindingSet.getTableReference()</code></a></dd>
 </dl>
 </li>
 </ul>
-<a id="getTableName(java.util.Collection)">
+<a id="getTableReference(java.util.Collection,java.lang.String)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>getTableName</h4>
-<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getTableName&#8203;(java.util.Collection&lt;java.lang.String&gt;&nbsp;reqBRefs)
-                              throws <a href="exc/BindingException.html" title="class in de.businesscode.bcdui.binding.exc">BindingException</a></pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="BindingSet.html#getTableName(java.util.Collection)">BindingSet</a></code></span></div>
-<div class="block">returns table name by means requested binding items.
- the table name may contain join(s), if requested binding items
- belongs to a relation.</div>
+<h4>getTableReference</h4>
+<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getTableReference&#8203;(java.util.Collection&lt;java.lang.String&gt;&nbsp;reqBRefs,
+                                          java.lang.String&nbsp;tableAlias)
+                                   throws <a href="exc/BindingException.html" title="class in de.businesscode.bcdui.binding.exc">BindingException</a></pre>
 <dl>
-<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="BindingSet.html#getTableName(java.util.Collection)">getTableName</a></code>&nbsp;in interface&nbsp;<code><a href="BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a></code></dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="exc/BindingException.html" title="class in de.businesscode.bcdui.binding.exc">BindingException</a></code></dd>
 <dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="BindingSet.html#getTableName()"><code>BindingSet.getTableName()</code></a></dd>
+<dd><a href="BindingSet.html#getTableReference()"><code>BindingSet.getTableReference()</code></a></dd>
 </dl>
 </li>
 </ul>
@@ -562,6 +580,27 @@ implements <a href="BindingSet.html" title="interface in de.businesscode.bcdui.b
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>subjectFilters</code> - </dd>
+</dl>
+</li>
+</ul>
+<a id="getSubjectFilterExpression(de.businesscode.bcdui.wrs.load.WrqInfo,java.lang.String,java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getSubjectFilterExpression</h4>
+<pre class="methodSignature">public&nbsp;<a href="../wrs/load/SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a>&nbsp;getSubjectFilterExpression&#8203;(<a href="../wrs/load/WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a>&nbsp;wrqInfo,
+                                                         java.lang.String&nbsp;wrqAlias,
+                                                         java.lang.String&nbsp;sqlAlias)
+                                                  throws <a href="exc/BindingException.html" title="class in de.businesscode.bcdui.binding.exc">BindingException</a></pre>
+<div class="block">Generate the part of the where clause that is reflecting the bnd:BindingSet/bnd:SubjectSettings/bnd:SubjectFilters</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>wrqInfo</code> - </dd>
+<dd><code>tableAlias</code> - </dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="exc/BindingException.html" title="class in de.businesscode.bcdui.binding.exc">BindingException</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -615,22 +654,22 @@ implements <a href="BindingSet.html" title="interface in de.businesscode.bcdui.b
 </dl>
 </li>
 </ul>
-<a id="getDbSourceName()">
+<a id="getJdbcResourceName()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>getDbSourceName</h4>
-<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getDbSourceName()</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="BindingSet.html#getDbSourceName()">BindingSet</a></code></span></div>
+<h4>getJdbcResourceName</h4>
+<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getJdbcResourceName()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="BindingSet.html#getJdbcResourceName()">BindingSet</a></code></span></div>
 <div class="block">Gets the database name the table of the BindingSet is located in.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="BindingSet.html#getDbSourceName()">getDbSourceName</a></code>&nbsp;in interface&nbsp;<code><a href="BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a></code></dd>
+<dd><code><a href="BindingSet.html#getJdbcResourceName()">getJdbcResourceName</a></code>&nbsp;in interface&nbsp;<code><a href="BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>The dbSourceName attribute of the BindingSet.</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="BindingSet.html#getDbSourceName()"><code>BindingSet.getDbSourceName()</code></a></dd>
+<dd><a href="BindingSet.html#getJdbcResourceName()"><code>BindingSet.getJdbcResourceName()</code></a></dd>
 </dl>
 </li>
 </ul>
@@ -755,13 +794,13 @@ implements <a href="BindingSet.html" title="interface in de.businesscode.bcdui.b
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="BindingSet.html#getBindingItemFromRelation(de.businesscode.bcdui.binding.rel.Relation,java.lang.String)">getBindingItemFromRelation</a></code>&nbsp;in interface&nbsp;<code><a href="BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a></code></dd>
-<dd><code>itemName</code> - - requested binding item name</dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>pRelation</code> - </dd>
+<dd><code>itemName</code> - </dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>a new BindingItem object if</dd>
+<dd>null if not found</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="exc/BindingException.html" title="class in de.businesscode.bcdui.binding.exc">BindingException</a></code></dd>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="BindingSet.html#getBindingItemFromRelation(de.businesscode.bcdui.binding.rel.Relation,java.lang.String)"><code>BindingSet.getBindingItemFromRelation(de.businesscode.bcdui.binding.rel.Relation, java.lang.String)</code></a></dd>
 </dl>
 </li>
 </ul>
@@ -844,15 +883,9 @@ implements <a href="BindingSet.html" title="interface in de.businesscode.bcdui.b
 <li class="blockList">
 <h4>getBindingItems</h4>
 <pre class="methodSignature">public&nbsp;java.util.Collection&lt;<a href="BindingItem.html" title="class in de.businesscode.bcdui.binding">BindingItem</a>&gt;&nbsp;getBindingItems()</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="BindingSet.html#getBindingItems()">BindingSet</a></code></span></div>
-<div class="block">getBindingItems</div>
 <dl>
-<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="BindingSet.html#getBindingItems()">getBindingItems</a></code>&nbsp;in interface&nbsp;<code><a href="BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a></code></dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>all items defined in the bindingSet</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="BindingSet.html#getBindingItems()"><code>BindingSet.getBindingItems()</code></a></dd>
+<dd><code>de.businesscode.bcdui.binding.BindingSet#getBindingItems()</code></dd>
 </dl>
 </li>
 </ul>
@@ -887,22 +920,6 @@ implements <a href="BindingSet.html" title="interface in de.businesscode.bcdui.b
 <dd><code><a href="BindingSet.html#getWriteProcessing()">getWriteProcessing</a></code>&nbsp;in interface&nbsp;<code><a href="BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a></code></dd>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="BindingSet.html#getWriteProcessing()"><code>BindingSet.getWriteProcessing()</code></a></dd>
-</dl>
-</li>
-</ul>
-<a id="getAliasName()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getAliasName</h4>
-<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getAliasName()</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="BindingSet.html#getAliasName()">BindingSet</a></code></span></div>
-<div class="block">Gets the unique alias name.</div>
-<dl>
-<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="BindingSet.html#getAliasName()">getAliasName</a></code>&nbsp;in interface&nbsp;<code><a href="BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a></code></dd>
-<dt><span class="returnLabel">Returns:</span></dt>
 </dl>
 </li>
 </ul>
@@ -1014,7 +1031,7 @@ implements <a href="BindingSet.html" title="interface in de.businesscode.bcdui.b
 <a id="assurePermitted(de.businesscode.bcdui.binding.BindingSet.SECURITY_OPS)">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>assurePermitted</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;assurePermitted&#8203;(<a href="BindingSet.SECURITY_OPS.html" title="enum in de.businesscode.bcdui.binding">BindingSet.SECURITY_OPS</a>&nbsp;operation)
@@ -1028,6 +1045,38 @@ implements <a href="BindingSet.html" title="interface in de.businesscode.bcdui.b
 <dd><code>operation</code> - - to assure permission for</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="../subjectsettings/SecurityException.html" title="class in de.businesscode.bcdui.subjectsettings">SecurityException</a></code></dd>
+</dl>
+</li>
+</ul>
+<a id="getTableReference()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getTableReference</h4>
+<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getTableReference()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="BindingSet.html#getTableReference()">BindingSet</a></code></span></div>
+<div class="block">Returns a table reference. Can be a plain table name (with alias) or a join of tables</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="BindingSet.html#getTableReference()">getTableReference</a></code>&nbsp;in interface&nbsp;<code><a href="BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a></code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+</dl>
+</li>
+</ul>
+<a id="getSQLStatementWithParams()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getSQLStatementWithParams</h4>
+<pre class="methodSignature">public&nbsp;<a href="../wrs/load/SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a>&nbsp;getSQLStatementWithParams()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="BindingSet.html#getSQLStatementWithParams()">BindingSet</a></code></span></div>
+<div class="block">Returns a table expression and if it is a complex one (subselect with where for example) it may come with variables to be bound as host variables</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="BindingSet.html#getSQLStatementWithParams()">getSQLStatementWithParams</a></code>&nbsp;in interface&nbsp;<code><a href="BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a></code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
 </dl>
 </li>
 </ul>

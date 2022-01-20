@@ -2319,6 +2319,38 @@
             
                 <li data-name="bcdui.component.chart.ChartEchart.saveAsImage"><a href="bcdui.component.chart.ChartEchart.html#.saveAsImage">saveAsImage</a></li>
             
+                <li data-name="bcdui.component.chart.ChartEchart.saveAsImage"><a href="bcdui.component.chart.ChartEchart.html#.saveAsImage">saveAsImage</a></li>
+            
+                <li data-name="bcdui.component.chart.ChartEchart#getData"><a href="bcdui.component.chart.ChartEchart.html#getData">getData</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="bcdui.component.chart.ChartEchart">
+            <span class="title">
+                <a href="bcdui.component.chart.ChartEchart.html">bcdui.component.chart.ChartEchart</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="bcdui.component.chart.ChartEchart.saveAsImage"><a href="bcdui.component.chart.ChartEchart.html#.saveAsImage">saveAsImage</a></li>
+            
+                <li data-name="bcdui.component.chart.ChartEchart.saveAsImage"><a href="bcdui.component.chart.ChartEchart.html#.saveAsImage">saveAsImage</a></li>
+            
                 <li data-name="bcdui.component.chart.ChartEchart#getData"><a href="bcdui.component.chart.ChartEchart.html#getData">getData</a></li>
             
             </ul>
@@ -7031,7 +7063,7 @@ If not provided in the constructor, a random id starting with 'bcd' is set, but 
     
         
         <div class="tag-source">
-            <a href="global.html#core/abstractExecutable.js">core/abstractExecutable.js</a>, <a href="global.html#core/abstractExecutable.js#line210">line 210</a>
+            <a href="global.html#core/abstractExecutable.js">core/abstractExecutable.js</a>, <a href="global.html#core/abstractExecutable.js#line216">line 216</a>
         </div>
         
     </div>
@@ -7040,13 +7072,6 @@ If not provided in the constructor, a random id starting with 'bcd' is set, but 
 </dt>
 <dd>
     
-    
-    <div class="description">
-        Adds a status listener to this object which will be informed in case of status
-transitions. The status listener must listen to either one specific event or
-all events.
-Call <a href="bcdui.core.AbstractExecutable.html#removeStatusListener">removeStatusListener()</a> to remove the listener.
-    </div>
     
 
     
@@ -7088,7 +7113,7 @@ Call <a href="bcdui.core.AbstractExecutable.html#removeStatusListener">removeSta
 <span class="param-type">StatusListener</span>
 |
 
-<span class="param-type">object</span>
+<span class="param-type"><a href="global.html#AddStatusListenerParam">AddStatusListenerParam</a></span>
 
 
             
@@ -7098,137 +7123,7 @@ Call <a href="bcdui.core.AbstractExecutable.html#removeStatusListener">removeSta
             
             <td class="description last">
                 
-                Either a function executed on all status transitions <p/>or a parameter map with the following properties:
-                
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		<th>Default</th>
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>listener</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-|
-
-<span class="param-type"><a href="bcdui.core.StatusListener.html">bcdui.core.StatusListener</a></span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                    
-                        
-                    
-                
-                A function or StatusListener object representing the listener action.</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>status</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type"><a href="bcdui.core.Status_.html">bcdui.core.Status</a></span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                The status it should listen to. 
-  If it is missing the listener is executed on all status transitions, otherwise it is executed when the status is set to the specified status.</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>onlyOnce</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                    false
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                A boolean variable indicating that the listener should be automatically removed after it has been executed.</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-            </td>
+                Either a function executed on all status transitions or a parameter map</td>
         </tr>
 	
 	
@@ -7286,7 +7181,7 @@ Call <a href="bcdui.core.AbstractExecutable.html#removeStatusListener">removeSta
     
         
         <div class="tag-source">
-            <a href="global.html#core/abstractExecutable.js">core/abstractExecutable.js</a>, <a href="global.html#core/abstractExecutable.js#line522">line 522</a>
+            <a href="global.html#core/abstractExecutable.js">core/abstractExecutable.js</a>, <a href="global.html#core/abstractExecutable.js#line531">line 531</a>
         </div>
         
     </div>
@@ -7419,7 +7314,7 @@ meaning that the process is re-started when it is currently ready.</td>
     
         
         <div class="tag-source">
-            <a href="global.html#core/abstractExecutable.js">core/abstractExecutable.js</a>, <a href="global.html#core/abstractExecutable.js#line413">line 413</a>
+            <a href="global.html#core/abstractExecutable.js">core/abstractExecutable.js</a>, <a href="global.html#core/abstractExecutable.js#line422">line 422</a>
         </div>
         
     </div>
@@ -7521,7 +7416,7 @@ process.</td>
     
         
         <div class="tag-source">
-            <a href="global.html#core/abstractExecutable.js">core/abstractExecutable.js</a>, <a href="global.html#core/abstractExecutable.js#line401">line 401</a>
+            <a href="global.html#core/abstractExecutable.js">core/abstractExecutable.js</a>, <a href="global.html#core/abstractExecutable.js#line410">line 410</a>
         </div>
         
     </div>
@@ -7624,7 +7519,7 @@ to this class is finished.</td>
     
         
         <div class="tag-source">
-            <a href="global.html#core/abstractExecutable.js">core/abstractExecutable.js</a>, <a href="global.html#core/abstractExecutable.js#line366">line 366</a>
+            <a href="global.html#core/abstractExecutable.js">core/abstractExecutable.js</a>, <a href="global.html#core/abstractExecutable.js#line375">line 375</a>
         </div>
         
     </div>
@@ -7724,7 +7619,7 @@ to this class is finished.</td>
     
         
         <div class="tag-source">
-            <a href="global.html#core/abstractExecutable.js">core/abstractExecutable.js</a>, <a href="global.html#core/abstractExecutable.js#line386">line 386</a>
+            <a href="global.html#core/abstractExecutable.js">core/abstractExecutable.js</a>, <a href="global.html#core/abstractExecutable.js#line395">line 395</a>
         </div>
         
     </div>
@@ -7825,7 +7720,7 @@ returned by the "getFailedStatus" method.
     
         
         <div class="tag-source">
-            <a href="global.html#core/abstractExecutable.js">core/abstractExecutable.js</a>, <a href="global.html#core/abstractExecutable.js#line376">line 376</a>
+            <a href="global.html#core/abstractExecutable.js">core/abstractExecutable.js</a>, <a href="global.html#core/abstractExecutable.js#line385">line 385</a>
         </div>
         
     </div>
@@ -7926,7 +7821,7 @@ status as returned by "getReadyStatus".
     
         
         <div class="tag-source">
-            <a href="global.html#core/abstractExecutable.js">core/abstractExecutable.js</a>, <a href="global.html#core/abstractExecutable.js#line545">line 545</a>
+            <a href="global.html#core/abstractExecutable.js">core/abstractExecutable.js</a>, <a href="global.html#core/abstractExecutable.js#line560">line 560</a>
         </div>
         
     </div>
@@ -7935,11 +7830,6 @@ status as returned by "getReadyStatus".
 </dt>
 <dd>
     
-    
-    <div class="description">
-        Add callback to AbstractExecutable which is triggered exactly once when ready state is reached
-or immediately (but still async) when the AbstractExecutable is already ready
-    </div>
     
 
     
@@ -7978,7 +7868,7 @@ or immediately (but still async) when the AbstractExecutable is already ready
 <span class="param-type">function</span>
 |
 
-<span class="param-type">Object</span>
+<span class="param-type"><a href="global.html#OnceReadyParam">OnceReadyParam</a></span>
 
 
             
@@ -7988,133 +7878,7 @@ or immediately (but still async) when the AbstractExecutable is already ready
             
             <td class="description last">
                 
-                Either a function to be called on ready status (i.e. onSuccess)<p/>or a parameter map with the following properties:
-                
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		<th>Default</th>
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>onSuccess</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                    
-                        
-                    
-                
-                callback function which is called when <a href="bcdui.core.AbstractExecutable.html">bcdui.core.AbstractExecutable</a> is or gets ready</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>onFailure</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                callback function which is called when <a href="bcdui.core.AbstractExecutable.html">bcdui.core.AbstractExecutable</a> gets into failed status</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>executeIfNotReady</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                    false
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                do execute <a href="bcdui.core.AbstractExecutable.html">bcdui.core.AbstractExecutable</a> if it's not ready</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-            </td>
+                Either a function to be called on ready status (i.e. onSuccess) or a parameter map</td>
         </tr>
 	
 	
@@ -8172,7 +7936,7 @@ or immediately (but still async) when the AbstractExecutable is already ready
     
         
         <div class="tag-source">
-            <a href="global.html#core/abstractExecutable.js">core/abstractExecutable.js</a>, <a href="global.html#core/abstractExecutable.js#line574">line 574</a>
+            <a href="global.html#core/abstractExecutable.js">core/abstractExecutable.js</a>, <a href="global.html#core/abstractExecutable.js#line594">line 594</a>
         </div>
         
     </div>
@@ -8181,12 +7945,6 @@ or immediately (but still async) when the AbstractExecutable is already ready
 </dt>
 <dd>
     
-    
-    <div class="description">
-        Add callback for AbstractExecutables, which is triggered when ready state is reached
-
-Please note: the callback routines are always called asynchronously (even if ready state is already given)
-    </div>
     
 
     
@@ -8225,7 +7983,7 @@ Please note: the callback routines are always called asynchronously (even if rea
 <span class="param-type">function</span>
 |
 
-<span class="param-type">Object</span>
+<span class="param-type"><a href="global.html#OnReadyParam">OnReadyParam</a></span>
 
 
             
@@ -8235,205 +7993,7 @@ Please note: the callback routines are always called asynchronously (even if rea
             
             <td class="description last">
                 
-                Either a function to be called on ready status (i.e. onSuccess)<p/>or a parameter map with the following properties:
-                
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		<th>Default</th>
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>onSuccess</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                    
-                        
-                    
-                
-                callback function which is called when <a href="bcdui.core.AbstractExecutable.html">bcdui.core.AbstractExecutable</a> is or gets ready</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>onFailure</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                callback function which is called when <a href="bcdui.core.AbstractExecutable.html">bcdui.core.AbstractExecutable</a> gets into failed status</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>onlyOnce</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                    false
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                call callback only once or on each ready state</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>onlyFuture</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                    false
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                only future ready states will trigger the callback. Per default the callback is called immediately (but async), if the AbstractExecutable is already in ready state</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>executeIfNotReady</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                    false
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                do execute <a href="bcdui.core.AbstractExecutable.html">bcdui.core.AbstractExecutable</a> if it's not ready</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-            </td>
+                Either a function to be called on ready status (i.e. onSuccess) or a parameter map</td>
         </tr>
 	
 	
@@ -8491,7 +8051,7 @@ Please note: the callback routines are always called asynchronously (even if rea
     
         
         <div class="tag-source">
-            <a href="global.html#core/abstractExecutable.js">core/abstractExecutable.js</a>, <a href="global.html#core/abstractExecutable.js#line229">line 229</a>
+            <a href="global.html#core/abstractExecutable.js">core/abstractExecutable.js</a>, <a href="global.html#core/abstractExecutable.js#line238">line 238</a>
         </div>
         
     </div>
@@ -8500,10 +8060,6 @@ Please note: the callback routines are always called asynchronously (even if rea
 </dt>
 <dd>
     
-    
-    <div class="description">
-        Removes the provided status listener from this instance, added via <a href="bcdui.core.AbstractExecutable.html#addStatusListener">addStatusListener()</a> before.
-    </div>
     
 
     
@@ -8545,7 +8101,7 @@ Please note: the callback routines are always called asynchronously (even if rea
 <span class="param-type">StatusListener</span>
 |
 
-<span class="param-type">Object</span>
+<span class="param-type"><a href="global.html#RemoveStatusListenerParam">RemoveStatusListenerParam</a></span>
 
 
             
@@ -8555,80 +8111,7 @@ Please note: the callback routines are always called asynchronously (even if rea
             
             <td class="description last">
                 
-                The listener to be removed. This can either be a function or a <a href="bcdui.core.StatusListener.html">StatusListener</a> or a parameter map. In the latter case the map
-  can contain the following fields
-                
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>listener</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-|
-
-<span class="param-type"><a href="bcdui.core.StatusListener.html">bcdui.core.StatusListener</a></span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                A function <p/>or StatusListener object representing the listener action.</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>status</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type"><a href="bcdui.core.Status_.html">bcdui.core.Status</a></span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                The status this listener is listening to. 
-  If it is missing the it is assumed that the listener belongs to the global scope.</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-            </td>
+                The listener to be removed. This can either be a function or a <a href="bcdui.core.StatusListener.html">StatusListener</a> or a parameter map.</td>
         </tr>
 	
 	
@@ -8686,7 +8169,7 @@ Please note: the callback routines are always called asynchronously (even if rea
     
         
         <div class="tag-source">
-            <a href="global.html#core/abstractExecutable.js">core/abstractExecutable.js</a>, <a href="global.html#core/abstractExecutable.js#line336">line 336</a>
+            <a href="global.html#core/abstractExecutable.js">core/abstractExecutable.js</a>, <a href="global.html#core/abstractExecutable.js#line345">line 345</a>
         </div>
         
     </div>
@@ -8806,7 +8289,7 @@ Usually this method will only be called by the library but you can use it to re-
     
         
         <div class="tag-source">
-            <a href="global.html#core/abstractExecutable.js">core/abstractExecutable.js</a>, <a href="global.html#core/abstractExecutable.js#line511">line 511</a>
+            <a href="global.html#core/abstractExecutable.js">core/abstractExecutable.js</a>, <a href="global.html#core/abstractExecutable.js#line520">line 520</a>
         </div>
         
     </div>

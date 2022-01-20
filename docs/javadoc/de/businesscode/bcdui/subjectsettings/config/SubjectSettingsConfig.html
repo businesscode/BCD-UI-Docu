@@ -13,8 +13,7 @@
 <!--[if IE]>
 <script type="text/javascript" src="../../../../../jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="../../../../../jquery/jquery-3.3.1.js"></script>
-<script type="text/javascript" src="../../../../../jquery/jquery-migrate-3.0.1.js"></script>
+<script type="text/javascript" src="../../../../../jquery/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="../../../../../jquery/jquery-ui.js"></script>
 </head>
 <body>
@@ -27,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -160,6 +159,26 @@ extends java.lang.Object</pre>
          &lt;/element>
          &lt;element name="Authentication" type="{http://www.businesscode.de/schema/bcdui/subjectsettings-1.0.0}AuthenticationType"/>
          &lt;element name="SubjectSettings" type="{http://www.businesscode.de/schema/bcdui/subjectsettings-1.0.0}SubjectSettingsType" minOccurs="0"/>
+         &lt;element name="UserSettingsDefaults" minOccurs="0">
+           &lt;complexType>
+             &lt;complexContent>
+               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                 &lt;sequence maxOccurs="unbounded" minOccurs="0">
+                   &lt;element name="Default">
+                     &lt;complexType>
+                       &lt;complexContent>
+                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                           &lt;attribute name="type" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
+                           &lt;attribute name="value" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
+                         &lt;/restriction>
+                       &lt;/complexContent>
+                     &lt;/complexType>
+                   &lt;/element>
+                 &lt;/sequence>
+               &lt;/restriction>
+             &lt;/complexContent>
+           &lt;/complexType>
+         &lt;/element>
        &lt;/sequence>
      &lt;/restriction>
    &lt;/complexContent>
@@ -188,6 +207,13 @@ extends java.lang.Object</pre>
 <tr class="altColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="SubjectSettingsConfig.SubjectFilterTypes.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectSettingsConfig.SubjectFilterTypes</a></span></code></th>
+<td class="colLast">
+<div class="block">Java-Klasse für anonymous complex type.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static class&nbsp;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="SubjectSettingsConfig.UserSettingsDefaults.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectSettingsConfig.UserSettingsDefaults</a></span></code></th>
 <td class="colLast">
 <div class="block">Java-Klasse für anonymous complex type.</div>
 </td>
@@ -223,6 +249,11 @@ extends java.lang.Object</pre>
 <tr class="altColor">
 <td class="colFirst"><code>protected <a href="SubjectSettingsType.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectSettingsType</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#subjectSettings">subjectSettings</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected <a href="SubjectSettingsConfig.UserSettingsDefaults.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectSettingsConfig.UserSettingsDefaults</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#userSettingsDefaults">userSettingsDefaults</a></span></code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -286,24 +317,38 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
+<td class="colFirst"><code><a href="SubjectSettingsConfig.UserSettingsDefaults.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectSettingsConfig.UserSettingsDefaults</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getUserSettingsDefaults()">getUserSettingsDefaults</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Ruft den Wert der userSettingsDefaults-Eigenschaft ab.</div>
+</td>
+</tr>
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setAuthentication(de.businesscode.bcdui.subjectsettings.config.AuthenticationType)">setAuthentication</a></span>&#8203;(<a href="AuthenticationType.html" title="class in de.businesscode.bcdui.subjectsettings.config">AuthenticationType</a>&nbsp;value)</code></th>
 <td class="colLast">
 <div class="block">Legt den Wert der authentication-Eigenschaft fest.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setSubjectFilterTypes(de.businesscode.bcdui.subjectsettings.config.SubjectSettingsConfig.SubjectFilterTypes)">setSubjectFilterTypes</a></span>&#8203;(<a href="SubjectSettingsConfig.SubjectFilterTypes.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectSettingsConfig.SubjectFilterTypes</a>&nbsp;value)</code></th>
 <td class="colLast">
 <div class="block">Legt den Wert der subjectFilterTypes-Eigenschaft fest.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setSubjectSettings(de.businesscode.bcdui.subjectsettings.config.SubjectSettingsType)">setSubjectSettings</a></span>&#8203;(<a href="SubjectSettingsType.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectSettingsType</a>&nbsp;value)</code></th>
 <td class="colLast">
 <div class="block">Legt den Wert der subjectSettings-Eigenschaft fest.</div>
+</td>
+</tr>
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setUserSettingsDefaults(de.businesscode.bcdui.subjectsettings.config.SubjectSettingsConfig.UserSettingsDefaults)">setUserSettingsDefaults</a></span>&#8203;(<a href="SubjectSettingsConfig.UserSettingsDefaults.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectSettingsConfig.UserSettingsDefaults</a>&nbsp;value)</code></th>
+<td class="colLast">
+<div class="block">Legt den Wert der userSettingsDefaults-Eigenschaft fest.</div>
 </td>
 </tr>
 </table>
@@ -351,10 +396,19 @@ extends java.lang.Object</pre>
 <a id="subjectSettings">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>subjectSettings</h4>
 <pre>protected&nbsp;<a href="SubjectSettingsType.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectSettingsType</a> subjectSettings</pre>
+</li>
+</ul>
+<a id="userSettingsDefaults">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>userSettingsDefaults</h4>
+<pre>protected&nbsp;<a href="SubjectSettingsConfig.UserSettingsDefaults.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectSettingsConfig.UserSettingsDefaults</a> userSettingsDefaults</pre>
 </li>
 </ul>
 </li>
@@ -464,7 +518,7 @@ extends java.lang.Object</pre>
 <a id="setSubjectSettings(de.businesscode.bcdui.subjectsettings.config.SubjectSettingsType)">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>setSubjectSettings</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;setSubjectSettings&#8203;(<a href="SubjectSettingsType.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectSettingsType</a>&nbsp;value)</pre>
@@ -473,6 +527,36 @@ extends java.lang.Object</pre>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>value</code> - allowed object is
      <a href="SubjectSettingsType.html" title="class in de.businesscode.bcdui.subjectsettings.config"><code>SubjectSettingsType</code></a></dd>
+</dl>
+</li>
+</ul>
+<a id="getUserSettingsDefaults()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getUserSettingsDefaults</h4>
+<pre class="methodSignature">public&nbsp;<a href="SubjectSettingsConfig.UserSettingsDefaults.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectSettingsConfig.UserSettingsDefaults</a>&nbsp;getUserSettingsDefaults()</pre>
+<div class="block">Ruft den Wert der userSettingsDefaults-Eigenschaft ab.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>possible object is
+     <a href="SubjectSettingsConfig.UserSettingsDefaults.html" title="class in de.businesscode.bcdui.subjectsettings.config"><code>SubjectSettingsConfig.UserSettingsDefaults</code></a></dd>
+</dl>
+</li>
+</ul>
+<a id="setUserSettingsDefaults(de.businesscode.bcdui.subjectsettings.config.SubjectSettingsConfig.UserSettingsDefaults)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>setUserSettingsDefaults</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setUserSettingsDefaults&#8203;(<a href="SubjectSettingsConfig.UserSettingsDefaults.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectSettingsConfig.UserSettingsDefaults</a>&nbsp;value)</pre>
+<div class="block">Legt den Wert der userSettingsDefaults-Eigenschaft fest.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>value</code> - allowed object is
+     <a href="SubjectSettingsConfig.UserSettingsDefaults.html" title="class in de.businesscode.bcdui.subjectsettings.config"><code>SubjectSettingsConfig.UserSettingsDefaults</code></a></dd>
 </dl>
 </li>
 </ul>

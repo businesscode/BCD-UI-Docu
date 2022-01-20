@@ -13,8 +13,7 @@
 <!--[if IE]>
 <script type="text/javascript" src="../../../../jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="../../../../jquery/jquery-3.3.1.js"></script>
-<script type="text/javascript" src="../../../../jquery/jquery-migrate-3.0.1.js"></script>
+<script type="text/javascript" src="../../../../jquery/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="../../../../jquery/jquery-ui.js"></script>
 </head>
 <body>
@@ -27,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6,"i9":6,"i10":6,"i11":6,"i12":6,"i13":6,"i14":6,"i15":6,"i16":6,"i17":6,"i18":6,"i19":6,"i20":6,"i21":6,"i22":6,"i23":6};
+var data = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6,"i9":6,"i10":6,"i11":6,"i12":6,"i13":6,"i14":6,"i15":6,"i16":6,"i17":6,"i18":6,"i19":6,"i20":6,"i21":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -128,8 +127,12 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd><code>java.lang.Cloneable</code>, <code>java.io.Serializable</code></dd>
 </dl>
 <dl>
+<dt>All Known Subinterfaces:</dt>
+<dd><code><a href="../wrs/load/WrqBindingSet.html" title="interface in de.businesscode.bcdui.wrs.load">WrqBindingSet</a></code></dd>
+</dl>
+<dl>
 <dt>All Known Implementing Classes:</dt>
-<dd><code><a href="StandardBindingSet.html" title="class in de.businesscode.bcdui.binding">StandardBindingSet</a></code></dd>
+<dd><code><a href="StandardBindingSet.html" title="class in de.businesscode.bcdui.binding">StandardBindingSet</a></code>, <code><a href="../wrs/load/WrqBindingSetFromDerivedTable.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingSetFromDerivedTable</a></code>, <code><a href="../wrs/load/WrqBindingSetFromTableReference.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingSetFromTableReference</a></code>, <code><a href="../wrs/load/WrqBindingSetVirtual.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingSetVirtual</a></code></dd>
 </dl>
 <hr>
 <pre>public interface <span class="typeNameLabel">BindingSet</span>
@@ -238,13 +241,6 @@ extends java.lang.Cloneable, java.io.Serializable</pre>
 </td>
 </tr>
 <tr id="i5" class="rowColor">
-<td class="colFirst"><code>java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getAliasName()">getAliasName</a></span>()</code></th>
-<td class="colLast">
-<div class="block">Gets the unique alias name.</div>
-</td>
-</tr>
-<tr id="i6" class="altColor">
 <td class="colFirst"><code><a href="BindingItem.html" title="class in de.businesscode.bcdui.binding">BindingItem</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getBindingItemFromRelation(de.businesscode.bcdui.binding.rel.Relation,java.lang.String)">getBindingItemFromRelation</a></span>&#8203;(<a href="rel/Relation.html" title="class in de.businesscode.bcdui.binding.rel">Relation</a>&nbsp;pRelation,
                           java.lang.String&nbsp;itemName)</code></th>
@@ -252,28 +248,21 @@ extends java.lang.Cloneable, java.io.Serializable</pre>
 <div class="block">Method getBindingItemFromRelation</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>java.util.Collection&lt;java.lang.String&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getBindingItemNames()">getBindingItemNames</a></span>()</code></th>
 <td class="colLast">
 <div class="block">getBindingItemNames</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
-<td class="colFirst"><code>java.util.Collection&lt;<a href="BindingItem.html" title="class in de.businesscode.bcdui.binding">BindingItem</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getBindingItems()">getBindingItems</a></span>()</code></th>
-<td class="colLast">
-<div class="block">getBindingItems</div>
-</td>
-</tr>
-<tr id="i9" class="rowColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getDbSourceName()">getDbSourceName</a></span>()</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getJdbcResourceName()">getJdbcResourceName</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Gets the database name the table of the BindingSet is located in.</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code><a href="BindingItem.html" title="class in de.businesscode.bcdui.binding">BindingItem</a>[]</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getKeyBindingItems()">getKeyBindingItems</a></span>()</code></th>
 <td class="colLast">
@@ -281,48 +270,50 @@ extends java.lang.Cloneable, java.io.Serializable</pre>
  may contain no entries.</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getName()">getName</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Gets the unique name of the BindingSet.</div>
 </td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>java.util.ArrayList&lt;<a href="rel/Relation.html" title="class in de.businesscode.bcdui.binding.rel">Relation</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRelations()">getRelations</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code><a href="../subjectsettings/config/Security.html" title="class in de.businesscode.bcdui.subjectsettings.config">Security</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSecurity()">getSecurity</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i12" class="altColor">
+<td class="colFirst"><code><a href="../wrs/load/SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSQLStatementWithParams()">getSQLStatementWithParams</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Returns a table expression and if it is a complex one (subselect with where for example) it may come with variables to be bound as host variables</div>
+</td>
+</tr>
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code><a href="subjectFilter/SubjectFilters.html" title="class in de.businesscode.bcdui.binding.subjectFilter">SubjectFilters</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSubjectFilters()">getSubjectFilters</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Gets the <a href="subjectFilter/SubjectFilters.html" title="class in de.businesscode.bcdui.binding.subjectFilter"><code>SubjectFilters</code></a> definition for this BindingSet which may be null.</div>
 </td>
 </tr>
-<tr id="i15" class="rowColor">
+<tr id="i14" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTableName()">getTableName</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i16" class="altColor">
-<td class="colFirst"><code>java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTableName(java.util.Collection)">getTableName</a></span>&#8203;(java.util.Collection&lt;java.lang.String&gt;&nbsp;pBindingItems)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTableReference()">getTableReference</a></span>()</code></th>
 <td class="colLast">
-<div class="block">returns table name by means requested binding items.</div>
+<div class="block">Returns a table reference.</div>
 </td>
 </tr>
-<tr id="i17" class="rowColor">
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code><a href="write/WriteProcessing.html" title="class in de.businesscode.bcdui.binding.write">WriteProcessing</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getWriteProcessing()">getWriteProcessing</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i18" class="altColor">
+<tr id="i16" class="altColor">
 <td class="colFirst"><code>java.util.List&lt;java.lang.Class&lt;? extends <a href="../wrs/load/modifier/Modifier.html" title="interface in de.businesscode.bcdui.wrs.load.modifier">Modifier</a>&gt;&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getWrqModifiers()">getWrqModifiers</a></span>()</code></th>
 <td class="colLast">
@@ -330,33 +321,33 @@ extends java.lang.Cloneable, java.io.Serializable</pre>
  This is completely transparent to the caller, the answer Wrs does show the original WrsRequest</div>
 </td>
 </tr>
-<tr id="i19" class="rowColor">
+<tr id="i17" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hasCustomItem()">hasCustomItem</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i20" class="altColor">
+<tr id="i18" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hasItem(java.lang.String)">hasItem</a></span>&#8203;(java.lang.String&nbsp;key)</code></th>
 <td class="colLast">
 <div class="block">tells if this binding-set contains an item</div>
 </td>
 </tr>
-<tr id="i21" class="rowColor">
+<tr id="i19" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hasKeyBindingItems()">hasKeyBindingItems</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Tests if the BindingSet hat key BindingItems.</div>
 </td>
 </tr>
-<tr id="i22" class="altColor">
+<tr id="i20" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hasSubjectFilters()">hasSubjectFilters</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Tells if the binding set has subject filters.</div>
 </td>
 </tr>
-<tr id="i23" class="rowColor">
+<tr id="i21" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isAllowSelectAllColumns()">isAllowSelectAllColumns</a></span>()</code></th>
 <td class="colLast">
@@ -417,42 +408,29 @@ extends java.lang.Cloneable, java.io.Serializable</pre>
 </dl>
 </li>
 </ul>
-<a id="getAliasName()">
+<a id="getTableReference()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>getAliasName</h4>
-<pre class="methodSignature">java.lang.String&nbsp;getAliasName()</pre>
-<div class="block">Gets the unique alias name.</div>
+<h4>getTableReference</h4>
+<pre class="methodSignature">java.lang.String&nbsp;getTableReference()</pre>
+<div class="block">Returns a table reference. Can be a plain table name (with alias) or a join of tables</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 </dl>
 </li>
 </ul>
-<a id="getTableName()">
+<a id="getSQLStatementWithParams()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>getTableName</h4>
-<pre class="methodSignature">java.lang.String&nbsp;getTableName()</pre>
-</li>
-</ul>
-<a id="getTableName(java.util.Collection)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getTableName</h4>
-<pre class="methodSignature">java.lang.String&nbsp;getTableName&#8203;(java.util.Collection&lt;java.lang.String&gt;&nbsp;pBindingItems)
-                       throws <a href="exc/BindingException.html" title="class in de.businesscode.bcdui.binding.exc">BindingException</a></pre>
-<div class="block">returns table name by means requested binding items.
- the table name may contain join(s), if requested binding items
- belongs to a relation.</div>
+<h4>getSQLStatementWithParams</h4>
+<pre class="methodSignature"><a href="../wrs/load/SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a>&nbsp;getSQLStatementWithParams()</pre>
+<div class="block">Returns a table expression and if it is a complex one (subselect with where for example) it may come with variables to be bound as host variables</div>
 <dl>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="exc/BindingException.html" title="class in de.businesscode.bcdui.binding.exc">BindingException</a></code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
 </dl>
 </li>
 </ul>
@@ -484,13 +462,13 @@ extends java.lang.Cloneable, java.io.Serializable</pre>
 </dl>
 </li>
 </ul>
-<a id="getDbSourceName()">
+<a id="getJdbcResourceName()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>getDbSourceName</h4>
-<pre class="methodSignature">java.lang.String&nbsp;getDbSourceName()</pre>
+<h4>getJdbcResourceName</h4>
+<pre class="methodSignature">java.lang.String&nbsp;getJdbcResourceName()</pre>
 <div class="block">Gets the database name the table of the BindingSet is located in.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -577,20 +555,6 @@ extends java.lang.Cloneable, java.io.Serializable</pre>
 </dl>
 </li>
 </ul>
-<a id="getBindingItems()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getBindingItems</h4>
-<pre class="methodSignature">java.util.Collection&lt;<a href="BindingItem.html" title="class in de.businesscode.bcdui.binding">BindingItem</a>&gt;&nbsp;getBindingItems()</pre>
-<div class="block">getBindingItems</div>
-<dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>all items defined in the bindingSet</dd>
-</dl>
-</li>
-</ul>
 <a id="getBindingItemNames()">
 <!--   -->
 </a>
@@ -620,7 +584,7 @@ extends java.lang.Cloneable, java.io.Serializable</pre>
 <dd><code>pRelation</code> - </dd>
 <dd><code>itemName</code> - - requested binding item name</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>a new BindingItem object if</dd>
+<dd>BindingItem object or null if not found</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="exc/BindingException.html" title="class in de.businesscode.bcdui.binding.exc">BindingException</a></code></dd>
 </dl>

@@ -13,8 +13,7 @@
 <!--[if IE]>
 <script type="text/javascript" src="jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="jquery/jquery-3.3.1.js"></script>
-<script type="text/javascript" src="jquery/jquery-migrate-3.0.1.js"></script>
+<script type="text/javascript" src="jquery/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="jquery/jquery-ui.js"></script>
 </head>
 <body>
@@ -616,6 +615,61 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </li>
 <li class="blockList">
 <section role="region">
+<h2 title="Package">Package&nbsp;de.businesscode.bcdui.upload.data</h2>
+<ul class="blockList">
+<li class="blockList"><a id="de.businesscode.bcdui.upload.data.UploadException">
+<!--   -->
+</a>
+<h3>Class <a href="de/businesscode/bcdui/upload/data/UploadException.html" title="class in de.businesscode.bcdui.upload.data">de.businesscode.bcdui.upload.data.UploadException</a> extends java.lang.Exception implements Serializable</h3>
+<dl class="nameValue">
+<dt>serialVersionUID:</dt>
+<dd>-2060948046646342607L</dd>
+</dl>
+<ul class="blockList">
+<li class="blockList">
+<h3>Serialized Fields</h3>
+<ul class="blockList">
+<li class="blockList">
+<h4>reason</h4>
+<pre><a href="de/businesscode/bcdui/upload/data/UploadException.Reason.html" title="enum in de.businesscode.bcdui.upload.data">UploadException.Reason</a> reason</pre>
+</li>
+<li class="blockList">
+<h4>root</h4>
+<pre>java.lang.Exception root</pre>
+</li>
+<li class="blockListLast">
+<h4>stepId</h4>
+<pre>java.lang.String stepId</pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="blockList"><a id="de.businesscode.bcdui.upload.data.UploadServlet">
+<!--   -->
+</a>
+<h3>Class <a href="de/businesscode/bcdui/upload/data/UploadServlet.html" title="class in de.businesscode.bcdui.upload.data">de.businesscode.bcdui.upload.data.UploadServlet</a> extends javax.servlet.http.HttpServlet implements Serializable</h3>
+<dl class="nameValue">
+<dt>serialVersionUID:</dt>
+<dd>2308461522449326659L</dd>
+</dl>
+<ul class="blockList">
+<li class="blockList">
+<h3>Serialized Fields</h3>
+<ul class="blockList">
+<li class="blockListLast">
+<h4>stepImpls</h4>
+<pre>java.util.Map&lt;java.lang.String,&#8203;java.lang.Class&lt;? extends <a href="de/businesscode/bcdui/upload/data/steps/IUploadStep.html" title="interface in de.businesscode.bcdui.upload.data.steps">IUploadStep</a>&gt;&gt; stepImpls</pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+</li>
+<li class="blockList">
+<section role="region">
 <h2 title="Package">Package&nbsp;de.businesscode.bcdui.vfs.web</h2>
 <ul class="blockList">
 <li class="blockList"><a id="de.businesscode.bcdui.vfs.web.VFSServlet">
@@ -810,14 +864,14 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <!--   -->
 </a>
 <h3>Class <a href="de/businesscode/bcdui/web/servlets/SessionAttributesManager.html" title="class in de.businesscode.bcdui.web.servlets">de.businesscode.bcdui.web.servlets.SessionAttributesManager</a> extends javax.servlet.http.HttpServlet implements Serializable</h3>
+<dl class="nameValue">
+<dt>serialVersionUID:</dt>
+<dd>1L</dd>
+</dl>
 <ul class="blockList">
 <li class="blockList">
 <h3>Serialized Fields</h3>
 <ul class="blockList">
-<li class="blockList">
-<h4>allowedAttributes</h4>
-<pre>java.lang.String allowedAttributes</pre>
-</li>
 <li class="blockListLast">
 <h4>log</h4>
 <pre>org.apache.logging.log4j.Logger log</pre>
@@ -995,6 +1049,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <!--   -->
 </a>
 <h3>Class <a href="de/businesscode/bcdui/web/wrs/WrsAccessLogEvent.html" title="class in de.businesscode.bcdui.web.wrs">de.businesscode.bcdui.web.wrs.WrsAccessLogEvent</a> extends <a href="de/businesscode/bcdui/logging/LogEventBase.html" title="class in de.businesscode.bcdui.logging">LogEventBase</a> implements Serializable</h3>
+<dl class="nameValue">
+<dt>serialVersionUID:</dt>
+<dd>3561315599141005246L</dd>
+</dl>
 <ul class="blockList">
 <li class="blockList">
 <h3>Serialized Fields</h3>
@@ -1090,6 +1148,117 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="blockListLast">
 <h4>virtLoggerAccess</h4>
 <pre>org.apache.logging.log4j.Logger virtLoggerAccess</pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+</li>
+<li class="blockList">
+<section role="region">
+<h2 title="Package">Package&nbsp;de.businesscode.bcdui.wrs.load</h2>
+<ul class="blockList">
+<li class="blockList"><a id="de.businesscode.bcdui.wrs.load.WrqBindingSetFromDerivedTable">
+<!--   -->
+</a>
+<h3>Class <a href="de/businesscode/bcdui/wrs/load/WrqBindingSetFromDerivedTable.html" title="class in de.businesscode.bcdui.wrs.load">de.businesscode.bcdui.wrs.load.WrqBindingSetFromDerivedTable</a> extends <a href="de/businesscode/bcdui/wrs/load/WrqBindingSetVirtual.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingSetVirtual</a> implements Serializable</h3>
+<dl class="nameValue">
+<dt>serialVersionUID:</dt>
+<dd>-403151825012518457L</dd>
+</dl>
+<ul class="blockList">
+<li class="blockList">
+<h3>Serialized Fields</h3>
+<ul class="blockList">
+<li class="blockList">
+<h4>underlyingBindingSet</h4>
+<pre><a href="de/businesscode/bcdui/wrs/load/WrqBindingSet.html" title="interface in de.businesscode.bcdui.wrs.load">WrqBindingSet</a> underlyingBindingSet</pre>
+</li>
+<li class="blockListLast">
+<h4>wrqInfo</h4>
+<pre><a href="de/businesscode/bcdui/wrs/load/WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a> wrqInfo</pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="blockList"><a id="de.businesscode.bcdui.wrs.load.WrqBindingSetFromTableReference">
+<!--   -->
+</a>
+<h3>Class <a href="de/businesscode/bcdui/wrs/load/WrqBindingSetFromTableReference.html" title="class in de.businesscode.bcdui.wrs.load">de.businesscode.bcdui.wrs.load.WrqBindingSetFromTableReference</a> extends <a href="de/businesscode/bcdui/wrs/load/WrqBindingSetVirtual.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingSetVirtual</a> implements Serializable</h3>
+<dl class="nameValue">
+<dt>serialVersionUID:</dt>
+<dd>-339592266521077317L</dd>
+</dl>
+<ul class="blockList">
+<li class="blockList">
+<h3>Serialized Fields</h3>
+<ul class="blockList">
+<li class="blockList">
+<h4>importedBindingItems</h4>
+<pre>java.util.Map&lt;java.lang.String,&#8203;<a href="de/businesscode/bcdui/binding/BindingItem.html" title="class in de.businesscode.bcdui.binding">BindingItem</a>&gt; importedBindingItems</pre>
+</li>
+<li class="blockList">
+<h4>isAllowSelectAllColumns</h4>
+<pre>boolean isAllowSelectAllColumns</pre>
+</li>
+<li class="blockList">
+<h4>sbsWithSubjectFilters</h4>
+<pre>java.util.Map&lt;java.lang.String,&#8203;<a href="de/businesscode/bcdui/binding/StandardBindingSet.html" title="class in de.businesscode.bcdui.binding">StandardBindingSet</a>&gt; sbsWithSubjectFilters</pre>
+</li>
+<li class="blockListLast">
+<h4>xp</h4>
+<pre>javax.xml.xpath.XPath xp</pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="blockList"><a id="de.businesscode.bcdui.wrs.load.WrqBindingSetVirtual">
+<!--   -->
+</a>
+<h3>Class <a href="de/businesscode/bcdui/wrs/load/WrqBindingSetVirtual.html" title="class in de.businesscode.bcdui.wrs.load">de.businesscode.bcdui.wrs.load.WrqBindingSetVirtual</a> extends java.lang.Object implements Serializable</h3>
+<dl class="nameValue">
+<dt>serialVersionUID:</dt>
+<dd>1439179612917565458L</dd>
+</dl>
+<ul class="blockList">
+<li class="blockList">
+<h3>Serialized Fields</h3>
+<ul class="blockList">
+<li class="blockList">
+<h4>bindingItems</h4>
+<pre>java.util.Map&lt;java.lang.String,&#8203;<a href="de/businesscode/bcdui/binding/BindingItem.html" title="class in de.businesscode.bcdui.binding">BindingItem</a>&gt; bindingItems</pre>
+</li>
+<li class="blockList">
+<h4>currentSelect</h4>
+<pre><a href="de/businesscode/bcdui/wrs/load/SqlFromSubSelect.html" title="class in de.businesscode.bcdui.wrs.load">SqlFromSubSelect</a> currentSelect</pre>
+</li>
+<li class="blockList">
+<h4>name</h4>
+<pre>java.lang.String name</pre>
+</li>
+<li class="blockList">
+<h4>resolvedBindingSets</h4>
+<pre>java.util.Set&lt;<a href="de/businesscode/bcdui/binding/StandardBindingSet.html" title="class in de.businesscode.bcdui.binding">StandardBindingSet</a>&gt; resolvedBindingSets</pre>
+</li>
+<li class="blockList">
+<h4>sqlAlias</h4>
+<pre>java.lang.String sqlAlias</pre>
+</li>
+<li class="blockList">
+<h4>sqlStatementWithParams</h4>
+<pre><a href="de/businesscode/bcdui/wrs/load/SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a> sqlStatementWithParams</pre>
+</li>
+<li class="blockList">
+<h4>tableName</h4>
+<pre>java.lang.String tableName</pre>
+</li>
+<li class="blockListLast">
+<h4>wrqModifiers</h4>
+<pre>java.util.List&lt;java.lang.Class&lt;? extends <a href="de/businesscode/bcdui/wrs/load/modifier/Modifier.html" title="interface in de.businesscode.bcdui.wrs.load.modifier">Modifier</a>&gt;&gt; wrqModifiers</pre>
 </li>
 </ul>
 </li>

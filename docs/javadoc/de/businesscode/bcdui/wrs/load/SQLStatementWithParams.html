@@ -13,8 +13,7 @@
 <!--[if IE]>
 <script type="text/javascript" src="../../../../../jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="../../../../../jquery/jquery-3.3.1.js"></script>
-<script type="text/javascript" src="../../../../../jquery/jquery-migrate-3.0.1.js"></script>
+<script type="text/javascript" src="../../../../../jquery/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="../../../../../jquery/jquery-ui.js"></script>
 </head>
 <body>
@@ -27,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -134,6 +133,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">SQLStatementWithParams</span>
 extends java.lang.Object</pre>
+<div class="block">Represents part of an SQL string and the values for bound variables</div>
 </li>
 </ul>
 </div>
@@ -154,9 +154,17 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E()">SQLStatementWithParams</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.String)">SQLStatementWithParams</a></span>&#8203;(java.lang.String&nbsp;statement)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.String,java.util.List,de.businesscode.bcdui.binding.BindingSet)">SQLStatementWithParams</a></span>&#8203;(java.lang.String&nbsp;statement,
                       java.util.List&lt;org.w3c.dom.Element&gt;&nbsp;filterItems,
-                      <a href="../../binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&nbsp;bindingSet)</code></th>
+                      <a href="../../binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&nbsp;currBindingSet)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -178,33 +186,50 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
+<td class="colFirst"><code><a href="SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#append(de.businesscode.bcdui.wrs.load.SQLStatementWithParams)">append</a></span>&#8203;(<a href="SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a>&nbsp;moreStatement)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code><a href="SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#append(java.lang.String)">append</a></span>&#8203;(java.lang.String&nbsp;currStatement)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code><a href="SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#append(java.lang.String,java.util.List,de.businesscode.bcdui.binding.BindingSet)">append</a></span>&#8203;(java.lang.String&nbsp;currStatement,
+      java.util.List&lt;org.w3c.dom.Element&gt;&nbsp;currFilterItems,
+      <a href="../../binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&nbsp;currBindingSet)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>java.util.List&lt;<a href="../../binding/BindingItem.html" title="class in de.businesscode.bcdui.binding">BindingItem</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getFilterBindingItems()">getFilterBindingItems</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i1" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>java.util.List&lt;org.w3c.dom.Element&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getFilterItems()">getFilterItems</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>java.util.List&lt;java.lang.String&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getFilterValues()">getFilterValues</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getStatement()">getStatement</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getStatementWithParams()">getStatementWithParams</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Provides the statement with values filled in instead of showing '?'</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toString()">toString</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
@@ -233,6 +258,24 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
+<a id="&lt;init&gt;()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>SQLStatementWithParams</h4>
+<pre>public&nbsp;SQLStatementWithParams()</pre>
+</li>
+</ul>
+<a id="&lt;init&gt;(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>SQLStatementWithParams</h4>
+<pre>public&nbsp;SQLStatementWithParams&#8203;(java.lang.String&nbsp;statement)</pre>
+</li>
+</ul>
 <a id="&lt;init&gt;(java.lang.String,java.util.List,de.businesscode.bcdui.binding.BindingSet)">
 <!--   -->
 </a>
@@ -241,7 +284,7 @@ extends java.lang.Object</pre>
 <h4>SQLStatementWithParams</h4>
 <pre>public&nbsp;SQLStatementWithParams&#8203;(java.lang.String&nbsp;statement,
                               java.util.List&lt;org.w3c.dom.Element&gt;&nbsp;filterItems,
-                              <a href="../../binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&nbsp;bindingSet)
+                              <a href="../../binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&nbsp;currBindingSet)
                        throws <a href="../../binding/exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></pre>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
@@ -259,6 +302,45 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a id="append(de.businesscode.bcdui.wrs.load.SQLStatementWithParams)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>append</h4>
+<pre class="methodSignature">public&nbsp;<a href="SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a>&nbsp;append&#8203;(<a href="SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a>&nbsp;moreStatement)
+                              throws <a href="../../binding/exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></pre>
+<dl>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="../../binding/exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></code></dd>
+</dl>
+</li>
+</ul>
+<a id="append(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>append</h4>
+<pre class="methodSignature">public&nbsp;<a href="SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a>&nbsp;append&#8203;(java.lang.String&nbsp;currStatement)</pre>
+</li>
+</ul>
+<a id="append(java.lang.String,java.util.List,de.businesscode.bcdui.binding.BindingSet)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>append</h4>
+<pre class="methodSignature">public&nbsp;<a href="SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a>&nbsp;append&#8203;(java.lang.String&nbsp;currStatement,
+                                     java.util.List&lt;org.w3c.dom.Element&gt;&nbsp;currFilterItems,
+                                     <a href="../../binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&nbsp;currBindingSet)
+                              throws <a href="../../binding/exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></pre>
+<dl>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="../../binding/exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></code></dd>
+</dl>
+</li>
+</ul>
 <a id="getStatement()">
 <!--   -->
 </a>

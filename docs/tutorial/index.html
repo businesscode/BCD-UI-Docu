@@ -500,6 +500,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
     margin: 0;
     opacity: 0;
   }
+
+  .bcd_exercise {
+    background-color: #eef;
+  }
 </style>
 <script type="application/javascript">
   // Only show matching toc entries (and their ancestors)
@@ -775,7 +779,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_page_access_rights">Page access rights</a></li>
 </ul>
 </li>
-<li><a href="#_define_users_in_web_xml">14.3. Define users in web.xml</a></li>
+<li><a href="#_define_users_in_shiro_ini">14.3. Define users in shiro.ini</a></li>
 <li><a href="#_define_users_in_the_database">14.4. Define users in the database</a></li>
 <li><a href="#_subjectsettings_config">14.5. SubjectSettings config</a></li>
 <li><a href="#_user_related_bindingsets">14.6. User related BindingSets</a></li>
@@ -784,24 +788,32 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_kerberos_windows_sso_windows_authentication">14.9. Kerberos / Windows SSO / Windows Authentication</a></li>
 </ul>
 </li>
-<li><a href="#DocCaching">15. Caching</a>
+<li><a href="#UserBeans">15. User Beans</a>
+<ul class="sectlevel3">
+<li><a href="#_default_values">Default Values:</a></li>
+<li><a href="#_url_usage">URL Usage:</a></li>
+<li><a href="#_readwrite_security">Read/Write security:</a></li>
+<li><a href="#_setting_a_bean_programmatically">Setting a bean programmatically:</a></li>
+</ul>
+</li>
+<li><a href="#DocCaching">16. Caching</a>
 <ul class="sectlevel2">
-<li><a href="#_caching_overview">15.1. Caching overview</a>
+<li><a href="#_caching_overview">16.1. Caching overview</a>
 <ul class="sectlevel3">
 <li><a href="#_disable_caching">Disable Caching</a></li>
 </ul>
 </li>
-<li><a href="#_client_side_caching">15.2. Client side caching</a>
+<li><a href="#_client_side_caching">16.2. Client side caching</a>
 <ul class="sectlevel3">
 <li><a href="#_other_headers">Other headers</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#DocBinding">16. Bindings</a>
+<li><a href="#DocBinding">17. Bindings</a>
 <ul class="sectlevel2">
-<li><a href="#_bindings_overview">16.1. Bindings Overview</a></li>
-<li><a href="#_bindingset_features">16.2. BindingSet features</a>
+<li><a href="#_bindings_overview">17.1. Bindings Overview</a></li>
+<li><a href="#_bindingset_features">17.2. BindingSet features</a>
 <ul class="sectlevel3">
 <li><a href="#_row_level_security">Row-level-security</a></li>
 <li><a href="#_bindings_write_protection">Bindings write-protection</a></li>
@@ -814,9 +826,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </li>
-<li><a href="#DocContext">17. Application context and settings</a>
+<li><a href="#DocContext">18. Application context and settings</a>
 <ul class="sectlevel2">
-<li><a href="#_unified_expression_language">17.1. Unified Expression Language</a>
+<li><a href="#_unified_expression_language">18.1. Unified Expression Language</a>
 <ul class="sectlevel3">
 <li><a href="#_usage_scenarios">Usage scenarios</a></li>
 <li><a href="#_el_variables_and_functions">EL variables and functions</a></li>
@@ -825,9 +837,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </li>
-<li><a href="#DocXmlData">18. WebRowSet</a>
+<li><a href="#DocXmlData">19. WebRowSet</a>
 <ul class="sectlevel2">
-<li><a href="#_webrowset_wrs_overview">18.1. WebRowSet Wrs Overview</a>
+<li><a href="#_webrowset_wrs_overview">19.1. WebRowSet Wrs Overview</a>
 <ul class="sectlevel3">
 <li><a href="#_webrowset_format">WebRowSet format</a></li>
 <li><a href="#_request_document">Request document</a></li>
@@ -835,26 +847,26 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_faults">Faults</a></li>
 </ul>
 </li>
-<li><a href="#_cell_addressing">18.2. Cell addressing</a></li>
-<li><a href="#_xsd_schema_2">18.3. XSD Schema</a>
+<li><a href="#_cell_addressing">19.2. Cell addressing</a></li>
+<li><a href="#_xsd_schema_2">19.3. XSD Schema</a>
 <ul class="sectlevel3">
 <li><a href="#_details_2">Details</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#DocFilter">19. Servlets / Filters</a>
+<li><a href="#DocFilter">20. Servlets / Filters</a>
 <ul class="sectlevel2">
-<li><a href="#_overview_6">19.1. Overview</a>
+<li><a href="#_overview_6">20.1. Overview</a>
 <ul class="sectlevel3">
 <li><a href="#_bcd_ui_filters_and_servlets">BCD-UI Filters and Servlets</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#DocVfs">20. Virtual File System (VFS)</a>
+<li><a href="#DocVfs">21. Virtual File System (VFS)</a>
 <ul class="sectlevel2">
-<li><a href="#_virtual_file_system_vfs">20.1. Virtual File System (VFS)</a>
+<li><a href="#_virtual_file_system_vfs">21.1. Virtual File System (VFS)</a>
 <ul class="sectlevel3">
 <li><a href="#_vfs_setup">VFS Setup</a></li>
 <li><a href="#_vfs_reading_writing_refreshing_and_vfs_bindings">VFS reading, writing, refreshing and VFS Bindings</a></li>
@@ -862,30 +874,33 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </li>
-<li><a href="#DocDebug">21. Debugging</a>
+<li><a href="#DocDebug">22. Debugging</a>
 <ul class="sectlevel2">
-<li><a href="#_support_for_debugging">21.1. Support for debugging</a></li>
-<li><a href="#_common_error_messages">21.2. Common error messages</a></li>
+<li><a href="#_support_for_debugging">22.1. Support for debugging</a></li>
+<li><a href="#_common_error_messages">22.2. Common error messages</a></li>
 </ul>
 </li>
-<li><a href="#DocBootstrap">22. Bootstrap</a>
+<li><a href="#DocBootstrap">23. Bootstrap</a>
 <ul class="sectlevel2">
-<li><a href="#_getting_the_tools">22.1. Getting the tools</a></li>
-<li><a href="#_tomcat_compress_resources">22.2. Tomcat compress resources</a></li>
-<li><a href="#_xml_schema_xsd_catalog">22.3. XML schema xsd catalog</a></li>
+<li><a href="#_getting_the_tools">23.1. Getting the tools</a>
+<ul class="sectlevel3">
+<li><a href="#_tomcat_compress_resources">Tomcat compress resources</a></li>
+<li><a href="#_xml_schema_xsd_catalog">XML schema xsd catalog</a></li>
 </ul>
 </li>
-<li><a href="#DocAppsetup">23. Application Setup</a>
-<ul class="sectlevel2">
-<li><a href="#_adding_bcd_ui">23.1. Adding BCD-UI</a></li>
-<li><a href="#_bcd_ui_folder_layout">23.2. BCD-UI folder layout</a></li>
 </ul>
 </li>
-<li><a href="#DocGeneralFeatures">24. General Features</a>
+<li><a href="#DocAppsetup">24. Application Setup</a>
 <ul class="sectlevel2">
-<li><a href="#_general_features">24.1. General Features</a></li>
-<li><a href="#_transactions_and_connection_pooling">24.2. Transactions and connection pooling</a></li>
-<li><a href="#_xml_inclusion">24.3. XML Inclusion</a>
+<li><a href="#_adding_bcd_ui">24.1. Adding BCD-UI</a></li>
+<li><a href="#_bcd_ui_folder_layout">24.2. BCD-UI folder layout</a></li>
+</ul>
+</li>
+<li><a href="#DocGeneralFeatures">25. General Features</a>
+<ul class="sectlevel2">
+<li><a href="#_general_features">25.1. General Features</a></li>
+<li><a href="#_transactions_and_connection_pooling">25.2. Transactions and connection pooling</a></li>
+<li><a href="#_xml_inclusion">25.3. XML Inclusion</a>
 <ul class="sectlevel3">
 <li><a href="#_use_cases">Use cases</a></li>
 <li><a href="#_implementation_2">Implementation</a></li>
@@ -893,17 +908,21 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </li>
-<li><a href="#DocCompatibility">25. Compatibility</a>
+<li><a href="#DocCompatibility">26. Compatibility</a>
 <ul class="sectlevel2">
-<li><a href="#_compatibility">25.1. Compatibility</a></li>
-<li><a href="#_known_browser_incompatibilities">25.2. Known browser incompatibilities</a></li>
-<li><a href="#_working_with_webkit_browsers">25.3. Working with webkit browsers</a></li>
+<li><a href="#_compatibility_of_bcd_ui">26.1. Compatibility of BCD-UI</a></li>
+<li><a href="#_developing_for_specific_browsers">26.2. Developing for specific browsers</a>
+<ul class="sectlevel3">
+<li><a href="#_known_browser_limitations">Known browser limitations</a></li>
+<li><a href="#_working_with_webkit_browsers">Working with webkit browsers</a></li>
 </ul>
 </li>
-<li><a href="#DocConfiguration">26. Configuration</a>
+</ul>
+</li>
+<li><a href="#DocConfiguration">27. Configuration</a>
 <ul class="sectlevel2">
-<li><a href="#_configuration_overview">26.1. Configuration overview</a></li>
-<li><a href="#_dbproperties_setup">26.2. DbProperties setup</a></li>
+<li><a href="#_configuration_overview">27.1. Configuration overview</a></li>
+<li><a href="#_dbproperties_setup">27.2. DbProperties setup</a></li>
 </ul>
 </li>
 </ul>
@@ -1006,11 +1025,11 @@ In most cases we think though the Community Edition available on GitHub and desc
 <h2 id="DocGettingStarted">2. Getting Started</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>At its core, a BCD-UI application is a standard Jakarta EE web application.
-For the following, we assume you already have a blank application running.</p>
+<p>At its core, a BCD-UI application is a standard Jakarta EE web application.</p>
 </div>
 <div class="paragraph">
-<p>If you are not an experienced Java web application developer, make sure you have a plain Java web application running before you turn it into a BCD-UI application.<br></p>
+<p>If you are not an experienced Java web application developer, make sure you have a plain Java web application running before you turn it into a BCD-UI application.<br>
+For the following, we assume you already have a blank application running.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -1025,18 +1044,18 @@ If you don&#8217;t know how to make a vanilla application running with your IDE 
 </table>
 </div>
 <div class="paragraph">
-<p>To turn a plain into a BCD-UI application, just do these 4 steps, detailed out in <a href="#DocAppsetup">Application Setup</a>, to turn it into a BCD-UI application</p>
+<p>To turn a plain application into a BCD-UI application, just do these 4 steps, detailed out in <a href="#DocAppsetup">Application Setup</a></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Add bcd-ui-core.jar and bcd-ui-theme.jar, and their dependencies</p>
+<p>Add bcd-ui-core.jar and bcd-ui-theme.jar, and their Java dependencies</p>
 </li>
 <li>
 <p>Copy some entries into your web.xml</p>
 </li>
 <li>
-<p>Define database connection and default in context.xml</p>
+<p>Define database connection in context.xml</p>
 </li>
 <li>
 <p>Add log4j2.xml</p>
@@ -1044,7 +1063,7 @@ If you don&#8217;t know how to make a vanilla application running with your IDE 
 </ul>
 </div>
 <div class="paragraph">
-<p>and you are read to go.</p>
+<p>and you are done.</p>
 </div>
 <div class="sect2">
 <h3 id="_useful_resources">2.1. Useful resources</h3>
@@ -1059,10 +1078,10 @@ If you don&#8217;t know how to make a vanilla application running with your IDE 
 <p>Create and understand Java Jakarta web applications <a href="https://happycoding.io/tutorials/java-server/" target="_blank" rel="noopener">intro</a></p>
 </li>
 <li>
-<p>Run Tomcat together with you favorite IDE, for example <a href="https://www.baeldung.com/eclipse-tomcat" target="_blank" rel="noopener">with Eclipse</a></p>
+<p>Run Tomcat together with your favorite IDE, for example <a href="https://www.baeldung.com/eclipse-tomcat" target="_blank" rel="noopener">with Eclipse</a></p>
 </li>
 <li>
-<p>Operate a standard SQL database and have some tables with data, for example <a href="https://www.postgresqltutorial.com/" target="_blank" rel="noopener">Postgres</a></p>
+<p>Hav access to a standard SQL database and have some tables with data, for example <a href="https://www.postgresqltutorial.com/" target="_blank" rel="noopener">Postgres</a></p>
 </li>
 <li>
 <p>Know how to use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noopener">JavaScript</a></p>
@@ -1115,10 +1134,10 @@ If you don&#8217;t know how to make a vanilla application running with your IDE 
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Page Setup: Set an HTML frame for over-all layout</p>
+<p>Page Setup: Create an HTML empty page for over-all layout</p>
 </li>
 <li>
-<p>Use a <em>SimpleModel</em> to load static data from an XML file</p>
+<p>Use BCD-UI&#8217;s <em>SimpleModel</em> to load static data from an XML file</p>
 </li>
 <li>
 <p>Add a <em>Renderer</em> to transform data to HTML</p>
@@ -1140,8 +1159,7 @@ If you don&#8217;t know how to make a vanilla application running with your IDE 
 <div class="sect3">
 <h4 id="_set_the_page_up">Set the page up</h4>
 <div class="paragraph">
-<p>While you are totally free in your page layout, here makes sense to use BCD-UI&#8217;s default layout as a start.<br>
-Add WebContent/simpleReq/index.html with BCD-UI capability to your application and adjust the urls at the beginning from <code>./</code> to <code>../</code></p>
+<p>While you are totally free in your page layout, BCD-UI comes with useful artifacts and page structure which we use here. Add the following as WebContent/simpleReq/index.html to your application and adjust the urls in <em>&lt;head&gt;</em> to <code>../</code></p>
 </div>
 <div class="listingblock">
 <div class="title">A blank BCD-UI page</div>
@@ -1319,7 +1337,7 @@ Add WebContent/simpleReq/index.html with BCD-UI capability to your application a
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>This we call 'SideBar', this is where we will later place the report filters</td>
+<td>This we call 'SideBar', this is where we will later place report filters</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="5"></i><b>5</b></td>
@@ -1327,16 +1345,16 @@ Add WebContent/simpleReq/index.html with BCD-UI capability to your application a
 </tr>
 <tr>
 <td><i class="conum" data-value="6"></i><b>6</b></td>
-<td>Here we will display out output</td>
+<td>Here we will display our output</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="7"></i><b>7</b></td>
-<td>Any of your local JavaScript code goes here</td>
+<td>Any of your own JavaScript code goes here or in an extra js file</td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Now we already have an empty but fully styled page, open it in a browser.</p>
+<p>Now we already have an empty but fully styled page, start Tomcat and open it in a browser. If <em>MyApp</em> is you application&#8217;s name, open <em><a href="http://localhost:8080/MayApp/simpleReq/index.html" class="bare">http://localhost:8080/MayApp/simpleReq/index.html</a></em></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1350,7 +1368,7 @@ Add WebContent/simpleReq/index.html with BCD-UI capability to your application a
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-BCD-UI theme has 2 parts.<br>
+BCD-UI theme has 2 parts:<br>
 The part that is responsible for the overall page layout and structure is shown here. Usage of this part is optional. You can also use your favorite page structure and css instead.<br>
 The part that styles widgets and components is mandatory to style these artifacts.
 </td>
@@ -1361,7 +1379,7 @@ The part that styles widgets and components is mandatory to style these artifact
 <div class="sect3">
 <h4 id="_add_static_data">Add static data</h4>
 <div class="paragraph">
-<p>Add a file <code>staticData.xml</code> with the following content to the /simpleReq:</p>
+<p>Add a file with the following content as <code>/simpleReq/staticData.xml</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1389,18 +1407,9 @@ The part that styles widgets and components is mandatory to style these artifact
 <span class="tag">&lt;/Wrs&gt;</span></code></pre>
 </div>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Above XML is a sample of a BCD-UI&#8217;s <em>WebRowSet</em> format Wrs, which is used to transfer data.<br>
-Many parts of BCD-UI understand this format and show smart behaviour if you use it also for static files.
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>Above XML is a sample of a BCD-UI&#8217;s <em>WebRowSet</em> format Wrs, which is used to transfer data.<br>
+While you can use any data format with BCD-UI including other XML formats or JSON, using WebRowSet format provides many benefits and functionality as this format is known to BCD-UI.</p>
 </div>
 <div class="paragraph">
 <p>Now add the following script block to end of the page:</p>
@@ -1422,7 +1431,7 @@ Like all models it is loaded lazy, so it is not loaded to the client until a dis
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-There is a full Javascript API <a href="https://businesscode.github.io/BCD-UI-Docu/jsdoc/" target="_blank" rel="noopener">online Documentation</a> for all classes used in the tutorial..
+There is a full JavaScript <a href="https://businesscode.github.io/BCD-UI-Docu/jsdoc/" target="_blank" rel="noopener">online API documentation</a> for all classes of BCD-UI. Keep this open.
 </td>
 </tr>
 </table>
@@ -1432,7 +1441,7 @@ There is a full Javascript API <a href="https://businesscode.github.io/BCD-UI-Do
 <h4 id="_add_a_renderer">Add a Renderer</h4>
 <div class="paragraph">
 <p>Create a <a href="../jsdoc/bcdui.core.Renderer.html" target="_blank" rel="noopener">bcdui.core.Renderer</a> to display the data.
-A <em>Renderer</em> expects a <em>DataProvider</em> (our SimpleModel is a <em>DataProvider</em>) plus an HTML element id (targetHtml) where the show the output.</p>
+A <em>Renderer</em> expects at least a <em>DataProvider</em> (our SimpleModel is a <em>DataProvider</em>) plus an HTML element id (targetHtml) where the show the output.</p>
 </div>
 <div class="listingblock">
 <div class="title">A typical renderer created with JavaScript</div>
@@ -1450,7 +1459,7 @@ A <em>Renderer</em> expects a <em>DataProvider</em> (our SimpleModel is a <em>Da
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-By default, the result is rendered as a plain table. You will often want to provide some other layout. To do this, you create a custom XSLTs JavaScript or doT.js file turning Wrs into HTML and provide it to the renderer.
+By default, the result is rendered as a plain table. You will often want to provide some other layout. To do this, you create a custom XSLT, JavaScript or doT.js file turning Wrs into HTML and provide it to the renderer. We come to this later.
 </td>
 </tr>
 </table>
@@ -1467,26 +1476,36 @@ By default, the result is rendered as a plain table. You will often want to prov
 <p>Congratulations, this is already your first BCD-UI page!</p>
 </div>
 <div class="sect4">
-<h5 id="_use_an_html_custom_tag_instead">Use an HTML custom tag instead</h5>
+<h5 id="_use_an_html_custom_element_instead">Use an HTML custom element instead</h5>
 <div class="paragraph">
-<p>You can also use a custom HTML tag to create a renderer. The advantage is that it goes right where it will appear. To do this, replace <code>&lt;div id="myDataDiv"&gt;&lt;/div&gt;</code> with</p>
+<p>You can also use an HTML custom element to create a renderer. The advantage is that it goes right where it will appear. To do this, replace <code>&lt;div id="myDataDiv"&gt;&lt;/div&gt;</code> with</p>
 </div>
 <div class="listingblock">
-<div class="title">A typical renderer created with JavaScript</div>
+<div class="title">A typical renderer created with HTML custom elements</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;bcd-renderer</span> <span class="attribute-name">inputModel</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">staticData</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/bcd-renderer&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>While the JavaScript version above references the JavaScript variable <code>staticData</code> directly, the custom tag only knows the id of the input model. You register your DataProviders simply by giving them an <code>ìd</code>:</p>
+<p>How does it reach the <code>staticData</code> variable?
+While the JavaScript version above references the JavaScript variable <code>staticData</code> directly, the HTML custom element only knows the id of the input model. You register your DataProviders simply by giving them an <code>ìd</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> staticData = <span class="keyword">new</span> bcdui.core.SimpleModel({ <span class="key">id</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">staticData</span><span class="delimiter">&quot;</span></span>, <span class="key">url</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">staticData.xml</span><span class="delimiter">&quot;</span></span> });</code></pre>
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> staticData = <span class="keyword">new</span> bcdui.core.SimpleModel({<span class="key">id</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">staticData</span><span class="delimiter">&quot;</span></span>, <span class="key">url</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">staticData.xml</span><span class="delimiter">&quot;</span></span> });</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>While the JavaScript variable, and the id are both <code>staticData</code> in this example, they are completely separate things and do not need to be identical.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The JavaScript variable, and the id are both <code>staticData</code> in this example, but they are completely separate things and do not need to be identical.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -1496,26 +1515,39 @@ By default, the result is rendered as a plain table. You will often want to prov
 <p>Instead of reading the data from a static file, we will now access the database.</p>
 </div>
 <div class="sect4">
-<h5 id="_connect_to_a_database">Connect to a database</h5>
+<h5 id="_connect_to_your_database">Connect to your database</h5>
 <div class="paragraph">
-<p><a href="#DocBinding">BindingSets</a> connect BCD-UI to your database. Each database access is mediated by a BindingSet. For the following you obviously need a database and some data. Please identify or create a table with some columns including a date column. Make sure to also have the right database driver in your java dependencies</p>
+<p><a href="#DocBinding">BindingSets</a> connect BCD-UI to your database. Each database access is mediated by a BindingSet. For the following you obviously need a database and some data. Please identify or create a table with some columns including a date column, give it the id <code>dy</code>, and some data. Make sure you have the right database driver in your Java dependencies. For example add it to gradle() and refresh), or download it and put it into WEB-INF/lib.</p>
 </div>
 <div class="paragraph">
 <p>Add the following as testData.xml to <code>WEB-INF/bcdui/bindings</code>, and adjust it to your table.</p>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+All server side config files of BCD-UI go into WEB-INF/bcdui. It&#8217;s subfolder <code>bindings</code> holds the binding files.
+</td>
+</tr>
+</table>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;BindingSet</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.businesscode.de/schema/bcdui/bindings-1.0.0</span><span class="delimiter">&quot;</span></span>
-  <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">carRepairs</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">table</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">car_repairs</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>  <i class="conum" data-value="1"></i><b>(1)</b> <i class="conum" data-value="2"></i><b>(2)</b>
+  <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">carRepairs</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">table</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">car_repairs</span><span class="delimiter">&quot;</span></span>
+  <span class="attribute-name">dbSourceName</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">jdbc/myDb</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>   <i class="conum" data-value="1"></i><b>(1)</b> <i class="conum" data-value="2"></i><b>(2)</b> <i class="conum" data-value="3"></i><b>(3)</b>
 
-  <span class="tag">&lt;C</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Id</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">isKey</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span> <i class="conum" data-value="3"></i><b>(3)</b>
-    <span class="tag">&lt;Column&gt;</span>id<span class="tag">&lt;/Column&gt;</span> <i class="conum" data-value="4"></i><b>(4)</b>
+  <span class="tag">&lt;C</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Id</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">isKey</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span> <i class="conum" data-value="4"></i><b>(4)</b>
+    <span class="tag">&lt;Column&gt;</span>id<span class="tag">&lt;/Column&gt;</span> <i class="conum" data-value="5"></i><b>(5)</b>
   <span class="tag">&lt;/C&gt;</span>
   <span class="tag">&lt;C</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">dy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Dy</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
     <span class="tag">&lt;Column&gt;</span>dy<span class="tag">&lt;/Column&gt;</span>
   <span class="tag">&lt;/C&gt;</span>
   <span class="tag">&lt;C</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">yr</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Year</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-    <span class="tag">&lt;Column&gt;</span>EXTRACT( YEAR from dy)<span class="tag">&lt;/Column&gt;</span> <i class="conum" data-value="5"></i><b>(5)</b>
+    <span class="tag">&lt;Column&gt;</span>EXTRACT( YEAR from dy)<span class="tag">&lt;/Column&gt;</span> <i class="conum" data-value="6"></i><b>(6)</b>
   <span class="tag">&lt;/C&gt;</span>
   <span class="tag">&lt;C</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">country</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Country</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
     <span class="tag">&lt;Column&gt;</span>country<span class="tag">&lt;/Column&gt;</span>
@@ -1540,28 +1572,35 @@ By default, the result is rendered as a plain table. You will often want to prov
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td><code>table</code>: The real table name in your database</td>
+<td><code>table</code>: The real table/view name in your database</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>A logical BindingItem name</td>
+<td><code>dbSourceName</code> which database connection to use</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>The real column name in you database</td>
+<td>A logical BindingItem name</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="5"></i><b>5</b></td>
-<td>You may also use a valid column expression here</td>
+<td>The real column name in you database</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>You may any valid column expression here</td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>For dbSourceName use a name of a DataSource you defined in your context.xml during <a href="#DocAppsetup">Application Setup</a>.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_create_an_automodel">Create an AutoModel</h5>
 <div class="paragraph">
-<p>The following <a href="../jsdoc/bcdui.core.AutoModel.html">bcdui.core.AutoModel</a> sends a request referencing a <em>BindingSet</em> and retrieves the listed <em>BindingItems</em> from your data.<br>
-The requested data can be filtered by country or by dy. We will add filters later.</p>
+<p>A <a href="../jsdoc/bcdui.core.AutoModel.html">bcdui.core.AutoModel</a> allows for simple data loading cases, where filtering, grouping and ordering is sufficient.<br>
+In th following sample the requested data is filtered by country and day. We will add these filters later, for now they are not set and all data is loaded.</p>
 </div>
 <div class="paragraph">
 <p>Add this to the script block at the end of the page:</p>
@@ -1578,7 +1617,7 @@ The requested data can be filtered by country or by dy. We will add filters late
 </div>
 </div>
 <div class="paragraph">
-<p>To let the renderer show this data, change the renderer&#8217;s parameter to <code>inputModel: carRepairs</code>.<br></p>
+<p>To let the renderer show this data, change the renderer&#8217;s parameter to <code>inputModel: carRepairs</code>.</p>
 </div>
 <div class="paragraph">
 <p>Reload the page: Now you are already using your database!</p>
@@ -1591,14 +1630,14 @@ The requested data can be filtered by country or by dy. We will add filters late
 <p>In this section we add a <a href="../jsdoc/bcdui.widget.PeriodChooser.html" target="_blank" rel="noopener">bcdui.widget.PeriodChooser</a> to retrieve a subset of our data specified by a date range. We also add an apply button to reload the page with this filter setting.</p>
 </div>
 <div class="paragraph">
-<p>To place the period chooser, and the apply button on the page, add the two sections like the following to the element with class bcd__sidebar-left__inner.</p>
+<p>To place the period chooser, and the apply button on the page, add the two sections like the following to the element with class <code>bcd__sidebar-left__inner</code>, one for the period chooser and one for the apply button.</p>
 </div>
 <div class="listingblock">
 <div class="title">Section in the sidebar</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;section&gt;</span>
   <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__form-group</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-    <span class="tag">&lt;label</span> <span class="attribute-name">for</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">s1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Period Chooser<span class="tag">&lt;/label&gt;</span>
+    <span class="tag">&lt;label&gt;</span>Period Chooser<span class="tag">&lt;/label&gt;</span>
     <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__select-container</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
       <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">periodChooserDiv</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
     <span class="tag">&lt;/div&gt;</span>
@@ -1614,12 +1653,12 @@ The requested data can be filtered by country or by dy. We will add filters late
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="javascript">bcdui.widget.createPeriodChooser({
   <span class="key">targetModelXPath</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">$guiStatus/*/f:Filter/f:And[@id = 'myPeriodChooser']</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="1"></i><b>(1)</b>
-  <span class="key">targetHtml</span>: <span class="string"><span class="delimiter">'</span><span class="content">periodChooser</span><span class="delimiter">'</span></span>, <i class="conum" data-value="2"></i><b>(2)</b>
+  <span class="key">targetHtml</span>: <span class="string"><span class="delimiter">'</span><span class="content">periodChooserDiv</span><span class="delimiter">'</span></span>, <i class="conum" data-value="2"></i><b>(2)</b>
   <span class="key">isWeekSelectable</span>: <span class="predefined-constant">true</span> <i class="conum" data-value="3"></i><b>(3)</b>
 });
 bcdui.widgetNg.createButton({
   <span class="key">onClickAction</span>: bcdui.core.lifecycle.applyAction,
-  <span class="key">targetHtml</span>: <span class="string"><span class="delimiter">'</span><span class="content">apply</span><span class="delimiter">'</span></span>,
+  <span class="key">targetHtml</span>: <span class="string"><span class="delimiter">'</span><span class="content">applyDiv</span><span class="delimiter">'</span></span>,
   <span class="key">caption</span>: <span class="string"><span class="delimiter">'</span><span class="content">Apply</span><span class="delimiter">'</span></span>
 });</code></pre>
 </div>
@@ -1628,7 +1667,7 @@ bcdui.widgetNg.createButton({
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>This tells the PeriodChooser to write its selected result into the model named guiStatus</td>
+<td>This tells the PeriodChooser to write its selected result into the model named <code>guiStatus</code> at the specified path</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -1655,7 +1694,7 @@ bcdui.widgetNg.createButton({
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The PeriodChooser works on well-known <em>BindingItem</em> names to support automatic date calculations. It is mandatory to name date related BindingSet items on of <code>dy, cw, cwyr, mo, qr, yr</code> with an optional postfix.
+The PeriodChooser we will be using works on well-known <em>BindingItem</em> names to support some automatic functionality. It is mandatory to name date related BindingSet items on of <code>dy, cw, cwyr, mo, qr, yr</code> with an optional postfix.
 </td>
 </tr>
 </table>
@@ -1669,7 +1708,7 @@ The PeriodChooser works on well-known <em>BindingItem</em> names to support auto
 <div class="sect3">
 <h4 id="_the_important_guistatus">The important <em>guiStatus</em></h4>
 <div class="paragraph">
-<p>BCD-UI creates a page-wide singleton model named <code>guiStatus</code>, accessible via <code>bcdui.wkModels.guiStatus</code> (or by name), which serves as the default place to store user interaction.</p>
+<p>BCD-UI creates a page-wide singleton model named <code>guiStatus</code>, accessible via <code>bcdui.wkModels.guiStatus</code> (or by name), which serves as the default place to store user interaction data.</p>
 </div>
 <div class="paragraph">
 <p>To get an impression on how this guiStatus model looks like, add the following debugging utility to the JavaScript section in our page. Also add the target div with id <code>myGuiStatusDiv</code> in the main area within bcd__content-container:</p>
@@ -1697,7 +1736,7 @@ You should see that the url has a guiStatus parameter with the (compressed) guiS
 </div>
 <div class="paragraph">
 <p>So when you set up a widget to create a filter, the targetXPath argument describes what filter elements are written to the guiStatus.
-So our example filter f:Filter translates to</p>
+For example our example filter f:Filter translates to</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1708,7 +1747,7 @@ So our example filter f:Filter translates to</p>
 <p>Further details on Wrs requests and f:Filters can be found <a href="#DocXmlData">below</a></p>
 </div>
 <div class="paragraph">
-<p>In praxis, you will debug the <em>guiStatus</em> by opening the JavaScript console of your browser and entering</p>
+<p>In praxis, you will debug the <em>guiStatus</em> by opening the JavaScript console of your browser and enter</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1716,7 +1755,7 @@ So our example filter f:Filter translates to</p>
 </div>
 </div>
 <div class="paragraph">
-<p>you can then see the content written by the period chooser</p>
+<p>you can then see the content of <em>guiStatus</em></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1730,7 +1769,7 @@ So our example filter f:Filter translates to</p>
 <p>We do now add a more complex filter <a href="../jsdoc/bcdui.widgetNg.html#.createSingleSelect" target="_blank" rel="noopener">bcdui.widgetNg.SingleSelect:</a>, which is using data for displaying a selection to the user.</p>
 </div>
 <div class="paragraph">
-<p>Create a model from small static inline data with country data. Depending on your data you want to filter you may adjust this to some other values.</p>
+<p>Create a model from small static inline data with country data like this:</p>
 </div>
 <div class="listingblock">
 <div class="title">StaticModel for inline data</div>
@@ -1746,13 +1785,25 @@ So our example filter f:Filter translates to</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The <a href="../jsdoc/bcdui.core.StaticModel.html" target="_blank" rel="noopener">bcdui.core.StaticModel</a> gets a static inline string which is parsed and made available. The <code>id</code> attribute makes the model available not only as a JavaScript object but also by name. We make use of that below.</p>
+<p>The <a href="../jsdoc/bcdui.core.StaticModel.html" target="_blank" rel="noopener">bcdui.core.StaticModel</a> gets a static inline string which is parsed and made available.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+The <code>id</code> attribute makes the model available not only as a JavaScript object but also by name in BCD-UI&#8217;s registry. With that it can also be used in declarative contexts like the HTML custom elements and XPath expressions and more, where you cannot reference a JavaScript variable directly.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>The SingleSelect widget we want to use here must be added to bcd__sidebar-left__inner div, similar for the apply button and the period chooser.</p>
+<p>The SingleSelect widget we want to use here must be added to <code>bcd__sidebar-left__inner</code> div, in the same way as the apply button and the period chooser above.</p>
 </div>
 <div class="paragraph">
-<p>The SingleSelect widget is again created with JavaScript in the script block. Note that the values available are defined as XPath expressions into the model. You should make yourself familiar with XPaths as they are used quite often..</p>
+<p>The <code>SingleSelect</code> widget is again created with JavaScript. Note that the values which are presented to the user are referenced with the XPath expression. You should make yourself familiar with XPaths as they are used quite often.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1765,8 +1816,8 @@ So our example filter f:Filter translates to</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The optional optionsModelXPath argument specifies the data source for the options presented to the user.
-Because optionsModelXPath is a string attribute we have to set an explicit id for the StaticModel. We choose 'countriesModel'.</p>
+<p>The optional <code>optionsModelXPath</code> argument specifies the data source for the options presented to the user.
+Because <code>optionsModelXPath</code> is a string attribute we had to set an explicit id for the StaticModel as mentioned.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1775,7 +1826,7 @@ Because optionsModelXPath is a string attribute we have to set an explicit id fo
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-References to a DataProviders in XPaths are built with a <code>$</code> followed by the DataProvider&#8217;s id, like <code>$countriesModel</code>.
+References to a DataProviders in XPaths are built with a <code>$</code> followed by the DataProvider&#8217;s id, like <code>$countryModel</code>.
 </td>
 </tr>
 </table>
@@ -1793,7 +1844,7 @@ References to a DataProviders in XPaths are built with a <code>$</code> followed
 </div>
 </div>
 <div class="paragraph">
-<p>The chosen item will be stored in the guiStatus (because it&#8217;s the default) using the targetXPath position.
+<p>Since the expression does not start with a <code>$</code> with a model name, the chosen item will be stored in the <em>guiStatus</em> (it&#8217;s the default) using the targetXPath position.
 In this case we write a filter on the "country" <em>BindingItem</em>.
 You can find more about widgets <a href="#DocWidgets">here</a>.</p>
 </div>
@@ -1806,9 +1857,42 @@ You can find more about widgets <a href="#DocWidgets">here</a>.</p>
 <div class="sect3">
 <h4 id="_two_way_binding_of_widgets">Two-way binding of widgets</h4>
 <div class="paragraph">
-<p>If you have both versions of the country chooser (JavaScript and custom HTML) on the page, you will notice that they are always in sync. That is, if you change one, the other changes as well. This shows an important feature of BCD-UI.<br>
-When a chooser is writing to its target model, which is <em>guiStatus</em> here since it is the default for widgets, the <em>guiStatus</em> informs all listeners depending on it about a change. This gives them the chance to reflect the value correctly at any time.<br>
-While here the target model is the <em>guiStatus</em>, this concept works with any of your models.</p>
+<p>If you have both versions of the country chooser (JavaScript and custom HTML) on the page, you will notice that they are always in sync. That is, if you change one, the other changes as well. This shows an important feature of BCD-UI.<br></p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+When somebody (like our chooser) writes to a model (here <em>guiStatus</em>), the model informs all listeners about any change. This gives them the chance to reflect the value correctly at any time.<br>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Widgets use <em>guiStatus</em> as the default model but this concept is true for all models of BCD-UI and not only for widgets. For example paste the following line into your browser&#8217;s JavaScript console (adjust the xPath to your setup):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">bcdui.wkModels.guiStatus.write(<span class="string"><span class="delimiter">&quot;</span><span class="content">/*/f:Filter/f:Expression[@bRef='country']/@value</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">US</span><span class="delimiter">&quot;</span></span>, <span class="predefined-constant">true</span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It calls the <a href="https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StaticModel.html#write" target="_blank" rel="noopener">write()</a> method on <code>guiStatus</code> which is itself a <code>StaticModel</code> to set a value at the specified xPath and with <code>true</code> as the last parameter informs all dependent listeners, widgets etc about changes.</p>
+</div>
+<div class="admonitionblock note bcd_exercise">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+As an exercise, create a new button on the top of the page calling a function setting your chooser to some value with this method.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -5358,14 +5442,14 @@ This way you are sure your targetHtml elements are created already:</p>
 <div class="sect2">
 <h3 id="_html5_custom_elements_api">13.3. HTML5 Custom Elements API</h3>
 <div class="paragraph">
-<p>HTML5 Custom Elements look like standard HTML tags but provide custom functionality.
+<p>HTML5 Custom Elements look like standard HTML tags, but provide custom functionality.
 They will become more and more common in the next time.</p>
 </div>
 <div class="ulist">
 <div class="title">General Rules</div>
 <ul>
 <li>
-<p>There are custom tags for widgets, components and the renderer, i.e. for all objects creating visual output.</p>
+<p>There are HTML Custom Elements for widgets, components and the renderer, i.e. for all objects creating visual output.</p>
 </li>
 <li>
 <p>The naming of the tags follows the naming of the JavaScript API, preceded by 'bcd-'.</p>
@@ -5880,7 +5964,7 @@ Each request is checked whether it addresses a</p>
 <p>After login, the original request is processed.</p>
 </div>
 <div class="paragraph">
-<p>For each url path you can also set required rights in the init-param section of IniShiroFilter in web.xml.</p>
+<p>For each url path you can also set required rights in the shiro.ini file.</p>
 </div>
 <div class="sect3">
 <h4 id="_developer_view">Developer view</h4>
@@ -5890,7 +5974,7 @@ Each request is checked whether it addresses a</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Enable IniShiroFilter security filter in web.xml to enforce login for non-public areas</p>
+<p>Enable ShiroFilter security filter in web.xml to enforce login for non-public areas</p>
 </li>
 <li>
 <p>Configure the CachingFilter to send user dependent and sensitive data with <code>no-cache</code></p>
@@ -5956,13 +6040,13 @@ By adding <code>bcd_log_login</code> BindingSet to your application, all login a
 </ol>
 </div>
 <div class="paragraph">
-<p>To set up users and their authorization, you can choose the simple setup by hard-coding them in web.xml, by maintaining them in BCD-UI&#8217;s database or authenticated with oAuth (AD, Google, facebook etc) combined with rights maintained in your database.</p>
+<p>To set up users and their authorization, you can choose the simple setup by hard-coding them in shiro.ini, by maintaining them in BCD-UI&#8217;s database or authenticated with oAuth (AD, Google, facebook etc) combined with rights maintained in your database.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_page_access_rights">Page access rights</h4>
 <div class="paragraph">
-<p>No matter which method you use for defining users and their roles, use the [urls] section in web.xml to define access permissions needed for pages. It is easy to also adjust the menu to offer only allowed pages.</p>
+<p>No matter which method you use for defining users and their roles, use the [urls] section in shiro.ini to define access permissions needed for pages. It is easy to also adjust the menu to offer only allowed pages.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5985,9 +6069,9 @@ By adding <code>bcd_log_login</code> BindingSet to your application, all login a
 </div>
 </div>
 <div class="sect2">
-<h3 id="_define_users_in_web_xml">14.3. Define users in web.xml</h3>
+<h3 id="_define_users_in_shiro_ini">14.3. Define users in shiro.ini</h3>
 <div class="paragraph">
-<p>You can have an easy web.xml - only setup in the following way:</p>
+<p>You can have an easy shiro.ini - only setup in the following way:</p>
 </div>
 <div class="listingblock">
 <div class="title">Add any users, their password and their roles:</div>
@@ -6011,7 +6095,7 @@ adminRole = pages:admin</code></pre>
 <div class="sect2">
 <h3 id="_define_users_in_the_database">14.4. Define users in the database</h3>
 <div class="paragraph">
-<p>Instead of having a static set of users and passwords in web.xml, you can store users and passwords in the database.</p>
+<p>Instead of having a static set of users and passwords in shiro.ini, you can store users and passwords in the database.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6019,6 +6103,7 @@ adminRole = pages:admin</code></pre>
 ## for authentication and authorization supporting salted passwords, etc. (named option 2. above)
 ## make sure you created an appropriate WEB-INF/bcdui/subjectSettings.xml as well if enabling
 # realmBcdJdbc = de.businesscode.bcdui.subjectsettings.JdbcRealm
+# realmDefaults = de.businesscode.bcdui.subjectsettings.DefaultSettingsRealm
 # For security reasons BindingItems of password and salt are blind in BindingSet. They are assumed to have columns name password/password_salt. Here you can overwrite that.
 # realmBcdJdbc.passwordColumnName     = password
 # realmBcdJdbc.passwordSaltColumnName = password_salt
@@ -6053,7 +6138,8 @@ adminRole = pages:admin</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Later you can define BindingSet related security restrictions here.</p>
+<p>Later you can define BindingSet related security restrictions here as described
+in <a href="#DocBinding">BindingSet Features / Row-Level-Security</a></p>
 </div>
 </div>
 <div class="sect2">
@@ -6094,31 +6180,16 @@ Authentication is handled by OAuth, permissions are managed by application throu
 <li>
 <p>Configuration</p>
 <div class="paragraph">
-<p>The web.xml <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/web.xml">template of BCD-UI</a> describes the setup, more about this the following section</p>
+<p>The shiro.ini <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/shiro.ini">template of BCD-UI</a> describes the setup, more about this the following section</p>
 </div>
 <div class="listingblock">
 <div class="title">oAuth sample with Azure</div>
 <div class="content">
-<pre class="CodeRay highlight"><code>#### OAuth start (named option 2.2 above)
-## Use this to OAuth authenticate against Azure / Google. Make sure to enable /oauth in [url] section.
-## Some information is provided by OAuth provider when setting up your application there
-## Azure
-# oauthcAzure                             = de.businesscode.bcdui.subjectsettings.oauth2.OAuthAuthenticatingFilter
-# oauthcAzure.optionalProviderId          = azure
-# oauthcAzure.authorizeEndpoint           =     # provided by Azure
-# oauthcAzure.authScope                   = openid https://graph.microsoft.com/user.read
-# oauthcAzure.clientId                    =     # provided by Azure
-# oauthcAzure.redirectUrl                 = http://myapp.com/oauth  # Adjust and tell this Azure
-# oauthcAzureRealm                        = de.businesscode.bcdui.subjectsettings.oauth2.OAuthRealm
-# oauthcAzureRealm.authenticator          = $oauthcAzure
-# oauthcAzureRealm.apiEndpoint            = https://graph.microsoft.com/v1.0/me/
-# oauthcAzureRealm.clientSecret           =     # provided by Azure
-# oauthcAzureRealm.tokenEndpoint          =     # provided by Azure
-# oauthcAzureRealm.principalPropertyName  = userPrincipalName</code></pre>
+<pre class="CodeRay highlight"><code>Unresolved directive in security.adoc - include::../web/WEB-INF/shiro.xml[tag=oAuth,indent=0]</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The mentioned template web.xml also describes oAuth with Google and how to combine multiple providers,</p>
+<p>The mentioned template shiro.xml also describes oAuth with Google and how to combine multiple providers,</p>
 </div>
 </li>
 </ol>
@@ -6134,10 +6205,130 @@ This is supported by the Enterprise Edition of BCD-UI, please contact BusinessCo
 </div>
 </div>
 <div class="sect1">
-<h2 id="DocCaching">15. Caching</h2>
+<h2 id="UserBeans">15. User Beans</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>bcdUserBean are name/value pairs which can be set client sided. You define the name and the value by calling the mapped
+SessionAttributesManager servlet with name and value attributes:</p>
+</div>
+<div class="paragraph">
+<p>For example for a mapped servlet you would set "country" to "DE"
+"localhost:8080/YourProject/SessionAttributesManager?value=DE&amp;name=country"</p>
+</div>
+<div class="paragraph">
+<p>The servlet is mapped via a web.xml entry:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml">  <span class="tag">&lt;servlet&gt;</span>
+    <span class="tag">&lt;servlet-name&gt;</span>bcdui4.SessionAttributesManager<span class="tag">&lt;/servlet-name&gt;</span>
+    <span class="tag">&lt;servlet-class&gt;</span>de.businesscode.bcdui.web.servlets.SessionAttributesManager<span class="tag">&lt;/servlet-class&gt;</span>
+    <span class="tag">&lt;init-param&gt;</span>
+      <span class="tag">&lt;param-name&gt;</span>ALLOWED_ATTRIBUTES<span class="tag">&lt;/param-name&gt;</span>
+      <span class="tag">&lt;param-value&gt;</span>...<span class="tag">&lt;/param-value&gt;</span>
+    <span class="tag">&lt;/init-param&gt;</span>
+    <span class="tag">&lt;init-param&gt;</span>
+      <span class="tag">&lt;param-name&gt;</span>ALLOWED_VALUES<span class="tag">&lt;/param-name&gt;</span>
+      <span class="tag">&lt;param-value&gt;</span>...<span class="tag">&lt;/param-value&gt;</span>
+    <span class="tag">&lt;/init-param&gt;</span>
+    <span class="tag">&lt;load-on-startup&gt;</span>1<span class="tag">&lt;/load-on-startup&gt;</span>
+  <span class="tag">&lt;/servlet&gt;</span>
+  <span class="tag">&lt;servlet-mapping&gt;</span>
+    <span class="tag">&lt;servlet-name&gt;</span>bcdui4.SessionAttributesManager<span class="tag">&lt;/servlet-name&gt;</span>
+    <span class="tag">&lt;url-pattern&gt;</span>/SessionAttributesManager/*<span class="tag">&lt;/url-pattern&gt;</span>
+  <span class="tag">&lt;/servlet-mapping&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>ALLOWED_ATTRIBUTES is a comma separated list of allowed names.
+Example: &lt;param-value&gt;country, instanceId, language&lt;/param-value&gt;
+You can only set values for names which are listed here.</p>
+</div>
+<div class="paragraph">
+<p>ALLOWED_VALUES is also a comma separated list of allowed name:values entries where values are space separated.
+Example: &lt;param-value&gt;country:DE FR ES, language:en,fr,latin&lt;/param-value&gt;
+You can only set such values by calling the servlet or you have them as user rights in your bcd_sec_user_settings
+table. As user right, your names are prefixed with "bcdUserBean:", so e.g. you have</p>
+</div>
+<div class="paragraph">
+<p>right_type: bcdUserBean:language right_value:latin</p>
+</div>
+<div class="sect3">
+<h4 id="_default_values">Default Values:</h4>
+<div class="paragraph">
+<p>If you haven&#8217;t set any bean name/value yet and want to access it, a default value is chosen and returned.
+This is either the alphabetically first entry from ALLOWED_VALUES for the given name or the alphabetically first entry
+from bcd_sec_user_settings for the requested bcdUserBean:name. In the latter case this can be "*". If no default can
+be found an empty string is returned</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_url_usage">URL Usage:</h4>
+<div class="paragraph">
+<p>You can use the beans in an URL, like "http://localhost:8080/myApp/${bcdUserBean.pageId}/index.html". The expression is
+replaced with the value and forwarded. Of course multiple expressions are possible. A value of "*" will be replaced with
+an empty string, in case the url then holds "//" somewhere, this will be cleaned up to "/".
+Ensure that the url is excluded from caching, otherwise you&#8217;d have to hit F5 after switching the bean and accessing
+the page.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_readwrite_security">Read/Write security:</h4>
+<div class="paragraph">
+<p>Bean values can be also used for server sided read/write protection (see SubjectSettings). For this, you can define
+a SubjectFilterType as you know it from subject settings. The name needs to be prefixed with "bcdUserBean:".</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml">  <span class="tag">&lt;SubjectFilterType</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdUserBean:country</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;Caption&gt;</span>country via bcdUserBean<span class="tag">&lt;/Caption&gt;</span>
+    <span class="tag">&lt;BindingItems&gt;</span>
+      <span class="tag">&lt;C</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">country</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/BindingItems&gt;</span>
+  <span class="tag">&lt;/SubjectFilterType&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And in a binding you can reference it the usual way then:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml">  <span class="tag">&lt;SubjectSettings&gt;</span>
+   <span class="tag">&lt;Security&gt;</span><span class="tag">&lt;Operation</span> <span class="attribute-name">permission</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">allAllowed</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">write</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span><span class="tag">&lt;/Security&gt;</span>
+    <span class="tag">&lt;SubjectFilters&gt;</span>
+      <span class="tag">&lt;SubjectFilter</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdUserBean:country</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/SubjectFilters&gt;</span>
+  <span class="tag">&lt;/SubjectSettings&gt;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_setting_a_bean_programmatically">Setting a bean programmatically:</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> <span class="include">org.apache.shiro.SecurityUtils</span>;
+<span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> BCD_EL_USER_BEAN = <span class="string"><span class="delimiter">&quot;</span><span class="content">bcdUserBean</span><span class="delimiter">&quot;</span></span>;
+<span class="predefined-type">Subject</span> subject = SecurityUtils.getSubject();
+<span class="type">boolean</span> gotSession = (subject != <span class="predefined-constant">null</span> &amp;&amp; subject.getSession() != <span class="predefined-constant">null</span>);
+<span class="predefined-type">HashMap</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">String</span>&gt; bean = gotSession ? (<span class="predefined-type">HashMap</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">String</span>&gt;)subject.getSession().getAttribute(BCD_EL_USER_BEAN) : <span class="predefined-constant">null</span>;
+<span class="keyword">if</span> (bean == <span class="predefined-constant">null</span>)
+  bean = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;&gt;();
+bean.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">newName</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">newValue</span><span class="delimiter">&quot;</span></span>);
+<span class="keyword">if</span> (gotSession)
+  subject.getSession().setAttribute(BCD_EL_USER_BEAN, bean);</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="DocCaching">16. Caching</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_caching_overview">15.1. Caching overview</h3>
+<h3 id="_caching_overview">16.1. Caching overview</h3>
 <div class="paragraph">
 <p>Caching is a mechanism to speed up performance drastically, next to database tuning it is the most important performance measure.
 BCD-UI supports caching and makes caching setup easy.
@@ -6213,7 +6404,7 @@ To achieve this please define an environment entry within your context.xml file 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_client_side_caching">15.2. Client side caching</h3>
+<h3 id="_client_side_caching">16.2. Client side caching</h3>
 <div class="paragraph">
 <p>Client side caching is by far the most efficient way of caching in most cases.
 ClientCachingFilter is responsible for adding caching information to the HTTP response.
@@ -6259,10 +6450,10 @@ The response will have the <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-
 </div>
 </div>
 <div class="sect1">
-<h2 id="DocBinding">16. Bindings</h2>
+<h2 id="DocBinding">17. Bindings</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_bindings_overview">16.1. Bindings Overview</h3>
+<h3 id="_bindings_overview">17.1. Bindings Overview</h3>
 <div class="paragraph">
 <p>A BindingSet defines the logical view of a table or view of a database.
 Bindings are maintained in simple XML files at WEB-INF/bcdui/bindings and introduce the following capabilities:</p>
@@ -6350,7 +6541,7 @@ A simple binding looks like the following:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_bindingset_features">16.2. BindingSet features</h3>
+<h3 id="_bindingset_features">17.2. BindingSet features</h3>
 <div class="sect3">
 <h4 id="_row_level_security">Row-level-security</h4>
 <div class="paragraph">
@@ -6678,10 +6869,10 @@ The first BindingSet in order providing all BindingItems is chosen. This allows 
 </div>
 </div>
 <div class="sect1">
-<h2 id="DocContext">17. Application context and settings</h2>
+<h2 id="DocContext">18. Application context and settings</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_unified_expression_language">17.1. Unified Expression Language</h3>
+<h3 id="_unified_expression_language">18.1. Unified Expression Language</h3>
 <div class="paragraph">
 <p>The BCD-UI System uses the Jakarta EE Unified Expression Language to put Server-side Values into
 XML documents at various places. With this feature it is possible to create for example
@@ -6769,10 +6960,10 @@ of the class  <code>de.businesscode.bcdui.el.ELEnvironment</code>  must be creat
 </div>
 </div>
 <div class="sect1">
-<h2 id="DocXmlData">18. WebRowSet</h2>
+<h2 id="DocXmlData">19. WebRowSet</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_webrowset_wrs_overview">18.1. WebRowSet Wrs Overview</h3>
+<h3 id="_webrowset_wrs_overview">19.1. WebRowSet Wrs Overview</h3>
 <div class="paragraph">
 <p>BCD-UI delivers and receives data in the following XML format.</p>
 </div>
@@ -6975,7 +7166,7 @@ Between operator is not available, please use &#8230;&#8203; &lt;= &#8230;&#8203
 </div>
 </div>
 <div class="sect2">
-<h3 id="_cell_addressing">18.2. Cell addressing</h3>
+<h3 id="_cell_addressing">19.2. Cell addressing</h3>
 <div class="paragraph">
 <p>Identifying the right column can be done via its hard-coded position in an XPath</p>
 </div>
@@ -7008,7 +7199,7 @@ Thus, it is better to identify a column via its logical name 'CP_DESC', this wil
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xsd_schema_2">18.3. XSD Schema</h3>
+<h3 id="_xsd_schema_2">19.3. XSD Schema</h3>
 <div class="sect3">
 <h4 id="_details_2">Details</h4>
 <div class="imageblock">
@@ -7021,10 +7212,10 @@ Thus, it is better to identify a column via its logical name 'CP_DESC', this wil
 </div>
 </div>
 <div class="sect1">
-<h2 id="DocFilter">19. Servlets / Filters</h2>
+<h2 id="DocFilter">20. Servlets / Filters</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_overview_6">19.1. Overview</h3>
+<h3 id="_overview_6">20.1. Overview</h3>
 <div class="sect3">
 <h4 id="_bcd_ui_filters_and_servlets">BCD-UI Filters and Servlets</h4>
 <div class="paragraph">
@@ -7085,10 +7276,10 @@ Maps to bcdui/servlets/ZipLet.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="DocVfs">20. Virtual File System (VFS)</h2>
+<h2 id="DocVfs">21. Virtual File System (VFS)</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_virtual_file_system_vfs">20.1. Virtual File System (VFS)</h3>
+<h3 id="_virtual_file_system_vfs">21.1. Virtual File System (VFS)</h3>
 <div class="paragraph">
 <p>The Virtual File System (VFS) allows you to store resources in the database and make them available like real physical resources.</p>
 </div>
@@ -7177,10 +7368,10 @@ You can do this by calling the CacheManager servlet with an action parameter:</p
 </div>
 </div>
 <div class="sect1">
-<h2 id="DocDebug">21. Debugging</h2>
+<h2 id="DocDebug">22. Debugging</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_support_for_debugging">21.1. Support for debugging</h3>
+<h3 id="_support_for_debugging">22.1. Support for debugging</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Unzip the gui status</dt>
@@ -7228,7 +7419,7 @@ You can do this by calling the CacheManager servlet with an action parameter:</p
 </div>
 </div>
 <div class="sect2">
-<h3 id="_common_error_messages">21.2. Common error messages</h3>
+<h3 id="_common_error_messages">22.2. Common error messages</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">ERROR - Internal stylesheet error. this['node-set']= function (x) { return x; } 0 0 Unzip gui status</dt>
@@ -7254,13 +7445,13 @@ One thing specific about Mozilla: If your stylesheet&#8217;s output produces mul
 </div>
 </div>
 <div class="sect1">
-<h2 id="DocBootstrap">22. Bootstrap</h2>
+<h2 id="DocBootstrap">23. Bootstrap</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This helps to set up your development environment for BCD-UI.</p>
 </div>
 <div class="sect2">
-<h3 id="_getting_the_tools">22.1. Getting the tools</h3>
+<h3 id="_getting_the_tools">23.1. Getting the tools</h3>
 <div class="paragraph">
 <p>To start development with BCD-UI, first get the tools:</p>
 </div>
@@ -7290,7 +7481,7 @@ One thing specific about Mozilla: If your stylesheet&#8217;s output produces mul
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Install <a href="https://www.eclipse.org/downloads/packages/" target="_blank" rel="noopener">Eclipse IDE for Enterprise Java and Web Developers</a> and <a href="https://developers.redhat.com/products/openjdk/download" target="_blank" rel="noopener">Java JDK</a></p>
+<p>Install <a href="https://www.eclipse.org/downloads/packages/" target="_blank" rel="noopener">Eclipse IDE for Enterprise Java and Web Developers</a> and Java JDK from <a href="https://developers.redhat.com/products/openjdk/download" target="_blank" rel="noopener">Red Hat</a> with an account or <a href="https://aws.amazon.com/corretto" target="_blank" rel="noopener">Amazon AWS</a> without an account</p>
 </li>
 <li>
 <p>Baeldung on <a href="https://www.baeldung.com/tomcat" target="_blank" rel="noopener">installing Tomcat</a> and on <a href="https://www.baeldung.com/eclipse-tomcat" target="_blank" rel="noopener">connecting Eclipse with Tomcat</a></p>
@@ -7305,17 +7496,16 @@ You won&#8217;t have to develop Servlets when start using BCD-UI as it comes wit
 </tr>
 </table>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_tomcat_compress_resources">22.2. Tomcat compress resources</h3>
+<div class="sect3">
+<h4 id="_tomcat_compress_resources">Tomcat compress resources</h4>
 <div class="paragraph">
 <p>For performance reasons, you should allow compression for static resources.<br>
 For Tomcat adjust in server.xml,
 see <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/tomcat/server.xml" target="_blank" rel="noopener">BCD-UI/Server/configFiles/tomcat/server.xml</a></p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_xml_schema_xsd_catalog">22.3. XML schema xsd catalog</h3>
+<div class="sect3">
+<h4 id="_xml_schema_xsd_catalog">XML schema xsd catalog</h4>
 <div class="paragraph">
 <p>Adding the XML schema catalog of BCD-UI to your workspace will support you in creating XML configuration files for BCD-UI
 by linking to <a href="https://businesscode.github.io/BCD-UI-Docu/xsd/bcduiCatalog.xml" class="bare" target="_blank" rel="noopener">https://businesscode.github.io/BCD-UI-Docu/xsd/bcduiCatalog.xml</a></p>
@@ -7342,8 +7532,9 @@ by linking to <a href="https://businesscode.github.io/BCD-UI-Docu/xsd/bcduiCatal
 </div>
 </div>
 </div>
+</div>
 <div class="sect1">
-<h2 id="DocAppsetup">23. Application Setup</h2>
+<h2 id="DocAppsetup">24. Application Setup</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>A BCD-UI application is a regular Jakarta EE application. These steps are show how to add BCD-UI to an existing web application project.</p>
@@ -7364,7 +7555,7 @@ Before adding BCD-UI to your project, make sure you test your plain web applicat
 </table>
 </div>
 <div class="sect2">
-<h3 id="_adding_bcd_ui">23.1. Adding BCD-UI</h3>
+<h3 id="_adding_bcd_ui">24.1. Adding BCD-UI</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -7375,7 +7566,22 @@ Eclipse (<em>Buildship</em> plugin installed per default) and IDEA support gradl
 <p>Add a <code>build.gradle</code> file as shown here <a href="https://github.com/businesscode/maven-repo" class="bare" target="_blank" rel="noopener">https://github.com/businesscode/maven-repo</a> to your project root.</p>
 </div>
 <div class="paragraph">
-<p>When working with Eclipse, open <span class="menuseq"><b class="menu">File</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Import&#8230;&#8203;|Existing Gradle Project</b></span> and select your project root. It worked when you see BCD and all of its dependencies under <code>Project and External Dependencies</code>.</p>
+<p>When working with Eclipse, open <span class="menuseq"><b class="menu">File</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Import&#8230;&#8203;|Existing Gradle Project</b></span> and select your project root, if your project is already in Eclipse Workspace, then add "Gradle Nature" to the project and trigger "Gradle-Refresh".</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+we refer to <code>webAppDirName = "WebContent"</code> as the content directory in the gradle file, please ensure it matches your web module configuration.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>It worked when you see BCD and all of its dependencies under <code>Project and External Dependencies</code>.</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
@@ -7430,7 +7636,7 @@ The jndi entry</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_bcd_ui_folder_layout">23.2. BCD-UI folder layout</h3>
+<h3 id="_bcd_ui_folder_layout">24.2. BCD-UI folder layout</h3>
 <div class="paragraph">
 <p>BCD-UI follows standard Java Web Application layout.</p>
 </div>
@@ -7640,10 +7846,10 @@ One thing less common though is that the JavaScript and other static sources com
 </div>
 </div>
 <div class="sect1">
-<h2 id="DocGeneralFeatures">24. General Features</h2>
+<h2 id="DocGeneralFeatures">25. General Features</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_general_features">24.1. General Features</h3>
+<h3 id="_general_features">25.1. General Features</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Bookmark feature</dt>
@@ -7657,7 +7863,7 @@ Additionally, the link can be passed to others in case they have sufficient righ
 </div>
 </div>
 <div class="sect2">
-<h3 id="_transactions_and_connection_pooling">24.2. Transactions and connection pooling</h3>
+<h3 id="_transactions_and_connection_pooling">25.2. Transactions and connection pooling</h3>
 <div class="paragraph">
 <p>Per default each request is associated with a transaction.
 Each server activity retrieves its connection from the request object, providing the data source name.
@@ -7671,7 +7877,7 @@ Still, each step may itself decide to commit or rollback its work.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xml_inclusion">24.3. XML Inclusion</h3>
+<h3 id="_xml_inclusion">25.3. XML Inclusion</h3>
 <div class="paragraph">
 <p>The BCD-UI library makes use of XML inclusion to support some advanced XML features. These <code>include</code> are allowed in XML files read on the server and also on the client. The main reasons to use XML
 inclusion are as follows:</p>
@@ -7785,10 +7991,10 @@ Example:</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="DocCompatibility">25. Compatibility</h2>
+<h2 id="DocCompatibility">26. Compatibility</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_compatibility">25.1. Compatibility</h3>
+<h3 id="_compatibility_of_bcd_ui">26.1. Compatibility of BCD-UI</h3>
 <div class="paragraph">
 <p>As of 2021, BCD-UI works without modifications within the following environments</p>
 </div>
@@ -7859,7 +8065,9 @@ Example:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_known_browser_incompatibilities">25.2. Known browser incompatibilities</h3>
+<h3 id="_developing_for_specific_browsers">26.2. Developing for specific browsers</h3>
+<div class="sect3">
+<h4 id="_known_browser_limitations">Known browser limitations</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -7895,10 +8103,10 @@ Example:</p>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_working_with_webkit_browsers">25.3. Working with webkit browsers</h3>
+<div class="sect3">
+<h4 id="_working_with_webkit_browsers">Working with webkit browsers</h4>
 <div class="paragraph">
-<p>Webkit browsers like Safari, Chrome and Opera compatibility requires the following to be taken into account</p>
+<p>Webkit/Chromium based browsers like Edge, Safari, Chrome and Opera compatibility requires the following to be taken into account</p>
 </div>
 <div class="ulist">
 <ul>
@@ -7961,11 +8169,12 @@ appear once. This improves performance, because Webkit is sensitive against docu
 </div>
 </div>
 </div>
+</div>
 <div class="sect1">
-<h2 id="DocConfiguration">26. Configuration</h2>
+<h2 id="DocConfiguration">27. Configuration</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_configuration_overview">26.1. Configuration overview</h3>
+<h3 id="_configuration_overview">27.1. Configuration overview</h3>
 <div class="paragraph">
 <p>BCD-UI obtains its configuration from the parameters from JNDI context (as specified by servlet container) for the backend-part
 and provides client configuration parameters for the client part. The de.businesscode.bcdui.toolbox.Configuration is the API to retrieve
@@ -7990,7 +8199,7 @@ and the property value is ALWAYS exposed as a String, hence the value must not b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_dbproperties_setup">26.2. DbProperties setup</h3>
+<h3 id="_dbproperties_setup">27.2. DbProperties setup</h3>
 <div class="paragraph">
 <p>Setting up the DbProperties to be transparently reflected by the de.businesscode.bcdui.toolbox.Configuration API is a matter
 of exposing the "bcd_db_properties" BindingSet. Configuration class will auto-detect this BindingSet upon initialization and if found, will
@@ -8059,7 +8268,7 @@ The server scope value follows rules for its TYPE</p></td>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-08-30 11:54:33 +0200
+Last updated 2022-01-20 15:55:57 +0100
 </div>
 </div>
 <style>

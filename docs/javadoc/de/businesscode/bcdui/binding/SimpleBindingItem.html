@@ -13,8 +13,7 @@
 <!--[if IE]>
 <script type="text/javascript" src="../../../../jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="../../../../jquery/jquery-3.3.1.js"></script>
-<script type="text/javascript" src="../../../../jquery/jquery-migrate-3.0.1.js"></script>
+<script type="text/javascript" src="../../../../jquery/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="../../../../jquery/jquery-ui.js"></script>
 </head>
 <body>
@@ -27,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -138,8 +137,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">SimpleBindingItem</span>
 extends java.lang.Object</pre>
-<div class="block">Base class for BindingItems read from a BindingSet definition
- See also WrqBindingItem for the analogy used during actual statement</div>
+<div class="block">Base class for BindingItems read from a BindingSet definition or calc:Calc of a Wrs
+ It becomes member of a (Wrs|Standard)BindingSet
+ See also WrqBindingItem for the analogy used during actual statement representing the output</div>
 </li>
 </ul>
 </div>
@@ -212,16 +212,6 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr class="rowColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(de.businesscode.bcdui.binding.BindingSet,java.lang.String,java.lang.String,boolean,java.lang.String)">SimpleBindingItem</a></span>&#8203;(<a href="BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&nbsp;pBindingSet,
-                 java.lang.String&nbsp;id,
-                 java.lang.String&nbsp;pColumnExpression,
-                 boolean&nbsp;columnQuoting,
-                 java.lang.String&nbsp;pTableAlias)</code></th>
-<td class="colLast">
-<div class="block">Constructor</div>
-</td>
-</tr>
-<tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(de.businesscode.bcdui.binding.SimpleBindingItem)">SimpleBindingItem</a></span>&#8203;(<a href="SimpleBindingItem.html" title="class in de.businesscode.bcdui.binding">SimpleBindingItem</a>&nbsp;src)</code></th>
 <td class="colLast">
 <div class="block">Copy constructor.</div>
@@ -246,87 +236,62 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#calcQColumnExpression(java.lang.String)">calcQColumnExpression</a></span>&#8203;(java.lang.String&nbsp;tableAlias)</code></th>
-<td class="colLast">
-<div class="block">Helper to merge a table alias into a column expression, which can contain SQL functions etc
-
- Method calcQColumnExpression</div>
-</td>
-</tr>
-<tr id="i1" class="rowColor">
 <td class="colFirst"><code><a href="BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getBindingSet()">getBindingSet</a></span>()</code></th>
 <td class="colLast">
 <div class="block">getBindingSet</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i1" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getColumnExpression()">getColumnExpression</a></span>()</code></th>
 <td class="colLast">
 <div class="block">gets column expression</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getId()">getId</a></span>()</code></th>
 <td class="colLast">
 <div class="block">gets id of item</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getQColumnExpression()">getQColumnExpression</a></span>()</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getQColumnExpression(java.lang.String)">getQColumnExpression</a></span>&#8203;(java.lang.String&nbsp;tableAlias)</code></th>
 <td class="colLast">
-<div class="block">returns full qualified name of the column like: tableName.columnName
+<div class="block">Helper to merge a table alias into a column expression, which can contain SQL functions etc
 
- if the column is a SQLExpression - only column expression</div>
+ Method calcQColumnExpression</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
-<td class="colFirst"><code>java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTableAliasName()">getTableAliasName</a></span>()</code></th>
-<td class="colLast">
-<div class="block">getTableAliasName</div>
-</td>
-</tr>
-<tr id="i6" class="altColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isColumnQuoting()">isColumnQuoting</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setBindingSet(de.businesscode.bcdui.binding.BindingSet)">setBindingSet</a></span>&#8203;(<a href="BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&nbsp;bindingSet)</code></th>
+<td class="colLast">
+<div class="block">setBindingSet</div>
+</td>
+</tr>
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setColumnExpression(java.lang.String)">setColumnExpression</a></span>&#8203;(java.lang.String&nbsp;columnExpressionPar)</code></th>
 <td class="colLast">
 <div class="block">setColumnExpression</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setId(java.lang.String)">setId</a></span>&#8203;(java.lang.String&nbsp;id)</code></th>
 <td class="colLast">
 <div class="block">sets id of item</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
-<td class="colFirst"><code>protected void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setQColumnExpression()">setQColumnExpression</a></span>()</code></th>
-<td class="colLast">
-<div class="block">sets qualified name of the binding item if pqColumnExpression is null and bindingItem is not a SQL expression - builds qualified name as follow: bindingSetName.columnExpression
-
- Method setQColumnExpression</div>
-</td>
-</tr>
-<tr id="i10" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setTableAliasName(java.lang.String)">setTableAliasName</a></span>&#8203;(java.lang.String&nbsp;pTableAliasName)</code></th>
-<td class="colLast">
-<div class="block">setTableAliasName</div>
-</td>
-</tr>
-<tr id="i11" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toXML(javax.xml.stream.XMLStreamWriter,boolean)">toXML</a></span>&#8203;(javax.xml.stream.XMLStreamWriter&nbsp;writer,
      boolean&nbsp;withColumnExpression)</code></th>
@@ -430,7 +395,7 @@ extends java.lang.Object</pre>
 <a id="&lt;init&gt;(de.businesscode.bcdui.binding.BindingSet,java.lang.String,java.lang.String,boolean)">
 <!--   -->
 </a>
-<ul class="blockList">
+<ul class="blockListLast">
 <li class="blockList">
 <h4>SimpleBindingItem</h4>
 <pre>public&nbsp;SimpleBindingItem&#8203;(<a href="BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&nbsp;pBindingSet,
@@ -442,29 +407,8 @@ extends java.lang.Object</pre>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>pBindingSet</code> - </dd>
 <dd><code>id</code> - </dd>
-<dd><code>pColumnExpression</code> - </dd>
-<dd><code>columnQuoting</code> - </dd>
-</dl>
-</li>
-</ul>
-<a id="&lt;init&gt;(de.businesscode.bcdui.binding.BindingSet,java.lang.String,java.lang.String,boolean,java.lang.String)">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>SimpleBindingItem</h4>
-<pre>public&nbsp;SimpleBindingItem&#8203;(<a href="BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&nbsp;pBindingSet,
-                         java.lang.String&nbsp;id,
-                         java.lang.String&nbsp;pColumnExpression,
-                         boolean&nbsp;columnQuoting,
-                         java.lang.String&nbsp;pTableAlias)</pre>
-<div class="block">Constructor</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>pBindingSet</code> - </dd>
-<dd><code>id</code> - </dd>
 <dd><code>pColumnExpression</code> - - true - if item is SQL expression</dd>
-<dd><code>pTableAlias</code> - - full qualified name</dd>
+<dd><code>columnQuoting</code> - </dd>
 </dl>
 </li>
 </ul>
@@ -509,40 +453,23 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
-<a id="getQColumnExpression()">
+<a id="setBindingSet(de.businesscode.bcdui.binding.BindingSet)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setBindingSet</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setBindingSet&#8203;(<a href="BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&nbsp;bindingSet)</pre>
+<div class="block">setBindingSet</div>
+</li>
+</ul>
+<a id="getQColumnExpression(java.lang.String)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>getQColumnExpression</h4>
-<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getQColumnExpression()</pre>
-<div class="block">returns full qualified name of the column like: tableName.columnName
-
- if the column is a SQLExpression - only column expression</div>
-<dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-</dl>
-</li>
-</ul>
-<a id="setQColumnExpression()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>setQColumnExpression</h4>
-<pre class="methodSignature">protected&nbsp;void&nbsp;setQColumnExpression()</pre>
-<div class="block">sets qualified name of the binding item if pqColumnExpression is null and bindingItem is not a SQL expression - builds qualified name as follow: bindingSetName.columnExpression
-
- Method setQColumnExpression</div>
-</li>
-</ul>
-<a id="calcQColumnExpression(java.lang.String)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>calcQColumnExpression</h4>
-<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;calcQColumnExpression&#8203;(java.lang.String&nbsp;tableAlias)</pre>
+<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getQColumnExpression&#8203;(java.lang.String&nbsp;tableAlias)</pre>
 <div class="block">Helper to merge a table alias into a column expression, which can contain SQL functions etc
 
  Method calcQColumnExpression</div>
@@ -590,33 +517,6 @@ extends java.lang.Object</pre>
 <h4>getId</h4>
 <pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getId()</pre>
 <div class="block">gets id of item</div>
-</li>
-</ul>
-<a id="getTableAliasName()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getTableAliasName</h4>
-<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getTableAliasName()</pre>
-<div class="block">getTableAliasName</div>
-<dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-</dl>
-</li>
-</ul>
-<a id="setTableAliasName(java.lang.String)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>setTableAliasName</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;setTableAliasName&#8203;(java.lang.String&nbsp;pTableAliasName)</pre>
-<div class="block">setTableAliasName</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>pTableAliasName</code> - </dd>
-</dl>
 </li>
 </ul>
 <a id="isColumnQuoting()">

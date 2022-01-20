@@ -13,8 +13,7 @@
 <!--[if IE]>
 <script type="text/javascript" src="../../../../../jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="../../../../../jquery/jquery-3.3.1.js"></script>
-<script type="text/javascript" src="../../../../../jquery/jquery-migrate-3.0.1.js"></script>
+<script type="text/javascript" src="../../../../../jquery/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="../../../../../jquery/jquery-ui.js"></script>
 </head>
 <body>
@@ -135,10 +134,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt>All Implemented Interfaces:</dt>
 <dd><code>java.lang.Runnable</code></dd>
 </dl>
-<dl>
-<dt>Direct Known Subclasses:</dt>
-<dd><code><a href="CaseWhenFromRel.html" title="class in de.businesscode.bcdui.binding.generators">CaseWhenFromRel</a></code></dd>
-</dl>
 <hr>
 <pre>public class <span class="typeNameLabel">ReadBindingSet</span>
 extends java.lang.Object
@@ -180,8 +175,18 @@ implements java.lang.Runnable</pre>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="rowColor">
+<td class="colFirst"><code>protected org.apache.logging.log4j.Logger</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#log">log</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
 <td class="colFirst"><code>protected <a href="../../../util/StandardNamespaceContext.html" title="class in de.businesscode.util">StandardNamespaceContext</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#nsContext">nsContext</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected static java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#STARTUP_CHECK_TABLE_ALIAS">STARTUP_CHECK_TABLE_ALIAS</a></span></code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -271,6 +276,15 @@ implements java.lang.Runnable</pre>
 <!--   -->
 </a>
 <h3>Field Detail</h3>
+<a id="log">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>log</h4>
+<pre>protected final&nbsp;org.apache.logging.log4j.Logger log</pre>
+</li>
+</ul>
 <a id="bindingDoc">
 <!--   -->
 </a>
@@ -301,10 +315,23 @@ implements java.lang.Runnable</pre>
 <a id="nsContext">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>nsContext</h4>
 <pre>protected&nbsp;<a href="../../../util/StandardNamespaceContext.html" title="class in de.businesscode.util">StandardNamespaceContext</a> nsContext</pre>
+</li>
+</ul>
+<a id="STARTUP_CHECK_TABLE_ALIAS">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>STARTUP_CHECK_TABLE_ALIAS</h4>
+<pre>protected static final&nbsp;java.lang.String STARTUP_CHECK_TABLE_ALIAS</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../../constant-values.html#de.businesscode.bcdui.binding.generators.ReadBindingSet.STARTUP_CHECK_TABLE_ALIAS">Constant Field Values</a></dd>
+</dl>
 </li>
 </ul>
 </li>

@@ -13,8 +13,7 @@
 <!--[if IE]>
 <script type="text/javascript" src="../../../../jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="../../../../jquery/jquery-3.3.1.js"></script>
-<script type="text/javascript" src="../../../../jquery/jquery-migrate-3.0.1.js"></script>
+<script type="text/javascript" src="../../../../jquery/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="../../../../jquery/jquery-ui.js"></script>
 </head>
 <body>
@@ -158,9 +157,10 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(de.businesscode.bcdui.binding.Bindings,java.lang.String,java.util.Set)">BindingSetContextObject</a></span>&#8203;(<a href="../../bcdui/binding/Bindings.html" title="class in de.businesscode.bcdui.binding">Bindings</a>&nbsp;bindings,
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(de.businesscode.bcdui.binding.Bindings,java.lang.String,java.util.Set,java.lang.String)">BindingSetContextObject</a></span>&#8203;(<a href="../../bcdui/binding/Bindings.html" title="class in de.businesscode.bcdui.binding">Bindings</a>&nbsp;bindings,
                        java.lang.String&nbsp;requestedName,
-                       java.util.Set&lt;java.lang.String&gt;&nbsp;requestedItems)</code></th>
+                       java.util.Set&lt;java.lang.String&gt;&nbsp;requestedItems,
+                       java.lang.String&nbsp;tableAlias)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -190,14 +190,14 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>java.util.List&lt;<a href="../../bcdui/binding/BindingItem.html" title="class in de.businesscode.bcdui.binding">BindingItem</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getAllBindigItemsInOrder()">getAllBindigItemsInOrder</a></span>()</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getAllBindingItemsInOrder()">getAllBindingItemsInOrder</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Getter for BindingItems mentioned somewhere,
  useful for a caller of SQLEngine to get info about the query structure</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code><a href="../../bcdui/binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a></code></td>
+<td class="colFirst"><code><a href="../../bcdui/binding/StandardBindingSet.html" title="class in de.businesscode.bcdui.binding">StandardBindingSet</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getBindingSet()">getBindingSet</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
@@ -217,7 +217,7 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>java.util.List&lt;<a href="../../bcdui/binding/BindingItem.html" title="class in de.businesscode.bcdui.binding">BindingItem</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSelectedBindigItemsInOrder()">getSelectedBindigItemsInOrder</a></span>()</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSelectedBindingItemsInOrder()">getSelectedBindingItemsInOrder</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Getter for BindingItems which are part of the select clause, i.e. they are mentioned before the table name,
  useful for a caller of SQLEngine to get info about the query structure</div>
@@ -225,7 +225,7 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTableName()">getTableName</a></span>()</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTableReference()">getTableReference</a></span>()</code></th>
 <td class="colLast">
 <div class="block">getTableName</div>
 </td>
@@ -259,7 +259,7 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a id="&lt;init&gt;(de.businesscode.bcdui.binding.Bindings,java.lang.String,java.util.Set)">
+<a id="&lt;init&gt;(de.businesscode.bcdui.binding.Bindings,java.lang.String,java.util.Set,java.lang.String)">
 <!--   -->
 </a>
 <ul class="blockListLast">
@@ -267,7 +267,8 @@ extends java.lang.Object</pre>
 <h4>BindingSetContextObject</h4>
 <pre>public&nbsp;BindingSetContextObject&#8203;(<a href="../../bcdui/binding/Bindings.html" title="class in de.businesscode.bcdui.binding">Bindings</a>&nbsp;bindings,
                                java.lang.String&nbsp;requestedName,
-                               java.util.Set&lt;java.lang.String&gt;&nbsp;requestedItems)</pre>
+                               java.util.Set&lt;java.lang.String&gt;&nbsp;requestedItems,
+                               java.lang.String&nbsp;tableAlias)</pre>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>bindings</code> - Global BCD-UI Bindings singleton</dd>
@@ -292,20 +293,20 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getBindingSet</h4>
-<pre class="methodSignature">public&nbsp;<a href="../../bcdui/binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&nbsp;getBindingSet()</pre>
+<pre class="methodSignature">public&nbsp;<a href="../../bcdui/binding/StandardBindingSet.html" title="class in de.businesscode.bcdui.binding">StandardBindingSet</a>&nbsp;getBindingSet()</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the bindingSet</dd>
 </dl>
 </li>
 </ul>
-<a id="getTableName()">
+<a id="getTableReference()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>getTableName</h4>
-<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getTableName()</pre>
+<h4>getTableReference</h4>
+<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getTableReference()</pre>
 <div class="block">getTableName</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -370,24 +371,24 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
-<a id="getSelectedBindigItemsInOrder()">
+<a id="getSelectedBindingItemsInOrder()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>getSelectedBindigItemsInOrder</h4>
-<pre class="methodSignature">public&nbsp;java.util.List&lt;<a href="../../bcdui/binding/BindingItem.html" title="class in de.businesscode.bcdui.binding">BindingItem</a>&gt;&nbsp;getSelectedBindigItemsInOrder()</pre>
+<h4>getSelectedBindingItemsInOrder</h4>
+<pre class="methodSignature">public&nbsp;java.util.List&lt;<a href="../../bcdui/binding/BindingItem.html" title="class in de.businesscode.bcdui.binding">BindingItem</a>&gt;&nbsp;getSelectedBindingItemsInOrder()</pre>
 <div class="block">Getter for BindingItems which are part of the select clause, i.e. they are mentioned before the table name,
  useful for a caller of SQLEngine to get info about the query structure</div>
 </li>
 </ul>
-<a id="getAllBindigItemsInOrder()">
+<a id="getAllBindingItemsInOrder()">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>getAllBindigItemsInOrder</h4>
-<pre class="methodSignature">public&nbsp;java.util.List&lt;<a href="../../bcdui/binding/BindingItem.html" title="class in de.businesscode.bcdui.binding">BindingItem</a>&gt;&nbsp;getAllBindigItemsInOrder()</pre>
+<h4>getAllBindingItemsInOrder</h4>
+<pre class="methodSignature">public&nbsp;java.util.List&lt;<a href="../../bcdui/binding/BindingItem.html" title="class in de.businesscode.bcdui.binding">BindingItem</a>&gt;&nbsp;getAllBindingItemsInOrder()</pre>
 <div class="block">Getter for BindingItems mentioned somewhere,
  useful for a caller of SQLEngine to get info about the query structure</div>
 </li>

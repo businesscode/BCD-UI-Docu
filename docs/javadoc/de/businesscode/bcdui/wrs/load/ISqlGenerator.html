@@ -13,8 +13,7 @@
 <!--[if IE]>
 <script type="text/javascript" src="../../../../../jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="../../../../../jquery/jquery-3.3.1.js"></script>
-<script type="text/javascript" src="../../../../../jquery/jquery-migrate-3.0.1.js"></script>
+<script type="text/javascript" src="../../../../../jquery/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="../../../../../jquery/jquery-ui.js"></script>
 </head>
 <body>
@@ -27,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6};
+var data = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -193,42 +192,37 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code>java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRequestedBindingSetName()">getRequestedBindingSetName</a></span>()</code></th>
+<td class="colFirst"><code>java.util.Set&lt;java.util.Map.Entry&lt;java.lang.String,&#8203;java.lang.String&gt;&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRequestedBindingSetNames()">getRequestedBindingSetNames</a></span>()</code></th>
 <td class="colLast">
-<div class="block">getRequestedBindingSetName</div>
+<div class="block">getRequestedBindingSetNames
+ the requested bindingSet or bindingGroup names from the request document in the form Map.Entry<BsName,bsAlias>
+ This because neither the BindingSet nor the alias need to be unique really</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
+<td class="colFirst"><code>java.util.Set&lt;<a href="../../binding/StandardBindingSet.html" title="class in de.businesscode.bcdui.binding">StandardBindingSet</a>&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getResolvedBindingSets()">getResolvedBindingSets</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>java.util.List&lt;<a href="WrsBindingItem.html" title="interface in de.businesscode.bcdui.wrs.load">WrsBindingItem</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSelectedBindingItems()">getSelectedBindingItems</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i4" class="altColor">
-<td class="colFirst"><code><a href="../../binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSelectedBindingSet()">getSelectedBindingSet</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
 <tr id="i5" class="rowColor">
-<td class="colFirst"><code>java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSelectedBindingSetName()">getSelectedBindingSetName</a></span>()</code></th>
-<td class="colLast">
-<div class="block">getSelectedBindingSetName</div>
-</td>
-</tr>
-<tr id="i6" class="altColor">
 <td class="colFirst"><code><a href="SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSelectStatement()">getSelectStatement</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getStartRow()">getStartRow</a></span>()</code></th>
 <td class="colLast">
 <div class="block">getStartRow</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isEmpty()">isEmpty</a></span>()</code></th>
 <td class="colLast">
@@ -302,44 +296,31 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dl>
 </li>
 </ul>
-<a id="getRequestedBindingSetName()">
+<a id="getRequestedBindingSetNames()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>getRequestedBindingSetName</h4>
-<pre class="methodSignature">java.lang.String&nbsp;getRequestedBindingSetName()</pre>
-<div class="block">getRequestedBindingSetName</div>
+<h4>getRequestedBindingSetNames</h4>
+<pre class="methodSignature">java.util.Set&lt;java.util.Map.Entry&lt;java.lang.String,&#8203;java.lang.String&gt;&gt;&nbsp;getRequestedBindingSetNames()</pre>
+<div class="block">getRequestedBindingSetNames
+ the requested bindingSet or bindingGroup names from the request document in the form Map.Entry<BsName,bsAlias>
+ This because neither the BindingSet nor the alias need to be unique really</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>the requested bindingSet or bindingGroup name from the request document</dd>
 </dl>
 </li>
 </ul>
-<a id="getSelectedBindingSetName()">
+<a id="getResolvedBindingSets()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>getSelectedBindingSetName</h4>
-<pre class="methodSignature">java.lang.String&nbsp;getSelectedBindingSetName()</pre>
-<div class="block">getSelectedBindingSetName</div>
+<h4>getResolvedBindingSets</h4>
+<pre class="methodSignature">java.util.Set&lt;<a href="../../binding/StandardBindingSet.html" title="class in de.businesscode.bcdui.binding">StandardBindingSet</a>&gt;&nbsp;getResolvedBindingSets()</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>the really selected BindingSet name</dd>
-</dl>
-</li>
-</ul>
-<a id="getSelectedBindingSet()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getSelectedBindingSet</h4>
-<pre class="methodSignature"><a href="../../binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&nbsp;getSelectedBindingSet()</pre>
-<dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>the really selected BindingSet or null</dd>
+<dd>the really selected BindingSets</dd>
 </dl>
 </li>
 </ul>
@@ -353,7 +334,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
                                                 throws java.lang.Exception</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>The list of binding items in the select clause.</dd>
+<dd>The list of binding items in the select clause in their order.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>java.lang.Exception</code></dd>
 </dl>

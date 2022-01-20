@@ -13,8 +13,7 @@
 <!--[if IE]>
 <script type="text/javascript" src="jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="jquery/jquery-3.3.1.js"></script>
-<script type="text/javascript" src="jquery/jquery-migrate-3.0.1.js"></script>
+<script type="text/javascript" src="jquery/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="jquery/jquery-ui.js"></script>
 </head>
 <body>
@@ -115,6 +114,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li><a href="de/businesscode/bcdui/subjectsettings/oauth2/package-tree.html">de.businesscode.bcdui.subjectsettings.oauth2</a>, </li>
 <li><a href="de/businesscode/bcdui/toolbox/package-tree.html">de.businesscode.bcdui.toolbox</a>, </li>
 <li><a href="de/businesscode/bcdui/toolbox/config/package-tree.html">de.businesscode.bcdui.toolbox.config</a>, </li>
+<li><a href="de/businesscode/bcdui/upload/data/package-tree.html">de.businesscode.bcdui.upload.data</a>, </li>
+<li><a href="de/businesscode/bcdui/upload/data/steps/package-tree.html">de.businesscode.bcdui.upload.data.steps</a>, </li>
 <li><a href="de/businesscode/bcdui/vfs/provider/database/package-tree.html">de.businesscode.bcdui.vfs.provider.database</a>, </li>
 <li><a href="de/businesscode/bcdui/vfs/web/package-tree.html">de.businesscode.bcdui.vfs.web</a>, </li>
 <li><a href="de/businesscode/bcdui/web/package-tree.html">de.businesscode.bcdui.web</a>, </li>
@@ -142,7 +143,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li><a href="de/businesscode/util/package-tree.html">de.businesscode.util</a>, </li>
 <li><a href="de/businesscode/util/jdbc/package-tree.html">de.businesscode.util.jdbc</a>, </li>
 <li><a href="de/businesscode/util/jdbc/wrapper/package-tree.html">de.businesscode.util.jdbc.wrapper</a>, </li>
-<li><a href="de/businesscode/util/xml/package-tree.html">de.businesscode.util.xml</a></li>
+<li><a href="de/businesscode/util/xml/package-tree.html">de.businesscode.util.xml</a>, </li>
+<li><a href="org/apache/shiro/realm/package-tree.html">org.apache.shiro.realm</a></li>
 </ul>
 </div>
 <div class="contentContainer">
@@ -155,14 +157,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <ul>
 <li class="circle">de.businesscode.bcdui.web.cacheControl.<a href="de/businesscode/bcdui/web/cacheControl/ClientCachingFilter.html" title="class in de.businesscode.bcdui.web.cacheControl"><span class="typeNameLink">ClientCachingFilter</span></a></li>
 <li class="circle">de.businesscode.bcdui.web.cacheControl.<a href="de/businesscode/bcdui/web/cacheControl/ServerCachingFilter.html" title="class in de.businesscode.bcdui.web.cacheControl"><span class="typeNameLink">ServerCachingFilter</span></a></li>
-</ul>
-</li>
-<li class="circle">de.businesscode.bcdui.binding.rel.impl.<a href="de/businesscode/bcdui/binding/rel/impl/AbstractColumn.html" title="class in de.businesscode.bcdui.binding.rel.impl"><span class="typeNameLink">AbstractColumn</span></a> (implements de.businesscode.bcdui.binding.rel.<a href="de/businesscode/bcdui/binding/rel/Column.html" title="interface in de.businesscode.bcdui.binding.rel">Column</a>)
-<ul>
-<li class="circle">de.businesscode.bcdui.binding.rel.<a href="de/businesscode/bcdui/binding/rel/BindingItemRef.html" title="class in de.businesscode.bcdui.binding.rel"><span class="typeNameLink">BindingItemRef</span></a></li>
-<li class="circle">de.businesscode.bcdui.binding.rel.<a href="de/businesscode/bcdui/binding/rel/Coalesce.html" title="class in de.businesscode.bcdui.binding.rel"><span class="typeNameLink">Coalesce</span></a></li>
-<li class="circle">de.businesscode.bcdui.binding.rel.<a href="de/businesscode/bcdui/binding/rel/ImportItem.html" title="class in de.businesscode.bcdui.binding.rel"><span class="typeNameLink">ImportItem</span></a></li>
-<li class="circle">de.businesscode.bcdui.binding.rel.<a href="de/businesscode/bcdui/binding/rel/Value.html" title="class in de.businesscode.bcdui.binding.rel"><span class="typeNameLink">Value</span></a></li>
 </ul>
 </li>
 <li class="circle">de.businesscode.bcdui.binding.rel.impl.<a href="de/businesscode/bcdui/binding/rel/impl/AbstractConstrain.html" title="class in de.businesscode.bcdui.binding.rel.impl"><span class="typeNameLink">AbstractConstrain</span></a>
@@ -179,6 +173,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <ul>
 <li class="circle">de.businesscode.bcdui.wrs.export.<a href="de/businesscode/bcdui/wrs/export/CsvDataWriter.html" title="class in de.businesscode.bcdui.wrs.export"><span class="typeNameLink">CsvDataWriter</span></a> (implements de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/IDataWriter.html" title="interface in de.businesscode.bcdui.wrs.load">IDataWriter</a>)</li>
 <li class="circle">de.businesscode.bcdui.wrs.export.<a href="de/businesscode/bcdui/wrs/export/SylkDataWriter.html" title="class in de.businesscode.bcdui.wrs.export"><span class="typeNameLink">SylkDataWriter</span></a> (implements de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/IDataWriter.html" title="interface in de.businesscode.bcdui.wrs.load">IDataWriter</a>)</li>
+<li class="circle">de.businesscode.bcdui.vfs.provider.database.<a href="de/businesscode/bcdui/vfs/provider/database/VFSDataWriter.html" title="class in de.businesscode.bcdui.vfs.provider.database"><span class="typeNameLink">VFSDataWriter</span></a> (implements de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/IDataWriter.html" title="interface in de.businesscode.bcdui.wrs.load">IDataWriter</a>)</li>
 <li class="circle">de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrsDataWriter.html" title="class in de.businesscode.bcdui.wrs.load"><span class="typeNameLink">WrsDataWriter</span></a> (implements de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/IDataWriter.html" title="interface in de.businesscode.bcdui.wrs.load">IDataWriter</a>)</li>
 </ul>
 </li>
@@ -255,9 +250,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="circle">de.businesscode.bcdui.logging.<a href="de/businesscode/bcdui/logging/SqlToDatabaseLogger.html" title="class in de.businesscode.bcdui.logging"><span class="typeNameLink">SqlToDatabaseLogger</span></a></li>
 </ul>
 </li>
+<li class="circle">org.apache.shiro.realm.<a href="org/apache/shiro/realm/BcdShiroHelper.html" title="class in org.apache.shiro.realm"><span class="typeNameLink">BcdShiroHelper</span></a></li>
 <li class="circle">de.businesscode.util.jdbc.wrapper.<a href="de/businesscode/util/jdbc/wrapper/BcdSqlLogger.html" title="class in de.businesscode.util.jdbc.wrapper"><span class="typeNameLink">BcdSqlLogger</span></a></li>
 <li class="circle">de.businesscode.bcdui.web.<a href="de/businesscode/bcdui/web/BcdUiApplicationContextListener.html" title="class in de.businesscode.bcdui.web"><span class="typeNameLink">BcdUiApplicationContextListener</span></a> (implements javax.servlet.ServletContextListener)</li>
-<li class="circle">de.businesscode.bcdui.binding.<a href="de/businesscode/bcdui/binding/BindingAliasMap.html" title="class in de.businesscode.bcdui.binding"><span class="typeNameLink">BindingAliasMap</span></a></li>
 <li class="circle">de.businesscode.bcdui.binding.<a href="de/businesscode/bcdui/binding/Bindings.html" title="class in de.businesscode.bcdui.binding"><span class="typeNameLink">Bindings</span></a></li>
 <li class="circle">de.businesscode.sqlengine.context.<a href="de/businesscode/sqlengine/context/BindingsContextObject.html" title="class in de.businesscode.sqlengine.context"><span class="typeNameLink">BindingsContextObject</span></a></li>
 <li class="circle">de.businesscode.sqlengine.context.<a href="de/businesscode/sqlengine/context/BindingSetContextObject.html" title="class in de.businesscode.sqlengine.context"><span class="typeNameLink">BindingSetContextObject</span></a></li>
@@ -276,6 +271,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <ul>
 <li class="circle">org.apache.shiro.realm.AuthorizingRealm (implements org.apache.shiro.authz.Authorizer, org.apache.shiro.util.Initializable, org.apache.shiro.authz.permission.PermissionResolverAware, org.apache.shiro.authz.permission.RolePermissionResolverAware)
 <ul>
+<li class="circle">de.businesscode.bcdui.subjectsettings.<a href="de/businesscode/bcdui/subjectsettings/DefaultSettingsRealm.html" title="class in de.businesscode.bcdui.subjectsettings"><span class="typeNameLink">DefaultSettingsRealm</span></a></li>
 <li class="circle">org.apache.shiro.realm.jdbc.JdbcRealm
 <ul>
 <li class="circle">de.businesscode.bcdui.subjectsettings.<a href="de/businesscode/bcdui/subjectsettings/JdbcRealm.html" title="class in de.businesscode.bcdui.subjectsettings"><span class="typeNameLink">JdbcRealm</span></a></li>
@@ -351,6 +347,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="circle">de.businesscode.bcdui.web.servlets.<a href="de/businesscode/bcdui/web/servlets/SessionAttributesManager.html" title="class in de.businesscode.bcdui.web.servlets"><span class="typeNameLink">SessionAttributesManager</span></a></li>
 <li class="circle">de.businesscode.bcdui.web.servlets.<a href="de/businesscode/bcdui/web/servlets/StaticResourceServlet.html" title="class in de.businesscode.bcdui.web.servlets"><span class="typeNameLink">StaticResourceServlet</span></a></li>
 <li class="circle">de.businesscode.bcdui.toolbox.<a href="de/businesscode/bcdui/toolbox/TextToUrl.html" title="class in de.businesscode.bcdui.toolbox"><span class="typeNameLink">TextToUrl</span></a></li>
+<li class="circle">de.businesscode.bcdui.upload.data.<a href="de/businesscode/bcdui/upload/data/UploadServlet.html" title="class in de.businesscode.bcdui.upload.data"><span class="typeNameLink">UploadServlet</span></a></li>
 <li class="circle">de.businesscode.bcdui.vfs.web.<a href="de/businesscode/bcdui/vfs/web/VFSServlet.html" title="class in de.businesscode.bcdui.vfs.web"><span class="typeNameLink">VFSServlet</span></a></li>
 <li class="circle">de.businesscode.bcdui.web.wrs.<a href="de/businesscode/bcdui/web/wrs/Wrq2SqlServlet.html" title="class in de.businesscode.bcdui.web.wrs"><span class="typeNameLink">Wrq2SqlServlet</span></a></li>
 <li class="circle">de.businesscode.bcdui.web.wrs.<a href="de/businesscode/bcdui/web/wrs/WrsNextIdentifierServlet.html" title="class in de.businesscode.bcdui.web.wrs"><span class="typeNameLink">WrsNextIdentifierServlet</span></a></li>
@@ -363,7 +360,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="circle">de.businesscode.bcdui.web.wrs.<a href="de/businesscode/bcdui/web/wrs/HttpRequestOptions.html" title="class in de.businesscode.bcdui.web.wrs"><span class="typeNameLink">HttpRequestOptions</span></a> (implements de.businesscode.bcdui.wrs.<a href="de/businesscode/bcdui/wrs/IRequestOptions.html" title="interface in de.businesscode.bcdui.wrs">IRequestOptions</a>)</li>
 <li class="circle">de.businesscode.bcdui.web.cacheControl.<a href="de/businesscode/bcdui/web/cacheControl/HttpServletResponseInvocationHandler.html" title="class in de.businesscode.bcdui.web.cacheControl"><span class="typeNameLink">HttpServletResponseInvocationHandler</span></a> (implements java.lang.reflect.InvocationHandler)</li>
 <li class="circle">de.businesscode.bcdui.web.i18n.<a href="de/businesscode/bcdui/web/i18n/I18n.html" title="class in de.businesscode.bcdui.web.i18n"><span class="typeNameLink">I18n</span></a></li>
-<li class="circle">de.businesscode.bcdui.binding.rel.<a href="de/businesscode/bcdui/binding/rel/Imports.html" title="class in de.businesscode.bcdui.binding.rel"><span class="typeNameLink">Imports</span></a></li>
 <li class="circle">de.businesscode.bcdui.menu.config.<a href="de/businesscode/bcdui/menu/config/Include.html" title="class in de.businesscode.bcdui.menu.config"><span class="typeNameLink">Include</span></a></li>
 <li class="circle">de.businesscode.util.<a href="de/businesscode/util/JNDIDummyInitialContext.html" title="class in de.businesscode.util"><span class="typeNameLink">JNDIDummyInitialContext</span></a> (implements javax.naming.spi.InitialContextFactory)</li>
 <li class="circle">de.businesscode.util.<a href="de/businesscode/util/JNDIProvider.html" title="class in de.businesscode.util"><span class="typeNameLink">JNDIProvider</span></a> (implements de.businesscode.bcdui.toolbox.config.<a href="de/businesscode/bcdui/toolbox/config/ConfigurationProvider.html" title="interface in de.businesscode.bcdui.toolbox.config">ConfigurationProvider</a>)
@@ -371,6 +367,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="circle">de.businesscode.bcdui.toolbox.config.<a href="de/businesscode/bcdui/toolbox/config/BareConfiguration.html" title="class in de.businesscode.bcdui.toolbox.config"><span class="typeNameLink">BareConfiguration</span></a></li>
 </ul>
 </li>
+<li class="circle">de.businesscode.bcdui.upload.data.steps.<a href="de/businesscode/bcdui/upload/data/steps/JsonLiteral.html" title="class in de.businesscode.bcdui.upload.data.steps"><span class="typeNameLink">JsonLiteral</span></a></li>
 <li class="circle">de.businesscode.bcdui.logging.<a href="de/businesscode/bcdui/logging/LogEventBase.html" title="class in de.businesscode.bcdui.logging"><span class="typeNameLink">LogEventBase</span></a> (implements org.apache.logging.log4j.message.Message)
 <ul>
 <li class="circle">de.businesscode.bcdui.web.errorLogging.<a href="de/businesscode/bcdui/web/errorLogging/ErrorLogEvent.html" title="class in de.businesscode.bcdui.web.errorLogging"><span class="typeNameLink">ErrorLogEvent</span></a></li>
@@ -392,11 +389,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="circle">de.businesscode.sqlengine.context.<a href="de/businesscode/sqlengine/context/ParamsContextObject.html" title="class in de.businesscode.sqlengine.context"><span class="typeNameLink">ParamsContextObject</span></a></li>
 <li class="circle">de.businesscode.bcdui.binding.write.<a href="de/businesscode/bcdui/binding/write/PreProcessStylesheet.html" title="class in de.businesscode.bcdui.binding.write"><span class="typeNameLink">PreProcessStylesheet</span></a></li>
 <li class="circle">de.businesscode.bcdui.subjectsettings.<a href="de/businesscode/bcdui/subjectsettings/PrimaryPrincipal.html" title="class in de.businesscode.bcdui.subjectsettings"><span class="typeNameLink">PrimaryPrincipal</span></a> (implements java.io.Serializable)</li>
-<li class="circle">de.businesscode.bcdui.binding.generators.<a href="de/businesscode/bcdui/binding/generators/ReadBindingSet.html" title="class in de.businesscode.bcdui.binding.generators"><span class="typeNameLink">ReadBindingSet</span></a> (implements java.lang.Runnable)
-<ul>
-<li class="circle">de.businesscode.bcdui.binding.generators.<a href="de/businesscode/bcdui/binding/generators/CaseWhenFromRel.html" title="class in de.businesscode.bcdui.binding.generators"><span class="typeNameLink">CaseWhenFromRel</span></a></li>
-</ul>
-</li>
+<li class="circle">de.businesscode.bcdui.binding.generators.<a href="de/businesscode/bcdui/binding/generators/ReadBindingSet.html" title="class in de.businesscode.bcdui.binding.generators"><span class="typeNameLink">ReadBindingSet</span></a> (implements java.lang.Runnable)</li>
 <li class="circle">de.businesscode.bcdui.binding.rel.<a href="de/businesscode/bcdui/binding/rel/Relation.html" title="class in de.businesscode.bcdui.binding.rel"><span class="typeNameLink">Relation</span></a></li>
 <li class="circle">de.businesscode.bcdui.web.accessLogging.<a href="de/businesscode/bcdui/web/accessLogging/RequestHashGenerator.html" title="class in de.businesscode.bcdui.web.accessLogging"><span class="typeNameLink">RequestHashGenerator</span></a></li>
 <li class="circle">de.businesscode.bcdui.web.filters.<a href="de/businesscode/bcdui/web/filters/RequestLifeCycleFilter.html" title="class in de.businesscode.bcdui.web.filters"><span class="typeNameLink">RequestLifeCycleFilter</span></a> (implements javax.servlet.Filter)</li>
@@ -472,6 +465,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <ul>
 <li class="circle">de.businesscode.bcdui.binding.<a href="de/businesscode/bcdui/binding/BindingItem.html" title="class in de.businesscode.bcdui.binding"><span class="typeNameLink">BindingItem</span></a>
 <ul>
+<li class="circle">de.businesscode.bcdui.binding.<a href="de/businesscode/bcdui/binding/BindingItemFromRel.html" title="class in de.businesscode.bcdui.binding"><span class="typeNameLink">BindingItemFromRel</span></a></li>
 <li class="circle">de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/BindingItemWithMetaData.html" title="class in de.businesscode.bcdui.wrs.load"><span class="typeNameLink">BindingItemWithMetaData</span></a> (implements de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrsBindingItem.html" title="interface in de.businesscode.bcdui.wrs.load">WrsBindingItem</a>)
 <ul>
 <li class="circle">de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/BindingItemAttribute.html" title="class in de.businesscode.bcdui.wrs.load"><span class="typeNameLink">BindingItemAttribute</span></a></li>
@@ -486,6 +480,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="circle">de.businesscode.util.<a href="de/businesscode/util/SOAPFaultMessage.html" title="class in de.businesscode.util"><span class="typeNameLink">SOAPFaultMessage</span></a></li>
 <li class="circle">de.businesscode.bcdui.subjectsettings.<a href="de/businesscode/bcdui/subjectsettings/SpnegoUtil.html" title="class in de.businesscode.bcdui.subjectsettings"><span class="typeNameLink">SpnegoUtil</span></a></li>
 <li class="circle">de.businesscode.sqlengine.<a href="de/businesscode/sqlengine/SQLEngine.html" title="class in de.businesscode.sqlengine"><span class="typeNameLink">SQLEngine</span></a></li>
+<li class="circle">de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/SqlFromFullSelect.html" title="class in de.businesscode.bcdui.wrs.load"><span class="typeNameLink">SqlFromFullSelect</span></a></li>
+<li class="circle">de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/SqlFromSubSelect.html" title="class in de.businesscode.bcdui.wrs.load"><span class="typeNameLink">SqlFromSubSelect</span></a></li>
 <li class="circle">de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load"><span class="typeNameLink">SQLStatementWithParams</span></a></li>
 <li class="circle">de.businesscode.bcdui.binding.<a href="de/businesscode/bcdui/binding/StandardBindingSet.html" title="class in de.businesscode.bcdui.binding"><span class="typeNameLink">StandardBindingSet</span></a> (implements de.businesscode.bcdui.binding.<a href="de/businesscode/bcdui/binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>)</li>
 <li class="circle">de.businesscode.bcdui.el.<a href="de/businesscode/bcdui/el/StandardFunctions.html" title="class in de.businesscode.bcdui.el"><span class="typeNameLink">StandardFunctions</span></a></li>
@@ -515,6 +511,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </ul>
 </li>
 <li class="circle">de.businesscode.bcdui.subjectsettings.config.<a href="de/businesscode/bcdui/subjectsettings/config/SubjectSettingsConfig.SubjectFilterTypes.html" title="class in de.businesscode.bcdui.subjectsettings.config"><span class="typeNameLink">SubjectSettingsConfig.SubjectFilterTypes</span></a></li>
+<li class="circle">de.businesscode.bcdui.subjectsettings.config.<a href="de/businesscode/bcdui/subjectsettings/config/SubjectSettingsConfig.UserSettingsDefaults.html" title="class in de.businesscode.bcdui.subjectsettings.config"><span class="typeNameLink">SubjectSettingsConfig.UserSettingsDefaults</span></a></li>
+<li class="circle">de.businesscode.bcdui.subjectsettings.config.<a href="de/businesscode/bcdui/subjectsettings/config/SubjectSettingsConfig.UserSettingsDefaults.Default.html" title="class in de.businesscode.bcdui.subjectsettings.config"><span class="typeNameLink">SubjectSettingsConfig.UserSettingsDefaults.Default</span></a></li>
 <li class="circle">de.businesscode.bcdui.web.filters.<a href="de/businesscode/bcdui/web/filters/SubjectSettingsFilter.html" title="class in de.businesscode.bcdui.web.filters"><span class="typeNameLink">SubjectSettingsFilter</span></a> (implements javax.servlet.Filter)</li>
 <li class="circle">de.businesscode.bcdui.subjectsettings.config.<a href="de/businesscode/bcdui/subjectsettings/config/SubjectSettingsType.html" title="class in de.businesscode.bcdui.subjectsettings.config"><span class="typeNameLink">SubjectSettingsType</span></a></li>
 <li class="circle">de.businesscode.bcdui.subjectsettings.config.<a href="de/businesscode/bcdui/subjectsettings/config/SubjectSettingsType.Jdbc.html" title="class in de.businesscode.bcdui.subjectsettings.config"><span class="typeNameLink">SubjectSettingsType.Jdbc</span></a></li>
@@ -551,6 +549,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="circle">de.businesscode.util.jdbc.<a href="de/businesscode/util/jdbc/SQLDetailException.html" title="class in de.businesscode.util.jdbc"><span class="typeNameLink">SQLDetailException</span></a></li>
 </ul>
 </li>
+<li class="circle">de.businesscode.bcdui.upload.data.<a href="de/businesscode/bcdui/upload/data/UploadException.html" title="class in de.businesscode.bcdui.upload.data"><span class="typeNameLink">UploadException</span></a></li>
 <li class="circle">de.businesscode.bcdui.wrs.save.exc.<a href="de/businesscode/bcdui/wrs/save/exc/WrsValidationException.html" title="class in de.businesscode.bcdui.wrs.save.exc"><span class="typeNameLink">WrsValidationException</span></a></li>
 <li class="circle">javax.xml.stream.XMLStreamException
 <ul>
@@ -565,6 +564,18 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="circle">de.businesscode.bcdui.binding.subjectFilter.jaxb.<a href="de/businesscode/bcdui/binding/subjectFilter/jaxb/TypeSubjectFilterConnective.html" title="class in de.businesscode.bcdui.binding.subjectFilter.jaxb"><span class="typeNameLink">TypeSubjectFilterConnective</span></a></li>
 <li class="circle">de.businesscode.bcdui.binding.subjectFilter.jaxb.<a href="de/businesscode/bcdui/binding/subjectFilter/jaxb/TypeSubjectFilters.html" title="class in de.businesscode.bcdui.binding.subjectFilter.jaxb"><span class="typeNameLink">TypeSubjectFilters</span></a></li>
 <li class="circle">de.businesscode.bcdui.web.filters.<a href="de/businesscode/bcdui/web/filters/UnZipFilter.html" title="class in de.businesscode.bcdui.web.filters"><span class="typeNameLink">UnZipFilter</span></a> (implements javax.servlet.Filter)</li>
+<li class="circle">de.businesscode.bcdui.upload.data.steps.<a href="de/businesscode/bcdui/upload/data/steps/Upload2TargetBs.html" title="class in de.businesscode.bcdui.upload.data.steps"><span class="typeNameLink">Upload2TargetBs</span></a> (implements de.businesscode.bcdui.upload.data.steps.<a href="de/businesscode/bcdui/upload/data/steps/IUploadStep.html" title="interface in de.businesscode.bcdui.upload.data.steps">IUploadStep</a>)</li>
+<li class="circle">de.businesscode.bcdui.upload.data.steps.<a href="de/businesscode/bcdui/upload/data/steps/UploadBindingItemValidate.html" title="class in de.businesscode.bcdui.upload.data.steps"><span class="typeNameLink">UploadBindingItemValidate</span></a> (implements de.businesscode.bcdui.upload.data.steps.<a href="de/businesscode/bcdui/upload/data/steps/IUploadStep.html" title="interface in de.businesscode.bcdui.upload.data.steps">IUploadStep</a>)</li>
+<li class="circle">de.businesscode.bcdui.upload.data.steps.<a href="de/businesscode/bcdui/upload/data/steps/UploadCleanup.html" title="class in de.businesscode.bcdui.upload.data.steps"><span class="typeNameLink">UploadCleanup</span></a> (implements de.businesscode.bcdui.upload.data.steps.<a href="de/businesscode/bcdui/upload/data/steps/IUploadStep.html" title="interface in de.businesscode.bcdui.upload.data.steps">IUploadStep</a>)</li>
+<li class="circle">de.businesscode.bcdui.upload.data.<a href="de/businesscode/bcdui/upload/data/UploadControl.html" title="class in de.businesscode.bcdui.upload.data"><span class="typeNameLink">UploadControl</span></a> (implements java.lang.AutoCloseable)</li>
+<li class="circle">de.businesscode.bcdui.upload.data.<a href="de/businesscode/bcdui/upload/data/UploadControlSteps.html" title="class in de.businesscode.bcdui.upload.data"><span class="typeNameLink">UploadControlSteps</span></a></li>
+<li class="circle">de.businesscode.bcdui.upload.data.<a href="de/businesscode/bcdui/upload/data/UploadControlSteps.Step.html" title="class in de.businesscode.bcdui.upload.data"><span class="typeNameLink">UploadControlSteps.Step</span></a></li>
+<li class="circle">de.businesscode.bcdui.upload.data.steps.<a href="de/businesscode/bcdui/upload/data/steps/UploadErrorDownload.html" title="class in de.businesscode.bcdui.upload.data.steps"><span class="typeNameLink">UploadErrorDownload</span></a></li>
+<li class="circle">de.businesscode.bcdui.upload.data.steps.<a href="de/businesscode/bcdui/upload/data/steps/UploadHeuristic.html" title="class in de.businesscode.bcdui.upload.data.steps"><span class="typeNameLink">UploadHeuristic</span></a> (implements de.businesscode.bcdui.upload.data.steps.<a href="de/businesscode/bcdui/upload/data/steps/IUploadStep.html" title="interface in de.businesscode.bcdui.upload.data.steps">IUploadStep</a>)</li>
+<li class="circle">de.businesscode.bcdui.upload.data.steps.<a href="de/businesscode/bcdui/upload/data/steps/UploadNormalization.html" title="class in de.businesscode.bcdui.upload.data.steps"><span class="typeNameLink">UploadNormalization</span></a> (implements de.businesscode.bcdui.upload.data.steps.<a href="de/businesscode/bcdui/upload/data/steps/IUploadStep.html" title="interface in de.businesscode.bcdui.upload.data.steps">IUploadStep</a>)</li>
+<li class="circle">de.businesscode.bcdui.upload.data.steps.<a href="de/businesscode/bcdui/upload/data/steps/UploadToRowCol.html" title="class in de.businesscode.bcdui.upload.data.steps"><span class="typeNameLink">UploadToRowCol</span></a> (implements de.businesscode.bcdui.upload.data.steps.<a href="de/businesscode/bcdui/upload/data/steps/IUploadStep.html" title="interface in de.businesscode.bcdui.upload.data.steps">IUploadStep</a>)</li>
+<li class="circle">de.businesscode.bcdui.upload.data.steps.<a href="de/businesscode/bcdui/upload/data/steps/UploadToRowColCsv.html" title="class in de.businesscode.bcdui.upload.data.steps"><span class="typeNameLink">UploadToRowColCsv</span></a></li>
+<li class="circle">de.businesscode.bcdui.upload.data.steps.<a href="de/businesscode/bcdui/upload/data/steps/UploadToRowColExcel.html" title="class in de.businesscode.bcdui.upload.data.steps"><span class="typeNameLink">UploadToRowColExcel</span></a> (implements org.apache.poi.xssf.eventusermodel.XSSFSheetXMLHandler.SheetContentsHandler)</li>
 <li class="circle">de.businesscode.util.<a href="de/businesscode/util/Utils.html" title="class in de.businesscode.util"><span class="typeNameLink">Utils</span></a></li>
 <li class="circle">javax.el.VariableMapper
 <ul>
@@ -601,12 +612,19 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </li>
 <li class="circle">de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/Wrq2Sql.html" title="class in de.businesscode.bcdui.wrs.load"><span class="typeNameLink">Wrq2Sql</span></a> (implements de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/ISqlGenerator.html" title="interface in de.businesscode.bcdui.wrs.load">ISqlGenerator</a>)</li>
 <li class="circle">de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqBindingItem.html" title="class in de.businesscode.bcdui.wrs.load"><span class="typeNameLink">WrqBindingItem</span></a> (implements de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrsBindingItem.html" title="interface in de.businesscode.bcdui.wrs.load">WrsBindingItem</a>)</li>
+<li class="circle">de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqBindingSetFromStandardBindingSet.html" title="class in de.businesscode.bcdui.wrs.load"><span class="typeNameLink">WrqBindingSetFromStandardBindingSet</span></a> (implements java.lang.reflect.InvocationHandler)</li>
+<li class="circle">de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqBindingSetVirtual.html" title="class in de.businesscode.bcdui.wrs.load"><span class="typeNameLink">WrqBindingSetVirtual</span></a> (implements de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqBindingSet.html" title="interface in de.businesscode.bcdui.wrs.load">WrqBindingSet</a>)
+<ul>
+<li class="circle">de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqBindingSetFromDerivedTable.html" title="class in de.businesscode.bcdui.wrs.load"><span class="typeNameLink">WrqBindingSetFromDerivedTable</span></a></li>
+<li class="circle">de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqBindingSetFromTableReference.html" title="class in de.businesscode.bcdui.wrs.load"><span class="typeNameLink">WrqBindingSetFromTableReference</span></a></li>
+</ul>
+</li>
 <li class="circle">de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqCalc2Sql.html" title="class in de.businesscode.bcdui.wrs.load"><span class="typeNameLink">WrqCalc2Sql</span></a></li>
 <li class="circle">de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqFilter2Sql.html" title="class in de.businesscode.bcdui.wrs.load"><span class="typeNameLink">WrqFilter2Sql</span></a></li>
 <li class="circle">de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqGroupBy2Sql.html" title="class in de.businesscode.bcdui.wrs.load"><span class="typeNameLink">WrqGroupBy2Sql</span></a></li>
 <li class="circle">de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load"><span class="typeNameLink">WrqInfo</span></a></li>
+<li class="circle">de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqQueryBuilder.html" title="class in de.businesscode.bcdui.wrs.load"><span class="typeNameLink">WrqQueryBuilder</span></a></li>
 <li class="circle">de.businesscode.bcdui.wrs.export.<a href="de/businesscode/bcdui/wrs/export/Wrs2Excel.html" title="class in de.businesscode.bcdui.wrs.export"><span class="typeNameLink">Wrs2Excel</span></a></li>
-<li class="circle">de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrsPagination.html" title="class in de.businesscode.bcdui.wrs.load"><span class="typeNameLink">WrsPagination</span></a></li>
 <li class="circle">de.businesscode.bcdui.wrs.validation.<a href="de/businesscode/bcdui/wrs/validation/WrsValidationResult.html" title="class in de.businesscode.bcdui.wrs.validation"><span class="typeNameLink">WrsValidationResult</span></a></li>
 <li class="circle">de.businesscode.bcdui.wrs.validation.<a href="de/businesscode/bcdui/wrs/validation/WrsValidationResult.Record.html" title="class in de.businesscode.bcdui.wrs.validation"><span class="typeNameLink">WrsValidationResult.Record</span></a></li>
 <li class="circle">de.businesscode.bcdui.wrs.validation.<a href="de/businesscode/bcdui/wrs/validation/WrsValidationResult.Serializer.html" title="class in de.businesscode.bcdui.wrs.validation"><span class="typeNameLink">WrsValidationResult.Serializer</span></a></li>
@@ -639,10 +657,13 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="circle">de.businesscode.bcdui.binding.rel.impl.<a href="de/businesscode/bcdui/binding/rel/impl/AbstractConstrain.Type.html" title="interface in de.businesscode.bcdui.binding.rel.impl"><span class="typeNameLink">AbstractConstrain.Type</span></a></li>
 <li class="circle">java.lang.Cloneable
 <ul>
-<li class="circle">de.businesscode.bcdui.binding.<a href="de/businesscode/bcdui/binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding"><span class="typeNameLink">BindingSet</span></a> (also extends java.io.Serializable)</li>
+<li class="circle">de.businesscode.bcdui.binding.<a href="de/businesscode/bcdui/binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding"><span class="typeNameLink">BindingSet</span></a> (also extends java.io.Serializable)
+<ul>
+<li class="circle">de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqBindingSet.html" title="interface in de.businesscode.bcdui.wrs.load"><span class="typeNameLink">WrqBindingSet</span></a></li>
 </ul>
 </li>
-<li class="circle">de.businesscode.bcdui.binding.rel.<a href="de/businesscode/bcdui/binding/rel/Column.html" title="interface in de.businesscode.bcdui.binding.rel"><span class="typeNameLink">Column</span></a></li>
+</ul>
+</li>
 <li class="circle">de.businesscode.bcdui.toolbox.config.<a href="de/businesscode/bcdui/toolbox/config/ConfigurationProvider.html" title="interface in de.businesscode.bcdui.toolbox.config"><span class="typeNameLink">ConfigurationProvider</span></a></li>
 <li class="circle">de.businesscode.bcdui.toolbox.config.<a href="de/businesscode/bcdui/toolbox/config/DbProperties.Listener.html" title="interface in de.businesscode.bcdui.toolbox.config"><span class="typeNameLink">DbProperties.Listener</span></a></li>
 <li class="circle">de.businesscode.bcdui.web.servlets.<a href="de/businesscode/bcdui/web/servlets/ICacheCallBack.html" title="interface in de.businesscode.bcdui.web.servlets"><span class="typeNameLink">ICacheCallBack</span></a></li>
@@ -651,10 +672,15 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="circle">de.businesscode.bcdui.wrs.save.event.<a href="de/businesscode/bcdui/wrs/save/event/ISaveEventListener.html" title="interface in de.businesscode.bcdui.wrs.save.event"><span class="typeNameLink">ISaveEventListener</span></a></li>
 <li class="circle">de.businesscode.bcdui.web.cacheControl.<a href="de/businesscode/bcdui/web/cacheControl/IServerCachePersist.html" title="interface in de.businesscode.bcdui.web.cacheControl"><span class="typeNameLink">IServerCachePersist</span></a></li>
 <li class="circle">de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/ISqlGenerator.html" title="interface in de.businesscode.bcdui.wrs.load"><span class="typeNameLink">ISqlGenerator</span></a></li>
+<li class="circle">de.businesscode.bcdui.upload.data.steps.<a href="de/businesscode/bcdui/upload/data/steps/IUploadStep.html" title="interface in de.businesscode.bcdui.upload.data.steps"><span class="typeNameLink">IUploadStep</span></a></li>
 <li class="circle">de.businesscode.bcdui.wrs.load.modifier.<a href="de/businesscode/bcdui/wrs/load/modifier/Modifier.html" title="interface in de.businesscode.bcdui.wrs.load.modifier"><span class="typeNameLink">Modifier</span></a></li>
 <li class="circle">java.io.Serializable
 <ul>
-<li class="circle">de.businesscode.bcdui.binding.<a href="de/businesscode/bcdui/binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding"><span class="typeNameLink">BindingSet</span></a> (also extends java.lang.Cloneable)</li>
+<li class="circle">de.businesscode.bcdui.binding.<a href="de/businesscode/bcdui/binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding"><span class="typeNameLink">BindingSet</span></a> (also extends java.lang.Cloneable)
+<ul>
+<li class="circle">de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqBindingSet.html" title="interface in de.businesscode.bcdui.wrs.load"><span class="typeNameLink">WrqBindingSet</span></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="circle">de.businesscode.bcdui.wrs.save.<a href="de/businesscode/bcdui/wrs/save/ServerSideValueBean.html" title="interface in de.businesscode.bcdui.wrs.save"><span class="typeNameLink">ServerSideValueBean</span></a></li>
@@ -682,6 +708,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="circle">de.businesscode.bcdui.logging.<a href="de/businesscode/bcdui/logging/LoginSqlLogger.LOGIN_RESULTS.html" title="enum in de.businesscode.bcdui.logging"><span class="typeNameLink">LoginSqlLogger.LOGIN_RESULTS</span></a></li>
 <li class="circle">de.businesscode.bcdui.binding.rel.<a href="de/businesscode/bcdui/binding/rel/Relation.TYPE.html" title="enum in de.businesscode.bcdui.binding.rel"><span class="typeNameLink">Relation.TYPE</span></a></li>
 <li class="circle">de.businesscode.bcdui.wrs.save.event.<a href="de/businesscode/bcdui/wrs/save/event/SaveEventState.html" title="enum in de.businesscode.bcdui.wrs.save.event"><span class="typeNameLink">SaveEventState</span></a></li>
+<li class="circle">de.businesscode.bcdui.upload.data.steps.<a href="de/businesscode/bcdui/upload/data/steps/UploadBindingItemValidate.Check.html" title="enum in de.businesscode.bcdui.upload.data.steps"><span class="typeNameLink">UploadBindingItemValidate.Check</span></a></li>
+<li class="circle">de.businesscode.bcdui.upload.data.steps.<a href="de/businesscode/bcdui/upload/data/steps/UploadBindingItemValidate.Severity.html" title="enum in de.businesscode.bcdui.upload.data.steps"><span class="typeNameLink">UploadBindingItemValidate.Severity</span></a></li>
+<li class="circle">de.businesscode.bcdui.upload.data.<a href="de/businesscode/bcdui/upload/data/UploadControl.ReturnCode.html" title="enum in de.businesscode.bcdui.upload.data"><span class="typeNameLink">UploadControl.ReturnCode</span></a></li>
+<li class="circle">de.businesscode.bcdui.upload.data.<a href="de/businesscode/bcdui/upload/data/UploadException.Reason.html" title="enum in de.businesscode.bcdui.upload.data"><span class="typeNameLink">UploadException.Reason</span></a></li>
 <li class="circle">de.businesscode.bcdui.toolbox.<a href="de/businesscode/bcdui/toolbox/WEEKDAY.html" title="enum in de.businesscode.bcdui.toolbox"><span class="typeNameLink">WEEKDAY</span></a></li>
 <li class="circle">de.businesscode.bcdui.binding.write.<a href="de/businesscode/bcdui/binding/write/WriteProcessingCallback.ROW_TYPE.html" title="enum in de.businesscode.bcdui.binding.write"><span class="typeNameLink">WriteProcessingCallback.ROW_TYPE</span></a></li>
 </ul>

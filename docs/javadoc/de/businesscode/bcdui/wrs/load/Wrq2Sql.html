@@ -13,8 +13,7 @@
 <!--[if IE]>
 <script type="text/javascript" src="../../../../../jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="../../../../../jquery/jquery-3.3.1.js"></script>
-<script type="text/javascript" src="../../../../../jquery/jquery-migrate-3.0.1.js"></script>
+<script type="text/javascript" src="../../../../../jquery/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="../../../../../jquery/jquery-ui.js"></script>
 </head>
 <body>
@@ -27,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -139,13 +138,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <pre>public class <span class="typeNameLabel">Wrq2Sql</span>
 extends java.lang.Object
 implements <a href="ISqlGenerator.html" title="interface in de.businesscode.bcdui.wrs.load">ISqlGenerator</a></pre>
-<div class="block">Takes a Wrq and generates SQL from it together with the bound variables, ready to be executed
- One instance of this class only handles one Wrq
- TODO Features
-  Fix issue with dummy- bRef for wrq:C[wrq:Calc]
-  Allow Pagination and TOP-N at the same time
-  Allow wrq:Calc in order-by, grouping
-  Allow @aggr=none and not wrq:Calc in top-n (for UDF), fails now because cannot be separated into non-aggr and aggr part</div>
+<div class="block">Takes a Wrq and generates SQL from it</div>
 </li>
 </ul>
 </div>
@@ -167,23 +160,33 @@ implements <a href="ISqlGenerator.html" title="interface in de.businesscode.bcdu
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>protected <a href="../IRequestOptions.html" title="interface in de.businesscode.bcdui.wrs">IRequestOptions</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#options">options</a></span></code></th>
+<td class="colFirst"><code>protected <a href="../../binding/Bindings.html" title="class in de.businesscode.bcdui.binding">Bindings</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#bindings">bindings</a></span></code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>protected <a href="WrsPagination.html" title="class in de.businesscode.bcdui.wrs.load">WrsPagination</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#pagination">pagination</a></span></code></th>
+<td class="colFirst"><code>protected int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#effectiveMaxRows">effectiveMaxRows</a></span></code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>protected <a href="../../binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#resultingBindingSet">resultingBindingSet</a></span></code></th>
+<td class="colFirst"><code>protected org.w3c.dom.Document</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#requestDoc">requestDoc</a></span></code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>protected <a href="WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#wrqInfo">wrqInfo</a></span></code></th>
+<td class="colFirst"><code>protected int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#rowStart">rowStart</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="WrqQueryBuilder.html" title="class in de.businesscode.bcdui.wrs.load">WrqQueryBuilder</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#wrqQueryBuilder">wrqQueryBuilder</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected static java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#wrqTransformGrs2UnionXsltStatic">wrqTransformGrs2UnionXsltStatic</a></span></code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -213,7 +216,7 @@ implements <a href="ISqlGenerator.html" title="interface in de.businesscode.bcdu
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(de.businesscode.bcdui.wrs.IRequestOptions)">Wrq2Sql</a></span>&#8203;(<a href="../IRequestOptions.html" title="interface in de.businesscode.bcdui.wrs">IRequestOptions</a>&nbsp;options)</code></th>
 <td class="colLast">
-<div class="block">We are initialized for each Wrq request</div>
+<div class="block">We are initialized for each wrq:WrqRequest.</div>
 </td>
 </tr>
 </table>
@@ -235,103 +238,49 @@ implements <a href="ISqlGenerator.html" title="interface in de.businesscode.bcdu
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>protected java.lang.StringBuffer</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#generateFromClause()">generateFromClause</a></span>()</code></th>
-<td class="colLast">
-<div class="block">Generates 'FROM' and the tables with their join expression</div>
-</td>
-</tr>
-<tr id="i1" class="rowColor">
-<td class="colFirst"><code>protected java.lang.StringBuffer</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#generateGroupingClause(java.util.List)">generateGroupingClause</a></span>&#8203;(java.util.List&lt;org.w3c.dom.Element&gt;&nbsp;boundVariables)</code></th>
-<td class="colLast">
-<div class="block">Generates Grouping clause</div>
-</td>
-</tr>
-<tr id="i2" class="altColor">
-<td class="colFirst"><code>protected java.lang.StringBuffer</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#generateHavingClause(java.util.List)">generateHavingClause</a></span>&#8203;(java.util.List&lt;org.w3c.dom.Element&gt;&nbsp;boundVariables)</code></th>
-<td class="colLast">
-<div class="block">Generates Having SQL clause</div>
-</td>
-</tr>
-<tr id="i3" class="rowColor">
-<td class="colFirst"><code>protected java.lang.StringBuffer</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#generateOrderClause(java.util.List)">generateOrderClause</a></span>&#8203;(java.util.List&lt;org.w3c.dom.Element&gt;&nbsp;boundVariables)</code></th>
-<td class="colLast">
-<div class="block">Generates Order-By clause</div>
-</td>
-</tr>
-<tr id="i4" class="altColor">
-<td class="colFirst"><code>protected java.lang.StringBuffer</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#generateSelectClause(java.util.List)">generateSelectClause</a></span>&#8203;(java.util.List&lt;org.w3c.dom.Element&gt;&nbsp;boundVariables)</code></th>
-<td class="colLast">
-<div class="block">Generates 'SELECT ' plus the select list</div>
-</td>
-</tr>
-<tr id="i5" class="rowColor">
-<td class="colFirst"><code>protected <a href="SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#generateStatement()">generateStatement</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i6" class="altColor">
-<td class="colFirst"><code>protected java.lang.StringBuffer</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#generateWhereClause(java.util.List)">generateWhereClause</a></span>&#8203;(java.util.List&lt;org.w3c.dom.Element&gt;&nbsp;boundVariables)</code></th>
-<td class="colLast">
-<div class="block">Generates 'WHERE ' plus the filter</div>
-</td>
-</tr>
-<tr id="i7" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getDbSourceName()">getDbSourceName</a></span>()</code></th>
 <td class="colLast">
 <div class="block">getDbSourceName</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i1" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getMaxRows()">getMaxRows</a></span>()</code></th>
 <td class="colLast">
 <div class="block">getMaxRows</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
-<td class="colFirst"><code>java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRequestedBindingSetName()">getRequestedBindingSetName</a></span>()</code></th>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>java.util.Set&lt;java.util.Map.Entry&lt;java.lang.String,&#8203;java.lang.String&gt;&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRequestedBindingSetNames()">getRequestedBindingSetNames</a></span>()</code></th>
 <td class="colLast">
-<div class="block">getRequestedBindingSetName</div>
+<div class="block">This is the binding sets / groups named in the Wrq</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
-<td class="colFirst"><code>java.util.LinkedList&lt;<a href="WrsBindingItem.html" title="interface in de.businesscode.bcdui.wrs.load">WrsBindingItem</a>&gt;</code></td>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>java.util.Set&lt;<a href="../../binding/StandardBindingSet.html" title="class in de.businesscode.bcdui.binding">StandardBindingSet</a>&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getResolvedBindingSets()">getResolvedBindingSets</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>java.util.List&lt;<a href="WrsBindingItem.html" title="interface in de.businesscode.bcdui.wrs.load">WrsBindingItem</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSelectedBindingItems()">getSelectedBindingItems</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i11" class="rowColor">
-<td class="colFirst"><code><a href="../../binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSelectedBindingSet()">getSelectedBindingSet</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i12" class="altColor">
-<td class="colFirst"><code>java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSelectedBindingSetName()">getSelectedBindingSetName</a></span>()</code></th>
-<td class="colLast">
-<div class="block">getSelectedBindingSetName</div>
-</td>
-</tr>
-<tr id="i13" class="rowColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code><a href="SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSelectStatement()">getSelectStatement</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getStartRow()">getStartRow</a></span>()</code></th>
 <td class="colLast">
 <div class="block">getStartRow</div>
 </td>
 </tr>
-<tr id="i15" class="rowColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isEmpty()">isEmpty</a></span>()</code></th>
 <td class="colLast">
@@ -362,40 +311,58 @@ implements <a href="ISqlGenerator.html" title="interface in de.businesscode.bcdu
 <!--   -->
 </a>
 <h3>Field Detail</h3>
-<a id="options">
+<a id="bindings">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>options</h4>
-<pre>protected final&nbsp;<a href="../IRequestOptions.html" title="interface in de.businesscode.bcdui.wrs">IRequestOptions</a> options</pre>
+<h4>bindings</h4>
+<pre>protected final&nbsp;<a href="../../binding/Bindings.html" title="class in de.businesscode.bcdui.binding">Bindings</a> bindings</pre>
 </li>
 </ul>
-<a id="wrqInfo">
+<a id="rowStart">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>wrqInfo</h4>
-<pre>protected final&nbsp;<a href="WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a> wrqInfo</pre>
+<h4>rowStart</h4>
+<pre>protected&nbsp;int rowStart</pre>
 </li>
 </ul>
-<a id="pagination">
+<a id="effectiveMaxRows">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>pagination</h4>
-<pre>protected final&nbsp;<a href="WrsPagination.html" title="class in de.businesscode.bcdui.wrs.load">WrsPagination</a> pagination</pre>
+<h4>effectiveMaxRows</h4>
+<pre>protected&nbsp;int effectiveMaxRows</pre>
 </li>
 </ul>
-<a id="resultingBindingSet">
+<a id="wrqQueryBuilder">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>wrqQueryBuilder</h4>
+<pre>protected&nbsp;<a href="WrqQueryBuilder.html" title="class in de.businesscode.bcdui.wrs.load">WrqQueryBuilder</a> wrqQueryBuilder</pre>
+</li>
+</ul>
+<a id="requestDoc">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>requestDoc</h4>
+<pre>protected final&nbsp;org.w3c.dom.Document requestDoc</pre>
+</li>
+</ul>
+<a id="wrqTransformGrs2UnionXsltStatic">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>resultingBindingSet</h4>
-<pre>protected final&nbsp;<a href="../../binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a> resultingBindingSet</pre>
+<h4>wrqTransformGrs2UnionXsltStatic</h4>
+<pre>protected static&nbsp;java.lang.String wrqTransformGrs2UnionXsltStatic</pre>
 </li>
 </ul>
 </li>
@@ -416,7 +383,7 @@ implements <a href="ISqlGenerator.html" title="interface in de.businesscode.bcdu
 <h4>Wrq2Sql</h4>
 <pre>public&nbsp;Wrq2Sql&#8203;(<a href="../IRequestOptions.html" title="interface in de.businesscode.bcdui.wrs">IRequestOptions</a>&nbsp;options)
         throws java.lang.Exception</pre>
-<div class="block">We are initialized for each Wrq request</div>
+<div class="block">We are initialized for each wrq:WrqRequest.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>options</code> - </dd>
@@ -447,118 +414,6 @@ implements <a href="ISqlGenerator.html" title="interface in de.businesscode.bcdu
 <dd><code><a href="ISqlGenerator.html#getSelectStatement()">getSelectStatement</a></code>&nbsp;in interface&nbsp;<code><a href="ISqlGenerator.html" title="interface in de.businesscode.bcdui.wrs.load">ISqlGenerator</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the selectStatement</dd>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="ISqlGenerator.html#getSelectStatement()"><code>ISqlGenerator.getSelectStatement()</code></a></dd>
-</dl>
-</li>
-</ul>
-<a id="generateStatement()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>generateStatement</h4>
-<pre class="methodSignature">protected&nbsp;<a href="SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a>&nbsp;generateStatement()
-                                            throws java.lang.Exception</pre>
-<dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.Exception</code></dd>
-</dl>
-</li>
-</ul>
-<a id="generateSelectClause(java.util.List)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>generateSelectClause</h4>
-<pre class="methodSignature">protected&nbsp;java.lang.StringBuffer&nbsp;generateSelectClause&#8203;(java.util.List&lt;org.w3c.dom.Element&gt;&nbsp;boundVariables)</pre>
-<div class="block">Generates 'SELECT ' plus the select list</div>
-<dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-</dl>
-</li>
-</ul>
-<a id="generateFromClause()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>generateFromClause</h4>
-<pre class="methodSignature">protected&nbsp;java.lang.StringBuffer&nbsp;generateFromClause()
-                                             throws <a href="../../binding/exc/BindingException.html" title="class in de.businesscode.bcdui.binding.exc">BindingException</a></pre>
-<div class="block">Generates 'FROM' and the tables with their join expression</div>
-<dl>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="../../binding/exc/BindingException.html" title="class in de.businesscode.bcdui.binding.exc">BindingException</a></code></dd>
-</dl>
-</li>
-</ul>
-<a id="generateWhereClause(java.util.List)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>generateWhereClause</h4>
-<pre class="methodSignature">protected&nbsp;java.lang.StringBuffer&nbsp;generateWhereClause&#8203;(java.util.List&lt;org.w3c.dom.Element&gt;&nbsp;boundVariables)
-                                              throws javax.xml.xpath.XPathExpressionException,
-                                                     <a href="../../binding/exc/BindingException.html" title="class in de.businesscode.bcdui.binding.exc">BindingException</a></pre>
-<div class="block">Generates 'WHERE ' plus the filter</div>
-<dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>javax.xml.xpath.XPathExpressionException</code></dd>
-<dd><code><a href="../../binding/exc/BindingException.html" title="class in de.businesscode.bcdui.binding.exc">BindingException</a></code></dd>
-</dl>
-</li>
-</ul>
-<a id="generateGroupingClause(java.util.List)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>generateGroupingClause</h4>
-<pre class="methodSignature">protected&nbsp;java.lang.StringBuffer&nbsp;generateGroupingClause&#8203;(java.util.List&lt;org.w3c.dom.Element&gt;&nbsp;boundVariables)
-                                                 throws java.lang.Exception</pre>
-<div class="block">Generates Grouping clause</div>
-<dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.Exception</code></dd>
-</dl>
-</li>
-</ul>
-<a id="generateHavingClause(java.util.List)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>generateHavingClause</h4>
-<pre class="methodSignature">protected&nbsp;java.lang.StringBuffer&nbsp;generateHavingClause&#8203;(java.util.List&lt;org.w3c.dom.Element&gt;&nbsp;boundVariables)
-                                               throws javax.xml.xpath.XPathExpressionException,
-                                                      <a href="../../binding/exc/BindingException.html" title="class in de.businesscode.bcdui.binding.exc">BindingException</a></pre>
-<div class="block">Generates Having SQL clause</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>boundVariables</code> - </dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>javax.xml.xpath.XPathExpressionException</code></dd>
-<dd><code><a href="../../binding/exc/BindingException.html" title="class in de.businesscode.bcdui.binding.exc">BindingException</a></code></dd>
-</dl>
-</li>
-</ul>
-<a id="generateOrderClause(java.util.List)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>generateOrderClause</h4>
-<pre class="methodSignature">protected&nbsp;java.lang.StringBuffer&nbsp;generateOrderClause&#8203;(java.util.List&lt;org.w3c.dom.Element&gt;&nbsp;boundVariables)</pre>
-<div class="block">Generates Order-By clause</div>
-<dl>
-<dt><span class="returnLabel">Returns:</span></dt>
 </dl>
 </li>
 </ul>
@@ -579,37 +434,35 @@ implements <a href="ISqlGenerator.html" title="interface in de.businesscode.bcdu
 </dl>
 </li>
 </ul>
-<a id="getRequestedBindingSetName()">
+<a id="getRequestedBindingSetNames()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>getRequestedBindingSetName</h4>
-<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getRequestedBindingSetName()</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="ISqlGenerator.html#getRequestedBindingSetName()">ISqlGenerator</a></code></span></div>
-<div class="block">getRequestedBindingSetName</div>
+<h4>getRequestedBindingSetNames</h4>
+<pre class="methodSignature">public&nbsp;java.util.Set&lt;java.util.Map.Entry&lt;java.lang.String,&#8203;java.lang.String&gt;&gt;&nbsp;getRequestedBindingSetNames()</pre>
+<div class="block">This is the binding sets / groups named in the Wrq</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="ISqlGenerator.html#getRequestedBindingSetName()">getRequestedBindingSetName</a></code>&nbsp;in interface&nbsp;<code><a href="ISqlGenerator.html" title="interface in de.businesscode.bcdui.wrs.load">ISqlGenerator</a></code></dd>
+<dd><code><a href="ISqlGenerator.html#getRequestedBindingSetNames()">getRequestedBindingSetNames</a></code>&nbsp;in interface&nbsp;<code><a href="ISqlGenerator.html" title="interface in de.businesscode.bcdui.wrs.load">ISqlGenerator</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>the requested bindingSet or bindingGroup name from the request document</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="ISqlGenerator.html#getRequestedBindingSetNames()"><code>ISqlGenerator.getRequestedBindingSetNames()</code></a></dd>
 </dl>
 </li>
 </ul>
-<a id="getSelectedBindingSetName()">
+<a id="getResolvedBindingSets()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>getSelectedBindingSetName</h4>
-<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getSelectedBindingSetName()</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="ISqlGenerator.html#getSelectedBindingSetName()">ISqlGenerator</a></code></span></div>
-<div class="block">getSelectedBindingSetName</div>
+<h4>getResolvedBindingSets</h4>
+<pre class="methodSignature">public&nbsp;java.util.Set&lt;<a href="../../binding/StandardBindingSet.html" title="class in de.businesscode.bcdui.binding">StandardBindingSet</a>&gt;&nbsp;getResolvedBindingSets()</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="ISqlGenerator.html#getSelectedBindingSetName()">getSelectedBindingSetName</a></code>&nbsp;in interface&nbsp;<code><a href="ISqlGenerator.html" title="interface in de.businesscode.bcdui.wrs.load">ISqlGenerator</a></code></dd>
+<dd><code><a href="ISqlGenerator.html#getResolvedBindingSets()">getResolvedBindingSets</a></code>&nbsp;in interface&nbsp;<code><a href="ISqlGenerator.html" title="interface in de.businesscode.bcdui.wrs.load">ISqlGenerator</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>the really selected BindingSet name</dd>
+<dd>the really selected BindingSets</dd>
 </dl>
 </li>
 </ul>
@@ -619,13 +472,13 @@ implements <a href="ISqlGenerator.html" title="interface in de.businesscode.bcdu
 <ul class="blockList">
 <li class="blockList">
 <h4>getSelectedBindingItems</h4>
-<pre class="methodSignature">public&nbsp;java.util.LinkedList&lt;<a href="WrsBindingItem.html" title="interface in de.businesscode.bcdui.wrs.load">WrsBindingItem</a>&gt;&nbsp;getSelectedBindingItems()
-                                                             throws java.lang.Exception</pre>
+<pre class="methodSignature">public&nbsp;java.util.List&lt;<a href="WrsBindingItem.html" title="interface in de.businesscode.bcdui.wrs.load">WrsBindingItem</a>&gt;&nbsp;getSelectedBindingItems()
+                                                       throws java.lang.Exception</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="ISqlGenerator.html#getSelectedBindingItems()">getSelectedBindingItems</a></code>&nbsp;in interface&nbsp;<code><a href="ISqlGenerator.html" title="interface in de.businesscode.bcdui.wrs.load">ISqlGenerator</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>The list of binding items in the select clause.</dd>
+<dd>The list of binding items in the select clause in their order.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>java.lang.Exception</code></dd>
 </dl>
@@ -668,7 +521,7 @@ implements <a href="ISqlGenerator.html" title="interface in de.businesscode.bcdu
 <a id="isEmpty()">
 <!--   -->
 </a>
-<ul class="blockList">
+<ul class="blockListLast">
 <li class="blockList">
 <h4>isEmpty</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;isEmpty()</pre>
@@ -679,21 +532,6 @@ implements <a href="ISqlGenerator.html" title="interface in de.businesscode.bcdu
 <dd><code><a href="ISqlGenerator.html#isEmpty()">isEmpty</a></code>&nbsp;in interface&nbsp;<code><a href="ISqlGenerator.html" title="interface in de.businesscode.bcdui.wrs.load">ISqlGenerator</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>true if no query was specified from the request</dd>
-</dl>
-</li>
-</ul>
-<a id="getSelectedBindingSet()">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>getSelectedBindingSet</h4>
-<pre class="methodSignature">public&nbsp;<a href="../../binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&nbsp;getSelectedBindingSet()</pre>
-<dl>
-<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="ISqlGenerator.html#getSelectedBindingSet()">getSelectedBindingSet</a></code>&nbsp;in interface&nbsp;<code><a href="ISqlGenerator.html" title="interface in de.businesscode.bcdui.wrs.load">ISqlGenerator</a></code></dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>the really selected BindingSet or null</dd>
 </dl>
 </li>
 </ul>

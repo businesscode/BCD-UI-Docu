@@ -13,8 +13,7 @@
 <!--[if IE]>
 <script type="text/javascript" src="../../../../../../jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="../../../../../../jquery/jquery-3.3.1.js"></script>
-<script type="text/javascript" src="../../../../../../jquery/jquery-migrate-3.0.1.js"></script>
+<script type="text/javascript" src="../../../../../../jquery/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="../../../../../../jquery/jquery-ui.js"></script>
 </head>
 <body>
@@ -192,7 +191,7 @@ extends <a href="BooleanConstraintImpl.html" title="class in de.businesscode.bcd
 <!--   -->
 </a>
 <h3>Fields inherited from class&nbsp;de.businesscode.bcdui.binding.rel.impl.<a href="AbstractConstrain.html" title="class in de.businesscode.bcdui.binding.rel.impl">AbstractConstrain</a></h3>
-<code><a href="AbstractConstrain.html#OPER_REPL">OPER_REPL</a>, <a href="AbstractConstrain.html#REGEXP_OPER_REPL">REGEXP_OPER_REPL</a></code></li>
+<code><a href="AbstractConstrain.html#MAINTABLE_SQLALIAS_PATTERN">MAINTABLE_SQLALIAS_PATTERN</a>, <a href="AbstractConstrain.html#MAINTABLE_SQLALIAS_PLACEHOLDER">MAINTABLE_SQLALIAS_PLACEHOLDER</a>, <a href="AbstractConstrain.html#OPER_REPL">OPER_REPL</a>, <a href="AbstractConstrain.html#REGEXP_OPER_REPL">REGEXP_OPER_REPL</a></code></li>
 </ul>
 </li>
 </ul>
@@ -237,7 +236,8 @@ extends <a href="BooleanConstraintImpl.html" title="class in de.businesscode.bcd
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getConstrainedStatement(java.lang.String)">getConstrainedStatement</a></span>&#8203;(java.lang.String&nbsp;prepareCaseExpressionForAlias)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getConstrainedStatement(java.lang.String,boolean)">getConstrainedStatement</a></span>&#8203;(java.lang.String&nbsp;mainTableAlias,
+                       boolean&nbsp;isForJoinToCaseWhen)</code></th>
 <td class="colLast">
 <div class="block">builds and returns full SQL statement of the constraint
 
@@ -273,7 +273,7 @@ extends <a href="BooleanConstraintImpl.html" title="class in de.businesscode.bcd
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;de.businesscode.bcdui.binding.rel.impl.<a href="AbstractConstrain.html" title="class in de.businesscode.bcdui.binding.rel.impl">AbstractConstrain</a></h3>
-<code><a href="AbstractConstrain.html#addChildConstraint(de.businesscode.bcdui.binding.rel.impl.AbstractConstrain)">addChildConstraint</a>, <a href="AbstractConstrain.html#addColumn(de.businesscode.bcdui.binding.rel.impl.AbstractColumn)">addColumn</a>, <a href="AbstractConstrain.html#getChildConstraints()">getChildConstraints</a>, <a href="AbstractConstrain.html#getColumns()">getColumns</a>, <a href="AbstractConstrain.html#getName()">getName</a>, <a href="AbstractConstrain.html#getNumParts()">getNumParts</a>, <a href="AbstractConstrain.html#getStatement()">getStatement</a>, <a href="AbstractConstrain.html#getType()">getType</a>, <a href="AbstractConstrain.html#isNegate()">isNegate</a>, <a href="AbstractConstrain.html#setNegate(boolean)">setNegate</a>, <a href="AbstractConstrain.html#setStatement(java.lang.String)">setStatement</a>, <a href="AbstractConstrain.html#setType(de.businesscode.bcdui.binding.rel.impl.AbstractConstrain.Type)">setType</a>, <a href="AbstractConstrain.html#toString()">toString</a></code></li>
+<code><a href="AbstractConstrain.html#addChildConstraint(de.businesscode.bcdui.binding.rel.impl.AbstractConstrain)">addChildConstraint</a>, <a href="AbstractConstrain.html#addColumn(de.businesscode.bcdui.binding.BindingItem)">addColumn</a>, <a href="AbstractConstrain.html#getChildConstraints()">getChildConstraints</a>, <a href="AbstractConstrain.html#getColumns()">getColumns</a>, <a href="AbstractConstrain.html#getName()">getName</a>, <a href="AbstractConstrain.html#getNumParts()">getNumParts</a>, <a href="AbstractConstrain.html#getStatement()">getStatement</a>, <a href="AbstractConstrain.html#getType()">getType</a>, <a href="AbstractConstrain.html#insertMainTableAlias(java.lang.String,java.lang.String)">insertMainTableAlias</a>, <a href="AbstractConstrain.html#isNegate()">isNegate</a>, <a href="AbstractConstrain.html#setNegate(boolean)">setNegate</a>, <a href="AbstractConstrain.html#setStatement(java.lang.String)">setStatement</a>, <a href="AbstractConstrain.html#setType(de.businesscode.bcdui.binding.rel.impl.AbstractConstrain.Type)">setType</a>, <a href="AbstractConstrain.html#toString()">toString</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
@@ -341,27 +341,28 @@ extends <a href="BooleanConstraintImpl.html" title="class in de.businesscode.bcd
 </dl>
 </li>
 </ul>
-<a id="getConstrainedStatement(java.lang.String)">
+<a id="getConstrainedStatement(java.lang.String,boolean)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>getConstrainedStatement</h4>
-<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getConstrainedStatement&#8203;(java.lang.String&nbsp;prepareCaseExpressionForAlias)
+<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getConstrainedStatement&#8203;(java.lang.String&nbsp;mainTableAlias,
+                                                boolean&nbsp;isForJoinToCaseWhen)
                                          throws <a href="../../exc/BindingException.html" title="class in de.businesscode.bcdui.binding.exc">BindingException</a></pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="AbstractConstrain.html#getConstrainedStatement(java.lang.String)">AbstractConstrain</a></code></span></div>
+<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="AbstractConstrain.html#getConstrainedStatement(java.lang.String,boolean)">AbstractConstrain</a></code></span></div>
 <div class="block">builds and returns full SQL statement of the constraint
 
  Method getConstrainedStatement</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
-<dd><code><a href="BooleanConstraintImpl.html#getConstrainedStatement(java.lang.String)">getConstrainedStatement</a></code>&nbsp;in class&nbsp;<code><a href="BooleanConstraintImpl.html" title="class in de.businesscode.bcdui.binding.rel.impl">BooleanConstraintImpl</a></code></dd>
+<dd><code><a href="BooleanConstraintImpl.html#getConstrainedStatement(java.lang.String,boolean)">getConstrainedStatement</a></code>&nbsp;in class&nbsp;<code><a href="BooleanConstraintImpl.html" title="class in de.businesscode.bcdui.binding.rel.impl">BooleanConstraintImpl</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="../../exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></code></dd>
 <dd><code><a href="../../exc/BindingException.html" title="class in de.businesscode.bcdui.binding.exc">BindingException</a></code></dd>
 <dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="AbstractConstrain.html#getConstrainedStatement(java.lang.String)"><code>AbstractConstrain.getConstrainedStatement(String)</code></a></dd>
+<dd><a href="AbstractConstrain.html#getConstrainedStatement(java.lang.String,boolean)"><code>AbstractConstrain.getConstrainedStatement(String,boolean)</code></a></dd>
 </dl>
 </li>
 </ul>

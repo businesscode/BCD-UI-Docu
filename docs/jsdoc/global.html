@@ -2319,6 +2319,38 @@
             
                 <li data-name="bcdui.component.chart.ChartEchart.saveAsImage"><a href="bcdui.component.chart.ChartEchart.html#.saveAsImage">saveAsImage</a></li>
             
+                <li data-name="bcdui.component.chart.ChartEchart.saveAsImage"><a href="bcdui.component.chart.ChartEchart.html#.saveAsImage">saveAsImage</a></li>
+            
+                <li data-name="bcdui.component.chart.ChartEchart#getData"><a href="bcdui.component.chart.ChartEchart.html#getData">getData</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="bcdui.component.chart.ChartEchart">
+            <span class="title">
+                <a href="bcdui.component.chart.ChartEchart.html">bcdui.component.chart.ChartEchart</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="bcdui.component.chart.ChartEchart.saveAsImage"><a href="bcdui.component.chart.ChartEchart.html#.saveAsImage">saveAsImage</a></li>
+            
+                <li data-name="bcdui.component.chart.ChartEchart.saveAsImage"><a href="bcdui.component.chart.ChartEchart.html#.saveAsImage">saveAsImage</a></li>
+            
                 <li data-name="bcdui.component.chart.ChartEchart#getData"><a href="bcdui.component.chart.ChartEchart.html#getData">getData</a></li>
             
             </ul>
@@ -6995,51 +7027,6 @@
     
 </dd>
 
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="TEMPLATE_ELEMENTS">TEMPLATE_ELEMENTS</h4>
-    </div>
-    
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        pre-create elements
-    </div>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-</dd>
-
         </dl>
     
     
@@ -7057,7 +7044,7 @@
     
         
         <div class="tag-source">
-            widgetNg/universalFilter/universalFilterPackage.js, line 83
+            widgetNg/universalFilter/universalFilterPackage.js, line 85
         </div>
         
     </div>
@@ -7128,7 +7115,7 @@
     
         
         <div class="tag-source">
-            widgetNg/universalFilter/universalFilterPackage.js, line 421
+            widgetNg/universalFilter/universalFilterPackage.js, line 423
         </div>
         
     </div>
@@ -7447,7 +7434,7 @@ depending on 'op' and number of values it also may return a predicate like f:Or 
     
         
         <div class="tag-source">
-            widgetNg/universalFilter/universalFilterPackage.js, line 509
+            widgetNg/universalFilter/universalFilterPackage.js, line 511
         </div>
         
     </div>
@@ -7588,7 +7575,7 @@ depending on 'op' and number of values it also may return a predicate like f:Or 
     
         
         <div class="tag-source">
-            widgetNg/universalFilter/universalFilterPackage.js, line 327
+            widgetNg/universalFilter/universalFilterPackage.js, line 329
         </div>
         
     </div>
@@ -7730,6 +7717,348 @@ currently does not rebuild from status
                 
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="AddStatusListenerParam">AddStatusListenerParam<span class="type-signature type object">object</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    
+    
+<dl class="details">
+    
+        
+        <h5 class="subsection-title">Properties:</h5>
+        
+        <dl>
+
+<table class="props">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Argument</th>
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>listener</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+|
+
+<span class="param-type"><a href="bcdui.core.StatusListener.html">bcdui.core.StatusListener</a></span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">A function or StatusListener object representing the listener action.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>status</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="bcdui.core.Status_.html">bcdui.core.Status</a></span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">The status it should listen to. 
+  If it is missing the listener is executed on all status transitions, otherwise it is executed when the status is set to the specified status.</td>
+        </tr>
+	
+	
+	</tbody>
+</table></dl>
+        
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+            
+                
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="BcdScrollToParamOptions">BcdScrollToParamOptions<span class="type-signature type object">object</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    
+    
+<dl class="details">
+    
+        
+        <h5 class="subsection-title">Properties:</h5>
+        
+        <dl>
+
+<table class="props">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Argument</th>
+		
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>snapTo</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                    beginning
+                
+                </td>
+            
+            
+            <td class="description last">snapTo can have following values: 'beginning': put the scrollTo-target on the top of container.</td>
+        </tr>
+	
+	
+	</tbody>
+</table></dl>
+        
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+            
+                
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="chainDef">
+            
+            chainDef<span class="signature">()</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            typedefs.js, line 56
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Defines the transformation steps of a transformation chain, like <a href="bcdui.core.ModelWrapper.html">bcdui.core.ModelWrapper</a> or <a href="bcdui.core.Renderer.html">bcdui.core.Renderer</a>.
+<br/>Can be: url | function | Array<(url|function)> | bcdui.core.DataProvider
+<br/>You can provide
+<ul>
+  <li>A single DataProvider, holding a chain definition following XML Schema 'chain-1.0.0.xsd'. Or
+  <li>A single string holding the url of an xslt document (*.xslt) or a doT.js file (*.dott). Or
+  <li>A javascript transformator function, representing a transformation. Such a function gets two parameters, data, like a DOM or JSON, whatever DataProvider.getData() returns
+      and a parameter object, which maps parameter names to the actual parameters. It can return a new data object or modify the one, which was its input.
+      It it does not return anything, its (modified) input doc is used as return default. Or
+  <li>An array of such strings and functions in the order they are to be executed. In this case, the output of the n-th transformation becomes the input of n+1.
+</ul>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">These are all valid values for a chainDef:</p>
+    
+
+    
+    <pre class="prettyprint"><code>"myStylesheet.xslt"                         // An <b>url</b> pointing to an *.xslt or a *.dott file
+["myTrans.dott", jsTrans]                   // An <b>array</b> of transformators, can be urls (doT.js or xslt) and js functions
+new bcdui.core.StaticModel(...)             // A <b>DataProvider subclass</b>, providing an xml chain definition according to chain-1.0.0.xsd
+function jsTrans(doc, params) {             // A <b>js function</b>, expecting a data object (DOM or JSON)
+  var n = doc.getElementById('someId');
+  n.setAttribute('someAttr', params.newValue);
+}</code></pre>
+    
+
+    
+</dd>
+
+            
+                
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="chainDef">chainDef<span class="type-signature type url">url</span> <span class="type-signature type js-function">js-function</span> <span class="type-signature type array.<(url|js-function)>">Array.&lt;(url|js-function)></span> <span class="type-signature type bcdui.core.dataprovider"><a href="bcdui.core.DataProvider.html">bcdui.core.DataProvider</a></span> </h4>
     </div>
     
@@ -7792,6 +8121,227 @@ function jsTrans(doc, params) {             // A <b>js function</b>, expecting a
   var n = doc.getElementById('someId');
   n.setAttribute('someAttr', params.newValue);
 }</code></pre>
+    
+
+    
+</dd>
+
+            
+                
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="ExecuteParam">ExecuteParam<span class="type-signature type object">object</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    
+    
+<dl class="details">
+    
+        
+        <h5 class="subsection-title">Properties:</h5>
+        
+        <dl>
+
+<table class="props">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Argument</th>
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">A function called once when the object becomes ready again. Called immediately if we are already ready && shouldRefresh==false</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>partialHtmlTargets</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">Space separated list of html element ids. If given, only these elements within targetHmtlElement of the render
+        are touched in the DOM tree, plus the chain gets the parameter bcdPartialHtmlTargets set to this value. Valid for this one call only, cleared after.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>shouldRefresh</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">"false" if this method should do nothing when the object is already in the ready status. Default is "true"false".</td>
+        </tr>
+	
+	
+	</tbody>
+</table></dl>
+        
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+            
+                
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="i18nToken">i18nToken<span class="type-signature type string">string</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        A string value which is either taken as-is or an i18n key-marker as proposed by
+<br/>We use xE0FF prefix to separate an i18n token from a plain string. This marker is available via bcdui.i18n.TAG
+For i18n keys, see messages.xml or binding set bcd_i18n
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+        <h5>Example</h5>
+        
+
+    
+    <pre class="prettyprint"><code>caption = "data"       // Treats value 'data' literal
+caption = "\uE0FFdata" // Treats value 'data' as an i18n-key</code></pre>
     
 
     
@@ -7914,6 +8464,2114 @@ $modelId/f:Filter/f:Filters[$guiStatus/guiStatus:Status/guiStatus:MyNodes/@attr]
                 
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="modelXPath">modelXPath<span class="type-signature type string">string</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Provide an XPath, which can be used to use nodes from, can point to an attribute or a full subtree.
+Start the XPath with $someModelId, make sure that you create this <a href="bcdui.core.DataProvider.html">bcdui.core.DataProvider</a> with an explicit id.
+Default for this is $guiStatus, which is always auto-registered.
+<br/>Note: You can also build quite complex XPaths and refer to further registered models via '$myModelId' in predicates, see second example.
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+        <h5>Example</h5>
+        
+
+    
+    <pre class="prettyprint"><code>$guiStatus/guiStatus:Status/guiStatus:MyNode                                     // A string with a simple XPath
+$modelId/f:Filter/f:Filters[$guiStatus/guiStatus:Status/guiStatus:MyNodes/@attr] // A string with a more complex XPath, using multiple models</code></pre>
+    
+
+    
+</dd>
+
+            
+                
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="OnceReadyParam">OnceReadyParam<span class="type-signature type object">object</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    
+    
+<dl class="details">
+    
+        
+        <h5 class="subsection-title">Properties:</h5>
+        
+        <dl>
+
+<table class="props">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Argument</th>
+		
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>onSuccess</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">callback function which is called when <a href="bcdui.core.AbstractExecutable.html">bcdui.core.AbstractExecutable</a> is or gets ready</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>onFailure</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">callback function which is called when <a href="bcdui.core.AbstractExecutable.html">bcdui.core.AbstractExecutable</a> gets into failed status</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>executeIfNotReady</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+            
+            <td class="description last">do execute <a href="bcdui.core.AbstractExecutable.html">bcdui.core.AbstractExecutable</a> if it's not ready</td>
+        </tr>
+	
+	
+	</tbody>
+</table></dl>
+        
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+            
+                
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="OnChangeParam">OnChangeParam<span class="type-signature type object">object</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Adds a data listener to the DataProvider which can be triggered when the data (XML
+document) is changed. The listener offers two options: It can either be fired on
+any change or on a change in a specific XPath result.
+Note that no uniqueness check is done before adding the listener so it is possible to add the same listener twice or more times.
+/
+   /**
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+        <h5 class="subsection-title">Properties:</h5>
+        
+        <dl>
+
+<table class="props">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Argument</th>
+		
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">function to be called after changes</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>trackingXPath</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">xPath to monitor for changes</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>onlyOnce</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+            
+            <td class="description last">fire on each change or only once  (higher priority than listenerObject's onlyOnce)</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">listener id (only needed for removeDataListener usability)</td>
+        </tr>
+	
+	
+	</tbody>
+</table></dl>
+        
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+            
+                
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="OnReadyParam">OnReadyParam<span class="type-signature type object">object</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    
+    
+<dl class="details">
+    
+        
+        <h5 class="subsection-title">Properties:</h5>
+        
+        <dl>
+
+<table class="props">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Argument</th>
+		
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>onSuccess</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">callback function which is called when <a href="bcdui.core.AbstractExecutable.html">bcdui.core.AbstractExecutable</a> is or gets ready</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>onFailure</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">callback function which is called when <a href="bcdui.core.AbstractExecutable.html">bcdui.core.AbstractExecutable</a> gets into failed status</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>onlyOnce</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+            
+            <td class="description last">call callback only once or on each ready state</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>onlyFuture</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+            
+            <td class="description last">only future ready states will trigger the callback. Per default the callback is called immediately (but async), if the AbstractExecutable is already in ready state</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>executeIfNotReady</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+            
+            <td class="description last">do execute <a href="bcdui.core.AbstractExecutable.html">bcdui.core.AbstractExecutable</a> if it's not ready</td>
+        </tr>
+	
+	
+	</tbody>
+</table></dl>
+        
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+            
+                
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="PostWrsParam">PostWrsParam<span class="type-signature type object">object</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    
+    
+<dl class="details">
+    
+        
+        <h5 class="subsection-title">Properties:</h5>
+        
+        <dl>
+
+<table class="props">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Argument</th>
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>args.wrsDoc</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">XMLDocument</span>
+|
+
+<span class="param-type">Array.&lt;XMLDocument></span>
+|
+
+<span class="param-type"><a href="bcdui.core.DataProvider.html">bcdui.core.DataProvider</a></span>
+|
+
+<span class="param-type">Array.&lt;<a href="bcdui.core.DataProvider.html">bcdui.core.DataProvider</a>></span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">Document(s) / DataProvider</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>onSuccess</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">Callback on success, is called after successful POST or if POST was not issued due to to changes in the document</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>onFailure</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">Callback on failure, is called if error occurs</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>onWrsValidationFailure</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">Callback on serverside validate failure, if omitted the onFailure is used in case of validation failures</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>uri</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">An URI (i.e. SomeDoc) which is appended as pathInfo to WrsServlet</td>
+        </tr>
+	
+	
+	</tbody>
+</table></dl>
+        
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+            
+                
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="RemoveDataListenerParam">RemoveDataListenerParam<span class="type-signature type object">object</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    
+    
+<dl class="details">
+    
+        
+        <h5 class="subsection-title">Properties:</h5>
+        
+        <dl>
+
+<table class="props">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Argument</th>
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">listener id</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">listener function</td>
+        </tr>
+	
+	
+	</tbody>
+</table></dl>
+        
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+            
+                
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="RemoveStatusListenerParam">RemoveStatusListenerParam<span class="type-signature type object">object</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    
+    
+<dl class="details">
+    
+        
+        <h5 class="subsection-title">Properties:</h5>
+        
+        <dl>
+
+<table class="props">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>listener</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+|
+
+<span class="param-type"><a href="bcdui.core.StatusListener.html">bcdui.core.StatusListener</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A function <p/>or StatusListener object representing the listener action.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>status</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="bcdui.core.Status_.html">bcdui.core.Status</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The status this listener is listening to. If it is missing it is assumed that the listener belongs to the global scope.</td>
+        </tr>
+	
+	
+	</tbody>
+</table></dl>
+        
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+            
+                
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="SimpleModelParam">SimpleModelParam<span class="type-signature type object">object</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    
+    
+<dl class="details">
+    
+        
+        <h5 class="subsection-title">Properties:</h5>
+        
+        <dl>
+
+<table class="props">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Argument</th>
+		
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>url</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type"><a href="bcdui.core.RequestDocumentDataProvider.html">bcdui.core.RequestDocumentDataProvider</a></span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">A string with the URL or a RequestDocumentDataProvider providing the request. See <a href="bcdui.core.RequestDocumentDataProvider.html">RequestDocumentDataProvider</a> for an example.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>uri</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">uri extension as a suffix to .url to tag requests, must not start with '/'. This parameter is ineffective if .url is provided.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">Globally unique id for used in declarative contexts</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>isAutoRefresh</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+            
+            <td class="description last">If true, each change of args.urlProvider triggers a reload of the model</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>mimeType</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                    auto
+                
+                </td>
+            
+            
+            <td class="description last">Mimetype of the expected data. If "auto" or none is given it is derived from the url</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>saveOptions</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#SimpleModelParamSaveOptions">SimpleModelParamSaveOptions</a></span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">An object, with the following elements</td>
+        </tr>
+	
+	
+	</tbody>
+</table></dl>
+        
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+            
+                
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="SimpleModelParamSaveOptions">SimpleModelParamSaveOptions<span class="type-signature type object">object</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    
+    
+<dl class="details">
+    
+        
+        <h5 class="subsection-title">Properties:</h5>
+        
+        <dl>
+
+<table class="props">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Argument</th>
+		
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>saveChain</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#chainDef">chainDef</a></span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">The definition of the transformation chain</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>saveParameters</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">An object, where each property holds a DataProvider, used as a transformation parameters.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>reload</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+            
+            <td class="description last">Useful especially for models of type SimpleModel for refreshing from server after save</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>onSuccess</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">Callback after saving (and optionally reloading) was successfully finished</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>onFailure</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">Callback on failure, is called if error occurs</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>onWrsValidationFailure</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">Callback on serverside validate failure, if omitted the onFailure is used in case of validation failures</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>urlProvider</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="bcdui.core.DataProvider.html">bcdui.core.DataProvider</a></span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">dataProvider holding the request url (by default taken from the args.url).</td>
+        </tr>
+	
+	
+	</tbody>
+</table></dl>
+        
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+            
+                
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="StaticModelParam">StaticModelParam<span class="type-signature type object">Object</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    
+    
+<dl class="details">
+    
+        
+        <h5 class="subsection-title">Properties:</h5>
+        
+        <dl>
+
+<table class="props">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Argument</th>
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">Globally unique id for use in declarative contexts, ignored if args.data is not set</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">object</span>
+|
+
+<span class="param-type">Document</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">An XML string, which is parsed, a DOM document </p>or a parameter map</td>
+        </tr>
+	
+	
+	</tbody>
+</table></dl>
+        
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+            
+                
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="SyncTranslateFormatMessageParam">SyncTranslateFormatMessageParam<span class="type-signature type object">object</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Translates and formats if needed the given message id.
+The function should be used only if bcduiI18Model ready. If
+the catalog is not initialized up to this moment (the catalog
+initialization is asychronous) then NULL is returned in production
+and an error is thrown in debug mode.
+
+   /**
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+        <h5 class="subsection-title">Properties:</h5>
+        
+        <dl>
+
+<table class="props">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Argument</th>
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>msgid</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">the message id</td>
+        </tr>
+	
+	
+	</tbody>
+</table></dl>
+        
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+            
+                
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="targetHtmlRef">targetHtmlRef<span class="type-signature type string">string</span> <span class="type-signature type htmlelement">HTMLElement</span> <span class="type-signature type jquery"><a href="jQuery.html">jQuery</a></span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Any reference to an existing HTML element: Can be a DOM element, a jQuery object, a css selector or a plain id of an element.
+The referenced element *must*  be attached to html document unless the reference itself is a DOM element.
+<br/>If jQuery returns a list with multiple matches, the first member is used. These are all valid examples:
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+        <h5>Example</h5>
+        
+
+    
+    <pre class="prettyprint"><code>document.getElementById("myId").firstChild      // Any plain <b>DOM element</b>
+jQuery('#myElementId') &bull; jQuery('ul li:first')  // A <b>jQuery</b> list, first one is used
+'ul li:first'                                   // A <b>css selector</b>, first match is used
+'myElementId'                                   // Treated as an <b>element id</b> if its just letters (id without #)</code></pre>
+    
+
+    
+</dd>
+
+            
+                
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="targetHtmlRef">targetHtmlRef<span class="type-signature type string">string</span> <span class="type-signature type htmlelement">HTMLElement</span> <span class="type-signature type jquery"><a href="jQuery.html">jQuery</a></span> </h4>
     </div>
     
@@ -8022,6 +10680,119 @@ Be aware that the model's data changes, if it is a ModelWrapper, the next execut
     
     <pre class="prettyprint"><code>/guiStatus:Status/guiStatus:MyNode                                               // Default is $guiStatus
 $modelId/f:Filter/f:Filters[$guiStatus/guiStatus:Status/guiStatus:MyNodes/@attr] // A string with a more complex XPath, using multiple models</code></pre>
+    
+
+    
+</dd>
+
+            
+                
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="writableModelXPath">writableModelXPath<span class="type-signature type string">string</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Provide an XPath, which can be used to append nodes to. In most cases the path will be created if it does not exist,
+reusing as much as possible. See <a href="bcdui.core.html#.createElementWithPrototype">bcdui.core.createElementWithPrototype</a>
+Start the XPath with $dataProviderId, make sure that you create this <a href="bcdui.core.DataProvider.html">bcdui.core.DataProvider</a> with an explicit id.
+Default for this is $guiStatus, which is always auto-registered.
+Be aware that the model's data changes, if it is a ModelWrapper, the next execute() would of course overwrite the change.
+<br/>You can also build complex XPaths and refer to further models via '$dataProviderId' in predicates.
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+        <h5>Example</h5>
+        
+
+    
+    <pre class="prettyprint"><code>/guiStatus:Status/guiStatus:MyNode                                               // Default is $guiStatus
+$modelId/f:Filter/f:Filters[$guiStatus/guiStatus:Status/guiStatus:MyNodes/@attr] // A string with a more complex XPath, using multiple models</code></pre>
+    
+
+    
+</dd>
+
+            
+                
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="xPath">xPath<span class="type-signature type string">string</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Provide an XPath, which can be used to use nodes from, can point to an attribute or a full subtree.
+<br/>Note: must not contain model references.
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+        <h5>Example</h5>
+        
+
+    
+    <pre class="prettyprint"><code>/guiStatus:Status/guiStatus:MyNode                                     // A string with a simple XPath</code></pre>
     
 
     

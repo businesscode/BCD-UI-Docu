@@ -13,8 +13,7 @@
 <!--[if IE]>
 <script type="text/javascript" src="../../../../../jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="../../../../../jquery/jquery-3.3.1.js"></script>
-<script type="text/javascript" src="../../../../../jquery/jquery-migrate-3.0.1.js"></script>
+<script type="text/javascript" src="../../../../../jquery/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="../../../../../jquery/jquery-ui.js"></script>
 </head>
 <body>
@@ -125,8 +124,15 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </td>
 </tr>
 <tr class="rowColor">
-<th class="colFirst" scope="row"><a href="WrsBindingItem.html" title="interface in de.businesscode.bcdui.wrs.load">WrsBindingItem</a></th>
+<th class="colFirst" scope="row"><a href="WrqBindingSet.html" title="interface in de.businesscode.bcdui.wrs.load">WrqBindingSet</a></th>
 <td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<th class="colFirst" scope="row"><a href="WrsBindingItem.html" title="interface in de.businesscode.bcdui.wrs.load">WrsBindingItem</a></th>
+<td class="colLast">
+<div class="block">Represents a BindingItem in a concrete Wrq, includes information like overwritten attributes
+ See analogy SimpleBindingItem and its subclasses representing the input side, i.e.</div>
+</td>
 </tr>
 </tbody>
 </table>
@@ -142,13 +148,13 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <tr class="altColor">
 <th class="colFirst" scope="row"><a href="AbstractDataWriter.html" title="class in de.businesscode.bcdui.wrs.load">AbstractDataWriter</a></th>
 <td class="colLast">
-<div class="block">An abstract writer-implementation - contains helper getters for all writer parameteres</div>
+<div class="block">An abstract writer-implementation - contains helper getters for all writer parameters</div>
 </td>
 </tr>
 <tr class="rowColor">
 <th class="colFirst" scope="row"><a href="BindingItemAttribute.html" title="class in de.businesscode.bcdui.wrs.load">BindingItemAttribute</a></th>
 <td class="colLast">
-<div class="block">This class is container of one attribute of binding item.</div>
+<div class="block">This class is container of a wrq:A of binding item in a query.</div>
 </td>
 </tr>
 <tr class="altColor">
@@ -161,7 +167,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <tr class="rowColor">
 <th class="colFirst" scope="row"><a href="DataLoader.html" title="class in de.businesscode.bcdui.wrs.load">DataLoader</a></th>
 <td class="colLast">
-<div class="block">This algorithmus <br>
+<div class="block">This algorithms <br>
  reads input from input options, <br>
  uses generator to interpret the options (generate SQL), <br>
  executes sql and <br>
@@ -169,8 +175,23 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </td>
 </tr>
 <tr class="altColor">
+<th class="colFirst" scope="row"><a href="SqlFromFullSelect.html" title="class in de.businesscode.bcdui.wrs.load">SqlFromFullSelect</a></th>
+<td class="colLast">
+<div class="block">Takes the parent node of SELECTs with SET operators (formally a "full-select") in Wrq format
+ and generates SQL from it together with the bound variables, ready to be executed</div>
+</td>
+</tr>
+<tr class="rowColor">
+<th class="colFirst" scope="row"><a href="SqlFromSubSelect.html" title="class in de.businesscode.bcdui.wrs.load">SqlFromSubSelect</a></th>
+<td class="colLast">
+<div class="block">Takes a single wrq:Select (formally a "sub-select") and turns it into a SQLStatementWithParams</div>
+</td>
+</tr>
+<tr class="altColor">
 <th class="colFirst" scope="row"><a href="SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Represents part of an SQL string and the values for bound variables</div>
+</td>
 </tr>
 <tr class="rowColor">
 <th class="colFirst" scope="row"><a href="SubjectSettings2Sql.html" title="class in de.businesscode.bcdui.wrs.load">SubjectSettings2Sql</a></th>
@@ -188,18 +209,43 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <tr class="rowColor">
 <th class="colFirst" scope="row"><a href="Wrq2Sql.html" title="class in de.businesscode.bcdui.wrs.load">Wrq2Sql</a></th>
 <td class="colLast">
-<div class="block">Takes a Wrq and generates SQL from it together with the bound variables, ready to be executed
- One instance of this class only handles one Wrq
- TODO Features
-  Fix issue with dummy- bRef for wrq:C[wrq:Calc]
-  Allow Pagination and TOP-N at the same time
-  Allow wrq:Calc in order-by, grouping
-  Allow @aggr=none and not wrq:Calc in top-n (for UDF), fails now because cannot be separated into non-aggr and aggr part</div>
+<div class="block">Takes a Wrq and generates SQL from it</div>
 </td>
 </tr>
 <tr class="altColor">
 <th class="colFirst" scope="row"><a href="WrqBindingItem.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingItem</a></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Represents a BindingItem in a Wrq, it is it has knowledge of the underlying BindingItem and the current query
+ There can be multiple WrqBindingItem for a BindingItem(FromRel), to reflect different behaviora like aggr for example in select and in grouping clause</div>
+</td>
+</tr>
+<tr class="rowColor">
+<th class="colFirst" scope="row"><a href="WrqBindingSetFromDerivedTable.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingSetFromDerivedTable</a></th>
+<td class="colLast">
+<div class="block">Represents a virtual BindingSet resulting from a sub-select during the execution of a Wrq</div>
+</td>
+</tr>
+<tr class="altColor">
+<th class="colFirst" scope="row"><a href="WrqBindingSetFromStandardBindingSet.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingSetFromStandardBindingSet</a></th>
+<td class="colLast">
+<div class="block">Wrapper for a StandardBindingSet in the current query, mainly adds the sql table alias
+ Implements WrqBindingSet</div>
+</td>
+</tr>
+<tr class="rowColor">
+<th class="colFirst" scope="row"><a href="WrqBindingSetFromTableReference.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingSetFromTableReference</a></th>
+<td class="colLast">
+<div class="block">Represents a virtual BindingSet resulting from the children of wrq:From, i.e. a table reference
+ A table reference can be a plain table name or joined tables factors,
+ i.e. table names, derived table expressions or references to CTE
+ Mostly it deals with the handling of wrq:Join, but for consistency we also take care for cases without</div>
+</td>
+</tr>
+<tr class="altColor">
+<th class="colFirst" scope="row"><a href="WrqBindingSetVirtual.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingSetVirtual</a></th>
+<td class="colLast">
+<div class="block">Represents a virtual BindingSet derived on runtime from parts of a Wrs</div>
+</td>
 </tr>
 <tr class="rowColor">
 <th class="colFirst" scope="row"><a href="WrqCalc2Sql.html" title="class in de.businesscode.bcdui.wrs.load">WrqCalc2Sql</a></th>
@@ -211,7 +257,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <th class="colFirst" scope="row"><a href="WrqFilter2Sql.html" title="class in de.businesscode.bcdui.wrs.load">WrqFilter2Sql</a></th>
 <td class="colLast">
 <div class="block">Parses a f:Filter expression and returns the SQL Where expression
- Initially taken from WrsSqlGenerator.</div>
+ For older change history, see WrsSqlGenerator</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -228,17 +274,22 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </td>
 </tr>
 <tr class="rowColor">
+<th class="colFirst" scope="row"><a href="WrqQueryBuilder.html" title="class in de.businesscode.bcdui.wrs.load">WrqQueryBuilder</a></th>
+<td class="colLast">
+<div class="block">Takes a full Wrq query, formally a "select-statement" and generates SQL from it
+ [WITH]* SELECT [UNION SELECT]* [ORDER BY]
+
+ Children can be recursive full-selects or a sub-selects or it is an empty (no select at all) or a meta-data request (endRow==0 )
+ One instance of this class only handles one Wrq
+ 
+ NOTE: We do not check the rights, use assurePermittedOnAllResolvedBindingSets() for verifying this</div>
+</td>
+</tr>
+<tr class="altColor">
 <th class="colFirst" scope="row"><a href="WrsDataWriter.html" title="class in de.businesscode.bcdui.wrs.load">WrsDataWriter</a></th>
 <td class="colLast">
 <div class="block">The default implementation of the IDataWriter - write wrs-xml-format using xml-stream <br>
  Write an empty document if the resultSet is null.</div>
-</td>
-</tr>
-<tr class="altColor">
-<th class="colFirst" scope="row"><a href="WrsPagination.html" title="class in de.businesscode.bcdui.wrs.load">WrsPagination</a></th>
-<td class="colLast">
-<div class="block">Holds information about server-side pagination of a request
- Initially taken from WrsSqlGenerator.</div>
 </td>
 </tr>
 </tbody>

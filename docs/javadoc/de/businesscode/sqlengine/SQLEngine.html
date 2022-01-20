@@ -13,8 +13,7 @@
 <!--[if IE]>
 <script type="text/javascript" src="../../../jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="../../../jquery/jquery-3.3.1.js"></script>
-<script type="text/javascript" src="../../../jquery/jquery-migrate-3.0.1.js"></script>
+<script type="text/javascript" src="../../../jquery/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="../../../jquery/jquery-ui.js"></script>
 </head>
 <body>
@@ -198,14 +197,14 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code>java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRequestedBindingSetName()">getRequestedBindingSetName</a></span>()</code></th>
+<td class="colFirst"><code>java.util.Set&lt;java.util.Map.Entry&lt;java.lang.String,&#8203;java.lang.String&gt;&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRequestedBindingSetNames()">getRequestedBindingSetNames</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Getter for the BindingSet requested for this sql</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
-<td class="colFirst"><code>java.util.Collection&lt;<a href="../bcdui/binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&gt;</code></td>
+<td class="colFirst"><code>java.util.Set&lt;<a href="../bcdui/binding/StandardBindingSet.html" title="class in de.businesscode.bcdui.binding">StandardBindingSet</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getResultingBindingSets()">getResultingBindingSets</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Getter for BindingSets which where chosen base on the BindingSet name and BindingItems</div>
@@ -336,17 +335,17 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getResultingBindingSets</h4>
-<pre class="methodSignature">public&nbsp;java.util.Collection&lt;<a href="../bcdui/binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&gt;&nbsp;getResultingBindingSets()</pre>
+<pre class="methodSignature">public&nbsp;java.util.Set&lt;<a href="../bcdui/binding/StandardBindingSet.html" title="class in de.businesscode.bcdui.binding">StandardBindingSet</a>&gt;&nbsp;getResultingBindingSets()</pre>
 <div class="block">Getter for BindingSets which where chosen base on the BindingSet name and BindingItems</div>
 </li>
 </ul>
-<a id="getRequestedBindingSetName()">
+<a id="getRequestedBindingSetNames()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>getRequestedBindingSetName</h4>
-<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getRequestedBindingSetName()</pre>
+<h4>getRequestedBindingSetNames</h4>
+<pre class="methodSignature">public&nbsp;java.util.Set&lt;java.util.Map.Entry&lt;java.lang.String,&#8203;java.lang.String&gt;&gt;&nbsp;getRequestedBindingSetNames()</pre>
 <div class="block">Getter for the BindingSet requested for this sql</div>
 </li>
 </ul>
