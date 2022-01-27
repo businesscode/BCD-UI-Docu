@@ -33,10 +33,12 @@ include::../web/blankPage.html[]
 <4> This we call 'SideBar', this is where we will later place report filters
 <5> Here we will place the data output and show the guiStatus' content
 <6> Here we will display our output
-<7> Any of your own JavaScript code goes here or in an extra js file
+<7> Any of your own JavaScript code goes into an extra js file
 // end::blankBcduiPage[]
 
 Now we already have an empty but fully styled page, start Tomcat and open it in a browser. If _MyApp_ is you application's name, open _http://localhost:8080/MayApp/simpleReq/index.html_
+
+TIP: Load you JavaScript content at the end of the page to make sure all elements you will addressed are there when you code runs. Otherwise, use link:https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.html#.ready[bcdui.core.ready()^] to delay you code.
 
 image::images/simpleReq_blankPage.png[]
 
@@ -56,11 +58,16 @@ include::../web/sampleWrs.xml[]
 Above XML is a sample of a BCD-UI's _WebRowSet_ format Wrs, which is used to transfer data. +
 While you can use any data format with BCD-UI including other XML formats or JSON, using WebRowSet format provides many benefits and functionality as this format is known to BCD-UI.
 
-Now add the following script block to end of the page:
+Now add the following script block to `blankPage.js`:
 
 .Load static data
 [source,javascript]
+import {bcdui} from "./bcdui/dev/bcduiApiStubs.js";
 var staticData = new bcdui.core.SimpleModel("staticData.xml");
+
+TIP: The import makes BCD-UI JavaScript API stubs available to the editor. It will be removed by during runtime by BCD-UI automatically and is only used during editing. They can be downloaded here from link:https://businesscode.github.io/BCD-UI-Docu/resources/bcduiApiStubs.js[bcduiApiStubs.js^]
+
+image::images/ide_javascriptAutocomplete.png[]
 
 A link:../jsdoc/bcdui.core.SimpleModel.html[bcdui.core.SimpleModel^] is used to load data from the server.
 Like all models it is loaded lazy, so it is not loaded to the client until a displaying component requests it. +

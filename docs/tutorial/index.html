@@ -1239,8 +1239,6 @@ If you don&#8217;t know how to make a vanilla application running with your IDE 
 72
 73
 74
-75
-76
 </pre></td>
   <td class="code"><pre><span class="doctype">&lt;!DOCTYPE HTML&gt;</span>
 <span class="tag">&lt;html&gt;</span>
@@ -1301,7 +1299,7 @@ If you don&#8217;t know how to make a vanilla application running with your IDE 
 
         <span class="comment">&lt;!-- Footer --&gt;</span>
         <span class="tag">&lt;footer&gt;</span>
-          <span class="tag">&lt;p&gt;</span><span class="entity">&amp;copy;</span> 2021 BusinessCode GmbH<span class="tag">&lt;/p&gt;</span>
+          <span class="tag">&lt;p&gt;</span><span class="entity">&amp;copy;</span> 2022 BusinessCode GmbH<span class="tag">&lt;/p&gt;</span>
           <span class="tag">&lt;nav&gt;</span>
             <span class="tag">&lt;ul&gt;</span>
               <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Imprint<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
@@ -1312,10 +1310,8 @@ If you don&#8217;t know how to make a vanilla application running with your IDE 
       <span class="tag">&lt;/div&gt;</span>
     <span class="tag">&lt;/div&gt;</span>
   <span class="tag">&lt;/div&gt;</span>
-
-  <span class="comment">&lt;!-- Put all your JavaScript here --&gt;</span> <i class="conum" data-value="7"></i><b>(7)</b>
-  <span class="tag">&lt;script&gt;</span>
-<span class="inline">  </span><span class="tag">&lt;/script&gt;</span>
+  <span class="comment">&lt;!-- Your JavaScript goes here. --&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/javascript</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">./blankPage.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span> <i class="conum" data-value="7"></i><b>(7)</b>
 <span class="tag">&lt;/body&gt;</span>
 <span class="tag">&lt;/html&gt;</span></pre></td>
 </tr></table></code></pre>
@@ -1349,12 +1345,24 @@ If you don&#8217;t know how to make a vanilla application running with your IDE 
 </tr>
 <tr>
 <td><i class="conum" data-value="7"></i><b>7</b></td>
-<td>Any of your own JavaScript code goes here or in an extra js file</td>
+<td>Any of your own JavaScript code goes into an extra js file</td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
 <p>Now we already have an empty but fully styled page, start Tomcat and open it in a browser. If <em>MyApp</em> is you application&#8217;s name, open <em><a href="http://localhost:8080/MayApp/simpleReq/index.html" class="bare">http://localhost:8080/MayApp/simpleReq/index.html</a></em></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Load you JavaScript content at the end of the page to make sure all elements you will addressed are there when you code runs. Otherwise, use <a href="https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.html#.ready" target="_blank" rel="noopener">bcdui.core.ready()</a> to delay you code.
+</td>
+</tr>
+</table>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1412,12 +1420,30 @@ The part that styles widgets and components is mandatory to style these artifact
 While you can use any data format with BCD-UI including other XML formats or JSON, using WebRowSet format provides many benefits and functionality as this format is known to BCD-UI.</p>
 </div>
 <div class="paragraph">
-<p>Now add the following script block to end of the page:</p>
+<p>Now add the following script block to <code>blankPage.js</code>:</p>
 </div>
 <div class="listingblock">
 <div class="title">Load static data</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> staticData = <span class="keyword">new</span> bcdui.core.SimpleModel(<span class="string"><span class="delimiter">&quot;</span><span class="content">staticData.xml</span><span class="delimiter">&quot;</span></span>);</code></pre>
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">import</span> {bcdui} from <span class="string"><span class="delimiter">&quot;</span><span class="content">./bcdui/dev/bcduiApiStubs.js</span><span class="delimiter">&quot;</span></span>;
+<span class="keyword">var</span> staticData = <span class="keyword">new</span> bcdui.core.SimpleModel(<span class="string"><span class="delimiter">&quot;</span><span class="content">staticData.xml</span><span class="delimiter">&quot;</span></span>);</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The import makes BCD-UI JavaScript API stubs available to the editor. It will be removed by during runtime by BCD-UI automatically and is only used during editing. They can be downloaded here from <a href="https://businesscode.github.io/BCD-UI-Docu/resources/bcduiApiStubs.js" target="_blank" rel="noopener">bcduiApiStubs.js</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ide_javascriptAutocomplete.png" alt="ide javascriptAutocomplete">
 </div>
 </div>
 <div class="paragraph">
@@ -2096,7 +2122,7 @@ create a file <code>WEB-INF/bcdui/bindings/myReportData1.xml</code> and adjust t
 
         <span class="comment">&lt;!-- Footer --&gt;</span>
         <span class="tag">&lt;footer&gt;</span>
-          <span class="tag">&lt;p&gt;</span><span class="entity">&amp;copy;</span> 2021 BusinessCode GmbH<span class="tag">&lt;/p&gt;</span>
+          <span class="tag">&lt;p&gt;</span><span class="entity">&amp;copy;</span> 2022 BusinessCode GmbH<span class="tag">&lt;/p&gt;</span>
           <span class="tag">&lt;nav&gt;</span>
             <span class="tag">&lt;ul&gt;</span>
               <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Imprint<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
@@ -2107,10 +2133,8 @@ create a file <code>WEB-INF/bcdui/bindings/myReportData1.xml</code> and adjust t
       <span class="tag">&lt;/div&gt;</span>
     <span class="tag">&lt;/div&gt;</span>
   <span class="tag">&lt;/div&gt;</span>
-
-  <span class="comment">&lt;!-- Put all your JavaScript here --&gt;</span> <i class="conum" data-value="7"></i><b>(7)</b>
-  <span class="tag">&lt;script&gt;</span>
-<span class="inline">  </span><span class="tag">&lt;/script&gt;</span>
+  <span class="comment">&lt;!-- Your JavaScript goes here. --&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/javascript</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">./blankPage.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span> <i class="conum" data-value="7"></i><b>(7)</b>
 <span class="tag">&lt;/body&gt;</span>
 <span class="tag">&lt;/html&gt;</span></code></pre>
 </div>
@@ -2119,23 +2143,31 @@ create a file <code>WEB-INF/bcdui/bindings/myReportData1.xml</code> and adjust t
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Load bcdui/bcdui.js, that&#8217;s all.</td>
+<td>Loads BCD-UI library including theme</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>BCD-UI theme requires some HTML elements for the layout</td>
+<td>Root of page structure of BCD-UI theme</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>This area, <em>sidebar</em>, will hold our choosers, it is convenient for styling but not necessary for function</td>
+<td>Menu will go here</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>This is the main page part of the theme</td>
+<td>This we call 'SideBar', this is where we will later place report filters</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="5"></i><b>5</b></td>
-<td>Place any JavaScript code here</td>
+<td>Here we will place the data output and show the guiStatus' content</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Here we will display our output</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>Any of your own JavaScript code goes into an extra js file</td>
 </tr>
 </table>
 </div>
@@ -4310,7 +4342,7 @@ This is a blank empty page with all major parts:</p>
 
         <span class="comment">&lt;!-- Footer --&gt;</span>
         <span class="tag">&lt;footer&gt;</span>
-          <span class="tag">&lt;p&gt;</span><span class="entity">&amp;copy;</span> 2021 BusinessCode GmbH<span class="tag">&lt;/p&gt;</span>
+          <span class="tag">&lt;p&gt;</span><span class="entity">&amp;copy;</span> 2022 BusinessCode GmbH<span class="tag">&lt;/p&gt;</span>
           <span class="tag">&lt;nav&gt;</span>
             <span class="tag">&lt;ul&gt;</span>
               <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Imprint<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
@@ -4321,10 +4353,8 @@ This is a blank empty page with all major parts:</p>
       <span class="tag">&lt;/div&gt;</span>
     <span class="tag">&lt;/div&gt;</span>
   <span class="tag">&lt;/div&gt;</span>
-
-  <span class="comment">&lt;!-- Put all your JavaScript here --&gt;</span> <i class="conum" data-value="7"></i><b>(7)</b>
-  <span class="tag">&lt;script&gt;</span>
-<span class="inline">  </span><span class="tag">&lt;/script&gt;</span>
+  <span class="comment">&lt;!-- Your JavaScript goes here. --&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/javascript</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">./blankPage.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span> <i class="conum" data-value="7"></i><b>(7)</b>
 <span class="tag">&lt;/body&gt;</span>
 <span class="tag">&lt;/html&gt;</span></code></pre>
 </div>
@@ -7617,7 +7647,10 @@ All configuration files for BCD-UI are located at WEB-INF/bcdui. Create an empty
 <li>
 <p>Add logging configuration<br>
 Copy <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/log4j2_debug_.xml" target="_blank" rel="noopener">BCD-UI/Server/configFiles/log4j2_debug_.xml</a>
-to your project&#8217;s src/main/resources folder and rename it to log4j2.xml.</p>
+to your project&#8217;s <code>src/main/resources</code> folder and rename it to log4j2.xml.</p>
+</li>
+<li>
+<p>Copy <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/subjectSettings.xml" target="_blank" rel="noopener">BCD-UI/Server/configFiles/subjectSettings.xml</a> to <code>WEB-INF/bcdui</code></p>
 </li>
 <li>
 <p>Add entries for the database<br>
@@ -7630,6 +7663,18 @@ The jndi entry</p>
 </div>
 <div class="paragraph">
 <p>is important as it denotes the connection used of none is explicitly given in a BindingSet.</p>
+</div>
+</li>
+<li>
+<p>Copy <a href="https://businesscode.github.io/BCD-UI-Docu/resources/bcduiApiStubs.js" class="bare" target="_blank" rel="noopener">https://businesscode.github.io/BCD-UI-Docu/resources/bcduiApiStubs.js</a> into <code>WebContent/bcdui/dev/</code>.<br>
+This file can be used for autocompletion of BCD-UI JavaScript classes in the editor by using</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">import</span> {bcdui} from <span class="string"><span class="delimiter">&quot;</span><span class="content">../bcdui/dev/bcduiApiStubs.js</span><span class="delimiter">&quot;</span></span>;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>During runtime when, served by the server, this <code>import</code> is automatically removed from the JavaScript files and the real API and the implementation is read from bcdui-core.jar.</p>
 </div>
 </li>
 </ol>
@@ -7996,7 +8041,7 @@ Example:</p>
 <div class="sect2">
 <h3 id="_compatibility_of_bcd_ui">26.1. Compatibility of BCD-UI</h3>
 <div class="paragraph">
-<p>As of 2021, BCD-UI works without modifications within the following environments</p>
+<p>As of 2022, BCD-UI works without modifications within the following environments</p>
 </div>
 <div class="ulist">
 <div class="title">Server</div>

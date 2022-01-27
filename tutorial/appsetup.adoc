@@ -39,7 +39,9 @@ All configuration files for BCD-UI are located at WEB-INF/bcdui. Create an empty
 
 . Add logging configuration +
 Copy link:https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/log4j2_debug_.xml[BCD-UI/Server/configFiles/log4j2_debug_.xml^]
-to your project's src/main/resources folder and rename it to log4j2.xml.
+to your project's `src/main/resources` folder and rename it to log4j2.xml.
+
+. Copy link:https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/subjectSettings.xml[BCD-UI/Server/configFiles/subjectSettings.xml^] to `WEB-INF/bcdui`
 
 . Add entries for the database +
 See link:https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/tomcat/context.xml[context.xml^] for entries for several databases for Tomcat. +
@@ -50,6 +52,15 @@ The jndi entry
  <Environment name="bcdui/defaultConnection" type="java.lang.String" value="jdbc/connectionXX"/>
 ----
 is important as it denotes the connection used of none is explicitly given in a BindingSet.
+
+. Copy link:https://businesscode.github.io/BCD-UI-Docu/resources/bcduiApiStubs.js[window=_blank] into `WebContent/bcdui/dev/`. +
+This file can be used for autocompletion of BCD-UI JavaScript classes in the editor by using
++
+[source,javascript]
+----
+import {bcdui} from "../bcdui/dev/bcduiApiStubs.js";
+----
+During runtime when, served by the server, this `import` is automatically removed from the JavaScript files and the real API and the implementation is read from bcdui-core.jar.
 
 ////
 TODO

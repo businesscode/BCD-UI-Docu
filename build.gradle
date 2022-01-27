@@ -96,6 +96,9 @@ task updateDocs( type: Copy ) {
   from( '../BCD-UI/Docu/xsd' ) {
     into 'xsd'
   }
+  from( '../BCD-UI/Docu/build/jsApiStubs/bcduiApiStubs.js' ) {
+    into 'resources'
+  }
 }
 
 
