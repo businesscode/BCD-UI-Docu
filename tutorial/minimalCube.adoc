@@ -53,11 +53,13 @@ Add a page `WebContent/minimalCube/index.html` to your application.
 ----
 include::../web/blankPage.html[]
 ----
-<1> Load bcdui/bcdui.js, that's all.
-<2> BCD-UI theme requires some HTML elements for the layout
-<3> This area, _sidebar_, will hold our choosers, it is convenient for styling but not necessary for function
-<4> This is the main page part of the theme
-<5> Place any JavaScript code here
+<1> Loads BCD-UI library including theme
+<2> Root of page structure of BCD-UI theme
+<3> Menu will go here
+<4> This we call 'SideBar', this is where we will later place report filters
+<5> Here we will place the data output and show the guiStatus' content
+<6> Here we will display our output
+<7> Any of your own JavaScript code goes into an extra js file
 
 You should now be able to see a styled page if you navigate to it with the browser.
 Otherwise, you probably missed adding bcdui.jar and the web.xml entries, <<DocGettingStarted,application setup>>.

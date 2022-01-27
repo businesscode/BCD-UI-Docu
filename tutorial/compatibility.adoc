@@ -3,7 +3,7 @@
 
 === Compatibility of BCD-UI
 
-As of 2021, BCD-UI works without modifications within the following environments
+As of 2022, BCD-UI works without modifications within the following environments
 
 .Server
 * JDK 11+
