@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Namespace: logging</title>
+    <title>Namespace: wrs</title>
     
     
     
@@ -6846,7 +6846,7 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="bcdui.logging.html">Namespace: logging</h1>
+        <h1 class="page-title" data-filename="bcdui.wrs.html">Namespace: wrs</h1>
         
 
 
@@ -6857,7 +6857,7 @@
     <h2>
         <span class="ancestors"><a href="bcdui.html">bcdui</a>.</span>
     
-    logging
+    wrs
     </h2>
     
 </header>  
@@ -6868,6 +6868,8 @@
     
     
         
+            <div class="description">Package for functionality around Wrs format</div>
+        
         
         
 <dl class="details">
@@ -6908,295 +6910,19 @@
     
     
     
-    
-    
-    
-    
-        <h3 class="subsection-title">Methods</h3>
+        <h3 class="subsection-title">Namespaces</h3>
         
         <dl>
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id=".logPage">
-            
-            <span class="type-signature static">static</span>bcdui.logging.logPage<span class="signature">(args)</span>
-        </h4>
-    
+            <dt><a href="namespaces.html#bcdui.wrs.jsUtil"><a href="bcdui.wrs.jsUtil.html">jsUtil</a></a></dt>
+            <dd></dd>
         
-        <div class="tag-source">
-            log/logPackage.js, line 49
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        Useful for performance testing.
-<p/>
-Sends a log message with the duration since start of page load to the server perf-log table, once a certain set of DataProviders or all current Renderers are ready
-Use this for example to trace the duration from page loading start to the end of load of a major or all Renderers to be shown to the user.
-<p/>
-Well-known bindingSet bcd_log_pageperformance must be available for using this.
-    </div>
-    
-
-    
-    
-    
-    
-    
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>args</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                The parameter map containing
-                
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		<th>Default</th>
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>idRef</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;string></span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                    
-                        
-                    
-                
-                Id(s) of DataProvider(s) to wait for, or wait for all renderers registered at the moment of <a href="bcdui.core.html#.ready">bcdui.core.ready</a></td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>logName</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                    idRef
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                If provided, this is the name for which the log is written. If not given, idRef is used</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>addInfo</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                Optionally any text that should be also logged</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>jsCallback</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                A callback function can be supplied which is triggered once the log has captured data.
-The callback is called with a parameter object with a duration property, indicating the logged duration</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-            </td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-</dd>
-
+            <dt><a href="namespaces.html#bcdui.wrs.wrsUtil"><a href="bcdui.wrs.wrsUtil.html">wrsUtil</a></a></dt>
+            <dd></dd>
         </dl>
+    
+    
+    
+    
     
     
     

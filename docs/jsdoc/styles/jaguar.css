@@ -118,6 +118,14 @@ li {
 .navigation li.item .itemMembers {
   display: none;
 }
+
+.navigation .current-date {
+  font-size: 0.66em;
+  text-decoration: none;
+  color: #aaa;
+  float: right;
+}
+
 .main {
   padding: 20px 20px;
   margin-left: 350px;

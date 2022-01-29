@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Namespace: logging</title>
+    <title>Namespace: validation</title>
     
     
     
@@ -6846,7 +6846,7 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="bcdui.logging.html">Namespace: logging</h1>
+        <h1 class="page-title" data-filename="bcdui.widgetNg.validation.html">Namespace: validation</h1>
         
 
 
@@ -6855,9 +6855,9 @@
     
 <header>
     <h2>
-        <span class="ancestors"><a href="bcdui.html">bcdui</a>.</span>
+        <span class="ancestors"><a href="bcdui.html">bcdui</a><a href="bcdui.widgetNg.html">.widgetNg</a>.</span>
     
-    logging
+    validation
     </h2>
     
 </header>  
@@ -6867,6 +6867,18 @@
     
     
     
+        
+            <div class="description">validators package, common API all validators share:
+
+validator functions are simple functions taking argument object as parameter and returning
+either NULL (for successful validation) or a validationError object in case of a failed validation.
+
+the validationErrorObject properties:
+
+validationMessage{i18nToken}
+
+validation function MUST not run asynchronously! it is expected to block and return once validation is done.
+the argument object is arbitrary and defined by particular validation function.</div>
         
         
         
@@ -6908,6 +6920,13 @@
     
     
     
+        <h3 class="subsection-title">Namespaces</h3>
+        
+        <dl>
+            <dt><a href="namespaces.html#bcdui.widgetNg.validation.validators"><a href="bcdui.widgetNg.validation.validators.html">validators</a></a></dt>
+            <dd></dd>
+        </dl>
+    
     
     
     
@@ -6918,14 +6937,14 @@
             
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id=".logPage">
+        <h4 class="name" id=".addValidityMessage">
             
-            <span class="type-signature static">static</span>bcdui.logging.logPage<span class="signature">(args)</span>
+            <span class="type-signature static">static</span>bcdui.widgetNg.validation.addValidityMessage<span class="signature">(validationResult, message)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{object}</span>
         </h4>
     
         
         <div class="tag-source">
-            log/logPackage.js, line 49
+            widgetNg/validators.js, line 415
         </div>
         
     </div>
@@ -6936,12 +6955,8 @@
     
     
     <div class="description">
-        Useful for performance testing.
-<p/>
-Sends a log message with the duration since start of page load to the server perf-log table, once a certain set of DataProviders or all current Renderers are ready
-Use this for example to trace the duration from page loading start to the end of load of a major or all Renderers to be shown to the user.
-<p/>
-Well-known bindingSet bcd_log_pageperformance must be available for using this.
+        appends validity message to validationResult object and returns validationResult,
+creates a new one if none is provided. message must not be null.
     </div>
     
 
@@ -6972,13 +6987,13 @@ Well-known bindingSet bcd_log_pageperformance must be available for using this.
 	
         <tr>
             
-                <td class="name"><code>args</code></td>
+                <td class="name"><code>validationResult</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type">object</span>
 
 
             
@@ -6988,8 +7003,386 @@ Well-known bindingSet bcd_log_pageperformance must be available for using this.
             
             <td class="description last">
                 
-                The parameter map containing
+                The validationResult object to extend or null to create a new one, this object is modified.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>message</code></td>
+            
+            
+            <td class="type">
+            
                 
+<span class="param-type">string</span>
+|
+
+<span class="param-type">Array.&lt;string></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                Message to append to the validationResult.validationMessage</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        object
+                        
+                    
+            </td>
+            <td class="description last">validationResult object with validationMessage array with appended message(s)</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".hasValidStatus">
+            
+            <span class="type-signature static">static</span>bcdui.widgetNg.validation.hasValidStatus<span class="signature">()</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            widgetNg/validators.js, line 402
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        NO REVALIDATION, just retrieval of current validity state, consideres
+native (constraint validation api) state and bcdui-internal ( existence of 'bcdInvalid' class).
+CSS case has to be considered because browsers native validation implementaion may
+switch validity state so that we cannot detect the change without fully revalidating
+the field.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+
+true if valid, false otherwise
+
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".indicateFieldValidity">
+            
+            <span class="type-signature static">static</span>bcdui.widgetNg.validation.indicateFieldValidity<span class="signature">()</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            widgetNg/validators.js, line 375
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        checks the field for validity via html5 constraint validation api and indicate
+by adding/removing particular CSS classes. The classes are always added, even in case
+native validation is supported (via :invalid pseudo class)
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+
+TRUE if validation message has been placed, so field is not valid, false otherwise.
+
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".setCustomValidity">
+            
+            <span class="type-signature static">static</span>bcdui.widgetNg.validation.setCustomValidity<span class="signature">()</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            widgetNg/validators.js, line 349
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        sets custom validity, use html5 constraint validation API if available,
+otherwise polyfill, ensures that following properties are set properly:
+
+ (Boolean) validity.valid
+ (Boolean) validity.customError
+ (String)  validationMessage (is set to "INVALID") in case of non-validity
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".validateField">
+            
+            <span class="type-signature static">static</span>bcdui.widgetNg.validation.validateField<span class="signature">(htmlElementId, customValidationMessages, <span class="optional">skipNativeValidation</span>)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            widgetNg/validators.js, line 263
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        this function carries out validation via native html5 constraint validation api (if available and not suppressed)
+and optionally marks the field as invalid in case customValidationMessages are provided (i.e.
+already has been validation with custom validators), additionally it displays the validationMessages
+to the user. Also resets the field to valid if neither customValidationMessages has been provided nor
+native validation has returned negative result.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
 
 <table class="params">
     <thead>
@@ -7013,7 +7406,42 @@ Well-known bindingSet bcd_log_pageperformance must be available for using this.
 	
         <tr>
             
-                <td class="name"><code>idRef</code></td>
+                <td class="name"><code>htmlElementId</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">element</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                validatable element</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>customValidationMessages</code></td>
             
             
             <td class="type">
@@ -7038,20 +7466,20 @@ Well-known bindingSet bcd_log_pageperformance must be available for using this.
                         
                     
                 
-                Id(s) of DataProvider(s) to wait for, or wait for all renderers registered at the moment of <a href="bcdui.core.html#.ready">bcdui.core.ready</a></td>
+                An array of custom validation messages to display for this element (optional)</td>
         </tr>
 	
 	
 	
         <tr>
             
-                <td class="name"><code>logName</code></td>
+                <td class="name"><code>skipNativeValidation</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">boolean</span>
 
 
             
@@ -7060,7 +7488,7 @@ Well-known bindingSet bcd_log_pageperformance must be available for using this.
             
                 <td class="default">
                 
-                    idRef
+                    false
                 
                 </td>
             
@@ -7074,82 +7502,7 @@ Well-known bindingSet bcd_log_pageperformance must be available for using this.
                         
                     
                 
-                If provided, this is the name for which the log is written. If not given, idRef is used</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>addInfo</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                Optionally any text that should be also logged</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>jsCallback</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                A callback function can be supplied which is triggered once the log has captured data.
-The callback is called with a parameter object with a duration property, indicating the logged duration</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-            </td>
+                If you want to skip implicit, native html5 validation on the element.</td>
         </tr>
 	
 	
@@ -7191,6 +7544,15 @@ The callback is called with a parameter object with a duration property, indicat
     
     
     
+    
+    <h5>Returns:</h5>
+    
+
+
+
+TRUE if field has been validated and has no errors, false otherwise
+
+
     
     
     
