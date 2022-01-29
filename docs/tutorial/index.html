@@ -886,6 +886,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel3">
 <li><a href="#_tomcat_compress_resources">Tomcat compress resources</a></li>
 <li><a href="#_xml_schema_xsd_catalog">XML schema xsd catalog</a></li>
+<li><a href="#_javascript_api_stubs">JavaScript Api stubs</a></li>
 </ul>
 </li>
 </ul>
@@ -6215,7 +6216,22 @@ Authentication is handled by OAuth, permissions are managed by application throu
 <div class="listingblock">
 <div class="title">oAuth sample with Azure</div>
 <div class="content">
-<pre class="CodeRay highlight"><code>Unresolved directive in security.adoc - include::../web/WEB-INF/shiro.xml[tag=oAuth,indent=0]</code></pre>
+<pre class="CodeRay highlight"><code>#### OAuth start (named option 2.2 above)
+## Use this to OAuth authenticate against Azure / Google. Make sure to enable /oauth in [url] section.
+## Some information is provided by OAuth provider when setting up your application there
+## Azure
+# oauthcAzure                             = de.businesscode.bcdui.subjectsettings.oauth2.OAuthAuthenticatingFilter
+# oauthcAzure.optionalProviderId          = azure
+# oauthcAzure.authorizeEndpoint           =     # provided by Azure
+# oauthcAzure.authScope                   = openid https://graph.microsoft.com/user.read
+# oauthcAzure.clientId                    =     # provided by Azure
+# oauthcAzure.redirectUrl                 = http://myapp.com/oauth  # Adjust and tell this Azure
+# oauthcAzureRealm                        = de.businesscode.bcdui.subjectsettings.oauth2.OAuthRealm
+# oauthcAzureRealm.authenticator          = $oauthcAzure
+# oauthcAzureRealm.apiEndpoint            = https://graph.microsoft.com/v1.0/me/
+# oauthcAzureRealm.clientSecret           =     # provided by Azure
+# oauthcAzureRealm.tokenEndpoint          =     # provided by Azure
+# oauthcAzureRealm.principalPropertyName  = userPrincipalName</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -7557,6 +7573,63 @@ by linking to <a href="https://businesscode.github.io/BCD-UI-Docu/xsd/bcduiCatal
 <div class="imageblock">
 <div class="content">
 <img src="images/bootstrap_xmlSupport.png" alt="bootstrap xmlSupport">
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You refresh them with the "Reload Entries" feature in Eclipse. Keep in mind that online they always reflect the latest XML schemas, independent of the version of BCD-UI you are using.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_javascript_api_stubs">JavaScript Api stubs</h4>
+<div class="paragraph">
+<p>BCD-UI provides a file with its JavaScript API. Add this to your IDE, and you will have auto-complete while editing JavaScript. The file can be found here: <a href="https://businesscode.github.io/BCD-UI-Docu/resources/bcduiApiStubs.js" class="bare" target="_blank" rel="noopener">https://businesscode.github.io/BCD-UI-Docu/resources/bcduiApiStubs.js</a>.<br></p>
+</div>
+<div class="paragraph">
+<p>Use the standard ECMA 6 mechanism to make them known in a file.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">import</span> {bcdui} from <span class="string"><span class="delimiter">&quot;</span><span class="content">./bcdui/dev/bcduiApiStubs.js</span><span class="delimiter">&quot;</span></span>;</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/bootstrap_addJsCodeCompletion.png" alt="bootstrap addJsCodeCompletion">
+</div>
+</div>
+<div class="paragraph">
+<p>will bring you, code completion and help tooltips while hovering with your mouse:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/bootstrap_jsCompletion.png" alt="bootstrap jsCompletion">
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+The real usage of BCD-UI implementation is not done with <code>import</code>. This <code>import</code> of the stubs is removed by BCD-UI automatically when the JavaScript file is served to the client. Its only purpose is making the API available to the editor.<br>
+At runtime the implementation is served from bcd-ui-core.jar. As you will see, that is loaded with
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/javascript</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">../bcdui/bcdui.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span></code></pre>
 </div>
 </div>
 </div>

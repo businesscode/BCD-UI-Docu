@@ -41,21 +41,28 @@ will bring you:
 
 image::images/bootstrap_xmlSupport.png[]
 
-////
-
-TODO
+TIP: You refresh them with the "Reload Entries" feature in Eclipse. Keep in mind that online they always reflect the latest XML schemas, independent of the version of BCD-UI you are using.
 
 ==== JavaScript Api stubs
 
-BCD-UI provides JavaScript API. Add these to your IDE and you will have auto-complete while editing JavaScript.
-The JavaScript files can be obtained here: "ADD_LOCATION".
-For Eclipse the stubs can be added via menu:Preferences[JavaScript > Include Path> User Library].
-First add a new library 'BCD-UI' and then add the folder containing the stubs you downloaded. (Add Folder...)
+BCD-UI provides a file with its JavaScript API. Add this to your IDE, and you will have auto-complete while editing JavaScript. The file can be found here: link:https://businesscode.github.io/BCD-UI-Docu/resources/bcduiApiStubs.js[^]. +
+
+Use the standard ECMA 6 mechanism to make them known in a file.
+[source,javascript]
+import {bcdui} from "./bcdui/dev/bcduiApiStubs.js";
 
 image::images/bootstrap_addJsCodeCompletion.png[]
 will bring you, code completion and help tooltips while hovering with your mouse:
 
 image::images/bootstrap_jsCompletion.png[]
+
+IMPORTANT: The real usage of BCD-UI implementation is not done with `import`. This `import` of the stubs is removed by BCD-UI automatically when the JavaScript file is served to the client. Its only purpose is making the API available to the editor. +
+At runtime the implementation is served from bcd-ui-core.jar. As you will see, that is loaded with
+[source,javascript]
+<script type="text/javascript" src="../bcdui/bcdui.js"></script>
+
+
+////
 
 ==== HTML 5 Custom Elements
 

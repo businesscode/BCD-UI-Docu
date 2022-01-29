@@ -143,7 +143,7 @@ The shiro.ini link:https://github.com/businesscode/BCD-UI/blob/master/Server/con
 .oAuth sample with Azure
 [source]
 ----
-include::../web/WEB-INF/shiro.xml[tag=oAuth,indent=0]
+include::../web/WEB-INF/shiro.ini[tag=oAuth,indent=0]
 ----
 The mentioned template shiro.xml also describes oAuth with Google and how to combine multiple providers,
 
