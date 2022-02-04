@@ -1,0 +1,113 @@
+[[UserBeans]]
+== Subject Preferences
+
+Subject preferences are name/value pairs which can be set client sided.
+To activate the feature, you need the following:
+
+
+1) add the SubjectPreferencesRealm realm to your shiro.ini
+
+[main]
+realmSubjectPreferences = de.businesscode.bcdui.subjectsettings.SubjectPreferencesRealm
+securityManager.realms = .... $realmSubjectPreferences
+
+2) map SubjectPreferences servlet in web.xml
+[source,xml]
+  <servlet>
+    <servlet-name>bcdui4.SubjectPreferences</servlet-name>
+    <servlet-class>de.businesscode.bcdui.web.servlets.SubjectPreferences</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>bcdui4.SubjectPreferences</servlet-name>
+    <url-pattern>/SubjectPreferences/*</url-pattern>
+  </servlet-mapping>
+
+3) add a /bcdui/conf/subjectPreferences.xml configuration file
+[source,xml]
+<?xml version="1.0" encoding="UTF-8"?>
+<cnf:SessionBean xmlns:cnf="http://www.businesscode.de/schema/bcdui/config-1.0.0">
+  <cnf:Settings>
+    <cnf:Setting name="allowed_preference_name_1">
+      <cnf:SourceSetting name="referenced_user_permission"/>
+    </cnf:Setting>
+    <cnf:Setting name="name="allowed_preference_name_2" multi="true|false">
+      <cnf:Values>
+        <cnf:Value>allowed_value_1</cnf:Value>
+        <cnf:Value default="true|false">allowed_value_2</cnf:Value>
+      </cnf:Values>
+    </cnf:Setting>
+  </cnf:Settings>
+</cnf:SessionBean>
+
+==== Usage:
+
+To set/update a subject permission, you call the mapped SubjectPreferences servlet with name and value attributes:
+
+For example for a mapped servlet you would set "country" to "DE"
+"localhost:8080/YourProject/SubjectPreferences?value=DE&name=country"
+
+If your setting got a multi="true" setting, you can set multiple permission values by using comma separated values:
+"localhost:8080/YourProject/SubjectPreferences?value=DE,FR,ES&name=country"
+
+Each cnf:Setting node in your config describes one allowed attribute which you can set. To define the allowed values
+for that named permission, you can either give a list of static well known values (cnf:Values/cnf:Value) or you reference
+a user based permission via cnf:SourceSetting. You can not do self-referencing here. A setting may have an attribute "multi"
+which -when set to true- allows you to set multiple values. For this, the servlet call needs to separate the single values by comma.
+
+
+==== Default Values:
+
+If you haven't set any subject preference yet and want to access it, a default value is chosen and returned (if available).
+This is either the alphabetically first entry from the cnf:Values list or the one which is marked as default with the "default='true'" attribute.
+If you're referencing a user permission via cnf:SourceSetting, the default value is the alphabetically first entry of that user.
+Keep in mind, the user might not have that setting at all, so setting a default one will fail in that specific case and the value becomes
+blank.
+
+
+==== URL Usage:
+
+If your setting is prefixed with "bcdClient:", you can reuse it in an URL, like "http://localhost:8080/myApp/${bcdClient:pageId}/index.html".
+The expression is replaced with the value and forwarded. Of course multiple expressions are possible. A value of "*" will be replaced with an
+empty string, in case the url then holds "//" somewhere, this will be cleaned up to "/". Ensure that the url is excluded from caching, otherwise
+you'd have to hit F5 after switching the value and accessing the page.
+
+==== Client Visibility:
+
+In general, "bcdClient:" prefixed values are visible on client side by accessing "bcdui.config.clientRights".
+
+==== Read/Write security:
+
+Set subject preferences can be also used for server sided read/write protection (see SubjectSettings).
+For this, you can define a SubjectFilterType as you know it from subject settings.
+
+Example:
+
+[source,xml]
+  <SubjectFilterType name="bcdUserBean:country">
+    <Caption>country via bcdUserBean</Caption>
+    <BindingItems>
+      <C bRef="country"/>
+    </BindingItems>
+  </SubjectFilterType>
+
+And in a binding you can reference it the usual way then:
+
+[source,xml]
+  <SubjectSettings>
+   <Security><Operation permission="allAllowed" name="write"/></Security>
+    <SubjectFilters>
+      <SubjectFilter type="bcdUserBean:country"/>
+    </SubjectFilters>
+  </SubjectSettings>
+
+==== i18n Language switch:
+
+bcdui.i18n.switchLanguage function requires the upper mechanism (realm/web.xml/config) to be enabled
+and a <cnf:Setting name="bcd_i18n:lang"> needs to be defined in your config with sutiable allowed values.
+
+==== Setting a bean programmatically:
+
+[source,java]
+import de.businesscode.bcdui.web.servlets.SubjectPreferences;
+SubjectPreferences.setPermission("bcdLimit:country", "DE");

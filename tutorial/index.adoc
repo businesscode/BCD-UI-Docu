@@ -47,7 +47,7 @@ include::api.adoc[]
 
 include::security.adoc[]
 
-include::userBeans.adoc[]
+include::subjectPreferences.adoc[]
 
 include::caching.adoc[]
 
