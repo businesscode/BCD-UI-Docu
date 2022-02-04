@@ -89,13 +89,13 @@ loadScripts(document, 'script');</script>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li><a href="#nested.class.summary">Nested</a>&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -147,32 +147,30 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">StaticResourceServlet</span>
 extends javax.servlet.http.HttpServlet</pre>
-<div class="block">This class serves static resources like JS or HTML pages from the
- file system and the classpath. Therefore it extends the functionality
- of the default servlet which can only serve resources from the file
- system. This servlet will at first try to locate the requested resource
- on the file system and if it fails it will use the Class.getResource
- method to search the classpath. In the latter case the source path
- gets a prefix <b>/bcduiWebapp</b>. For example when the requested resource
- is "/web/sha1.js", the servlet will first try the file access and then
- try to get the resource "/bcduiWebapp/web/sha1.js" from the classpath.
- <br>
- To integrate it in the web.xml with bcdui you can use the following
- declarations:
+<div class="block">This class enables the use of the database-backed virtual file system and jar files as source for seemingly static resources.
+ Normal static files are located on the filesystem within the webapps root, put there when the server extracts the app.war file.
+ Static files are requested by /appContext/some/path/someFile.txt for example.
+ This class makes files under such an address available, which really come from the database or a jar (and classpath in general) within the app.war instead.
+ Main usage is the virtual file system and making BCD-UI static files like js and xslt available from bcd-ui-core.jar within app.war.
+ The search order is: First vfs, then file system (on server this is normal file from the war), then jar files.
+ Note: Since vfs caches the file list from the database (not the actual content), a lookup in vfs is no performance hit.
 
  <code>
   &lt;servlet&gt;
     &lt;servlet-name&gt;staticResourceServlet&lt;/servlet-name&gt;
     &lt;servlet-class&gt;de.businesscode.web.StaticResourceServlet&lt;/servlet-class&gt;
+    &lt;init-param&gt;
+      &lt;param-name&gt;vfsFileExtensions&lt;/param-name&gt; &lt;!-- Extensions that can be overwritten in vfs --&gt;
+      &lt;param-value&gt;xml txt vfsxml pdf png gif jpg jpeg svg doc docx xls xlsx csv zip&lt;/param-value&gt;
+    &lt;/init-param&gt;
   &lt;/servlet&gt;
-
-  &lt;servlet-mapping&gt;&lt;servlet-name&gt;staticResourceServlet&lt;/servlet-name&gt;&lt;url-pattern&gt;*.js&lt;/url-pattern&gt;&lt;/servlet-mapping&gt;
-  &lt;servlet-mapping&gt;&lt;servlet-name&gt;staticResourceServlet&lt;/servlet-name&gt;&lt;url-pattern&gt;*.css&lt;/url-pattern&gt;&lt;/servlet-mapping&gt;
-  &lt;servlet-mapping&gt;&lt;servlet-name&gt;staticResourceServlet&lt;/servlet-name&gt;&lt;url-pattern&gt;*.xslt&lt;/url-pattern&gt;&lt;/servlet-mapping&gt;
-  &lt;servlet-mapping&gt;&lt;servlet-name&gt;staticResourceServlet&lt;/servlet-name&gt;&lt;url-pattern&gt;*.xsl&lt;/url-pattern&gt;&lt;/servlet-mapping&gt;
-  &lt;servlet-mapping&gt;&lt;servlet-name&gt;staticResourceServlet&lt;/servlet-name&gt;&lt;url-pattern&gt;*.dtd&lt;/url-pattern&gt;&lt;/servlet-mapping&gt;
-  &lt;servlet-mapping&gt;&lt;servlet-name&gt;staticResourceServlet&lt;/servlet-name&gt;&lt;url-pattern&gt;*.gif&lt;/url-pattern&gt;&lt;/servlet-mapping&gt;
-  &lt;servlet-mapping&gt;&lt;servlet-name&gt;staticResourceServlet&lt;/servlet-name&gt;&lt;url-pattern&gt;*.jpg&lt;/url-pattern&gt;&lt;/servlet-mapping&gt;
+  &lt;!-- Add any URL for the virtual file system here --&gt;
+  &lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;bcdui4.StaticResourceServlet&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/bcdui/*&lt;/url-pattern&gt;
+    &lt;url-pattern&gt;/vfs/*&lt;/url-pattern&gt;
+    &lt;url-pattern&gt;*.vfsxml&lt;/url-pattern&gt;
+  &lt;/servlet-mapping&gt;
  </code></div>
 <dl>
 <dt><span class="seeLabel">See Also:</span></dt>
@@ -217,7 +215,7 @@ extends javax.servlet.http.HttpServlet</pre>
 <td class="colFirst"><code>static interface&nbsp;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="StaticResourceServlet.ResourceProvider.html" title="interface in de.businesscode.bcdui.web.servlets">StaticResourceServlet.ResourceProvider</a></span></code></th>
 <td class="colLast">
-<div class="block">provider interface to resolve a <code>IResource</code></div>
+<div class="block">provider interface to resolve a <a href="StaticResourceServlet.Resource.html" title="interface in de.businesscode.bcdui.web.servlets"><code>StaticResourceServlet.Resource</code></a></div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -225,31 +223,6 @@ extends javax.servlet.http.HttpServlet</pre>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="StaticResourceServlet.StaticResourceProvider.html" title="class in de.businesscode.bcdui.web.servlets">StaticResourceServlet.StaticResourceProvider</a></span></code></th>
 <td class="colLast">
 <div class="block">a static resource provider singleton</div>
-</td>
-</tr>
-</table>
-</li>
-</ul>
-</section>
-<!-- =========== FIELD SUMMARY =========== -->
-<section role="region">
-<ul class="blockList">
-<li class="blockList"><a id="field.summary">
-<!--   -->
-</a>
-<h3>Field Summary</h3>
-<table class="memberSummary">
-<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colSecond" scope="col">Field</th>
-<th class="colLast" scope="col">Description</th>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#classPathPrefix">classPathPrefix</a></span></code></th>
-<td class="colLast">
-<div class="block">All classpath resource lookups get this prefix.</div>
 </td>
 </tr>
 </table>
@@ -341,30 +314,6 @@ extends javax.servlet.http.HttpServlet</pre>
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
-<!-- ============ FIELD DETAIL =========== -->
-<section role="region">
-<ul class="blockList">
-<li class="blockList"><a id="field.detail">
-<!--   -->
-</a>
-<h3>Field Detail</h3>
-<a id="classPathPrefix">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>classPathPrefix</h4>
-<pre>public static final&nbsp;java.lang.String classPathPrefix</pre>
-<div class="block">All classpath resource lookups get this prefix.</div>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../../constant-values.html#de.businesscode.bcdui.web.servlets.StaticResourceServlet.classPathPrefix">Constant Field Values</a></dd>
-</dl>
-</li>
-</ul>
-</li>
-</ul>
-</section>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <section role="region">
 <ul class="blockList">
@@ -501,13 +450,13 @@ extends javax.servlet.http.HttpServlet</pre>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li><a href="#nested.class.summary">Nested</a>&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>

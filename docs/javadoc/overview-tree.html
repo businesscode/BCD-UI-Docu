@@ -271,12 +271,12 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <ul>
 <li class="circle">org.apache.shiro.realm.AuthorizingRealm (implements org.apache.shiro.authz.Authorizer, org.apache.shiro.util.Initializable, org.apache.shiro.authz.permission.PermissionResolverAware, org.apache.shiro.authz.permission.RolePermissionResolverAware)
 <ul>
-<li class="circle">de.businesscode.bcdui.subjectsettings.<a href="de/businesscode/bcdui/subjectsettings/DefaultSettingsRealm.html" title="class in de.businesscode.bcdui.subjectsettings"><span class="typeNameLink">DefaultSettingsRealm</span></a></li>
 <li class="circle">org.apache.shiro.realm.jdbc.JdbcRealm
 <ul>
 <li class="circle">de.businesscode.bcdui.subjectsettings.<a href="de/businesscode/bcdui/subjectsettings/JdbcRealm.html" title="class in de.businesscode.bcdui.subjectsettings"><span class="typeNameLink">JdbcRealm</span></a></li>
 </ul>
 </li>
+<li class="circle">de.businesscode.bcdui.subjectsettings.<a href="de/businesscode/bcdui/subjectsettings/SubjectPreferencesRealm.html" title="class in de.businesscode.bcdui.subjectsettings"><span class="typeNameLink">SubjectPreferencesRealm</span></a></li>
 </ul>
 </li>
 <li class="circle">de.businesscode.bcdui.subjectsettings.oauth2.<a href="de/businesscode/bcdui/subjectsettings/oauth2/OAuthRealm.html" title="class in de.businesscode.bcdui.subjectsettings.oauth2"><span class="typeNameLink">OAuthRealm</span></a></li>
@@ -344,8 +344,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="circle">de.businesscode.bcdui.web.i18n.<a href="de/businesscode/bcdui/web/i18n/I18nServlet.html" title="class in de.businesscode.bcdui.web.i18n"><span class="typeNameLink">I18nServlet</span></a></li>
 <li class="circle">de.businesscode.bcdui.menu.<a href="de/businesscode/bcdui/menu/MenuServlet.html" title="class in de.businesscode.bcdui.menu"><span class="typeNameLink">MenuServlet</span></a></li>
 <li class="circle">de.businesscode.bcdui.toolbox.<a href="de/businesscode/bcdui/toolbox/MirrorServlet.html" title="class in de.businesscode.bcdui.toolbox"><span class="typeNameLink">MirrorServlet</span></a></li>
-<li class="circle">de.businesscode.bcdui.web.servlets.<a href="de/businesscode/bcdui/web/servlets/SessionAttributesManager.html" title="class in de.businesscode.bcdui.web.servlets"><span class="typeNameLink">SessionAttributesManager</span></a></li>
 <li class="circle">de.businesscode.bcdui.web.servlets.<a href="de/businesscode/bcdui/web/servlets/StaticResourceServlet.html" title="class in de.businesscode.bcdui.web.servlets"><span class="typeNameLink">StaticResourceServlet</span></a></li>
+<li class="circle">de.businesscode.bcdui.web.servlets.<a href="de/businesscode/bcdui/web/servlets/SubjectPreferences.html" title="class in de.businesscode.bcdui.web.servlets"><span class="typeNameLink">SubjectPreferences</span></a></li>
 <li class="circle">de.businesscode.bcdui.toolbox.<a href="de/businesscode/bcdui/toolbox/TextToUrl.html" title="class in de.businesscode.bcdui.toolbox"><span class="typeNameLink">TextToUrl</span></a></li>
 <li class="circle">de.businesscode.bcdui.upload.data.<a href="de/businesscode/bcdui/upload/data/UploadServlet.html" title="class in de.businesscode.bcdui.upload.data"><span class="typeNameLink">UploadServlet</span></a></li>
 <li class="circle">de.businesscode.bcdui.vfs.web.<a href="de/businesscode/bcdui/vfs/web/VFSServlet.html" title="class in de.businesscode.bcdui.vfs.web"><span class="typeNameLink">VFSServlet</span></a></li>
@@ -513,7 +513,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="circle">de.businesscode.bcdui.subjectsettings.config.<a href="de/businesscode/bcdui/subjectsettings/config/SubjectSettingsConfig.SubjectFilterTypes.html" title="class in de.businesscode.bcdui.subjectsettings.config"><span class="typeNameLink">SubjectSettingsConfig.SubjectFilterTypes</span></a></li>
 <li class="circle">de.businesscode.bcdui.subjectsettings.config.<a href="de/businesscode/bcdui/subjectsettings/config/SubjectSettingsConfig.UserSettingsDefaults.html" title="class in de.businesscode.bcdui.subjectsettings.config"><span class="typeNameLink">SubjectSettingsConfig.UserSettingsDefaults</span></a></li>
 <li class="circle">de.businesscode.bcdui.subjectsettings.config.<a href="de/businesscode/bcdui/subjectsettings/config/SubjectSettingsConfig.UserSettingsDefaults.Default.html" title="class in de.businesscode.bcdui.subjectsettings.config"><span class="typeNameLink">SubjectSettingsConfig.UserSettingsDefaults.Default</span></a></li>
-<li class="circle">de.businesscode.bcdui.web.filters.<a href="de/businesscode/bcdui/web/filters/SubjectSettingsFilter.html" title="class in de.businesscode.bcdui.web.filters"><span class="typeNameLink">SubjectSettingsFilter</span></a> (implements javax.servlet.Filter)</li>
 <li class="circle">de.businesscode.bcdui.subjectsettings.config.<a href="de/businesscode/bcdui/subjectsettings/config/SubjectSettingsType.html" title="class in de.businesscode.bcdui.subjectsettings.config"><span class="typeNameLink">SubjectSettingsType</span></a></li>
 <li class="circle">de.businesscode.bcdui.subjectsettings.config.<a href="de/businesscode/bcdui/subjectsettings/config/SubjectSettingsType.Jdbc.html" title="class in de.businesscode.bcdui.subjectsettings.config"><span class="typeNameLink">SubjectSettingsType.Jdbc</span></a></li>
 <li class="circle">de.businesscode.bcdui.subjectsettings.config.<a href="de/businesscode/bcdui/subjectsettings/config/SubjectSettingsType.Jdbc.DataSource.html" title="class in de.businesscode.bcdui.subjectsettings.config"><span class="typeNameLink">SubjectSettingsType.Jdbc.DataSource</span></a></li>
@@ -612,7 +611,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </li>
 <li class="circle">de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/Wrq2Sql.html" title="class in de.businesscode.bcdui.wrs.load"><span class="typeNameLink">Wrq2Sql</span></a> (implements de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/ISqlGenerator.html" title="interface in de.businesscode.bcdui.wrs.load">ISqlGenerator</a>)</li>
 <li class="circle">de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqBindingItem.html" title="class in de.businesscode.bcdui.wrs.load"><span class="typeNameLink">WrqBindingItem</span></a> (implements de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrsBindingItem.html" title="interface in de.businesscode.bcdui.wrs.load">WrsBindingItem</a>)</li>
-<li class="circle">de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqBindingSetFromStandardBindingSet.html" title="class in de.businesscode.bcdui.wrs.load"><span class="typeNameLink">WrqBindingSetFromStandardBindingSet</span></a> (implements java.lang.reflect.InvocationHandler)</li>
+<li class="circle">de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqBindingSetRef.html" title="class in de.businesscode.bcdui.wrs.load"><span class="typeNameLink">WrqBindingSetRef</span></a> (implements java.lang.reflect.InvocationHandler)</li>
 <li class="circle">de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqBindingSetVirtual.html" title="class in de.businesscode.bcdui.wrs.load"><span class="typeNameLink">WrqBindingSetVirtual</span></a> (implements de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqBindingSet.html" title="interface in de.businesscode.bcdui.wrs.load">WrqBindingSet</a>)
 <ul>
 <li class="circle">de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqBindingSetFromDerivedTable.html" title="class in de.businesscode.bcdui.wrs.load"><span class="typeNameLink">WrqBindingSetFromDerivedTable</span></a></li>

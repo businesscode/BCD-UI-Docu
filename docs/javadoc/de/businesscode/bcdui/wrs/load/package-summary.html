@@ -125,7 +125,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </tr>
 <tr class="rowColor">
 <th class="colFirst" scope="row"><a href="WrqBindingSet.html" title="interface in de.businesscode.bcdui.wrs.load">WrqBindingSet</a></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">A BindingSet used during the execution of a Statement</div>
+</td>
 </tr>
 <tr class="altColor">
 <th class="colFirst" scope="row"><a href="WrsBindingItem.html" title="interface in de.businesscode.bcdui.wrs.load">WrsBindingItem</a></th>
@@ -226,19 +228,20 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </td>
 </tr>
 <tr class="altColor">
-<th class="colFirst" scope="row"><a href="WrqBindingSetFromStandardBindingSet.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingSetFromStandardBindingSet</a></th>
-<td class="colLast">
-<div class="block">Wrapper for a StandardBindingSet in the current query, mainly adds the sql table alias
- Implements WrqBindingSet</div>
-</td>
-</tr>
-<tr class="rowColor">
 <th class="colFirst" scope="row"><a href="WrqBindingSetFromTableReference.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingSetFromTableReference</a></th>
 <td class="colLast">
 <div class="block">Represents a virtual BindingSet resulting from the children of wrq:From, i.e. a table reference
  A table reference can be a plain table name or joined tables factors,
  i.e. table names, derived table expressions or references to CTE
  Mostly it deals with the handling of wrq:Join, but for consistency we also take care for cases without</div>
+</td>
+</tr>
+<tr class="rowColor">
+<th class="colFirst" scope="row"><a href="WrqBindingSetRef.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingSetRef</a></th>
+<td class="colLast">
+<div class="block">Wrapper for BindingSets that can be referenced more than one in a query, mainly adds the sql table alias for the current occurrence
+ This can be a StandardBindingSet and a CTE
+ Implements WrqBindingSet</div>
 </td>
 </tr>
 <tr class="altColor">

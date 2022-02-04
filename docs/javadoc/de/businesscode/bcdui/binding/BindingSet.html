@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6,"i9":6,"i10":6,"i11":6,"i12":6,"i13":6,"i14":6,"i15":6,"i16":6,"i17":6,"i18":6,"i19":6,"i20":6,"i21":6};
+var data = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6,"i9":6,"i10":6,"i11":6,"i12":6,"i13":6,"i14":6,"i15":6,"i16":6,"i17":6,"i18":6,"i19":6,"i20":6,"i21":6,"i22":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -283,37 +283,44 @@ extends java.lang.Cloneable, java.io.Serializable</pre>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i11" class="rowColor">
+<td class="colFirst"><code>java.util.Set&lt;<a href="StandardBindingSet.html" title="class in de.businesscode.bcdui.binding">StandardBindingSet</a>&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getResolvedBindingSets()">getResolvedBindingSets</a></span>()</code></th>
+<td class="colLast">
+<div class="block">All non-virtual BindingSets that were used at the end, BindingGroups are being resolved to the actually used BindingSets</div>
+</td>
+</tr>
+<tr id="i12" class="altColor">
 <td class="colFirst"><code><a href="../subjectsettings/config/Security.html" title="class in de.businesscode.bcdui.subjectsettings.config">Security</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSecurity()">getSecurity</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code><a href="../wrs/load/SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSQLStatementWithParams()">getSQLStatementWithParams</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Returns a table expression and if it is a complex one (subselect with where for example) it may come with variables to be bound as host variables</div>
 </td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i14" class="altColor">
 <td class="colFirst"><code><a href="subjectFilter/SubjectFilters.html" title="class in de.businesscode.bcdui.binding.subjectFilter">SubjectFilters</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSubjectFilters()">getSubjectFilters</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Gets the <a href="subjectFilter/SubjectFilters.html" title="class in de.businesscode.bcdui.binding.subjectFilter"><code>SubjectFilters</code></a> definition for this BindingSet which may be null.</div>
 </td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTableReference()">getTableReference</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Returns a table reference.</div>
 </td>
 </tr>
-<tr id="i15" class="rowColor">
+<tr id="i16" class="altColor">
 <td class="colFirst"><code><a href="write/WriteProcessing.html" title="class in de.businesscode.bcdui.binding.write">WriteProcessing</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getWriteProcessing()">getWriteProcessing</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i16" class="altColor">
+<tr id="i17" class="rowColor">
 <td class="colFirst"><code>java.util.List&lt;java.lang.Class&lt;? extends <a href="../wrs/load/modifier/Modifier.html" title="interface in de.businesscode.bcdui.wrs.load.modifier">Modifier</a>&gt;&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getWrqModifiers()">getWrqModifiers</a></span>()</code></th>
 <td class="colLast">
@@ -321,33 +328,33 @@ extends java.lang.Cloneable, java.io.Serializable</pre>
  This is completely transparent to the caller, the answer Wrs does show the original WrsRequest</div>
 </td>
 </tr>
-<tr id="i17" class="rowColor">
+<tr id="i18" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hasCustomItem()">hasCustomItem</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i18" class="altColor">
+<tr id="i19" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hasItem(java.lang.String)">hasItem</a></span>&#8203;(java.lang.String&nbsp;key)</code></th>
 <td class="colLast">
 <div class="block">tells if this binding-set contains an item</div>
 </td>
 </tr>
-<tr id="i19" class="rowColor">
+<tr id="i20" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hasKeyBindingItems()">hasKeyBindingItems</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Tests if the BindingSet hat key BindingItems.</div>
 </td>
 </tr>
-<tr id="i20" class="altColor">
+<tr id="i21" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hasSubjectFilters()">hasSubjectFilters</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Tells if the binding set has subject filters.</div>
 </td>
 </tr>
-<tr id="i21" class="rowColor">
+<tr id="i22" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isAllowSelectAllColumns()">isAllowSelectAllColumns</a></span>()</code></th>
 <td class="colLast">
@@ -705,12 +712,25 @@ extends java.lang.Cloneable, java.io.Serializable</pre>
 <a id="getWrqModifiers()">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>getWrqModifiers</h4>
 <pre class="methodSignature">java.util.List&lt;java.lang.Class&lt;? extends <a href="../wrs/load/modifier/Modifier.html" title="interface in de.businesscode.bcdui.wrs.load.modifier">Modifier</a>&gt;&gt;&nbsp;getWrqModifiers()</pre>
 <div class="block">A list of Wrq modifier classes to be applied on all requests for this BindingSet before generating the SQL
  This is completely transparent to the caller, the answer Wrs does show the original WrsRequest</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+</dl>
+</li>
+</ul>
+<a id="getResolvedBindingSets()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getResolvedBindingSets</h4>
+<pre class="methodSignature">java.util.Set&lt;<a href="StandardBindingSet.html" title="class in de.businesscode.bcdui.binding">StandardBindingSet</a>&gt;&nbsp;getResolvedBindingSets()</pre>
+<div class="block">All non-virtual BindingSets that were used at the end, BindingGroups are being resolved to the actually used BindingSets</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 </dl>

@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":6,"i1":6,"i2":6};
+var data = {"i0":6,"i1":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -133,6 +133,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public interface <span class="typeNameLabel">WrqBindingSet</span>
 extends <a href="../../binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a></pre>
+<div class="block">A BindingSet used during the execution of a Statement</div>
 </li>
 </ul>
 </div>
@@ -188,21 +189,18 @@ extends <a href="../../binding/BindingSet.html" title="interface in de.businessc
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>java.util.Set&lt;<a href="../../binding/StandardBindingSet.html" title="class in de.businesscode.bcdui.binding">StandardBindingSet</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getResolvedBindingSets()">getResolvedBindingSets</a></span>()</code></th>
+<td class="colFirst"><code>java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSqlAlias()">getSqlAlias</a></span>()</code></th>
 <td class="colLast">
-<div class="block">All non-virtual BindingSets that were used at the end, BindingGroups are being resolved to the actually used BindingSets</div>
+<div class="block">SQL alias of this BindingSet during this query</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSqlAlias()">getSqlAlias</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i2" class="altColor">
 <td class="colFirst"><code><a href="SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSubjectFilterExpression(de.businesscode.bcdui.wrs.load.WrqInfo)">getSubjectFilterExpression</a></span>&#8203;(<a href="WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a>&nbsp;wrqInfo)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">SubjectFilterExpression</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -210,7 +208,7 @@ extends <a href="../../binding/BindingSet.html" title="interface in de.businessc
 <!--   -->
 </a>
 <h3>Methods inherited from interface&nbsp;de.businesscode.bcdui.binding.<a href="../../binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a></h3>
-<code><a href="../../binding/BindingSet.html#addRelation(de.businesscode.bcdui.binding.rel.Relation)">addRelation</a>, <a href="../../binding/BindingSet.html#assurePermissionDefined(de.businesscode.bcdui.binding.BindingSet.SECURITY_OPS)">assurePermissionDefined</a>, <a href="../../binding/BindingSet.html#assurePermitted(de.businesscode.bcdui.binding.BindingSet.SECURITY_OPS)">assurePermitted</a>, <a href="../../binding/BindingSet.html#get(java.lang.String)">get</a>, <a href="../../binding/BindingSet.html#get(java.util.Collection)">get</a>, <a href="../../binding/BindingSet.html#getBindingItemFromRelation(de.businesscode.bcdui.binding.rel.Relation,java.lang.String)">getBindingItemFromRelation</a>, <a href="../../binding/BindingSet.html#getBindingItemNames()">getBindingItemNames</a>, <a href="../../binding/BindingSet.html#getJdbcResourceName()">getJdbcResourceName</a>, <a href="../../binding/BindingSet.html#getKeyBindingItems()">getKeyBindingItems</a>, <a href="../../binding/BindingSet.html#getName()">getName</a>, <a href="../../binding/BindingSet.html#getRelations()">getRelations</a>, <a href="../../binding/BindingSet.html#getSecurity()">getSecurity</a>, <a href="../../binding/BindingSet.html#getSQLStatementWithParams()">getSQLStatementWithParams</a>, <a href="../../binding/BindingSet.html#getSubjectFilters()">getSubjectFilters</a>, <a href="../../binding/BindingSet.html#getTableReference()">getTableReference</a>, <a href="../../binding/BindingSet.html#getWriteProcessing()">getWriteProcessing</a>, <a href="../../binding/BindingSet.html#getWrqModifiers()">getWrqModifiers</a>, <a href="../../binding/BindingSet.html#hasCustomItem()">hasCustomItem</a>, <a href="../../binding/BindingSet.html#hasItem(java.lang.String)">hasItem</a>, <a href="../../binding/BindingSet.html#hasKeyBindingItems()">hasKeyBindingItems</a>, <a href="../../binding/BindingSet.html#hasSubjectFilters()">hasSubjectFilters</a>, <a href="../../binding/BindingSet.html#isAllowSelectAllColumns()">isAllowSelectAllColumns</a></code></li>
+<code><a href="../../binding/BindingSet.html#addRelation(de.businesscode.bcdui.binding.rel.Relation)">addRelation</a>, <a href="../../binding/BindingSet.html#assurePermissionDefined(de.businesscode.bcdui.binding.BindingSet.SECURITY_OPS)">assurePermissionDefined</a>, <a href="../../binding/BindingSet.html#assurePermitted(de.businesscode.bcdui.binding.BindingSet.SECURITY_OPS)">assurePermitted</a>, <a href="../../binding/BindingSet.html#get(java.lang.String)">get</a>, <a href="../../binding/BindingSet.html#get(java.util.Collection)">get</a>, <a href="../../binding/BindingSet.html#getBindingItemFromRelation(de.businesscode.bcdui.binding.rel.Relation,java.lang.String)">getBindingItemFromRelation</a>, <a href="../../binding/BindingSet.html#getBindingItemNames()">getBindingItemNames</a>, <a href="../../binding/BindingSet.html#getJdbcResourceName()">getJdbcResourceName</a>, <a href="../../binding/BindingSet.html#getKeyBindingItems()">getKeyBindingItems</a>, <a href="../../binding/BindingSet.html#getName()">getName</a>, <a href="../../binding/BindingSet.html#getRelations()">getRelations</a>, <a href="../../binding/BindingSet.html#getResolvedBindingSets()">getResolvedBindingSets</a>, <a href="../../binding/BindingSet.html#getSecurity()">getSecurity</a>, <a href="../../binding/BindingSet.html#getSQLStatementWithParams()">getSQLStatementWithParams</a>, <a href="../../binding/BindingSet.html#getSubjectFilters()">getSubjectFilters</a>, <a href="../../binding/BindingSet.html#getTableReference()">getTableReference</a>, <a href="../../binding/BindingSet.html#getWriteProcessing()">getWriteProcessing</a>, <a href="../../binding/BindingSet.html#getWrqModifiers()">getWrqModifiers</a>, <a href="../../binding/BindingSet.html#hasCustomItem()">hasCustomItem</a>, <a href="../../binding/BindingSet.html#hasItem(java.lang.String)">hasItem</a>, <a href="../../binding/BindingSet.html#hasKeyBindingItems()">hasKeyBindingItems</a>, <a href="../../binding/BindingSet.html#hasSubjectFilters()">hasSubjectFilters</a>, <a href="../../binding/BindingSet.html#isAllowSelectAllColumns()">isAllowSelectAllColumns</a></code></li>
 </ul>
 </li>
 </ul>
@@ -235,32 +233,25 @@ extends <a href="../../binding/BindingSet.html" title="interface in de.businessc
 <li class="blockList">
 <h4>getSqlAlias</h4>
 <pre class="methodSignature">java.lang.String&nbsp;getSqlAlias()</pre>
+<div class="block">SQL alias of this BindingSet during this query</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+</dl>
 </li>
 </ul>
 <a id="getSubjectFilterExpression(de.businesscode.bcdui.wrs.load.WrqInfo)">
 <!--   -->
 </a>
-<ul class="blockList">
+<ul class="blockListLast">
 <li class="blockList">
 <h4>getSubjectFilterExpression</h4>
 <pre class="methodSignature"><a href="SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a>&nbsp;getSubjectFilterExpression&#8203;(<a href="WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a>&nbsp;wrqInfo)
                                            throws <a href="../../binding/exc/BindingException.html" title="class in de.businesscode.bcdui.binding.exc">BindingException</a></pre>
-<dl>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="../../binding/exc/BindingException.html" title="class in de.businesscode.bcdui.binding.exc">BindingException</a></code></dd>
-</dl>
-</li>
-</ul>
-<a id="getResolvedBindingSets()">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>getResolvedBindingSets</h4>
-<pre class="methodSignature">java.util.Set&lt;<a href="../../binding/StandardBindingSet.html" title="class in de.businesscode.bcdui.binding">StandardBindingSet</a>&gt;&nbsp;getResolvedBindingSets()</pre>
-<div class="block">All non-virtual BindingSets that were used at the end, BindingGroups are being resolved to the actually used BindingSets</div>
+<div class="block">SubjectFilterExpression</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="../../binding/exc/BindingException.html" title="class in de.businesscode.bcdui.binding.exc">BindingException</a></code></dd>
 </dl>
 </li>
 </ul>

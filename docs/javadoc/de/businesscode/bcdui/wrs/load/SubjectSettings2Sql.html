@@ -188,13 +188,13 @@ implements <a href="SqlConditionGenerator.html" title="interface in de.businessc
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#generateCondition(java.lang.StringBuilder,org.apache.shiro.subject.Subject,de.businesscode.bcdui.subjectsettings.config.SubjectFilterType,java.util.List,java.lang.String,java.util.Set,java.lang.String)">generateCondition</a></span>&#8203;(java.lang.StringBuilder&nbsp;subjectSettingsClause,
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#generateCondition(java.lang.StringBuilder,org.apache.shiro.subject.Subject,de.businesscode.bcdui.subjectsettings.config.SubjectFilterType,java.util.List,java.lang.String,java.util.Set,de.businesscode.bcdui.binding.BindingItem)">generateCondition</a></span>&#8203;(java.lang.StringBuilder&nbsp;subjectSettingsClause,
                  org.apache.shiro.subject.Subject&nbsp;subject,
                  <a href="../../subjectsettings/config/SubjectFilterType.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectFilterType</a>&nbsp;ft,
                  java.util.List&lt;org.w3c.dom.Element&gt;&nbsp;boundVariables,
                  java.lang.String&nbsp;filterType,
                  java.util.Set&lt;java.lang.String&gt;&nbsp;permissions,
-                 java.lang.String&nbsp;columnExpression)</code></th>
+                 <a href="../../binding/BindingItem.html" title="class in de.businesscode.bcdui.binding">BindingItem</a>&nbsp;bi)</code></th>
 <td class="colLast">
 <div class="block">generates single condition like "col in ('a','b','c')"</div>
 </td>
@@ -277,7 +277,7 @@ implements <a href="SqlConditionGenerator.html" title="interface in de.businessc
 </dl>
 </li>
 </ul>
-<a id="generateCondition(java.lang.StringBuilder,org.apache.shiro.subject.Subject,de.businesscode.bcdui.subjectsettings.config.SubjectFilterType,java.util.List,java.lang.String,java.util.Set,java.lang.String)">
+<a id="generateCondition(java.lang.StringBuilder,org.apache.shiro.subject.Subject,de.businesscode.bcdui.subjectsettings.config.SubjectFilterType,java.util.List,java.lang.String,java.util.Set,de.businesscode.bcdui.binding.BindingItem)">
 <!--   -->
 </a>
 <ul class="blockListLast">
@@ -289,7 +289,7 @@ implements <a href="SqlConditionGenerator.html" title="interface in de.businessc
                                  java.util.List&lt;org.w3c.dom.Element&gt;&nbsp;boundVariables,
                                  java.lang.String&nbsp;filterType,
                                  java.util.Set&lt;java.lang.String&gt;&nbsp;permissions,
-                                 java.lang.String&nbsp;columnExpression)</pre>
+                                 <a href="../../binding/BindingItem.html" title="class in de.businesscode.bcdui.binding">BindingItem</a>&nbsp;bi)</pre>
 <div class="block">generates single condition like "col in ('a','b','c')"</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -299,7 +299,7 @@ implements <a href="SqlConditionGenerator.html" title="interface in de.businessc
 <dd><code>boundVariables</code> - </dd>
 <dd><code>filterType</code> - - filter type name</dd>
 <dd><code>permissions</code> - - permissions granted by subject</dd>
-<dd><code>columnExpression</code> - - the column expression to participate in condition</dd>
+<dd><code>bi</code> - - the BindinItem on which the permission is to apply</dd>
 </dl>
 </li>
 </ul>

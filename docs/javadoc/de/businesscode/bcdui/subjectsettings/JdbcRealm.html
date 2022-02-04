@@ -158,7 +158,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <pre>public class <span class="typeNameLabel">JdbcRealm</span>
 extends org.apache.shiro.realm.jdbc.JdbcRealm</pre>
 <div class="block">Used by shiro framework for retrieving authentication and authorization from the database
- Relies on fe_user_rights and fe_user BindingSets providing support for plaintext (backwards compatibility)
+ Relies on bcd_sec_user and bcd_sec_user_settings BindingSets providing support for plaintext (backwards compatibility)
  and salted/hashed passwords using SHA256 hashing. The default hash iteration is 1024 and can be adjusted in shiro ini by setting
  .hashIterations property. The default mode is hashed/salted, which can be disabled by setting .hashSalted=false
  in shiro configuration when declaring this realm. When creating new password please use <a href="#generatePasswordHashSalt(java.lang.String,int)"><code>generatePasswordHashSalt(String, int)</code></a>

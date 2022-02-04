@@ -788,11 +788,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_kerberos_windows_sso_windows_authentication">14.9. Kerberos / Windows SSO / Windows Authentication</a></li>
 </ul>
 </li>
-<li><a href="#UserBeans">15. User Beans</a>
+<li><a href="#UserBeans">15. Subject Preferences</a>
 <ul class="sectlevel3">
+<li><a href="#_usage_2">Usage:</a></li>
 <li><a href="#_default_values">Default Values:</a></li>
 <li><a href="#_url_usage">URL Usage:</a></li>
+<li><a href="#_client_visibility">Client Visibility:</a></li>
 <li><a href="#_readwrite_security">Read/Write security:</a></li>
+<li><a href="#_i18n_language_switch">i18n Language switch:</a></li>
 <li><a href="#_setting_a_bean_programmatically">Setting a bean programmatically:</a></li>
 </ul>
 </li>
@@ -1418,7 +1421,7 @@ The part that styles widgets and components is mandatory to style these artifact
 </div>
 <div class="paragraph">
 <p>Above XML is a sample of a BCD-UI&#8217;s <em>WebRowSet</em> format Wrs, which is used to transfer data.<br>
-While you can use any data format with BCD-UI including other XML formats or JSON, using WebRowSet format provides many benefits and functionality as this format is known to BCD-UI.</p>
+While you can use any data format with BCD-UI including other XML formats or JSON, using WebRowSet format provides many benefits and functionality as BCD-UI is aware of this format.</p>
 </div>
 <div class="paragraph">
 <p>Now add the following script block to <code>blankPage.js</code>:</p>
@@ -1437,7 +1440,7 @@ While you can use any data format with BCD-UI including other XML formats or JSO
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-The import makes BCD-UI JavaScript API stubs available to the editor. It will be removed by during runtime by BCD-UI automatically and is only used during editing. They can be downloaded here from <a href="https://businesscode.github.io/BCD-UI-Docu/resources/bcduiApiStubs.js" target="_blank" rel="noopener">bcduiApiStubs.js</a>
+The import makes BCD-UI JavaScript API stubs available to the editor. It will be removed by during runtime by BCD-UI automatically and is only used during editing. The file with the subs can be downloaded here from <a href="https://businesscode.github.io/BCD-UI-Docu/resources/bcduiApiStubs.js" target="_blank" rel="noopener">bcduiApiStubs.js</a>
 </td>
 </tr>
 </table>
@@ -1972,7 +1975,7 @@ We start with the BindingSet for the country list. Add the following file to <co
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;BindingSet</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.businesscode.de/schema/bcdui/bindings-1.0.0</span><span class="delimiter">&quot;</span></span>
-            <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">myGeoData</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">table</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">mb_test_md_geo</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>   <i class="conum" data-value="1"></i><b>(1)</b> <i class="conum" data-value="2"></i><b>(2)</b> <i class="conum" data-value="3"></i><b>(3)</b>
+            <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">myGeoData</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">table</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">BCDUITEST_MD_GEO</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>   <i class="conum" data-value="1"></i><b>(1)</b> <i class="conum" data-value="2"></i><b>(2)</b> <i class="conum" data-value="3"></i><b>(3)</b>
 
   <span class="tag">&lt;C</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">country</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">isKey</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Country</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span> <i class="conum" data-value="4"></i><b>(4)</b>
     <span class="tag">&lt;Column&gt;</span>country<span class="tag">&lt;/Column&gt;</span> <i class="conum" data-value="5"></i><b>(5)</b>
@@ -2015,7 +2018,7 @@ create a file <code>WEB-INF/bcdui/bindings/myReportData1.xml</code> and adjust t
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;BindingSet</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.businesscode.de/schema/bcdui/bindings-1.0.0</span><span class="delimiter">&quot;</span></span>
-            <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">myReportData1</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">table</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">MB_TEST_DEMO_SHIPMENT</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+            <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">myReportData1</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">table</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">BCDUITEST_DEMO_SHIPMENT</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
 
   <span class="tag">&lt;C</span> <span class="attribute-name">isKey</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">transport_id</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Transport Id</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">type-name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">VARCHAR</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
     <span class="tag">&lt;Column&gt;</span>ITEM_ID<span class="tag">&lt;/Column&gt;</span>
@@ -6081,8 +6084,10 @@ By adding <code>bcd_log_login</code> BindingSet to your application, all login a
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml">/cube/**              = authc  <i class="conum" data-value="1"></i><b>(1)</b>
-/api/**               = authc, perms[&quot;pages:admin&quot;] <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+<pre class="CodeRay highlight"><code data-lang="xml"> <i class="conum" data-value="1"></i><b>(1)</b>
+/cube/**              = authc
+<i class="conum" data-value="2"></i><b>(2)</b>
+/api/**               = authc, perms[&quot;pages:admin&quot;]</code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -6134,7 +6139,9 @@ adminRole = pages:admin</code></pre>
 ## for authentication and authorization supporting salted passwords, etc. (named option 2. above)
 ## make sure you created an appropriate WEB-INF/bcdui/subjectSettings.xml as well if enabling
 # realmBcdJdbc = de.businesscode.bcdui.subjectsettings.JdbcRealm
-# realmDefaults = de.businesscode.bcdui.subjectsettings.DefaultSettingsRealm
+## for subject preferences support
+## make sure you created an appropriate \WebContent\bcdui\conf\subjectPreferences.xml as well if enabling
+# realmSubjectPreferences = de.businesscode.bcdui.subjectsettings.SubjectPreferencesRealm
 # For security reasons BindingItems of password and salt are blind in BindingSet. They are assumed to have columns name password/password_salt. Here you can overwrite that.
 # realmBcdJdbc.passwordColumnName     = password
 # realmBcdJdbc.passwordSaltColumnName = password_salt
@@ -6251,78 +6258,106 @@ This is supported by the Enterprise Edition of BCD-UI, please contact BusinessCo
 </div>
 </div>
 <div class="sect1">
-<h2 id="UserBeans">15. User Beans</h2>
+<h2 id="UserBeans">15. Subject Preferences</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>bcdUserBean are name/value pairs which can be set client sided. You define the name and the value by calling the mapped
-SessionAttributesManager servlet with name and value attributes:</p>
+<p>Subject preferences are name/value pairs which can be set client sided.
+To activate the feature, you need the following:</p>
 </div>
 <div class="paragraph">
-<p>For example for a mapped servlet you would set "country" to "DE"
-"localhost:8080/YourProject/SessionAttributesManager?value=DE&amp;name=country"</p>
+<p>1) add the SubjectPreferencesRealm realm to your shiro.ini</p>
 </div>
 <div class="paragraph">
-<p>The servlet is mapped via a web.xml entry:</p>
+<p>realmSubjectPreferences = de.businesscode.bcdui.subjectsettings.SubjectPreferencesRealm
+securityManager.realms = &#8230;&#8203;. $realmSubjectPreferences</p>
+</div>
+<div class="paragraph">
+<p>2) map SubjectPreferences servlet in web.xml</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml">  <span class="tag">&lt;servlet&gt;</span>
-    <span class="tag">&lt;servlet-name&gt;</span>bcdui4.SessionAttributesManager<span class="tag">&lt;/servlet-name&gt;</span>
-    <span class="tag">&lt;servlet-class&gt;</span>de.businesscode.bcdui.web.servlets.SessionAttributesManager<span class="tag">&lt;/servlet-class&gt;</span>
-    <span class="tag">&lt;init-param&gt;</span>
-      <span class="tag">&lt;param-name&gt;</span>ALLOWED_ATTRIBUTES<span class="tag">&lt;/param-name&gt;</span>
-      <span class="tag">&lt;param-value&gt;</span>...<span class="tag">&lt;/param-value&gt;</span>
-    <span class="tag">&lt;/init-param&gt;</span>
-    <span class="tag">&lt;init-param&gt;</span>
-      <span class="tag">&lt;param-name&gt;</span>ALLOWED_VALUES<span class="tag">&lt;/param-name&gt;</span>
-      <span class="tag">&lt;param-value&gt;</span>...<span class="tag">&lt;/param-value&gt;</span>
-    <span class="tag">&lt;/init-param&gt;</span>
+    <span class="tag">&lt;servlet-name&gt;</span>bcdui4.SubjectPreferences<span class="tag">&lt;/servlet-name&gt;</span>
+    <span class="tag">&lt;servlet-class&gt;</span>de.businesscode.bcdui.web.servlets.SubjectPreferences<span class="tag">&lt;/servlet-class&gt;</span>
     <span class="tag">&lt;load-on-startup&gt;</span>1<span class="tag">&lt;/load-on-startup&gt;</span>
   <span class="tag">&lt;/servlet&gt;</span>
   <span class="tag">&lt;servlet-mapping&gt;</span>
-    <span class="tag">&lt;servlet-name&gt;</span>bcdui4.SessionAttributesManager<span class="tag">&lt;/servlet-name&gt;</span>
-    <span class="tag">&lt;url-pattern&gt;</span>/SessionAttributesManager/*<span class="tag">&lt;/url-pattern&gt;</span>
+    <span class="tag">&lt;servlet-name&gt;</span>bcdui4.SubjectPreferences<span class="tag">&lt;/servlet-name&gt;</span>
+    <span class="tag">&lt;url-pattern&gt;</span>/SubjectPreferences/*<span class="tag">&lt;/url-pattern&gt;</span>
   <span class="tag">&lt;/servlet-mapping&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>ALLOWED_ATTRIBUTES is a comma separated list of allowed names.
-Example: &lt;param-value&gt;country, instanceId, language&lt;/param-value&gt;
-You can only set values for names which are listed here.</p>
+<p>3) add a /bcdui/conf/subjectPreferences.xml configuration file</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="preprocessor">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="tag">&lt;cnf:SessionBean</span> <span class="attribute-name">xmlns:cnf</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.businesscode.de/schema/bcdui/config-1.0.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;cnf:Settings&gt;</span>
+    <span class="tag">&lt;cnf:Setting</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">allowed_preference_name_1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+      <span class="tag">&lt;cnf:SourceSetting</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">referenced_user_permission</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/cnf:Setting&gt;</span>
+    <span class="tag">&lt;cnf:Setting</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">name=</span><span class="delimiter">&quot;</span></span><span class="attribute-name">allowed_preference_name_2</span><span class="error">&quot;</span> <span class="attribute-name">multi</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true|false</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+      <span class="tag">&lt;cnf:Values&gt;</span>
+        <span class="tag">&lt;cnf:Value&gt;</span>allowed_value_1<span class="tag">&lt;/cnf:Value&gt;</span>
+        <span class="tag">&lt;cnf:Value</span> <span class="attribute-name">default</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true|false</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>allowed_value_2<span class="tag">&lt;/cnf:Value&gt;</span>
+      <span class="tag">&lt;/cnf:Values&gt;</span>
+    <span class="tag">&lt;/cnf:Setting&gt;</span>
+  <span class="tag">&lt;/cnf:Settings&gt;</span>
+<span class="tag">&lt;/cnf:SessionBean&gt;</span></code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_usage_2">Usage:</h4>
+<div class="paragraph">
+<p>To set/update a subject permission, you call the mapped SubjectPreferences servlet with name and value attributes:</p>
 </div>
 <div class="paragraph">
-<p>ALLOWED_VALUES is also a comma separated list of allowed name:values entries where values are space separated.
-Example: &lt;param-value&gt;country:DE FR ES, language:en,fr,latin&lt;/param-value&gt;
-You can only set such values by calling the servlet or you have them as user rights in your bcd_sec_user_settings
-table. As user right, your names are prefixed with "bcdUserBean:", so e.g. you have</p>
+<p>For example for a mapped servlet you would set "country" to "DE"
+"localhost:8080/YourProject/SubjectPreferences?value=DE&amp;name=country"</p>
 </div>
 <div class="paragraph">
-<p>right_type: bcdUserBean:language right_value:latin</p>
+<p>If your setting got a multi="true" setting, you can set multiple permission values by using comma separated values:
+"localhost:8080/YourProject/SubjectPreferences?value=DE,FR,ES&amp;name=country"</p>
+</div>
+<div class="paragraph">
+<p>Each cnf:Setting node in your config describes one allowed attribute which you can set. To define the allowed values
+for that named permission, you can either give a list of static well known values (cnf:Values/cnf:Value) or you reference
+a user based permission via cnf:SourceSetting. You can not do self-referencing here. A setting may have an attribute "multi"
+which -when set to true- allows you to set multiple values. For this, the servlet call needs to separate the single values by comma.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_default_values">Default Values:</h4>
 <div class="paragraph">
-<p>If you haven&#8217;t set any bean name/value yet and want to access it, a default value is chosen and returned.
-This is either the alphabetically first entry from ALLOWED_VALUES for the given name or the alphabetically first entry
-from bcd_sec_user_settings for the requested bcdUserBean:name. In the latter case this can be "*". If no default can
-be found an empty string is returned</p>
+<p>If you haven&#8217;t set any subject preference yet and want to access it, a default value is chosen and returned (if available).
+This is either the alphabetically first entry from the cnf:Values list or the one which is marked as default with the "default='true'" attribute.
+If you&#8217;re referencing a user permission via cnf:SourceSetting, the default value is the alphabetically first entry of that user.
+Keep in mind, the user might not have that setting at all, so setting a default one will fail in that specific case and the value becomes
+blank.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_url_usage">URL Usage:</h4>
 <div class="paragraph">
-<p>You can use the beans in an URL, like "http://localhost:8080/myApp/${bcdUserBean.pageId}/index.html". The expression is
-replaced with the value and forwarded. Of course multiple expressions are possible. A value of "*" will be replaced with
-an empty string, in case the url then holds "//" somewhere, this will be cleaned up to "/".
-Ensure that the url is excluded from caching, otherwise you&#8217;d have to hit F5 after switching the bean and accessing
-the page.</p>
+<p>If your setting is prefixed with "bcdClient:", you can reuse it in an URL, like "http://localhost:8080/myApp/${bcdClient:pageId}/index.html".
+The expression is replaced with the value and forwarded. Of course multiple expressions are possible. A value of "*" will be replaced with an
+empty string, in case the url then holds "//" somewhere, this will be cleaned up to "/". Ensure that the url is excluded from caching, otherwise
+you&#8217;d have to hit F5 after switching the value and accessing the page.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_client_visibility">Client Visibility:</h4>
+<div class="paragraph">
+<p>In general, "bcdClient:" prefixed values are visible on client side by accessing "bcdui.config.clientRights".</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_readwrite_security">Read/Write security:</h4>
 <div class="paragraph">
-<p>Bean values can be also used for server sided read/write protection (see SubjectSettings). For this, you can define
-a SubjectFilterType as you know it from subject settings. The name needs to be prefixed with "bcdUserBean:".</p>
+<p>Set subject preferences can be also used for server sided read/write protection (see SubjectSettings).
+For this, you can define a SubjectFilterType as you know it from subject settings.</p>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -6352,19 +6387,18 @@ a SubjectFilterType as you know it from subject settings. The name needs to be p
 </div>
 </div>
 <div class="sect3">
+<h4 id="_i18n_language_switch">i18n Language switch:</h4>
+<div class="paragraph">
+<p>bcdui.i18n.switchLanguage function requires the upper mechanism (realm/web.xml/config) to be enabled
+and a &lt;cnf:Setting name="bcd_i18n:lang"&gt; needs to be defined in your config with sutiable allowed values.</p>
+</div>
+</div>
+<div class="sect3">
 <h4 id="_setting_a_bean_programmatically">Setting a bean programmatically:</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> <span class="include">org.apache.shiro.SecurityUtils</span>;
-<span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> BCD_EL_USER_BEAN = <span class="string"><span class="delimiter">&quot;</span><span class="content">bcdUserBean</span><span class="delimiter">&quot;</span></span>;
-<span class="predefined-type">Subject</span> subject = SecurityUtils.getSubject();
-<span class="type">boolean</span> gotSession = (subject != <span class="predefined-constant">null</span> &amp;&amp; subject.getSession() != <span class="predefined-constant">null</span>);
-<span class="predefined-type">HashMap</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">String</span>&gt; bean = gotSession ? (<span class="predefined-type">HashMap</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">String</span>&gt;)subject.getSession().getAttribute(BCD_EL_USER_BEAN) : <span class="predefined-constant">null</span>;
-<span class="keyword">if</span> (bean == <span class="predefined-constant">null</span>)
-  bean = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;&gt;();
-bean.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">newName</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">newValue</span><span class="delimiter">&quot;</span></span>);
-<span class="keyword">if</span> (gotSession)
-  subject.getSession().setAttribute(BCD_EL_USER_BEAN, bean);</code></pre>
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> <span class="include">de.businesscode.bcdui.web.servlets.SubjectPreferences</span>;
+SubjectPreferences.setPermission(<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdLimit:country</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">DE</span><span class="delimiter">&quot;</span></span>);</code></pre>
 </div>
 </div>
 </div>
@@ -6553,7 +6587,7 @@ A simple binding looks like the following:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;BindingSet</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.businesscode.de/schema/bcdui/bindings-1.0.0</span><span class="delimiter">&quot;</span></span>
-            <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">myGeoData</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">table</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">mb_test_md_geo</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>   <i class="conum" data-value="1"></i><b>(1)</b> <i class="conum" data-value="2"></i><b>(2)</b> <i class="conum" data-value="3"></i><b>(3)</b>
+            <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">myGeoData</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">table</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">BCDUITEST_MD_GEO</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>   <i class="conum" data-value="1"></i><b>(1)</b> <i class="conum" data-value="2"></i><b>(2)</b> <i class="conum" data-value="3"></i><b>(3)</b>
 
   <span class="tag">&lt;C</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">country</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">isKey</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Country</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span> <i class="conum" data-value="4"></i><b>(4)</b>
     <span class="tag">&lt;Column&gt;</span>country<span class="tag">&lt;/Column&gt;</span> <i class="conum" data-value="5"></i><b>(5)</b>
@@ -8386,7 +8420,7 @@ The server scope value follows rules for its TYPE</p></td>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-01-20 15:55:57 +0100
+Last updated 2022-02-04 11:50:21 +0100
 </div>
 </div>
 <style>

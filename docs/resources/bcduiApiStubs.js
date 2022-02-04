@@ -1429,32 +1429,6 @@ bcdui.logging.logPage = function(args) { console.log(args); };
 
 
 /**
- * @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.subjectSettings.html) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.subjectSettings.html Online Api}
- * @description SubjectSettings related package.
- * @namespace 
- */
-bcdui.subjectSettings = {};
-
-
-
-/**
-@param {object} filters  the filter/value map
-  @param {string} [url]  the target URL to relocate to, if not set, refers to current location.
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.subjectSettings.html#.setSubjectFilterAndReload) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.subjectSettings.html#.setSubjectFilterAndReload Online Api}
-  @description This function sets filter value and reloads the page at given URL in one go, it is handy, i.e. if you want to make a fresh reload after changing subject filter. You are allowed to set a subject filter which is defined as 'isClientControlled', only.
-  @method setSubjectFilterAndReload
-@example
-  //<pre>
-  // Sample using the mandatory parameters
-  bcdui.subjectSettings.setSubjectFilterAndReload( filters );
-  //</pre>
-  @memberOf bcdui.subjectSettings
- */
-bcdui.subjectSettings.setSubjectFilterAndReload = function(filters, url) { console.log(filters, url); };
-
-
-
-/**
  * @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.util.html) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.util.html Online Api}
  * @namespace 
  */

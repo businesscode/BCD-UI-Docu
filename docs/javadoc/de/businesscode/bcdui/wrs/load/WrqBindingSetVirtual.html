@@ -362,7 +362,9 @@ implements <a href="WrqBindingSet.html" title="interface in de.businesscode.bcdu
 <tr id="i13" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSqlAlias()">getSqlAlias</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">SQL alias of this BindingSet during this query</div>
+</td>
 </tr>
 <tr id="i14" class="altColor">
 <td class="colFirst"><code><a href="SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a></code></td>
@@ -575,11 +577,11 @@ implements <a href="WrqBindingSet.html" title="interface in de.businesscode.bcdu
 <li class="blockList">
 <h4>getResolvedBindingSets</h4>
 <pre class="methodSignature">public&nbsp;java.util.Set&lt;<a href="../../binding/StandardBindingSet.html" title="class in de.businesscode.bcdui.binding">StandardBindingSet</a>&gt;&nbsp;getResolvedBindingSets()</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="WrqBindingSet.html#getResolvedBindingSets()">WrqBindingSet</a></code></span></div>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../binding/BindingSet.html#getResolvedBindingSets()">BindingSet</a></code></span></div>
 <div class="block">All non-virtual BindingSets that were used at the end, BindingGroups are being resolved to the actually used BindingSets</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="WrqBindingSet.html#getResolvedBindingSets()">getResolvedBindingSets</a></code>&nbsp;in interface&nbsp;<code><a href="WrqBindingSet.html" title="interface in de.businesscode.bcdui.wrs.load">WrqBindingSet</a></code></dd>
+<dd><code><a href="../../binding/BindingSet.html#getResolvedBindingSets()">getResolvedBindingSets</a></code>&nbsp;in interface&nbsp;<code><a href="../../binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 </dl>
 </li>
@@ -591,9 +593,12 @@ implements <a href="WrqBindingSet.html" title="interface in de.businesscode.bcdu
 <li class="blockList">
 <h4>getSqlAlias</h4>
 <pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getSqlAlias()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="WrqBindingSet.html#getSqlAlias()">WrqBindingSet</a></code></span></div>
+<div class="block">SQL alias of this BindingSet during this query</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="WrqBindingSet.html#getSqlAlias()">getSqlAlias</a></code>&nbsp;in interface&nbsp;<code><a href="WrqBindingSet.html" title="interface in de.businesscode.bcdui.wrs.load">WrqBindingSet</a></code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
 </dl>
 </li>
 </ul>
@@ -990,6 +995,7 @@ implements <a href="WrqBindingSet.html" title="interface in de.businesscode.bcdu
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="WrqBindingSet.html#getSubjectFilterExpression(de.businesscode.bcdui.wrs.load.WrqInfo)">getSubjectFilterExpression</a></code>&nbsp;in interface&nbsp;<code><a href="WrqBindingSet.html" title="interface in de.businesscode.bcdui.wrs.load">WrqBindingSet</a></code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="../../binding/exc/BindingException.html" title="class in de.businesscode.bcdui.binding.exc">BindingException</a></code></dd>
 </dl>

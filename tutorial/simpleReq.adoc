@@ -56,7 +56,7 @@ include::../web/sampleWrs.xml[]
 ----
 
 Above XML is a sample of a BCD-UI's _WebRowSet_ format Wrs, which is used to transfer data. +
-While you can use any data format with BCD-UI including other XML formats or JSON, using WebRowSet format provides many benefits and functionality as this format is known to BCD-UI.
+While you can use any data format with BCD-UI including other XML formats or JSON, using WebRowSet format provides many benefits and functionality as BCD-UI is aware of this format.
 
 Now add the following script block to `blankPage.js`:
 
@@ -65,7 +65,7 @@ Now add the following script block to `blankPage.js`:
 import {bcdui} from "./bcdui/dev/bcduiApiStubs.js";
 var staticData = new bcdui.core.SimpleModel("staticData.xml");
 
-TIP: The import makes BCD-UI JavaScript API stubs available to the editor. It will be removed by during runtime by BCD-UI automatically and is only used during editing. They can be downloaded here from link:https://businesscode.github.io/BCD-UI-Docu/resources/bcduiApiStubs.js[bcduiApiStubs.js^]
+TIP: The import makes BCD-UI JavaScript API stubs available to the editor. It will be removed by during runtime by BCD-UI automatically and is only used during editing. The file with the subs can be downloaded here from link:https://businesscode.github.io/BCD-UI-Docu/resources/bcduiApiStubs.js[bcduiApiStubs.js^]
 
 image::images/ide_javascriptAutocomplete.png[]
 
