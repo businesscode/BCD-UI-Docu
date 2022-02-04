@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <BindingSet xmlns="http://www.businesscode.de/schema/bcdui/bindings-1.0.0"
-            id="bcd_sc_kpi" table="MB_TEST_KPI_MO"> <!--1-->
+            id="bcd_sc_kpi" table="BCDUITEST_KPI_MO"> <!--1-->
 
   <C id="yr"         caption="Year"          type-name="INTEGER"> <Column>YR</Column> </C> <!--2-->
   <C id="mo"         caption="Month"         type-name="INTEGER"> <Column>MO</Column> </C>

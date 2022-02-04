@@ -1,5 +1,5 @@
 <BindingSet xmlns="http://www.businesscode.de/schema/bcdui/bindings-1.0.0"
-            id="myGeoData" table="mb_test_md_geo"> <!--1--> <!--2--> <!--3-->
+            id="myGeoData" table="BCDUITEST_MD_GEO"> <!--1--> <!--2--> <!--3-->
 
   <C id="country" isKey="true" caption="Country"> <!--4-->
     <Column>country</Column> <!--5-->

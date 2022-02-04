@@ -1,6 +1,6 @@
 <!-- tag::simple[] -->
 <BindingSet xmlns="http://www.businesscode.de/schema/bcdui/bindings-1.0.0"
-            id="myReportData1" table="MB_TEST_DEMO_SHIPMENT">
+            id="myReportData1" table="BCDUITEST_DEMO_SHIPMENT">
 
   <C isKey="true" id="transport_id" caption="Transport Id" type-name="VARCHAR">
     <Column>ITEM_ID</Column>

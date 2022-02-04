@@ -1,5 +1,5 @@
 <BindingSet xmlns="http://www.businesscode.de/schema/bcdui/bindings-1.0.0"
-  id="carRepairs" table="test_data">  <!--(1)--> <!--(2)-->
+  id="carRepairs" table="BCDUITEST_CARREPAIR">  <!--(1)--> <!--(2)-->
 
   <C id="id" caption="Id" isKey="true"> <!--(3)-->
     <Column>id</Column> <!--(4)-->

@@ -1,1 +1,121 @@
-Hello World!
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8"></meta>
+    <title>BCD-UI CE Test</title>
+    <link rel="shortcut icon" href="./favicon.ico"/>
+    <link rel="stylesheet" type="text/css" href="./bcdui/theme/css/allStyles.css"/>
+    <script type="text/javascript" src="./bcdui/bcdui.js"></script>
+
+    <style type="text/css">
+      .menu-tile-container .home-card {
+        padding: 15px;
+      }
+      .menu-tile-container .home-card a:hover {
+        text-decoration: none;
+      }
+      .menu-tile-container .home-card .card-body {
+        background: #fff;
+        border: 1px solid #efefef;
+        box-shadow: 0px 1px 2px #e0e0e0;
+        border-top: .25em solid #369AFB;
+        height: 6em;
+        transition: all .2s ease-in-out;
+        font-weight: 500;
+        display: -webkit-flex;
+        display: flex;
+        align-items: center;
+      }
+      .menu-tile-container .home-card .card-body:hover {
+        border-top: .25em solid #161669;
+        box-shadow: 0px .10em .25em #161669;
+        transition: all .25s;
+        transform: scale(1.05);
+        color: #161669;
+      }
+      .category-heading span {
+        background: #e0e0e0;
+        padding: 0 20px;
+        border-radius: 10px;
+      }
+      .category-heading {
+        width: 100%; 
+        text-align: left; 
+        border-bottom: 1px solid #d8d8d8; 
+        line-height: 0.1em;
+        margin: 40px 0 20px;
+      }
+    </style>
+  
+  </head>
+
+  <body>
+    <div id="bcdContextMenuDiv" style="display: none"></div>
+    <div id="bcdTooltipDiv" style="display: none"></div>
+    <div id="bcdModalBoxDiv" style="display: none"></div>
+    <div class="bcd__outer-wrapper">
+      <div class="bcd__wrapper">
+        <div class="bcd__horizontal-split">
+          
+          <!-- Header -->
+          <div class="bcd__header">
+            <div class="bcd__header__upper">
+              <div class="bcd__header__logo">
+                <img src="bcdui/theme/images/bcd_logo.png" alt="">
+              </div>
+              
+            </div>
+          </div>
+          
+          <!-- Main area (with side-bar, which we do not have here) -->
+          <div class="bcd__vertical-split">
+            
+            <!-- Main area with side-bar -->
+            <div class="bcd__content-container">
+              <div class="container menu-tile-container">
+
+                <div>
+
+                  <!-- Static auto-tests -->
+                  <div class='row'>
+                    <h6 class='category-heading'><span>Intro</span></h6>
+
+                    <div class='col-md-2 home-card'><a target="_blank" href="api"><span class='card-body'>API</span></a></div>
+                    <div class='col-md-2 home-card'><a target="_blank" href="binding"><span class='card-body'>Binding</span></a></div>
+                    <div class='col-md-2 home-card'><a target="_blank" href="simpleReq"><span class='card-body'>Simple Request</span></a></div>
+                    <div class='col-md-2 home-card'><a target="_blank" href="widgets"><span class='card-body'>Widgets</span></a></div>
+                  </div>
+
+                  <!-- Widgets -->                    
+                  <div class='row'>
+                    <h6 class='category-heading'><span>Components</span></h6>
+
+                    <div class='col-md-2 home-card'><a target="_blank" href="exports"><span class='card-body'>Exports</span></a></div>
+                    <div class='col-md-2 home-card'><a target="_blank" href="minimalCube"><span class='card-body'>Minimal Cube</span></a></div>
+                    <div class='col-md-2 home-card'><a target="_blank" href="cube"><span class='card-body'>Cube</span></a></div>
+                    <div class='col-md-2 home-card'><a target="_blank" href="charts"><span class='card-body'>Charts</span></a></div>
+                    <div class='col-md-2 home-card'><a target="_blank" href="scorecard"><span class='card-body'>Scorecard</span></a></div>
+                    <div class='col-md-2 home-card'><a target="_blank" href="treeReport"><span class='card-body'>Tree Report</span></a></div>
+                    <div class='col-md-2 home-card'><a target="_blank" href="xsltLibrary"><span class='card-body'>XSLT Library</span></a></div>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          
+          <!-- footer -->
+          <footer>
+            <p>&copy; 2022 BusinessCode GmbH</p>
+            <nav>
+              <ul>
+                <li><a href="#">Impressum</a></li>
+                <li><a href="#">Datenschutz</a></li>
+              </ul>
+            </nav>
+          </footer>
+        </div>
+      </div> 
+    </div>
+  </body>
+</html>
