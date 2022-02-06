@@ -5,6 +5,8 @@ It is build with Java and Web technologies and provides powerful features common
 
 For more information see
 
+- The [Main entry page](https://businesscode.github.io/BCD-UI-Docu/)
+
 - The [Online tutorial](https://businesscode.github.io/BCD-UI-Docu/tutorial/index.html)
   
 - The [JavaScript API](https://businesscode.github.io/BCD-UI-Docu/jsdoc/index.html)

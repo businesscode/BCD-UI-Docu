@@ -8,7 +8,7 @@ BCD-UI delivers and receives data in the following XML format.
 BCD-UI WebRowSet Wrs is a unique, easy to use document format, called Wrs, which is preserved during processing on the client.
 This allows to reuse, replace, remove or reorder stylesheets in a transformation chain since all stylesheets work on the same input and output format.
 
-==== WebRowSet format
+==== WebRowSet server response
 
 [source,xml]
 ----
@@ -118,6 +118,9 @@ To request a Wrs from the server, a request document in the following format is 
 </WrsRequest>
 ----
 
+You can also use common table expressions, joins and unions. Use the XML autocomplete feature when editing a Wrs request to find all options.
+
+
 ==== Filter format
 
 Requests and per the output of choosers becoming filters follow BCD-UI's filter format.
@@ -154,7 +157,7 @@ Above leads to:
 Note that prepared statements are used for security and performance reasons.
 Between operator is not available, please use ... &lt;= ... AND ... &gt;= ... instead.
 
-==== Faults
+==== Failures
 
 The server responses technical errors via SOAP 1.2 fault
 

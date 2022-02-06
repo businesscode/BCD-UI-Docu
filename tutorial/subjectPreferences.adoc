@@ -40,7 +40,7 @@ securityManager.realms = .... $realmSubjectPreferences
   </cnf:Settings>
 </cnf:SessionBean>
 
-==== Usage:
+=== Usage:
 
 To set/update a subject permission, you call the mapped SubjectPreferences servlet with name and value attributes:
 
@@ -101,12 +101,12 @@ And in a binding you can reference it the usual way then:
     </SubjectFilters>
   </SubjectSettings>
 
-==== i18n Language switch:
+=== i18n Language switch:
 
 bcdui.i18n.switchLanguage function requires the upper mechanism (realm/web.xml/config) to be enabled
 and a <cnf:Setting name="bcd_i18n:lang"> needs to be defined in your config with sutiable allowed values.
 
-==== Setting a bean programmatically:
+==== Setting a value programmatically:
 
 [source,java]
 import de.businesscode.bcdui.web.servlets.SubjectPreferences;
