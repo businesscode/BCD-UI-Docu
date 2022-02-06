@@ -5,7 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<title>BCD-UI 5</title>
+<meta name="author" content="Version 5.6.0 (2022-02-06)">
+<title>BCD-UI</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -548,7 +549,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>BCD-UI 5</h1>
+<h1>BCD-UI</h1>
+<div class="details">
+<span id="author" class="author">Version 5.6.0 (2022-02-06)</span><br>
+</div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
@@ -789,14 +793,20 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </ul>
 </li>
 <li><a href="#UserBeans">15. Subject Preferences</a>
+<ul class="sectlevel2">
+<li><a href="#_usage_2">15.1. Usage:</a>
 <ul class="sectlevel3">
-<li><a href="#_usage_2">Usage:</a></li>
 <li><a href="#_default_values">Default Values:</a></li>
 <li><a href="#_url_usage">URL Usage:</a></li>
 <li><a href="#_client_visibility">Client Visibility:</a></li>
 <li><a href="#_readwrite_security">Read/Write security:</a></li>
-<li><a href="#_i18n_language_switch">i18n Language switch:</a></li>
-<li><a href="#_setting_a_bean_programmatically">Setting a bean programmatically:</a></li>
+</ul>
+</li>
+<li><a href="#_i18n_language_switch">15.2. i18n Language switch:</a>
+<ul class="sectlevel3">
+<li><a href="#_setting_a_value_programmatically">Setting a value programmatically:</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#DocCaching">16. Caching</a>
@@ -844,10 +854,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#_webrowset_wrs_overview">19.1. WebRowSet Wrs Overview</a>
 <ul class="sectlevel3">
-<li><a href="#_webrowset_format">WebRowSet format</a></li>
+<li><a href="#_webrowset_server_response">WebRowSet server response</a></li>
 <li><a href="#_request_document">Request document</a></li>
 <li><a href="#_filter_format">Filter format</a></li>
-<li><a href="#_faults">Faults</a></li>
+<li><a href="#_failures">Failures</a></li>
 </ul>
 </li>
 <li><a href="#_cell_addressing">19.2. Cell addressing</a></li>
@@ -6308,8 +6318,8 @@ securityManager.realms = &#8230;&#8203;. $realmSubjectPreferences</p>
 <span class="tag">&lt;/cnf:SessionBean&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_usage_2">Usage:</h4>
+<div class="sect2">
+<h3 id="_usage_2">15.1. Usage:</h3>
 <div class="paragraph">
 <p>To set/update a subject permission, you call the mapped SubjectPreferences servlet with name and value attributes:</p>
 </div>
@@ -6326,7 +6336,6 @@ securityManager.realms = &#8230;&#8203;. $realmSubjectPreferences</p>
 for that named permission, you can either give a list of static well known values (cnf:Values/cnf:Value) or you reference
 a user based permission via cnf:SourceSetting. You can not do self-referencing here. A setting may have an attribute "multi"
 which -when set to true- allows you to set multiple values. For this, the servlet call needs to separate the single values by comma.</p>
-</div>
 </div>
 <div class="sect3">
 <h4 id="_default_values">Default Values:</h4>
@@ -6386,19 +6395,20 @@ For this, you can define a SubjectFilterType as you know it from subject setting
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_i18n_language_switch">i18n Language switch:</h4>
+</div>
+<div class="sect2">
+<h3 id="_i18n_language_switch">15.2. i18n Language switch:</h3>
 <div class="paragraph">
 <p>bcdui.i18n.switchLanguage function requires the upper mechanism (realm/web.xml/config) to be enabled
 and a &lt;cnf:Setting name="bcd_i18n:lang"&gt; needs to be defined in your config with sutiable allowed values.</p>
 </div>
-</div>
 <div class="sect3">
-<h4 id="_setting_a_bean_programmatically">Setting a bean programmatically:</h4>
+<h4 id="_setting_a_value_programmatically">Setting a value programmatically:</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> <span class="include">de.businesscode.bcdui.web.servlets.SubjectPreferences</span>;
 SubjectPreferences.setPermission(<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdLimit:country</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">DE</span><span class="delimiter">&quot;</span></span>);</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -7052,7 +7062,7 @@ of the class  <code>de.businesscode.bcdui.el.ELEnvironment</code>  must be creat
 This allows to reuse, replace, remove or reorder stylesheets in a transformation chain since all stylesheets work on the same input and output format.</p>
 </div>
 <div class="sect3">
-<h4 id="_webrowset_format">WebRowSet format</h4>
+<h4 id="_webrowset_server_response">WebRowSet server response</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;Wrs</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.businesscode.de/schema/bcdui/wrs-1.0.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
@@ -7175,6 +7185,9 @@ This allows to reuse, replace, remove or reorder stylesheets in a transformation
 <span class="tag">&lt;/WrsRequest&gt;</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>You can also use common table expressions, joins and unions. Use the XML autocomplete feature when editing a Wrs request to find all options.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_filter_format">Filter format</h4>
@@ -7217,7 +7230,7 @@ Between operator is not available, please use &#8230;&#8203; &lt;= &#8230;&#8203
 </div>
 </div>
 <div class="sect3">
-<h4 id="_faults">Faults</h4>
+<h4 id="_failures">Failures</h4>
 <div class="paragraph">
 <p>The server responses technical errors via SOAP 1.2 fault</p>
 </div>
@@ -8420,7 +8433,7 @@ The server scope value follows rules for its TYPE</p></td>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-02-04 11:50:21 +0100
+Last updated 2022-02-06 19:07:13 +0100
 </div>
 </div>
 <style>

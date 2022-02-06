@@ -118,14 +118,6 @@ li {
 .navigation li.item .itemMembers {
   display: none;
 }
-
-.navigation .current-date {
-  font-size: 0.66em;
-  text-decoration: none;
-  color: #aaa;
-  float: right;
-}
-
 .main {
   padding: 20px 20px;
   margin-left: 350px;
@@ -445,4 +437,9 @@ code {
   background-repeat: no-repeat;
   background-size: 100%;
   padding-top: 150px;
+}
+
+h3 .bcd-dyn-replace-current-version-date {
+  font-size: 10pt;
+  margin-left: 6px;
 }

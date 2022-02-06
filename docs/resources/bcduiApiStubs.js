@@ -1,4 +1,6 @@
 // This file contains BCD-UI Javascript Api stubs for IDE autosuggest
+// BCD-UI version 5.6.0 (2022-02-06)
+
 
 /**
  * @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.html) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.html Online Api}
@@ -14214,7 +14216,6 @@ bcdui.component.textnavigation.TextNavigation = class {
   singleDigitToWord(text,prefix) { console.log(text,prefix); }
 
 }
-
 
 
 export { bcdui };
