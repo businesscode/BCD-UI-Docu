@@ -14,7 +14,7 @@
       <C bRef="volume"/>
     </Columns>
     <From>
-      <BindingSet>myReportData2</BindingSet>
+      <BindingSet>myReportData1</BindingSet>
     </From>
     <f:Filter>
       <f:Expression bRef="orig_country" op="=" value="FR"/>
