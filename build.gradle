@@ -99,6 +99,18 @@ task updateDocs( type: Copy ) {
   from( '../BCD-UI/Docu/build/jsApiStubs/bcduiApiStubs.js' ) {
     into 'resources'
   }
+
+  // Replace version and date placeholders
+  doLast {
+    fileTree( dir: "docs" ).each { f ->
+      String content = f.getText("UTF-8")
+      if( content.contains("--bcd-dyn-replace-current-version-date--") ) {
+        content = content.replaceAll('--bcd-dyn-replace-current-version-date--', (getProperty('bcdui.version') + " (" + (String) new Date().format('yyyy-MM-dd'))+")")
+        f.write(content, "UTF-8")
+      }
+    }
+  }
+
 }
 
 

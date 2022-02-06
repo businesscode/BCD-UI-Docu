@@ -1,4 +1,5 @@
-= BCD-UI 5
+= BCD-UI
+Version --bcd-dyn-replace-current-version-date--
 :icons: font
 :sectnums:
 :sectnumlevels: 2
