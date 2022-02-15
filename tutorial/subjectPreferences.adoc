@@ -31,7 +31,7 @@ securityManager.realms = .... $realmSubjectPreferences
     <cnf:Setting name="allowed_preference_name_1">
       <cnf:SourceSetting name="referenced_user_permission"/>
     </cnf:Setting>
-    <cnf:Setting name="name="allowed_preference_name_2" multi="true|false">
+    <cnf:Setting name="name="allowed_preference_name_2" multi="true|false" preventEmpty="true|false">
       <cnf:Values>
         <cnf:Value>allowed_value_1</cnf:Value>
         <cnf:Value default="true|false">allowed_value_2</cnf:Value>
@@ -55,11 +55,10 @@ which -when set to true- allows you to set multiple values. For this, the servle
 ==== Default Values:
 
 If you haven't set any subject preference yet and want to access it, a default value is chosen and returned (if available).
-This is either the alphabetically first entry from the cnf:Values list or the one which is marked as default with the "default='true'" attribute.
-If you're referencing a user permission via cnf:SourceSetting, the default value is the alphabetically first entry of that user.
-Keep in mind, the user might not have that setting at all, so setting a default one will fail in that specific case and the value becomes
-blank.
-
+This is the value from the cnf:Values list which is marked as default with the "default='true'" attribute. In case of an allowed multi
+setting, you can have multiple defaults.
+When you remove the last entry of a setting, it stays empty, unless you have preventEmpty="true" specified. In this case, the default
+value(s) is/are restored.
 
 ==== URL Usage:
 
