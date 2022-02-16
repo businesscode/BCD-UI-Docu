@@ -29,10 +29,10 @@ securityManager.realms = .... $realmSubjectPreferences
 <cnf:SessionBean xmlns:cnf="http://www.businesscode.de/schema/bcdui/config-1.0.0">
   <cnf:Settings>
     <cnf:Setting name="allowed_preference_name_1">
-      <cnf:SourceSetting name="referenced_user_permission"/>
+      <cnf:SourceSetting name="referenced_user_permission" multi="true|false"/>
     </cnf:Setting>
-    <cnf:Setting name="name="allowed_preference_name_2" multi="true|false" preventEmpty="true|false">
-      <cnf:Values>
+    <cnf:Setting name="name="allowed_preference_name_2"preventEmpty="true|false">
+      <cnf:Values multi="true|false" >
         <cnf:Value>allowed_value_1</cnf:Value>
         <cnf:Value default="true|false">allowed_value_2</cnf:Value>
       </cnf:Values>
@@ -48,7 +48,7 @@ A GET request to the servlet returns you a 3 column WRS which lists all currentl
 
 Each cnf:Setting node in your config describes one allowed attribute which you can set. To define the allowed values
 for that named permission, you can either give a list of static well known values (cnf:Values/cnf:Value) or you reference
-a user based permission via cnf:SourceSetting. You can not do self-referencing here. A setting may have an attribute "multi"
+a user based permission via cnf:SourceSetting. You can not do self-referencing here. cnf:Values/cnf:SourceSetting may have an attribute "multi"
 which -when set to true- allows you to set multiple values. For this, the servlet call needs to separate the single values by comma.
 
 
