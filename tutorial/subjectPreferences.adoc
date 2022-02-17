@@ -26,7 +26,7 @@ securityManager.realms = .... $realmSubjectPreferences
 3) add a /bcdui/conf/subjectPreferences.xml configuration file
 [source,xml]
 <?xml version="1.0" encoding="UTF-8"?>
-<cnf:SessionBean xmlns:cnf="http://www.businesscode.de/schema/bcdui/config-1.0.0">
+<cnf:SessionPreferences xmlns:cnf="http://www.businesscode.de/schema/bcdui/config-1.0.0">
   <cnf:Settings>
     <cnf:Setting name="allowed_preference_name_1">
       <cnf:SourceSetting name="referenced_user_permission" multi="true|false"/>
@@ -38,7 +38,7 @@ securityManager.realms = .... $realmSubjectPreferences
       </cnf:Values>
     </cnf:Setting>
   </cnf:Settings>
-</cnf:SessionBean>
+</cnf:SessionPreferences>
 
 === Usage:
 
