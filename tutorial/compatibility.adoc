@@ -52,6 +52,7 @@ elements with undeclared namespaces inherit the default namespace of the (possib
 * When using createElementWithPrototype or similar, always work with an explicit namespace, do not use the empty namespace. 
 * xsl:include is not supported (use xsl:import instead)
 * xsl:apply-imports is not supported. (normally xsl:apply-templates will be sufficient)
+* when using xsl:sort, you are limited to use up to 15 successive ones
 * Do not use msxml:node-set(), declare and use exslt:node-set() even for IE.
 * When generating XSLT with the help of XSLT, use 'generateXSLT' as the generation mode
 * When generating XSLT and matching on an input template XSLT, be aware that those elements do not have xsl as namespace
