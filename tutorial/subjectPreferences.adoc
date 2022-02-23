@@ -16,6 +16,10 @@ securityManager.realms = .... $realmSubjectPreferences
   <servlet>
     <servlet-name>bcdui4.SubjectPreferences</servlet-name>
     <servlet-class>de.businesscode.bcdui.web.servlets.SubjectPreferences</servlet-class>
+    <init-param>
+      <param-name>cookieMaxAge</param-name>
+      <param-value>31536000</param-value>
+    </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
@@ -26,12 +30,12 @@ securityManager.realms = .... $realmSubjectPreferences
 3) add a /bcdui/conf/subjectPreferences.xml configuration file
 [source,xml]
 <?xml version="1.0" encoding="UTF-8"?>
-<cnf:SessionPreferences xmlns:cnf="http://www.businesscode.de/schema/bcdui/config-1.0.0">
+<cnf:SessionPreferences xmlns:cnf="http://www.businesscode.de/schema/bcdui/config-1.0.0" cookieName="bcdSubjectPreferences" cookiePath="/bcdui">
   <cnf:Settings>
     <cnf:Setting name="allowed_preference_name_1">
-      <cnf:SourceSetting name="referenced_user_permission" multi="true|false"/>
+      <cnf:SourceSetting name="referenced_user_permission" multi="true|false" defaults="yourdefaults"/>
     </cnf:Setting>
-    <cnf:Setting name="name="allowed_preference_name_2"preventEmpty="true|false">
+    <cnf:Setting name="name="allowed_preference_name_2" emptyAllowed="true|false">
       <cnf:Values multi="true|false" >
         <cnf:Value>allowed_value_1</cnf:Value>
         <cnf:Value default="true|false">allowed_value_2</cnf:Value>
@@ -56,9 +60,12 @@ which -when set to true- allows you to set multiple values. For this, the servle
 
 If you haven't set any subject preference yet and want to access it, a default value is chosen and returned (if available).
 This is the value from the cnf:Values list which is marked as default with the "default='true'" attribute. In case of an allowed multi
-setting, you can have multiple defaults.
-When you remove the last entry of a setting, it stays empty, unless you have preventEmpty="true" specified. In this case, the default
+setting, you can have multiple defaults. For cnf:SourceSetting based entries, you can use the defaults attribute to give a comma separated
+string of default values. #bcdAllAllowed# can be used to set all allowed values as default.
+When you remove the last entry of a setting, it stays empty, when you have emptyAllowed="true" specified. Otherwise, the default
 value(s) is/are restored.
+If you modify the list by doing a POST operation, the values are manifested in a cookie if you specified a cookieName on config root.
+Optionally you can also change the cookiePath. When it comes to filling not yet set preferences, cookie values are taken over default values.
 
 ==== URL Usage:
 
