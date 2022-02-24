@@ -1,0 +1,21 @@
+<Wrs xmlns="http://www.businesscode.de/schema/bcdui/wrs-1.0.0">
+  <Header>
+    <BindingSet>kpi_cw</BindingSet>
+    <Columns>
+      <C pos="1" id="ctr" type-name="VARCHAR" display-size="22" nullable="1" signed="true"/>
+      <C pos="2" id="cw" type-name="INTEGER" display-size="22" scale="0" nullable="1" signed="true"/>
+      <C pos="3" id="low" type-name="NUMERIC" display-size="22" scale="0" nullable="1" signed="true"/>
+      <C pos="4" id="high" type-name="NUMERIC" display-size="22" scale="0" nullable="1" signed="true">
+        <A id="someTarget" name="target" caption="&#xE0FF;target"/>
+      </C>
+    </Columns>
+  </Header>
+  <Data>
+    <R id="1"><C>BE</C><C>23</C><C>1200</C><C target="1235">1300</C></R>
+    <R id="2"><C>CZ</C><C>24</C><C>1234</C><C target="1200">1434</C></R>
+    <R id="3"><C>DE</C><C>25</C><C>1321</C><C target="1000">1421</C></R>
+    <R id="4"><C>ES</C><C>26</C><C>1102</C><C target="90">1202</C></R>
+    <R id="5"><C>FR</C><C>27</C><C>1234</C><C target="1000">1334</C></R>
+    <R id="6"><C>GB</C><C>28</C><C>1243</C><C target="900">1343</C></R>
+  </Data>
+</Wrs>

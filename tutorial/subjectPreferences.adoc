@@ -30,19 +30,19 @@ securityManager.realms = .... $realmSubjectPreferences
 3) add a /bcdui/conf/subjectPreferences.xml configuration file
 [source,xml]
 <?xml version="1.0" encoding="UTF-8"?>
-<cnf:SessionPreferences xmlns:cnf="http://www.businesscode.de/schema/bcdui/config-1.0.0" cookieName="bcdSubjectPreferences" cookiePath="/bcdui">
-  <cnf:Settings>
-    <cnf:Setting name="allowed_preference_name_1">
-      <cnf:SourceSetting name="referenced_user_permission" multi="true|false" defaults="yourdefaults"/>
-    </cnf:Setting>
-    <cnf:Setting name="name="allowed_preference_name_2" emptyAllowed="true|false">
-      <cnf:Values multi="true|false" >
-        <cnf:Value>allowed_value_1</cnf:Value>
-        <cnf:Value default="true|false">allowed_value_2</cnf:Value>
-      </cnf:Values>
-    </cnf:Setting>
-  </cnf:Settings>
-</cnf:SessionPreferences>
+<sec:SubjectPreferencesConfig xmlns:sec="http://www.businesscode.de/schema/bcdui/subjectsettings-1.0.0" cookieName="bcdSubjectPreferences" cookiePath="/bcdui">
+  <sec:Settings>
+    <sec:Setting name="allowed_preference_name_1">
+      <sec:SourceSetting ref="referenced_user_permission" isMulti="true|false" defaults="yourdefault1,yourdefault2"/>
+    </sec:Setting>
+    <sec:Setting name="name="allowed_preference_name_2">
+      <sec:Values isMulti="true|false" preventEmpty="true|false">
+        <sec:Value>allowed_value_1</sec:Value>
+        <sec:Value default="true|false">allowed_value_2</sec:Value>
+      </sec:Values>
+    </sec:Setting>
+  </sec:Settings>
+</sec:SubjectPreferencesConfig>
 
 === Usage:
 
@@ -50,17 +50,17 @@ To set/update a subject permission, you can either call mapped SubjectPreference
 or you use a WRS request with wrs:I/M/D rows to insert/modify/delete entries. The WRS consists of (at least) two columns with the names right_name and right_value.
 A GET request to the servlet returns you a 3 column WRS which lists all currently allowed values. The 3rd column holds true if the right is active at the moment.
 
-Each cnf:Setting node in your config describes one allowed attribute which you can set. To define the allowed values
-for that named permission, you can either give a list of static well known values (cnf:Values/cnf:Value) or you reference
-a user based permission via cnf:SourceSetting. You can not do self-referencing here. cnf:Values/cnf:SourceSetting may have an attribute "multi"
+Each sec:Setting node in your config describes one allowed attribute which you can set. To define the allowed values
+for that named permission, you can either give a list of static well known values (sec:Values/sec:Value) or you reference
+a user based permission via sec:SourceSetting. You can not do self-referencing here. sec:Values/sec:SourceSetting may have an attribute "isMulti"
 which -when set to true- allows you to set multiple values. For this, the servlet call needs to separate the single values by comma.
 
 
 ==== Default Values:
 
 If you haven't set any subject preference yet and want to access it, a default value is chosen and returned (if available).
-This is the value from the cnf:Values list which is marked as default with the "default='true'" attribute. In case of an allowed multi
-setting, you can have multiple defaults. For cnf:SourceSetting based entries, you can use the defaults attribute to give a comma separated
+This is the value from the sec:Values list which is marked as default with the "default='true'" attribute. In case of an allowed multi
+setting, you can have multiple defaults. For sec:SourceSetting based entries, you can use the defaults attribute to give a comma separated
 string of default values. #bcdAllAllowed# can be used to set all allowed values as default.
 When you remove the last entry of a setting, it stays empty, when you have emptyAllowed="true" specified. Otherwise, the default
 value(s) is/are restored.
@@ -93,11 +93,11 @@ Example:
     </BindingItems>
   </SubjectFilterType>
 
-And in a binding you can reference it the usual way then:
+And in a binding you can reference it the usual way then. `allowed:allWrite` can be any right type you defined.
 
 [source,xml]
   <SubjectSettings>
-   <Security><Operation permission="allAllowed" name="write"/></Security>
+   <Security><Operation permission="allowed:allWrite" name="write"/></Security>
     <SubjectFilters>
       <SubjectFilter type="bcdUserBean:country"/>
     </SubjectFilters>
@@ -106,7 +106,7 @@ And in a binding you can reference it the usual way then:
 === i18n Language switch:
 
 bcdui.i18n.switchLanguage function requires the upper mechanism (realm/web.xml/config) to be enabled
-and a <cnf:Setting name="bcd_i18n:lang"> needs to be defined in your config with sutiable allowed values.
+and a <sec:Setting name="bcd_i18n:lang"> needs to be defined in your config with suitable allowed values.
 
 ==== Setting a value programmatically:
 

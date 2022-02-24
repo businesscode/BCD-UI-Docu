@@ -1,14 +1,118 @@
 [[DocXmlData]]
 == WebRowSet
 
-=== WebRowSet Wrs Overview
+=== Wrs (Web Row Set) Overview
 
 BCD-UI delivers and receives data in the following XML format.
 
-BCD-UI WebRowSet Wrs is a unique, easy to use document format, called Wrs, which is preserved during processing on the client.
-This allows to reuse, replace, remove or reorder stylesheets in a transformation chain since all stylesheets work on the same input and output format.
+BCD-UI Web Row Set Wrs is an easy-to-use document format, called Wrs. Data loaded stays in this format at the client and can be used as a local data source for Renderer etc. +
+A simple Wrs send from the server looks like this:
 
-==== WebRowSet server response
+==== Web Row Set server response
+
+[source,xml]
+----
+include::../web/wrs.xml[]
+----
+It has a wrs:Header element describing the columns and their attributes and a wrs:Data element holding the rows of the result. The `&amp;#xE0FF;target` is a caption which is automatically translated to the user's language by the default renders. +
+Each row has a unique id, whose value has no meaning beside being unique within the document and is convenient for referring to a specific row in the result.
+
+==== Request document
+
+To request a Wrs from the server, a request document in the following format is to be sent. As you can see it resembles SQl and should be easy to understand:
+
+[source,xml]
+----
+<WrsRequest xmlns="http://www.businesscode.de/schema/bcdui/wrs-request-1.0.0">
+  <Select>
+
+    <!-- Which columns (i.e. bnd:C) to include -->
+    <Columns>
+      <C bRef="ctrId"/>
+      <C bRef="mo">
+        <!-- Attributes to main value, like sort order or long name: -->
+        <A bRef="monthName" name="caption">
+          <Calc>
+            <Concat>
+              <ValueRef idRef="captionPart1"/>
+              <ValueRef idRef="captionPart2"/>
+            </Concat>
+          </Calc>
+        </A>
+      </C>
+      <C bRef="travelers" aggr="min"/>
+    </Columns>
+
+    <!-- Where to get the data from -->
+    <From>
+      <BindingSet>ctrPeople</BindingSet>
+    </From>
+
+    <!-- Where clause -->
+    <Filter xmlns="http://www.businesscode.de/schema/bcdui/filter-1.0.0">
+      <And>
+        <Expression bRef="yr" op="=" value="2010"/>
+        <Expression bRef="cw" op="=" value="1"/>
+      </And>
+    </Filter>
+
+    <Grouping>
+      <C bRef="ctrName"/>
+      <C bRef="mo"/>
+    </Grouping>
+
+    <Ordering>
+      <C bRef="ctrName" order="desc"/>
+    </Ordering>
+
+  </Select>
+</WrsRequest>
+----
+
+You can also use `Common Table Expressions` ("WITH-Clause", including recursive queries), `Joins` of all kinds, `Grouping Sets` and `Unions`. You can even request server side calculations on the fly by using a `wrs:C/wrq:Calc` element. +
+Use the XML auto-suggest feature of your IDE when editing a Wrs request to find all options.
+
+==== Filter format
+
+Requests and per the output of choosers becoming filters follow BCD-UI's filter format.
+Filter conditions can be nested and are evaluated canonically.
+
+[source,xml]
+----
+<Filter xmlns="http://www.businesscode.de/schema/bcdui/filter-1.0.0">
+  <And>
+    <Expression bRef="val" op="&gt;=" value="1000"/>
+    <Expression bRef="val" op="&lt;=" value="2000"/>
+  </And>
+  <And>
+    <Or>
+      <Expression bRef="ctrName" op="="/>
+      <!-- No value means null, this filter means "is null" -->
+      <Expression bRef="ctrName" op="like" value="A%" escape="\\"/>
+    </Or>
+    <And>
+      <Expression bRef="yr" op="=" value="2010"/>
+      <Expression bRef="cw" op="in" value="1,2,3"/>
+    </And>
+  </And>
+</Filter>
+----
+
+Above leads to: 
+[source,javascript]
+----
+(val>=? AND val <=?) AND (ctrName IS NULL OR ctrName like ? ESCAPE ?) AND (yr=? AND cw IN (?,?,?)
+----
+More often than not you may want to use a dynamic filter, for example based on user selections. One easy way to achieve that is to create you request, put it into an XSLT and extend the f:Filter part with +
+`<xsl:apply-templates select="$guiStatus/\*/f:Filter/*"/>`.
+
+
+IMPORTANT: Security: The server makes sure that you are safe against any king of SQL injection or accessing data not meant for the user as defined in the addressed bnd:BindingSet. +
+For example SubjectFilters are always added transparently in addition to the filters you define in the query and prepared statements are used for security and performance reasons.
+
+==== Saving data
+
+To change data in the database you can create or modify and existing Wrs with information which rows to modify, insert or delete. BCD-UI's widget will understand that you write to a Wrs and change it automatically that way.
 
 [source,xml]
 ----
@@ -22,14 +126,6 @@ This allows to reuse, replace, remove or reorder stylesheets in a transformation
       </C>
       <C pos="2" id="population"/>
     </Columns>
-    <Debug>
-      <!-- Only available in debug case -->
-      <SQL>select ctrcd, pop from countries</SQL>
-      <ExecTime>100ms</ExecTime>
-      <SelectedBindingSet>bindingSetId</SelectedBindingSet>
-      <WrsRequest>...</WrsRequest>
-      <Url>...</Url>
-    </Debug>
   </Header>
   <Data>
     <R id="id0">
@@ -65,97 +161,14 @@ This allows to reuse, replace, remove or reorder stylesheets in a transformation
   <MaxRowsExceeded maxRows="500">true</MaxRowsExceeded>
 </Wrs>
 ----
-
-
 Each row can be
 
-* R for an unmodified row
-* D for a row that is to be deleted
-* I for a row that is to be inserted
-* M for a row that is to be updated. The original value of the column follows in an O elements after the respective C element
+* `wrs:R` for an unmodified row, will be ignored
+* `wrs:D` for a row that is to be deleted
+* `wrs:I` for a row that is to be inserted
+* `wrs:M` for a row that is to be updated. The original value of the column follows in a `wrs:O` elements after the respective `wrs:C` element
 
-Each row has a unique id, whose value has no meaning beside being unique within the document.
-
-==== Request document
-
-To request a Wrs from the server, a request document in the following format is to be sent.
-
-[source,xml]
-----
-<WrsRequest xmlns="http://www.businesscode.de/schema/bcdui/wrs-request-1.0.0" maxRows="100" startRow="300">
-  <Select id="a">
-    <Columns>
-      <C bRef="ctrId"/>
-      <C bRef="mo">
-        <!-- Attributes to main value, like sort order or long name: -->
-        <A bRef="monthName" name="caption"/>
-      </C>
-      <C bRef="travelers" aggr="min"/>
-    </Columns>
-    <From>
-      <BindingSet>ctrPeople</BindingSet>
-    </From>
-    <Filter xmlns="http://www.businesscode.de/schema/bcdui/filter-1.0.0">
-      <And>
-        <Or>
-          <Expression bRef="ctrName" op="=" value="DE"/>
-          <Expression bRef="ctrName" op="like" value="A%" escape="\\"/>
-        </Or>
-        <And>
-          <Expression bRef="yr" op="=" value="2010"/>
-          <Expression bRef="cw" op="=" value="1"/>
-        </And>
-      </And>
-    </Filter>
-    <Grouping>
-      <C bRef="ctrName"/>
-      <C bRef="mo"/>
-    </Grouping>
-    <Ordering>
-      <C bRef="ctrName" order="desc"/>
-    </Ordering>
-  </Select>
-</WrsRequest>
-----
-
-You can also use common table expressions, joins and unions. Use the XML autocomplete feature when editing a Wrs request to find all options.
-
-
-==== Filter format
-
-Requests and per the output of choosers becoming filters follow BCD-UI's filter format.
-Filter conditions can be nested and are evaluated canonically.
-
-[source,xml]
-----
-<Filter xmlns="http://www.businesscode.de/schema/bcdui/filter-1.0.0">
-  <And>
-    <Expression bRef="val" op="&gt;=" value="1000"/>
-    <Expression bRef="val" op="&lt;=" value="2000"/>
-  </And>
-  <And>
-    <Or>
-      <Expression bRef="ctrName" op="="/>
-      <!-- No value means null, this filter means "is null" -->
-      <Expression bRef="ctrName" op="like" value="A%" escape="\\"/>
-    </Or>
-    <And>
-      <Expression bRef="yr" op="=" value="2010"/>
-      <Expression bRef="cw" op="in" value="1,2,3"/>
-    </And>
-  </And>
-</Filter>
-----
-
-Above leads to: 
-[source,javascript]
-----
-(val>=? AND val <=?) AND (ctrName IS NULL OR ctrName like ? ESCAPE ?) AND (yr=? AND cw IN (?,?,?)
-
-----
-
-Note that prepared statements are used for security and performance reasons.
-Between operator is not available, please use ... &lt;= ... AND ... &gt;= ... instead.
+Of course, the definition of the `bnd:C/@iskey` attribute is important in the `bnd:BindingSet` for this to work as expected.
 
 ==== Failures
 

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<meta name="author" content="Version 5.6.0 (2022-02-06)">
+<meta name="author" content="Version 5.6.0 (2022-02-24)">
 <title>BCD-UI</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -551,7 +551,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>BCD-UI</h1>
 <div class="details">
-<span id="author" class="author">Version 5.6.0 (2022-02-06)</span><br>
+<span id="author" class="author">Version 5.6.0 (2022-02-24)</span><br>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -852,11 +852,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#DocXmlData">19. WebRowSet</a>
 <ul class="sectlevel2">
-<li><a href="#_webrowset_wrs_overview">19.1. WebRowSet Wrs Overview</a>
+<li><a href="#_wrs_web_row_set_overview">19.1. Wrs (Web Row Set) Overview</a>
 <ul class="sectlevel3">
-<li><a href="#_webrowset_server_response">WebRowSet server response</a></li>
+<li><a href="#_web_row_set_server_response">Web Row Set server response</a></li>
 <li><a href="#_request_document">Request document</a></li>
 <li><a href="#_filter_format">Filter format</a></li>
+<li><a href="#_saving_data">Saving data</a></li>
 <li><a href="#_failures">Failures</a></li>
 </ul>
 </li>
@@ -6289,11 +6290,15 @@ securityManager.realms = &#8230;&#8203;. $realmSubjectPreferences</p>
 <pre class="CodeRay highlight"><code data-lang="xml">  <span class="tag">&lt;servlet&gt;</span>
     <span class="tag">&lt;servlet-name&gt;</span>bcdui4.SubjectPreferences<span class="tag">&lt;/servlet-name&gt;</span>
     <span class="tag">&lt;servlet-class&gt;</span>de.businesscode.bcdui.web.servlets.SubjectPreferences<span class="tag">&lt;/servlet-class&gt;</span>
+    <span class="tag">&lt;init-param&gt;</span>
+      <span class="tag">&lt;param-name&gt;</span>cookieMaxAge<span class="tag">&lt;/param-name&gt;</span>
+      <span class="tag">&lt;param-value&gt;</span>31536000<span class="tag">&lt;/param-value&gt;</span>
+    <span class="tag">&lt;/init-param&gt;</span>
     <span class="tag">&lt;load-on-startup&gt;</span>1<span class="tag">&lt;/load-on-startup&gt;</span>
   <span class="tag">&lt;/servlet&gt;</span>
   <span class="tag">&lt;servlet-mapping&gt;</span>
     <span class="tag">&lt;servlet-name&gt;</span>bcdui4.SubjectPreferences<span class="tag">&lt;/servlet-name&gt;</span>
-    <span class="tag">&lt;url-pattern&gt;</span>/SubjectPreferences/*<span class="tag">&lt;/url-pattern&gt;</span>
+    <span class="tag">&lt;url-pattern&gt;</span>/bcdui/servlets/SubjectPreferences/*<span class="tag">&lt;/url-pattern&gt;</span>
   <span class="tag">&lt;/servlet-mapping&gt;</span></code></pre>
 </div>
 </div>
@@ -6303,48 +6308,45 @@ securityManager.realms = &#8230;&#8203;. $realmSubjectPreferences</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="preprocessor">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="tag">&lt;cnf:SessionBean</span> <span class="attribute-name">xmlns:cnf</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.businesscode.de/schema/bcdui/config-1.0.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-  <span class="tag">&lt;cnf:Settings&gt;</span>
-    <span class="tag">&lt;cnf:Setting</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">allowed_preference_name_1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-      <span class="tag">&lt;cnf:SourceSetting</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">referenced_user_permission</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-    <span class="tag">&lt;/cnf:Setting&gt;</span>
-    <span class="tag">&lt;cnf:Setting</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">name=</span><span class="delimiter">&quot;</span></span><span class="attribute-name">allowed_preference_name_2</span><span class="error">&quot;</span> <span class="attribute-name">multi</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true|false</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-      <span class="tag">&lt;cnf:Values&gt;</span>
-        <span class="tag">&lt;cnf:Value&gt;</span>allowed_value_1<span class="tag">&lt;/cnf:Value&gt;</span>
-        <span class="tag">&lt;cnf:Value</span> <span class="attribute-name">default</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true|false</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>allowed_value_2<span class="tag">&lt;/cnf:Value&gt;</span>
-      <span class="tag">&lt;/cnf:Values&gt;</span>
-    <span class="tag">&lt;/cnf:Setting&gt;</span>
-  <span class="tag">&lt;/cnf:Settings&gt;</span>
-<span class="tag">&lt;/cnf:SessionBean&gt;</span></code></pre>
+<span class="tag">&lt;sec:SubjectPreferencesConfig</span> <span class="attribute-name">xmlns:sec</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.businesscode.de/schema/bcdui/subjectsettings-1.0.0</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">cookieName</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdSubjectPreferences</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">cookiePath</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/bcdui</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;sec:Settings&gt;</span>
+    <span class="tag">&lt;sec:Setting</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">allowed_preference_name_1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+      <span class="tag">&lt;sec:SourceSetting</span> <span class="attribute-name">ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">referenced_user_permission</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">isMulti</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true|false</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">defaults</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">yourdefault1,yourdefault2</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/sec:Setting&gt;</span>
+    <span class="tag">&lt;sec:Setting</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">name=</span><span class="delimiter">&quot;</span></span><span class="attribute-name">allowed_preference_name_2</span><span class="error">&quot;</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;sec:Values</span> <span class="attribute-name">isMulti</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true|false</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">preventEmpty</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true|false</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;sec:Value&gt;</span>allowed_value_1<span class="tag">&lt;/sec:Value&gt;</span>
+        <span class="tag">&lt;sec:Value</span> <span class="attribute-name">default</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true|false</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>allowed_value_2<span class="tag">&lt;/sec:Value&gt;</span>
+      <span class="tag">&lt;/sec:Values&gt;</span>
+    <span class="tag">&lt;/sec:Setting&gt;</span>
+  <span class="tag">&lt;/sec:Settings&gt;</span>
+<span class="tag">&lt;/sec:SubjectPreferencesConfig&gt;</span></code></pre>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_usage_2">15.1. Usage:</h3>
 <div class="paragraph">
-<p>To set/update a subject permission, you call the mapped SubjectPreferences servlet with name and value attributes:</p>
+<p>To set/update a subject permission, you can either call mapped SubjectPreferences servlet with name and value attributes in a POST request (multiple values -if allowed- can be separated by comma),
+or you use a WRS request with wrs:I/M/D rows to insert/modify/delete entries. The WRS consists of (at least) two columns with the names right_name and right_value.
+A GET request to the servlet returns you a 3 column WRS which lists all currently allowed values. The 3rd column holds true if the right is active at the moment.</p>
 </div>
 <div class="paragraph">
-<p>For example for a mapped servlet you would set "country" to "DE"
-"localhost:8080/YourProject/SubjectPreferences?value=DE&amp;name=country"</p>
-</div>
-<div class="paragraph">
-<p>If your setting got a multi="true" setting, you can set multiple permission values by using comma separated values:
-"localhost:8080/YourProject/SubjectPreferences?value=DE,FR,ES&amp;name=country"</p>
-</div>
-<div class="paragraph">
-<p>Each cnf:Setting node in your config describes one allowed attribute which you can set. To define the allowed values
-for that named permission, you can either give a list of static well known values (cnf:Values/cnf:Value) or you reference
-a user based permission via cnf:SourceSetting. You can not do self-referencing here. A setting may have an attribute "multi"
+<p>Each sec:Setting node in your config describes one allowed attribute which you can set. To define the allowed values
+for that named permission, you can either give a list of static well known values (sec:Values/sec:Value) or you reference
+a user based permission via sec:SourceSetting. You can not do self-referencing here. sec:Values/sec:SourceSetting may have an attribute "isMulti"
 which -when set to true- allows you to set multiple values. For this, the servlet call needs to separate the single values by comma.</p>
 </div>
 <div class="sect3">
 <h4 id="_default_values">Default Values:</h4>
 <div class="paragraph">
 <p>If you haven&#8217;t set any subject preference yet and want to access it, a default value is chosen and returned (if available).
-This is either the alphabetically first entry from the cnf:Values list or the one which is marked as default with the "default='true'" attribute.
-If you&#8217;re referencing a user permission via cnf:SourceSetting, the default value is the alphabetically first entry of that user.
-Keep in mind, the user might not have that setting at all, so setting a default one will fail in that specific case and the value becomes
-blank.</p>
+This is the value from the sec:Values list which is marked as default with the "default='true'" attribute. In case of an allowed multi
+setting, you can have multiple defaults. For sec:SourceSetting based entries, you can use the defaults attribute to give a comma separated
+string of default values. <mark>bcdAllAllowed</mark> can be used to set all allowed values as default.
+When you remove the last entry of a setting, it stays empty, when you have emptyAllowed="true" specified. Otherwise, the default
+value(s) is/are restored.
+If you modify the list by doing a POST operation, the values are manifested in a cookie if you specified a cookieName on config root.
+Optionally you can also change the cookiePath. When it comes to filling not yet set preferences, cookie values are taken over default values.</p>
 </div>
 </div>
 <div class="sect3">
@@ -6382,12 +6384,12 @@ For this, you can define a SubjectFilterType as you know it from subject setting
 </div>
 </div>
 <div class="paragraph">
-<p>And in a binding you can reference it the usual way then:</p>
+<p>And in a binding you can reference it the usual way then. <code>allowed:allWrite</code> can be any right type you defined.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml">  <span class="tag">&lt;SubjectSettings&gt;</span>
-   <span class="tag">&lt;Security&gt;</span><span class="tag">&lt;Operation</span> <span class="attribute-name">permission</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">allAllowed</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">write</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span><span class="tag">&lt;/Security&gt;</span>
+   <span class="tag">&lt;Security&gt;</span><span class="tag">&lt;Operation</span> <span class="attribute-name">permission</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">allowed:allWrite</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">write</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span><span class="tag">&lt;/Security&gt;</span>
     <span class="tag">&lt;SubjectFilters&gt;</span>
       <span class="tag">&lt;SubjectFilter</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdUserBean:country</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
     <span class="tag">&lt;/SubjectFilters&gt;</span>
@@ -6400,7 +6402,7 @@ For this, you can define a SubjectFilterType as you know it from subject setting
 <h3 id="_i18n_language_switch">15.2. i18n Language switch:</h3>
 <div class="paragraph">
 <p>bcdui.i18n.switchLanguage function requires the upper mechanism (realm/web.xml/config) to be enabled
-and a &lt;cnf:Setting name="bcd_i18n:lang"&gt; needs to be defined in your config with sutiable allowed values.</p>
+and a &lt;sec:Setting name="bcd_i18n:lang"&gt; needs to be defined in your config with suitable allowed values.</p>
 </div>
 <div class="sect3">
 <h4 id="_setting_a_value_programmatically">Setting a value programmatically:</h4>
@@ -7053,16 +7055,162 @@ of the class  <code>de.businesscode.bcdui.el.ELEnvironment</code>  must be creat
 <h2 id="DocXmlData">19. WebRowSet</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_webrowset_wrs_overview">19.1. WebRowSet Wrs Overview</h3>
+<h3 id="_wrs_web_row_set_overview">19.1. Wrs (Web Row Set) Overview</h3>
 <div class="paragraph">
 <p>BCD-UI delivers and receives data in the following XML format.</p>
 </div>
 <div class="paragraph">
-<p>BCD-UI WebRowSet Wrs is a unique, easy to use document format, called Wrs, which is preserved during processing on the client.
-This allows to reuse, replace, remove or reorder stylesheets in a transformation chain since all stylesheets work on the same input and output format.</p>
+<p>BCD-UI Web Row Set Wrs is an easy-to-use document format, called Wrs. Data loaded stays in this format at the client and can be used as a local data source for Renderer etc.<br>
+A simple Wrs send from the server looks like this:</p>
 </div>
 <div class="sect3">
-<h4 id="_webrowset_server_response">WebRowSet server response</h4>
+<h4 id="_web_row_set_server_response">Web Row Set server response</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;Wrs</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.businesscode.de/schema/bcdui/wrs-1.0.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;Header&gt;</span>
+    <span class="tag">&lt;BindingSet&gt;</span>kpi_cw<span class="tag">&lt;/BindingSet&gt;</span>
+    <span class="tag">&lt;Columns&gt;</span>
+      <span class="tag">&lt;C</span> <span class="attribute-name">pos</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ctr</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">type-name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">VARCHAR</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">display-size</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">22</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">nullable</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">signed</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+      <span class="tag">&lt;C</span> <span class="attribute-name">pos</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">2</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">cw</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">type-name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">INTEGER</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">display-size</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">22</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">scale</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">0</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">nullable</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">signed</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+      <span class="tag">&lt;C</span> <span class="attribute-name">pos</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">3</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">low</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">type-name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">NUMERIC</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">display-size</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">22</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">scale</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">0</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">nullable</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">signed</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+      <span class="tag">&lt;C</span> <span class="attribute-name">pos</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">4</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">high</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">type-name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">NUMERIC</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">display-size</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">22</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">scale</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">0</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">nullable</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">signed</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;A</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">someTarget</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">target</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="entity">&amp;#xE0FF;</span><span class="content">target</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+      <span class="tag">&lt;/C&gt;</span>
+    <span class="tag">&lt;/Columns&gt;</span>
+  <span class="tag">&lt;/Header&gt;</span>
+  <span class="tag">&lt;Data&gt;</span>
+    <span class="tag">&lt;R</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;C&gt;</span>BE<span class="tag">&lt;/C&gt;</span><span class="tag">&lt;C&gt;</span>23<span class="tag">&lt;/C&gt;</span><span class="tag">&lt;C&gt;</span>1200<span class="tag">&lt;/C&gt;</span><span class="tag">&lt;C</span> <span class="attribute-name">target</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1235</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>1300<span class="tag">&lt;/C&gt;</span><span class="tag">&lt;/R&gt;</span>
+    <span class="tag">&lt;R</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">2</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;C&gt;</span>CZ<span class="tag">&lt;/C&gt;</span><span class="tag">&lt;C&gt;</span>24<span class="tag">&lt;/C&gt;</span><span class="tag">&lt;C&gt;</span>1234<span class="tag">&lt;/C&gt;</span><span class="tag">&lt;C</span> <span class="attribute-name">target</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1200</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>1434<span class="tag">&lt;/C&gt;</span><span class="tag">&lt;/R&gt;</span>
+    <span class="tag">&lt;R</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">3</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;C&gt;</span>DE<span class="tag">&lt;/C&gt;</span><span class="tag">&lt;C&gt;</span>25<span class="tag">&lt;/C&gt;</span><span class="tag">&lt;C&gt;</span>1321<span class="tag">&lt;/C&gt;</span><span class="tag">&lt;C</span> <span class="attribute-name">target</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1000</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>1421<span class="tag">&lt;/C&gt;</span><span class="tag">&lt;/R&gt;</span>
+    <span class="tag">&lt;R</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">4</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;C&gt;</span>ES<span class="tag">&lt;/C&gt;</span><span class="tag">&lt;C&gt;</span>26<span class="tag">&lt;/C&gt;</span><span class="tag">&lt;C&gt;</span>1102<span class="tag">&lt;/C&gt;</span><span class="tag">&lt;C</span> <span class="attribute-name">target</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">90</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>1202<span class="tag">&lt;/C&gt;</span><span class="tag">&lt;/R&gt;</span>
+    <span class="tag">&lt;R</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">5</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;C&gt;</span>FR<span class="tag">&lt;/C&gt;</span><span class="tag">&lt;C&gt;</span>27<span class="tag">&lt;/C&gt;</span><span class="tag">&lt;C&gt;</span>1234<span class="tag">&lt;/C&gt;</span><span class="tag">&lt;C</span> <span class="attribute-name">target</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1000</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>1334<span class="tag">&lt;/C&gt;</span><span class="tag">&lt;/R&gt;</span>
+    <span class="tag">&lt;R</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">6</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;C&gt;</span>GB<span class="tag">&lt;/C&gt;</span><span class="tag">&lt;C&gt;</span>28<span class="tag">&lt;/C&gt;</span><span class="tag">&lt;C&gt;</span>1243<span class="tag">&lt;/C&gt;</span><span class="tag">&lt;C</span> <span class="attribute-name">target</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">900</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>1343<span class="tag">&lt;/C&gt;</span><span class="tag">&lt;/R&gt;</span>
+  <span class="tag">&lt;/Data&gt;</span>
+<span class="tag">&lt;/Wrs&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It has a wrs:Header element describing the columns and their attributes and a wrs:Data element holding the rows of the result. The <code>&amp;#xE0FF;target</code> is a caption which is automatically translated to the user&#8217;s language by the default renders.<br>
+Each row has a unique id, whose value has no meaning beside being unique within the document and is convenient for referring to a specific row in the result.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_request_document">Request document</h4>
+<div class="paragraph">
+<p>To request a Wrs from the server, a request document in the following format is to be sent. As you can see it resembles SQl and should be easy to understand:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;WrsRequest</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.businesscode.de/schema/bcdui/wrs-request-1.0.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;Select&gt;</span>
+
+    <span class="comment">&lt;!-- Which columns (i.e. bnd:C) to include --&gt;</span>
+    <span class="tag">&lt;Columns&gt;</span>
+      <span class="tag">&lt;C</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ctrId</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+      <span class="tag">&lt;C</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">mo</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="comment">&lt;!-- Attributes to main value, like sort order or long name: --&gt;</span>
+        <span class="tag">&lt;A</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">monthName</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">caption</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+          <span class="tag">&lt;Calc&gt;</span>
+            <span class="tag">&lt;Concat&gt;</span>
+              <span class="tag">&lt;ValueRef</span> <span class="attribute-name">idRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">captionPart1</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+              <span class="tag">&lt;ValueRef</span> <span class="attribute-name">idRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">captionPart2</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+            <span class="tag">&lt;/Concat&gt;</span>
+          <span class="tag">&lt;/Calc&gt;</span>
+        <span class="tag">&lt;/A&gt;</span>
+      <span class="tag">&lt;/C&gt;</span>
+      <span class="tag">&lt;C</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">travelers</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">aggr</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">min</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/Columns&gt;</span>
+
+    <span class="comment">&lt;!-- Where to get the data from --&gt;</span>
+    <span class="tag">&lt;From&gt;</span>
+      <span class="tag">&lt;BindingSet&gt;</span>ctrPeople<span class="tag">&lt;/BindingSet&gt;</span>
+    <span class="tag">&lt;/From&gt;</span>
+
+    <span class="comment">&lt;!-- Where clause --&gt;</span>
+    <span class="tag">&lt;Filter</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.businesscode.de/schema/bcdui/filter-1.0.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+      <span class="tag">&lt;And&gt;</span>
+        <span class="tag">&lt;Expression</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">yr</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">op</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">=</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">2010</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;Expression</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">cw</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">op</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">=</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+      <span class="tag">&lt;/And&gt;</span>
+    <span class="tag">&lt;/Filter&gt;</span>
+
+    <span class="tag">&lt;Grouping&gt;</span>
+      <span class="tag">&lt;C</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ctrName</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+      <span class="tag">&lt;C</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">mo</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/Grouping&gt;</span>
+
+    <span class="tag">&lt;Ordering&gt;</span>
+      <span class="tag">&lt;C</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ctrName</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">order</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">desc</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/Ordering&gt;</span>
+
+  <span class="tag">&lt;/Select&gt;</span>
+<span class="tag">&lt;/WrsRequest&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also use <code>Common Table Expressions</code> ("WITH-Clause", including recursive queries), <code>Joins</code> of all kinds, <code>Grouping Sets</code> and <code>Unions</code>. You can even request server side calculations on the fly by using a <code>wrs:C/wrq:Calc</code> element.<br>
+Use the XML auto-suggest feature of your IDE when editing a Wrs request to find all options.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_filter_format">Filter format</h4>
+<div class="paragraph">
+<p>Requests and per the output of choosers becoming filters follow BCD-UI&#8217;s filter format.
+Filter conditions can be nested and are evaluated canonically.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;Filter</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.businesscode.de/schema/bcdui/filter-1.0.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;And&gt;</span>
+    <span class="tag">&lt;Expression</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">val</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">op</span>=<span class="string"><span class="delimiter">&quot;</span><span class="entity">&amp;gt;</span><span class="content">=</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1000</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;Expression</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">val</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">op</span>=<span class="string"><span class="delimiter">&quot;</span><span class="entity">&amp;lt;</span><span class="content">=</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">2000</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+  <span class="tag">&lt;/And&gt;</span>
+  <span class="tag">&lt;And&gt;</span>
+    <span class="tag">&lt;Or&gt;</span>
+      <span class="tag">&lt;Expression</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ctrName</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">op</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">=</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+      <span class="comment">&lt;!-- No value means null, this filter means &quot;is null&quot; --&gt;</span>
+      <span class="tag">&lt;Expression</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ctrName</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">op</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">like</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">A%</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">escape</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">\\</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/Or&gt;</span>
+    <span class="tag">&lt;And&gt;</span>
+      <span class="tag">&lt;Expression</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">yr</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">op</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">=</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">2010</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+      <span class="tag">&lt;Expression</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">cw</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">op</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">in</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1,2,3</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/And&gt;</span>
+  <span class="tag">&lt;/And&gt;</span>
+<span class="tag">&lt;/Filter&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Above leads to:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">(val&gt;=? AND val &lt;=?) AND (ctrName IS NULL OR ctrName like ? ESCAPE ?) AND (yr=? AND cw IN (?,?,?)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>More often than not you may want to use a dynamic filter, for example based on user selections. One easy way to achieve that is to create you request, put it into an XSLT and extend the f:Filter part with<br>
+<code>&lt;xsl:apply-templates select="$guiStatus/*/f:Filter/*"/&gt;</code>.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Security: The server makes sure that you are safe against any king of SQL injection or accessing data not meant for the user as defined in the addressed bnd:BindingSet.<br>
+For example SubjectFilters are always added transparently in addition to the filters you define in the query and prepared statements are used for security and performance reasons.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_saving_data">Saving data</h4>
+<div class="paragraph">
+<p>To change data in the database you can create or modify and existing Wrs with information which rows to modify, insert or delete. BCD-UI&#8217;s widget will understand that you write to a Wrs and change it automatically that way.</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;Wrs</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.businesscode.de/schema/bcdui/wrs-1.0.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
@@ -7075,14 +7223,6 @@ This allows to reuse, replace, remove or reorder stylesheets in a transformation
       <span class="tag">&lt;/C&gt;</span>
       <span class="tag">&lt;C</span> <span class="attribute-name">pos</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">2</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">population</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
     <span class="tag">&lt;/Columns&gt;</span>
-    <span class="tag">&lt;Debug&gt;</span>
-      <span class="comment">&lt;!-- Only available in debug case --&gt;</span>
-      <span class="tag">&lt;SQL&gt;</span>select ctrcd, pop from countries<span class="tag">&lt;/SQL&gt;</span>
-      <span class="tag">&lt;ExecTime&gt;</span>100ms<span class="tag">&lt;/ExecTime&gt;</span>
-      <span class="tag">&lt;SelectedBindingSet&gt;</span>bindingSetId<span class="tag">&lt;/SelectedBindingSet&gt;</span>
-      <span class="tag">&lt;WrsRequest&gt;</span>...<span class="tag">&lt;/WrsRequest&gt;</span>
-      <span class="tag">&lt;Url&gt;</span>...<span class="tag">&lt;/Url&gt;</span>
-    <span class="tag">&lt;/Debug&gt;</span>
   <span class="tag">&lt;/Header&gt;</span>
   <span class="tag">&lt;Data&gt;</span>
     <span class="tag">&lt;R</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">id0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
@@ -7125,108 +7265,21 @@ This allows to reuse, replace, remove or reorder stylesheets in a transformation
 <div class="ulist">
 <ul>
 <li>
-<p>R for an unmodified row</p>
+<p><code>wrs:R</code> for an unmodified row, will be ignored</p>
 </li>
 <li>
-<p>D for a row that is to be deleted</p>
+<p><code>wrs:D</code> for a row that is to be deleted</p>
 </li>
 <li>
-<p>I for a row that is to be inserted</p>
+<p><code>wrs:I</code> for a row that is to be inserted</p>
 </li>
 <li>
-<p>M for a row that is to be updated. The original value of the column follows in an O elements after the respective C element</p>
+<p><code>wrs:M</code> for a row that is to be updated. The original value of the column follows in a <code>wrs:O</code> elements after the respective <code>wrs:C</code> element</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Each row has a unique id, whose value has no meaning beside being unique within the document.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_request_document">Request document</h4>
-<div class="paragraph">
-<p>To request a Wrs from the server, a request document in the following format is to be sent.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;WrsRequest</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.businesscode.de/schema/bcdui/wrs-request-1.0.0</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">maxRows</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">100</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">startRow</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">300</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-  <span class="tag">&lt;Select</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">a</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-    <span class="tag">&lt;Columns&gt;</span>
-      <span class="tag">&lt;C</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ctrId</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-      <span class="tag">&lt;C</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">mo</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-        <span class="comment">&lt;!-- Attributes to main value, like sort order or long name: --&gt;</span>
-        <span class="tag">&lt;A</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">monthName</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">caption</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-      <span class="tag">&lt;/C&gt;</span>
-      <span class="tag">&lt;C</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">travelers</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">aggr</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">min</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-    <span class="tag">&lt;/Columns&gt;</span>
-    <span class="tag">&lt;From&gt;</span>
-      <span class="tag">&lt;BindingSet&gt;</span>ctrPeople<span class="tag">&lt;/BindingSet&gt;</span>
-    <span class="tag">&lt;/From&gt;</span>
-    <span class="tag">&lt;Filter</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.businesscode.de/schema/bcdui/filter-1.0.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-      <span class="tag">&lt;And&gt;</span>
-        <span class="tag">&lt;Or&gt;</span>
-          <span class="tag">&lt;Expression</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ctrName</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">op</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">=</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">DE</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-          <span class="tag">&lt;Expression</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ctrName</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">op</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">like</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">A%</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">escape</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">\\</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-        <span class="tag">&lt;/Or&gt;</span>
-        <span class="tag">&lt;And&gt;</span>
-          <span class="tag">&lt;Expression</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">yr</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">op</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">=</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">2010</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-          <span class="tag">&lt;Expression</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">cw</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">op</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">=</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-        <span class="tag">&lt;/And&gt;</span>
-      <span class="tag">&lt;/And&gt;</span>
-    <span class="tag">&lt;/Filter&gt;</span>
-    <span class="tag">&lt;Grouping&gt;</span>
-      <span class="tag">&lt;C</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ctrName</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-      <span class="tag">&lt;C</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">mo</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-    <span class="tag">&lt;/Grouping&gt;</span>
-    <span class="tag">&lt;Ordering&gt;</span>
-      <span class="tag">&lt;C</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ctrName</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">order</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">desc</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-    <span class="tag">&lt;/Ordering&gt;</span>
-  <span class="tag">&lt;/Select&gt;</span>
-<span class="tag">&lt;/WrsRequest&gt;</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>You can also use common table expressions, joins and unions. Use the XML autocomplete feature when editing a Wrs request to find all options.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_filter_format">Filter format</h4>
-<div class="paragraph">
-<p>Requests and per the output of choosers becoming filters follow BCD-UI&#8217;s filter format.
-Filter conditions can be nested and are evaluated canonically.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;Filter</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.businesscode.de/schema/bcdui/filter-1.0.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-  <span class="tag">&lt;And&gt;</span>
-    <span class="tag">&lt;Expression</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">val</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">op</span>=<span class="string"><span class="delimiter">&quot;</span><span class="entity">&amp;gt;</span><span class="content">=</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1000</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-    <span class="tag">&lt;Expression</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">val</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">op</span>=<span class="string"><span class="delimiter">&quot;</span><span class="entity">&amp;lt;</span><span class="content">=</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">2000</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-  <span class="tag">&lt;/And&gt;</span>
-  <span class="tag">&lt;And&gt;</span>
-    <span class="tag">&lt;Or&gt;</span>
-      <span class="tag">&lt;Expression</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ctrName</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">op</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">=</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-      <span class="comment">&lt;!-- No value means null, this filter means &quot;is null&quot; --&gt;</span>
-      <span class="tag">&lt;Expression</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ctrName</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">op</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">like</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">A%</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">escape</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">\\</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-    <span class="tag">&lt;/Or&gt;</span>
-    <span class="tag">&lt;And&gt;</span>
-      <span class="tag">&lt;Expression</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">yr</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">op</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">=</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">2010</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-      <span class="tag">&lt;Expression</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">cw</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">op</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">in</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1,2,3</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-    <span class="tag">&lt;/And&gt;</span>
-  <span class="tag">&lt;/And&gt;</span>
-<span class="tag">&lt;/Filter&gt;</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Above leads to:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript">(val&gt;=? AND val &lt;=?) AND (ctrName IS NULL OR ctrName like ? ESCAPE ?) AND (yr=? AND cw IN (?,?,?)</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Note that prepared statements are used for security and performance reasons.
-Between operator is not available, please use &#8230;&#8203; &lt;= &#8230;&#8203; AND &#8230;&#8203; &gt;= &#8230;&#8203; instead.</p>
+<p>Of course, the definition of the <code>bnd:C/@iskey</code> attribute is important in the <code>bnd:BindingSet</code> for this to work as expected.</p>
 </div>
 </div>
 <div class="sect3">
@@ -8287,6 +8340,9 @@ elements with undeclared namespaces inherit the default namespace of the (possib
 </li>
 <li>
 <p>xsl:apply-imports is not supported. (normally xsl:apply-templates will be sufficient)</p>
+</li>
+<li>
+<p>when using xsl:sort, you are limited to use up to 15 successive ones</p>
 </li>
 <li>
 <p>Do not use msxml:node-set(), declare and use exslt:node-set() even for IE.</p>
