@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":9,"i2":9,"i3":10,"i4":9,"i5":9};
+var data = {"i0":10,"i1":10,"i2":9,"i3":9,"i4":9,"i5":9,"i6":9,"i7":10,"i8":9,"i9":9,"i10":9,"i11":9,"i12":9};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -172,13 +172,13 @@ extends javax.servlet.http.HttpServlet</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>static java.util.Map&lt;java.lang.String,&#8203;java.lang.String&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#defaultValues">defaultValues</a></span></code></th>
+<td class="colFirst"><code>static java.util.List&lt;java.lang.String&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#allowedRightTypes">allowedRightTypes</a></span></code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>static java.util.Map&lt;java.lang.String,&#8203;java.lang.String&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#valueSources">valueSources</a></span></code></th>
+<td class="colFirst"><code>static java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#COOKIE_PERMISSION_MAP_SESSION_ATTRIBUTE">COOKIE_PERMISSION_MAP_SESSION_ATTRIBUTE</a></span></code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -227,31 +227,69 @@ extends javax.servlet.http.HttpServlet</pre>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>static java.util.List&lt;java.lang.String&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPermissionList(java.lang.String)">getPermissionList</a></span>&#8203;(java.lang.String&nbsp;name)</code></th>
+<td class="colFirst"><code>protected void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#doPost(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)">doPost</a></span>&#8203;(javax.servlet.http.HttpServletRequest&nbsp;req,
+      javax.servlet.http.HttpServletResponse&nbsp;resp)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code>static java.util.List&lt;java.lang.String&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPermissionList(java.lang.String,boolean)">getPermissionList</a></span>&#8203;(java.lang.String&nbsp;name,
-                 boolean&nbsp;getSubList)</code></th>
+<td class="colFirst"><code>static java.util.Map&lt;java.lang.String,&#8203;java.util.ArrayList&lt;java.lang.String&gt;&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getCookieMap(javax.servlet.http.HttpServletRequest)">getCookieMap</a></span>&#8203;(javax.servlet.http.HttpServletRequest&nbsp;request)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i3" class="rowColor">
+<td class="colFirst"><code>static java.util.List&lt;java.lang.String&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getDefaultValues(java.lang.String,boolean)">getDefaultValues</a></span>&#8203;(java.lang.String&nbsp;rightType,
+                boolean&nbsp;skipCookie)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>static java.util.List&lt;java.lang.String&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPermissionList(java.lang.String)">getPermissionList</a></span>&#8203;(java.lang.String&nbsp;rightType)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code>static java.util.List&lt;java.lang.String&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPermissionList(java.lang.String,boolean)">getPermissionList</a></span>&#8203;(java.lang.String&nbsp;rightType,
+                 boolean&nbsp;getSubList)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i6" class="altColor">
+<td class="colFirst"><code>static java.util.Map&lt;java.lang.String,&#8203;java.util.ArrayList&lt;java.lang.String&gt;&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPermissionMap()">getPermissionMap</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#init(javax.servlet.ServletConfig)">init</a></span>&#8203;(javax.servlet.ServletConfig&nbsp;config)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i4" class="altColor">
-<td class="colFirst"><code>static void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setPermission(java.lang.String,java.lang.String)">setPermission</a></span>&#8203;(java.lang.String&nbsp;name,
-             java.lang.String&nbsp;value)</code></th>
+<tr id="i8" class="altColor">
+<td class="colFirst"><code>static boolean</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isAllowedAttribute(java.lang.String)">isAllowedAttribute</a></span>&#8203;(java.lang.String&nbsp;name)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setPermission(java.lang.String,java.util.List)">setPermission</a></span>&#8203;(java.lang.String&nbsp;name,
-             java.util.List&lt;java.lang.String&gt;&nbsp;values)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setPermission(java.lang.String,java.lang.String)">setPermission</a></span>&#8203;(java.lang.String&nbsp;rightType,
+             java.lang.String&nbsp;rightValue)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i10" class="altColor">
+<td class="colFirst"><code>static void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setPermission(java.lang.String,java.util.List)">setPermission</a></span>&#8203;(java.lang.String&nbsp;rightType,
+             java.util.List&lt;java.lang.String&gt;&nbsp;rightValues)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i11" class="rowColor">
+<td class="colFirst"><code>static void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setPermissionMap(java.util.Map)">setPermissionMap</a></span>&#8203;(java.util.Map&lt;java.lang.String,&#8203;java.util.ArrayList&lt;java.lang.String&gt;&gt;&nbsp;permMap)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i12" class="altColor">
+<td class="colFirst"><code>static boolean</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#testValue(java.lang.String,java.lang.String)">testValue</a></span>&#8203;(java.lang.String&nbsp;rightType,
+         java.lang.String&nbsp;rightValue)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -260,7 +298,7 @@ extends javax.servlet.http.HttpServlet</pre>
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;javax.servlet.http.HttpServlet</h3>
-<code>doDelete, doHead, doOptions, doPost, doPut, doTrace, getLastModified, service, service</code></li>
+<code>doDelete, doHead, doOptions, doPut, doTrace, getLastModified, service, service</code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a id="methods.inherited.from.class.javax.servlet.GenericServlet">
@@ -292,22 +330,26 @@ extends javax.servlet.http.HttpServlet</pre>
 <!--   -->
 </a>
 <h3>Field Detail</h3>
-<a id="defaultValues">
+<a id="allowedRightTypes">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>defaultValues</h4>
-<pre>public static final&nbsp;java.util.Map&lt;java.lang.String,&#8203;java.lang.String&gt; defaultValues</pre>
+<h4>allowedRightTypes</h4>
+<pre>public static final&nbsp;java.util.List&lt;java.lang.String&gt; allowedRightTypes</pre>
 </li>
 </ul>
-<a id="valueSources">
+<a id="COOKIE_PERMISSION_MAP_SESSION_ATTRIBUTE">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>valueSources</h4>
-<pre>public static final&nbsp;java.util.Map&lt;java.lang.String,&#8203;java.lang.String&gt; valueSources</pre>
+<h4>COOKIE_PERMISSION_MAP_SESSION_ATTRIBUTE</h4>
+<pre>public static final&nbsp;java.lang.String COOKIE_PERMISSION_MAP_SESSION_ATTRIBUTE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../../constant-values.html#de.businesscode.bcdui.web.servlets.SubjectPreferences.COOKIE_PERMISSION_MAP_SESSION_ATTRIBUTE">Constant Field Values</a></dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -357,13 +399,22 @@ extends javax.servlet.http.HttpServlet</pre>
 </dl>
 </li>
 </ul>
+<a id="isAllowedAttribute(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isAllowedAttribute</h4>
+<pre class="methodSignature">public static&nbsp;boolean&nbsp;isAllowedAttribute&#8203;(java.lang.String&nbsp;name)</pre>
+</li>
+</ul>
 <a id="getPermissionList(java.lang.String)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>getPermissionList</h4>
-<pre class="methodSignature">public static&nbsp;java.util.List&lt;java.lang.String&gt;&nbsp;getPermissionList&#8203;(java.lang.String&nbsp;name)</pre>
+<pre class="methodSignature">public static&nbsp;java.util.List&lt;java.lang.String&gt;&nbsp;getPermissionList&#8203;(java.lang.String&nbsp;rightType)</pre>
 </li>
 </ul>
 <a id="getPermissionList(java.lang.String,boolean)">
@@ -372,7 +423,7 @@ extends javax.servlet.http.HttpServlet</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getPermissionList</h4>
-<pre class="methodSignature">public static&nbsp;java.util.List&lt;java.lang.String&gt;&nbsp;getPermissionList&#8203;(java.lang.String&nbsp;name,
+<pre class="methodSignature">public static&nbsp;java.util.List&lt;java.lang.String&gt;&nbsp;getPermissionList&#8203;(java.lang.String&nbsp;rightType,
                                                                  boolean&nbsp;getSubList)</pre>
 </li>
 </ul>
@@ -382,8 +433,26 @@ extends javax.servlet.http.HttpServlet</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>setPermission</h4>
-<pre class="methodSignature">public static&nbsp;void&nbsp;setPermission&#8203;(java.lang.String&nbsp;name,
-                                 java.lang.String&nbsp;value)</pre>
+<pre class="methodSignature">public static&nbsp;void&nbsp;setPermission&#8203;(java.lang.String&nbsp;rightType,
+                                 java.lang.String&nbsp;rightValue)</pre>
+</li>
+</ul>
+<a id="getPermissionMap()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getPermissionMap</h4>
+<pre class="methodSignature">public static&nbsp;java.util.Map&lt;java.lang.String,&#8203;java.util.ArrayList&lt;java.lang.String&gt;&gt;&nbsp;getPermissionMap()</pre>
+</li>
+</ul>
+<a id="setPermissionMap(java.util.Map)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setPermissionMap</h4>
+<pre class="methodSignature">public static&nbsp;void&nbsp;setPermissionMap&#8203;(java.util.Map&lt;java.lang.String,&#8203;java.util.ArrayList&lt;java.lang.String&gt;&gt;&nbsp;permMap)</pre>
 </li>
 </ul>
 <a id="setPermission(java.lang.String,java.util.List)">
@@ -392,14 +461,43 @@ extends javax.servlet.http.HttpServlet</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>setPermission</h4>
-<pre class="methodSignature">public static&nbsp;void&nbsp;setPermission&#8203;(java.lang.String&nbsp;name,
-                                 java.util.List&lt;java.lang.String&gt;&nbsp;values)</pre>
+<pre class="methodSignature">public static&nbsp;void&nbsp;setPermission&#8203;(java.lang.String&nbsp;rightType,
+                                 java.util.List&lt;java.lang.String&gt;&nbsp;rightValues)</pre>
+</li>
+</ul>
+<a id="doPost(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>doPost</h4>
+<pre class="methodSignature">protected&nbsp;void&nbsp;doPost&#8203;(javax.servlet.http.HttpServletRequest&nbsp;req,
+                      javax.servlet.http.HttpServletResponse&nbsp;resp)
+               throws javax.servlet.ServletException,
+                      java.io.IOException</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code>doPost</code>&nbsp;in class&nbsp;<code>javax.servlet.http.HttpServlet</code></dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>javax.servlet.ServletException</code></dd>
+<dd><code>java.io.IOException</code></dd>
+</dl>
+</li>
+</ul>
+<a id="testValue(java.lang.String,java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>testValue</h4>
+<pre class="methodSignature">public static&nbsp;boolean&nbsp;testValue&#8203;(java.lang.String&nbsp;rightType,
+                                java.lang.String&nbsp;rightValue)</pre>
 </li>
 </ul>
 <a id="doGet(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>doGet</h4>
 <pre class="methodSignature">protected&nbsp;void&nbsp;doGet&#8203;(javax.servlet.http.HttpServletRequest&nbsp;request,
@@ -413,6 +511,25 @@ extends javax.servlet.http.HttpServlet</pre>
 <dd><code>javax.servlet.ServletException</code></dd>
 <dd><code>java.io.IOException</code></dd>
 </dl>
+</li>
+</ul>
+<a id="getCookieMap(javax.servlet.http.HttpServletRequest)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getCookieMap</h4>
+<pre class="methodSignature">public static&nbsp;java.util.Map&lt;java.lang.String,&#8203;java.util.ArrayList&lt;java.lang.String&gt;&gt;&nbsp;getCookieMap&#8203;(javax.servlet.http.HttpServletRequest&nbsp;request)</pre>
+</li>
+</ul>
+<a id="getDefaultValues(java.lang.String,boolean)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getDefaultValues</h4>
+<pre class="methodSignature">public static&nbsp;java.util.List&lt;java.lang.String&gt;&nbsp;getDefaultValues&#8203;(java.lang.String&nbsp;rightType,
+                                                                boolean&nbsp;skipCookie)</pre>
 </li>
 </ul>
 </li>

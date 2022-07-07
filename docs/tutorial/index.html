@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<meta name="author" content="Version 5.6.0 (2022-03-14)">
+<meta name="author" content="Version 5.6.0 (2022-07-07)">
 <title>BCD-UI</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -551,7 +551,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>BCD-UI</h1>
 <div class="details">
-<span id="author" class="author">Version 5.6.0 (2022-03-14)</span><br>
+<span id="author" class="author">Version 5.6.0 (2022-07-07)</span><br>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -6229,7 +6229,7 @@ Authentication is handled by OAuth, permissions are managed by application throu
 <li>
 <p>Configuration</p>
 <div class="paragraph">
-<p>The shiro.ini <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/shiro.ini">template of BCD-UI</a> describes the setup, more about this the following section</p>
+<p>The shiro.ini <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/WebContent/WEB-INF/shiro.ini">template of BCD-UI</a> describes the setup, more about this the following section</p>
 </div>
 <div class="listingblock">
 <div class="title">oAuth sample with Azure</div>
@@ -6527,7 +6527,7 @@ In most cases you also want /vfs/ to update immediately.
 </table>
 </div>
 <div class="paragraph">
-<p>The default <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/web.xml" target="_blank" rel="noopener">web.xml</a> contains 2 setups.
+<p>The default <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/WebContent/WEB-INF/web.xml" target="_blank" rel="noopener">web.xml</a> contains 2 setups.
 The one initially enabled is optimized for development, caching only BCD-UI sources, for production enable the second one, caching all static resources.</p>
 </div>
 <div class="sect3">
@@ -7809,7 +7809,7 @@ These two jars not only hold all Java classes for the server but also all client
 </li>
 <li>
 <p>Add Entries to web.xml<br>
-To register BCD-UI&#8217;s servlets and filters, add the entries from <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/web.xml" target="_blank" rel="noopener">BCD-UI/Server/configFiles/web.xml</a> to your web.xml.<br>
+To register BCD-UI&#8217;s servlets and filters, add the entries from <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/WebContent/WEB-INF/web.xml" target="_blank" rel="noopener">BCD-UI/Server/configFiles/WebContent/WEB-INF/web.xml</a> to your web.xml.<br>
 Now comment out the &lt;filter&gt; bcdui4.ShiroFilter including its &lt;filter-mapping&gt;. Otherwise, you will be redirected to a login.htm page, which you do not have yet.<br>
 When you upgrade to a new version of BCD-UI check in <a href="https://github.com/businesscode/BCD-UI/blob/master/Docu/releaseNotes.adoc" target="_blank" rel="noopener">release notes</a> whether it changed.</p>
 </li>
@@ -7819,11 +7819,11 @@ All configuration files for BCD-UI are located at WEB-INF/bcdui. Create an empty
 </li>
 <li>
 <p>Add logging configuration<br>
-Copy <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/log4j2_debug_.xml" target="_blank" rel="noopener">BCD-UI/Server/configFiles/log4j2_debug_.xml</a>
+Copy <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/src/log4j2_debug_.xml" target="_blank" rel="noopener">BCD-UI/Server/configFiles/log4j2_debug_.xml</a>
 to your project&#8217;s <code>src/main/resources</code> folder and rename it to log4j2.xml.</p>
 </li>
 <li>
-<p>Copy <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/subjectSettings.xml" target="_blank" rel="noopener">BCD-UI/Server/configFiles/subjectSettings.xml</a> to <code>WEB-INF/bcdui</code></p>
+<p>Copy <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/WebContent/WEB-INF/bcdui/subjectSettings.xml" target="_blank" rel="noopener">BCD-UI/Server/configFiles/subjectSettings.xml</a> to <code>WEB-INF/bcdui</code></p>
 </li>
 <li>
 <p>Add entries for the database<br>
@@ -7922,7 +7922,7 @@ One thing less common though is that the JavaScript and other static sources com
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>log4j2.xml</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Logging settings <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/log4j2_debug_.xml" target="_blank" rel="noopener">template</a></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Logging settings <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/src/log4j2_debug_.xml" target="_blank" rel="noopener">template</a></strong></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -8039,7 +8039,7 @@ One thing less common though is that the JavaScript and other static sources com
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>web.xml</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Contains some BCD-UI library related entries <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/web.xml" target="_blank" rel="noopener">template</a></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Contains some BCD-UI library related entries <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/WebContent/WEB-INF/web.xml" target="_blank" rel="noopener">template</a></strong></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -8489,7 +8489,7 @@ The server scope value follows rules for its TYPE</p></td>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-02-06 19:07:13 +0100
+Last updated 2022-02-06 19:59:36 +0100
 </div>
 </div>
 <style>

@@ -1,5 +1,5 @@
 // This file contains BCD-UI Javascript Api stubs for IDE autosuggest
-// BCD-UI version 5.6.0 (2022-02-06)
+// BCD-UI version 5.6.0 (2022-07-07)
 
 
 /**
@@ -1457,6 +1457,18 @@ bcdui.util.toQueryParams = function(url, separator) { console.log(url, separator
 
 
 /**
+@param {string} string  Value to be unescaped
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.util.html#.unescapeHtml) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.util.html#.unescapeHtml Online Api}
+  @description 
+  @method unescapeHtml
+@return {string} unescaped string
+@memberOf bcdui.util
+ */
+bcdui.util.unescapeHtml = function(string) { console.log(string); };
+
+
+
+/**
 @param {string} string  Value to be escaped
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.util.html#.escapeHtml) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.util.html#.escapeHtml Online Api}
   @description 
@@ -1507,6 +1519,24 @@ bcdui.util.getUuid = function() {};
 
 
 /**
+@param {string} name  The name of the subjectSetting
+  @param {string} value  The value of for the subjectSetting specified by the name parameter. Can be a comma-separated value list
+  @param {function} callback  The function which is called after a successful call of the subjectPreferences servlet
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.util.html#.setSubjectPreference) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.util.html#.setSubjectPreference Online Api}
+  @description sets a subject preference
+  @method setSubjectPreference
+@example
+  //<pre>
+  // Sample using the mandatory parameters
+  bcdui.util.setSubjectPreference( name, value, callback );
+  //</pre>
+  @memberOf bcdui.util
+ */
+bcdui.util.setSubjectPreference = function(name, value, callback) { console.log(name, value, callback); };
+
+
+
+/**
  * @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.util.clipboard.html) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.util.clipboard.html Online Api}
  * @description This namespace contains the clipboard functions, objects and constants.
  * @namespace 
@@ -1530,7 +1560,7 @@ bcdui.util.clipboard.copy = function(data) { console.log(data); };
 @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.util.clipboard.html#.paste) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.util.clipboard.html#.paste Online Api}
   @description Paste
   @method paste
-@return {string} data - Data from clipboard
+@return {Promise} - resolving with clipboard data
 @memberOf bcdui.util.clipboard
  */
 bcdui.util.clipboard.paste = function() {};
@@ -2309,6 +2339,7 @@ bcdui.widget.hideModalBox = function() {};
   @param {string} [args.modelUrl]  Optional: URL where model get data from, allows reading a random xml file from the server.
   @param {string} [args.parameters]  Own action handler.
   @param {(string|chainDef)} [args.rendererUrl]  URL to XSLT stylesheet that renders the model or chain definition; default is "/bcdui/js/widget/menu/menu.xslt"
+  @param {string} [args.menuId]  Optional menuId to use one specific menu out of the available ones. If not available, the default one is used.
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widget.html#.createMenu) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widget.html#.createMenu Online Api}
   @description Creates menu with default renderer an default menu js handler.
   @method createMenu
@@ -2447,6 +2478,7 @@ bcdui.widget.createTooltip = function(args) { console.log(args); };
   @param {function} [args.getCaptionForColumnValue]  Function (colIdx, colValue) which returns the rendered caption for the cell. By default standard wrs &commat;caption, wrs:references and unit/scale handling is supported already. Deprecated (prefer valueCaptionProvider parameter).
   @param {function} [args.getFilteredValues]  Function (colIdx) which needs to return a wrs:C array which holds the valid values for the current column. Use this to e.g. only show prefiltered values . Deprecated (prefer valueCaptionProvider parameter).
   @param {function} [args.valueCaptionProvider]  Function (inputModel, colIdx) which needs to return a Promise which resolves with an array of objects {value, caption, isFiltered}
+  @param {Object} [args.columnFiltersCustomFilter]  CustomColumnFilter functions passed to column filter. columnFiltersCustomFilter is an array holding an object per bRef/column and an operations array which defines id, caption, valueCaptionProvider, filterFunction and gridFilterRowFunction
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widget.html#.createTableHeadFilter) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widget.html#.createTableHeadFilter Online Api}
   @description injectFilter in table
   @method createTableHeadFilter
@@ -3105,7 +3137,7 @@ bcdui.widgetNg.createButton = function(args) { console.log(args); };
 @param {Object} args  The parameter map contains the following properties.
   @param {writableModelXPath} args.targetModelXPath  The xPath pointing to the root-node this input widget will place entered selected items into. The underlying XML format of data written is implemented by individual widget. If pointing into a Wrs, it switches to Wrs mode, i.e. the wrs:R will be marked as modified, target node will not be deleted.
   @param {function} [args.asyncValidationFunction]  Like 'validationFunction' but this one must return a Promise resolving with validation result. While validating, the widget sets 'bcdValidationPending' CSS class on the owning html element. The value is written to the model after a positive validation result. If a Promise is rejected for any reason, the widget switches to invalid state.
-  @param {string} [args.autocomplete]  html autocomplete attribute. Can be on or off. Google Chrome ignores off, so set something like new-password or other.
+  @param {string} [args.autocomplete]  HTML autocomplete attribute. Can be on or off.
   @param {boolean} [args.autofocus]  requests the widget to set the focus once it is rendered or enabled for the first time. Only one widget can have a focus, so in case the focus is requested by many widgets it is undefined which one will win.
   @param {boolean} [args.disabled]  All input widgets can be set to be disabled. If disabled, a widget cannot receive a focus, also a style cannot be changed in many browsers. There is no read-only. Also consult read-only vs disabled: http://www.w3.org/TR/html4/interact/forms.html#h-17.12
   @param {boolean} [args.disableResetControl]  set this parameter to 'false' to enable built-in reset-control, which empties content once clicked.
@@ -4879,7 +4911,7 @@ jQuery.fn.bcdRender = function(bcdRendererArgs) { console.log(bcdRendererArgs); 
    * @property {string}                                        [id]                  - Globally unique id for used in declarative contexts
    * @property {boolean}                                       [isAutoRefresh=false] - If true, each change of args.urlProvider triggers a reload of the model
    * @property {string}                                        [mimeType=auto]       - Mimetype of the expected data. If "auto" or none is given it is derived from the url
-   * @property {SimpleModelParamSaveOptions}                   [saveOptions]         - An argument map for save options
+   * @property {SimpleModelParamSaveOptions}                   [saveOptions]         - An argument map for save options {@link SimpleModelParamSaveOptions}
    */
 /**
    * @typedef {Object} StaticModelParam
@@ -5085,12 +5117,13 @@ bcdui.core.AbstractExecutable = class {
   constructor(args){ console.log(args); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AbstractExecutable.html#addStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AbstractExecutable.html#addStatusListener Online Api}
-  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map
+  @description Listen for any status to be reached. For use cases with the ready status (by far the most common), see onReady() and onceReady() convenience functions.
+  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map {@link AddStatusListenerParam}
   */
   addStatusListener(args) { console.log(args); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AbstractExecutable.html#removeStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AbstractExecutable.html#removeStatusListener Online Api}
-  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map.
+  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map {@link RemoveStatusListenerParam}.
   */
   removeStatusListener(args) { console.log(args); }
   /**
@@ -5138,12 +5171,12 @@ bcdui.core.AbstractExecutable = class {
   execute(doesRefresh) { console.log(doesRefresh); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AbstractExecutable.html#onceReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AbstractExecutable.html#onceReady Online Api}
-  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnceReadyParam}. To listen for other states see addStatusListener()
   */
   onceReady(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AbstractExecutable.html#onReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AbstractExecutable.html#onReady Online Api}
-  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnReadyParam}. To listen for other states see addStatusListener()
   */
   onReady(listenerObject) { console.log(listenerObject); }
 
@@ -5154,7 +5187,7 @@ bcdui.core.AbstractExecutable = class {
 /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProvider.html) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProvider.html Online Api}
   @description A data provider is an abstract class on top of the {@link bcdui.core.AbstractExecutable}, extending it by data-related functions (like getName, getData, data modification events). The name is filled with the id by default or set from the "name" argument. getData() is abstract and must be provided by sub-classes.  <br/>Most common implementations are: {@link bcdui.core.StaticModel} &bull; {@link bcdui.core.SimpleModel} &bull; {@link bcdui.core.ModelWrapper}  <br/>Further implementations: {@link bcdui.core.AsyncJsDataProvider} &bull; {@link bcdui.core.StringDataProvider} &bull; {@link bcdui.core.DataProviderHtmlAttribute} &bull; {@link bcdui.core.RequestDocumentDataProvider} &bull; {@link bcdui.core.DataProviderWithXPathNodes} &bull; {@link bcdui.core.DataProviderWithXPath} &bull; {@link bcdui.core.DataProviderHolder} &bull; {@link bcdui.core.DataProviderAlias} &bull; {@link bcdui.core.ConstantDataProvider} &bull; {@link bcdui.core.PromptDataProvider} &bull;
-  @description Calls the initializer of {@link bcdui.core.AbstractExecutable} and additionally sets the name property. This property is filled from the "args" parameter map or set to the "id" if there is no "args.name" value in the map. <p>   In contrast to the id property the name does not need to be globally unique.   Instead it should be unique within the scope it is used for. For example   if the data provider is passed to a {@link bcdui.core.TransformationChain} the name should   be unique for within this TransformationChain object. </p>
+  @description Calls the initializer of {@link bcdui.core.AbstractExecutable} and additionally sets the name property. This property is filled from the "args" parameter map or set to the "id" if there is no "args.name" value in the map. <p>   In contrast to the id property the name does not need to be globally unique,   Instead, it should be unique within the scope it is used for. For example   if the data provider is passed to a {@link bcdui.core.TransformationChain} the name should   be unique for within this TransformationChain object. </p>
   @extends bcdui.core.AbstractExecutable
 */
 bcdui.core.DataProvider = class extends bcdui.core.AbstractExecutable{
@@ -5162,7 +5195,7 @@ bcdui.core.DataProvider = class extends bcdui.core.AbstractExecutable{
   @param {object} args
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProvider.html) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProvider.html Online Api}
   @description A data provider is an abstract class on top of the {@link bcdui.core.AbstractExecutable}, extending it by data-related functions (like getName, getData, data modification events). The name is filled with the id by default or set from the "name" argument. getData() is abstract and must be provided by sub-classes.  <br/>Most common implementations are: {@link bcdui.core.StaticModel} &bull; {@link bcdui.core.SimpleModel} &bull; {@link bcdui.core.ModelWrapper}  <br/>Further implementations: {@link bcdui.core.AsyncJsDataProvider} &bull; {@link bcdui.core.StringDataProvider} &bull; {@link bcdui.core.DataProviderHtmlAttribute} &bull; {@link bcdui.core.RequestDocumentDataProvider} &bull; {@link bcdui.core.DataProviderWithXPathNodes} &bull; {@link bcdui.core.DataProviderWithXPath} &bull; {@link bcdui.core.DataProviderHolder} &bull; {@link bcdui.core.DataProviderAlias} &bull; {@link bcdui.core.ConstantDataProvider} &bull; {@link bcdui.core.PromptDataProvider} &bull;
-  @description Calls the initializer of {@link bcdui.core.AbstractExecutable} and additionally sets the name property. This property is filled from the "args" parameter map or set to the "id" if there is no "args.name" value in the map. <p> In contrast to the id property the name does not need to be globally unique. Instead it should be unique within the scope it is used for. For example if the data provider is passed to a {@link bcdui.core.TransformationChain} the name should be unique for within this TransformationChain object. </p>
+  @description Calls the initializer of {@link bcdui.core.AbstractExecutable} and additionally sets the name property. This property is filled from the "args" parameter map or set to the "id" if there is no "args.name" value in the map. <p> In contrast to the id property the name does not need to be globally unique, Instead, it should be unique within the scope it is used for. For example if the data provider is passed to a {@link bcdui.core.TransformationChain} the name should be unique for within this TransformationChain object. </p>
   @extends bcdui.core.AbstractExecutable
     */
   constructor(args){ super(args); }
@@ -5224,8 +5257,8 @@ bcdui.core.DataProvider = class extends bcdui.core.AbstractExecutable{
   write(xPath,fillParams,value,fire) { console.log(xPath,fillParams,value,fire); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProvider.html#remove) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProvider.html#remove Online Api}
-  @description removes given xPath
-  @param {string} xPath  xPath pointing to value
+  @description Deletes data at a given xPath from the model
+  @param {string} xPath  xPath pointing to the value
   @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
   @param {boolean} [fire]  if true a fire is triggered to notify data modification listener
   */
@@ -5254,12 +5287,12 @@ bcdui.core.DataProvider = class extends bcdui.core.AbstractExecutable{
   serialize() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProvider.html#removeDataListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProvider.html#removeDataListener Online Api}
-  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map
+  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map {@link RemoveDataListenerParam}. Listeners are added with onChange()
   */
   removeDataListener(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProvider.html#onChange) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProvider.html#onChange Online Api}
-  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map
+  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map {@link OnChangeParam}. Listeners can be removed with removeDataListener()
   @param {string} [trackingXPath]  xPath to monitor to monitor for changes
   */
   onChange(listenerObject,trackingXPath) { console.log(listenerObject,trackingXPath); }
@@ -5270,11 +5303,11 @@ bcdui.core.DataProvider = class extends bcdui.core.AbstractExecutable{
   */
   setStatus(args) { console.log(args); }
   /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProvider.html#isClear) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProvider.html#isClear Online Api}
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProvider.html#isClean) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProvider.html#isClean Online Api}
   @description True, if DataProvider is ready and there are no uncommitted write transactions, see {@link bcdui.core.AbstractExecutable#isReady isReady()} and {@link bcdui.core.DataProvider#onChange fire()}.
   @return {boolean}
   */
-  isClear() {}
+  isClean() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProvider.html#fetchData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProvider.html#fetchData Online Api}
   @description asynchronously fetch data for this data provider.
@@ -5283,14 +5316,15 @@ bcdui.core.DataProvider = class extends bcdui.core.AbstractExecutable{
   fetchData() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProvider.html#addStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProvider.html#addStatusListener Online Api}
-  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map
+  @description Listen for any status to be reached. For use cases with the ready status (by far the most common), see onReady() and onceReady() convenience functions.
+  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map {@link AddStatusListenerParam}
   @inherits bcdui.core.AbstractExecutable#addStatusListener
   @overrides bcdui.core.AbstractExecutable#addStatusListener
   */
   addStatusListener(args) { console.log(args); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProvider.html#removeStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProvider.html#removeStatusListener Online Api}
-  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map.
+  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map {@link RemoveStatusListenerParam}.
   @inherits bcdui.core.AbstractExecutable#removeStatusListener
   @overrides bcdui.core.AbstractExecutable#removeStatusListener
   */
@@ -5345,14 +5379,14 @@ bcdui.core.DataProvider = class extends bcdui.core.AbstractExecutable{
   execute(doesRefresh) { console.log(doesRefresh); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProvider.html#onceReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProvider.html#onceReady Online Api}
-  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnceReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onceReady
   @overrides bcdui.core.AbstractExecutable#onceReady
   */
   onceReady(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProvider.html#onReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProvider.html#onReady Online Api}
-  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onReady
   @overrides bcdui.core.AbstractExecutable#onReady
   */
@@ -5864,8 +5898,8 @@ bcdui.core.PromptDataProvider = class extends bcdui.core.DataProvider{
   write(xPath,fillParams,value,fire) { console.log(xPath,fillParams,value,fire); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.PromptDataProvider.html#remove) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.PromptDataProvider.html#remove Online Api}
-  @description removes given xPath
-  @param {string} xPath  xPath pointing to value
+  @description Deletes data at a given xPath from the model
+  @param {string} xPath  xPath pointing to the value
   @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
   @param {boolean} [fire]  if true a fire is triggered to notify data modification listener
   @inherits bcdui.core.DataProvider#remove
@@ -5902,14 +5936,14 @@ bcdui.core.PromptDataProvider = class extends bcdui.core.DataProvider{
   serialize() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.PromptDataProvider.html#removeDataListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.PromptDataProvider.html#removeDataListener Online Api}
-  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map
+  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map {@link RemoveDataListenerParam}. Listeners are added with onChange()
   @inherits bcdui.core.DataProvider#removeDataListener
   @overrides bcdui.core.DataProvider#removeDataListener
   */
   removeDataListener(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.PromptDataProvider.html#onChange) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.PromptDataProvider.html#onChange Online Api}
-  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map
+  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map {@link OnChangeParam}. Listeners can be removed with removeDataListener()
   @param {string} [trackingXPath]  xPath to monitor to monitor for changes
   @inherits bcdui.core.DataProvider#onChange
   @overrides bcdui.core.DataProvider#onChange
@@ -5923,13 +5957,13 @@ bcdui.core.PromptDataProvider = class extends bcdui.core.DataProvider{
   */
   setStatus(args) { console.log(args); }
   /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.PromptDataProvider.html#isClear) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.PromptDataProvider.html#isClear Online Api}
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.PromptDataProvider.html#isClean) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.PromptDataProvider.html#isClean Online Api}
   @description True, if DataProvider is ready and there are no uncommitted write transactions, see {@link bcdui.core.AbstractExecutable#isReady isReady()} and {@link bcdui.core.DataProvider#onChange fire()}.
-  @inherits bcdui.core.DataProvider#isClear
-  @overrides bcdui.core.DataProvider#isClear
+  @inherits bcdui.core.DataProvider#isClean
+  @overrides bcdui.core.DataProvider#isClean
   @return {boolean}
   */
-  isClear() {}
+  isClean() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.PromptDataProvider.html#fetchData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.PromptDataProvider.html#fetchData Online Api}
   @description asynchronously fetch data for this data provider.
@@ -5940,14 +5974,15 @@ bcdui.core.PromptDataProvider = class extends bcdui.core.DataProvider{
   fetchData() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.PromptDataProvider.html#addStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.PromptDataProvider.html#addStatusListener Online Api}
-  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map
+  @description Listen for any status to be reached. For use cases with the ready status (by far the most common), see onReady() and onceReady() convenience functions.
+  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map {@link AddStatusListenerParam}
   @inherits bcdui.core.AbstractExecutable#addStatusListener
   @overrides bcdui.core.DataProvider#addStatusListener
   */
   addStatusListener(args) { console.log(args); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.PromptDataProvider.html#removeStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.PromptDataProvider.html#removeStatusListener Online Api}
-  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map.
+  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map {@link RemoveStatusListenerParam}.
   @inherits bcdui.core.AbstractExecutable#removeStatusListener
   @overrides bcdui.core.DataProvider#removeStatusListener
   */
@@ -5994,14 +6029,14 @@ bcdui.core.PromptDataProvider = class extends bcdui.core.DataProvider{
   execute(doesRefresh) { console.log(doesRefresh); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.PromptDataProvider.html#onceReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.PromptDataProvider.html#onceReady Online Api}
-  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnceReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onceReady
   @overrides bcdui.core.DataProvider#onceReady
   */
   onceReady(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.PromptDataProvider.html#onReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.PromptDataProvider.html#onReady Online Api}
-  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onReady
   @overrides bcdui.core.DataProvider#onReady
   */
@@ -6093,8 +6128,8 @@ bcdui.core.ConstantDataProvider = class extends bcdui.core.DataProvider{
   write(xPath,fillParams,value,fire) { console.log(xPath,fillParams,value,fire); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ConstantDataProvider.html#remove) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ConstantDataProvider.html#remove Online Api}
-  @description removes given xPath
-  @param {string} xPath  xPath pointing to value
+  @description Deletes data at a given xPath from the model
+  @param {string} xPath  xPath pointing to the value
   @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
   @param {boolean} [fire]  if true a fire is triggered to notify data modification listener
   @inherits bcdui.core.DataProvider#remove
@@ -6131,14 +6166,14 @@ bcdui.core.ConstantDataProvider = class extends bcdui.core.DataProvider{
   serialize() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ConstantDataProvider.html#removeDataListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ConstantDataProvider.html#removeDataListener Online Api}
-  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map
+  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map {@link RemoveDataListenerParam}. Listeners are added with onChange()
   @inherits bcdui.core.DataProvider#removeDataListener
   @overrides bcdui.core.DataProvider#removeDataListener
   */
   removeDataListener(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ConstantDataProvider.html#onChange) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ConstantDataProvider.html#onChange Online Api}
-  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map
+  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map {@link OnChangeParam}. Listeners can be removed with removeDataListener()
   @param {string} [trackingXPath]  xPath to monitor to monitor for changes
   @inherits bcdui.core.DataProvider#onChange
   @overrides bcdui.core.DataProvider#onChange
@@ -6152,13 +6187,13 @@ bcdui.core.ConstantDataProvider = class extends bcdui.core.DataProvider{
   */
   setStatus(args) { console.log(args); }
   /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ConstantDataProvider.html#isClear) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ConstantDataProvider.html#isClear Online Api}
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ConstantDataProvider.html#isClean) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ConstantDataProvider.html#isClean Online Api}
   @description True, if DataProvider is ready and there are no uncommitted write transactions, see {@link bcdui.core.AbstractExecutable#isReady isReady()} and {@link bcdui.core.DataProvider#onChange fire()}.
-  @inherits bcdui.core.DataProvider#isClear
-  @overrides bcdui.core.DataProvider#isClear
+  @inherits bcdui.core.DataProvider#isClean
+  @overrides bcdui.core.DataProvider#isClean
   @return {boolean}
   */
-  isClear() {}
+  isClean() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ConstantDataProvider.html#fetchData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ConstantDataProvider.html#fetchData Online Api}
   @description asynchronously fetch data for this data provider.
@@ -6169,14 +6204,15 @@ bcdui.core.ConstantDataProvider = class extends bcdui.core.DataProvider{
   fetchData() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ConstantDataProvider.html#addStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ConstantDataProvider.html#addStatusListener Online Api}
-  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map
+  @description Listen for any status to be reached. For use cases with the ready status (by far the most common), see onReady() and onceReady() convenience functions.
+  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map {@link AddStatusListenerParam}
   @inherits bcdui.core.AbstractExecutable#addStatusListener
   @overrides bcdui.core.DataProvider#addStatusListener
   */
   addStatusListener(args) { console.log(args); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ConstantDataProvider.html#removeStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ConstantDataProvider.html#removeStatusListener Online Api}
-  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map.
+  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map {@link RemoveStatusListenerParam}.
   @inherits bcdui.core.AbstractExecutable#removeStatusListener
   @overrides bcdui.core.DataProvider#removeStatusListener
   */
@@ -6223,14 +6259,14 @@ bcdui.core.ConstantDataProvider = class extends bcdui.core.DataProvider{
   execute(doesRefresh) { console.log(doesRefresh); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ConstantDataProvider.html#onceReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ConstantDataProvider.html#onceReady Online Api}
-  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnceReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onceReady
   @overrides bcdui.core.DataProvider#onceReady
   */
   onceReady(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ConstantDataProvider.html#onReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ConstantDataProvider.html#onReady Online Api}
-  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onReady
   @overrides bcdui.core.DataProvider#onReady
   */
@@ -6345,14 +6381,14 @@ bcdui.core.DataProviderHolder = class extends bcdui.core.DataProvider{
   serialize() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHolder.html#removeDataListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHolder.html#removeDataListener Online Api}
-  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map
+  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map {@link RemoveDataListenerParam}. Listeners are added with onChange()
   @inherits bcdui.core.DataProvider#removeDataListener
   @overrides bcdui.core.DataProvider#removeDataListener
   */
   removeDataListener(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHolder.html#onChange) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHolder.html#onChange Online Api}
-  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map
+  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map {@link OnChangeParam}. Listeners can be removed with removeDataListener()
   @param {string} [trackingXPath]  xPath to monitor to monitor for changes
   @inherits bcdui.core.DataProvider#onChange
   @overrides bcdui.core.DataProvider#onChange
@@ -6366,13 +6402,13 @@ bcdui.core.DataProviderHolder = class extends bcdui.core.DataProvider{
   */
   setStatus(args) { console.log(args); }
   /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHolder.html#isClear) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHolder.html#isClear Online Api}
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHolder.html#isClean) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHolder.html#isClean Online Api}
   @description True, if DataProvider is ready and there are no uncommitted write transactions, see {@link bcdui.core.AbstractExecutable#isReady isReady()} and {@link bcdui.core.DataProvider#onChange fire()}.
-  @inherits bcdui.core.DataProvider#isClear
-  @overrides bcdui.core.DataProvider#isClear
+  @inherits bcdui.core.DataProvider#isClean
+  @overrides bcdui.core.DataProvider#isClean
   @return {boolean}
   */
-  isClear() {}
+  isClean() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHolder.html#fetchData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHolder.html#fetchData Online Api}
   @description asynchronously fetch data for this data provider.
@@ -6383,14 +6419,15 @@ bcdui.core.DataProviderHolder = class extends bcdui.core.DataProvider{
   fetchData() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHolder.html#addStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHolder.html#addStatusListener Online Api}
-  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map
+  @description Listen for any status to be reached. For use cases with the ready status (by far the most common), see onReady() and onceReady() convenience functions.
+  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map {@link AddStatusListenerParam}
   @inherits bcdui.core.AbstractExecutable#addStatusListener
   @overrides bcdui.core.DataProvider#addStatusListener
   */
   addStatusListener(args) { console.log(args); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHolder.html#removeStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHolder.html#removeStatusListener Online Api}
-  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map.
+  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map {@link RemoveStatusListenerParam}.
   @inherits bcdui.core.AbstractExecutable#removeStatusListener
   @overrides bcdui.core.DataProvider#removeStatusListener
   */
@@ -6437,14 +6474,14 @@ bcdui.core.DataProviderHolder = class extends bcdui.core.DataProvider{
   execute(doesRefresh) { console.log(doesRefresh); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHolder.html#onceReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHolder.html#onceReady Online Api}
-  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnceReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onceReady
   @overrides bcdui.core.DataProvider#onceReady
   */
   onceReady(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHolder.html#onReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHolder.html#onReady Online Api}
-  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onReady
   @overrides bcdui.core.DataProvider#onReady
   */
@@ -6457,87 +6494,40 @@ bcdui.core.DataProviderHolder = class extends bcdui.core.DataProvider{
 /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html Online Api}
   @description This class is a wrapper for a DataProvider giving it a new name (not id) and reducing its states to only initialized and loaded. It is useful for renaming a DataProvider before passing it to a TransformationChain so that a DataProvider can be mapped to an arbitrary xsl:param element. where the bcdui.core.DataProviderAlias' name is used as the xsl:param's name
-  @extends bcdui.core.DataProvider
+  @extends bcdui.core.DataProviderHolder
 */
-bcdui.core.DataProviderAlias = class extends bcdui.core.DataProvider{
+bcdui.core.DataProviderAlias = class extends bcdui.core.DataProviderHolder{
   /**
   @param {object} args  The argument map taking two mandatory parameters:
   @param {bcdui.core.DataProvider} args.source  The data provider to be wrapped
   @param {string} args.name  The new name of the data provider
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html Online Api}
   @description This class is a wrapper for a DataProvider giving it a new name (not id) and reducing its states to only initialized and loaded. It is useful for renaming a DataProvider before passing it to a TransformationChain so that a DataProvider can be mapped to an arbitrary xsl:param element. where the bcdui.core.DataProviderAlias' name is used as the xsl:param's name
-  @extends bcdui.core.DataProvider
+  @extends bcdui.core.DataProviderHolder
     */
   constructor(args){ super(args); }
   getClassName() {}
   /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#sendData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#sendData Online Api}
-  @description Sends the current data to the original URL
-  @inherits bcdui.core.DataProvider#sendData
-  @overrides bcdui.core.DataProvider#sendData
-  */
-  sendData() {}
-  /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#fire) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#fire Online Api}
-  @description This informs modification listeners, registered via {@link bcdui.core.DataProvider#onChange onChange(args)}, that a change set was completed and data is consistent again.
-  @inherits bcdui.core.DataProvider#fire
-  @overrides bcdui.core.DataProvider#fire
-  */
-  fire() {}
-  /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#getName) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#getName Online Api}
-  @description Getter for the name of the data provider. This name is for example used to set parameters names of a {@link bcdui.core.TransformationChain}.
-  @inherits bcdui.core.DataProvider#getName
-  @overrides bcdui.core.DataProvider#getName
-  @return {string} The name of the data provider. This name should be uniquewithin the scope it is used and is usually not globally unique (as the id).
-  */
-  getName() {}
-  /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#getData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#getData Online Api}
-  @description Access to the data of this DataProvider for read and modification access
-  @inherits bcdui.core.DataProvider#getData
-  @overrides bcdui.core.DataProvider#getData
-  @return {*} The data provided by the specific sub-class.
-  */
-  getData() {}
-  /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#promptData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#promptData Online Api}
-  @description Convenience method for debugging showing data in a prompt for copy-and-paste
-  @inherits bcdui.core.DataProvider#promptData
-  @overrides bcdui.core.DataProvider#promptData
-  */
-  promptData() {}
-  /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#toString) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#toString Online Api}
-  @description Useful for debugging.
-  @inherits bcdui.core.DataProvider#toString
-  @overrides bcdui.core.DataProvider#toString
-  @return {string} A short string summary of this object.
-  */
-  toString() {}
-  debugIsWaitingFor() {}
-  debugStatus() {}
-  /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#read) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#read Online Api}
-  @description Reads the string value from a given xPath (or optionally return default value).
-  @param {string} xPath  xPath pointing to value (can include dot template placeholders which get filled with the given fillParams)
+  @description Reads value from a given xPath (or optionally return default value)
+  @param {string} xPath  xPath pointing to value
   @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
   @param {string} [defaultValue]  default value in case xPath value does not exist
-  @inherits bcdui.core.DataProvider#read
-  @overrides bcdui.core.DataProvider#read
-  @return text value stored at xPath (or null if no text was found and no defaultValue supplied)
+  @inherits bcdui.core.DataProviderHolder#read
+  @overrides bcdui.core.DataProviderHolder#read
+  @return text value stored at xPath (or null if nothing found and no defaultValue supplied or when source isn't set yet)
   */
   read(xPath,fillParams,defaultValue) { console.log(xPath,fillParams,defaultValue); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#write) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#write Online Api}
   @description Set a value to on a certain xPath and create the xPath where necessary. This combines Element.evaluate() for a single node with creating the path where necessary. It will prefer extending an existing start-part over creating a second one. After the operation the xPath (with the optional value) is guaranteed to exist (pre-existing or created or extended) and the addressed node is returned.
-  @param {string} xPath  xPath pointing to the node which is set to the value value or plain xPath to be created if not there. It tries to reuse all matching parts that are already there. If you provide for example "/n:Root/n:MyElem/&commat;attr2" and there is already "/n:Root/n:MyElem/&commat;attr1", then "/n:Root/n:MyElem" will be "re-used" and get an additional attribute attr2. Many expressions are allowed, for example "/n:Root/n:MyElem[&commat;attr1='attr1Value']/n:SubElem" is also ok. By nature, some xPath expressions are not allowed, for example using '//' or "/n:Root/n:MyElem/[&commat;attr1 or &commat;attr2]/n:SubElem" is obviously not unambiguous enough and will throw an error. This method is Wrs aware, use for example '/wrs:Wrs/wrs:Data/wrs:*[2]/wrs:C[3]' as xPath and it will turn wrs:R[wrs:C] into wrs:M[wrs:C and wrs:O], see Wrs format. (can include dot template placeholders which get filled with the given fillParams)
-  @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions Example: bcdui.wkModels.guiStatus.write("/guiStatus:Status/guiStatus:ClientSettings/guiStatus:Test[&commat;caption='{{=it[0]}}' and &commat;caption2='{{=it[1]}}']", ["china's republic", "drag\"n drop"])
+  @param {string} xPath  xPath pointing to the node which is set to the value value or plain xPath to be created if not there. It tries to reuse all matching parts that are already there. If you provide for example "/n:Root/n:MyElem/&commat;attr1" and there is already "/n:Root/n:MyElem@attr1", then ""/n:Root/n:MyElem" will be "re-used" and get a second attribute attr1. Many expressions are allowed, for example "/n:Root/n:MyElem[&commat;attr1='attr1Value']/n:SubElem" is also ok. By nature, some xPath expressions are not allowed, for example using '//' or "/n:Root/n:MyElem/[&commat;attr1 or &commat;attr2]/n:SubElem" is obviously not unambiguous enough and will throw an error. This method is Wrs aware, use for example '/wrs:Wrs/wrs:Data/wrs:*[2]/wrs:C[3]' as xPath and it will turn wrs:R[wrs:C] into wrs:M[wrs:C and wrs:O], see Wrs format.
+  @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
   @param {string} [value]  Optional value which should be written, for example to "/n:Root/n:MyElem/&commat;attr" or with "/n:Root/n:MyElem" as the element's text content. If not provided, the xPath contains all values like in "/n:Root/n:MyElem[&commat;attr='a' and &commat;attr1='b']" or needs none like "/n:Root/n:MyElem"
   @param {boolean} [fire]  If true a fire is triggered to inform data modification listeners
-  @inherits bcdui.core.DataProvider#write
-  @overrides bcdui.core.DataProvider#write
-  @return The xPath's node or null if dataProvider isn't ready
+  @inherits bcdui.core.DataProviderHolder#write
+  @overrides bcdui.core.DataProviderHolder#write
+  @return The xPath's node (can be null if source isn't set yet or dataProvider isn't ready)
   */
   write(xPath,fillParams,value,fire) { console.log(xPath,fillParams,value,fire); }
   /**
@@ -6546,95 +6536,141 @@ bcdui.core.DataProviderAlias = class extends bcdui.core.DataProvider{
   @param {string} xPath  xPath pointing to value
   @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
   @param {boolean} [fire]  if true a fire is triggered to notify data modification listener
-  @inherits bcdui.core.DataProvider#remove
-  @overrides bcdui.core.DataProvider#remove
+  @inherits bcdui.core.DataProviderHolder#remove
+  @overrides bcdui.core.DataProviderHolder#remove
   */
   remove(xPath,fillParams,fire) { console.log(xPath,fillParams,fire); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#query) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#query Online Api}
   @description Reads a single node from a given xPath
   @param {string} xPath  xPath to query
-  @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
-  @inherits bcdui.core.DataProvider#query
-  @overrides bcdui.core.DataProvider#query
-  @return single node or null if query fails
+  @inherits bcdui.core.DataProviderHolder#query
+  @overrides bcdui.core.DataProviderHolder#query
+  @return single node or null if query fails or source isn't set yet
   */
-  query(xPath,fillParams) { console.log(xPath,fillParams); }
+  query(xPath) { console.log(xPath); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#queryNodes) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#queryNodes Online Api}
   @description Get node list from a given xPath
   @param {string} xPath  xPath to query
-  @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
-  @inherits bcdui.core.DataProvider#queryNodes
-  @overrides bcdui.core.DataProvider#queryNodes
-  @return node list or empty list if query fails
+  @inherits bcdui.core.DataProviderHolder#queryNodes
+  @overrides bcdui.core.DataProviderHolder#queryNodes
+  @return node list or empty list if query fails or source isn't set yet
   */
-  queryNodes(xPath,fillParams) { console.log(xPath,fillParams); }
+  queryNodes(xPath) { console.log(xPath); }
+  getReadyStatus() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#getData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#getData Online Api}
+  @description Access to the data of this DataProvider for read and modification access
+  @inherits bcdui.core.DataProvider#getData
+  @return {*} The data provided by the specific sub-class.
+  */
+  getData() {}
+  toString() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#setSource) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#setSource Online Api}
+  @description Set the underlying source delayed instead of via the constructor. The DataProviderHolder does only become ready after the source was set and is or becomes ready.
+  @inherits bcdui.core.DataProviderHolder#setSource
+  @overrides bcdui.core.DataProviderHolder#setSource
+  */
+  setSource() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#sendData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#sendData Online Api}
+  @description Sends the current data to the original URL
+  @inherits bcdui.core.DataProvider#sendData
+  @overrides bcdui.core.DataProviderHolder#sendData
+  */
+  sendData() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#fire) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#fire Online Api}
+  @description This informs modification listeners, registered via {@link bcdui.core.DataProvider#onChange onChange(args)}, that a change set was completed and data is consistent again.
+  @inherits bcdui.core.DataProvider#fire
+  @overrides bcdui.core.DataProviderHolder#fire
+  */
+  fire() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#getName) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#getName Online Api}
+  @description Getter for the name of the data provider. This name is for example used to set parameters names of a {@link bcdui.core.TransformationChain}.
+  @inherits bcdui.core.DataProvider#getName
+  @overrides bcdui.core.DataProviderHolder#getName
+  @return {string} The name of the data provider. This name should be uniquewithin the scope it is used and is usually not globally unique (as the id).
+  */
+  getName() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#promptData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#promptData Online Api}
+  @description Convenience method for debugging showing data in a prompt for copy-and-paste
+  @inherits bcdui.core.DataProvider#promptData
+  @overrides bcdui.core.DataProviderHolder#promptData
+  */
+  promptData() {}
+  debugIsWaitingFor() {}
+  debugStatus() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#serialize) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#serialize Online Api}
   @description Serialize dataprovider's data if available
   @inherits bcdui.core.DataProvider#serialize
-  @overrides bcdui.core.DataProvider#serialize
+  @overrides bcdui.core.DataProviderHolder#serialize
   @return String containing the serialized data
   */
   serialize() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#removeDataListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#removeDataListener Online Api}
-  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map
+  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map {@link RemoveDataListenerParam}. Listeners are added with onChange()
   @inherits bcdui.core.DataProvider#removeDataListener
-  @overrides bcdui.core.DataProvider#removeDataListener
+  @overrides bcdui.core.DataProviderHolder#removeDataListener
   */
   removeDataListener(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#onChange) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#onChange Online Api}
-  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map
+  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map {@link OnChangeParam}. Listeners can be removed with removeDataListener()
   @param {string} [trackingXPath]  xPath to monitor to monitor for changes
   @inherits bcdui.core.DataProvider#onChange
-  @overrides bcdui.core.DataProvider#onChange
+  @overrides bcdui.core.DataProviderHolder#onChange
   */
   onChange(listenerObject,trackingXPath) { console.log(listenerObject,trackingXPath); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#setStatus) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#setStatus Online Api}
   @param {Status} args
   @inherits bcdui.core.DataProvider#setStatus
-  @overrides bcdui.core.DataProvider#setStatus
+  @overrides bcdui.core.DataProviderHolder#setStatus
   */
   setStatus(args) { console.log(args); }
   /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#isClear) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#isClear Online Api}
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#isClean) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#isClean Online Api}
   @description True, if DataProvider is ready and there are no uncommitted write transactions, see {@link bcdui.core.AbstractExecutable#isReady isReady()} and {@link bcdui.core.DataProvider#onChange fire()}.
-  @inherits bcdui.core.DataProvider#isClear
-  @overrides bcdui.core.DataProvider#isClear
+  @inherits bcdui.core.DataProvider#isClean
+  @overrides bcdui.core.DataProviderHolder#isClean
   @return {boolean}
   */
-  isClear() {}
+  isClean() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#fetchData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#fetchData Online Api}
   @description asynchronously fetch data for this data provider.
   @inherits bcdui.core.DataProvider#fetchData
-  @overrides bcdui.core.DataProvider#fetchData
+  @overrides bcdui.core.DataProviderHolder#fetchData
   @return {Promise} resolving once data has been loaded, first argument is this instance
   */
   fetchData() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#addStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#addStatusListener Online Api}
-  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map
+  @description Listen for any status to be reached. For use cases with the ready status (by far the most common), see onReady() and onceReady() convenience functions.
+  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map {@link AddStatusListenerParam}
   @inherits bcdui.core.AbstractExecutable#addStatusListener
-  @overrides bcdui.core.DataProvider#addStatusListener
+  @overrides bcdui.core.DataProviderHolder#addStatusListener
   */
   addStatusListener(args) { console.log(args); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#removeStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#removeStatusListener Online Api}
-  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map.
+  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map {@link RemoveStatusListenerParam}.
   @inherits bcdui.core.AbstractExecutable#removeStatusListener
-  @overrides bcdui.core.DataProvider#removeStatusListener
+  @overrides bcdui.core.DataProviderHolder#removeStatusListener
   */
   removeStatusListener(args) { console.log(args); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#getStatus) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#getStatus Online Api}
   @description Getter for the status of this object. See {@link bcdui.core.status} for possible return values.
   @inherits bcdui.core.AbstractExecutable#getStatus
-  @overrides bcdui.core.DataProvider#getStatus
+  @overrides bcdui.core.DataProviderHolder#getStatus
   @return {bcdui.core.Status} The current status.
   */
   getStatus() {}
@@ -6642,7 +6678,7 @@ bcdui.core.DataProviderAlias = class extends bcdui.core.DataProvider{
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#isReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#isReady Online Api}
   @description Tests if the current state is the readyStatus. This status is the same status as returned by "getReadyStatus".
   @inherits bcdui.core.AbstractExecutable#isReady
-  @overrides bcdui.core.DataProvider#isReady
+  @overrides bcdui.core.DataProviderHolder#isReady
   @return {boolean} True, if the object is ready.
   */
   isReady() {}
@@ -6650,23 +6686,15 @@ bcdui.core.DataProviderAlias = class extends bcdui.core.DataProvider{
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#hasFailed) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#hasFailed Online Api}
   @description Tests if the object has reached a failure status. These status codes are returned by the "getFailedStatus" method.
   @inherits bcdui.core.AbstractExecutable#hasFailed
-  @overrides bcdui.core.DataProvider#hasFailed
+  @overrides bcdui.core.DataProviderHolder#hasFailed
   @return {boolean} True, if the object's process has failed.
   */
   hasFailed() {}
   /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#getReadyStatus) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#getReadyStatus Online Api}
-  @description Getter for the ready status of the instance. This status is a final state defined by each sub-class which is reached when the process has finished normally.
-  @inherits bcdui.core.AbstractExecutable#getReadyStatus
-  @overrides bcdui.core.DataProvider#getReadyStatus
-  @return {bcdui.core.Status} The status object indicating that the process belongingto this class is finished.
-  */
-  getReadyStatus() {}
-  /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#getFailedStatus) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#getFailedStatus Online Api}
   @description Getter for the list of error statuses of this class. This implementation returns an empty list.
   @inherits bcdui.core.AbstractExecutable#getFailedStatus
-  @overrides bcdui.core.DataProvider#getFailedStatus
+  @overrides bcdui.core.DataProviderHolder#getFailedStatus
   @return {Array.<bcdui.core.Status>} The status objects corresponding to failures in the object'sprocess.
   */
   getFailedStatus() {}
@@ -6675,23 +6703,30 @@ bcdui.core.DataProviderAlias = class extends bcdui.core.DataProvider{
   @description Executes the process implemented by the concrete sub-class.
   @param {boolean} [doesRefresh]  Set this parameter to "false" if this method should do nothing when the object is already in the ready status. The default is "true" meaning that the process is re-started when it is currently ready.
   @inherits bcdui.core.AbstractExecutable#execute
-  @overrides bcdui.core.DataProvider#execute
+  @overrides bcdui.core.DataProviderHolder#execute
   */
   execute(doesRefresh) { console.log(doesRefresh); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#onceReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#onceReady Online Api}
-  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnceReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onceReady
-  @overrides bcdui.core.DataProvider#onceReady
+  @overrides bcdui.core.DataProviderHolder#onceReady
   */
   onceReady(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#onReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#onReady Online Api}
-  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onReady
-  @overrides bcdui.core.DataProvider#onReady
+  @overrides bcdui.core.DataProviderHolder#onReady
   */
   onReady(listenerObject) { console.log(listenerObject); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#getData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#getData Online Api}
+  @description Access to the data of this DataProvider for read and modification access
+  @inherits bcdui.core.DataProvider#getData
+  @return {*} The data provided by the specific sub-class.
+  */
+  getData() {}
 
 }
 
@@ -6816,14 +6851,14 @@ bcdui.core.DataProviderWithXPath = class extends bcdui.core.DataProviderHolder{
   serialize() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPath.html#removeDataListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPath.html#removeDataListener Online Api}
-  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map
+  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map {@link RemoveDataListenerParam}. Listeners are added with onChange()
   @inherits bcdui.core.DataProvider#removeDataListener
   @overrides bcdui.core.DataProviderHolder#removeDataListener
   */
   removeDataListener(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPath.html#onChange) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPath.html#onChange Online Api}
-  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map
+  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map {@link OnChangeParam}. Listeners can be removed with removeDataListener()
   @param {string} [trackingXPath]  xPath to monitor to monitor for changes
   @inherits bcdui.core.DataProvider#onChange
   @overrides bcdui.core.DataProviderHolder#onChange
@@ -6837,13 +6872,13 @@ bcdui.core.DataProviderWithXPath = class extends bcdui.core.DataProviderHolder{
   */
   setStatus(args) { console.log(args); }
   /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPath.html#isClear) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPath.html#isClear Online Api}
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPath.html#isClean) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPath.html#isClean Online Api}
   @description True, if DataProvider is ready and there are no uncommitted write transactions, see {@link bcdui.core.AbstractExecutable#isReady isReady()} and {@link bcdui.core.DataProvider#onChange fire()}.
-  @inherits bcdui.core.DataProvider#isClear
-  @overrides bcdui.core.DataProviderHolder#isClear
+  @inherits bcdui.core.DataProvider#isClean
+  @overrides bcdui.core.DataProviderHolder#isClean
   @return {boolean}
   */
-  isClear() {}
+  isClean() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPath.html#fetchData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPath.html#fetchData Online Api}
   @description asynchronously fetch data for this data provider.
@@ -6854,14 +6889,15 @@ bcdui.core.DataProviderWithXPath = class extends bcdui.core.DataProviderHolder{
   fetchData() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPath.html#addStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPath.html#addStatusListener Online Api}
-  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map
+  @description Listen for any status to be reached. For use cases with the ready status (by far the most common), see onReady() and onceReady() convenience functions.
+  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map {@link AddStatusListenerParam}
   @inherits bcdui.core.AbstractExecutable#addStatusListener
   @overrides bcdui.core.DataProviderHolder#addStatusListener
   */
   addStatusListener(args) { console.log(args); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPath.html#removeStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPath.html#removeStatusListener Online Api}
-  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map.
+  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map {@link RemoveStatusListenerParam}.
   @inherits bcdui.core.AbstractExecutable#removeStatusListener
   @overrides bcdui.core.DataProviderHolder#removeStatusListener
   */
@@ -6908,14 +6944,14 @@ bcdui.core.DataProviderWithXPath = class extends bcdui.core.DataProviderHolder{
   execute(doesRefresh) { console.log(doesRefresh); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPath.html#onceReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPath.html#onceReady Online Api}
-  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnceReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onceReady
   @overrides bcdui.core.DataProviderHolder#onceReady
   */
   onceReady(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPath.html#onReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPath.html#onReady Online Api}
-  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onReady
   @overrides bcdui.core.DataProviderHolder#onReady
   */
@@ -7049,14 +7085,14 @@ bcdui.core.DataProviderWithXPathNodes = class extends bcdui.core.DataProviderHol
   serialize() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPathNodes.html#removeDataListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPathNodes.html#removeDataListener Online Api}
-  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map
+  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map {@link RemoveDataListenerParam}. Listeners are added with onChange()
   @inherits bcdui.core.DataProvider#removeDataListener
   @overrides bcdui.core.DataProviderHolder#removeDataListener
   */
   removeDataListener(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPathNodes.html#onChange) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPathNodes.html#onChange Online Api}
-  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map
+  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map {@link OnChangeParam}. Listeners can be removed with removeDataListener()
   @param {string} [trackingXPath]  xPath to monitor to monitor for changes
   @inherits bcdui.core.DataProvider#onChange
   @overrides bcdui.core.DataProviderHolder#onChange
@@ -7070,13 +7106,13 @@ bcdui.core.DataProviderWithXPathNodes = class extends bcdui.core.DataProviderHol
   */
   setStatus(args) { console.log(args); }
   /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPathNodes.html#isClear) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPathNodes.html#isClear Online Api}
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPathNodes.html#isClean) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPathNodes.html#isClean Online Api}
   @description True, if DataProvider is ready and there are no uncommitted write transactions, see {@link bcdui.core.AbstractExecutable#isReady isReady()} and {@link bcdui.core.DataProvider#onChange fire()}.
-  @inherits bcdui.core.DataProvider#isClear
-  @overrides bcdui.core.DataProviderHolder#isClear
+  @inherits bcdui.core.DataProvider#isClean
+  @overrides bcdui.core.DataProviderHolder#isClean
   @return {boolean}
   */
-  isClear() {}
+  isClean() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPathNodes.html#fetchData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPathNodes.html#fetchData Online Api}
   @description asynchronously fetch data for this data provider.
@@ -7087,14 +7123,15 @@ bcdui.core.DataProviderWithXPathNodes = class extends bcdui.core.DataProviderHol
   fetchData() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPathNodes.html#addStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPathNodes.html#addStatusListener Online Api}
-  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map
+  @description Listen for any status to be reached. For use cases with the ready status (by far the most common), see onReady() and onceReady() convenience functions.
+  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map {@link AddStatusListenerParam}
   @inherits bcdui.core.AbstractExecutable#addStatusListener
   @overrides bcdui.core.DataProviderHolder#addStatusListener
   */
   addStatusListener(args) { console.log(args); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPathNodes.html#removeStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPathNodes.html#removeStatusListener Online Api}
-  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map.
+  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map {@link RemoveStatusListenerParam}.
   @inherits bcdui.core.AbstractExecutable#removeStatusListener
   @overrides bcdui.core.DataProviderHolder#removeStatusListener
   */
@@ -7141,14 +7178,14 @@ bcdui.core.DataProviderWithXPathNodes = class extends bcdui.core.DataProviderHol
   execute(doesRefresh) { console.log(doesRefresh); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPathNodes.html#onceReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPathNodes.html#onceReady Online Api}
-  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnceReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onceReady
   @overrides bcdui.core.DataProviderHolder#onceReady
   */
   onceReady(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPathNodes.html#onReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPathNodes.html#onReady Online Api}
-  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onReady
   @overrides bcdui.core.DataProviderHolder#onReady
   */
@@ -7277,14 +7314,14 @@ bcdui.core.OptionsDataProvider = class extends bcdui.core.DataProviderHolder{
   serialize() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.OptionsDataProvider.html#removeDataListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.OptionsDataProvider.html#removeDataListener Online Api}
-  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map
+  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map {@link RemoveDataListenerParam}. Listeners are added with onChange()
   @inherits bcdui.core.DataProvider#removeDataListener
   @overrides bcdui.core.DataProviderHolder#removeDataListener
   */
   removeDataListener(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.OptionsDataProvider.html#onChange) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.OptionsDataProvider.html#onChange Online Api}
-  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map
+  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map {@link OnChangeParam}. Listeners can be removed with removeDataListener()
   @param {string} [trackingXPath]  xPath to monitor to monitor for changes
   @inherits bcdui.core.DataProvider#onChange
   @overrides bcdui.core.DataProviderHolder#onChange
@@ -7298,13 +7335,13 @@ bcdui.core.OptionsDataProvider = class extends bcdui.core.DataProviderHolder{
   */
   setStatus(args) { console.log(args); }
   /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.OptionsDataProvider.html#isClear) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.OptionsDataProvider.html#isClear Online Api}
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.OptionsDataProvider.html#isClean) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.OptionsDataProvider.html#isClean Online Api}
   @description True, if DataProvider is ready and there are no uncommitted write transactions, see {@link bcdui.core.AbstractExecutable#isReady isReady()} and {@link bcdui.core.DataProvider#onChange fire()}.
-  @inherits bcdui.core.DataProvider#isClear
-  @overrides bcdui.core.DataProviderHolder#isClear
+  @inherits bcdui.core.DataProvider#isClean
+  @overrides bcdui.core.DataProviderHolder#isClean
   @return {boolean}
   */
-  isClear() {}
+  isClean() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.OptionsDataProvider.html#fetchData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.OptionsDataProvider.html#fetchData Online Api}
   @description asynchronously fetch data for this data provider.
@@ -7315,14 +7352,15 @@ bcdui.core.OptionsDataProvider = class extends bcdui.core.DataProviderHolder{
   fetchData() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.OptionsDataProvider.html#addStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.OptionsDataProvider.html#addStatusListener Online Api}
-  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map
+  @description Listen for any status to be reached. For use cases with the ready status (by far the most common), see onReady() and onceReady() convenience functions.
+  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map {@link AddStatusListenerParam}
   @inherits bcdui.core.AbstractExecutable#addStatusListener
   @overrides bcdui.core.DataProviderHolder#addStatusListener
   */
   addStatusListener(args) { console.log(args); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.OptionsDataProvider.html#removeStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.OptionsDataProvider.html#removeStatusListener Online Api}
-  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map.
+  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map {@link RemoveStatusListenerParam}.
   @inherits bcdui.core.AbstractExecutable#removeStatusListener
   @overrides bcdui.core.DataProviderHolder#removeStatusListener
   */
@@ -7369,14 +7407,14 @@ bcdui.core.OptionsDataProvider = class extends bcdui.core.DataProviderHolder{
   execute(doesRefresh) { console.log(doesRefresh); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.OptionsDataProvider.html#onceReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.OptionsDataProvider.html#onceReady Online Api}
-  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnceReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onceReady
   @overrides bcdui.core.DataProviderHolder#onceReady
   */
   onceReady(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.OptionsDataProvider.html#onReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.OptionsDataProvider.html#onReady Online Api}
-  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onReady
   @overrides bcdui.core.DataProviderHolder#onReady
   */
@@ -7487,8 +7525,8 @@ bcdui.core.RequestDocumentDataProvider = class extends bcdui.core.DataProvider{
   write(xPath,fillParams,value,fire) { console.log(xPath,fillParams,value,fire); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.RequestDocumentDataProvider.html#remove) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.RequestDocumentDataProvider.html#remove Online Api}
-  @description removes given xPath
-  @param {string} xPath  xPath pointing to value
+  @description Deletes data at a given xPath from the model
+  @param {string} xPath  xPath pointing to the value
   @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
   @param {boolean} [fire]  if true a fire is triggered to notify data modification listener
   @inherits bcdui.core.DataProvider#remove
@@ -7525,14 +7563,14 @@ bcdui.core.RequestDocumentDataProvider = class extends bcdui.core.DataProvider{
   serialize() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.RequestDocumentDataProvider.html#removeDataListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.RequestDocumentDataProvider.html#removeDataListener Online Api}
-  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map
+  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map {@link RemoveDataListenerParam}. Listeners are added with onChange()
   @inherits bcdui.core.DataProvider#removeDataListener
   @overrides bcdui.core.DataProvider#removeDataListener
   */
   removeDataListener(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.RequestDocumentDataProvider.html#onChange) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.RequestDocumentDataProvider.html#onChange Online Api}
-  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map
+  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map {@link OnChangeParam}. Listeners can be removed with removeDataListener()
   @param {string} [trackingXPath]  xPath to monitor to monitor for changes
   @inherits bcdui.core.DataProvider#onChange
   @overrides bcdui.core.DataProvider#onChange
@@ -7546,13 +7584,13 @@ bcdui.core.RequestDocumentDataProvider = class extends bcdui.core.DataProvider{
   */
   setStatus(args) { console.log(args); }
   /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.RequestDocumentDataProvider.html#isClear) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.RequestDocumentDataProvider.html#isClear Online Api}
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.RequestDocumentDataProvider.html#isClean) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.RequestDocumentDataProvider.html#isClean Online Api}
   @description True, if DataProvider is ready and there are no uncommitted write transactions, see {@link bcdui.core.AbstractExecutable#isReady isReady()} and {@link bcdui.core.DataProvider#onChange fire()}.
-  @inherits bcdui.core.DataProvider#isClear
-  @overrides bcdui.core.DataProvider#isClear
+  @inherits bcdui.core.DataProvider#isClean
+  @overrides bcdui.core.DataProvider#isClean
   @return {boolean}
   */
-  isClear() {}
+  isClean() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.RequestDocumentDataProvider.html#fetchData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.RequestDocumentDataProvider.html#fetchData Online Api}
   @description asynchronously fetch data for this data provider.
@@ -7563,14 +7601,15 @@ bcdui.core.RequestDocumentDataProvider = class extends bcdui.core.DataProvider{
   fetchData() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.RequestDocumentDataProvider.html#addStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.RequestDocumentDataProvider.html#addStatusListener Online Api}
-  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map
+  @description Listen for any status to be reached. For use cases with the ready status (by far the most common), see onReady() and onceReady() convenience functions.
+  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map {@link AddStatusListenerParam}
   @inherits bcdui.core.AbstractExecutable#addStatusListener
   @overrides bcdui.core.DataProvider#addStatusListener
   */
   addStatusListener(args) { console.log(args); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.RequestDocumentDataProvider.html#removeStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.RequestDocumentDataProvider.html#removeStatusListener Online Api}
-  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map.
+  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map {@link RemoveStatusListenerParam}.
   @inherits bcdui.core.AbstractExecutable#removeStatusListener
   @overrides bcdui.core.DataProvider#removeStatusListener
   */
@@ -7601,14 +7640,14 @@ bcdui.core.RequestDocumentDataProvider = class extends bcdui.core.DataProvider{
   execute(doesRefresh) { console.log(doesRefresh); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.RequestDocumentDataProvider.html#onceReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.RequestDocumentDataProvider.html#onceReady Online Api}
-  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnceReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onceReady
   @overrides bcdui.core.DataProvider#onceReady
   */
   onceReady(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.RequestDocumentDataProvider.html#onReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.RequestDocumentDataProvider.html#onReady Online Api}
-  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onReady
   @overrides bcdui.core.DataProvider#onReady
   */
@@ -7708,8 +7747,8 @@ bcdui.core.DataProviderHtmlAttribute = class extends bcdui.core.DataProvider{
   write(xPath,fillParams,value,fire) { console.log(xPath,fillParams,value,fire); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHtmlAttribute.html#remove) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHtmlAttribute.html#remove Online Api}
-  @description removes given xPath
-  @param {string} xPath  xPath pointing to value
+  @description Deletes data at a given xPath from the model
+  @param {string} xPath  xPath pointing to the value
   @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
   @param {boolean} [fire]  if true a fire is triggered to notify data modification listener
   @inherits bcdui.core.DataProvider#remove
@@ -7746,14 +7785,14 @@ bcdui.core.DataProviderHtmlAttribute = class extends bcdui.core.DataProvider{
   serialize() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHtmlAttribute.html#removeDataListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHtmlAttribute.html#removeDataListener Online Api}
-  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map
+  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map {@link RemoveDataListenerParam}. Listeners are added with onChange()
   @inherits bcdui.core.DataProvider#removeDataListener
   @overrides bcdui.core.DataProvider#removeDataListener
   */
   removeDataListener(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHtmlAttribute.html#onChange) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHtmlAttribute.html#onChange Online Api}
-  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map
+  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map {@link OnChangeParam}. Listeners can be removed with removeDataListener()
   @param {string} [trackingXPath]  xPath to monitor to monitor for changes
   @inherits bcdui.core.DataProvider#onChange
   @overrides bcdui.core.DataProvider#onChange
@@ -7767,13 +7806,13 @@ bcdui.core.DataProviderHtmlAttribute = class extends bcdui.core.DataProvider{
   */
   setStatus(args) { console.log(args); }
   /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHtmlAttribute.html#isClear) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHtmlAttribute.html#isClear Online Api}
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHtmlAttribute.html#isClean) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHtmlAttribute.html#isClean Online Api}
   @description True, if DataProvider is ready and there are no uncommitted write transactions, see {@link bcdui.core.AbstractExecutable#isReady isReady()} and {@link bcdui.core.DataProvider#onChange fire()}.
-  @inherits bcdui.core.DataProvider#isClear
-  @overrides bcdui.core.DataProvider#isClear
+  @inherits bcdui.core.DataProvider#isClean
+  @overrides bcdui.core.DataProvider#isClean
   @return {boolean}
   */
-  isClear() {}
+  isClean() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHtmlAttribute.html#fetchData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHtmlAttribute.html#fetchData Online Api}
   @description asynchronously fetch data for this data provider.
@@ -7784,14 +7823,15 @@ bcdui.core.DataProviderHtmlAttribute = class extends bcdui.core.DataProvider{
   fetchData() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHtmlAttribute.html#addStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHtmlAttribute.html#addStatusListener Online Api}
-  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map
+  @description Listen for any status to be reached. For use cases with the ready status (by far the most common), see onReady() and onceReady() convenience functions.
+  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map {@link AddStatusListenerParam}
   @inherits bcdui.core.AbstractExecutable#addStatusListener
   @overrides bcdui.core.DataProvider#addStatusListener
   */
   addStatusListener(args) { console.log(args); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHtmlAttribute.html#removeStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHtmlAttribute.html#removeStatusListener Online Api}
-  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map.
+  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map {@link RemoveStatusListenerParam}.
   @inherits bcdui.core.AbstractExecutable#removeStatusListener
   @overrides bcdui.core.DataProvider#removeStatusListener
   */
@@ -7838,14 +7878,14 @@ bcdui.core.DataProviderHtmlAttribute = class extends bcdui.core.DataProvider{
   execute(doesRefresh) { console.log(doesRefresh); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHtmlAttribute.html#onceReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHtmlAttribute.html#onceReady Online Api}
-  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnceReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onceReady
   @overrides bcdui.core.DataProvider#onceReady
   */
   onceReady(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHtmlAttribute.html#onReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHtmlAttribute.html#onReady Online Api}
-  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onReady
   @overrides bcdui.core.DataProvider#onReady
   */
@@ -7943,8 +7983,8 @@ bcdui.core.StringDataProvider = class extends bcdui.core.DataProvider{
   write(xPath,fillParams,value,fire) { console.log(xPath,fillParams,value,fire); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StringDataProvider.html#remove) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StringDataProvider.html#remove Online Api}
-  @description removes given xPath
-  @param {string} xPath  xPath pointing to value
+  @description Deletes data at a given xPath from the model
+  @param {string} xPath  xPath pointing to the value
   @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
   @param {boolean} [fire]  if true a fire is triggered to notify data modification listener
   @inherits bcdui.core.DataProvider#remove
@@ -7981,14 +8021,14 @@ bcdui.core.StringDataProvider = class extends bcdui.core.DataProvider{
   serialize() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StringDataProvider.html#removeDataListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StringDataProvider.html#removeDataListener Online Api}
-  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map
+  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map {@link RemoveDataListenerParam}. Listeners are added with onChange()
   @inherits bcdui.core.DataProvider#removeDataListener
   @overrides bcdui.core.DataProvider#removeDataListener
   */
   removeDataListener(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StringDataProvider.html#onChange) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StringDataProvider.html#onChange Online Api}
-  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map
+  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map {@link OnChangeParam}. Listeners can be removed with removeDataListener()
   @param {string} [trackingXPath]  xPath to monitor to monitor for changes
   @inherits bcdui.core.DataProvider#onChange
   @overrides bcdui.core.DataProvider#onChange
@@ -8002,13 +8042,13 @@ bcdui.core.StringDataProvider = class extends bcdui.core.DataProvider{
   */
   setStatus(args) { console.log(args); }
   /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StringDataProvider.html#isClear) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StringDataProvider.html#isClear Online Api}
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StringDataProvider.html#isClean) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StringDataProvider.html#isClean Online Api}
   @description True, if DataProvider is ready and there are no uncommitted write transactions, see {@link bcdui.core.AbstractExecutable#isReady isReady()} and {@link bcdui.core.DataProvider#onChange fire()}.
-  @inherits bcdui.core.DataProvider#isClear
-  @overrides bcdui.core.DataProvider#isClear
+  @inherits bcdui.core.DataProvider#isClean
+  @overrides bcdui.core.DataProvider#isClean
   @return {boolean}
   */
-  isClear() {}
+  isClean() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StringDataProvider.html#fetchData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StringDataProvider.html#fetchData Online Api}
   @description asynchronously fetch data for this data provider.
@@ -8019,14 +8059,15 @@ bcdui.core.StringDataProvider = class extends bcdui.core.DataProvider{
   fetchData() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StringDataProvider.html#addStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StringDataProvider.html#addStatusListener Online Api}
-  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map
+  @description Listen for any status to be reached. For use cases with the ready status (by far the most common), see onReady() and onceReady() convenience functions.
+  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map {@link AddStatusListenerParam}
   @inherits bcdui.core.AbstractExecutable#addStatusListener
   @overrides bcdui.core.DataProvider#addStatusListener
   */
   addStatusListener(args) { console.log(args); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StringDataProvider.html#removeStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StringDataProvider.html#removeStatusListener Online Api}
-  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map.
+  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map {@link RemoveStatusListenerParam}.
   @inherits bcdui.core.AbstractExecutable#removeStatusListener
   @overrides bcdui.core.DataProvider#removeStatusListener
   */
@@ -8073,14 +8114,14 @@ bcdui.core.StringDataProvider = class extends bcdui.core.DataProvider{
   execute(doesRefresh) { console.log(doesRefresh); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StringDataProvider.html#onceReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StringDataProvider.html#onceReady Online Api}
-  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnceReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onceReady
   @overrides bcdui.core.DataProvider#onceReady
   */
   onceReady(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StringDataProvider.html#onReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StringDataProvider.html#onReady Online Api}
-  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onReady
   @overrides bcdui.core.DataProvider#onReady
   */
@@ -8174,8 +8215,8 @@ bcdui.core.JsDataProvider = class extends bcdui.core.DataProvider{
   write(xPath,fillParams,value,fire) { console.log(xPath,fillParams,value,fire); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.JsDataProvider.html#remove) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.JsDataProvider.html#remove Online Api}
-  @description removes given xPath
-  @param {string} xPath  xPath pointing to value
+  @description Deletes data at a given xPath from the model
+  @param {string} xPath  xPath pointing to the value
   @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
   @param {boolean} [fire]  if true a fire is triggered to notify data modification listener
   @inherits bcdui.core.DataProvider#remove
@@ -8212,14 +8253,14 @@ bcdui.core.JsDataProvider = class extends bcdui.core.DataProvider{
   serialize() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.JsDataProvider.html#removeDataListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.JsDataProvider.html#removeDataListener Online Api}
-  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map
+  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map {@link RemoveDataListenerParam}. Listeners are added with onChange()
   @inherits bcdui.core.DataProvider#removeDataListener
   @overrides bcdui.core.DataProvider#removeDataListener
   */
   removeDataListener(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.JsDataProvider.html#onChange) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.JsDataProvider.html#onChange Online Api}
-  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map
+  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map {@link OnChangeParam}. Listeners can be removed with removeDataListener()
   @param {string} [trackingXPath]  xPath to monitor to monitor for changes
   @inherits bcdui.core.DataProvider#onChange
   @overrides bcdui.core.DataProvider#onChange
@@ -8233,13 +8274,13 @@ bcdui.core.JsDataProvider = class extends bcdui.core.DataProvider{
   */
   setStatus(args) { console.log(args); }
   /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.JsDataProvider.html#isClear) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.JsDataProvider.html#isClear Online Api}
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.JsDataProvider.html#isClean) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.JsDataProvider.html#isClean Online Api}
   @description True, if DataProvider is ready and there are no uncommitted write transactions, see {@link bcdui.core.AbstractExecutable#isReady isReady()} and {@link bcdui.core.DataProvider#onChange fire()}.
-  @inherits bcdui.core.DataProvider#isClear
-  @overrides bcdui.core.DataProvider#isClear
+  @inherits bcdui.core.DataProvider#isClean
+  @overrides bcdui.core.DataProvider#isClean
   @return {boolean}
   */
-  isClear() {}
+  isClean() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.JsDataProvider.html#fetchData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.JsDataProvider.html#fetchData Online Api}
   @description asynchronously fetch data for this data provider.
@@ -8250,14 +8291,15 @@ bcdui.core.JsDataProvider = class extends bcdui.core.DataProvider{
   fetchData() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.JsDataProvider.html#addStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.JsDataProvider.html#addStatusListener Online Api}
-  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map
+  @description Listen for any status to be reached. For use cases with the ready status (by far the most common), see onReady() and onceReady() convenience functions.
+  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map {@link AddStatusListenerParam}
   @inherits bcdui.core.AbstractExecutable#addStatusListener
   @overrides bcdui.core.DataProvider#addStatusListener
   */
   addStatusListener(args) { console.log(args); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.JsDataProvider.html#removeStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.JsDataProvider.html#removeStatusListener Online Api}
-  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map.
+  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map {@link RemoveStatusListenerParam}.
   @inherits bcdui.core.AbstractExecutable#removeStatusListener
   @overrides bcdui.core.DataProvider#removeStatusListener
   */
@@ -8304,14 +8346,14 @@ bcdui.core.JsDataProvider = class extends bcdui.core.DataProvider{
   execute(doesRefresh) { console.log(doesRefresh); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.JsDataProvider.html#onceReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.JsDataProvider.html#onceReady Online Api}
-  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnceReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onceReady
   @overrides bcdui.core.DataProvider#onceReady
   */
   onceReady(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.JsDataProvider.html#onReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.JsDataProvider.html#onReady Online Api}
-  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onReady
   @overrides bcdui.core.DataProvider#onReady
   */
@@ -8411,8 +8453,8 @@ bcdui.core.AsyncJsDataProvider = class extends bcdui.core.DataProvider{
   write(xPath,fillParams,value,fire) { console.log(xPath,fillParams,value,fire); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AsyncJsDataProvider.html#remove) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AsyncJsDataProvider.html#remove Online Api}
-  @description removes given xPath
-  @param {string} xPath  xPath pointing to value
+  @description Deletes data at a given xPath from the model
+  @param {string} xPath  xPath pointing to the value
   @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
   @param {boolean} [fire]  if true a fire is triggered to notify data modification listener
   @inherits bcdui.core.DataProvider#remove
@@ -8449,14 +8491,14 @@ bcdui.core.AsyncJsDataProvider = class extends bcdui.core.DataProvider{
   serialize() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AsyncJsDataProvider.html#removeDataListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AsyncJsDataProvider.html#removeDataListener Online Api}
-  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map
+  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map {@link RemoveDataListenerParam}. Listeners are added with onChange()
   @inherits bcdui.core.DataProvider#removeDataListener
   @overrides bcdui.core.DataProvider#removeDataListener
   */
   removeDataListener(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AsyncJsDataProvider.html#onChange) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AsyncJsDataProvider.html#onChange Online Api}
-  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map
+  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map {@link OnChangeParam}. Listeners can be removed with removeDataListener()
   @param {string} [trackingXPath]  xPath to monitor to monitor for changes
   @inherits bcdui.core.DataProvider#onChange
   @overrides bcdui.core.DataProvider#onChange
@@ -8470,13 +8512,13 @@ bcdui.core.AsyncJsDataProvider = class extends bcdui.core.DataProvider{
   */
   setStatus(args) { console.log(args); }
   /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AsyncJsDataProvider.html#isClear) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AsyncJsDataProvider.html#isClear Online Api}
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AsyncJsDataProvider.html#isClean) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AsyncJsDataProvider.html#isClean Online Api}
   @description True, if DataProvider is ready and there are no uncommitted write transactions, see {@link bcdui.core.AbstractExecutable#isReady isReady()} and {@link bcdui.core.DataProvider#onChange fire()}.
-  @inherits bcdui.core.DataProvider#isClear
-  @overrides bcdui.core.DataProvider#isClear
+  @inherits bcdui.core.DataProvider#isClean
+  @overrides bcdui.core.DataProvider#isClean
   @return {boolean}
   */
-  isClear() {}
+  isClean() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AsyncJsDataProvider.html#fetchData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AsyncJsDataProvider.html#fetchData Online Api}
   @description asynchronously fetch data for this data provider.
@@ -8487,14 +8529,15 @@ bcdui.core.AsyncJsDataProvider = class extends bcdui.core.DataProvider{
   fetchData() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AsyncJsDataProvider.html#addStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AsyncJsDataProvider.html#addStatusListener Online Api}
-  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map
+  @description Listen for any status to be reached. For use cases with the ready status (by far the most common), see onReady() and onceReady() convenience functions.
+  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map {@link AddStatusListenerParam}
   @inherits bcdui.core.AbstractExecutable#addStatusListener
   @overrides bcdui.core.DataProvider#addStatusListener
   */
   addStatusListener(args) { console.log(args); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AsyncJsDataProvider.html#removeStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AsyncJsDataProvider.html#removeStatusListener Online Api}
-  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map.
+  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map {@link RemoveStatusListenerParam}.
   @inherits bcdui.core.AbstractExecutable#removeStatusListener
   @overrides bcdui.core.DataProvider#removeStatusListener
   */
@@ -8541,14 +8584,14 @@ bcdui.core.AsyncJsDataProvider = class extends bcdui.core.DataProvider{
   execute(doesRefresh) { console.log(doesRefresh); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AsyncJsDataProvider.html#onceReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AsyncJsDataProvider.html#onceReady Online Api}
-  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnceReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onceReady
   @overrides bcdui.core.DataProvider#onceReady
   */
   onceReady(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AsyncJsDataProvider.html#onReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AsyncJsDataProvider.html#onReady Online Api}
-  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onReady
   @overrides bcdui.core.DataProvider#onReady
   */
@@ -8645,8 +8688,8 @@ bcdui.core.AbstractUpdatableModel = class extends bcdui.core.DataProvider{
   write(xPath,fillParams,value,fire) { console.log(xPath,fillParams,value,fire); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AbstractUpdatableModel.html#remove) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AbstractUpdatableModel.html#remove Online Api}
-  @description removes given xPath
-  @param {string} xPath  xPath pointing to value
+  @description Deletes data at a given xPath from the model
+  @param {string} xPath  xPath pointing to the value
   @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
   @param {boolean} [fire]  if true a fire is triggered to notify data modification listener
   @inherits bcdui.core.DataProvider#remove
@@ -8683,14 +8726,14 @@ bcdui.core.AbstractUpdatableModel = class extends bcdui.core.DataProvider{
   serialize() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AbstractUpdatableModel.html#removeDataListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AbstractUpdatableModel.html#removeDataListener Online Api}
-  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map
+  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map {@link RemoveDataListenerParam}. Listeners are added with onChange()
   @inherits bcdui.core.DataProvider#removeDataListener
   @overrides bcdui.core.DataProvider#removeDataListener
   */
   removeDataListener(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AbstractUpdatableModel.html#onChange) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AbstractUpdatableModel.html#onChange Online Api}
-  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map
+  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map {@link OnChangeParam}. Listeners can be removed with removeDataListener()
   @param {string} [trackingXPath]  xPath to monitor to monitor for changes
   @inherits bcdui.core.DataProvider#onChange
   @overrides bcdui.core.DataProvider#onChange
@@ -8704,13 +8747,13 @@ bcdui.core.AbstractUpdatableModel = class extends bcdui.core.DataProvider{
   */
   setStatus(args) { console.log(args); }
   /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AbstractUpdatableModel.html#isClear) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AbstractUpdatableModel.html#isClear Online Api}
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AbstractUpdatableModel.html#isClean) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AbstractUpdatableModel.html#isClean Online Api}
   @description True, if DataProvider is ready and there are no uncommitted write transactions, see {@link bcdui.core.AbstractExecutable#isReady isReady()} and {@link bcdui.core.DataProvider#onChange fire()}.
-  @inherits bcdui.core.DataProvider#isClear
-  @overrides bcdui.core.DataProvider#isClear
+  @inherits bcdui.core.DataProvider#isClean
+  @overrides bcdui.core.DataProvider#isClean
   @return {boolean}
   */
-  isClear() {}
+  isClean() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AbstractUpdatableModel.html#fetchData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AbstractUpdatableModel.html#fetchData Online Api}
   @description asynchronously fetch data for this data provider.
@@ -8721,14 +8764,15 @@ bcdui.core.AbstractUpdatableModel = class extends bcdui.core.DataProvider{
   fetchData() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AbstractUpdatableModel.html#addStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AbstractUpdatableModel.html#addStatusListener Online Api}
-  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map
+  @description Listen for any status to be reached. For use cases with the ready status (by far the most common), see onReady() and onceReady() convenience functions.
+  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map {@link AddStatusListenerParam}
   @inherits bcdui.core.AbstractExecutable#addStatusListener
   @overrides bcdui.core.DataProvider#addStatusListener
   */
   addStatusListener(args) { console.log(args); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AbstractUpdatableModel.html#removeStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AbstractUpdatableModel.html#removeStatusListener Online Api}
-  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map.
+  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map {@link RemoveStatusListenerParam}.
   @inherits bcdui.core.AbstractExecutable#removeStatusListener
   @overrides bcdui.core.DataProvider#removeStatusListener
   */
@@ -8783,14 +8827,14 @@ bcdui.core.AbstractUpdatableModel = class extends bcdui.core.DataProvider{
   execute(doesRefresh) { console.log(doesRefresh); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AbstractUpdatableModel.html#onceReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AbstractUpdatableModel.html#onceReady Online Api}
-  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnceReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onceReady
   @overrides bcdui.core.DataProvider#onceReady
   */
   onceReady(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AbstractUpdatableModel.html#onReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AbstractUpdatableModel.html#onReady Online Api}
-  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onReady
   @overrides bcdui.core.DataProvider#onReady
   */
@@ -8802,7 +8846,7 @@ bcdui.core.AbstractUpdatableModel = class extends bcdui.core.DataProvider{
 
 /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.SimpleModel.html) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.SimpleModel.html Online Api}
-  @description This class represents the standard case of a model where the loaded from a specified URL. Its document can be accessed   via {@link bcdui.core.SimpleModel#getData myModel.getData()}. Javascript and {@link bcdui.core.Modelupdater Modelupdaters} can modify the data.   Data loading is triggered by {@link bcdui.core.AbstractExecutable#execute myModel.execute()} The constructor of the model takes only one property besides the mandatory "id" property (defined in AbstractExecutable) in its args parameter map namely the "url" property. It specifies the URL the XML document represented by this model should be loaded from. The parameter isAutoRefresh=true forces a reload if the DataProvider has changed. If not text/plain, (derived or via mimeType), the data is parsed.  <table>    <tr><th>file extension</th><th>value</th><th>Result</th></tr>    <tr><td>*.json</td><td>"application/json"</td><td>are turned into a js object</li>    <tr><td>*.js</td><td>"application/javascript"</td><td>are loaded and executed</li>    <tr><td>*.xml, .xsl, .xslt</td><td>"application/xml", "application/xslt+xml"</td><td>are parsed into DOM</li>  </table>  All other content are just loaded as plain text.
+  @description This class represents the standard case of a model where the loaded from a specified URL. Its document can be accessed   via {@link bcdui.core.SimpleModel#getData myModel.getData()}. Javascript and {@link bcdui.core.Modelupdater Modelupdaters} can modify the data.   Data loading is triggered by {@link bcdui.core.AbstractExecutable#execute myModel.execute()} The constructor of the model takes only one property besides the mandatory "id" property (defined in AbstractExecutable) in its args parameter map namely the "url" property. It specifies the URL the XML document represented by this model should be loaded from. The parameter isAutoRefresh=true forces a reload if the DataProvider has changed. If not text/plain, (derived or via mimeType), the data is parsed.  <table>    <tr><th>file extension</th><th>value</th><th>Result</th></tr>    <tr><td>*.json</td><td>"application/json"</td><td>are turned into a js object</li>    <tr><td>*.js</td><td>"application/javascript"</td><td>are loaded and executed</li>    <tr><td>*.xml, .xsl, .xslt</td><td>"application/xml", "application/xslt+xml"</td><td>are parsed into DOM</li>  </table>  All other content is just loaded as plain text.
   @example
   //<pre>
   // Load plain content and use it in a renderervar bookModel = new bcdui.core.SimpleModel( "../docs/allBooks.xml" );var renderer  = new bcdui.core.Renderer({ targetHtml: "booksDiv", chain: "renderer.xslt", inputModel: bookModel });
@@ -8815,9 +8859,9 @@ bcdui.core.AbstractUpdatableModel = class extends bcdui.core.DataProvider{
 */
 bcdui.core.SimpleModel = class extends bcdui.core.AbstractUpdatableModel{
   /**
-  @param {(string|SimpleModelParam)} args  An url for the data or an argument map
+  @param {(string|SimpleModelParam)} args  An url for the data or an argument map {@link SimpleModelParam}
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.SimpleModel.html) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.SimpleModel.html Online Api}
-  @description This class represents the standard case of a model where the loaded from a specified URL. Its document can be accessed via {@link bcdui.core.SimpleModel#getData myModel.getData()}. Javascript and {@link bcdui.core.Modelupdater Modelupdaters} can modify the data. Data loading is triggered by {@link bcdui.core.AbstractExecutable#execute myModel.execute()} The constructor of the model takes only one property besides the mandatory "id" property (defined in AbstractExecutable) in its args parameter map namely the "url" property. It specifies the URL the XML document represented by this model should be loaded from. The parameter isAutoRefresh=true forces a reload if the DataProvider has changed. If not text/plain, (derived or via mimeType), the data is parsed. <table> <tr><th>file extension</th><th>value</th><th>Result</th></tr> <tr><td>*.json</td><td>"application/json"</td><td>are turned into a js object</li> <tr><td>*.js</td><td>"application/javascript"</td><td>are loaded and executed</li> <tr><td>*.xml, .xsl, .xslt</td><td>"application/xml", "application/xslt+xml"</td><td>are parsed into DOM</li> </table> All other content are just loaded as plain text.
+  @description This class represents the standard case of a model where the loaded from a specified URL. Its document can be accessed via {@link bcdui.core.SimpleModel#getData myModel.getData()}. Javascript and {@link bcdui.core.Modelupdater Modelupdaters} can modify the data. Data loading is triggered by {@link bcdui.core.AbstractExecutable#execute myModel.execute()} The constructor of the model takes only one property besides the mandatory "id" property (defined in AbstractExecutable) in its args parameter map namely the "url" property. It specifies the URL the XML document represented by this model should be loaded from. The parameter isAutoRefresh=true forces a reload if the DataProvider has changed. If not text/plain, (derived or via mimeType), the data is parsed. <table> <tr><th>file extension</th><th>value</th><th>Result</th></tr> <tr><td>*.json</td><td>"application/json"</td><td>are turned into a js object</li> <tr><td>*.js</td><td>"application/javascript"</td><td>are loaded and executed</li> <tr><td>*.xml, .xsl, .xslt</td><td>"application/xml", "application/xslt+xml"</td><td>are parsed into DOM</li> </table> All other content is just loaded as plain text.
   @example
   //<pre>
   // Load plain content and use it in a renderervar bookModel = new bcdui.core.SimpleModel( "../docs/allBooks.xml" );var renderer  = new bcdui.core.Renderer({ targetHtml: "booksDiv", chain: "renderer.xslt", inputModel: bookModel });
@@ -8908,8 +8952,8 @@ bcdui.core.SimpleModel = class extends bcdui.core.AbstractUpdatableModel{
   write(xPath,fillParams,value,fire) { console.log(xPath,fillParams,value,fire); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.SimpleModel.html#remove) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.SimpleModel.html#remove Online Api}
-  @description removes given xPath
-  @param {string} xPath  xPath pointing to value
+  @description Deletes data at a given xPath from the model
+  @param {string} xPath  xPath pointing to the value
   @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
   @param {boolean} [fire]  if true a fire is triggered to notify data modification listener
   @inherits bcdui.core.DataProvider#remove
@@ -8946,14 +8990,14 @@ bcdui.core.SimpleModel = class extends bcdui.core.AbstractUpdatableModel{
   serialize() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.SimpleModel.html#removeDataListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.SimpleModel.html#removeDataListener Online Api}
-  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map
+  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map {@link RemoveDataListenerParam}. Listeners are added with onChange()
   @inherits bcdui.core.DataProvider#removeDataListener
   @overrides bcdui.core.AbstractUpdatableModel#removeDataListener
   */
   removeDataListener(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.SimpleModel.html#onChange) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.SimpleModel.html#onChange Online Api}
-  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map
+  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map {@link OnChangeParam}. Listeners can be removed with removeDataListener()
   @param {string} [trackingXPath]  xPath to monitor to monitor for changes
   @inherits bcdui.core.DataProvider#onChange
   @overrides bcdui.core.AbstractUpdatableModel#onChange
@@ -8967,13 +9011,13 @@ bcdui.core.SimpleModel = class extends bcdui.core.AbstractUpdatableModel{
   */
   setStatus(args) { console.log(args); }
   /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.SimpleModel.html#isClear) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.SimpleModel.html#isClear Online Api}
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.SimpleModel.html#isClean) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.SimpleModel.html#isClean Online Api}
   @description True, if DataProvider is ready and there are no uncommitted write transactions, see {@link bcdui.core.AbstractExecutable#isReady isReady()} and {@link bcdui.core.DataProvider#onChange fire()}.
-  @inherits bcdui.core.DataProvider#isClear
-  @overrides bcdui.core.AbstractUpdatableModel#isClear
+  @inherits bcdui.core.DataProvider#isClean
+  @overrides bcdui.core.AbstractUpdatableModel#isClean
   @return {boolean}
   */
-  isClear() {}
+  isClean() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.SimpleModel.html#fetchData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.SimpleModel.html#fetchData Online Api}
   @description asynchronously fetch data for this data provider.
@@ -8984,14 +9028,15 @@ bcdui.core.SimpleModel = class extends bcdui.core.AbstractUpdatableModel{
   fetchData() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.SimpleModel.html#addStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.SimpleModel.html#addStatusListener Online Api}
-  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map
+  @description Listen for any status to be reached. For use cases with the ready status (by far the most common), see onReady() and onceReady() convenience functions.
+  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map {@link AddStatusListenerParam}
   @inherits bcdui.core.AbstractExecutable#addStatusListener
   @overrides bcdui.core.AbstractUpdatableModel#addStatusListener
   */
   addStatusListener(args) { console.log(args); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.SimpleModel.html#removeStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.SimpleModel.html#removeStatusListener Online Api}
-  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map.
+  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map {@link RemoveStatusListenerParam}.
   @inherits bcdui.core.AbstractExecutable#removeStatusListener
   @overrides bcdui.core.AbstractUpdatableModel#removeStatusListener
   */
@@ -9030,14 +9075,14 @@ bcdui.core.SimpleModel = class extends bcdui.core.AbstractUpdatableModel{
   execute(doesRefresh) { console.log(doesRefresh); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.SimpleModel.html#onceReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.SimpleModel.html#onceReady Online Api}
-  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnceReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onceReady
   @overrides bcdui.core.AbstractUpdatableModel#onceReady
   */
   onceReady(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.SimpleModel.html#onReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.SimpleModel.html#onReady Online Api}
-  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onReady
   @overrides bcdui.core.AbstractUpdatableModel#onReady
   */
@@ -9150,8 +9195,8 @@ bcdui.core.StaticModel = class extends bcdui.core.AbstractUpdatableModel{
   write(xPath,fillParams,value,fire) { console.log(xPath,fillParams,value,fire); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StaticModel.html#remove) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StaticModel.html#remove Online Api}
-  @description removes given xPath
-  @param {string} xPath  xPath pointing to value
+  @description Deletes data at a given xPath from the model
+  @param {string} xPath  xPath pointing to the value
   @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
   @param {boolean} [fire]  if true a fire is triggered to notify data modification listener
   @inherits bcdui.core.DataProvider#remove
@@ -9188,14 +9233,14 @@ bcdui.core.StaticModel = class extends bcdui.core.AbstractUpdatableModel{
   serialize() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StaticModel.html#removeDataListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StaticModel.html#removeDataListener Online Api}
-  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map
+  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map {@link RemoveDataListenerParam}. Listeners are added with onChange()
   @inherits bcdui.core.DataProvider#removeDataListener
   @overrides bcdui.core.AbstractUpdatableModel#removeDataListener
   */
   removeDataListener(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StaticModel.html#onChange) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StaticModel.html#onChange Online Api}
-  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map
+  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map {@link OnChangeParam}. Listeners can be removed with removeDataListener()
   @param {string} [trackingXPath]  xPath to monitor to monitor for changes
   @inherits bcdui.core.DataProvider#onChange
   @overrides bcdui.core.AbstractUpdatableModel#onChange
@@ -9209,13 +9254,13 @@ bcdui.core.StaticModel = class extends bcdui.core.AbstractUpdatableModel{
   */
   setStatus(args) { console.log(args); }
   /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StaticModel.html#isClear) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StaticModel.html#isClear Online Api}
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StaticModel.html#isClean) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StaticModel.html#isClean Online Api}
   @description True, if DataProvider is ready and there are no uncommitted write transactions, see {@link bcdui.core.AbstractExecutable#isReady isReady()} and {@link bcdui.core.DataProvider#onChange fire()}.
-  @inherits bcdui.core.DataProvider#isClear
-  @overrides bcdui.core.AbstractUpdatableModel#isClear
+  @inherits bcdui.core.DataProvider#isClean
+  @overrides bcdui.core.AbstractUpdatableModel#isClean
   @return {boolean}
   */
-  isClear() {}
+  isClean() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StaticModel.html#fetchData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StaticModel.html#fetchData Online Api}
   @description asynchronously fetch data for this data provider.
@@ -9226,14 +9271,15 @@ bcdui.core.StaticModel = class extends bcdui.core.AbstractUpdatableModel{
   fetchData() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StaticModel.html#addStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StaticModel.html#addStatusListener Online Api}
-  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map
+  @description Listen for any status to be reached. For use cases with the ready status (by far the most common), see onReady() and onceReady() convenience functions.
+  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map {@link AddStatusListenerParam}
   @inherits bcdui.core.AbstractExecutable#addStatusListener
   @overrides bcdui.core.AbstractUpdatableModel#addStatusListener
   */
   addStatusListener(args) { console.log(args); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StaticModel.html#removeStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StaticModel.html#removeStatusListener Online Api}
-  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map.
+  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map {@link RemoveStatusListenerParam}.
   @inherits bcdui.core.AbstractExecutable#removeStatusListener
   @overrides bcdui.core.AbstractUpdatableModel#removeStatusListener
   */
@@ -9280,14 +9326,14 @@ bcdui.core.StaticModel = class extends bcdui.core.AbstractUpdatableModel{
   execute(doesRefresh) { console.log(doesRefresh); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StaticModel.html#onceReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StaticModel.html#onceReady Online Api}
-  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnceReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onceReady
   @overrides bcdui.core.AbstractUpdatableModel#onceReady
   */
   onceReady(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StaticModel.html#onReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StaticModel.html#onReady Online Api}
-  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onReady
   @overrides bcdui.core.AbstractUpdatableModel#onReady
   */
@@ -9302,24 +9348,24 @@ bcdui.core.StaticModel = class extends bcdui.core.AbstractUpdatableModel{
   @description An AutoModel is an easy way for loading data from a BindingSet in many cases. At minimum just provide the BindingSet id and a list of bRefs.
   @example
   //<pre>
-  // Create a simple AutoModel, reading distinct bindingItems 'country', 'region' and 'city' from BindingSet 'md_geo'var am = new bcdui.core.AutoModel({ bindingSetId: "md_geo", bRefs: "country region city", isDistinct: true, filterElement: bcdui.wrs.wrsUtil.parseFilterExpression("country='DE'") });
+  // Create a simple AutoModel, reading distinct bindingItems 'country', 'region' and 'city' from BindingSet 'md_geo'var am = new bcdui.core.AutoModel({ bindingSetId: "md_geo", bRefs: "country region city", isDistinct: true, filterElement: "country='DE'" });
   //</pre>
   @extends bcdui.core.SimpleModel
 */
 bcdui.core.AutoModel = class extends bcdui.core.SimpleModel{
   /**
-  @param {Object} args  The parameter map contains the following properties. Most parameters only apply when using default wrq-styleshhet.
+  @param {Object} args  The parameter map contains the following properties. Most parameters only apply when using default wrq-stylesheet.
   @param {string} args.bindingSetId  Id of BindingSet to read from.
   @param {string} args.bRefs  Space separated list of bRefs to be loaded.
   @param {string} [args.filterBRefs]  Space separated list of bRefs in $guiStatus f:Filter to be used as filters. TODO: add static
   @param {string} [args.orderByBRefs]  Space separated list of bRefs that will be used to order the data. This ordering has a higher priority over possible auto ordering by useCaptions or isDistinct. A minus(-) sign at the end indicates descending sorting.
   @param {string} [args.initialFilterBRefs]  Space separated list of bRefs in $guiStatus f:Filter to be used as filters for initial, very first request only. Unlike filterBRefs, these filter values are not monitored for changes.
-  @param {string} [args.mandatoryFilterBRefsSubset]  Space separated subset of bRefs that needs to be set before the automodel gets data. Until available, no request will be run.
-  @param {boolean} [args.isDistinct]  If true, a group by is generated across all columns by default wrq-stylesheet. Parameter .groupByBRefs is ignored in this case.
-  @param {boolean} [args.useCaptions]  If true, caption = bRef+'_caption will be used.
+  @param {string} [args.mandatoryFilterBRefsSubset]  Space separated subset of bRefs that needs to be set before the AutoModel gets data. Until available, no request will be run.
+  @param {boolean} [args.isDistinct]  If true, a group-by across all columns is generated. Parameter .groupByBRefs is ignored in this case.
+  @param {boolean} [args.useCaptions]  If true, &commat;bRef+'_caption' will be used as bRef for the caption.
   @param {modelXPath} [args.additionalFilterXPath]  Allows using additional filters not part of $guiStatus f:Filter. These filters are monitored for changes. The given xPath needs to point to the filter expression itself, not to a parent.
   @param {modelXPath} [args.additionalPassiveFilterXPath]  Optional, allows using additional filters not part of $guiStatus f:Filter, unlike 'additionalFilterXPath', this xPath is not monitored for changes.
-  @param {number} [args.maxRows]  Optional, Limits the request to n rows. Use distinct if you need a certain order.
+  @param {number} [args.maxRows]  Optional, limits the request to n rows. Use distinct if you need a certain order.
   @param {string} [args.id]  A globally unique id for use in declarative contexts
   @param {boolean} [args.isAutoRefresh]  If true, will reload when any (other) filter regarding a bRefs or the additionalFilterXPath change.
   @param {Object} [args.reqDocParameters]  Optional parameters for a custom request document builder.
@@ -9327,7 +9373,7 @@ bcdui.core.AutoModel = class extends bcdui.core.SimpleModel{
   @param {bcdui.core.DataProvider} [args.statusModel]  the status model to resolve .filterBRefs against
   @param {bcdui.core.DataProvider} [args.statusModelEstablished]  the established status model to provide to ModelWrapper creating request document as 'statusModelEstablished' parameter
   @param {string} [args.groupByBRefs]  Space separated list of bRefs for grouping. Is not effective when using .isDistinct=true parameter.
-  @param {(DomDocument|DomElement)} [args.filterElement]  custom filter element (f:And, f:Or, f:Not, f:Expression) in wrs-filter format, see filter-1.0.0.xsd. This node can also easily be created in place with {@link bcdui.wrs.wrsUtil.parseFilterExpression}, see sample below.
+  @param {(DomDocument|DomElement|string)} [args.filterElement]  custom filter element (f:And, f:Or, f:Not, f:Expression) in wrs-filter format, see filter-1.0.0.xsd or a string as required by {@link bcdui.wrs.wrsUtil.parseFilterExpression} or the result of it - note that the function allows filling in values without escaping issues if the filter is not fixed.
   @param {Object} [args.saveOptions]  An object, with the following elements
   @param {chainDef} [args.saveOptions.saveChain]  The definition of the transformation chain
   @param {Object} [args.saveOptions.saveParameters]  An object, where each property holds a DataProvider, used as a transformation parameters.
@@ -9340,7 +9386,7 @@ bcdui.core.AutoModel = class extends bcdui.core.SimpleModel{
   @description An AutoModel is an easy way for loading data from a BindingSet in many cases. At minimum just provide the BindingSet id and a list of bRefs.
   @example
   //<pre>
-  // Create a simple AutoModel, reading distinct bindingItems 'country', 'region' and 'city' from BindingSet 'md_geo'var am = new bcdui.core.AutoModel({ bindingSetId: "md_geo", bRefs: "country region city", isDistinct: true, filterElement: bcdui.wrs.wrsUtil.parseFilterExpression("country='DE'") });
+  // Create a simple AutoModel, reading distinct bindingItems 'country', 'region' and 'city' from BindingSet 'md_geo'var am = new bcdui.core.AutoModel({ bindingSetId: "md_geo", bRefs: "country region city", isDistinct: true, filterElement: "country='DE'" });
   //</pre>
   @extends bcdui.core.SimpleModel
     */
@@ -9433,8 +9479,8 @@ bcdui.core.AutoModel = class extends bcdui.core.SimpleModel{
   write(xPath,fillParams,value,fire) { console.log(xPath,fillParams,value,fire); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AutoModel.html#remove) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AutoModel.html#remove Online Api}
-  @description removes given xPath
-  @param {string} xPath  xPath pointing to value
+  @description Deletes data at a given xPath from the model
+  @param {string} xPath  xPath pointing to the value
   @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
   @param {boolean} [fire]  if true a fire is triggered to notify data modification listener
   @inherits bcdui.core.DataProvider#remove
@@ -9471,14 +9517,14 @@ bcdui.core.AutoModel = class extends bcdui.core.SimpleModel{
   serialize() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AutoModel.html#removeDataListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AutoModel.html#removeDataListener Online Api}
-  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map
+  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map {@link RemoveDataListenerParam}. Listeners are added with onChange()
   @inherits bcdui.core.DataProvider#removeDataListener
   @overrides bcdui.core.SimpleModel#removeDataListener
   */
   removeDataListener(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AutoModel.html#onChange) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AutoModel.html#onChange Online Api}
-  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map
+  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map {@link OnChangeParam}. Listeners can be removed with removeDataListener()
   @param {string} [trackingXPath]  xPath to monitor to monitor for changes
   @inherits bcdui.core.DataProvider#onChange
   @overrides bcdui.core.SimpleModel#onChange
@@ -9492,13 +9538,13 @@ bcdui.core.AutoModel = class extends bcdui.core.SimpleModel{
   */
   setStatus(args) { console.log(args); }
   /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AutoModel.html#isClear) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AutoModel.html#isClear Online Api}
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AutoModel.html#isClean) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AutoModel.html#isClean Online Api}
   @description True, if DataProvider is ready and there are no uncommitted write transactions, see {@link bcdui.core.AbstractExecutable#isReady isReady()} and {@link bcdui.core.DataProvider#onChange fire()}.
-  @inherits bcdui.core.DataProvider#isClear
-  @overrides bcdui.core.SimpleModel#isClear
+  @inherits bcdui.core.DataProvider#isClean
+  @overrides bcdui.core.SimpleModel#isClean
   @return {boolean}
   */
-  isClear() {}
+  isClean() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AutoModel.html#fetchData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AutoModel.html#fetchData Online Api}
   @description asynchronously fetch data for this data provider.
@@ -9509,14 +9555,15 @@ bcdui.core.AutoModel = class extends bcdui.core.SimpleModel{
   fetchData() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AutoModel.html#addStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AutoModel.html#addStatusListener Online Api}
-  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map
+  @description Listen for any status to be reached. For use cases with the ready status (by far the most common), see onReady() and onceReady() convenience functions.
+  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map {@link AddStatusListenerParam}
   @inherits bcdui.core.AbstractExecutable#addStatusListener
   @overrides bcdui.core.SimpleModel#addStatusListener
   */
   addStatusListener(args) { console.log(args); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AutoModel.html#removeStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AutoModel.html#removeStatusListener Online Api}
-  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map.
+  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map {@link RemoveStatusListenerParam}.
   @inherits bcdui.core.AbstractExecutable#removeStatusListener
   @overrides bcdui.core.SimpleModel#removeStatusListener
   */
@@ -9555,14 +9602,14 @@ bcdui.core.AutoModel = class extends bcdui.core.SimpleModel{
   execute(doesRefresh) { console.log(doesRefresh); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AutoModel.html#onceReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AutoModel.html#onceReady Online Api}
-  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnceReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onceReady
   @overrides bcdui.core.SimpleModel#onceReady
   */
   onceReady(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AutoModel.html#onReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AutoModel.html#onReady Online Api}
-  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onReady
   @overrides bcdui.core.SimpleModel#onReady
   */
@@ -9696,8 +9743,8 @@ bcdui.core.TransformationChain = class extends bcdui.core.DataProvider{
   write(xPath,fillParams,value,fire) { console.log(xPath,fillParams,value,fire); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.TransformationChain.html#remove) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.TransformationChain.html#remove Online Api}
-  @description removes given xPath
-  @param {string} xPath  xPath pointing to value
+  @description Deletes data at a given xPath from the model
+  @param {string} xPath  xPath pointing to the value
   @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
   @param {boolean} [fire]  if true a fire is triggered to notify data modification listener
   @inherits bcdui.core.DataProvider#remove
@@ -9734,14 +9781,14 @@ bcdui.core.TransformationChain = class extends bcdui.core.DataProvider{
   serialize() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.TransformationChain.html#removeDataListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.TransformationChain.html#removeDataListener Online Api}
-  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map
+  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map {@link RemoveDataListenerParam}. Listeners are added with onChange()
   @inherits bcdui.core.DataProvider#removeDataListener
   @overrides bcdui.core.DataProvider#removeDataListener
   */
   removeDataListener(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.TransformationChain.html#onChange) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.TransformationChain.html#onChange Online Api}
-  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map
+  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map {@link OnChangeParam}. Listeners can be removed with removeDataListener()
   @param {string} [trackingXPath]  xPath to monitor to monitor for changes
   @inherits bcdui.core.DataProvider#onChange
   @overrides bcdui.core.DataProvider#onChange
@@ -9755,13 +9802,13 @@ bcdui.core.TransformationChain = class extends bcdui.core.DataProvider{
   */
   setStatus(args) { console.log(args); }
   /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.TransformationChain.html#isClear) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.TransformationChain.html#isClear Online Api}
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.TransformationChain.html#isClean) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.TransformationChain.html#isClean Online Api}
   @description True, if DataProvider is ready and there are no uncommitted write transactions, see {@link bcdui.core.AbstractExecutable#isReady isReady()} and {@link bcdui.core.DataProvider#onChange fire()}.
-  @inherits bcdui.core.DataProvider#isClear
-  @overrides bcdui.core.DataProvider#isClear
+  @inherits bcdui.core.DataProvider#isClean
+  @overrides bcdui.core.DataProvider#isClean
   @return {boolean}
   */
-  isClear() {}
+  isClean() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.TransformationChain.html#fetchData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.TransformationChain.html#fetchData Online Api}
   @description asynchronously fetch data for this data provider.
@@ -9772,14 +9819,15 @@ bcdui.core.TransformationChain = class extends bcdui.core.DataProvider{
   fetchData() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.TransformationChain.html#addStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.TransformationChain.html#addStatusListener Online Api}
-  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map
+  @description Listen for any status to be reached. For use cases with the ready status (by far the most common), see onReady() and onceReady() convenience functions.
+  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map {@link AddStatusListenerParam}
   @inherits bcdui.core.AbstractExecutable#addStatusListener
   @overrides bcdui.core.DataProvider#addStatusListener
   */
   addStatusListener(args) { console.log(args); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.TransformationChain.html#removeStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.TransformationChain.html#removeStatusListener Online Api}
-  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map.
+  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map {@link RemoveStatusListenerParam}.
   @inherits bcdui.core.AbstractExecutable#removeStatusListener
   @overrides bcdui.core.DataProvider#removeStatusListener
   */
@@ -9818,14 +9866,14 @@ bcdui.core.TransformationChain = class extends bcdui.core.DataProvider{
   execute(doesRefresh) { console.log(doesRefresh); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.TransformationChain.html#onceReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.TransformationChain.html#onceReady Online Api}
-  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnceReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onceReady
   @overrides bcdui.core.DataProvider#onceReady
   */
   onceReady(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.TransformationChain.html#onReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.TransformationChain.html#onReady Online Api}
-  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onReady
   @overrides bcdui.core.DataProvider#onReady
   */
@@ -9987,8 +10035,8 @@ bcdui.core.Renderer = class extends bcdui.core.TransformationChain{
   write(xPath,fillParams,value,fire) { console.log(xPath,fillParams,value,fire); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.Renderer.html#remove) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.Renderer.html#remove Online Api}
-  @description removes given xPath
-  @param {string} xPath  xPath pointing to value
+  @description Deletes data at a given xPath from the model
+  @param {string} xPath  xPath pointing to the value
   @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
   @param {boolean} [fire]  if true a fire is triggered to notify data modification listener
   @inherits bcdui.core.DataProvider#remove
@@ -10025,14 +10073,14 @@ bcdui.core.Renderer = class extends bcdui.core.TransformationChain{
   serialize() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.Renderer.html#removeDataListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.Renderer.html#removeDataListener Online Api}
-  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map
+  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map {@link RemoveDataListenerParam}. Listeners are added with onChange()
   @inherits bcdui.core.DataProvider#removeDataListener
   @overrides bcdui.core.TransformationChain#removeDataListener
   */
   removeDataListener(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.Renderer.html#onChange) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.Renderer.html#onChange Online Api}
-  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map
+  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map {@link OnChangeParam}. Listeners can be removed with removeDataListener()
   @param {string} [trackingXPath]  xPath to monitor to monitor for changes
   @inherits bcdui.core.DataProvider#onChange
   @overrides bcdui.core.TransformationChain#onChange
@@ -10046,13 +10094,13 @@ bcdui.core.Renderer = class extends bcdui.core.TransformationChain{
   */
   setStatus(args) { console.log(args); }
   /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.Renderer.html#isClear) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.Renderer.html#isClear Online Api}
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.Renderer.html#isClean) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.Renderer.html#isClean Online Api}
   @description True, if DataProvider is ready and there are no uncommitted write transactions, see {@link bcdui.core.AbstractExecutable#isReady isReady()} and {@link bcdui.core.DataProvider#onChange fire()}.
-  @inherits bcdui.core.DataProvider#isClear
-  @overrides bcdui.core.TransformationChain#isClear
+  @inherits bcdui.core.DataProvider#isClean
+  @overrides bcdui.core.TransformationChain#isClean
   @return {boolean}
   */
-  isClear() {}
+  isClean() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.Renderer.html#fetchData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.Renderer.html#fetchData Online Api}
   @description asynchronously fetch data for this data provider.
@@ -10063,14 +10111,15 @@ bcdui.core.Renderer = class extends bcdui.core.TransformationChain{
   fetchData() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.Renderer.html#addStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.Renderer.html#addStatusListener Online Api}
-  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map
+  @description Listen for any status to be reached. For use cases with the ready status (by far the most common), see onReady() and onceReady() convenience functions.
+  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map {@link AddStatusListenerParam}
   @inherits bcdui.core.AbstractExecutable#addStatusListener
   @overrides bcdui.core.TransformationChain#addStatusListener
   */
   addStatusListener(args) { console.log(args); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.Renderer.html#removeStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.Renderer.html#removeStatusListener Online Api}
-  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map.
+  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map {@link RemoveStatusListenerParam}.
   @inherits bcdui.core.AbstractExecutable#removeStatusListener
   @overrides bcdui.core.TransformationChain#removeStatusListener
   */
@@ -10101,14 +10150,14 @@ bcdui.core.Renderer = class extends bcdui.core.TransformationChain{
   hasFailed() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.Renderer.html#onceReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.Renderer.html#onceReady Online Api}
-  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnceReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onceReady
   @overrides bcdui.core.TransformationChain#onceReady
   */
   onceReady(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.Renderer.html#onReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.Renderer.html#onReady Online Api}
-  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onReady
   @overrides bcdui.core.TransformationChain#onReady
   */
@@ -10261,8 +10310,8 @@ bcdui.core.ModelWrapper = class extends bcdui.core.TransformationChain{
   write(xPath,fillParams,value,fire) { console.log(xPath,fillParams,value,fire); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelWrapper.html#remove) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelWrapper.html#remove Online Api}
-  @description removes given xPath
-  @param {string} xPath  xPath pointing to value
+  @description Deletes data at a given xPath from the model
+  @param {string} xPath  xPath pointing to the value
   @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
   @param {boolean} [fire]  if true a fire is triggered to notify data modification listener
   @inherits bcdui.core.DataProvider#remove
@@ -10299,14 +10348,14 @@ bcdui.core.ModelWrapper = class extends bcdui.core.TransformationChain{
   serialize() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelWrapper.html#removeDataListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelWrapper.html#removeDataListener Online Api}
-  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map
+  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map {@link RemoveDataListenerParam}. Listeners are added with onChange()
   @inherits bcdui.core.DataProvider#removeDataListener
   @overrides bcdui.core.TransformationChain#removeDataListener
   */
   removeDataListener(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelWrapper.html#onChange) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelWrapper.html#onChange Online Api}
-  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map
+  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map {@link OnChangeParam}. Listeners can be removed with removeDataListener()
   @param {string} [trackingXPath]  xPath to monitor to monitor for changes
   @inherits bcdui.core.DataProvider#onChange
   @overrides bcdui.core.TransformationChain#onChange
@@ -10320,13 +10369,13 @@ bcdui.core.ModelWrapper = class extends bcdui.core.TransformationChain{
   */
   setStatus(args) { console.log(args); }
   /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelWrapper.html#isClear) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelWrapper.html#isClear Online Api}
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelWrapper.html#isClean) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelWrapper.html#isClean Online Api}
   @description True, if DataProvider is ready and there are no uncommitted write transactions, see {@link bcdui.core.AbstractExecutable#isReady isReady()} and {@link bcdui.core.DataProvider#onChange fire()}.
-  @inherits bcdui.core.DataProvider#isClear
-  @overrides bcdui.core.TransformationChain#isClear
+  @inherits bcdui.core.DataProvider#isClean
+  @overrides bcdui.core.TransformationChain#isClean
   @return {boolean}
   */
-  isClear() {}
+  isClean() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelWrapper.html#fetchData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelWrapper.html#fetchData Online Api}
   @description asynchronously fetch data for this data provider.
@@ -10337,14 +10386,15 @@ bcdui.core.ModelWrapper = class extends bcdui.core.TransformationChain{
   fetchData() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelWrapper.html#addStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelWrapper.html#addStatusListener Online Api}
-  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map
+  @description Listen for any status to be reached. For use cases with the ready status (by far the most common), see onReady() and onceReady() convenience functions.
+  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map {@link AddStatusListenerParam}
   @inherits bcdui.core.AbstractExecutable#addStatusListener
   @overrides bcdui.core.TransformationChain#addStatusListener
   */
   addStatusListener(args) { console.log(args); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelWrapper.html#removeStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelWrapper.html#removeStatusListener Online Api}
-  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map.
+  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map {@link RemoveStatusListenerParam}.
   @inherits bcdui.core.AbstractExecutable#removeStatusListener
   @overrides bcdui.core.TransformationChain#removeStatusListener
   */
@@ -10383,14 +10433,14 @@ bcdui.core.ModelWrapper = class extends bcdui.core.TransformationChain{
   execute(doesRefresh) { console.log(doesRefresh); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelWrapper.html#onceReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelWrapper.html#onceReady Online Api}
-  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnceReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onceReady
   @overrides bcdui.core.TransformationChain#onceReady
   */
   onceReady(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelWrapper.html#onReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelWrapper.html#onReady Online Api}
-  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onReady
   @overrides bcdui.core.TransformationChain#onReady
   */
@@ -10403,8 +10453,9 @@ bcdui.core.ModelWrapper = class extends bcdui.core.TransformationChain{
 /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html Online Api}
   @description A concrete subclass of {@link bcdui.core.TransformationChain TransformationChain}, replacing its targetModel's content with the result of the transformation applied to it. Can be applied to all concrete subclasses of {@link bcdui.core.AbstractUpdatableModel AbstractUpdatableModel},  like {@link bcdui.core.StaticModel StaticModel} or {@link bcdui.core.SimpleModel SimpleModel} Technically, this is a bcdui.core.TransformationChain object but it should not be executed, fired, modified or read from directly.
-  */
-bcdui.core.ModelUpdater = class {
+  @extends bcdui.core.TransformationChain
+*/
+bcdui.core.ModelUpdater = class extends bcdui.core.TransformationChain{
   /**
   @param {Object} args  An argument object with the following properties:
   @param {chainDef} args.chain  The definition of the transformation chain <ul> <li>a single string with the URL of the transformation XSLT or doTjs template</li> <li>or a JS transformator function</li> <li>or an array with a mixture of URLs and JS transformators</li> <li>or a DataProvider with an XML document following xsd http://www.businesscode.de/schema/bcdui/chain-1.0.0</li> </ul>
@@ -10414,9 +10465,260 @@ bcdui.core.ModelUpdater = class {
   @param {string} [args.id]  Globally unique id for use in declarative contexts
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html Online Api}
   @description A concrete subclass of {@link bcdui.core.TransformationChain TransformationChain}, replacing its targetModel's content with the result of the transformation applied to it. Can be applied to all concrete subclasses of {@link bcdui.core.AbstractUpdatableModel AbstractUpdatableModel}, like {@link bcdui.core.StaticModel StaticModel} or {@link bcdui.core.SimpleModel SimpleModel} Technically, this is a bcdui.core.TransformationChain object but it should not be executed, fired, modified or read from directly.
+  @extends bcdui.core.TransformationChain
     */
-  constructor(args){ console.log(args); }
+  constructor(args){ super(args); }
   getClassName() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#getReadyStatus) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#getReadyStatus Online Api}
+  @description The ready status for the transformation chain is reached as soon as all transformations are finished. <p> The status transitions of the class are as follows:          </p> <p style="padding-left: 10px"><table><tr><td style="border: 3px double black; text-align: center" colspan="2"> Initialized                                              </td><td style="padding-left: 20px"> All variables have been initialized. </td></tr><tr><td>&nbsp;</td><td style="border-left: 1px solid black">&nbsp;</td><td></td></tr><tr><td style="border: 1px solid black; text-align: center" colspan="2"> Loading                                                  </td><td style="padding-left: 20px"> Start loading chain document. </td></tr><tr><td>&nbsp;</td><td style="border-left: 1px solid black">&nbsp;</td><td></td></tr><tr><td style="border: 1px solid black; text-align: center" colspan="2"> ChainLoaded                                              </td><td style="padding-left: 20px"> The chain document has been loaded. Start loading chain stylesheets. </td></tr><tr><td>&nbsp;</td><td style="border-left: 1px solid black">&nbsp;</td><td></td></tr><tr><td style="border: 1px solid black; text-align: center" colspan="2"> <i> WaitingForParameters </i>                                </td><td style="padding-left: 20px"> Chain stylesheets loaded. Waiting for parameter data providers (<i>execute</i>). </td></tr><tr><td>&nbsp;</td><td style="border-left: 1px solid black">&nbsp;</td><td></td></tr><tr><td style="border: 1px solid black; text-align: center" colspan="2"> Transforming                                             </td><td style="padding-left: 20px"> The chain stylesheets are running. </td></tr><tr><td>&nbsp;</td><td style="border-left: 1px solid black">&nbsp;</td><td></td></tr><tr><td style="border: 3px double black; text-align: center" colspan="2"> <b> Transformed </b>                                         </td><td style="padding-left: 20px"> The output has been generated. (<b>ready</b>)  </td></tr></table></p>
+  @inherits bcdui.core.TransformationChain#getReadyStatus
+  @overrides bcdui.core.TransformationChain#getReadyStatus
+  @return {Status} The transformed status.
+  */
+  getReadyStatus() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#getData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#getData Online Api}
+  @description A getter for the document produced by the transformation chain.
+  @inherits bcdui.core.TransformationChain#getData
+  @overrides bcdui.core.TransformationChain#getData
+  @return {*} The output of the last transfomration in the chain if it doesnot produce HTML (output="html").
+  */
+  getData() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#reloadStylesheets) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#reloadStylesheets Online Api}
+  @description Start the loading process of the stylesheets and executes the transformations again.
+  @inherits bcdui.core.TransformationChain#reloadStylesheets
+  @overrides bcdui.core.TransformationChain#reloadStylesheets
+  */
+  reloadStylesheets() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#getDataProviderByName) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#getDataProviderByName Online Api}
+  @param {String} name
+  @inherits bcdui.core.TransformationChain#getDataProviderByName
+  @overrides bcdui.core.TransformationChain#getDataProviderByName
+  @return {bcdui.core.DataProvider} returns the parameter of the given name
+  */
+  getDataProviderByName(name) { console.log(name); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#addDataProvider) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#addDataProvider Online Api}
+  @description Adds a new data provider to the transformation chain. If there is already a data provider with the given name it is replaced.
+  @param {Object} newDataProvider  the new dataprovider which should be added
+  @param {string} [newName]  an optional new name for the provider. if given an alias will be created
+  @inherits bcdui.core.TransformationChain#addDataProvider
+  @overrides bcdui.core.TransformationChain#addDataProvider
+  @return {bcdui.core.DataProvider} The old data provider registered under the name ornull if there has not been any.
+  */
+  addDataProvider(newDataProvider,newName) { console.log(newDataProvider,newName); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#getPrimaryModel) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#getPrimaryModel Online Api}
+  @description Getter for the primary model of the chain. The first transformation of the chain takes a document as input. This document comes from the primary model.
+  @inherits bcdui.core.TransformationChain#getPrimaryModel
+  @overrides bcdui.core.TransformationChain#getPrimaryModel
+  @return {bcdui.core.DataProvider} The model the first transformation inthe chain is running on.
+  */
+  getPrimaryModel() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#setPrimaryModel) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#setPrimaryModel Online Api}
+  @description Adds a new data provider to the list which becomes the new primary model of the transformation chain.
+  @param {bcdui.core.DataProvider} primaryModel  the new primary model of the transformation chain.
+  @inherits bcdui.core.TransformationChain#setPrimaryModel
+  @overrides bcdui.core.TransformationChain#setPrimaryModel
+  */
+  setPrimaryModel(primaryModel) { console.log(primaryModel); }
+  toString() {}
+  getFailedStatus() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#sendData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#sendData Online Api}
+  @description Sends the current data to the original URL
+  @inherits bcdui.core.DataProvider#sendData
+  @overrides bcdui.core.TransformationChain#sendData
+  */
+  sendData() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#fire) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#fire Online Api}
+  @description This informs modification listeners, registered via {@link bcdui.core.DataProvider#onChange onChange(args)}, that a change set was completed and data is consistent again.
+  @inherits bcdui.core.DataProvider#fire
+  @overrides bcdui.core.TransformationChain#fire
+  */
+  fire() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#getName) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#getName Online Api}
+  @description Getter for the name of the data provider. This name is for example used to set parameters names of a {@link bcdui.core.TransformationChain}.
+  @inherits bcdui.core.DataProvider#getName
+  @overrides bcdui.core.TransformationChain#getName
+  @return {string} The name of the data provider. This name should be uniquewithin the scope it is used and is usually not globally unique (as the id).
+  */
+  getName() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#promptData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#promptData Online Api}
+  @description Convenience method for debugging showing data in a prompt for copy-and-paste
+  @inherits bcdui.core.DataProvider#promptData
+  @overrides bcdui.core.TransformationChain#promptData
+  */
+  promptData() {}
+  debugIsWaitingFor() {}
+  debugStatus() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#read) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#read Online Api}
+  @description Reads the string value from a given xPath (or optionally return default value).
+  @param {string} xPath  xPath pointing to value (can include dot template placeholders which get filled with the given fillParams)
+  @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
+  @param {string} [defaultValue]  default value in case xPath value does not exist
+  @inherits bcdui.core.DataProvider#read
+  @overrides bcdui.core.TransformationChain#read
+  @return text value stored at xPath (or null if no text was found and no defaultValue supplied)
+  */
+  read(xPath,fillParams,defaultValue) { console.log(xPath,fillParams,defaultValue); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#write) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#write Online Api}
+  @description Set a value to on a certain xPath and create the xPath where necessary. This combines Element.evaluate() for a single node with creating the path where necessary. It will prefer extending an existing start-part over creating a second one. After the operation the xPath (with the optional value) is guaranteed to exist (pre-existing or created or extended) and the addressed node is returned.
+  @param {string} xPath  xPath pointing to the node which is set to the value value or plain xPath to be created if not there. It tries to reuse all matching parts that are already there. If you provide for example "/n:Root/n:MyElem/&commat;attr2" and there is already "/n:Root/n:MyElem/&commat;attr1", then "/n:Root/n:MyElem" will be "re-used" and get an additional attribute attr2. Many expressions are allowed, for example "/n:Root/n:MyElem[&commat;attr1='attr1Value']/n:SubElem" is also ok. By nature, some xPath expressions are not allowed, for example using '//' or "/n:Root/n:MyElem/[&commat;attr1 or &commat;attr2]/n:SubElem" is obviously not unambiguous enough and will throw an error. This method is Wrs aware, use for example '/wrs:Wrs/wrs:Data/wrs:*[2]/wrs:C[3]' as xPath and it will turn wrs:R[wrs:C] into wrs:M[wrs:C and wrs:O], see Wrs format. (can include dot template placeholders which get filled with the given fillParams)
+  @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions Example: bcdui.wkModels.guiStatus.write("/guiStatus:Status/guiStatus:ClientSettings/guiStatus:Test[&commat;caption='{{=it[0]}}' and &commat;caption2='{{=it[1]}}']", ["china's republic", "drag\"n drop"])
+  @param {string} [value]  Optional value which should be written, for example to "/n:Root/n:MyElem/&commat;attr" or with "/n:Root/n:MyElem" as the element's text content. If not provided, the xPath contains all values like in "/n:Root/n:MyElem[&commat;attr='a' and &commat;attr1='b']" or needs none like "/n:Root/n:MyElem"
+  @param {boolean} [fire]  If true a fire is triggered to inform data modification listeners
+  @inherits bcdui.core.DataProvider#write
+  @overrides bcdui.core.TransformationChain#write
+  @return The xPath's node or null if dataProvider isn't ready
+  */
+  write(xPath,fillParams,value,fire) { console.log(xPath,fillParams,value,fire); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#remove) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#remove Online Api}
+  @description Deletes data at a given xPath from the model
+  @param {string} xPath  xPath pointing to the value
+  @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
+  @param {boolean} [fire]  if true a fire is triggered to notify data modification listener
+  @inherits bcdui.core.DataProvider#remove
+  @overrides bcdui.core.TransformationChain#remove
+  */
+  remove(xPath,fillParams,fire) { console.log(xPath,fillParams,fire); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#query) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#query Online Api}
+  @description Reads a single node from a given xPath
+  @param {string} xPath  xPath to query
+  @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
+  @inherits bcdui.core.DataProvider#query
+  @overrides bcdui.core.TransformationChain#query
+  @return single node or null if query fails
+  */
+  query(xPath,fillParams) { console.log(xPath,fillParams); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#queryNodes) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#queryNodes Online Api}
+  @description Get node list from a given xPath
+  @param {string} xPath  xPath to query
+  @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
+  @inherits bcdui.core.DataProvider#queryNodes
+  @overrides bcdui.core.TransformationChain#queryNodes
+  @return node list or empty list if query fails
+  */
+  queryNodes(xPath,fillParams) { console.log(xPath,fillParams); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#serialize) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#serialize Online Api}
+  @description Serialize dataprovider's data if available
+  @inherits bcdui.core.DataProvider#serialize
+  @overrides bcdui.core.TransformationChain#serialize
+  @return String containing the serialized data
+  */
+  serialize() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#removeDataListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#removeDataListener Online Api}
+  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map {@link RemoveDataListenerParam}. Listeners are added with onChange()
+  @inherits bcdui.core.DataProvider#removeDataListener
+  @overrides bcdui.core.TransformationChain#removeDataListener
+  */
+  removeDataListener(listenerObject) { console.log(listenerObject); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#onChange) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#onChange Online Api}
+  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map {@link OnChangeParam}. Listeners can be removed with removeDataListener()
+  @param {string} [trackingXPath]  xPath to monitor to monitor for changes
+  @inherits bcdui.core.DataProvider#onChange
+  @overrides bcdui.core.TransformationChain#onChange
+  */
+  onChange(listenerObject,trackingXPath) { console.log(listenerObject,trackingXPath); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#setStatus) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#setStatus Online Api}
+  @param {Status} args
+  @inherits bcdui.core.DataProvider#setStatus
+  @overrides bcdui.core.TransformationChain#setStatus
+  */
+  setStatus(args) { console.log(args); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#isClean) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#isClean Online Api}
+  @description True, if DataProvider is ready and there are no uncommitted write transactions, see {@link bcdui.core.AbstractExecutable#isReady isReady()} and {@link bcdui.core.DataProvider#onChange fire()}.
+  @inherits bcdui.core.DataProvider#isClean
+  @overrides bcdui.core.TransformationChain#isClean
+  @return {boolean}
+  */
+  isClean() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#fetchData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#fetchData Online Api}
+  @description asynchronously fetch data for this data provider.
+  @inherits bcdui.core.DataProvider#fetchData
+  @overrides bcdui.core.TransformationChain#fetchData
+  @return {Promise} resolving once data has been loaded, first argument is this instance
+  */
+  fetchData() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#addStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#addStatusListener Online Api}
+  @description Listen for any status to be reached. For use cases with the ready status (by far the most common), see onReady() and onceReady() convenience functions.
+  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map {@link AddStatusListenerParam}
+  @inherits bcdui.core.AbstractExecutable#addStatusListener
+  @overrides bcdui.core.TransformationChain#addStatusListener
+  */
+  addStatusListener(args) { console.log(args); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#removeStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#removeStatusListener Online Api}
+  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map {@link RemoveStatusListenerParam}.
+  @inherits bcdui.core.AbstractExecutable#removeStatusListener
+  @overrides bcdui.core.TransformationChain#removeStatusListener
+  */
+  removeStatusListener(args) { console.log(args); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#getStatus) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#getStatus Online Api}
+  @description Getter for the status of this object. See {@link bcdui.core.status} for possible return values.
+  @inherits bcdui.core.AbstractExecutable#getStatus
+  @overrides bcdui.core.TransformationChain#getStatus
+  @return {bcdui.core.Status} The current status.
+  */
+  getStatus() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#isReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#isReady Online Api}
+  @description Tests if the current state is the readyStatus. This status is the same status as returned by "getReadyStatus".
+  @inherits bcdui.core.AbstractExecutable#isReady
+  @overrides bcdui.core.TransformationChain#isReady
+  @return {boolean} True, if the object is ready.
+  */
+  isReady() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#hasFailed) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#hasFailed Online Api}
+  @description Tests if the object has reached a failure status. These status codes are returned by the "getFailedStatus" method.
+  @inherits bcdui.core.AbstractExecutable#hasFailed
+  @overrides bcdui.core.TransformationChain#hasFailed
+  @return {boolean} True, if the object's process has failed.
+  */
+  hasFailed() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#execute) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#execute Online Api}
+  @description Executes the process implemented by the concrete sub-class.
+  @param {boolean} [doesRefresh]  Set this parameter to "false" if this method should do nothing when the object is already in the ready status. The default is "true" meaning that the process is re-started when it is currently ready.
+  @inherits bcdui.core.AbstractExecutable#execute
+  @overrides bcdui.core.TransformationChain#execute
+  */
+  execute(doesRefresh) { console.log(doesRefresh); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#onceReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#onceReady Online Api}
+  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnceReadyParam}. To listen for other states see addStatusListener()
+  @inherits bcdui.core.AbstractExecutable#onceReady
+  @overrides bcdui.core.TransformationChain#onceReady
+  */
+  onceReady(listenerObject) { console.log(listenerObject); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#onReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#onReady Online Api}
+  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnReadyParam}. To listen for other states see addStatusListener()
+  @inherits bcdui.core.AbstractExecutable#onReady
+  @overrides bcdui.core.TransformationChain#onReady
+  */
+  onReady(listenerObject) { console.log(listenerObject); }
 
 }
 
@@ -10702,18 +11004,21 @@ bcdui.core.HTML2XMLDataProvider = class extends bcdui.core.DataProvider{
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#sendData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#sendData Online Api}
   @description Sends the current data to the original URL
   @inherits bcdui.core.DataProvider#sendData
+  @overrides bcdui.core.DataProvider#sendData
   */
   sendData() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#fire) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#fire Online Api}
   @description This informs modification listeners, registered via {@link bcdui.core.DataProvider#onChange onChange(args)}, that a change set was completed and data is consistent again.
   @inherits bcdui.core.DataProvider#fire
+  @overrides bcdui.core.DataProvider#fire
   */
   fire() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#getName) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#getName Online Api}
   @description Getter for the name of the data provider. This name is for example used to set parameters names of a {@link bcdui.core.TransformationChain}.
   @inherits bcdui.core.DataProvider#getName
+  @overrides bcdui.core.DataProvider#getName
   @return {string} The name of the data provider. This name should be uniquewithin the scope it is used and is usually not globally unique (as the id).
   */
   getName() {}
@@ -10721,12 +11026,14 @@ bcdui.core.HTML2XMLDataProvider = class extends bcdui.core.DataProvider{
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#promptData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#promptData Online Api}
   @description Convenience method for debugging showing data in a prompt for copy-and-paste
   @inherits bcdui.core.DataProvider#promptData
+  @overrides bcdui.core.DataProvider#promptData
   */
   promptData() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#toString) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#toString Online Api}
   @description Useful for debugging.
   @inherits bcdui.core.DataProvider#toString
+  @overrides bcdui.core.DataProvider#toString
   @return {string} A short string summary of this object.
   */
   toString() {}
@@ -10739,6 +11046,7 @@ bcdui.core.HTML2XMLDataProvider = class extends bcdui.core.DataProvider{
   @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
   @param {string} [defaultValue]  default value in case xPath value does not exist
   @inherits bcdui.core.DataProvider#read
+  @overrides bcdui.core.DataProvider#read
   @return text value stored at xPath (or null if no text was found and no defaultValue supplied)
   */
   read(xPath,fillParams,defaultValue) { console.log(xPath,fillParams,defaultValue); }
@@ -10750,16 +11058,18 @@ bcdui.core.HTML2XMLDataProvider = class extends bcdui.core.DataProvider{
   @param {string} [value]  Optional value which should be written, for example to "/n:Root/n:MyElem/&commat;attr" or with "/n:Root/n:MyElem" as the element's text content. If not provided, the xPath contains all values like in "/n:Root/n:MyElem[&commat;attr='a' and &commat;attr1='b']" or needs none like "/n:Root/n:MyElem"
   @param {boolean} [fire]  If true a fire is triggered to inform data modification listeners
   @inherits bcdui.core.DataProvider#write
+  @overrides bcdui.core.DataProvider#write
   @return The xPath's node or null if dataProvider isn't ready
   */
   write(xPath,fillParams,value,fire) { console.log(xPath,fillParams,value,fire); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#remove) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#remove Online Api}
-  @description removes given xPath
-  @param {string} xPath  xPath pointing to value
+  @description Deletes data at a given xPath from the model
+  @param {string} xPath  xPath pointing to the value
   @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
   @param {boolean} [fire]  if true a fire is triggered to notify data modification listener
   @inherits bcdui.core.DataProvider#remove
+  @overrides bcdui.core.DataProvider#remove
   */
   remove(xPath,fillParams,fire) { console.log(xPath,fillParams,fire); }
   /**
@@ -10768,6 +11078,7 @@ bcdui.core.HTML2XMLDataProvider = class extends bcdui.core.DataProvider{
   @param {string} xPath  xPath to query
   @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
   @inherits bcdui.core.DataProvider#query
+  @overrides bcdui.core.DataProvider#query
   @return single node or null if query fails
   */
   query(xPath,fillParams) { console.log(xPath,fillParams); }
@@ -10777,6 +11088,7 @@ bcdui.core.HTML2XMLDataProvider = class extends bcdui.core.DataProvider{
   @param {string} xPath  xPath to query
   @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
   @inherits bcdui.core.DataProvider#queryNodes
+  @overrides bcdui.core.DataProvider#queryNodes
   @return node list or empty list if query fails
   */
   queryNodes(xPath,fillParams) { console.log(xPath,fillParams); }
@@ -10784,58 +11096,68 @@ bcdui.core.HTML2XMLDataProvider = class extends bcdui.core.DataProvider{
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#serialize) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#serialize Online Api}
   @description Serialize dataprovider's data if available
   @inherits bcdui.core.DataProvider#serialize
+  @overrides bcdui.core.DataProvider#serialize
   @return String containing the serialized data
   */
   serialize() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#removeDataListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#removeDataListener Online Api}
-  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map
+  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map {@link RemoveDataListenerParam}. Listeners are added with onChange()
   @inherits bcdui.core.DataProvider#removeDataListener
+  @overrides bcdui.core.DataProvider#removeDataListener
   */
   removeDataListener(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#onChange) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#onChange Online Api}
-  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map
+  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map {@link OnChangeParam}. Listeners can be removed with removeDataListener()
   @param {string} [trackingXPath]  xPath to monitor to monitor for changes
   @inherits bcdui.core.DataProvider#onChange
+  @overrides bcdui.core.DataProvider#onChange
   */
   onChange(listenerObject,trackingXPath) { console.log(listenerObject,trackingXPath); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#setStatus) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#setStatus Online Api}
   @param {Status} args
   @inherits bcdui.core.DataProvider#setStatus
+  @overrides bcdui.core.DataProvider#setStatus
   */
   setStatus(args) { console.log(args); }
   /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#isClear) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#isClear Online Api}
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#isClean) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#isClean Online Api}
   @description True, if DataProvider is ready and there are no uncommitted write transactions, see {@link bcdui.core.AbstractExecutable#isReady isReady()} and {@link bcdui.core.DataProvider#onChange fire()}.
-  @inherits bcdui.core.DataProvider#isClear
+  @inherits bcdui.core.DataProvider#isClean
+  @overrides bcdui.core.DataProvider#isClean
   @return {boolean}
   */
-  isClear() {}
+  isClean() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#fetchData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#fetchData Online Api}
   @description asynchronously fetch data for this data provider.
   @inherits bcdui.core.DataProvider#fetchData
+  @overrides bcdui.core.DataProvider#fetchData
   @return {Promise} resolving once data has been loaded, first argument is this instance
   */
   fetchData() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#addStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#addStatusListener Online Api}
-  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map
+  @description Listen for any status to be reached. For use cases with the ready status (by far the most common), see onReady() and onceReady() convenience functions.
+  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map {@link AddStatusListenerParam}
   @inherits bcdui.core.AbstractExecutable#addStatusListener
+  @overrides bcdui.core.DataProvider#addStatusListener
   */
   addStatusListener(args) { console.log(args); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#removeStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#removeStatusListener Online Api}
-  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map.
+  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map {@link RemoveStatusListenerParam}.
   @inherits bcdui.core.AbstractExecutable#removeStatusListener
+  @overrides bcdui.core.DataProvider#removeStatusListener
   */
   removeStatusListener(args) { console.log(args); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#getStatus) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#getStatus Online Api}
   @description Getter for the status of this object. See {@link bcdui.core.status} for possible return values.
   @inherits bcdui.core.AbstractExecutable#getStatus
+  @overrides bcdui.core.DataProvider#getStatus
   @return {bcdui.core.Status} The current status.
   */
   getStatus() {}
@@ -10843,6 +11165,7 @@ bcdui.core.HTML2XMLDataProvider = class extends bcdui.core.DataProvider{
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#isReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#isReady Online Api}
   @description Tests if the current state is the readyStatus. This status is the same status as returned by "getReadyStatus".
   @inherits bcdui.core.AbstractExecutable#isReady
+  @overrides bcdui.core.DataProvider#isReady
   @return {boolean} True, if the object is ready.
   */
   isReady() {}
@@ -10850,6 +11173,7 @@ bcdui.core.HTML2XMLDataProvider = class extends bcdui.core.DataProvider{
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#hasFailed) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#hasFailed Online Api}
   @description Tests if the object has reached a failure status. These status codes are returned by the "getFailedStatus" method.
   @inherits bcdui.core.AbstractExecutable#hasFailed
+  @overrides bcdui.core.DataProvider#hasFailed
   @return {boolean} True, if the object's process has failed.
   */
   hasFailed() {}
@@ -10857,6 +11181,7 @@ bcdui.core.HTML2XMLDataProvider = class extends bcdui.core.DataProvider{
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#getFailedStatus) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#getFailedStatus Online Api}
   @description Getter for the list of error statuses of this class. This implementation returns an empty list.
   @inherits bcdui.core.AbstractExecutable#getFailedStatus
+  @overrides bcdui.core.DataProvider#getFailedStatus
   @return {Array.<bcdui.core.Status>} The status objects corresponding to failures in the object'sprocess.
   */
   getFailedStatus() {}
@@ -10865,18 +11190,21 @@ bcdui.core.HTML2XMLDataProvider = class extends bcdui.core.DataProvider{
   @description Executes the process implemented by the concrete sub-class.
   @param {boolean} [doesRefresh]  Set this parameter to "false" if this method should do nothing when the object is already in the ready status. The default is "true" meaning that the process is re-started when it is currently ready.
   @inherits bcdui.core.AbstractExecutable#execute
+  @overrides bcdui.core.DataProvider#execute
   */
   execute(doesRefresh) { console.log(doesRefresh); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#onceReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#onceReady Online Api}
-  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnceReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onceReady
+  @overrides bcdui.core.DataProvider#onceReady
   */
   onceReady(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#onReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#onReady Online Api}
-  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onReady
+  @overrides bcdui.core.DataProvider#onReady
   */
   onReady(listenerObject) { console.log(listenerObject); }
 
@@ -11100,14 +11428,14 @@ bcdui.component.chart.Chart = class extends bcdui.core.DataProvider{
   serialize() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.Chart.html#removeDataListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.Chart.html#removeDataListener Online Api}
-  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map
+  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map {@link RemoveDataListenerParam}. Listeners are added with onChange()
   @inherits bcdui.core.DataProvider#removeDataListener
   @overrides bcdui.core.DataProvider#removeDataListener
   */
   removeDataListener(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.Chart.html#onChange) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.Chart.html#onChange Online Api}
-  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map
+  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map {@link OnChangeParam}. Listeners can be removed with removeDataListener()
   @param {string} [trackingXPath]  xPath to monitor to monitor for changes
   @inherits bcdui.core.DataProvider#onChange
   @overrides bcdui.core.DataProvider#onChange
@@ -11121,13 +11449,13 @@ bcdui.component.chart.Chart = class extends bcdui.core.DataProvider{
   */
   setStatus(args) { console.log(args); }
   /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.Chart.html#isClear) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.Chart.html#isClear Online Api}
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.Chart.html#isClean) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.Chart.html#isClean Online Api}
   @description True, if DataProvider is ready and there are no uncommitted write transactions, see {@link bcdui.core.AbstractExecutable#isReady isReady()} and {@link bcdui.core.DataProvider#onChange fire()}.
-  @inherits bcdui.core.DataProvider#isClear
-  @overrides bcdui.core.DataProvider#isClear
+  @inherits bcdui.core.DataProvider#isClean
+  @overrides bcdui.core.DataProvider#isClean
   @return {boolean}
   */
-  isClear() {}
+  isClean() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.Chart.html#fetchData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.Chart.html#fetchData Online Api}
   @description asynchronously fetch data for this data provider.
@@ -11138,14 +11466,15 @@ bcdui.component.chart.Chart = class extends bcdui.core.DataProvider{
   fetchData() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.Chart.html#addStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.Chart.html#addStatusListener Online Api}
-  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map
+  @description Listen for any status to be reached. For use cases with the ready status (by far the most common), see onReady() and onceReady() convenience functions.
+  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map {@link AddStatusListenerParam}
   @inherits bcdui.core.AbstractExecutable#addStatusListener
   @overrides bcdui.core.DataProvider#addStatusListener
   */
   addStatusListener(args) { console.log(args); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.Chart.html#removeStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.Chart.html#removeStatusListener Online Api}
-  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map.
+  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map {@link RemoveStatusListenerParam}.
   @inherits bcdui.core.AbstractExecutable#removeStatusListener
   @overrides bcdui.core.DataProvider#removeStatusListener
   */
@@ -11192,14 +11521,14 @@ bcdui.component.chart.Chart = class extends bcdui.core.DataProvider{
   execute(doesRefresh) { console.log(doesRefresh); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.Chart.html#onceReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.Chart.html#onceReady Online Api}
-  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnceReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onceReady
   @overrides bcdui.core.DataProvider#onceReady
   */
   onceReady(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.Chart.html#onReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.Chart.html#onReady Online Api}
-  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onReady
   @overrides bcdui.core.DataProvider#onReady
   */
@@ -11491,14 +11820,14 @@ bcdui.component.chart.XmlChart = class extends bcdui.component.chart.Chart{
   serialize() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.XmlChart.html#removeDataListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.XmlChart.html#removeDataListener Online Api}
-  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map
+  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map {@link RemoveDataListenerParam}. Listeners are added with onChange()
   @inherits bcdui.core.DataProvider#removeDataListener
   @overrides bcdui.component.chart.Chart#removeDataListener
   */
   removeDataListener(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.XmlChart.html#onChange) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.XmlChart.html#onChange Online Api}
-  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map
+  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map {@link OnChangeParam}. Listeners can be removed with removeDataListener()
   @param {string} [trackingXPath]  xPath to monitor to monitor for changes
   @inherits bcdui.core.DataProvider#onChange
   @overrides bcdui.component.chart.Chart#onChange
@@ -11512,13 +11841,13 @@ bcdui.component.chart.XmlChart = class extends bcdui.component.chart.Chart{
   */
   setStatus(args) { console.log(args); }
   /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.XmlChart.html#isClear) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.XmlChart.html#isClear Online Api}
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.XmlChart.html#isClean) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.XmlChart.html#isClean Online Api}
   @description True, if DataProvider is ready and there are no uncommitted write transactions, see {@link bcdui.core.AbstractExecutable#isReady isReady()} and {@link bcdui.core.DataProvider#onChange fire()}.
-  @inherits bcdui.core.DataProvider#isClear
-  @overrides bcdui.component.chart.Chart#isClear
+  @inherits bcdui.core.DataProvider#isClean
+  @overrides bcdui.component.chart.Chart#isClean
   @return {boolean}
   */
-  isClear() {}
+  isClean() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.XmlChart.html#fetchData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.XmlChart.html#fetchData Online Api}
   @description asynchronously fetch data for this data provider.
@@ -11529,14 +11858,15 @@ bcdui.component.chart.XmlChart = class extends bcdui.component.chart.Chart{
   fetchData() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.XmlChart.html#addStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.XmlChart.html#addStatusListener Online Api}
-  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map
+  @description Listen for any status to be reached. For use cases with the ready status (by far the most common), see onReady() and onceReady() convenience functions.
+  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map {@link AddStatusListenerParam}
   @inherits bcdui.core.AbstractExecutable#addStatusListener
   @overrides bcdui.component.chart.Chart#addStatusListener
   */
   addStatusListener(args) { console.log(args); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.XmlChart.html#removeStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.XmlChart.html#removeStatusListener Online Api}
-  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map.
+  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map {@link RemoveStatusListenerParam}.
   @inherits bcdui.core.AbstractExecutable#removeStatusListener
   @overrides bcdui.component.chart.Chart#removeStatusListener
   */
@@ -11583,14 +11913,14 @@ bcdui.component.chart.XmlChart = class extends bcdui.component.chart.Chart{
   execute(doesRefresh) { console.log(doesRefresh); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.XmlChart.html#onceReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.XmlChart.html#onceReady Online Api}
-  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnceReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onceReady
   @overrides bcdui.component.chart.Chart#onceReady
   */
   onceReady(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.XmlChart.html#onReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.XmlChart.html#onReady Online Api}
-  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onReady
   @overrides bcdui.component.chart.Chart#onReady
   */
@@ -11610,8 +11940,9 @@ bcdui.component.chart.XmlChart = class extends bcdui.component.chart.Chart{
 /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html Online Api}
   @description Create a chart based on http://www.businesscode.de/schema/bcdui/charts-1.0.0 XML
-  */
-bcdui.component.chart.ChartEchart = class {
+  @extends bcdui.core.Renderer
+*/
+bcdui.component.chart.ChartEchart = class extends bcdui.core.Renderer{
   /**
   @param {Object} args  Parameter object:
   @param {targetHtmlRef} args.targetHtml  Where to place the chart
@@ -11619,8 +11950,9 @@ bcdui.component.chart.ChartEchart = class {
   @param {Object} args.options  Options of ECharts, extending / being merged with the options deried from config
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html Online Api}
   @description Create a chart based on http://www.businesscode.de/schema/bcdui/charts-1.0.0 XML
+  @extends bcdui.core.Renderer
     */
-  constructor(args){ console.log(args); }
+  constructor(args){ super(args); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#.saveAsImage) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#.saveAsImage Online Api}
   @description Export an EChart as PNG
@@ -11629,6 +11961,262 @@ bcdui.component.chart.ChartEchart = class {
   */
   saveAsImage(targetHtml,name) { console.log(targetHtml,name); }
   getData() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#execute) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#execute Online Api}
+  @param {(boolean|ExecuteParam)} args  either true for forced or parameter map
+  @inherits bcdui.core.Renderer#execute
+  @overrides bcdui.core.Renderer#execute
+  */
+  execute(args) { console.log(args); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#getTargetHtml) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#getTargetHtml Online Api}
+  @description Return the target html element where the renderer places its output
+  @inherits bcdui.core.Renderer#getTargetHtml
+  @overrides bcdui.core.Renderer#getTargetHtml
+  */
+  getTargetHtml() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#setTargetHtml) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#setTargetHtml Online Api}
+  @description Sets the target html element where the renderer places its output
+  @param {HtmlElement} targetHtmlElement  target html element
+  @inherits bcdui.core.Renderer#setTargetHtml
+  @overrides bcdui.core.Renderer#setTargetHtml
+  */
+  setTargetHtml(targetHtmlElement) { console.log(targetHtmlElement); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#getReadyStatus) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#getReadyStatus Online Api}
+  @description The ready status for the transformation chain is reached as soon as all transformations are finished. <p> The status transitions of the class are as follows:          </p> <p style="padding-left: 10px"><table><tr><td style="border: 3px double black; text-align: center" colspan="2"> Initialized                                              </td><td style="padding-left: 20px"> All variables have been initialized. </td></tr><tr><td>&nbsp;</td><td style="border-left: 1px solid black">&nbsp;</td><td></td></tr><tr><td style="border: 1px solid black; text-align: center" colspan="2"> Loading                                                  </td><td style="padding-left: 20px"> Start loading chain document. </td></tr><tr><td>&nbsp;</td><td style="border-left: 1px solid black">&nbsp;</td><td></td></tr><tr><td style="border: 1px solid black; text-align: center" colspan="2"> ChainLoaded                                              </td><td style="padding-left: 20px"> The chain document has been loaded. Start loading chain stylesheets. </td></tr><tr><td>&nbsp;</td><td style="border-left: 1px solid black">&nbsp;</td><td></td></tr><tr><td style="border: 1px solid black; text-align: center" colspan="2"> <i> WaitingForParameters </i>                                </td><td style="padding-left: 20px"> Chain stylesheets loaded. Waiting for parameter data providers (<i>execute</i>). </td></tr><tr><td>&nbsp;</td><td style="border-left: 1px solid black">&nbsp;</td><td></td></tr><tr><td style="border: 1px solid black; text-align: center" colspan="2"> Transforming                                             </td><td style="padding-left: 20px"> The chain stylesheets are running. </td></tr><tr><td>&nbsp;</td><td style="border-left: 1px solid black">&nbsp;</td><td></td></tr><tr><td style="border: 3px double black; text-align: center" colspan="2"> <b> Transformed </b>                                         </td><td style="padding-left: 20px"> The output has been generated. (<b>ready</b>)  </td></tr></table></p>
+  @inherits bcdui.core.TransformationChain#getReadyStatus
+  @overrides bcdui.core.Renderer#getReadyStatus
+  @return {Status} The transformed status.
+  */
+  getReadyStatus() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#reloadStylesheets) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#reloadStylesheets Online Api}
+  @description Start the loading process of the stylesheets and executes the transformations again.
+  @inherits bcdui.core.TransformationChain#reloadStylesheets
+  @overrides bcdui.core.Renderer#reloadStylesheets
+  */
+  reloadStylesheets() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#getDataProviderByName) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#getDataProviderByName Online Api}
+  @param {String} name
+  @inherits bcdui.core.TransformationChain#getDataProviderByName
+  @overrides bcdui.core.Renderer#getDataProviderByName
+  @return {bcdui.core.DataProvider} returns the parameter of the given name
+  */
+  getDataProviderByName(name) { console.log(name); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#addDataProvider) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#addDataProvider Online Api}
+  @description Adds a new data provider to the transformation chain. If there is already a data provider with the given name it is replaced.
+  @param {Object} newDataProvider  the new dataprovider which should be added
+  @param {string} [newName]  an optional new name for the provider. if given an alias will be created
+  @inherits bcdui.core.TransformationChain#addDataProvider
+  @overrides bcdui.core.Renderer#addDataProvider
+  @return {bcdui.core.DataProvider} The old data provider registered under the name ornull if there has not been any.
+  */
+  addDataProvider(newDataProvider,newName) { console.log(newDataProvider,newName); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#getPrimaryModel) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#getPrimaryModel Online Api}
+  @description Getter for the primary model of the chain. The first transformation of the chain takes a document as input. This document comes from the primary model.
+  @inherits bcdui.core.TransformationChain#getPrimaryModel
+  @overrides bcdui.core.Renderer#getPrimaryModel
+  @return {bcdui.core.DataProvider} The model the first transformation inthe chain is running on.
+  */
+  getPrimaryModel() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#setPrimaryModel) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#setPrimaryModel Online Api}
+  @description Adds a new data provider to the list which becomes the new primary model of the transformation chain.
+  @param {bcdui.core.DataProvider} primaryModel  the new primary model of the transformation chain.
+  @inherits bcdui.core.TransformationChain#setPrimaryModel
+  @overrides bcdui.core.Renderer#setPrimaryModel
+  */
+  setPrimaryModel(primaryModel) { console.log(primaryModel); }
+  toString() {}
+  getFailedStatus() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#sendData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#sendData Online Api}
+  @description Sends the current data to the original URL
+  @inherits bcdui.core.DataProvider#sendData
+  @overrides bcdui.core.Renderer#sendData
+  */
+  sendData() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#fire) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#fire Online Api}
+  @description This informs modification listeners, registered via {@link bcdui.core.DataProvider#onChange onChange(args)}, that a change set was completed and data is consistent again.
+  @inherits bcdui.core.DataProvider#fire
+  @overrides bcdui.core.Renderer#fire
+  */
+  fire() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#getName) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#getName Online Api}
+  @description Getter for the name of the data provider. This name is for example used to set parameters names of a {@link bcdui.core.TransformationChain}.
+  @inherits bcdui.core.DataProvider#getName
+  @overrides bcdui.core.Renderer#getName
+  @return {string} The name of the data provider. This name should be uniquewithin the scope it is used and is usually not globally unique (as the id).
+  */
+  getName() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#promptData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#promptData Online Api}
+  @description Convenience method for debugging showing data in a prompt for copy-and-paste
+  @inherits bcdui.core.DataProvider#promptData
+  @overrides bcdui.core.Renderer#promptData
+  */
+  promptData() {}
+  debugIsWaitingFor() {}
+  debugStatus() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#read) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#read Online Api}
+  @description Reads the string value from a given xPath (or optionally return default value).
+  @param {string} xPath  xPath pointing to value (can include dot template placeholders which get filled with the given fillParams)
+  @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
+  @param {string} [defaultValue]  default value in case xPath value does not exist
+  @inherits bcdui.core.DataProvider#read
+  @overrides bcdui.core.Renderer#read
+  @return text value stored at xPath (or null if no text was found and no defaultValue supplied)
+  */
+  read(xPath,fillParams,defaultValue) { console.log(xPath,fillParams,defaultValue); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#write) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#write Online Api}
+  @description Set a value to on a certain xPath and create the xPath where necessary. This combines Element.evaluate() for a single node with creating the path where necessary. It will prefer extending an existing start-part over creating a second one. After the operation the xPath (with the optional value) is guaranteed to exist (pre-existing or created or extended) and the addressed node is returned.
+  @param {string} xPath  xPath pointing to the node which is set to the value value or plain xPath to be created if not there. It tries to reuse all matching parts that are already there. If you provide for example "/n:Root/n:MyElem/&commat;attr2" and there is already "/n:Root/n:MyElem/&commat;attr1", then "/n:Root/n:MyElem" will be "re-used" and get an additional attribute attr2. Many expressions are allowed, for example "/n:Root/n:MyElem[&commat;attr1='attr1Value']/n:SubElem" is also ok. By nature, some xPath expressions are not allowed, for example using '//' or "/n:Root/n:MyElem/[&commat;attr1 or &commat;attr2]/n:SubElem" is obviously not unambiguous enough and will throw an error. This method is Wrs aware, use for example '/wrs:Wrs/wrs:Data/wrs:*[2]/wrs:C[3]' as xPath and it will turn wrs:R[wrs:C] into wrs:M[wrs:C and wrs:O], see Wrs format. (can include dot template placeholders which get filled with the given fillParams)
+  @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions Example: bcdui.wkModels.guiStatus.write("/guiStatus:Status/guiStatus:ClientSettings/guiStatus:Test[&commat;caption='{{=it[0]}}' and &commat;caption2='{{=it[1]}}']", ["china's republic", "drag\"n drop"])
+  @param {string} [value]  Optional value which should be written, for example to "/n:Root/n:MyElem/&commat;attr" or with "/n:Root/n:MyElem" as the element's text content. If not provided, the xPath contains all values like in "/n:Root/n:MyElem[&commat;attr='a' and &commat;attr1='b']" or needs none like "/n:Root/n:MyElem"
+  @param {boolean} [fire]  If true a fire is triggered to inform data modification listeners
+  @inherits bcdui.core.DataProvider#write
+  @overrides bcdui.core.Renderer#write
+  @return The xPath's node or null if dataProvider isn't ready
+  */
+  write(xPath,fillParams,value,fire) { console.log(xPath,fillParams,value,fire); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#remove) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#remove Online Api}
+  @description Deletes data at a given xPath from the model
+  @param {string} xPath  xPath pointing to the value
+  @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
+  @param {boolean} [fire]  if true a fire is triggered to notify data modification listener
+  @inherits bcdui.core.DataProvider#remove
+  @overrides bcdui.core.Renderer#remove
+  */
+  remove(xPath,fillParams,fire) { console.log(xPath,fillParams,fire); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#query) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#query Online Api}
+  @description Reads a single node from a given xPath
+  @param {string} xPath  xPath to query
+  @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
+  @inherits bcdui.core.DataProvider#query
+  @overrides bcdui.core.Renderer#query
+  @return single node or null if query fails
+  */
+  query(xPath,fillParams) { console.log(xPath,fillParams); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#queryNodes) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#queryNodes Online Api}
+  @description Get node list from a given xPath
+  @param {string} xPath  xPath to query
+  @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
+  @inherits bcdui.core.DataProvider#queryNodes
+  @overrides bcdui.core.Renderer#queryNodes
+  @return node list or empty list if query fails
+  */
+  queryNodes(xPath,fillParams) { console.log(xPath,fillParams); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#serialize) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#serialize Online Api}
+  @description Serialize dataprovider's data if available
+  @inherits bcdui.core.DataProvider#serialize
+  @overrides bcdui.core.Renderer#serialize
+  @return String containing the serialized data
+  */
+  serialize() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#removeDataListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#removeDataListener Online Api}
+  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map {@link RemoveDataListenerParam}. Listeners are added with onChange()
+  @inherits bcdui.core.DataProvider#removeDataListener
+  @overrides bcdui.core.Renderer#removeDataListener
+  */
+  removeDataListener(listenerObject) { console.log(listenerObject); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#onChange) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#onChange Online Api}
+  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map {@link OnChangeParam}. Listeners can be removed with removeDataListener()
+  @param {string} [trackingXPath]  xPath to monitor to monitor for changes
+  @inherits bcdui.core.DataProvider#onChange
+  @overrides bcdui.core.Renderer#onChange
+  */
+  onChange(listenerObject,trackingXPath) { console.log(listenerObject,trackingXPath); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#setStatus) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#setStatus Online Api}
+  @param {Status} args
+  @inherits bcdui.core.DataProvider#setStatus
+  @overrides bcdui.core.Renderer#setStatus
+  */
+  setStatus(args) { console.log(args); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#isClean) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#isClean Online Api}
+  @description True, if DataProvider is ready and there are no uncommitted write transactions, see {@link bcdui.core.AbstractExecutable#isReady isReady()} and {@link bcdui.core.DataProvider#onChange fire()}.
+  @inherits bcdui.core.DataProvider#isClean
+  @overrides bcdui.core.Renderer#isClean
+  @return {boolean}
+  */
+  isClean() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#fetchData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#fetchData Online Api}
+  @description asynchronously fetch data for this data provider.
+  @inherits bcdui.core.DataProvider#fetchData
+  @overrides bcdui.core.Renderer#fetchData
+  @return {Promise} resolving once data has been loaded, first argument is this instance
+  */
+  fetchData() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#addStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#addStatusListener Online Api}
+  @description Listen for any status to be reached. For use cases with the ready status (by far the most common), see onReady() and onceReady() convenience functions.
+  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map {@link AddStatusListenerParam}
+  @inherits bcdui.core.AbstractExecutable#addStatusListener
+  @overrides bcdui.core.Renderer#addStatusListener
+  */
+  addStatusListener(args) { console.log(args); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#removeStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#removeStatusListener Online Api}
+  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map {@link RemoveStatusListenerParam}.
+  @inherits bcdui.core.AbstractExecutable#removeStatusListener
+  @overrides bcdui.core.Renderer#removeStatusListener
+  */
+  removeStatusListener(args) { console.log(args); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#getStatus) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#getStatus Online Api}
+  @description Getter for the status of this object. See {@link bcdui.core.status} for possible return values.
+  @inherits bcdui.core.AbstractExecutable#getStatus
+  @overrides bcdui.core.Renderer#getStatus
+  @return {bcdui.core.Status} The current status.
+  */
+  getStatus() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#isReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#isReady Online Api}
+  @description Tests if the current state is the readyStatus. This status is the same status as returned by "getReadyStatus".
+  @inherits bcdui.core.AbstractExecutable#isReady
+  @overrides bcdui.core.Renderer#isReady
+  @return {boolean} True, if the object is ready.
+  */
+  isReady() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#hasFailed) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#hasFailed Online Api}
+  @description Tests if the object has reached a failure status. These status codes are returned by the "getFailedStatus" method.
+  @inherits bcdui.core.AbstractExecutable#hasFailed
+  @overrides bcdui.core.Renderer#hasFailed
+  @return {boolean} True, if the object's process has failed.
+  */
+  hasFailed() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#onceReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#onceReady Online Api}
+  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnceReadyParam}. To listen for other states see addStatusListener()
+  @inherits bcdui.core.AbstractExecutable#onceReady
+  @overrides bcdui.core.Renderer#onceReady
+  */
+  onceReady(listenerObject) { console.log(listenerObject); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#onReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#onReady Online Api}
+  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnReadyParam}. To listen for other states see addStatusListener()
+  @inherits bcdui.core.AbstractExecutable#onReady
+  @overrides bcdui.core.Renderer#onReady
+  */
+  onReady(listenerObject) { console.log(listenerObject); }
 
 }
 
@@ -11767,8 +12355,8 @@ bcdui.component.cube.CubeModel = class extends bcdui.core.ModelWrapper{
   write(xPath,fillParams,value,fire) { console.log(xPath,fillParams,value,fire); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.CubeModel.html#remove) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.CubeModel.html#remove Online Api}
-  @description removes given xPath
-  @param {string} xPath  xPath pointing to value
+  @description Deletes data at a given xPath from the model
+  @param {string} xPath  xPath pointing to the value
   @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
   @param {boolean} [fire]  if true a fire is triggered to notify data modification listener
   @inherits bcdui.core.DataProvider#remove
@@ -11805,14 +12393,14 @@ bcdui.component.cube.CubeModel = class extends bcdui.core.ModelWrapper{
   serialize() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.CubeModel.html#removeDataListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.CubeModel.html#removeDataListener Online Api}
-  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map
+  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map {@link RemoveDataListenerParam}. Listeners are added with onChange()
   @inherits bcdui.core.DataProvider#removeDataListener
   @overrides bcdui.core.ModelWrapper#removeDataListener
   */
   removeDataListener(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.CubeModel.html#onChange) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.CubeModel.html#onChange Online Api}
-  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map
+  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map {@link OnChangeParam}. Listeners can be removed with removeDataListener()
   @param {string} [trackingXPath]  xPath to monitor to monitor for changes
   @inherits bcdui.core.DataProvider#onChange
   @overrides bcdui.core.ModelWrapper#onChange
@@ -11826,13 +12414,13 @@ bcdui.component.cube.CubeModel = class extends bcdui.core.ModelWrapper{
   */
   setStatus(args) { console.log(args); }
   /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.CubeModel.html#isClear) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.CubeModel.html#isClear Online Api}
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.CubeModel.html#isClean) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.CubeModel.html#isClean Online Api}
   @description True, if DataProvider is ready and there are no uncommitted write transactions, see {@link bcdui.core.AbstractExecutable#isReady isReady()} and {@link bcdui.core.DataProvider#onChange fire()}.
-  @inherits bcdui.core.DataProvider#isClear
-  @overrides bcdui.core.ModelWrapper#isClear
+  @inherits bcdui.core.DataProvider#isClean
+  @overrides bcdui.core.ModelWrapper#isClean
   @return {boolean}
   */
-  isClear() {}
+  isClean() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.CubeModel.html#fetchData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.CubeModel.html#fetchData Online Api}
   @description asynchronously fetch data for this data provider.
@@ -11843,14 +12431,15 @@ bcdui.component.cube.CubeModel = class extends bcdui.core.ModelWrapper{
   fetchData() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.CubeModel.html#addStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.CubeModel.html#addStatusListener Online Api}
-  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map
+  @description Listen for any status to be reached. For use cases with the ready status (by far the most common), see onReady() and onceReady() convenience functions.
+  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map {@link AddStatusListenerParam}
   @inherits bcdui.core.AbstractExecutable#addStatusListener
   @overrides bcdui.core.ModelWrapper#addStatusListener
   */
   addStatusListener(args) { console.log(args); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.CubeModel.html#removeStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.CubeModel.html#removeStatusListener Online Api}
-  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map.
+  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map {@link RemoveStatusListenerParam}.
   @inherits bcdui.core.AbstractExecutable#removeStatusListener
   @overrides bcdui.core.ModelWrapper#removeStatusListener
   */
@@ -11889,14 +12478,14 @@ bcdui.component.cube.CubeModel = class extends bcdui.core.ModelWrapper{
   execute(doesRefresh) { console.log(doesRefresh); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.CubeModel.html#onceReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.CubeModel.html#onceReady Online Api}
-  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnceReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onceReady
   @overrides bcdui.core.ModelWrapper#onceReady
   */
   onceReady(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.CubeModel.html#onReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.CubeModel.html#onReady Online Api}
-  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onReady
   @overrides bcdui.core.ModelWrapper#onReady
   */
@@ -12066,8 +12655,8 @@ bcdui.component.cube.Cube = class extends bcdui.core.Renderer{
   write(xPath,fillParams,value,fire) { console.log(xPath,fillParams,value,fire); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.Cube.html#remove) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.Cube.html#remove Online Api}
-  @description removes given xPath
-  @param {string} xPath  xPath pointing to value
+  @description Deletes data at a given xPath from the model
+  @param {string} xPath  xPath pointing to the value
   @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
   @param {boolean} [fire]  if true a fire is triggered to notify data modification listener
   @inherits bcdui.core.DataProvider#remove
@@ -12104,14 +12693,14 @@ bcdui.component.cube.Cube = class extends bcdui.core.Renderer{
   serialize() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.Cube.html#removeDataListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.Cube.html#removeDataListener Online Api}
-  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map
+  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map {@link RemoveDataListenerParam}. Listeners are added with onChange()
   @inherits bcdui.core.DataProvider#removeDataListener
   @overrides bcdui.core.Renderer#removeDataListener
   */
   removeDataListener(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.Cube.html#onChange) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.Cube.html#onChange Online Api}
-  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map
+  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map {@link OnChangeParam}. Listeners can be removed with removeDataListener()
   @param {string} [trackingXPath]  xPath to monitor to monitor for changes
   @inherits bcdui.core.DataProvider#onChange
   @overrides bcdui.core.Renderer#onChange
@@ -12125,13 +12714,13 @@ bcdui.component.cube.Cube = class extends bcdui.core.Renderer{
   */
   setStatus(args) { console.log(args); }
   /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.Cube.html#isClear) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.Cube.html#isClear Online Api}
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.Cube.html#isClean) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.Cube.html#isClean Online Api}
   @description True, if DataProvider is ready and there are no uncommitted write transactions, see {@link bcdui.core.AbstractExecutable#isReady isReady()} and {@link bcdui.core.DataProvider#onChange fire()}.
-  @inherits bcdui.core.DataProvider#isClear
-  @overrides bcdui.core.Renderer#isClear
+  @inherits bcdui.core.DataProvider#isClean
+  @overrides bcdui.core.Renderer#isClean
   @return {boolean}
   */
-  isClear() {}
+  isClean() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.Cube.html#fetchData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.Cube.html#fetchData Online Api}
   @description asynchronously fetch data for this data provider.
@@ -12142,14 +12731,15 @@ bcdui.component.cube.Cube = class extends bcdui.core.Renderer{
   fetchData() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.Cube.html#addStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.Cube.html#addStatusListener Online Api}
-  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map
+  @description Listen for any status to be reached. For use cases with the ready status (by far the most common), see onReady() and onceReady() convenience functions.
+  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map {@link AddStatusListenerParam}
   @inherits bcdui.core.AbstractExecutable#addStatusListener
   @overrides bcdui.core.Renderer#addStatusListener
   */
   addStatusListener(args) { console.log(args); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.Cube.html#removeStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.Cube.html#removeStatusListener Online Api}
-  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map.
+  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map {@link RemoveStatusListenerParam}.
   @inherits bcdui.core.AbstractExecutable#removeStatusListener
   @overrides bcdui.core.Renderer#removeStatusListener
   */
@@ -12180,14 +12770,14 @@ bcdui.component.cube.Cube = class extends bcdui.core.Renderer{
   hasFailed() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.Cube.html#onceReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.Cube.html#onceReady Online Api}
-  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnceReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onceReady
   @overrides bcdui.core.Renderer#onceReady
   */
   onceReady(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.Cube.html#onReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.Cube.html#onReady Online Api}
-  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onReady
   @overrides bcdui.core.Renderer#onReady
   */
@@ -12299,8 +12889,8 @@ bcdui.component.far.FarModel = class extends bcdui.core.AsyncJsDataProvider{
   write(xPath,fillParams,value,fire) { console.log(xPath,fillParams,value,fire); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.far.FarModel.html#remove) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.far.FarModel.html#remove Online Api}
-  @description removes given xPath
-  @param {string} xPath  xPath pointing to value
+  @description Deletes data at a given xPath from the model
+  @param {string} xPath  xPath pointing to the value
   @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
   @param {boolean} [fire]  if true a fire is triggered to notify data modification listener
   @inherits bcdui.core.DataProvider#remove
@@ -12337,14 +12927,14 @@ bcdui.component.far.FarModel = class extends bcdui.core.AsyncJsDataProvider{
   serialize() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.far.FarModel.html#removeDataListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.far.FarModel.html#removeDataListener Online Api}
-  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map
+  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map {@link RemoveDataListenerParam}. Listeners are added with onChange()
   @inherits bcdui.core.DataProvider#removeDataListener
   @overrides bcdui.core.AsyncJsDataProvider#removeDataListener
   */
   removeDataListener(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.far.FarModel.html#onChange) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.far.FarModel.html#onChange Online Api}
-  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map
+  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map {@link OnChangeParam}. Listeners can be removed with removeDataListener()
   @param {string} [trackingXPath]  xPath to monitor to monitor for changes
   @inherits bcdui.core.DataProvider#onChange
   @overrides bcdui.core.AsyncJsDataProvider#onChange
@@ -12358,13 +12948,13 @@ bcdui.component.far.FarModel = class extends bcdui.core.AsyncJsDataProvider{
   */
   setStatus(args) { console.log(args); }
   /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.far.FarModel.html#isClear) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.far.FarModel.html#isClear Online Api}
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.far.FarModel.html#isClean) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.far.FarModel.html#isClean Online Api}
   @description True, if DataProvider is ready and there are no uncommitted write transactions, see {@link bcdui.core.AbstractExecutable#isReady isReady()} and {@link bcdui.core.DataProvider#onChange fire()}.
-  @inherits bcdui.core.DataProvider#isClear
-  @overrides bcdui.core.AsyncJsDataProvider#isClear
+  @inherits bcdui.core.DataProvider#isClean
+  @overrides bcdui.core.AsyncJsDataProvider#isClean
   @return {boolean}
   */
-  isClear() {}
+  isClean() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.far.FarModel.html#fetchData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.far.FarModel.html#fetchData Online Api}
   @description asynchronously fetch data for this data provider.
@@ -12375,14 +12965,15 @@ bcdui.component.far.FarModel = class extends bcdui.core.AsyncJsDataProvider{
   fetchData() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.far.FarModel.html#addStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.far.FarModel.html#addStatusListener Online Api}
-  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map
+  @description Listen for any status to be reached. For use cases with the ready status (by far the most common), see onReady() and onceReady() convenience functions.
+  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map {@link AddStatusListenerParam}
   @inherits bcdui.core.AbstractExecutable#addStatusListener
   @overrides bcdui.core.AsyncJsDataProvider#addStatusListener
   */
   addStatusListener(args) { console.log(args); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.far.FarModel.html#removeStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.far.FarModel.html#removeStatusListener Online Api}
-  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map.
+  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map {@link RemoveStatusListenerParam}.
   @inherits bcdui.core.AbstractExecutable#removeStatusListener
   @overrides bcdui.core.AsyncJsDataProvider#removeStatusListener
   */
@@ -12429,14 +13020,14 @@ bcdui.component.far.FarModel = class extends bcdui.core.AsyncJsDataProvider{
   execute(doesRefresh) { console.log(doesRefresh); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.far.FarModel.html#onceReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.far.FarModel.html#onceReady Online Api}
-  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnceReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onceReady
   @overrides bcdui.core.AsyncJsDataProvider#onceReady
   */
   onceReady(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.far.FarModel.html#onReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.far.FarModel.html#onReady Online Api}
-  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onReady
   @overrides bcdui.core.AsyncJsDataProvider#onReady
   */
@@ -12570,8 +13161,8 @@ bcdui.component.scorecard.ScorecardModel = class extends bcdui.core.DataProvider
   write(xPath,fillParams,value,fire) { console.log(xPath,fillParams,value,fire); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.ScorecardModel.html#remove) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.ScorecardModel.html#remove Online Api}
-  @description removes given xPath
-  @param {string} xPath  xPath pointing to value
+  @description Deletes data at a given xPath from the model
+  @param {string} xPath  xPath pointing to the value
   @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
   @param {boolean} [fire]  if true a fire is triggered to notify data modification listener
   @inherits bcdui.core.DataProvider#remove
@@ -12608,14 +13199,14 @@ bcdui.component.scorecard.ScorecardModel = class extends bcdui.core.DataProvider
   serialize() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.ScorecardModel.html#removeDataListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.ScorecardModel.html#removeDataListener Online Api}
-  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map
+  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map {@link RemoveDataListenerParam}. Listeners are added with onChange()
   @inherits bcdui.core.DataProvider#removeDataListener
   @overrides bcdui.core.DataProvider#removeDataListener
   */
   removeDataListener(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.ScorecardModel.html#onChange) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.ScorecardModel.html#onChange Online Api}
-  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map
+  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map {@link OnChangeParam}. Listeners can be removed with removeDataListener()
   @param {string} [trackingXPath]  xPath to monitor to monitor for changes
   @inherits bcdui.core.DataProvider#onChange
   @overrides bcdui.core.DataProvider#onChange
@@ -12629,13 +13220,13 @@ bcdui.component.scorecard.ScorecardModel = class extends bcdui.core.DataProvider
   */
   setStatus(args) { console.log(args); }
   /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.ScorecardModel.html#isClear) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.ScorecardModel.html#isClear Online Api}
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.ScorecardModel.html#isClean) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.ScorecardModel.html#isClean Online Api}
   @description True, if DataProvider is ready and there are no uncommitted write transactions, see {@link bcdui.core.AbstractExecutable#isReady isReady()} and {@link bcdui.core.DataProvider#onChange fire()}.
-  @inherits bcdui.core.DataProvider#isClear
-  @overrides bcdui.core.DataProvider#isClear
+  @inherits bcdui.core.DataProvider#isClean
+  @overrides bcdui.core.DataProvider#isClean
   @return {boolean}
   */
-  isClear() {}
+  isClean() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.ScorecardModel.html#fetchData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.ScorecardModel.html#fetchData Online Api}
   @description asynchronously fetch data for this data provider.
@@ -12646,14 +13237,15 @@ bcdui.component.scorecard.ScorecardModel = class extends bcdui.core.DataProvider
   fetchData() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.ScorecardModel.html#addStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.ScorecardModel.html#addStatusListener Online Api}
-  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map
+  @description Listen for any status to be reached. For use cases with the ready status (by far the most common), see onReady() and onceReady() convenience functions.
+  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map {@link AddStatusListenerParam}
   @inherits bcdui.core.AbstractExecutable#addStatusListener
   @overrides bcdui.core.DataProvider#addStatusListener
   */
   addStatusListener(args) { console.log(args); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.ScorecardModel.html#removeStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.ScorecardModel.html#removeStatusListener Online Api}
-  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map.
+  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map {@link RemoveStatusListenerParam}.
   @inherits bcdui.core.AbstractExecutable#removeStatusListener
   @overrides bcdui.core.DataProvider#removeStatusListener
   */
@@ -12700,14 +13292,14 @@ bcdui.component.scorecard.ScorecardModel = class extends bcdui.core.DataProvider
   execute(doesRefresh) { console.log(doesRefresh); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.ScorecardModel.html#onceReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.ScorecardModel.html#onceReady Online Api}
-  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnceReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onceReady
   @overrides bcdui.core.DataProvider#onceReady
   */
   onceReady(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.ScorecardModel.html#onReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.ScorecardModel.html#onReady Online Api}
-  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onReady
   @overrides bcdui.core.DataProvider#onReady
   */
@@ -12879,8 +13471,8 @@ bcdui.component.scorecard.Scorecard = class extends bcdui.core.Renderer{
   write(xPath,fillParams,value,fire) { console.log(xPath,fillParams,value,fire); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.Scorecard.html#remove) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.Scorecard.html#remove Online Api}
-  @description removes given xPath
-  @param {string} xPath  xPath pointing to value
+  @description Deletes data at a given xPath from the model
+  @param {string} xPath  xPath pointing to the value
   @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
   @param {boolean} [fire]  if true a fire is triggered to notify data modification listener
   @inherits bcdui.core.DataProvider#remove
@@ -12917,14 +13509,14 @@ bcdui.component.scorecard.Scorecard = class extends bcdui.core.Renderer{
   serialize() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.Scorecard.html#removeDataListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.Scorecard.html#removeDataListener Online Api}
-  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map
+  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map {@link RemoveDataListenerParam}. Listeners are added with onChange()
   @inherits bcdui.core.DataProvider#removeDataListener
   @overrides bcdui.core.Renderer#removeDataListener
   */
   removeDataListener(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.Scorecard.html#onChange) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.Scorecard.html#onChange Online Api}
-  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map
+  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map {@link OnChangeParam}. Listeners can be removed with removeDataListener()
   @param {string} [trackingXPath]  xPath to monitor to monitor for changes
   @inherits bcdui.core.DataProvider#onChange
   @overrides bcdui.core.Renderer#onChange
@@ -12938,13 +13530,13 @@ bcdui.component.scorecard.Scorecard = class extends bcdui.core.Renderer{
   */
   setStatus(args) { console.log(args); }
   /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.Scorecard.html#isClear) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.Scorecard.html#isClear Online Api}
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.Scorecard.html#isClean) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.Scorecard.html#isClean Online Api}
   @description True, if DataProvider is ready and there are no uncommitted write transactions, see {@link bcdui.core.AbstractExecutable#isReady isReady()} and {@link bcdui.core.DataProvider#onChange fire()}.
-  @inherits bcdui.core.DataProvider#isClear
-  @overrides bcdui.core.Renderer#isClear
+  @inherits bcdui.core.DataProvider#isClean
+  @overrides bcdui.core.Renderer#isClean
   @return {boolean}
   */
-  isClear() {}
+  isClean() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.Scorecard.html#fetchData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.Scorecard.html#fetchData Online Api}
   @description asynchronously fetch data for this data provider.
@@ -12955,14 +13547,15 @@ bcdui.component.scorecard.Scorecard = class extends bcdui.core.Renderer{
   fetchData() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.Scorecard.html#addStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.Scorecard.html#addStatusListener Online Api}
-  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map
+  @description Listen for any status to be reached. For use cases with the ready status (by far the most common), see onReady() and onceReady() convenience functions.
+  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map {@link AddStatusListenerParam}
   @inherits bcdui.core.AbstractExecutable#addStatusListener
   @overrides bcdui.core.Renderer#addStatusListener
   */
   addStatusListener(args) { console.log(args); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.Scorecard.html#removeStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.Scorecard.html#removeStatusListener Online Api}
-  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map.
+  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map {@link RemoveStatusListenerParam}.
   @inherits bcdui.core.AbstractExecutable#removeStatusListener
   @overrides bcdui.core.Renderer#removeStatusListener
   */
@@ -12993,14 +13586,14 @@ bcdui.component.scorecard.Scorecard = class extends bcdui.core.Renderer{
   hasFailed() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.Scorecard.html#onceReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.Scorecard.html#onceReady Online Api}
-  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnceReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onceReady
   @overrides bcdui.core.Renderer#onceReady
   */
   onceReady(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.Scorecard.html#onReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.Scorecard.html#onReady Online Api}
-  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onReady
   @overrides bcdui.core.Renderer#onReady
   */
@@ -13013,9 +13606,9 @@ bcdui.component.scorecard.Scorecard = class extends bcdui.core.Renderer{
 /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html Online Api}
   @description Creates a GridModel
-  @extends bcdui.core.DataProvider
+  @extends bcdui.core.SimpleModel
 */
-bcdui.component.grid.GridModel = class extends bcdui.core.DataProvider{
+bcdui.component.grid.GridModel = class extends bcdui.core.SimpleModel{
   /**
   @param {Object} args  The parameter map contains the following properties:
   @param {bcdui.core.DataProvider} [args.config]  The model containing the grid configuration data. If it is not present a SimpleModel with the url  './gridConfiguration.xml' is created.
@@ -13029,57 +13622,73 @@ bcdui.component.grid.GridModel = class extends bcdui.core.DataProvider{
   @param {Object} [args.loadParameters]  An object, where each property holds a DataProvider, used as a transformation parameters.
   @param {Object} [args.serverSidedPagination]  Set to true if you want to enable server sided pagination
   @param {bcdui.core.DataProvider} [args.pagerModel]  StatusModel of the pagination information
+  @param {chainDef} [args.requestPostChain]  The definition of the transformation chain
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html Online Api}
   @description Creates a GridModel
-  @extends bcdui.core.DataProvider
+  @extends bcdui.core.SimpleModel
     */
   constructor(args){ super(args); }
   getClassName() {}
   /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#getReadyStatus) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#getReadyStatus Online Api}
+  @description The SimpleModel reaches its ready status when the XML document has been loaded from the URL and the optional model updates have run. The document can then be retrieved with the "getDataDoc" method. <p> The status transitions of the class are as follows:          </p> <p style="padding-left: 10px"><table><tr><td rowspan="10">&nbsp;</td><td style="border: 3px double black; text-align: center" colspan="2"> {@link bcdui.core.status.InitializedStatus InitializedStatus}  </td><td style="padding-left: 20px"> All variables have been initialized. </td></tr><tr><td>&nbsp;</td><td style="border-left: 1px solid black">&nbsp;</td><td></td></tr><tr><td style="border: 1px solid black; text-align: center" colspan="2"> <i> Loading </i>                                             </td><td style="padding-left: 20px"> If it is not ready execute URL data provider (<i>execute</i>). </td></tr><tr><td>&nbsp;</td><td style="border-left: 1px solid black">&nbsp;</td><td></td></tr><tr><td style="border: 1px solid black; text-align: center" colspan="2"> URLAvailable                                             </td><td style="padding-left: 20px"> The URL data provider is ready, start loading data. </td></tr><tr><td>&nbsp;</td><td style="border-left: 1px solid black">&nbsp;</td><td></td></tr><tr><td style="border: 1px solid black; text-align: center" colspan="2"> Loaded                                                   </td><td style="padding-left: 20px"> The data has been loaded from the URL. </td></tr><tr><td>&nbsp;</td><td style="border-left: 1px solid black">&nbsp;</td><td></td></tr><tr><td style="border: 1px solid black; text-align: center" colspan="2"> RefreshingModelUpdaters                                  </td><td style="padding-left: 20px"> ModelUpdaters are currently running. </td></tr><tr><td>&nbsp;</td><td style="border-left: 1px solid black">&nbsp;</td><td></td></tr><tr><td rowspan="5" style="padding: 5px 0px 5px 5px"><div style="height: 6em; width: 0.5em; border-left: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black">&nbsp;</div></td><td style="border: 3px double black; text-align: center" colspan="2"> <b>{@link bcdui.core.status.TransformedStatus TransformedStatus}</b></td><td style="padding-left: 20px"> All model updaters have run. (<b>ready</b>) </td></tr><tr><td>&nbsp;</td><td style="border-left: 1px solid black">&nbsp;</td><td></td></tr><tr><td style="border: 1px solid black; text-align: center" colspan="2"> Saving                                                   </td><td style="padding-left: 20px"> The posting of data will start. </td></tr><tr><td>&nbsp;</td><td style="border-left: 1px solid black">&nbsp;</td><td></td></tr><tr><td style="border: 1px solid black; text-align: center" colspan="2"> {@link bcdui.core.status.SavedStatus SavedStatus}        </td><td style="padding-left: 20px"> The data has been posted to the server.  </td></tr></table></p>
+  @inherits bcdui.core.SimpleModel#getReadyStatus
+  @overrides bcdui.core.SimpleModel#getReadyStatus
+  @return {bcdui.core.Status} The ready state of the document.
+  */
+  getReadyStatus() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#getFailedStatus) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#getFailedStatus Online Api}
+  @description Returns the list of status objects indicating that something has failed.
+  @inherits bcdui.core.SimpleModel#getFailedStatus
+  @overrides bcdui.core.SimpleModel#getFailedStatus
+  @return {Array} The array of failure {@link bcdui.core.Status} objects.
+  */
+  getFailedStatus() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#getData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#getData Online Api}
+  @description Access to the data of this DataProvider for read and modification access
+  @inherits bcdui.core.DataProvider#getData
+  @return {*} The data provided by the specific sub-class.
+  */
+  getData() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#toString) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#toString Online Api}
+  @description Debugging function showing a text for this model.
+  @inherits bcdui.core.SimpleModel#toString
+  @overrides bcdui.core.SimpleModel#toString
+  @return {string} A summary of the model.
+  */
+  toString() {}
+  /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#sendData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#sendData Online Api}
   @description Sends the current data to the original URL
   @inherits bcdui.core.DataProvider#sendData
-  @overrides bcdui.core.DataProvider#sendData
+  @overrides bcdui.core.SimpleModel#sendData
   */
   sendData() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#fire) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#fire Online Api}
   @description This informs modification listeners, registered via {@link bcdui.core.DataProvider#onChange onChange(args)}, that a change set was completed and data is consistent again.
   @inherits bcdui.core.DataProvider#fire
-  @overrides bcdui.core.DataProvider#fire
+  @overrides bcdui.core.SimpleModel#fire
   */
   fire() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#getName) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#getName Online Api}
   @description Getter for the name of the data provider. This name is for example used to set parameters names of a {@link bcdui.core.TransformationChain}.
   @inherits bcdui.core.DataProvider#getName
-  @overrides bcdui.core.DataProvider#getName
+  @overrides bcdui.core.SimpleModel#getName
   @return {string} The name of the data provider. This name should be uniquewithin the scope it is used and is usually not globally unique (as the id).
   */
   getName() {}
   /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#getData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#getData Online Api}
-  @description Access to the data of this DataProvider for read and modification access
-  @inherits bcdui.core.DataProvider#getData
-  @overrides bcdui.core.DataProvider#getData
-  @return {*} The data provided by the specific sub-class.
-  */
-  getData() {}
-  /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#promptData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#promptData Online Api}
   @description Convenience method for debugging showing data in a prompt for copy-and-paste
   @inherits bcdui.core.DataProvider#promptData
-  @overrides bcdui.core.DataProvider#promptData
+  @overrides bcdui.core.SimpleModel#promptData
   */
   promptData() {}
-  /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#toString) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#toString Online Api}
-  @description Useful for debugging.
-  @inherits bcdui.core.DataProvider#toString
-  @overrides bcdui.core.DataProvider#toString
-  @return {string} A short string summary of this object.
-  */
-  toString() {}
   debugIsWaitingFor() {}
   debugStatus() {}
   /**
@@ -13089,7 +13698,7 @@ bcdui.component.grid.GridModel = class extends bcdui.core.DataProvider{
   @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
   @param {string} [defaultValue]  default value in case xPath value does not exist
   @inherits bcdui.core.DataProvider#read
-  @overrides bcdui.core.DataProvider#read
+  @overrides bcdui.core.SimpleModel#read
   @return text value stored at xPath (or null if no text was found and no defaultValue supplied)
   */
   read(xPath,fillParams,defaultValue) { console.log(xPath,fillParams,defaultValue); }
@@ -13101,18 +13710,18 @@ bcdui.component.grid.GridModel = class extends bcdui.core.DataProvider{
   @param {string} [value]  Optional value which should be written, for example to "/n:Root/n:MyElem/&commat;attr" or with "/n:Root/n:MyElem" as the element's text content. If not provided, the xPath contains all values like in "/n:Root/n:MyElem[&commat;attr='a' and &commat;attr1='b']" or needs none like "/n:Root/n:MyElem"
   @param {boolean} [fire]  If true a fire is triggered to inform data modification listeners
   @inherits bcdui.core.DataProvider#write
-  @overrides bcdui.core.DataProvider#write
+  @overrides bcdui.core.SimpleModel#write
   @return The xPath's node or null if dataProvider isn't ready
   */
   write(xPath,fillParams,value,fire) { console.log(xPath,fillParams,value,fire); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#remove) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#remove Online Api}
-  @description removes given xPath
-  @param {string} xPath  xPath pointing to value
+  @description Deletes data at a given xPath from the model
+  @param {string} xPath  xPath pointing to the value
   @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
   @param {boolean} [fire]  if true a fire is triggered to notify data modification listener
   @inherits bcdui.core.DataProvider#remove
-  @overrides bcdui.core.DataProvider#remove
+  @overrides bcdui.core.SimpleModel#remove
   */
   remove(xPath,fillParams,fire) { console.log(xPath,fillParams,fire); }
   /**
@@ -13121,7 +13730,7 @@ bcdui.component.grid.GridModel = class extends bcdui.core.DataProvider{
   @param {string} xPath  xPath to query
   @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
   @inherits bcdui.core.DataProvider#query
-  @overrides bcdui.core.DataProvider#query
+  @overrides bcdui.core.SimpleModel#query
   @return single node or null if query fails
   */
   query(xPath,fillParams) { console.log(xPath,fillParams); }
@@ -13131,7 +13740,7 @@ bcdui.component.grid.GridModel = class extends bcdui.core.DataProvider{
   @param {string} xPath  xPath to query
   @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
   @inherits bcdui.core.DataProvider#queryNodes
-  @overrides bcdui.core.DataProvider#queryNodes
+  @overrides bcdui.core.SimpleModel#queryNodes
   @return node list or empty list if query fails
   */
   queryNodes(xPath,fillParams) { console.log(xPath,fillParams); }
@@ -13139,67 +13748,68 @@ bcdui.component.grid.GridModel = class extends bcdui.core.DataProvider{
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#serialize) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#serialize Online Api}
   @description Serialize dataprovider's data if available
   @inherits bcdui.core.DataProvider#serialize
-  @overrides bcdui.core.DataProvider#serialize
+  @overrides bcdui.core.SimpleModel#serialize
   @return String containing the serialized data
   */
   serialize() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#removeDataListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#removeDataListener Online Api}
-  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map
+  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map {@link RemoveDataListenerParam}. Listeners are added with onChange()
   @inherits bcdui.core.DataProvider#removeDataListener
-  @overrides bcdui.core.DataProvider#removeDataListener
+  @overrides bcdui.core.SimpleModel#removeDataListener
   */
   removeDataListener(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#onChange) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#onChange Online Api}
-  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map
+  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map {@link OnChangeParam}. Listeners can be removed with removeDataListener()
   @param {string} [trackingXPath]  xPath to monitor to monitor for changes
   @inherits bcdui.core.DataProvider#onChange
-  @overrides bcdui.core.DataProvider#onChange
+  @overrides bcdui.core.SimpleModel#onChange
   */
   onChange(listenerObject,trackingXPath) { console.log(listenerObject,trackingXPath); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#setStatus) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#setStatus Online Api}
   @param {Status} args
   @inherits bcdui.core.DataProvider#setStatus
-  @overrides bcdui.core.DataProvider#setStatus
+  @overrides bcdui.core.SimpleModel#setStatus
   */
   setStatus(args) { console.log(args); }
   /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#isClear) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#isClear Online Api}
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#isClean) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#isClean Online Api}
   @description True, if DataProvider is ready and there are no uncommitted write transactions, see {@link bcdui.core.AbstractExecutable#isReady isReady()} and {@link bcdui.core.DataProvider#onChange fire()}.
-  @inherits bcdui.core.DataProvider#isClear
-  @overrides bcdui.core.DataProvider#isClear
+  @inherits bcdui.core.DataProvider#isClean
+  @overrides bcdui.core.SimpleModel#isClean
   @return {boolean}
   */
-  isClear() {}
+  isClean() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#fetchData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#fetchData Online Api}
   @description asynchronously fetch data for this data provider.
   @inherits bcdui.core.DataProvider#fetchData
-  @overrides bcdui.core.DataProvider#fetchData
+  @overrides bcdui.core.SimpleModel#fetchData
   @return {Promise} resolving once data has been loaded, first argument is this instance
   */
   fetchData() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#addStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#addStatusListener Online Api}
-  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map
+  @description Listen for any status to be reached. For use cases with the ready status (by far the most common), see onReady() and onceReady() convenience functions.
+  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map {@link AddStatusListenerParam}
   @inherits bcdui.core.AbstractExecutable#addStatusListener
-  @overrides bcdui.core.DataProvider#addStatusListener
+  @overrides bcdui.core.SimpleModel#addStatusListener
   */
   addStatusListener(args) { console.log(args); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#removeStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#removeStatusListener Online Api}
-  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map.
+  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map {@link RemoveStatusListenerParam}.
   @inherits bcdui.core.AbstractExecutable#removeStatusListener
-  @overrides bcdui.core.DataProvider#removeStatusListener
+  @overrides bcdui.core.SimpleModel#removeStatusListener
   */
   removeStatusListener(args) { console.log(args); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#getStatus) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#getStatus Online Api}
   @description Getter for the status of this object. See {@link bcdui.core.status} for possible return values.
   @inherits bcdui.core.AbstractExecutable#getStatus
-  @overrides bcdui.core.DataProvider#getStatus
+  @overrides bcdui.core.SimpleModel#getStatus
   @return {bcdui.core.Status} The current status.
   */
   getStatus() {}
@@ -13207,7 +13817,7 @@ bcdui.component.grid.GridModel = class extends bcdui.core.DataProvider{
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#isReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#isReady Online Api}
   @description Tests if the current state is the readyStatus. This status is the same status as returned by "getReadyStatus".
   @inherits bcdui.core.AbstractExecutable#isReady
-  @overrides bcdui.core.DataProvider#isReady
+  @overrides bcdui.core.SimpleModel#isReady
   @return {boolean} True, if the object is ready.
   */
   isReady() {}
@@ -13215,48 +13825,39 @@ bcdui.component.grid.GridModel = class extends bcdui.core.DataProvider{
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#hasFailed) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#hasFailed Online Api}
   @description Tests if the object has reached a failure status. These status codes are returned by the "getFailedStatus" method.
   @inherits bcdui.core.AbstractExecutable#hasFailed
-  @overrides bcdui.core.DataProvider#hasFailed
+  @overrides bcdui.core.SimpleModel#hasFailed
   @return {boolean} True, if the object's process has failed.
   */
   hasFailed() {}
-  /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#getReadyStatus) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#getReadyStatus Online Api}
-  @description Getter for the ready status of the instance. This status is a final state defined by each sub-class which is reached when the process has finished normally.
-  @inherits bcdui.core.AbstractExecutable#getReadyStatus
-  @overrides bcdui.core.DataProvider#getReadyStatus
-  @return {bcdui.core.Status} The status object indicating that the process belongingto this class is finished.
-  */
-  getReadyStatus() {}
-  /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#getFailedStatus) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#getFailedStatus Online Api}
-  @description Getter for the list of error statuses of this class. This implementation returns an empty list.
-  @inherits bcdui.core.AbstractExecutable#getFailedStatus
-  @overrides bcdui.core.DataProvider#getFailedStatus
-  @return {Array.<bcdui.core.Status>} The status objects corresponding to failures in the object'sprocess.
-  */
-  getFailedStatus() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#execute) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#execute Online Api}
   @description Executes the process implemented by the concrete sub-class.
   @param {boolean} [doesRefresh]  Set this parameter to "false" if this method should do nothing when the object is already in the ready status. The default is "true" meaning that the process is re-started when it is currently ready.
   @inherits bcdui.core.AbstractExecutable#execute
-  @overrides bcdui.core.DataProvider#execute
+  @overrides bcdui.core.SimpleModel#execute
   */
   execute(doesRefresh) { console.log(doesRefresh); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#onceReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#onceReady Online Api}
-  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnceReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onceReady
-  @overrides bcdui.core.DataProvider#onceReady
+  @overrides bcdui.core.SimpleModel#onceReady
   */
   onceReady(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#onReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#onReady Online Api}
-  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onReady
-  @overrides bcdui.core.DataProvider#onReady
+  @overrides bcdui.core.SimpleModel#onReady
   */
   onReady(listenerObject) { console.log(listenerObject); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#getData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#getData Online Api}
+  @description Access to the data of this DataProvider for read and modification access
+  @inherits bcdui.core.DataProvider#getData
+  @return {*} The data provided by the specific sub-class.
+  */
+  getData() {}
 
 }
 
@@ -13295,10 +13896,12 @@ bcdui.component.grid.Grid = class extends bcdui.core.Renderer{
   @param {boolean} [args.disableDeepKeyCheck]  Set this to true if you really want to disable the deep key check which is active if your grid is only a subset of the underlying table
   @param {function} [args.isReadOnlyCell]  Custom check function if a given cell is read only or not. Function gets gridModel, wrsHeaderMeta, rowId, colId and value as input and returns true if the cell becomes readonly
   @param {function} [args.columnFiltersGetCaptionForColumnValue]  Function which is used to determine the caption values for column filters. You need to customize this when you're e.g. using XML data in cells.
+  @param {Object} [args.columnFiltersCustomFilter]  CustomColumnFilter functions passed to column filter
   @param {boolean} [args.defaultButtons]  Set to false if you want to hide the default buttons reset/delete/save
   @param {boolean} [args.serverSidedPagination]  Set to true if you want to enable server sided pagination
   @param {integer} [args.paginationSize]  Set pagination page size (and enable pagination)
   @param {boolean} [args.paginationAllPages]  Set pagination show all option (and enable pagination)
+  @param {chainDef} [args.requestPostChain]  The definition of the transformation chain
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.Grid.html) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.Grid.html Online Api}
   @description Creates a grid front end based on given data or a configuration
   @extends bcdui.core.Renderer
@@ -13466,8 +14069,8 @@ bcdui.component.grid.Grid = class extends bcdui.core.Renderer{
   write(xPath,fillParams,value,fire) { console.log(xPath,fillParams,value,fire); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.Grid.html#remove) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.Grid.html#remove Online Api}
-  @description removes given xPath
-  @param {string} xPath  xPath pointing to value
+  @description Deletes data at a given xPath from the model
+  @param {string} xPath  xPath pointing to the value
   @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
   @param {boolean} [fire]  if true a fire is triggered to notify data modification listener
   @inherits bcdui.core.DataProvider#remove
@@ -13504,14 +14107,14 @@ bcdui.component.grid.Grid = class extends bcdui.core.Renderer{
   serialize() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.Grid.html#removeDataListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.Grid.html#removeDataListener Online Api}
-  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map
+  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map {@link RemoveDataListenerParam}. Listeners are added with onChange()
   @inherits bcdui.core.DataProvider#removeDataListener
   @overrides bcdui.core.Renderer#removeDataListener
   */
   removeDataListener(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.Grid.html#onChange) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.Grid.html#onChange Online Api}
-  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map
+  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map {@link OnChangeParam}. Listeners can be removed with removeDataListener()
   @param {string} [trackingXPath]  xPath to monitor to monitor for changes
   @inherits bcdui.core.DataProvider#onChange
   @overrides bcdui.core.Renderer#onChange
@@ -13525,13 +14128,13 @@ bcdui.component.grid.Grid = class extends bcdui.core.Renderer{
   */
   setStatus(args) { console.log(args); }
   /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.Grid.html#isClear) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.Grid.html#isClear Online Api}
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.Grid.html#isClean) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.Grid.html#isClean Online Api}
   @description True, if DataProvider is ready and there are no uncommitted write transactions, see {@link bcdui.core.AbstractExecutable#isReady isReady()} and {@link bcdui.core.DataProvider#onChange fire()}.
-  @inherits bcdui.core.DataProvider#isClear
-  @overrides bcdui.core.Renderer#isClear
+  @inherits bcdui.core.DataProvider#isClean
+  @overrides bcdui.core.Renderer#isClean
   @return {boolean}
   */
-  isClear() {}
+  isClean() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.Grid.html#fetchData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.Grid.html#fetchData Online Api}
   @description asynchronously fetch data for this data provider.
@@ -13542,14 +14145,15 @@ bcdui.component.grid.Grid = class extends bcdui.core.Renderer{
   fetchData() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.Grid.html#addStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.Grid.html#addStatusListener Online Api}
-  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map
+  @description Listen for any status to be reached. For use cases with the ready status (by far the most common), see onReady() and onceReady() convenience functions.
+  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map {@link AddStatusListenerParam}
   @inherits bcdui.core.AbstractExecutable#addStatusListener
   @overrides bcdui.core.Renderer#addStatusListener
   */
   addStatusListener(args) { console.log(args); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.Grid.html#removeStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.Grid.html#removeStatusListener Online Api}
-  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map.
+  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map {@link RemoveStatusListenerParam}.
   @inherits bcdui.core.AbstractExecutable#removeStatusListener
   @overrides bcdui.core.Renderer#removeStatusListener
   */
@@ -13580,14 +14184,14 @@ bcdui.component.grid.Grid = class extends bcdui.core.Renderer{
   hasFailed() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.Grid.html#onceReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.Grid.html#onceReady Online Api}
-  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnceReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onceReady
   @overrides bcdui.core.Renderer#onceReady
   */
   onceReady(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.Grid.html#onReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.Grid.html#onReady Online Api}
-  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onReady
   @overrides bcdui.core.Renderer#onReady
   */
@@ -13612,6 +14216,8 @@ bcdui.component.docUpload.Uploader = class extends bcdui.core.Renderer{
   @param {string} [args.addBRefs]  Space separated list of additional bRefs you want to load
   @param {function} [args.onBeforeSave]  Function which is called before each save operation. Parameter holds current wrs dataprovider. Function needs to return true to save or false for skipping save process and resetting data
   @param {filterBRefs} [args.filterBRefs]  The space separated list of binding Refs that will be used in filter clause of request document
+  @param {chainDef} [args.renderChain]  A custom renderer chain
+  @param {Object} [args.renderParameters]  Renderer parameters. Will be enrichted with docUploader default parameters
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.docUpload.Uploader.html) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.docUpload.Uploader.html Online Api}
   @description Creates an Uploader
   @extends bcdui.core.Renderer
@@ -13760,8 +14366,8 @@ bcdui.component.docUpload.Uploader = class extends bcdui.core.Renderer{
   write(xPath,fillParams,value,fire) { console.log(xPath,fillParams,value,fire); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.docUpload.Uploader.html#remove) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.docUpload.Uploader.html#remove Online Api}
-  @description removes given xPath
-  @param {string} xPath  xPath pointing to value
+  @description Deletes data at a given xPath from the model
+  @param {string} xPath  xPath pointing to the value
   @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
   @param {boolean} [fire]  if true a fire is triggered to notify data modification listener
   @inherits bcdui.core.DataProvider#remove
@@ -13798,14 +14404,14 @@ bcdui.component.docUpload.Uploader = class extends bcdui.core.Renderer{
   serialize() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.docUpload.Uploader.html#removeDataListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.docUpload.Uploader.html#removeDataListener Online Api}
-  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map
+  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map {@link RemoveDataListenerParam}. Listeners are added with onChange()
   @inherits bcdui.core.DataProvider#removeDataListener
   @overrides bcdui.core.Renderer#removeDataListener
   */
   removeDataListener(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.docUpload.Uploader.html#onChange) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.docUpload.Uploader.html#onChange Online Api}
-  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map
+  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map {@link OnChangeParam}. Listeners can be removed with removeDataListener()
   @param {string} [trackingXPath]  xPath to monitor to monitor for changes
   @inherits bcdui.core.DataProvider#onChange
   @overrides bcdui.core.Renderer#onChange
@@ -13819,13 +14425,13 @@ bcdui.component.docUpload.Uploader = class extends bcdui.core.Renderer{
   */
   setStatus(args) { console.log(args); }
   /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.docUpload.Uploader.html#isClear) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.docUpload.Uploader.html#isClear Online Api}
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.docUpload.Uploader.html#isClean) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.docUpload.Uploader.html#isClean Online Api}
   @description True, if DataProvider is ready and there are no uncommitted write transactions, see {@link bcdui.core.AbstractExecutable#isReady isReady()} and {@link bcdui.core.DataProvider#onChange fire()}.
-  @inherits bcdui.core.DataProvider#isClear
-  @overrides bcdui.core.Renderer#isClear
+  @inherits bcdui.core.DataProvider#isClean
+  @overrides bcdui.core.Renderer#isClean
   @return {boolean}
   */
-  isClear() {}
+  isClean() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.docUpload.Uploader.html#fetchData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.docUpload.Uploader.html#fetchData Online Api}
   @description asynchronously fetch data for this data provider.
@@ -13836,14 +14442,15 @@ bcdui.component.docUpload.Uploader = class extends bcdui.core.Renderer{
   fetchData() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.docUpload.Uploader.html#addStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.docUpload.Uploader.html#addStatusListener Online Api}
-  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map
+  @description Listen for any status to be reached. For use cases with the ready status (by far the most common), see onReady() and onceReady() convenience functions.
+  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map {@link AddStatusListenerParam}
   @inherits bcdui.core.AbstractExecutable#addStatusListener
   @overrides bcdui.core.Renderer#addStatusListener
   */
   addStatusListener(args) { console.log(args); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.docUpload.Uploader.html#removeStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.docUpload.Uploader.html#removeStatusListener Online Api}
-  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map.
+  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map {@link RemoveStatusListenerParam}.
   @inherits bcdui.core.AbstractExecutable#removeStatusListener
   @overrides bcdui.core.Renderer#removeStatusListener
   */
@@ -13874,14 +14481,14 @@ bcdui.component.docUpload.Uploader = class extends bcdui.core.Renderer{
   hasFailed() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.docUpload.Uploader.html#onceReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.docUpload.Uploader.html#onceReady Online Api}
-  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnceReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onceReady
   @overrides bcdui.core.Renderer#onceReady
   */
   onceReady(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.docUpload.Uploader.html#onReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.docUpload.Uploader.html#onReady Online Api}
-  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onReady
   @overrides bcdui.core.Renderer#onReady
   */
@@ -13905,6 +14512,7 @@ bcdui.component.tree.Tree = class extends bcdui.core.Renderer{
   @param {string} [args.id]  The object's id, needed only when later accessing via id.
   @param {boolean} [args.persistent]  Tree expand/collapse status is stored
   @param {(boolean|string)} [args.contextMenu]  If true, tree's default context menu is used, otherwise provide the url to your context menu xslt here.
+  @param {Object} [args.parameters]  An object, where each property holds a DataProvider, used as a transformation parameters.
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.tree.Tree.html) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.tree.Tree.html Online Api}
   @description Creates a tree front end based on a configuration
   @extends bcdui.core.Renderer
@@ -14050,8 +14658,8 @@ bcdui.component.tree.Tree = class extends bcdui.core.Renderer{
   write(xPath,fillParams,value,fire) { console.log(xPath,fillParams,value,fire); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.tree.Tree.html#remove) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.tree.Tree.html#remove Online Api}
-  @description removes given xPath
-  @param {string} xPath  xPath pointing to value
+  @description Deletes data at a given xPath from the model
+  @param {string} xPath  xPath pointing to the value
   @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
   @param {boolean} [fire]  if true a fire is triggered to notify data modification listener
   @inherits bcdui.core.DataProvider#remove
@@ -14088,14 +14696,14 @@ bcdui.component.tree.Tree = class extends bcdui.core.Renderer{
   serialize() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.tree.Tree.html#removeDataListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.tree.Tree.html#removeDataListener Online Api}
-  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map
+  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map {@link RemoveDataListenerParam}. Listeners are added with onChange()
   @inherits bcdui.core.DataProvider#removeDataListener
   @overrides bcdui.core.Renderer#removeDataListener
   */
   removeDataListener(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.tree.Tree.html#onChange) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.tree.Tree.html#onChange Online Api}
-  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map
+  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map {@link OnChangeParam}. Listeners can be removed with removeDataListener()
   @param {string} [trackingXPath]  xPath to monitor to monitor for changes
   @inherits bcdui.core.DataProvider#onChange
   @overrides bcdui.core.Renderer#onChange
@@ -14109,13 +14717,13 @@ bcdui.component.tree.Tree = class extends bcdui.core.Renderer{
   */
   setStatus(args) { console.log(args); }
   /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.tree.Tree.html#isClear) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.tree.Tree.html#isClear Online Api}
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.tree.Tree.html#isClean) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.tree.Tree.html#isClean Online Api}
   @description True, if DataProvider is ready and there are no uncommitted write transactions, see {@link bcdui.core.AbstractExecutable#isReady isReady()} and {@link bcdui.core.DataProvider#onChange fire()}.
-  @inherits bcdui.core.DataProvider#isClear
-  @overrides bcdui.core.Renderer#isClear
+  @inherits bcdui.core.DataProvider#isClean
+  @overrides bcdui.core.Renderer#isClean
   @return {boolean}
   */
-  isClear() {}
+  isClean() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.tree.Tree.html#fetchData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.tree.Tree.html#fetchData Online Api}
   @description asynchronously fetch data for this data provider.
@@ -14126,14 +14734,15 @@ bcdui.component.tree.Tree = class extends bcdui.core.Renderer{
   fetchData() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.tree.Tree.html#addStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.tree.Tree.html#addStatusListener Online Api}
-  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map
+  @description Listen for any status to be reached. For use cases with the ready status (by far the most common), see onReady() and onceReady() convenience functions.
+  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map {@link AddStatusListenerParam}
   @inherits bcdui.core.AbstractExecutable#addStatusListener
   @overrides bcdui.core.Renderer#addStatusListener
   */
   addStatusListener(args) { console.log(args); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.tree.Tree.html#removeStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.tree.Tree.html#removeStatusListener Online Api}
-  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map.
+  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map {@link RemoveStatusListenerParam}.
   @inherits bcdui.core.AbstractExecutable#removeStatusListener
   @overrides bcdui.core.Renderer#removeStatusListener
   */
@@ -14164,14 +14773,14 @@ bcdui.component.tree.Tree = class extends bcdui.core.Renderer{
   hasFailed() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.tree.Tree.html#onceReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.tree.Tree.html#onceReady Online Api}
-  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnceReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onceReady
   @overrides bcdui.core.Renderer#onceReady
   */
   onceReady(listenerObject) { console.log(listenerObject); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.tree.Tree.html#onReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.tree.Tree.html#onReady Online Api}
-  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map
+  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnReadyParam}. To listen for other states see addStatusListener()
   @inherits bcdui.core.AbstractExecutable#onReady
   @overrides bcdui.core.Renderer#onReady
   */
@@ -14184,8 +14793,9 @@ bcdui.component.tree.Tree = class extends bcdui.core.Renderer{
 /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html Online Api}
   @description Create a text navigation based on http://www.businesscode.de/schema/bcdui/textnavigation-1.0.0 XSD
-  */
-bcdui.component.textnavigation.TextNavigation = class {
+  @extends bcdui.core.Renderer
+*/
+bcdui.component.textnavigation.TextNavigation = class extends bcdui.core.Renderer{
   /**
   @param {Object} args  Parameter object:
   @param {targetHtmlRef} args.targetHtml  Where to place the microphone and text field
@@ -14194,8 +14804,9 @@ bcdui.component.textnavigation.TextNavigation = class {
   @param {bcdui.core.DataProvider} args.config  Definition if the chat according to Model with the chart definition according to XSD http://www.businesscode.de/schema/bcdui/textnavigation-1.0.0
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html Online Api}
   @description Create a text navigation based on http://www.businesscode.de/schema/bcdui/textnavigation-1.0.0 XSD
+  @extends bcdui.core.Renderer
     */
-  constructor(args){ console.log(args); }
+  constructor(args){ super(args); }
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#startVoiceRecognition) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#startVoiceRecognition Online Api}
   @description Start voice recognition
@@ -14214,6 +14825,270 @@ bcdui.component.textnavigation.TextNavigation = class {
   @return transformed text
   */
   singleDigitToWord(text,prefix) { console.log(text,prefix); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#execute) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#execute Online Api}
+  @param {(boolean|ExecuteParam)} args  either true for forced or parameter map
+  @inherits bcdui.core.Renderer#execute
+  @overrides bcdui.core.Renderer#execute
+  */
+  execute(args) { console.log(args); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#getTargetHtml) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#getTargetHtml Online Api}
+  @description Return the target html element where the renderer places its output
+  @inherits bcdui.core.Renderer#getTargetHtml
+  @overrides bcdui.core.Renderer#getTargetHtml
+  */
+  getTargetHtml() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#setTargetHtml) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#setTargetHtml Online Api}
+  @description Sets the target html element where the renderer places its output
+  @param {HtmlElement} targetHtmlElement  target html element
+  @inherits bcdui.core.Renderer#setTargetHtml
+  @overrides bcdui.core.Renderer#setTargetHtml
+  */
+  setTargetHtml(targetHtmlElement) { console.log(targetHtmlElement); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#getReadyStatus) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#getReadyStatus Online Api}
+  @description The ready status for the transformation chain is reached as soon as all transformations are finished. <p> The status transitions of the class are as follows:          </p> <p style="padding-left: 10px"><table><tr><td style="border: 3px double black; text-align: center" colspan="2"> Initialized                                              </td><td style="padding-left: 20px"> All variables have been initialized. </td></tr><tr><td>&nbsp;</td><td style="border-left: 1px solid black">&nbsp;</td><td></td></tr><tr><td style="border: 1px solid black; text-align: center" colspan="2"> Loading                                                  </td><td style="padding-left: 20px"> Start loading chain document. </td></tr><tr><td>&nbsp;</td><td style="border-left: 1px solid black">&nbsp;</td><td></td></tr><tr><td style="border: 1px solid black; text-align: center" colspan="2"> ChainLoaded                                              </td><td style="padding-left: 20px"> The chain document has been loaded. Start loading chain stylesheets. </td></tr><tr><td>&nbsp;</td><td style="border-left: 1px solid black">&nbsp;</td><td></td></tr><tr><td style="border: 1px solid black; text-align: center" colspan="2"> <i> WaitingForParameters </i>                                </td><td style="padding-left: 20px"> Chain stylesheets loaded. Waiting for parameter data providers (<i>execute</i>). </td></tr><tr><td>&nbsp;</td><td style="border-left: 1px solid black">&nbsp;</td><td></td></tr><tr><td style="border: 1px solid black; text-align: center" colspan="2"> Transforming                                             </td><td style="padding-left: 20px"> The chain stylesheets are running. </td></tr><tr><td>&nbsp;</td><td style="border-left: 1px solid black">&nbsp;</td><td></td></tr><tr><td style="border: 3px double black; text-align: center" colspan="2"> <b> Transformed </b>                                         </td><td style="padding-left: 20px"> The output has been generated. (<b>ready</b>)  </td></tr></table></p>
+  @inherits bcdui.core.TransformationChain#getReadyStatus
+  @overrides bcdui.core.Renderer#getReadyStatus
+  @return {Status} The transformed status.
+  */
+  getReadyStatus() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#getData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#getData Online Api}
+  @description A getter for the document produced by the transformation chain.
+  @inherits bcdui.core.TransformationChain#getData
+  @overrides bcdui.core.Renderer#getData
+  @return {*} The output of the last transfomration in the chain if it doesnot produce HTML (output="html").
+  */
+  getData() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#reloadStylesheets) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#reloadStylesheets Online Api}
+  @description Start the loading process of the stylesheets and executes the transformations again.
+  @inherits bcdui.core.TransformationChain#reloadStylesheets
+  @overrides bcdui.core.Renderer#reloadStylesheets
+  */
+  reloadStylesheets() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#getDataProviderByName) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#getDataProviderByName Online Api}
+  @param {String} name
+  @inherits bcdui.core.TransformationChain#getDataProviderByName
+  @overrides bcdui.core.Renderer#getDataProviderByName
+  @return {bcdui.core.DataProvider} returns the parameter of the given name
+  */
+  getDataProviderByName(name) { console.log(name); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#addDataProvider) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#addDataProvider Online Api}
+  @description Adds a new data provider to the transformation chain. If there is already a data provider with the given name it is replaced.
+  @param {Object} newDataProvider  the new dataprovider which should be added
+  @param {string} [newName]  an optional new name for the provider. if given an alias will be created
+  @inherits bcdui.core.TransformationChain#addDataProvider
+  @overrides bcdui.core.Renderer#addDataProvider
+  @return {bcdui.core.DataProvider} The old data provider registered under the name ornull if there has not been any.
+  */
+  addDataProvider(newDataProvider,newName) { console.log(newDataProvider,newName); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#getPrimaryModel) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#getPrimaryModel Online Api}
+  @description Getter for the primary model of the chain. The first transformation of the chain takes a document as input. This document comes from the primary model.
+  @inherits bcdui.core.TransformationChain#getPrimaryModel
+  @overrides bcdui.core.Renderer#getPrimaryModel
+  @return {bcdui.core.DataProvider} The model the first transformation inthe chain is running on.
+  */
+  getPrimaryModel() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#setPrimaryModel) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#setPrimaryModel Online Api}
+  @description Adds a new data provider to the list which becomes the new primary model of the transformation chain.
+  @param {bcdui.core.DataProvider} primaryModel  the new primary model of the transformation chain.
+  @inherits bcdui.core.TransformationChain#setPrimaryModel
+  @overrides bcdui.core.Renderer#setPrimaryModel
+  */
+  setPrimaryModel(primaryModel) { console.log(primaryModel); }
+  toString() {}
+  getFailedStatus() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#sendData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#sendData Online Api}
+  @description Sends the current data to the original URL
+  @inherits bcdui.core.DataProvider#sendData
+  @overrides bcdui.core.Renderer#sendData
+  */
+  sendData() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#fire) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#fire Online Api}
+  @description This informs modification listeners, registered via {@link bcdui.core.DataProvider#onChange onChange(args)}, that a change set was completed and data is consistent again.
+  @inherits bcdui.core.DataProvider#fire
+  @overrides bcdui.core.Renderer#fire
+  */
+  fire() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#getName) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#getName Online Api}
+  @description Getter for the name of the data provider. This name is for example used to set parameters names of a {@link bcdui.core.TransformationChain}.
+  @inherits bcdui.core.DataProvider#getName
+  @overrides bcdui.core.Renderer#getName
+  @return {string} The name of the data provider. This name should be uniquewithin the scope it is used and is usually not globally unique (as the id).
+  */
+  getName() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#promptData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#promptData Online Api}
+  @description Convenience method for debugging showing data in a prompt for copy-and-paste
+  @inherits bcdui.core.DataProvider#promptData
+  @overrides bcdui.core.Renderer#promptData
+  */
+  promptData() {}
+  debugIsWaitingFor() {}
+  debugStatus() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#read) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#read Online Api}
+  @description Reads the string value from a given xPath (or optionally return default value).
+  @param {string} xPath  xPath pointing to value (can include dot template placeholders which get filled with the given fillParams)
+  @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
+  @param {string} [defaultValue]  default value in case xPath value does not exist
+  @inherits bcdui.core.DataProvider#read
+  @overrides bcdui.core.Renderer#read
+  @return text value stored at xPath (or null if no text was found and no defaultValue supplied)
+  */
+  read(xPath,fillParams,defaultValue) { console.log(xPath,fillParams,defaultValue); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#write) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#write Online Api}
+  @description Set a value to on a certain xPath and create the xPath where necessary. This combines Element.evaluate() for a single node with creating the path where necessary. It will prefer extending an existing start-part over creating a second one. After the operation the xPath (with the optional value) is guaranteed to exist (pre-existing or created or extended) and the addressed node is returned.
+  @param {string} xPath  xPath pointing to the node which is set to the value value or plain xPath to be created if not there. It tries to reuse all matching parts that are already there. If you provide for example "/n:Root/n:MyElem/&commat;attr2" and there is already "/n:Root/n:MyElem/&commat;attr1", then "/n:Root/n:MyElem" will be "re-used" and get an additional attribute attr2. Many expressions are allowed, for example "/n:Root/n:MyElem[&commat;attr1='attr1Value']/n:SubElem" is also ok. By nature, some xPath expressions are not allowed, for example using '//' or "/n:Root/n:MyElem/[&commat;attr1 or &commat;attr2]/n:SubElem" is obviously not unambiguous enough and will throw an error. This method is Wrs aware, use for example '/wrs:Wrs/wrs:Data/wrs:*[2]/wrs:C[3]' as xPath and it will turn wrs:R[wrs:C] into wrs:M[wrs:C and wrs:O], see Wrs format. (can include dot template placeholders which get filled with the given fillParams)
+  @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions Example: bcdui.wkModels.guiStatus.write("/guiStatus:Status/guiStatus:ClientSettings/guiStatus:Test[&commat;caption='{{=it[0]}}' and &commat;caption2='{{=it[1]}}']", ["china's republic", "drag\"n drop"])
+  @param {string} [value]  Optional value which should be written, for example to "/n:Root/n:MyElem/&commat;attr" or with "/n:Root/n:MyElem" as the element's text content. If not provided, the xPath contains all values like in "/n:Root/n:MyElem[&commat;attr='a' and &commat;attr1='b']" or needs none like "/n:Root/n:MyElem"
+  @param {boolean} [fire]  If true a fire is triggered to inform data modification listeners
+  @inherits bcdui.core.DataProvider#write
+  @overrides bcdui.core.Renderer#write
+  @return The xPath's node or null if dataProvider isn't ready
+  */
+  write(xPath,fillParams,value,fire) { console.log(xPath,fillParams,value,fire); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#remove) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#remove Online Api}
+  @description Deletes data at a given xPath from the model
+  @param {string} xPath  xPath pointing to the value
+  @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
+  @param {boolean} [fire]  if true a fire is triggered to notify data modification listener
+  @inherits bcdui.core.DataProvider#remove
+  @overrides bcdui.core.Renderer#remove
+  */
+  remove(xPath,fillParams,fire) { console.log(xPath,fillParams,fire); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#query) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#query Online Api}
+  @description Reads a single node from a given xPath
+  @param {string} xPath  xPath to query
+  @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
+  @inherits bcdui.core.DataProvider#query
+  @overrides bcdui.core.Renderer#query
+  @return single node or null if query fails
+  */
+  query(xPath,fillParams) { console.log(xPath,fillParams); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#queryNodes) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#queryNodes Online Api}
+  @description Get node list from a given xPath
+  @param {string} xPath  xPath to query
+  @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
+  @inherits bcdui.core.DataProvider#queryNodes
+  @overrides bcdui.core.Renderer#queryNodes
+  @return node list or empty list if query fails
+  */
+  queryNodes(xPath,fillParams) { console.log(xPath,fillParams); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#serialize) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#serialize Online Api}
+  @description Serialize dataprovider's data if available
+  @inherits bcdui.core.DataProvider#serialize
+  @overrides bcdui.core.Renderer#serialize
+  @return String containing the serialized data
+  */
+  serialize() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#removeDataListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#removeDataListener Online Api}
+  @param {(string|function|RemoveDataListenerParam)} listenerObject  Either a listener function or id or a parameter map {@link RemoveDataListenerParam}. Listeners are added with onChange()
+  @inherits bcdui.core.DataProvider#removeDataListener
+  @overrides bcdui.core.Renderer#removeDataListener
+  */
+  removeDataListener(listenerObject) { console.log(listenerObject); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#onChange) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#onChange Online Api}
+  @param {(function|OnChangeParam)} listenerObject  Either a function to be called after changes or a parameter map {@link OnChangeParam}. Listeners can be removed with removeDataListener()
+  @param {string} [trackingXPath]  xPath to monitor to monitor for changes
+  @inherits bcdui.core.DataProvider#onChange
+  @overrides bcdui.core.Renderer#onChange
+  */
+  onChange(listenerObject,trackingXPath) { console.log(listenerObject,trackingXPath); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#setStatus) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#setStatus Online Api}
+  @param {Status} args
+  @inherits bcdui.core.DataProvider#setStatus
+  @overrides bcdui.core.Renderer#setStatus
+  */
+  setStatus(args) { console.log(args); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#isClean) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#isClean Online Api}
+  @description True, if DataProvider is ready and there are no uncommitted write transactions, see {@link bcdui.core.AbstractExecutable#isReady isReady()} and {@link bcdui.core.DataProvider#onChange fire()}.
+  @inherits bcdui.core.DataProvider#isClean
+  @overrides bcdui.core.Renderer#isClean
+  @return {boolean}
+  */
+  isClean() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#fetchData) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#fetchData Online Api}
+  @description asynchronously fetch data for this data provider.
+  @inherits bcdui.core.DataProvider#fetchData
+  @overrides bcdui.core.Renderer#fetchData
+  @return {Promise} resolving once data has been loaded, first argument is this instance
+  */
+  fetchData() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#addStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#addStatusListener Online Api}
+  @description Listen for any status to be reached. For use cases with the ready status (by far the most common), see onReady() and onceReady() convenience functions.
+  @param {(function|StatusListener|AddStatusListenerParam)} args  Either a function executed on all status transitions or a parameter map {@link AddStatusListenerParam}
+  @inherits bcdui.core.AbstractExecutable#addStatusListener
+  @overrides bcdui.core.Renderer#addStatusListener
+  */
+  addStatusListener(args) { console.log(args); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#removeStatusListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#removeStatusListener Online Api}
+  @param {(function|StatusListener|RemoveStatusListenerParam)} args  The listener to be removed. This can either be a function or a {@link bcdui.core.StatusListener StatusListener} or a parameter map {@link RemoveStatusListenerParam}.
+  @inherits bcdui.core.AbstractExecutable#removeStatusListener
+  @overrides bcdui.core.Renderer#removeStatusListener
+  */
+  removeStatusListener(args) { console.log(args); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#getStatus) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#getStatus Online Api}
+  @description Getter for the status of this object. See {@link bcdui.core.status} for possible return values.
+  @inherits bcdui.core.AbstractExecutable#getStatus
+  @overrides bcdui.core.Renderer#getStatus
+  @return {bcdui.core.Status} The current status.
+  */
+  getStatus() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#isReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#isReady Online Api}
+  @description Tests if the current state is the readyStatus. This status is the same status as returned by "getReadyStatus".
+  @inherits bcdui.core.AbstractExecutable#isReady
+  @overrides bcdui.core.Renderer#isReady
+  @return {boolean} True, if the object is ready.
+  */
+  isReady() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#hasFailed) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#hasFailed Online Api}
+  @description Tests if the object has reached a failure status. These status codes are returned by the "getFailedStatus" method.
+  @inherits bcdui.core.AbstractExecutable#hasFailed
+  @overrides bcdui.core.Renderer#hasFailed
+  @return {boolean} True, if the object's process has failed.
+  */
+  hasFailed() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#onceReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#onceReady Online Api}
+  @param {(function|OnceReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnceReadyParam}. To listen for other states see addStatusListener()
+  @inherits bcdui.core.AbstractExecutable#onceReady
+  @overrides bcdui.core.Renderer#onceReady
+  */
+  onceReady(listenerObject) { console.log(listenerObject); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#onReady) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#onReady Online Api}
+  @param {(function|OnReadyParam)} listenerObject  Either a function to be called on ready status (i.e. onSuccess) or a parameter map {@link OnReadyParam}. To listen for other states see addStatusListener()
+  @inherits bcdui.core.AbstractExecutable#onReady
+  @overrides bcdui.core.Renderer#onReady
+  */
+  onReady(listenerObject) { console.log(listenerObject); }
 
 }
 

@@ -166,17 +166,17 @@ implements <a href="ISqlGenerator.html" title="interface in de.businesscode.bcdu
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>protected int</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#effectiveMaxRows">effectiveMaxRows</a></span></code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#clientProvidedMaxRows">clientProvidedMaxRows</a></span></code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>protected org.w3c.dom.Document</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#requestDoc">requestDoc</a></span></code></th>
+<td class="colFirst"><code>protected int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#effectiveMaxRows">effectiveMaxRows</a></span></code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>protected int</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#rowStart">rowStart</a></span></code></th>
+<td class="colFirst"><code>protected org.w3c.dom.Document</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#requestDoc">requestDoc</a></span></code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="altColor">
@@ -238,47 +238,47 @@ implements <a href="ISqlGenerator.html" title="interface in de.businesscode.bcdu
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
+<td class="colFirst"><code>int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getClientProvidedMaxRows()">getClientProvidedMaxRows</a></span>()</code></th>
+<td class="colLast">
+<div class="block">getQueryMaxRows</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getDbSourceName()">getDbSourceName</a></span>()</code></th>
 <td class="colLast">
 <div class="block">getDbSourceName</div>
 </td>
 </tr>
-<tr id="i1" class="rowColor">
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getMaxRows()">getMaxRows</a></span>()</code></th>
 <td class="colLast">
 <div class="block">getMaxRows</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>java.util.Set&lt;java.util.Map.Entry&lt;java.lang.String,&#8203;java.lang.String&gt;&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRequestedBindingSetNames()">getRequestedBindingSetNames</a></span>()</code></th>
 <td class="colLast">
 <div class="block">This is the binding sets / groups named in the Wrq</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>java.util.Set&lt;<a href="../../binding/StandardBindingSet.html" title="class in de.businesscode.bcdui.binding">StandardBindingSet</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getResolvedBindingSets()">getResolvedBindingSets</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>java.util.List&lt;<a href="WrsBindingItem.html" title="interface in de.businesscode.bcdui.wrs.load">WrsBindingItem</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSelectedBindingItems()">getSelectedBindingItems</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code><a href="SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSelectStatement()">getSelectStatement</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i6" class="altColor">
-<td class="colFirst"><code>int</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getStartRow()">getStartRow</a></span>()</code></th>
-<td class="colLast">
-<div class="block">getStartRow</div>
-</td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
@@ -320,15 +320,6 @@ implements <a href="ISqlGenerator.html" title="interface in de.businesscode.bcdu
 <pre>protected final&nbsp;<a href="../../binding/Bindings.html" title="class in de.businesscode.bcdui.binding">Bindings</a> bindings</pre>
 </li>
 </ul>
-<a id="rowStart">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>rowStart</h4>
-<pre>protected&nbsp;int rowStart</pre>
-</li>
-</ul>
 <a id="effectiveMaxRows">
 <!--   -->
 </a>
@@ -336,6 +327,15 @@ implements <a href="ISqlGenerator.html" title="interface in de.businesscode.bcdu
 <li class="blockList">
 <h4>effectiveMaxRows</h4>
 <pre>protected&nbsp;int effectiveMaxRows</pre>
+</li>
+</ul>
+<a id="clientProvidedMaxRows">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>clientProvidedMaxRows</h4>
+<pre>protected&nbsp;int clientProvidedMaxRows</pre>
 </li>
 </ul>
 <a id="wrqQueryBuilder">
@@ -484,23 +484,6 @@ implements <a href="ISqlGenerator.html" title="interface in de.businesscode.bcdu
 </dl>
 </li>
 </ul>
-<a id="getStartRow()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getStartRow</h4>
-<pre class="methodSignature">public&nbsp;int&nbsp;getStartRow()</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="ISqlGenerator.html#getStartRow()">ISqlGenerator</a></code></span></div>
-<div class="block">getStartRow</div>
-<dl>
-<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="ISqlGenerator.html#getStartRow()">getStartRow</a></code>&nbsp;in interface&nbsp;<code><a href="ISqlGenerator.html" title="interface in de.businesscode.bcdui.wrs.load">ISqlGenerator</a></code></dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>the start row from the request document</dd>
-</dl>
-</li>
-</ul>
 <a id="getMaxRows()">
 <!--   -->
 </a>
@@ -514,7 +497,24 @@ implements <a href="ISqlGenerator.html" title="interface in de.businesscode.bcdu
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="ISqlGenerator.html#getMaxRows()">getMaxRows</a></code>&nbsp;in interface&nbsp;<code><a href="ISqlGenerator.html" title="interface in de.businesscode.bcdui.wrs.load">ISqlGenerator</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>the max rows from the request document, -1 if no limit</dd>
+<dd>the max rows from the request document and server side settings, -1 if no limit</dd>
+</dl>
+</li>
+</ul>
+<a id="getClientProvidedMaxRows()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getClientProvidedMaxRows</h4>
+<pre class="methodSignature">public&nbsp;int&nbsp;getClientProvidedMaxRows()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="ISqlGenerator.html#getClientProvidedMaxRows()">ISqlGenerator</a></code></span></div>
+<div class="block">getQueryMaxRows</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="ISqlGenerator.html#getClientProvidedMaxRows()">getClientProvidedMaxRows</a></code>&nbsp;in interface&nbsp;<code><a href="ISqlGenerator.html" title="interface in de.businesscode.bcdui.wrs.load">ISqlGenerator</a></code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>max rows purely driven by the query, ignoring other limits</dd>
 </dl>
 </li>
 </ul>
