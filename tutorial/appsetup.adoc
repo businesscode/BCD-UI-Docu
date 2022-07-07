@@ -30,7 +30,7 @@ If you prefer to go without Gradle, you may also manually download the BCD-UI's 
 +
 
 . Add Entries to web.xml +
-To register BCD-UI's servlets and filters, add the entries from link:https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/web.xml[BCD-UI/Server/configFiles/web.xml^] to your web.xml. +
+To register BCD-UI's servlets and filters, add the entries from link:https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/WebContent/WEB-INF/web.xml[BCD-UI/Server/configFiles/WebContent/WEB-INF/web.xml^] to your web.xml. +
 Now comment out the <filter> bcdui4.ShiroFilter including its <filter-mapping>. Otherwise, you will be redirected to a login.htm page, which you do not have yet. +
 When you upgrade to a new version of BCD-UI check in link:https://github.com/businesscode/BCD-UI/blob/master/Docu/releaseNotes.adoc[release notes^] whether it changed.
 
@@ -38,10 +38,10 @@ When you upgrade to a new version of BCD-UI check in link:https://github.com/bus
 All configuration files for BCD-UI are located at WEB-INF/bcdui. Create an empty `WEB-INF/bcdui/bindings` folder, later you'll add <<DocBinding,Bindings>> here.
 
 . Add logging configuration +
-Copy link:https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/log4j2_debug_.xml[BCD-UI/Server/configFiles/log4j2_debug_.xml^]
+Copy link:https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/src/log4j2_debug_.xml[BCD-UI/Server/configFiles/log4j2_debug_.xml^]
 to your project's `src/main/resources` folder and rename it to log4j2.xml.
 
-. Copy link:https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/subjectSettings.xml[BCD-UI/Server/configFiles/subjectSettings.xml^] to `WEB-INF/bcdui`
+. Copy link:https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/WebContent/WEB-INF/bcdui/subjectSettings.xml[BCD-UI/Server/configFiles/subjectSettings.xml^] to `WEB-INF/bcdui`
 
 . Add entries for the database +
 See link:https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/tomcat/context.xml[context.xml^] for entries for several databases for Tomcat. +
@@ -91,7 +91,7 @@ Take a moment to understand the structure and what to expect physically in Eclip
 ||src/main/||| s|Project's server side resources
 |||java/|| s|Project java sources
 || 3+|resources/ s|Project's static server side resources
-||| 2+|log4j2.xml s|Logging settings link:https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/log4j2_debug_.xml[template^]
+||| 2+|log4j2.xml s|Logging settings link:https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/src/log4j2_debug_.xml[template^]
 | 2+|WebContent/|| s|Webapp itself
 |||...|| s|Project's HTML pages, JavaScript etc
 |||bcdui/|| e|BCD-UI's virtual main folder for client resources, blended here by a Servlet:
@@ -106,7 +106,7 @@ Take a moment to understand the structure and what to expect physically in Eclip
 |||||... e|3rd party and project libs
 |||||bcd-ui-core.jar e|Java classes and static sources (js,xslt) virtually mapped to and served to the client from `/bcdui/` at runtime
 |||||bcd-ui-theme.jar e|Themes, mapped to /bcdui/theme at runtime
-||||web.xml| s|Contains some BCD-UI library related entries link:https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/web.xml[template^]
+||||web.xml| s|Contains some BCD-UI library related entries link:https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/WebContent/WEB-INF/web.xml[template^]
 || 2+|META-INF/||
 ||| 2+|context.xml s|Contains JDBC database connections link:https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/tomcat/context.xml[template^]
 |===

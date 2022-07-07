@@ -138,7 +138,7 @@ Authentication is handled by OAuth, permissions are managed by application throu
 
 . Configuration
 +
-The shiro.ini link:https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/shiro.ini[template of BCD-UI] describes the setup, more about this the following section
+The shiro.ini link:https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/WebContent/WEB-INF/shiro.ini[template of BCD-UI] describes the setup, more about this the following section
 +
 .oAuth sample with Azure
 [source]

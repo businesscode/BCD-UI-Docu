@@ -59,7 +59,7 @@ To support different caching times for different data, create different servlet 
 Always exclude /bcdui/servlets/ and /bcdui/bcdui.js from caching.
 In most cases you also want /vfs/ to update immediately.
 
-The default link:https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/web.xml[web.xml^] contains 2 setups.
+The default link:https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/WebContent/WEB-INF/web.xml[web.xml^] contains 2 setups.
 The one initially enabled is optimized for development, caching only BCD-UI sources, for production enable the second one, caching all static resources.
 
 
