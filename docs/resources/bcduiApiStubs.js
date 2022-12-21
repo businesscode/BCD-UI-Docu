@@ -1,5 +1,5 @@
 // This file contains BCD-UI Javascript Api stubs for IDE autosuggest
-// BCD-UI version 5.6.0 (2022-07-07)
+// BCD-UI version 5.6.0 (2022-12-21)
 
 
 /**
@@ -2664,6 +2664,32 @@ bcdui.widget.openDialog = function(args) { console.log(args); };
 
 
 /**
+@param {Object} args
+  @param {HtmlElement} args.targetHtml  targetHtml containing/being table
+  @param {string} [args.width]  the width of the table  (e.g. 10, 20px or 30em)
+  @param {string} [args.height]  the height of the table (e.g. 10, 20px or 30em)
+  @param {boolean} [args.header]  make header sticky
+  @param {boolean} [args.footer]  make footer sticky
+  @param {integer} [args.nFirstCols]  make the first n columns sticky
+  @param {integer} [args.nFirstRows]  make the first n rows sticky
+  @param {integer} [args.nLastCols]  make the last n columns sticky
+  @param {integer} [args.nLastRows]  make the last n rows sticky
+  @param {boolean} [args.bcdDimension]  make all dimension cells (cube) sticky (higher prio than other options)
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widget.html#.stickyTable) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widget.html#.stickyTable Online Api}
+  @description make parts of the given table sticky
+  @method stickyTable
+@example
+  //<pre>
+  // Sample using the mandatory parameters
+  bcdui.widget.stickyTable( { targetHtml: targetHtml } );
+  //</pre>
+  @memberOf bcdui.widget
+ */
+bcdui.widget.stickyTable = function(args) { console.log(args); };
+
+
+
+/**
  * @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widget.detailView.html) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widget.detailView.html Online Api}
  * @description A namespace for the BCD-UI detailView widget.
  * @namespace 
@@ -3046,6 +3072,9 @@ bcdui.widget.visualizeXml = {};
   @param {string} [args.title]  Title of the content box; if not provided, the title is set to the ID of the visualized model.
   @param {string} [args.idRef]  Id of the model to be visualized
   @param {bcdui.core.DataProvider} [args.inputModel]  Instead of an id, the model can be provided directly
+  @param {boolean} [args.isAutoRefresh]  Automatically redraw when model changes
+  @param {string} [args.stylesheetUrl]  renderer stylesheet
+  @param {function} [args.onReady]  onReady function for renderer
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widget.visualizeXml.html#.visualizeModel) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widget.visualizeXml.html#.visualizeModel Online Api}
   @description Visualiazes data of a model / data provider
   @method visualizeModel
@@ -3053,6 +3082,10 @@ bcdui.widget.visualizeXml = {};
   //<pre>
   // Sample using the mandatory parameters
   bcdui.widget.visualizeXml.visualizeModel( { targetHtml: targetHtml } );
+  //</pre>
+  @example
+  //<pre>
+  // Load, transform and visualize a modellet sm = new bcdui.core.SimpleModel("input.xml");let mw = new bcdui.core.ModelWrapper({inputModel: sm, chain: "transformer.xslt"});bcdui.widget.visualizeXml.visualizeModel({targetHtml: "testOutput", inputModel: mw, title: "Transformed Output"});
   //</pre>
   @memberOf bcdui.widget.visualizeXml
  */
@@ -3086,9 +3119,10 @@ bcdui.widgetNg = {};
   @param {boolean} [args.required]  An empty string or not set value is not allowed if required is true. Disabled fields are not evaluated.
   @param {integer} [args.tabindex]  the HTML compliant tabIndex
   @param {targetHtmlRef} [args.targetHtml]  An existing HTML element this widget should be attached to, provide a dom element, a jQuery element or selector, or an element id.
+  @param {string} [args.values]  A pipe separated value of two string which are used for a checked/unchecked state. By default this is 1 and 0.
   @param {string} [args.widgetCaption]  A caption which is used as prefix for navPath generation for this widget.
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widgetNg.html#.createCheckbox) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widgetNg.html#.createCheckbox Online Api}
-  @description Basic checkbox which implements a 1/0 switch. The label (if used) is placed right to the checkbox
+  @description Basic checkbox which implements a 1/0 switch. The label (if used) is placed right to the checkbox.
   @method createCheckbox
 @example
   //<pre>
@@ -3426,10 +3460,45 @@ bcdui.widgetNg.createSideBySideChooser = function(args) { console.log(args); };
 
 /**
 @param {Object} args  The parameter map contains the following properties.
+  @param {modelXPath} args.optionsModelXPath  xPath pointing to an absolute xpath (starts with $model/..) providing a node-set of available options to display; especially this one supports cross references between models, i.e. $options / * / Value[&commat;id = $guiStatus / * / MasterValue]
+  @param {writableModelXPath} args.targetModelXPath  The xPath pointing to the root-node this input widget will place entered selected items into. The underlying XML format of data written is implemented by individual widget. If pointing into a Wrs, it switches to Wrs mode, i.e. the wrs:R will be marked as modified, target node will not be deleted.
+  @param {boolean} [args.allowUnknownTargetValue]  If true, target items are not removed when they are not part of the source's options model.
+  @param {boolean} [args.autofocus]  requests the widget to set the focus once it is rendered or enabled for the first time. Only one widget can have a focus, so in case the focus is requested by many widgets it is undefined which one will win.
+  @param {boolean} [args.disabled]  All input widgets can be set to be disabled. If disabled, a widget cannot receive a focus, also a style cannot be changed in many browsers. There is no read-only. Also consult read-only vs disabled: http://www.w3.org/TR/html4/interact/forms.html#h-17.12
+  @param {boolean} [args.displayBalloon]  hints and validation messages are displayed in a fly-over if user moves the mouse over the widget. Additionally, they are also displayed in a balloon in bottom-left corner of a browser window in a balloon, which is static and appears as long as the widget has focus.
+  @param {boolean} [args.doSortOptions]  Can be set to 'false' if the options should not be sorted alphabetically.
+  @param {boolean} [args.enableNavPath]  Set to true if widget should be added to navpath handling.
+  @param {i18nToken} [args.hint]  A general feature is the hint indicator on the widget so user can hover it with a mouse to reveal information about it. image aus theme intern handled by tooltip.
+  @param {string} [args.id]  Id of the widget, if not provided this id will be auto-generated. Must be unique. The id must not be used from jQuery UI API, the id should be used within declarative scope only, i.e. X-API / JSP. If provided, this id will overwrite targetHtml element's id.
+  @param {function} [args.onBeforeChange]  Handler function triggered before change, if false is returned, the change is rejected receives property map: {element = the widget element, dir = one of bcdui.widgetNg.chipsChooser.CHANGE_DIRECTION.*, scope = object with .items to move, which can also be modified (i.e. remove items not eligible to move)}
+  @param {function} [args.onChange]  Handler function triggered after change
+  @param {function} [args.onItemMoved]  Handler function triggered after an item was moved. Receives property map: {from = source, to = destination, dir = one of bcdui.widgetNg.connectable.CHANGE_DIRECTION.*}
+  @param {xPath} [args.optionsModelRelativeValueXPath]  xPath expression relative to 'optionsModelXPath' providing values
+  @param {integer} [args.tabindex]  the HTML compliant tabIndex
+  @param {targetHtmlRef} [args.targetHtml]  An existing HTML element this widget should be attached to, provide a dom element, a jQuery element or selector, or an element id.
+  @param {string} [args.widgetCaption]  A caption which is used as prefix for navPath generation for this widget.
+  @param {string} [args.wrsInlineValueDelim]  Delimiter used for WRS read and write. Default is a slash.
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widgetNg.html#.createChipsChooser) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widgetNg.html#.createChipsChooser Online Api}
+  @description Offers a ChipsChooser where you can select items on a source side and move them to a target side
+  @method createChipsChooser
+@example
+  //<pre>
+  // Sample using the mandatory parameters
+  bcdui.widgetNg.createChipsChooser( { optionsModelXPath: optionsModelXPath, targetModelXPath: targetModelXPath } );
+  //</pre>
+  @memberOf bcdui.widgetNg
+ */
+bcdui.widgetNg.createChipsChooser = function(args) { console.log(args); };
+
+
+
+/**
+@param {Object} args  The parameter map contains the following properties.
   @param {string} args.scope  Defines the scope of the box. Source.
   @param {boolean} [args.allowUnknownTargetValue]  If true, target items are not removed when they are not part of the source's options model.
   @param {boolean} [args.autofocus]  requests the widget to set the focus once it is rendered or enabled for the first time. Only one widget can have a focus, so in case the focus is requested by many widgets it is undefined which one will win.
   @param {string} [args.className]  Optional additional classname which is added to the container.
+  @param {boolean} [args.dblClick]  If true, double clicking an item moves it. Default is true.
   @param {boolean} [args.disabled]  All input widgets can be set to be disabled. If disabled, a widget cannot receive a focus, also a style cannot be changed in many browsers. There is no read-only. Also consult read-only vs disabled: http://www.w3.org/TR/html4/interact/forms.html#h-17.12
   @param {boolean} [args.displayBalloon]  hints and validation messages are displayed in a fly-over if user moves the mouse over the widget. Additionally, they are also displayed in a balloon in bottom-left corner of a browser window in a balloon, which is static and appears as long as the widget has focus.
   @param {boolean} [args.doSortOptions]  Can be set to 'true' if the options should be sorted using the 'sortOptionsFunction' function. This is disabled per default to avoid CPU wasting.
@@ -3441,6 +3510,7 @@ bcdui.widgetNg.createSideBySideChooser = function(args) { console.log(args); };
   @param {boolean} [args.isDoubleClickTarget]  If true (and box is target) then double click moves items from source to this target, otherwise first found target. Default is false.
   @param {function} [args.onBeforeChange]  Handler function triggered before change of this box only, if false is returned, the change is rejected receives property map: {element = the widget element, dir = one of bcdui.widgetNg.connectable.CHANGE_DIRECTION.*, scope = object with .items to move, which can also be modified (i.e. remove items not eligible to move)}
   @param {function} [args.onChange]  Handler function triggered after change. It's triggered on source AND destination of the change (e.g. source/target, target/source and target/target)
+  @param {function} [args.onItemMoved]  Handler function triggered after an item was moved. Receives property map: {from = source, to = destination, dir = one of bcdui.widgetNg.connectable.CHANGE_DIRECTION.*}
   @param {xPath} [args.optionsModelRelativeFilterPredicate]  xPath expression relative to 'optionsModelXPath' which can be used to filter options model items
   @param {xPath} [args.optionsModelRelativeValueXPath]  xPath expression relative to 'optionsModelXPath' providing values
   @param {writableModelXPath} [args.optionsModelXPath]  xPath pointing to an absolute xpath (starts with $model/..) providing a node-set of available options to display; especially this one supports cross references between models, i.e. $options / * / Value[&commat;id = $guiStatus / * / MasterValue]. If you specify an optionsmodelxpath, the box automatically acts as source.
@@ -3565,6 +3635,34 @@ bcdui.widgetNg.createComment = function(args) { console.log(args); };
 
 
 /**
+@param {Object} args  The parameter map contains the following properties.
+  @param {boolean} [args.autofocus]  requests the widget to set the focus once it is rendered or enabled for the first time. Only one widget can have a focus, so in case the focus is requested by many widgets it is undefined which one will win.
+  @param {i18nToken} [args.caption]
+  @param {boolean} [args.disabled]  All input widgets can be set to be disabled. If disabled, a widget cannot receive a focus, also a style cannot be changed in many browsers. There is no read-only. Also consult read-only vs disabled: http://www.w3.org/TR/html4/interact/forms.html#h-17.12
+  @param {boolean} [args.displayBalloon]  hints and validation messages are displayed in a fly-over if user moves the mouse over the widget. Additionally, they are also displayed in a balloon in bottom-left corner of a browser window in a balloon, which is static and appears as long as the widget has focus.
+  @param {boolean} [args.enableNavPath]  Set to true if widget should be added to navpath handling.
+  @param {i18nToken} [args.hint]  A general feature is the hint indicator on the widget so user can hover it with a mouse to reveal information about it. image aus theme intern handled by tooltip.
+  @param {string} [args.id]  Id of the widget, if not provided this id will be auto-generated. Must be unique. The id must not be used from jQuery UI API, the id should be used within declarative scope only, i.e. X-API / JSP. If provided, this id will overwrite targetHtml element's id.
+  @param {xPath} [args.optionsModelXPath]  xPath pointing to an absolute xpath (starts with $model/..) providing a node-set of available options to display; especially this one supports cross references between models, i.e. $options / * / Value[&commat;id = $guiStatus / * / MasterValue]
+  @param {integer} [args.tabindex]  the HTML compliant tabIndex
+  @param {targetHtmlRef} [args.targetHtml]  An existing HTML element this widget should be attached to, provide a dom element, a jQuery element or selector, or an element id.
+  @param {i18nToken} [args.text]
+  @param {string} [args.widgetCaption]  A caption which is used as prefix for navPath generation for this widget.
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widgetNg.html#.createLabel) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widgetNg.html#.createLabel Online Api}
+  @description A BCD-UI label. If an optionsModelXPath is given, it will be rendered as an unordered list.
+  @method createLabel
+@example
+  //<pre>
+  // Sample using the mandatory parameters
+  bcdui.widgetNg.createLabel( { } );
+  //</pre>
+  @memberOf bcdui.widgetNg
+ */
+bcdui.widgetNg.createLabel = function(args) { console.log(args); };
+
+
+
+/**
  * @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widgetNg.button.html) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widgetNg.button.html Online Api}
  * @description A namespace for the BCD-UI button widget. For creation &commat;see {@link bcdui.widgetNg.createButton}
  * @namespace 
@@ -3597,6 +3695,47 @@ bcdui.widgetNg.checkbox = {};
 @memberOf bcdui.widgetNg.checkbox
  */
 bcdui.widgetNg.checkbox.getNavPath = function(id, callback) { console.log(id, callback); };
+
+
+
+/**
+ * @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widgetNg.chipsChooser.html) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widgetNg.chipsChooser.html Online Api}
+ * @description A namespace for the BCD-UI chipsChooser widget. For creation &commat;see {@link bcdui.widgetNg.createChipsChooser}
+ * @namespace 
+ */
+bcdui.widgetNg.chipsChooser = {};
+
+/**
+ * onBeforeChange dir attribute value, can be used to identify the direction of the item move
+ */
+bcdui.widgetNg.chipsChooser.CHANGE_DIRECTION = {};
+
+
+/**
+@see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widgetNg.chipsChooser.html#.init) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widgetNg.chipsChooser.html#.init Online Api}
+  @description 
+  @method init
+@memberOf bcdui.widgetNg.chipsChooser
+ */
+bcdui.widgetNg.chipsChooser.init = function() {};
+
+
+
+/**
+@param {string} id  targetHtml of widget
+  @param {function} callback  to be called with generated caption
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widgetNg.chipsChooser.html#.getNavPath) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widgetNg.chipsChooser.html#.getNavPath Online Api}
+  @description 
+  @method getNavPath
+@example
+  //<pre>
+  // Sample using the mandatory parameters
+  var ret = bcdui.widgetNg.chipsChooser.getNavPath( id, callback );
+  //</pre>
+  @return {string} NavPath information via callback for widget
+@memberOf bcdui.widgetNg.chipsChooser
+ */
+bcdui.widgetNg.chipsChooser.getNavPath = function(id, callback) { console.log(id, callback); };
 
 
 
@@ -12234,6 +12373,8 @@ bcdui.component.cube.CubeModel = class extends bcdui.core.ModelWrapper{
   @param {string} [args.cubeId]  When settings are to be derived from status model, this is the id in <cube:Layout cubeId="myCube">
   @param {string} [args.id]  The object's id, needed only when later accessing via id. If given the CubeModel registers itself at {@link bcdui.factory.objectRegistry}
   @param {bcdui.core.DataProvider} [args.statusModel]  StatusModel, containing the filters as /SomeRoot/f:Filter and the layout definition at /SomeRoot//cube:Layout[&commat;cubeId=args.cubeId]
+  @param {chainDef} [args.requestChain]  An alternative request building chain. Default here is /bcdui/js/component/cube/request.xslt.
+  @param {Object} [args.requestParameters]  An object, where each property holds a DataProvider, used as a transformation parameters.
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.CubeModel.html) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.CubeModel.html Online Api}
   @description Creates a cube model, provides data with calculations and col dimensions applied
   @extends bcdui.core.ModelWrapper
@@ -12510,6 +12651,8 @@ bcdui.component.cube.Cube = class extends bcdui.core.Renderer{
   @param {string} [args.id]  The object's id, needed only when later accessing via id. If given the Cube registers itself at {@link bcdui.factory.objectRegistry}
   @param {chainDef} [args.chain]  An alternative rendering chain, See {@link bcdui.core.Renderer}. Default here is HtmlBuilder.
   @param {Object} [args.parameters]  An object, where each property holds a DataProvider being a renderer parameter used in custom chains
+  @param {chainDef} [args.requestChain]  An alternative request building chain. Default here is /bcdui/js/component/cube/request.xslt.
+  @param {Object} [args.requestParameters]  An object, where each property holds a DataProvider, used as a transformation parameters.
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.Cube.html) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.Cube.html Online Api}
   @description Creates a cube front end based on given data or a configuration
   @extends bcdui.core.Renderer

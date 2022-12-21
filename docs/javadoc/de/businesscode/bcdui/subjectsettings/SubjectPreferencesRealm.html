@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -232,16 +232,21 @@ extends org.apache.shiro.realm.AuthorizingRealm</pre>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
+<td class="colFirst"><code>java.util.Set&lt;java.lang.String&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#generateBcdAnyPerms()">generateBcdAnyPerms</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>java.util.Map&lt;java.lang.String,&#8203;java.util.ArrayList&lt;java.lang.String&gt;&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPermissionMap()">getPermissionMap</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#refreshPermissions(org.apache.shiro.session.Session)">refreshPermissions</a></span>&#8203;(org.apache.shiro.session.Session&nbsp;session)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setPermissionMap(java.util.Map)">setPermissionMap</a></span>&#8203;(java.util.Map&lt;java.lang.String,&#8203;java.util.ArrayList&lt;java.lang.String&gt;&gt;&nbsp;permissionMap)</code></th>
 <td class="colLast">&nbsp;</td>
@@ -364,6 +369,15 @@ extends org.apache.shiro.realm.AuthorizingRealm</pre>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code>doGetAuthorizationInfo</code>&nbsp;in class&nbsp;<code>org.apache.shiro.realm.AuthorizingRealm</code></dd>
 </dl>
+</li>
+</ul>
+<a id="generateBcdAnyPerms()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>generateBcdAnyPerms</h4>
+<pre class="methodSignature">public&nbsp;java.util.Set&lt;java.lang.String&gt;&nbsp;generateBcdAnyPerms()</pre>
 </li>
 </ul>
 <a id="getPermissionMap()">

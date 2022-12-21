@@ -1213,6 +1213,8 @@
             
                 <li data-name="bcdui.widget.showModalBox"><a href="bcdui.widget.html#.showModalBox">showModalBox</a></li>
             
+                <li data-name="bcdui.widget.stickyTable"><a href="bcdui.widget.html#.stickyTable">stickyTable</a></li>
+            
             </ul>
             <ul class="events itemMembers">
             
@@ -1593,6 +1595,8 @@
             
                 <li data-name="bcdui.widgetNg.createCheckbox"><a href="bcdui.widgetNg.html#.createCheckbox">createCheckbox</a></li>
             
+                <li data-name="bcdui.widgetNg.createChipsChooser"><a href="bcdui.widgetNg.html#.createChipsChooser">createChipsChooser</a></li>
+            
                 <li data-name="bcdui.widgetNg.createComment"><a href="bcdui.widgetNg.html#.createComment">createComment</a></li>
             
                 <li data-name="bcdui.widgetNg.createConnectable"><a href="bcdui.widgetNg.html#.createConnectable">createConnectable</a></li>
@@ -1600,6 +1604,8 @@
                 <li data-name="bcdui.widgetNg.createDateInput"><a href="bcdui.widgetNg.html#.createDateInput">createDateInput</a></li>
             
                 <li data-name="bcdui.widgetNg.createInput"><a href="bcdui.widgetNg.html#.createInput">createInput</a></li>
+            
+                <li data-name="bcdui.widgetNg.createLabel"><a href="bcdui.widgetNg.html#.createLabel">createLabel</a></li>
             
                 <li data-name="bcdui.widgetNg.createPasteList"><a href="bcdui.widgetNg.html#.createPasteList">createPasteList</a></li>
             
@@ -7169,7 +7175,7 @@
     
         
         <div class="tag-source">
-            widget/visualizeXml/visualizeXml.js, line 157
+            widget/visualizeXml/visualizeXml.js, line 110
         </div>
         
     </div>
@@ -7240,6 +7246,8 @@
 		<th>Type</th>
 		
 		
+		<th>Default</th>
+		
 		
 		<th class="last">Description</th>
 	</tr>
@@ -7262,6 +7270,10 @@
             
             </td>
             
+            
+                <td class="default">
+                
+                </td>
             
             
             <td class="description last">
@@ -7290,6 +7302,10 @@
             
             </td>
             
+            
+                <td class="default">
+                
+                </td>
             
             
             <td class="description last">
@@ -7321,6 +7337,10 @@
             </td>
             
             
+                <td class="default">
+                
+                </td>
+            
             
             <td class="description last">
                 
@@ -7351,6 +7371,10 @@
             </td>
             
             
+                <td class="default">
+                
+                </td>
+            
             
             <td class="description last">
                 
@@ -7362,6 +7386,112 @@
                     
                 
                 Instead of an id, the model can be provided directly</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>isAutoRefresh</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                Automatically redraw when model changes</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>stylesheetUrl</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    /bcdui/js/widget/visualizeXml/visualizeXmlCaller.xslt
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                renderer stylesheet</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>onReady</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                onReady function for renderer</td>
         </tr>
 	
 	
@@ -7411,6 +7541,17 @@
     
     
     
+    
+        <h5>Example</h5>
+        
+
+    
+    <pre class="prettyprint"><code>// Load, transform and visualize a model
+let sm = new bcdui.core.SimpleModel("input.xml");
+let mw = new bcdui.core.ModelWrapper({inputModel: sm, chain: "transformer.xslt"});
+bcdui.widget.visualizeXml.visualizeModel({targetHtml: "testOutput", inputModel: mw, title: "Transformed Output"});</code></pre>
+    
+
     
 </dd>
 

@@ -1213,6 +1213,8 @@
             
                 <li data-name="bcdui.widget.showModalBox"><a href="bcdui.widget.html#.showModalBox">showModalBox</a></li>
             
+                <li data-name="bcdui.widget.stickyTable"><a href="bcdui.widget.html#.stickyTable">stickyTable</a></li>
+            
             </ul>
             <ul class="events itemMembers">
             
@@ -1593,6 +1595,8 @@
             
                 <li data-name="bcdui.widgetNg.createCheckbox"><a href="bcdui.widgetNg.html#.createCheckbox">createCheckbox</a></li>
             
+                <li data-name="bcdui.widgetNg.createChipsChooser"><a href="bcdui.widgetNg.html#.createChipsChooser">createChipsChooser</a></li>
+            
                 <li data-name="bcdui.widgetNg.createComment"><a href="bcdui.widgetNg.html#.createComment">createComment</a></li>
             
                 <li data-name="bcdui.widgetNg.createConnectable"><a href="bcdui.widgetNg.html#.createConnectable">createConnectable</a></li>
@@ -1600,6 +1604,8 @@
                 <li data-name="bcdui.widgetNg.createDateInput"><a href="bcdui.widgetNg.html#.createDateInput">createDateInput</a></li>
             
                 <li data-name="bcdui.widgetNg.createInput"><a href="bcdui.widgetNg.html#.createInput">createInput</a></li>
+            
+                <li data-name="bcdui.widgetNg.createLabel"><a href="bcdui.widgetNg.html#.createLabel">createLabel</a></li>
             
                 <li data-name="bcdui.widgetNg.createPasteList"><a href="bcdui.widgetNg.html#.createPasteList">createPasteList</a></li>
             
@@ -7216,7 +7222,7 @@
     
         
         <div class="tag-source">
-            widgetNg/widgetPackage.js, line 53
+            widgetNg/widgetPackage.js, line 54
         </div>
         
     </div>
@@ -7908,7 +7914,7 @@
     
         
         <div class="tag-source">
-            widgetNg/widgetPackage.js, line 23
+            widgetNg/widgetPackage.js, line 24
         </div>
         
     </div>
@@ -7919,7 +7925,7 @@
     
     
     <div class="description">
-        Basic checkbox which implements a 1/0 switch. The label (if used) is placed right to the checkbox
+        Basic checkbox which implements a 1/0 switch. The label (if used) is placed right to the checkbox.
     </div>
     
 
@@ -8511,6 +8517,42 @@
 	
         <tr>
             
+                <td class="name"><code>values</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    1|0
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                A pipe separated value of two string which are used for a checked/unchecked state. By default this is 1 and 0.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
                 <td class="name"><code>widgetCaption</code></td>
             
             
@@ -8595,6 +8637,762 @@
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id=".createChipsChooser">
+            
+            <span class="type-signature static">static</span>bcdui.widgetNg.createChipsChooser<span class="signature">(args)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            widgetNg/widgetPackage.js, line 363
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Offers a ChipsChooser where you can select items on a source side and move them to a target side
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The parameter map contains the following properties.
+                
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>optionsModelXPath</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#modelXPath">modelXPath</a></span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                xPath pointing to an absolute xpath (starts with $model/..) providing a node-set of available options to display; especially this one supports cross references between models, i.e. $options / * / Value[@id = $guiStatus / * / MasterValue]</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>targetModelXPath</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#writableModelXPath">writableModelXPath</a></span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                The xPath pointing to the root-node this input widget will place entered selected items into. The underlying XML format of data written is implemented by individual widget. If pointing into a Wrs, it switches to Wrs mode, i.e. the wrs:R will be marked as modified, target node will not be deleted.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>allowUnknownTargetValue</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                If true, target items are not removed when they are not part of the source's options model.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>autofocus</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                requests the widget to set the focus once it is rendered or enabled for the first time. Only one widget can have a focus, so in case the focus is requested by many widgets it is undefined which one will win.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>disabled</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                All input widgets can be set to be disabled. If disabled, a widget cannot receive a focus, also a style cannot be changed in many browsers. There is no read-only. Also consult read-only vs disabled: http://www.w3.org/TR/html4/interact/forms.html#h-17.12</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>displayBalloon</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                hints and validation messages are displayed in a fly-over if user moves the mouse over the widget. Additionally, they are also displayed in a balloon in bottom-left corner of a browser window in a balloon, which is static and appears as long as the widget has focus.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>doSortOptions</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                Can be set to 'false' if the options should not be sorted alphabetically.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>enableNavPath</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                Set to true if widget should be added to navpath handling.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>hint</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#i18nToken">i18nToken</a></span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                A general feature is the hint indicator on the widget so user can hover it with a mouse to reveal information about it. image aus theme intern handled by tooltip.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                Id of the widget, if not provided this id will be auto-generated. Must be unique. The id must not be used from jQuery UI API, the id should be used within declarative scope only, i.e. X-API / JSP. If provided, this id will overwrite targetHtml element's id.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>onBeforeChange</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                Handler function triggered before change, if false is returned, the change is rejected receives property map: {element = the widget element, dir = one of bcdui.widgetNg.chipsChooser.CHANGE_DIRECTION.*, scope = object with .items to move, which can also be modified (i.e. remove items not eligible to move)}</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>onChange</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                Handler function triggered after change</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>onItemMoved</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                Handler function triggered after an item was moved. Receives property map: {from = source, to = destination, dir = one of bcdui.widgetNg.connectable.CHANGE_DIRECTION.*}</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>optionsModelRelativeValueXPath</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#xPath">xPath</a></span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                xPath expression relative to 'optionsModelXPath' providing values</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>tabindex</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#integer">integer</a></span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                the HTML compliant tabIndex</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>targetHtml</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#targetHtmlRef">targetHtmlRef</a></span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                An existing HTML element this widget should be attached to, provide a dom element, a jQuery element or selector, or an element id.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>widgetCaption</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                A caption which is used as prefix for navPath generation for this widget.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>wrsInlineValueDelim</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                Delimiter used for WRS read and write. Default is a slash.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+            </td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id=".createComment">
             
             <span class="type-signature static">static</span>bcdui.widgetNg.createComment<span class="signature">(args)</span>
@@ -8602,7 +9400,7 @@
     
         
         <div class="tag-source">
-            widgetNg/widgetPackage.js, line 530
+            widgetNg/widgetPackage.js, line 565
         </div>
         
     </div>
@@ -9288,7 +10086,7 @@
     
         
         <div class="tag-source">
-            widgetNg/widgetPackage.js, line 370
+            widgetNg/widgetPackage.js, line 405
         </div>
         
     </div>
@@ -9499,6 +10297,42 @@
                     
                 
                 Optional additional classname which is added to the container.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>dblClick</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                If true, double clicking an item moves it. Default is true.</td>
         </tr>
 	
 	
@@ -9881,6 +10715,40 @@
                     
                 
                 Handler function triggered after change. It's triggered on source AND destination of the change (e.g. source/target, target/source and target/target)</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>onItemMoved</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                Handler function triggered after an item was moved. Receives property map: {from = source, to = destination, dir = one of bcdui.widgetNg.connectable.CHANGE_DIRECTION.*}</td>
         </tr>
 	
 	
@@ -10320,7 +11188,7 @@
     
         
         <div class="tag-source">
-            widgetNg/widgetPackage.js, line 125
+            widgetNg/widgetPackage.js, line 126
         </div>
         
     </div>
@@ -10982,7 +11850,7 @@
     
         
         <div class="tag-source">
-            widgetNg/widgetPackage.js, line 96
+            widgetNg/widgetPackage.js, line 97
         </div>
         
     </div>
@@ -12123,6 +12991,560 @@
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id=".createLabel">
+            
+            <span class="type-signature static">static</span>bcdui.widgetNg.createLabel<span class="signature">(args)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            widgetNg/widgetPackage.js, line 591
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        A BCD-UI label. If an optionsModelXPath is given, it will be rendered as an unordered list.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The parameter map contains the following properties.
+                
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>autofocus</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                requests the widget to set the focus once it is rendered or enabled for the first time. Only one widget can have a focus, so in case the focus is requested by many widgets it is undefined which one will win.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>caption</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#i18nToken">i18nToken</a></span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                </td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>disabled</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                All input widgets can be set to be disabled. If disabled, a widget cannot receive a focus, also a style cannot be changed in many browsers. There is no read-only. Also consult read-only vs disabled: http://www.w3.org/TR/html4/interact/forms.html#h-17.12</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>displayBalloon</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                hints and validation messages are displayed in a fly-over if user moves the mouse over the widget. Additionally, they are also displayed in a balloon in bottom-left corner of a browser window in a balloon, which is static and appears as long as the widget has focus.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>enableNavPath</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                Set to true if widget should be added to navpath handling.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>hint</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#i18nToken">i18nToken</a></span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                A general feature is the hint indicator on the widget so user can hover it with a mouse to reveal information about it. image aus theme intern handled by tooltip.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                Id of the widget, if not provided this id will be auto-generated. Must be unique. The id must not be used from jQuery UI API, the id should be used within declarative scope only, i.e. X-API / JSP. If provided, this id will overwrite targetHtml element's id.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>optionsModelXPath</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#xPath">xPath</a></span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                xPath pointing to an absolute xpath (starts with $model/..) providing a node-set of available options to display; especially this one supports cross references between models, i.e. $options / * / Value[@id = $guiStatus / * / MasterValue]</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>tabindex</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#integer">integer</a></span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                the HTML compliant tabIndex</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>targetHtml</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#targetHtmlRef">targetHtmlRef</a></span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                An existing HTML element this widget should be attached to, provide a dom element, a jQuery element or selector, or an element id.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>text</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#i18nToken">i18nToken</a></span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                </td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>widgetCaption</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                A caption which is used as prefix for navPath generation for this widget.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+            </td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id=".createPasteList">
             
             <span class="type-signature static">static</span>bcdui.widgetNg.createPasteList<span class="signature">(args)</span>
@@ -12130,7 +13552,7 @@
     
         
         <div class="tag-source">
-            widgetNg/widgetPackage.js, line 296
+            widgetNg/widgetPackage.js, line 297
         </div>
         
     </div>
@@ -13282,7 +14704,7 @@
     
         
         <div class="tag-source">
-            widgetNg/widgetPackage.js, line 330
+            widgetNg/widgetPackage.js, line 331
         </div>
         
     </div>
@@ -14110,7 +15532,7 @@
     
         
         <div class="tag-source">
-            widgetNg/widgetPackage.js, line 166
+            widgetNg/widgetPackage.js, line 167
         </div>
         
     </div>
@@ -15193,7 +16615,7 @@
     
         
         <div class="tag-source">
-            widgetNg/widgetPackage.js, line 500
+            widgetNg/widgetPackage.js, line 535
         </div>
         
     </div>
@@ -16099,7 +17521,7 @@
     
         
         <div class="tag-source">
-            widgetNg/widgetPackage.js, line 214
+            widgetNg/widgetPackage.js, line 215
         </div>
         
     </div>
@@ -17428,7 +18850,7 @@
     
         
         <div class="tag-source">
-            widgetNg/widgetPackage.js, line 253
+            widgetNg/widgetPackage.js, line 254
         </div>
         
     </div>
@@ -18436,7 +19858,7 @@
     
         
         <div class="tag-source">
-            widgetNg/widgetPackage.js, line 464
+            widgetNg/widgetPackage.js, line 499
         </div>
         
     </div>
