@@ -211,20 +211,25 @@ extends java.lang.Object</pre>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>protected java.util.Set&lt;java.lang.String&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#sqlKeyWordsSqlServer">sqlKeyWordsSqlServer</a></span></code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#sqlKeyWordsPostgres">sqlKeyWordsPostgres</a></span></code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>protected java.util.Map&lt;java.lang.String,&#8203;java.lang.String[]&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#sqlServerCalcFktMapping">sqlServerCalcFktMapping</a></span></code></th>
+<td class="colFirst"><code>protected java.util.Set&lt;java.lang.String&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#sqlKeyWordsSqlServer">sqlKeyWordsSqlServer</a></span></code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>protected java.util.Map&lt;java.lang.String,&#8203;java.lang.String[]&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#sqlServerSpatialFktMapping">sqlServerSpatialFktMapping</a></span></code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#sqlServerCalcFktMapping">sqlServerCalcFktMapping</a></span></code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><code>protected java.util.Map&lt;java.lang.String,&#8203;java.lang.String[]&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#sqlServerSpatialFktMapping">sqlServerSpatialFktMapping</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><code>protected java.util.Map&lt;java.lang.String,&#8203;java.lang.String&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#sqlSetOperators">sqlSetOperators</a></span></code></th>
 <td class="colLast">&nbsp;</td>
@@ -458,6 +463,15 @@ extends java.lang.Object</pre>
 <pre>protected final&nbsp;java.util.Set&lt;java.lang.String&gt; sqlKeyWordsMysql</pre>
 </li>
 </ul>
+<a id="sqlKeyWordsPostgres">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>sqlKeyWordsPostgres</h4>
+<pre>protected final&nbsp;java.util.Set&lt;java.lang.String&gt; sqlKeyWordsPostgres</pre>
+</li>
+</ul>
 <a id="sqlKeyWordsSqlServer">
 <!--   -->
 </a>
@@ -640,7 +654,7 @@ extends java.lang.Object</pre>
 <pre class="methodSignature">public&nbsp;java.util.Set&lt;java.lang.String&gt;&nbsp;getReservedDBWords&#8203;(java.lang.String&nbsp;jdbcResourceName)</pre>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>bs</code> - </dd>
+<dd><code>jdbcResourceName</code> - </dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>Set of key words for the database belonging to the BindingSets connection</dd>
 </dl>
@@ -656,7 +670,7 @@ extends java.lang.Object</pre>
 <div class="block">If the database used for the selected BindingSet needs an extra column list for with clauses</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>bs</code> - </dd>
+<dd><code>jdbcResourceName</code> - </dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 </dl>
 </li>
@@ -686,7 +700,7 @@ extends java.lang.Object</pre>
 <div class="block">Are we allowed to use GROUPING SETs and GROUPING()?</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>resultingBindingSet</code> - </dd>
+<dd><code>jdbcResourceName</code> - </dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 </dl>
 </li>
@@ -701,7 +715,7 @@ extends java.lang.Object</pre>
 <div class="block">Returns true if the database of resultingBindingSet supports GROUPING SETS</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>resultingBindingSet</code> - </dd>
+<dd><code>jdbcResourceName</code> - </dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 </dl>
 </li>
@@ -715,7 +729,7 @@ extends java.lang.Object</pre>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;dbNeedsVarcharCastForConcatInTopN&#8203;(java.lang.String&nbsp;jdbcResourceName)</pre>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>resultingBindingSet</code> - </dd>
+<dd><code>jdbcResourceName</code> - </dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 </dl>
 </li>
@@ -734,7 +748,7 @@ extends java.lang.Object</pre>
  Sadly, of these, only oracle allows NULLS FIRST/LAST in ORDER BY</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>resultingBindingSet</code> - </dd>
+<dd><code>jdbcResourceName</code> - </dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>How often bound variables of the item used for ordering are used in the created expression</dd>
 </dl>
@@ -752,7 +766,7 @@ extends java.lang.Object</pre>
 <div class="block">Wraps the expression so that the result is of type VARCHAR or CHAR</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>bindingSet</code> - Used to derive database specific syntax</dd>
+<dd><code>jdbcResourceName</code> - Used to derive database specific syntax</dd>
 <dd><code>origJdbcDataType</code> - Used to skip wrapping if already CHAR/VARCHAR and keep format YYYY-MMM-DDD for type date</dd>
 <dd><code>expr</code> - Expression to be wrapped</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -818,7 +832,7 @@ extends java.lang.Object</pre>
 <div class="block">Does not do much checking, but as all BindingSets are tested on start, the risk is low</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>bs</code> - </dd>
+<dd><code>jdbcResourceName</code> - </dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 </dl>
 </li>

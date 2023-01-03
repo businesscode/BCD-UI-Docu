@@ -1,5 +1,5 @@
 // This file contains BCD-UI Javascript Api stubs for IDE autosuggest
-// BCD-UI version 5.6.0 (2022-12-21)
+// BCD-UI version 5.6.0 (2023-01-03)
 
 
 /**
