@@ -133,12 +133,13 @@
               <xs:complexType>
                 <xs:attribute name="chartType">
                   <xs:annotation><xs:documentation>sets the chart type of the (up to 2) y axis</xs:documentation></xs:annotation>
-                  <xs:simpleType><xs:restriction base="xs:string"><xs:enumeration value="LINECHART"/><xs:enumeration value="BARCHART"/><xs:enumeration value="AREACHART"/></xs:restriction></xs:simpleType>
+                  <xs:simpleType><xs:restriction base="xs:string"><xs:enumeration value="PIECHART"/><xs:enumeration value="LINECHART"/><xs:enumeration value="BARCHART"/><xs:enumeration value="AREACHART"/></xs:restriction></xs:simpleType>
                 </xs:attribute>
               </xs:complexType>
             </xs:element>
           </xs:sequence>
           <xs:attribute name="innerRowDim" type="xs:boolean"><xs:annotation><xs:documentation>if true, inner most row dimension is used for building up chart series</xs:documentation></xs:annotation></xs:attribute>
+          <xs:attribute name="minMaxRow" type="xs:boolean"><xs:annotation><xs:documentation>if true, the min/max determination for the chart is done per row (otherwise on all data)</xs:documentation></xs:annotation></xs:attribute>
         </xs:complexType>
       </xs:element>
 
@@ -153,6 +154,7 @@
           <xs:attribute name="nLastRows" type="xs:integer"><xs:annotation><xs:documentation>make last n rows sticky</xs:documentation></xs:annotation></xs:attribute>
           <xs:attribute name="nFirstCols" type="xs:integer"><xs:annotation><xs:documentation>make first n cols sticky</xs:documentation></xs:annotation></xs:attribute>
           <xs:attribute name="nLastCols" type="xs:integer"><xs:annotation><xs:documentation>make last n cols sticky</xs:documentation></xs:annotation></xs:attribute>
+          <xs:attribute name="disableMaxWH" type="xs:boolean"><xs:annotation><xs:documentation>set to true if you want to use width/heigth instead of max-width/max-height</xs:documentation></xs:annotation></xs:attribute>
         </xs:complexType>
       </xs:element>
 

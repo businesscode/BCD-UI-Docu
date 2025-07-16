@@ -1,5 +1,5 @@
 // This file contains BCD-UI Javascript Api stubs for IDE autosuggest
-// BCD-UI version 5.6.0 (2023-01-03)
+// BCD-UI version 5.6.0 (2025-07-16)
 
 
 /**
@@ -70,6 +70,7 @@ bcdui.component = {};
   @param {string} [args.templateTargetHtmlElementId]  Custom location for template editor
   @param {string} [args.summaryTargetHtmlElementId]  Custom location for summary display
   @param {(boolean|string)} [args.contextMenu]  If true, cube's default context menu is used, otherwise provide the url to your context menu xslt here.
+  @param {(boolean|string)} [args.tooltip]  If true, cube's default tooltip is used, otherwise provide the url to your tooltip xslt here.
   @param {boolean} [args.isDefaultHtmlLayout]  If true, a standard layout for dnd area, ranking, templates and summary is created. Separate targetHtmlElements will be obsolete then. If false, you need to provide containers with classes: bcdCurrentRowDimensionList, bcdCurrentColMeasureList, bcdCurrentColDimensionList, bcdCurrentMeasureList, bcdDimensionList, bcdMeasureList within an outer bcdCubeDndMatrix container. if your targetHtml got classes bcdDndBlindOpen or bcdDndBlindClosed, the actual dnd area is also put in collapsable boxes (either open or closed by default).
   @param {boolean} [args.hasUserEditRole]  Template Editor also has edit capability. If not given, bcdui.config.clientRights.bcdCubeTemplateEdit is used to determine state (either *(any) or cubeId to enable).
   @param {string} [args.applyFunction]  Function name which is used for the apply button in isDefaultHtmlLayout=true mode.
@@ -137,6 +138,10 @@ bcdui.component.chart.createChartLegend = function(args) { console.log(args); };
  */
 bcdui.component.cube = {};
 
+/**
+ * A namespace for the BCD-UI component cube. Denfined in cubeCreate.js
+ */
+bcdui.component.cube.inlineChart = {};
 
 
 /**
@@ -343,6 +348,7 @@ bcdui.component.cube.configuratorDND.init = function() {};
 @param {string} cubeBucketModelId  The id of the cubeBucketModel
   @param {string} configId  The id of the used configuration
   @param {boolean} [noClear]  true if current selection should not get changed
+  @param {function} [callback]  callback function which is called as soon as bucketModel is fully filled
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.configuratorDND.html#.fillBucketModel) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.configuratorDND.html#.fillBucketModel Online Api}
   @description Used for initial filling but can also be used to reinitialize bucket model (e.g. after hiding selectable measures)
   @method fillBucketModel
@@ -353,7 +359,7 @@ bcdui.component.cube.configuratorDND.init = function() {};
   //</pre>
   @memberOf bcdui.component.cube.configuratorDND
  */
-bcdui.component.cube.configuratorDND.fillBucketModel = function(cubeBucketModelId, configId, noClear) { console.log(cubeBucketModelId, configId, noClear); };
+bcdui.component.cube.configuratorDND.fillBucketModel = function(cubeBucketModelId, configId, noClear, callback) { console.log(cubeBucketModelId, configId, noClear, callback); };
 
 
 
@@ -365,6 +371,26 @@ bcdui.component.cube.configuratorDND.fillBucketModel = function(cubeBucketModelI
 @memberOf bcdui.component.cube.configuratorDND
  */
 bcdui.component.cube.configuratorDND.reDisplay = function(cubeId) { console.log(cubeId); };
+
+
+
+/**
+@see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.configuratorDND.html#._addGroupManagerContextMenu) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.configuratorDND.html#._addGroupManagerContextMenu Online Api}
+  @description 
+  @method _addGroupManagerContextMenu
+@memberOf bcdui.component.cube.configuratorDND
+ */
+bcdui.component.cube.configuratorDND._addGroupManagerContextMenu = function() {};
+
+
+
+/**
+@see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.configuratorDND.html#._markGroupingDimensions) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.configuratorDND.html#._markGroupingDimensions Online Api}
+  @description 
+  @method _markGroupingDimensions
+@memberOf bcdui.component.cube.configuratorDND
+ */
+bcdui.component.cube.configuratorDND._markGroupingDimensions = function() {};
 
 
 
@@ -402,6 +428,7 @@ bcdui.component.docUpload = {};
   @param {string} [args.id]  The id of the returned wrs modelwrapper
   @param {(string|array)} [args.instance]  Array or string or space separated string of instance ids in case you want to limit the output
   @param {filterBRefs} [args.filterBRefs]  The space separated list of binding Refs that will be used in filter clause of request document
+  @param {bcdui.core.DataProvider} [args.config]  The model containing the docUpload configuration data. If it is not present the well known bcdui.wkModels.bcdDocUpload is used
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.docUpload.html#.getUploadOverview) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.docUpload.html#.getUploadOverview Online Api}
   @description Generate a wrs modelwrapper holding overview information for the given scope (optionally limited to instances) The wrs holds 1 row per instance with the information about loaded, needed and missing required documents
   @method getUploadOverview
@@ -937,15 +964,11 @@ bcdui.core.reExecute = function(obj, readyFunction, shouldRefresh) { console.log
 
 /**
  * @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.browserCompatibility.html) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.browserCompatibility.html Online Api}
- * @description <p>  This namespace contains XML-related functions to make the BCD-UI library work on different browsers' XML implementation. These functions deal with the following issues: <dl><dt> XML Document creation                                                     </dt><dd><p> Factory functions for creating XML documents, parsing and serialization and creating XSLT processors. </p></dd><dt> XML Manipulation + IE API Compatibilty                                    </dt><dd><p> The Mozilla / Webkit XML classes are augmented so that they implement the IE-compatible interface. Then the users can focus on this API only. </p></dd><dt> Namespace handling                                                        </dt><dd><p> Align the handling of XML namespaces and prefixes so that the well-known BCD-UI prefixes as well as user prefixes can be used in the JavaScript API. </p></dd></dl></p><p> </p>
+ * @description <p>  This namespace contains XML-related functions to make the BCD-UI library work on different browsers' XML implementation. These functions deal with the following issues: <dl><dt> XML Document creation                                                     </dt><dd><p> Factory functions for creating XML documents, parsing and serialization and creating XSLT processors. </p></dd><dt> XML Manipulation + IE API Compatibility                                    </dt><dd><p> The Mozilla / Webkit XML classes are augmented so that they implement the IE-compatible interface. Then the users can focus on this API only. </p></dd><dt> Namespace handling                                                        </dt><dd><p> Align the handling of XML namespaces and prefixes so that the well-known BCD-UI prefixes as well as user prefixes can be used in the JavaScript API. </p></dd></dl></p><p> </p>
  * @namespace 
  */
 bcdui.core.browserCompatibility = {};
 
-/**
- * Allows for quick testing of IE version, if not iE, this is simply undefined
- */
-bcdui.core.browserCompatibility.ieVersion = {};
 /**
  * Asynchronous creation of an XSLTProcessor object from a DOM document.
  */
@@ -1019,7 +1042,7 @@ bcdui.core.browserCompatibility.removeObsoleteNS = function(doc) { console.log(d
 /**
 @param {HtmlElement} targetElement  The targetElement which is used for appending the new element.
   @param {string} name  The element name which may contain a well-known prefix.
-  @param {boolean} insertBeforeTargetElement  Preprend instead of append element.
+  @param {boolean} insertBeforeTargetElement  Prepend instead of append element.
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.browserCompatibility.html#.appendElementWithPrefix) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.browserCompatibility.html#.appendElementWithPrefix Online Api}
   @description Creates a new element whose name can contain a well-known prefix (like "wrs") and appends it to the specified target element. This function should be used rather than createElementNS, because the latter is not available on the Internet Explorer.
   @method appendElementWithPrefix
@@ -1076,7 +1099,7 @@ bcdui.core.browserCompatibility.extractMetaDataFromStylesheetDoc = function() {}
 
 /**
 @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.browserCompatibility.html#.preXslImportByProc) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.browserCompatibility.html#.preXslImportByProc Online Api}
-  @description 
+  @description Prepare for implementing xsl:import by replacing bcduicp: with the application's context
   @method preXslImportByProc
 @memberOf bcdui.core.browserCompatibility
  */
@@ -1085,22 +1108,12 @@ bcdui.core.browserCompatibility.preXslImportByProc = function() {};
 
 
 /**
-@see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.browserCompatibility.html#.MSXMLDocumentWrapper) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.browserCompatibility.html#.MSXMLDocumentWrapper Online Api}
-  @description To be able to attach new functions like createElementNS to our XMLDocument, we need to wrap MSXML ActiceX objects here  Sadly, we cannot provide legacy .xml, .text via implicit getter (defineProperty is not available in IE8). Switching to an explicit function xml() or so is also no real option since we cannot provide that for MSXML elements (unless we would proxy them all them) and often it is unknown whether we have an element (no proxy) or a document (is proxied). So, just use standard XMLSerializer from now on.  New native XML objects of MS do not support selectSingleNode() nor evaluate(), we still have to use MSXML, can't use document.implementation.createDocument(null,null,null);
-  @method MSXMLDocumentWrapper
-@memberOf bcdui.core.browserCompatibility
- */
-bcdui.core.browserCompatibility.MSXMLDocumentWrapper = function() {};
-
-
-
-/**
-@see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.browserCompatibility.html#.jQueryXhr) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.browserCompatibility.html#.jQueryXhr Online Api}
+@see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.browserCompatibility.html#.cleanupGeneratedXslt) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.browserCompatibility.html#.cleanupGeneratedXslt Online Api}
   @description 
-  @method jQueryXhr
+  @method cleanupGeneratedXslt
 @memberOf bcdui.core.browserCompatibility
  */
-bcdui.core.browserCompatibility.jQueryXhr = function() {};
+bcdui.core.browserCompatibility.cleanupGeneratedXslt = function() {};
 
 
 
@@ -1111,58 +1124,6 @@ bcdui.core.browserCompatibility.jQueryXhr = function() {};
 @memberOf bcdui.core.browserCompatibility
  */
 bcdui.core.browserCompatibility.cleanupGeneratedXslt = function() {};
-
-
-
-/**
-@see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.browserCompatibility.html#.cleanupGeneratedXslt) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.browserCompatibility.html#.cleanupGeneratedXslt Online Api}
-  @description 
-  @method cleanupGeneratedXslt
-@memberOf bcdui.core.browserCompatibility
- */
-bcdui.core.browserCompatibility.cleanupGeneratedXslt = function() {};
-
-
-
-/**
- * @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.browserCompatibility.ie.html) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.browserCompatibility.ie.html Online Api}
- * @description This namespace contains implementations that apply to all versions of Internet Explorer.
- * @namespace 
- */
-bcdui.core.browserCompatibility.ie = {};
-
-/**
- * The currently used MSXML version which is one of the versions supplied inthe {@link bcdui.core.browserCompatibility.ie.msxmlVersions} array.
- */
-bcdui.core.browserCompatibility.ie.currentMSXMLVersion = {};
-
-
-/**
-@param {HtmlElement} targetElement  The targetElement which is used for appending the new element.
-  @param {string} name  The element name which may contain a well-known prefix.
-  @param {boolean} insertBeforeTargetElement  Preprend instead of append element.
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.browserCompatibility.ie.html#.appendElementWithPrefix) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.browserCompatibility.ie.html#.appendElementWithPrefix Online Api}
-  @description Creates a new element whose name can contain a well-known prefix (like "wrs"). It uses createElement, because IE does not implement createElementNS. The element is then appended to the specified target element.
-  @method appendElementWithPrefix
-@example
-  //<pre>
-  // Sample using the mandatory parameters
-  var ret = bcdui.core.browserCompatibility.ie.appendElementWithPrefix( targetElement, name, insertBeforeTargetElement );
-  //</pre>
-  @return {DomElement} The new XMLElement.
-@memberOf bcdui.core.browserCompatibility.ie
- */
-bcdui.core.browserCompatibility.ie.appendElementWithPrefix = function(targetElement, name, insertBeforeTargetElement) { console.log(targetElement, name, insertBeforeTargetElement); };
-
-
-
-/**
-@see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.browserCompatibility.ie.html#.createIE_DOMFromXmlString) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.browserCompatibility.ie.html#.createIE_DOMFromXmlString Online Api}
-  @description Sadly, new DOMParser().parseFromString() (IE9) does produce an XML document which is not aware of xPath, so we need keep using MSXML and loadXML
-  @method createIE_DOMFromXmlString
-@memberOf bcdui.core.browserCompatibility.ie
- */
-bcdui.core.browserCompatibility.ie.createIE_DOMFromXmlString = function() {};
 
 
 
@@ -1481,6 +1442,30 @@ bcdui.util.escapeHtml = function(string) { console.log(string); };
 
 
 /**
+@param {string} string  Value to be encoded
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.util.html#.encodeURI) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.util.html#.encodeURI Online Api}
+  @description 
+  @method encodeURI
+@return {string} encoded string
+@memberOf bcdui.util
+ */
+bcdui.util.encodeURI = function(string) { console.log(string); };
+
+
+
+/**
+@param {string} string  Value to be decoded
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.util.html#.decodeURI) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.util.html#.decodeURI Online Api}
+  @description 
+  @method decodeURI
+@return {string} dencoded string
+@memberOf bcdui.util
+ */
+bcdui.util.decodeURI = function(string) { console.log(string); };
+
+
+
+/**
 @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.util.html#._sendFormRequest) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.util.html#._sendFormRequest Online Api}
   @description sends a HTTP request using HTML form submit  {string} url                   the url to call {object} [args]                optional arguments {string} [args.method=get]     request method {string} [args.target=_blank]  the target {string} [args.enctype=application/x-www-form-urlencoded]  the enctype {object} [args.parameters]     object map with parameters to send
   @method _sendFormRequest
@@ -1533,6 +1518,42 @@ bcdui.util.getUuid = function() {};
   @memberOf bcdui.util
  */
 bcdui.util.setSubjectPreference = function(name, value, callback) { console.log(name, value, callback); };
+
+
+
+/**
+@param {string} bindingSetId  The id of the binding set
+  @param {(string|array)} bRefs  requested binding items. Can be a comma-separated value list or an array
+  @param {function} callback  The function which is called after a successful call of the BindingInfo servlet and returns the collected data
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.util.html#.getBindingInfo) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.util.html#.getBindingInfo Online Api}
+  @description returns an object map holding information for a binding's items (id, description and type)
+  @method getBindingInfo
+@example
+  //<pre>
+  // Sample using the mandatory parameters
+  bcdui.util.getBindingInfo( bindingSetId, bRefs, callback );
+  //</pre>
+  @memberOf bcdui.util
+ */
+bcdui.util.getBindingInfo = function(bindingSetId, bRefs, callback) { console.log(bindingSetId, bRefs, callback); };
+
+
+
+/**
+@param {string} xPath  xPath pointing to value (can include dot template placeholders which get filled with the given fillParams)
+  @param {Object} [fillParams]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.util.html#.interpolateXPath) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.util.html#.interpolateXPath Online Api}
+  @description transforms a xpath string with placeholders. A value with an apostrophe gets translated into a concat statement.
+  @method interpolateXPath
+@example
+  //<pre>
+  // Sample using the mandatory parameters
+  var ret = bcdui.util.interpolateXPath( xPath );
+  //</pre>
+  @return {string} final xPath with filled in values for possibly existing placeholders
+@memberOf bcdui.util
+ */
+bcdui.util.interpolateXPath = function(xPath, fillParams) { console.log(xPath, fillParams); };
 
 
 
@@ -2174,6 +2195,7 @@ bcdui.widget.createDimensionChooser = function(args) { console.log(args); };
   @param {string} [args.widgetCaption]  A caption which is used as prefix for navPath generation for this widget.
   @param {boolean} [args.enableNavPath]  Set to true if widget should not be added to navpath handling.
   @param {string} [args.label]  If provided, renders label element to this widget
+  @param {string} [args.skin]  Decide between radio or panel skin.
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widget.html#.createSingleSelect) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widget.html#.createSingleSelect Online Api}
   @description Creates a single selection radio button group where a value can be selected and stored to the target model.
   @method createSingleSelect
@@ -2422,6 +2444,7 @@ bcdui.widget.createBlindUpDownArea = function(args) { console.log(args); };
 @param {Object} args  The parameter map contains the following properties.
   @param {bcdui.core.DataProvider} args.inputModel  A model with context menu definition according to namespace http://www.businesscode.de/schema/bcdui/contextMenu-1.0.0
   @param {string} [args.targetRendererId]  The renderer the tooltip is attached to. The HTML listeners are placed on the targetHtml of this renderer.
+  @param {bcdui.core.DataProvider} [args.targetRenderer]  The renderer the tooltip is attached to. The HTML listeners are placed on the targetHtml of this renderer.
   @param {string} [args.id]  ID of the Executable object which renders this widget this must be UNIQUE and MUST NOT have same names as any global JavaScript variable. If not given, an auto-id is generated.
   @param {boolean} [args.refreshMenuModel]  This flag can be set to 'true' if the menu model needs to be executed always. Needs to be true, if the menu depends on the position in a table, i.e. technically on bcdColIdent and bcdRowIdent.
   @param {string} [args.url]  This parameter can be set when you only want to apply one single XSLT style sheet. It contains the URL pointing to it. If this parameter is set no nested 'chain' tag must be provided; provided XSLT must produce HTML.
@@ -2445,6 +2468,7 @@ bcdui.widget.createContextMenu = function(args) { console.log(args); };
 /**
 @param {Object} args  The parameter map contains the following properties.
   @param {string} [args.targetRendererId]  The renderer the tooltip is attached to. The HTML listeners are placed on the targetHtml of this renderer. If 'tableMode' is set to 'true' the renderer is expected to render an HTML table with the appropriate 'bcdRowIdent/bcdColIdent' attributes of tr rows header columns.
+  @param {bcdui.core.DataProvider} [args.targetRenderer]  The renderer the tooltip is attached to. The HTML listeners are placed on the targetHtml of this renderer. If 'tableMode' is set to 'true' the renderer is expected to render an HTML table with the appropriate 'bcdRowIdent/bcdColIdent' attributes of tr rows header columns.
   @param {string} [args.id]  ID of the Executable object which renders this widget this must be UNIQUE and MUST NOT have same names as any global JavaScript variable. If not given, an auto-id is generated.
   @param {integer} [args.delay]  The delay in Miliseconds that the tooltip should wait before it appears.
   @param {string} [args.filter]  An optional filter on the tag name where the tooltip should appear. In 'tableMode' it is recommended to set it on 'td' or 'th|td'.
@@ -2640,6 +2664,7 @@ bcdui.widget.getCurrentNavPath = function(values, separator) { console.log(value
 @param {object} args  arguments
   @param {function} args.open  function to execute when dialog is opened, it gets args object with properties: targetHtml
   @param {function} [args.close]  function to execute after dialog is closed
+  @param {function} [args.create]  function to execute when dialog is created
   @param {function} [args.beforeClose]  function to execute before dialog is closed - it gets args object with properties: targetHtml; if this function returns false, the dialog is not closed.
   @param {string} [args.title]  dialog title
   @param {number} [args.width]  dialog width; > 1 means absolute size <= 1 means percentage of the current view-port size, i.e. .75 = 75% of view-port size
@@ -2675,6 +2700,7 @@ bcdui.widget.openDialog = function(args) { console.log(args); };
   @param {integer} [args.nLastCols]  make the last n columns sticky
   @param {integer} [args.nLastRows]  make the last n rows sticky
   @param {boolean} [args.bcdDimension]  make all dimension cells (cube) sticky (higher prio than other options)
+  @param {boolean} [args.disableMaxWH]  setting this to true will use width/heigth instead of max-width/max-height
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widget.html#.stickyTable) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widget.html#.stickyTable Online Api}
   @description make parts of the given table sticky
   @method stickyTable
@@ -2778,6 +2804,16 @@ bcdui.widget.dimensionChooser = {};
 @memberOf bcdui.widget.dimensionChooser
  */
 bcdui.widget.dimensionChooser.getNavPath = function(id, callback) { console.log(id, callback); };
+
+
+
+/**
+@see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widget.dimensionChooser.html#._cleanupListener) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widget.dimensionChooser.html#._cleanupListener Online Api}
+  @description 
+  @method _cleanupListener
+@memberOf bcdui.widget.dimensionChooser
+ */
+bcdui.widget.dimensionChooser._cleanupListener = function() {};
 
 
 
@@ -3117,6 +3153,7 @@ bcdui.widgetNg = {};
   @param {function} [args.onchange]  the HTML onchange event
   @param {function} [args.onclick]  the HTML onclick event
   @param {boolean} [args.required]  An empty string or not set value is not allowed if required is true. Disabled fields are not evaluated.
+  @param {enum} [args.skin]  Currently supporting checkbox (default) and switch style.
   @param {integer} [args.tabindex]  the HTML compliant tabIndex
   @param {targetHtmlRef} [args.targetHtml]  An existing HTML element this widget should be attached to, provide a dom element, a jQuery element or selector, or an element id.
   @param {string} [args.values]  A pipe separated value of two string which are used for a checked/unchecked state. By default this is 1 and 0.
@@ -3189,13 +3226,15 @@ bcdui.widgetNg.createButton = function(args) { console.log(args); };
   @param {number} [args.min]  Sets the minimum value for an integer or numeric type input field (HTML5 only).
   @param {function} [args.onchange]  the HTML onchange event
   @param {function} [args.onclick]  the HTML onclick event
+  @param {function} [args.oninput]  The HTML oninput event.
   @param {string} [args.pattern]  regular expression pattern to validate the input
   @param {i18nToken} [args.placeholder]  A default text displayed if no content was entered, this is i18n key or true for default. May be empty to display nothing.
   @param {boolean} [args.required]  An empty string or not set value is not allowed if required is true. Disabled fields are not evaluated.
   @param {boolean} [args.setCursorPositionAtEnd]  if set the cursor position will always be at the end of the input once the input field gets a focus
+  @param {number} [args.step]  Sets the step value (HTML5 only).
   @param {integer} [args.tabindex]  the HTML compliant tabIndex
   @param {targetHtmlRef} [args.targetHtml]  An existing HTML element this widget should be attached to, provide a dom element, a jQuery element or selector, or an element id.
-  @param {enum} [args.type]  a type of this input field. Following types are supported for validation: text: a simple text input email: a simple text input with email validation, uses email input where available password: a password input int: an integer value (uses to html5 type=number with step=1 where available) numeric: a decimal value (corresponds to html5 type=number with step=any and uses where available)
+  @param {enum} [args.type]  a type of this input field. Following types are supported for validation: text: a simple text input email: a simple text input with email validation, uses email input where available password: a password input time: hh:mm input, use step 1 to show seconds, too int: an integer value (uses to html5 type=number with step=1 where available) numeric: a decimal value (corresponds to html5 type=number with step=any and uses where available) color: a html5 color picker
   @param {string} [args.validationFunction]  Name of a widget validator function which will be attached additionally to implicit validators. the API of given function is: validatorFunction(htmlElementId) : returns either NULL or object containing validationMessage (String or array of Strings) property, i.e. { validationMessage : String } or { validationMessage[] : String[] }, the validationMessage carries the message to be displayed to the user. The String may start with bcdui.i18n.TAG character to classify an i18n-key of the message, rather than a message itself. the args parameter is the htmlElementId of the widget to validate. Please use: bcdui.widgetNg.validation.validators.widget.getValue(htmlElementId) to properly retrieve widgets value. There is only one validator function allowed. In order to use or re-use or combine existing validations please do so in your validationFunction (that is delegate to other validators) and simply aggregate validation results into array of validationMessage[] This validator MUST ignore NULL or empty value.
   @param {string} [args.widgetCaption]  A caption which is used as prefix for navPath generation for this widget.
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widgetNg.html#.createInput) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widgetNg.html#.createInput Online Api}
@@ -3342,6 +3381,7 @@ bcdui.widgetNg.createSuggestInput = function(args) { console.log(args); };
   @param {writableModelXPath} args.targetModelXPath  The xPath pointing to the root-node this input widget will place entered selected items into. The underlying XML format of data written is implemented by individual widget. If pointing into a Wrs, it switches to Wrs mode, i.e. the wrs:R will be marked as modified, target node will not be deleted.
   @param {function} [args.asyncValidationFunction]  Like 'validationFunction' but this one must return a Promise resolving with validation result. While validating, the widget sets 'bcdValidationPending' CSS class on the owning html element. The value is written to the model after a positive validation result. If a Promise is rejected for any reason, the widget switches to invalid state.
   @param {boolean} [args.autofocus]  requests the widget to set the focus once it is rendered or enabled for the first time. Only one widget can have a focus, so in case the focus is requested by many widgets it is undefined which one will win.
+  @param {boolean} [args.autogrow]  Set to true if the textarea should auto grow while typing.
   @param {boolean} [args.disabled]  All input widgets can be set to be disabled. If disabled, a widget cannot receive a focus, also a style cannot be changed in many browsers. There is no read-only. Also consult read-only vs disabled: http://www.w3.org/TR/html4/interact/forms.html#h-17.12
   @param {boolean} [args.disableResetControl]  set this parameter to 'false' to enable built-in reset-control, which empties content once clicked.
   @param {boolean} [args.displayBalloon]  hints and validation messages are displayed in a fly-over if user moves the mouse over the widget. Additionally, they are also displayed in a balloon in bottom-left corner of a browser window in a balloon, which is static and appears as long as the widget has focus.
@@ -3383,6 +3423,7 @@ bcdui.widgetNg.createTextArea = function(args) { console.log(args); };
   @param {writableModelXPath} args.targetModelXPath  The xPath pointing to the root-node this input widget will place entered selected items into. The underlying XML format of data written is implemented by individual widget. If pointing into a Wrs, it switches to Wrs mode, i.e. the wrs:R will be marked as modified, target node will not be deleted.
   @param {function} [args.asyncValidationFunction]  Like 'validationFunction' but this one must return a Promise resolving with validation result. While validating, the widget sets 'bcdValidationPending' CSS class on the owning html element. The value is written to the model after a positive validation result. If a Promise is rejected for any reason, the widget switches to invalid state.
   @param {boolean} [args.autofocus]  requests the widget to set the focus once it is rendered or enabled for the first time. Only one widget can have a focus, so in case the focus is requested by many widgets it is undefined which one will win.
+  @param {boolean} [args.autogrow]  Set to true if the textarea should auto grow while typing.
   @param {boolean} [args.disabled]  All input widgets can be set to be disabled. If disabled, a widget cannot receive a focus, also a style cannot be changed in many browsers. There is no read-only. Also consult read-only vs disabled: http://www.w3.org/TR/html4/interact/forms.html#h-17.12
   @param {boolean} [args.disableResetControl]  set this parameter to 'false' to enable built-in reset-control, which empties content once clicked.
   @param {boolean} [args.displayBalloon]  hints and validation messages are displayed in a fly-over if user moves the mouse over the widget. Additionally, they are also displayed in a balloon in bottom-left corner of a browser window in a balloon, which is static and appears as long as the widget has focus.
@@ -3464,19 +3505,36 @@ bcdui.widgetNg.createSideBySideChooser = function(args) { console.log(args); };
   @param {writableModelXPath} args.targetModelXPath  The xPath pointing to the root-node this input widget will place entered selected items into. The underlying XML format of data written is implemented by individual widget. If pointing into a Wrs, it switches to Wrs mode, i.e. the wrs:R will be marked as modified, target node will not be deleted.
   @param {boolean} [args.allowUnknownTargetValue]  If true, target items are not removed when they are not part of the source's options model.
   @param {boolean} [args.autofocus]  requests the widget to set the focus once it is rendered or enabled for the first time. Only one widget can have a focus, so in case the focus is requested by many widgets it is undefined which one will win.
+  @param {string} [args.bindingSetId]  Name of the binding set which is used for the lookup.
+  @param {string} [args.bRefs]  BindingItem(s) which is(are) used for the lookup. If two are given, it is assumed that first one is caption, second one is code.
+  @param {number} [args.delay]  Time (in ms) which passes till the lookup is done.
   @param {boolean} [args.disabled]  All input widgets can be set to be disabled. If disabled, a widget cannot receive a focus, also a style cannot be changed in many browsers. There is no read-only. Also consult read-only vs disabled: http://www.w3.org/TR/html4/interact/forms.html#h-17.12
   @param {boolean} [args.displayBalloon]  hints and validation messages are displayed in a fly-over if user moves the mouse over the widget. Additionally, they are also displayed in a balloon in bottom-left corner of a browser window in a balloon, which is static and appears as long as the widget has focus.
-  @param {boolean} [args.doSortOptions]  Can be set to 'false' if the options should not be sorted alphabetically.
+  @param {boolean} [args.doSortOptions]  Can be set to 'true' if the options should be sorted alphabetically. This is disabled per default to avoid CPU wasting.
   @param {boolean} [args.enableNavPath]  Set to true if widget should be added to navpath handling.
+  @param {stringList} [args.filterBRefs]  The space separated list of binding Refs that will be used in filter clause of request document.
+  @param {string} [args.filterElement]  Custom filter element (f:And, f:Or, f:Not, f:Expression) in wrs-filter format, see filter-1.0.0.xsd or a string as required by bcdui.wrs.wrsUtil.parseFilterExpression or the result of it - note that the function allows filling in values without escaping issues if the filter is not fixed.
+  @param {function} [args.generateItemHtml]  Function to generate the html for one container item. Gets object with properties: value, caption, position; see implementation documentation to read more about the structure to return by this function.
   @param {i18nToken} [args.hint]  A general feature is the hint indicator on the widget so user can hover it with a mouse to reveal information about it. image aus theme intern handled by tooltip.
   @param {string} [args.id]  Id of the widget, if not provided this id will be auto-generated. Must be unique. The id must not be used from jQuery UI API, the id should be used within declarative scope only, i.e. X-API / JSP. If provided, this id will overwrite targetHtml element's id.
+  @param {i18nToken} [args.label]  If provided, enables widget to render a label element
+  @param {number} [args.maxRows]  Limit the result of the SQL lookup.
   @param {function} [args.onBeforeChange]  Handler function triggered before change, if false is returned, the change is rejected receives property map: {element = the widget element, dir = one of bcdui.widgetNg.chipsChooser.CHANGE_DIRECTION.*, scope = object with .items to move, which can also be modified (i.e. remove items not eligible to move)}
   @param {function} [args.onChange]  Handler function triggered after change
   @param {function} [args.onItemMoved]  Handler function triggered after an item was moved. Receives property map: {from = source, to = destination, dir = one of bcdui.widgetNg.connectable.CHANGE_DIRECTION.*}
   @param {xPath} [args.optionsModelRelativeValueXPath]  xPath expression relative to 'optionsModelXPath' providing values
+  @param {boolean} [args.preload]  Can be set to 'true' if the options (given by bindingSet and bRef) should get loaded completely on startup.
+  @param {boolean} [args.singleClick]  If true, single clicking an item moves it. Default is false.
+  @param {boolean} [args.singleSelect]  Can be set to 'true' if you want to limit the selection to one item only.
+  @param {function} [args.sortOptionsFunction]  a compareFunction(a,b) passed to Array.prototype.sort(); with a, b are objects with { caption, value } A function used to sort items in the connectable. The defaulting implementation uses alphabetic sorting on caption.
   @param {integer} [args.tabindex]  the HTML compliant tabIndex
   @param {targetHtmlRef} [args.targetHtml]  An existing HTML element this widget should be attached to, provide a dom element, a jQuery element or selector, or an element id.
+  @param {writableModelXPath} [args.targetModelXPathRight]  The xPath pointing to the root-node this input widget will place entered selected items into. The underlying XML format of data written is implemented by individual widget. If pointing into a Wrs, it switches to Wrs mode, i.e. the wrs:R will be marked as modified, target node will not be deleted.
+  @param {string} [args.upperTitle]  Optional title above upper area
+  @param {string} [args.upperTitleRight]  Optional title above upper right area, when targetModelXPathRight is used.
+  @param {url} [args.url]  The URL the model is loaded from. This URL can be extended with a compressed request document if a requestDocument parameter is provided. If omitted the WrsServlet is taken.
   @param {string} [args.widgetCaption]  A caption which is used as prefix for navPath generation for this widget.
+  @param {enum} [args.wildcard]  The wildcards apply to filtering within the drop down list and for server side filters. This option applies only if bound to a f:Expression element and is ignored otherwise. For a f:Filter with &commat;op='like', this controls the prefilling with wildcards ('*') when the value is yet empty and the field gets the focus. Can be 'contains', 'startswith' or 'endswith'. The user can overwrite this by adding/removing wildcards when editing the field.
   @param {string} [args.wrsInlineValueDelim]  Delimiter used for WRS read and write. Default is a slash.
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widgetNg.html#.createChipsChooser) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widgetNg.html#.createChipsChooser Online Api}
   @description Offers a ChipsChooser where you can select items on a source side and move them to a target side
@@ -3511,16 +3569,21 @@ bcdui.widgetNg.createChipsChooser = function(args) { console.log(args); };
   @param {function} [args.onBeforeChange]  Handler function triggered before change of this box only, if false is returned, the change is rejected receives property map: {element = the widget element, dir = one of bcdui.widgetNg.connectable.CHANGE_DIRECTION.*, scope = object with .items to move, which can also be modified (i.e. remove items not eligible to move)}
   @param {function} [args.onChange]  Handler function triggered after change. It's triggered on source AND destination of the change (e.g. source/target, target/source and target/target)
   @param {function} [args.onItemMoved]  Handler function triggered after an item was moved. Receives property map: {from = source, to = destination, dir = one of bcdui.widgetNg.connectable.CHANGE_DIRECTION.*}
+  @param {function} [args.onSelected]  Handler function triggered when at least of the connectable items changed its status from selected to unselected (or moved a selected). This may fire multiple times.
   @param {xPath} [args.optionsModelRelativeFilterPredicate]  xPath expression relative to 'optionsModelXPath' which can be used to filter options model items
   @param {xPath} [args.optionsModelRelativeValueXPath]  xPath expression relative to 'optionsModelXPath' providing values
   @param {writableModelXPath} [args.optionsModelXPath]  xPath pointing to an absolute xpath (starts with $model/..) providing a node-set of available options to display; especially this one supports cross references between models, i.e. $options / * / Value[&commat;id = $guiStatus / * / MasterValue]. If you specify an optionsmodelxpath, the box automatically acts as source.
   @param {boolean} [args.showLasso]  If true, you get a selection lasso. Default is true.
+  @param {boolean} [args.singleClick]  If true, single clicking an item moves it. Default is false.
+  @param {boolean} [args.singleSelect]  Can be set to 'true' if you want to limit the selection to one item only.
   @param {function} [args.sortOptionsFunction]  a compareFunction(a,b) passed to Array.prototype.sort(); with a, b are objects with { caption, value } A function used to sort items in the connectable. The defaulting implementation uses alphabetic sorting on caption.
   @param {integer} [args.tabindex]  the HTML compliant tabIndex
   @param {targetHtmlRef} [args.targetHtml]  An existing HTML element this widget should be attached to, provide a dom element, a jQuery element or selector, or an element id.
   @param {writableModelXPath} [args.targetModelXPath]  The xPath pointing to the root-node this input widget will place entered selected items into. The underlying XML format of data written is implemented by individual widget. If pointing into a Wrs, it switches to Wrs mode, i.e. the wrs:R will be marked as modified, target node will not be deleted. If you specify a targetmodelxpath, the box automatically acts as target
   @param {boolean} [args.unselectAfterMove]  If true, the items get unselected after being moved. Default is false.
   @param {string} [args.widgetCaption]  A caption which is used as prefix for navPath generation for this widget.
+  @param {enum} [args.wildcard]  The wildcards apply to filtering within the drop down list and for server side filters. This option applies only if bound to a f:Expression element and is ignored otherwise. For a f:Filter with &commat;op='like', this controls the prefilling with wildcards ('*') when the value is yet empty and the field gets the focus. Can be 'contains', 'startswith' or 'endswith'. The user can overwrite this by adding/removing wildcards when editing the field.
+  @param {boolean} [args.writeCaptions]  If true, target items also get a bcdCaption attribute holding the caption of the value. If used, you should add it to source and target connectables.
   @param {string} [args.wrsInlineValueDelim]  Delimiter used for WRS read and write. Default is a slash.
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widgetNg.html#.createConnectable) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widgetNg.html#.createConnectable Online Api}
   @description Offers a simple container with multi select, drag'n drop functionalities
@@ -3659,6 +3722,152 @@ bcdui.widgetNg.createComment = function(args) { console.log(args); };
   @memberOf bcdui.widgetNg
  */
 bcdui.widgetNg.createLabel = function(args) { console.log(args); };
+
+
+
+/**
+@param {Object} args  The parameter map contains the following properties.
+  @param {string} args.bindingSetId  Name of the binding set which is used for the lookup.
+  @param {string} args.bRef  BindingItem which is used for the lookup.
+  @param {modelXPath} args.optionsModelXPath  xPath pointing to an absolute xpath (starts with $model/..) providing a node-set of available options to display; especially this one supports cross references between models, i.e. $options / * / Value[&commat;id = $guiStatus / * / MasterValue]
+  @param {writableModelXPath} args.targetModelXPath  The xPath pointing to the root-node this input widget will place entered selected items into. The underlying XML format of data written is implemented by individual widget. If pointing into a Wrs, it switches to Wrs mode, i.e. the wrs:R will be marked as modified, target node will not be deleted.
+  @param {function} [args.applyListItemSelectionFunction]  this function is called when applying value from a dropdown selection (custom rendering mode only), it gets following parameters: (instance, htmlElementId, bcdCaption, bcdId) the bcdCaption is the string provided by options model and the bcdId is the value, in case provided by options model, too. The default implementation is executing { instance._syncWrite(htmlElementId, bcdCaption); }
+  @param {function} [args.asyncValidationFunction]  Like 'validationFunction' but this one must return a Promise resolving with validation result. While validating, the widget sets 'bcdValidationPending' CSS class on the owning html element. The value is written to the model after a positive validation result. If a Promise is rejected for any reason, the widget switches to invalid state.
+  @param {boolean} [args.autofocus]  requests the widget to set the focus once it is rendered or enabled for the first time. Only one widget can have a focus, so in case the focus is requested by many widgets it is undefined which one will win.
+  @param {(boolean|i18nToken)} [args.clearOption]  if enabled, there will be an option to clear the selection. This attribute may be true|false or a string, in latter case the option is considered enabled and a string follows the i18nToken type definition.
+  @param {number} [args.delay]  Time (in ms) which passes till the lookup is done.
+  @param {boolean} [args.disabled]  All input widgets can be set to be disabled. If disabled, a widget cannot receive a focus, also a style cannot be changed in many browsers. There is no read-only. Also consult read-only vs disabled: http://www.w3.org/TR/html4/interact/forms.html#h-17.12
+  @param {boolean} [args.disableNativeSupport]  This parameter disables native HTML5 support for this widget. Please read more on side-effects in widget documentation.
+  @param {boolean} [args.disableResetControl]  set this parameter to 'false' to enable built-in reset-control, which empties content once clicked.
+  @param {boolean} [args.displayBalloon]  hints and validation messages are displayed in a fly-over if user moves the mouse over the widget. Additionally, they are also displayed in a balloon in bottom-left corner of a browser window in a balloon, which is static and appears as long as the widget has focus.
+  @param {boolean} [args.doRetainInputSchema]  This option is 'false' per default, what means that the internal options model generates following schema: /Values/Value[&commat;caption]+ per matched item. The Value element itself holds the ID with optional &commat;caption attribute holding either ID or mapped caption in case optionsModelRelativeValueXPath is provided. In some cases you might want to work with internal options model and elements of the input document. Then you can enable this flag, which effictively disables any semantics, such as 'caption' or 'id' - as the internal options document will contain only matched elements from the input document, pay attention if you select an attribute in your xpath.
+  @param {boolean} [args.doSortOptions]  Can be set to 'true' if the options should be sorted alphabetically. This is disabled per default to avoid CPU wasting.
+  @param {boolean} [args.doTrimInput]  If enabled, the input is trimms leading/trailing spaces before writing to data model
+  @param {boolean} [args.enableNavPath]  Set to true if widget should be added to navpath handling.
+  @param {string} [args.filterElement]  Custom filter element (f:And, f:Or, f:Not, f:Expression) in wrs-filter format, see filter-1.0.0.xsd or a string as required by bcdui.wrs.wrsUtil.parseFilterExpression or the result of it - note that the function allows filling in values without escaping issues if the filter is not fixed.
+  @param {string} [args.filterFunction]  function name of filtering function receiving keystrokes; it gets { value, onComplete } and must call onComplete() callback once its done
+  @param {i18nToken} [args.hint]  A general feature is the hint indicator on the widget so user can hover it with a mouse to reveal information about it. image aus theme intern handled by tooltip.
+  @param {string} [args.id]  Id of the widget, if not provided this id will be auto-generated. Must be unique. The id must not be used from jQuery UI API, the id should be used within declarative scope only, i.e. X-API / JSP. If provided, this id will overwrite targetHtml element's id.
+  @param {boolean} [args.isSync]  Uses synchronously validation when set to true. This also disables the use of asyncValidationFunction. Only necessary for setups where you can't handle waiting for the async write of data (e.g. grid widgets)
+  @param {boolean} [args.isTextSelectedOnFocus]  if set, the text will be selected once the field gets a focus, so that further user input will replace the content. In case 'setCursorPositionAtEnd' is also set to true - this option has precedence.
+  @param {boolean} [args.keepEmptyValueExpression]  A flag that can be set to 'true' if the target node should not be removed as soon as the value is empty. TODO: better spec
+  @param {i18nToken} [args.label]  If provided, enables widget to render a label element
+  @param {integer} [args.maxlength]  if defined, limits the input to the given length.
+  @param {xPath} [args.optionsModelRelativeValueXPath]  xPath expression relative to 'optionsModelXPath' providing values
+  @param {string} [args.optionsRendererId]  * only applies to non-native implementation of this widget - to use this option you have to flag disableNativeSupport * The renderer provided here *must* exist prior binding to widget, that is it has to be known to ObjectRegistry at this time. At is recommended to construct your renderer with suppressInitialRendering=true, so that it does not run at the construction time and also provide targetHTMLElementId pointing to invisible container, since the renderer would reset containers CSS class having visual effects at construction time. Default options rendering stylesheet is located at /bcdui/widgetNg/suggestInput/optionsRenderer.xslt but you can provide your own here; the transformation has to output HTML with root element DIV containing block elements each representing an inidivual value. The children elements provides the value via bcdValue attribute. The rendered list is displayed in a dialog so user can pick-up an item. After that, the value is written to model which is found at bcdValue attribute. This way you can render complex HTML content. Recommended format is: div[div[&commat;bcdValue]*] You can also respect current widget value i.e. to implement prefiltering, the values are provided as parameters to the stylesheet. Please refer to original stylesheet documentation for more information and parameters which are provided during transformation. the targetHTMLElementId of the renderer is automatically bound to internal options list box, the input document to this renderer is the options-model of the widget.
+  @param {string} [args.pattern]  regular expression pattern to validate the input
+  @param {i18nToken} [args.placeholder]  A default text displayed if no content was entered, this is i18n key or true for default. May be empty to display nothing.
+  @param {boolean} [args.required]  An empty string or not set value is not allowed if required is true. Disabled fields are not evaluated.
+  @param {number} [args.rowEnd]  Limit the result of the SQL lookup.
+  @param {boolean} [args.setCursorPositionAtEnd]  if set the cursor position will always be at the end of the input once the input field gets a focus
+  @param {integer} [args.suggestItemCount]  Number of items to suggest during typing, this applies to non-native implementation only.
+  @param {integer} [args.tabindex]  the HTML compliant tabIndex
+  @param {targetHtmlRef} [args.targetHtml]  An existing HTML element this widget should be attached to, provide a dom element, a jQuery element or selector, or an element id.
+  @param {string} [args.validationFunction]  Name of a widget validator function which will be attached additionally to implicit validators. the API of given function is: validatorFunction(htmlElementId) : returns either NULL or object containing validationMessage (String or array of Strings) property, i.e. { validationMessage : String } or { validationMessage[] : String[] }, the validationMessage carries the message to be displayed to the user. The String may start with bcdui.i18n.TAG character to classify an i18n-key of the message, rather than a message itself. the args parameter is the htmlElementId of the widget to validate. Please use: bcdui.widgetNg.validation.validators.widget.getValue(htmlElementId) to properly retrieve widgets value. There is only one validator function allowed. In order to use or re-use or combine existing validations please do so in your validationFunction (that is delegate to other validators) and simply aggregate validation results into array of validationMessage[] This validator MUST ignore NULL or empty value.
+  @param {string} [args.widgetCaption]  A caption which is used as prefix for navPath generation for this widget.
+  @param {enum} [args.wildcard]  The wildcards apply to filtering within the drop down list and for server side filters. This option applies only if bound to a f:Expression element and is ignored otherwise. For a f:Filter with &commat;op='like', this controls the prefilling with wildcards ('*') when the value is yet empty and the field gets the focus. Can be 'contains', 'startswith' or 'endswith'. The user can overwrite this by adding/removing wildcards when editing the field.
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widgetNg.html#.createInputLookup) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widgetNg.html#.createInputLookup Online Api}
+  @description An easy to use suggestInput widget with server sided filling of a data given by binding and bindingItem.
+  @method createInputLookup
+@example
+  //<pre>
+  // Sample using the mandatory parameters
+  bcdui.widgetNg.createInputLookup( { bindingSetId: bindingSetId, bRef: bRef, optionsModelXPath: optionsModelXPath, targetModelXPath: targetModelXPath } );
+  //</pre>
+  @memberOf bcdui.widgetNg
+ */
+bcdui.widgetNg.createInputLookup = function(args) { console.log(args); };
+
+
+
+/**
+@param {Object} args  The parameter map contains the following properties.
+  @param {modelXPath} args.optionsModelXPath  xPath pointing to an absolute xpath (starts with $model/..) providing a node-set of available options to display; especially this one supports cross references between models, i.e. $options / * / Value[&commat;id = $guiStatus / * / MasterValue]
+  @param {writableModelXPath} args.targetModelXPath  The xPath pointing to the root-node this input widget will place entered selected items into. The underlying XML format of data written is implemented by individual widget. If pointing into a Wrs, it switches to Wrs mode, i.e. the wrs:R will be marked as modified, target node will not be deleted.
+  @param {boolean} [args.autofocus]  requests the widget to set the focus once it is rendered or enabled for the first time. Only one widget can have a focus, so in case the focus is requested by many widgets it is undefined which one will win.
+  @param {boolean} [args.disabled]  All input widgets can be set to be disabled. If disabled, a widget cannot receive a focus, also a style cannot be changed in many browsers. There is no read-only. Also consult read-only vs disabled: http://www.w3.org/TR/html4/interact/forms.html#h-17.12
+  @param {boolean} [args.displayBalloon]  hints and validation messages are displayed in a fly-over if user moves the mouse over the widget. Additionally, they are also displayed in a balloon in bottom-left corner of a browser window in a balloon, which is static and appears as long as the widget has focus.
+  @param {boolean} [args.doSortOptions]  Can be set to 'true' if the options should be sorted using the 'sortOptionsFunction' function. This is disabled per default to avoid CPU wasting.
+  @param {boolean} [args.enableNavPath]  Set to true if widget should be added to navpath handling.
+  @param {i18nToken} [args.hint]  A general feature is the hint indicator on the widget so user can hover it with a mouse to reveal information about it. image aus theme intern handled by tooltip.
+  @param {string} [args.id]  Id of the widget, if not provided this id will be auto-generated. Must be unique. The id must not be used from jQuery UI API, the id should be used within declarative scope only, i.e. X-API / JSP. If provided, this id will overwrite targetHtml element's id.
+  @param {i18nToken} [args.label]  If provided, enables widget to render a label element
+  @param {xPath} [args.optionsModelRelativeParentXPath]  xPath expression relative to 'optionsModelXPath' providing values for the parent, this should correspond to the same data type as the value of the options model.
+  @param {xPath} [args.optionsModelRelativeValueXPath]  xPath expression relative to 'optionsModelXPath' providing values
+  @param {boolean} [args.singleSelect]  Can be set to 'true' if you want to limit the selection to one item only.
+  @param {integer} [args.tabindex]  the HTML compliant tabIndex
+  @param {targetHtmlRef} [args.targetHtml]  An existing HTML element this widget should be attached to, provide a dom element, a jQuery element or selector, or an element id.
+  @param {string} [args.widgetCaption]  A caption which is used as prefix for navPath generation for this widget.
+  @param {enum} [args.wildcard]  The wildcards apply to filtering within the drop down list and for server side filters. This option applies only if bound to a f:Expression element and is ignored otherwise. For a f:Filter with &commat;op='like', this controls the prefilling with wildcards ('*') when the value is yet empty and the field gets the focus. Can be 'contains', 'startswith' or 'endswith'. The user can overwrite this by adding/removing wildcards when editing the field.
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widgetNg.html#.createMultiCheck) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widgetNg.html#.createMultiCheck Online Api}
+  @description Renders a multiCheck widget with checkboxes for selection.
+  @method createMultiCheck
+@example
+  //<pre>
+  // Sample using the mandatory parameters
+  bcdui.widgetNg.createMultiCheck( { optionsModelXPath: optionsModelXPath, targetModelXPath: targetModelXPath } );
+  //</pre>
+  @memberOf bcdui.widgetNg
+ */
+bcdui.widgetNg.createMultiCheck = function(args) { console.log(args); };
+
+
+
+/**
+@param {Object} args  The parameter map contains the following properties.
+  @param {writableModelXPath} args.targetModelXPath  The xPath pointing to the root-node this input widget will place entered selected items into. The underlying XML format of data written is implemented by individual widget.
+  @param {boolean} [args.autofocus]  requests the widget to set the focus once it is rendered or enabled for the first time. Only one widget can have a focus, so in case the focus is requested by many widgets it is undefined which one will win.
+  @param {boolean} [args.disabled]  All input widgets can be set to be disabled. If disabled, a widget cannot receive a focus, also a style cannot be changed in many browsers. There is no read-only. Also consult read-only vs disabled: http://www.w3.org/TR/html4/interact/forms.html#h-17.12
+  @param {boolean} [args.displayBalloon]  hints and validation messages are displayed in a fly-over if user moves the mouse over the widget. Additionally, they are also displayed in a balloon in bottom-left corner of a browser window in a balloon, which is static and appears as long as the widget has focus.
+  @param {boolean} [args.enableNavPath]  Set to true if widget should be added to navpath handling.
+  @param {i18nToken} [args.hint]  A general feature is the hint indicator on the widget so user can hover it with a mouse to reveal information about it. image aus theme intern handled by tooltip.
+  @param {string} [args.id]  Id of the widget, if not provided this id will be auto-generated. Must be unique. The id must not be used from jQuery UI API, the id should be used within declarative scope only, i.e. X-API / JSP. If provided, this id will overwrite targetHtml element's id.
+  @param {boolean} [args.isScorecard]  Can be set to 'true' if ranking is used for a scorecard. In this case scc: prefix is used.
+  @param {i18nToken} [args.label]  If provided, enables widget to render a label element
+  @param {number} [args.limit]  Limit the number of possible rankings.
+  @param {xPath} [args.optionsModelRelativeValueXPathDimensions]  xPath expression relative to 'optionsModelXPath' providing values for options to display, if this is defined, values referenced by optionsModelXPath are treated as captions. Wins over &commat;caption and &commat;ignoreCaption param.
+  @param {xPath} [args.optionsModelRelativeValueXPathMeasures]  xPath expression relative to 'optionsModelXPath' providing values for options to display, if this is defined, values referenced by optionsModelXPath are treated as captions. Wins over &commat;caption and &commat;ignoreCaption param.
+  @param {xPath} [args.optionsModelXPathDimensions]  xPath pointing to an absolute xpath (starts with $model/..) providing a node-set of available options to display; especially this one supports cross references between models, i.e. $options / * / Value[&commat;id = $guiStatus / * / MasterValue]
+  @param {xPath} [args.optionsModelXPathMeasures]  xPath pointing to an absolute xpath (starts with $model/..) providing a node-set of available options to display; especially this one supports cross references between models, i.e. $options / * / Value[&commat;id = $guiStatus / * / MasterValue]
+  @param {integer} [args.tabindex]  the HTML compliant tabIndex
+  @param {targetHtmlRef} [args.targetHtml]  An existing HTML element this widget should be attached to, provide a dom element, a jQuery element or selector, or an element id.
+  @param {string} [args.widgetCaption]  A caption which is used as prefix for navPath generation for this widget.
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widgetNg.html#.createRankingChooser) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widgetNg.html#.createRankingChooser Online Api}
+  @description Offers a ranking chooser where you can select dimensions and measures for a ranking operation
+  @method createRankingChooser
+@example
+  //<pre>
+  // Sample using the mandatory parameters
+  bcdui.widgetNg.createRankingChooser( { targetModelXPath: targetModelXPath } );
+  //</pre>
+  @memberOf bcdui.widgetNg
+ */
+bcdui.widgetNg.createRankingChooser = function(args) { console.log(args); };
+
+
+
+/**
+@param {Object} args  The parameter map contains the following properties.
+  @param {boolean} [args.autofocus]  requests the widget to set the focus once it is rendered or enabled for the first time. Only one widget can have a focus, so in case the focus is requested by many widgets it is undefined which one will win.
+  @param {boolean} [args.disabled]  All input widgets can be set to be disabled. If disabled, a widget cannot receive a focus, also a style cannot be changed in many browsers. There is no read-only. Also consult read-only vs disabled: http://www.w3.org/TR/html4/interact/forms.html#h-17.12
+  @param {boolean} [args.displayBalloon]  hints and validation messages are displayed in a fly-over if user moves the mouse over the widget. Additionally, they are also displayed in a balloon in bottom-left corner of a browser window in a balloon, which is static and appears as long as the widget has focus.
+  @param {boolean} [args.enableNavPath]  Set to true if widget should be added to navpath handling.
+  @param {i18nToken} [args.hint]  A general feature is the hint indicator on the widget so user can hover it with a mouse to reveal information about it. image aus theme intern handled by tooltip.
+  @param {string} [args.id]  Id of the widget, if not provided this id will be auto-generated. Must be unique. The id must not be used from jQuery UI API, the id should be used within declarative scope only, i.e. X-API / JSP. If provided, this id will overwrite targetHtml element's id.
+  @param {integer} [args.tabindex]  the HTML compliant tabIndex
+  @param {targetHtmlRef} [args.targetHtml]  An existing HTML element this widget should be attached to, provide a dom element, a jQuery element or selector, or an element id.
+  @param {string} [args.widgetCaption]  A caption which is used as prefix for navPath generation for this widget.
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widgetNg.html#.createLogin) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widgetNg.html#.createLogin Online Api}
+  @description a login-widget, can be used as custom element, if contents are provided they are not replaced and the widget operates on given child model
+  @method createLogin
+@example
+  //<pre>
+  // Sample using the mandatory parameters
+  bcdui.widgetNg.createLogin( { } );
+  //</pre>
+  @memberOf bcdui.widgetNg
+ */
+bcdui.widgetNg.createLogin = function(args) { console.log(args); };
 
 
 
@@ -3869,6 +4078,44 @@ bcdui.widgetNg.input.getNavPath = function(id, callback) { console.log(id, callb
 
 
 /**
+ * @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widgetNg.login.html) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widgetNg.login.html Online Api}
+ * @description For creation &commat;see {@link bcdui.widgetNg.createLogin}
+ * @namespace 
+ */
+bcdui.widgetNg.login = {};
+
+
+
+/**
+@param {string} id  targetHtml of widget
+  @param {function} callback  to be called with generated caption
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widgetNg.login.html#.getNavPath) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widgetNg.login.html#.getNavPath Online Api}
+  @description 
+  @method getNavPath
+@example
+  //<pre>
+  // Sample using the mandatory parameters
+  var ret = bcdui.widgetNg.login.getNavPath( id, callback );
+  //</pre>
+  @return {string} NavPath information via callback for widget
+@memberOf bcdui.widgetNg.login
+ */
+bcdui.widgetNg.login.getNavPath = function(id, callback) { console.log(id, callback); };
+
+
+
+/**
+@param redirectUrl
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widgetNg.login.html#.oAuthLoginOnSuccess) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widgetNg.login.html#.oAuthLoginOnSuccess Online Api}
+  @description To support OAuth flow with cookie SameSite strict, we work with a client-site redirect here which is triggered from within the popup by a script send from OAuthAuthenticatingFilter on login success This way we get the cookie and stay in the successfully validated session
+  @method oAuthLoginOnSuccess
+@memberOf bcdui.widgetNg.login
+ */
+bcdui.widgetNg.login.oAuthLoginOnSuccess = function(redirectUrl) { console.log(redirectUrl); };
+
+
+
+/**
  * @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widgetNg.sideBySideChooser.html) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widgetNg.sideBySideChooser.html Online Api}
  * @description A namespace for the BCD-UI sideBySideChooser widget. For creation &commat;see {@link bcdui.widgetNg.createSideBySideChooser}
  * @namespace 
@@ -4054,7 +4301,7 @@ bcdui.widgetNg.validation.validateField = function(htmlElementId, customValidati
 
 /**
 @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widgetNg.validation.html#.setCustomValidity) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.widgetNg.validation.html#.setCustomValidity Online Api}
-  @description sets custom validity, use html5 constraint validation API if available, otherwise polyfill, ensures that following properties are set properly:  (Boolean) validity.valid (Boolean) validity.customError (String)  validationMessage (is set to "INVALID") in case of non-validity
+  @description sets custom validity, use html5 constraint validation API ensures that following properties are set properly: (Boolean) validity.valid (Boolean) validity.customError (String)  validationMessage (is set to "INVALID") in case of non-validity
   @method setCustomValidity
 @memberOf bcdui.widgetNg.validation
  */
@@ -4812,6 +5059,46 @@ bcdui.wrs.wrsUtil.parseFilterExpression = function(expression, params) { console
 
 
 /**
+@param {Document} doc  the document to operate on
+  @param {string} xPath  xPath pointing to value (can include dot template placeholders which get filled with the given params)
+  @param {Object} [params]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions
+  @param {string} [defaultValue]  default value in case xPath value does not exist
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.wrs.wrsUtil.html#.read) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.wrs.wrsUtil.html#.read Online Api}
+  @description Reads the string value from a given xPath (or optionally return default value).
+  @method read
+@example
+  //<pre>
+  // Sample using the mandatory parameters
+  var ret = bcdui.wrs.wrsUtil.read( doc, xPath );
+  //</pre>
+  @return text value stored at xPath (or null if no text was found and no defaultValue supplied)
+@memberOf bcdui.wrs.wrsUtil
+ */
+bcdui.wrs.wrsUtil.read = function(doc, xPath, params, defaultValue) { console.log(doc, xPath, params, defaultValue); };
+
+
+
+/**
+@param {Document} doc  the document to operate on
+  @param {string} xPath  xPath pointing to the node which is set to the value value or plain xPath to be created if not there. It tries to reuse all matching parts that are already there. If you provide for example "/n:Root/n:MyElem/&commat;attr2" and there is already "/n:Root/n:MyElem/&commat;attr1", then "/n:Root/n:MyElem" will be "re-used" and get an additional attribute attr2. Many expressions are allowed, for example "/n:Root/n:MyElem[&commat;attr1='attr1Value']/n:SubElem" is also ok. By nature, some xPath expressions are not allowed, for example using '//' or "/n:Root/n:MyElem/[&commat;attr1 or &commat;attr2]/n:SubElem" is obviously not unambiguous enough and will throw an error. This method is Wrs aware, use for example '/wrs:Wrs/wrs:Data/wrs:*[2]/wrs:C[3]' as xPath and it will turn wrs:R[wrs:C] into wrs:M[wrs:C and wrs:O], see Wrs format. (can include dot template placeholders which get filled with the given params)
+  @param {Object} [params]  array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions Example: bcdui.wkModels.guiStatus.write("/guiStatus:Status/guiStatus:ClientSettings/guiStatus:Test[&commat;caption='{{=it[0]}}' and &commat;caption2='{{=it[1]}}']", ["china's republic", "drag\"n drop"])
+  @param {string} [value]  Optional value which should be written, for example to "/n:Root/n:MyElem/&commat;attr" or with "/n:Root/n:MyElem" as the element's text content. If not provided, the xPath contains all values like in "/n:Root/n:MyElem[&commat;attr='a' and &commat;attr1='b']" or needs none like "/n:Root/n:MyElem"
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.wrs.wrsUtil.html#.write) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.wrs.wrsUtil.html#.write Online Api}
+  @description Set a value to on a certain xPath and create the xPath where necessary. This combines Element.evaluate() for a single node with creating the path where necessary. It will prefer extending an existing start-part over creating a second one. After the operation the xPath (with the optional value) is guaranteed to exist (pre-existing or created or extended) and the addressed node is returned.
+  @method write
+@example
+  //<pre>
+  // Sample using the mandatory parameters
+  var ret = bcdui.wrs.wrsUtil.write( doc, xPath );
+  //</pre>
+  @return {Node} the resulting element (either newly created or existing one)
+@memberOf bcdui.wrs.wrsUtil
+ */
+bcdui.wrs.wrsUtil.write = function(doc, xPath, params, value) { console.log(doc, xPath, params, value); };
+
+
+
+/**
  * @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/jQuery.fn.html) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/jQuery.fn.html Online Api}
  * @description Custom BCD-UI utility functions provided as jQuery Plugins
  * @namespace 
@@ -4916,15 +5203,15 @@ jQuery.fn.bcdRender = function(bcdRendererArgs) { console.log(bcdRendererArgs); 
  * <br/>You can provide
  * <ul>
  *   <li>A single DataProvider, holding a chain definition following XML Schema 'chain-1.0.0.xsd'. Or
- *   <li>A single string holding the url of an xslt document (*.xslt) or a doT.js file (*.dott). Or
+ *   <li>A single string holding the url of an xslt document (*.xslt) or a js template literate file (*.jstlit). Or
  *   <li>A javascript transformator function, representing a transformation. Such a function gets two parameters, data, like a DOM or JSON, whatever DataProvider.getData() returns
  *       and a parameter object, which maps parameter names to the actual parameters. It can return a new data object or modify the one, which was its input.
  *       It it does not return anything, its (modified) input doc is used as return default. Or
  *   <li>An array of such strings and functions in the order they are to be executed. In this case, the output of the n-th transformation becomes the input of n+1.
  * </ul>
  * @example <caption>These are all valid values for a chainDef:</caption>
- * "myStylesheet.xslt"                         // An <b>url</b> pointing to an *.xslt or a *.dott file
- * ["myTrans.dott", jsTrans]                   // An <b>array</b> of transformators, can be urls (doT.js or xslt) and js functions
+ * "myStylesheet.xslt"                         // An <b>url</b> pointing to an *.xslt or a *.jstlit file
+ * ["myTrans.jstlit", jsTrans]                 // An <b>array</b> of transformators, can be urls (js template literate or xslt) and js functions
  * new bcdui.core.StaticModel(...)             // A <b>DataProvider subclass</b>, providing an xml chain definition according to chain-1.0.0.xsd
  * function jsTrans(doc, params) {             // A <b>js function</b>, expecting a data object (DOM or JSON)
  *   var n = doc.getElementById('someId');
@@ -5385,6 +5672,53 @@ bcdui.core.DataProvider = class extends bcdui.core.AbstractExecutable{
   */
   read(xPath,fillParams,defaultValue) { console.log(xPath,fillParams,defaultValue); }
   /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProvider.html#tblInsert) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProvider.html#tblInsert Online Api}
+  @description inserts a new row in the wrs data, values given as object
+  @param {Object} args.values  object holding cell values which should be inserted, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:I syntax when this is true, otherwise wrs:R is used, rmi=true also prefills default values
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @return row id of newly inserted row
+  */
+  tblInsert() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProvider.html#tblUpdate) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProvider.html#tblUpdate Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} args.values  object holding cell values which should be used for updating, e.g. { country: 'DE', flag: true }
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be update (or use filter)
+  @return number of updated rows
+  */
+  tblUpdate() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProvider.html#tblDelete) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProvider.html#tblDelete Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be deleted (or use filter)
+  @return number of removed rows
+  */
+  tblDelete() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProvider.html#tblSelect) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProvider.html#tblSelect Online Api}
+  @description returns an array of requested data
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @return array of objects holding the requested data
+  */
+  tblSelect() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProvider.html#tblSelectRow) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProvider.html#tblSelectRow Online Api}
+  @description returns one object representing the filtered data (either filter or rowId). In case of multiple filter matches, the first one is returned
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {string} [args.rowId]  rowId of row which should be queried (or use filter)
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @return array of objects holding the requested data
+  */
+  tblSelectRow() {}
+  /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProvider.html#write) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProvider.html#write Online Api}
   @description Set a value to on a certain xPath and create the xPath where necessary. This combines Element.evaluate() for a single node with creating the path where necessary. It will prefer extending an existing start-part over creating a second one. After the operation the xPath (with the optional value) is guaranteed to exist (pre-existing or created or extended) and the addressed node is returned.
   @param {string} xPath  xPath pointing to the node which is set to the value value or plain xPath to be created if not there. It tries to reuse all matching parts that are already there. If you provide for example "/n:Root/n:MyElem/&commat;attr2" and there is already "/n:Root/n:MyElem/&commat;attr1", then "/n:Root/n:MyElem" will be "re-used" and get an additional attribute attr2. Many expressions are allowed, for example "/n:Root/n:MyElem[&commat;attr1='attr1Value']/n:SubElem" is also ok. By nature, some xPath expressions are not allowed, for example using '//' or "/n:Root/n:MyElem/[&commat;attr1 or &commat;attr2]/n:SubElem" is obviously not unambiguous enough and will throw an error. This method is Wrs aware, use for example '/wrs:Wrs/wrs:Data/wrs:*[2]/wrs:C[3]' as xPath and it will turn wrs:R[wrs:C] into wrs:M[wrs:C and wrs:O], see Wrs format. (can include dot template placeholders which get filled with the given fillParams)
@@ -5530,27 +5864,6 @@ bcdui.core.DataProvider = class extends bcdui.core.AbstractExecutable{
   @overrides bcdui.core.AbstractExecutable#onReady
   */
   onReady(listenerObject) { console.log(listenerObject); }
-
-}
-
-
-
-/**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.browserCompatibility.ie.XHRwithFreeThreadedDocuments.html) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.browserCompatibility.ie.XHRwithFreeThreadedDocuments.html Online Api}
-  @description A class implementing the XmlHttpRequest interface for Internet Explorer so that it always created "FreeThreadedDOMDocuments". The default IE implementation creates non free-threaded document which cannot be used to create an XSLT processor. This bug is worked around by this class.  Sadly, we cannot switch to new (IE9) XMLHttpRequest. Because A) The new native docs do not support Xpath and b) By setting responseType = 'msxml-document' we can get MSXML docs instead of the native ones, having support for xPath, but the version then is only IXMLDomDocument2, which is incompatible with Msxml2.XSLTemplate.6.0 (being IXMLDomDocument3), XSLTProcessor will complain when using it as a parameter to a stylesheet.
-  */
-bcdui.core.browserCompatibility.ie.XHRwithFreeThreadedDocuments = class {
-  /**
-  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.browserCompatibility.ie.XHRwithFreeThreadedDocuments.html) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.browserCompatibility.ie.XHRwithFreeThreadedDocuments.html Online Api}
-  @description A class implementing the XmlHttpRequest interface for Internet Explorer so that it always created "FreeThreadedDOMDocuments". The default IE implementation creates non free-threaded document which cannot be used to create an XSLT processor. This bug is worked around by this class.  Sadly, we cannot switch to new (IE9) XMLHttpRequest. Because A) The new native docs do not support Xpath and b) By setting responseType = 'msxml-document' we can get MSXML docs instead of the native ones, having support for xPath, but the version then is only IXMLDomDocument2, which is incompatible with Msxml2.XSLTemplate.6.0 (being IXMLDomDocument3), XSLTProcessor will complain when using it as a parameter to a stylesheet.
-    */
-  constructor(){ console.log(); }
-  _doReadyStateChange_xml() {}
-  _doReadyStateChange_noXML() {}
-  open() {}
-  setRequestHeader() {}
-  getAllResponseHeaders() {}
-  send() {}
 
 }
 
@@ -6024,6 +6337,63 @@ bcdui.core.PromptDataProvider = class extends bcdui.core.DataProvider{
   */
   read(xPath,fillParams,defaultValue) { console.log(xPath,fillParams,defaultValue); }
   /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.PromptDataProvider.html#tblInsert) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.PromptDataProvider.html#tblInsert Online Api}
+  @description inserts a new row in the wrs data, values given as object
+  @param {Object} args.values  object holding cell values which should be inserted, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:I syntax when this is true, otherwise wrs:R is used, rmi=true also prefills default values
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @inherits bcdui.core.DataProvider#tblInsert
+  @overrides bcdui.core.DataProvider#tblInsert
+  @return row id of newly inserted row
+  */
+  tblInsert() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.PromptDataProvider.html#tblUpdate) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.PromptDataProvider.html#tblUpdate Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} args.values  object holding cell values which should be used for updating, e.g. { country: 'DE', flag: true }
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be update (or use filter)
+  @inherits bcdui.core.DataProvider#tblUpdate
+  @overrides bcdui.core.DataProvider#tblUpdate
+  @return number of updated rows
+  */
+  tblUpdate() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.PromptDataProvider.html#tblDelete) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.PromptDataProvider.html#tblDelete Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be deleted (or use filter)
+  @inherits bcdui.core.DataProvider#tblDelete
+  @overrides bcdui.core.DataProvider#tblDelete
+  @return number of removed rows
+  */
+  tblDelete() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.PromptDataProvider.html#tblSelect) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.PromptDataProvider.html#tblSelect Online Api}
+  @description returns an array of requested data
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelect
+  @overrides bcdui.core.DataProvider#tblSelect
+  @return array of objects holding the requested data
+  */
+  tblSelect() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.PromptDataProvider.html#tblSelectRow) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.PromptDataProvider.html#tblSelectRow Online Api}
+  @description returns one object representing the filtered data (either filter or rowId). In case of multiple filter matches, the first one is returned
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {string} [args.rowId]  rowId of row which should be queried (or use filter)
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelectRow
+  @overrides bcdui.core.DataProvider#tblSelectRow
+  @return array of objects holding the requested data
+  */
+  tblSelectRow() {}
+  /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.PromptDataProvider.html#write) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.PromptDataProvider.html#write Online Api}
   @description Set a value to on a certain xPath and create the xPath where necessary. This combines Element.evaluate() for a single node with creating the path where necessary. It will prefer extending an existing start-part over creating a second one. After the operation the xPath (with the optional value) is guaranteed to exist (pre-existing or created or extended) and the addressed node is returned.
   @param {string} xPath  xPath pointing to the node which is set to the value value or plain xPath to be created if not there. It tries to reuse all matching parts that are already there. If you provide for example "/n:Root/n:MyElem/&commat;attr2" and there is already "/n:Root/n:MyElem/&commat;attr1", then "/n:Root/n:MyElem" will be "re-used" and get an additional attribute attr2. Many expressions are allowed, for example "/n:Root/n:MyElem[&commat;attr1='attr1Value']/n:SubElem" is also ok. By nature, some xPath expressions are not allowed, for example using '//' or "/n:Root/n:MyElem/[&commat;attr1 or &commat;attr2]/n:SubElem" is obviously not unambiguous enough and will throw an error. This method is Wrs aware, use for example '/wrs:Wrs/wrs:Data/wrs:*[2]/wrs:C[3]' as xPath and it will turn wrs:R[wrs:C] into wrs:M[wrs:C and wrs:O], see Wrs format. (can include dot template placeholders which get filled with the given fillParams)
@@ -6253,6 +6623,63 @@ bcdui.core.ConstantDataProvider = class extends bcdui.core.DataProvider{
   @return text value stored at xPath (or null if no text was found and no defaultValue supplied)
   */
   read(xPath,fillParams,defaultValue) { console.log(xPath,fillParams,defaultValue); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ConstantDataProvider.html#tblInsert) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ConstantDataProvider.html#tblInsert Online Api}
+  @description inserts a new row in the wrs data, values given as object
+  @param {Object} args.values  object holding cell values which should be inserted, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:I syntax when this is true, otherwise wrs:R is used, rmi=true also prefills default values
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @inherits bcdui.core.DataProvider#tblInsert
+  @overrides bcdui.core.DataProvider#tblInsert
+  @return row id of newly inserted row
+  */
+  tblInsert() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ConstantDataProvider.html#tblUpdate) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ConstantDataProvider.html#tblUpdate Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} args.values  object holding cell values which should be used for updating, e.g. { country: 'DE', flag: true }
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be update (or use filter)
+  @inherits bcdui.core.DataProvider#tblUpdate
+  @overrides bcdui.core.DataProvider#tblUpdate
+  @return number of updated rows
+  */
+  tblUpdate() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ConstantDataProvider.html#tblDelete) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ConstantDataProvider.html#tblDelete Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be deleted (or use filter)
+  @inherits bcdui.core.DataProvider#tblDelete
+  @overrides bcdui.core.DataProvider#tblDelete
+  @return number of removed rows
+  */
+  tblDelete() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ConstantDataProvider.html#tblSelect) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ConstantDataProvider.html#tblSelect Online Api}
+  @description returns an array of requested data
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelect
+  @overrides bcdui.core.DataProvider#tblSelect
+  @return array of objects holding the requested data
+  */
+  tblSelect() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ConstantDataProvider.html#tblSelectRow) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ConstantDataProvider.html#tblSelectRow Online Api}
+  @description returns one object representing the filtered data (either filter or rowId). In case of multiple filter matches, the first one is returned
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {string} [args.rowId]  rowId of row which should be queried (or use filter)
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelectRow
+  @overrides bcdui.core.DataProvider#tblSelectRow
+  @return array of objects holding the requested data
+  */
+  tblSelectRow() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ConstantDataProvider.html#write) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ConstantDataProvider.html#write Online Api}
   @description Set a value to on a certain xPath and create the xPath where necessary. This combines Element.evaluate() for a single node with creating the path where necessary. It will prefer extending an existing start-part over creating a second one. After the operation the xPath (with the optional value) is guaranteed to exist (pre-existing or created or extended) and the addressed node is returned.
@@ -6511,6 +6938,63 @@ bcdui.core.DataProviderHolder = class extends bcdui.core.DataProvider{
   debugIsWaitingFor() {}
   debugStatus() {}
   /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHolder.html#tblInsert) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHolder.html#tblInsert Online Api}
+  @description inserts a new row in the wrs data, values given as object
+  @param {Object} args.values  object holding cell values which should be inserted, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:I syntax when this is true, otherwise wrs:R is used, rmi=true also prefills default values
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @inherits bcdui.core.DataProvider#tblInsert
+  @overrides bcdui.core.DataProvider#tblInsert
+  @return row id of newly inserted row
+  */
+  tblInsert() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHolder.html#tblUpdate) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHolder.html#tblUpdate Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} args.values  object holding cell values which should be used for updating, e.g. { country: 'DE', flag: true }
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be update (or use filter)
+  @inherits bcdui.core.DataProvider#tblUpdate
+  @overrides bcdui.core.DataProvider#tblUpdate
+  @return number of updated rows
+  */
+  tblUpdate() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHolder.html#tblDelete) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHolder.html#tblDelete Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be deleted (or use filter)
+  @inherits bcdui.core.DataProvider#tblDelete
+  @overrides bcdui.core.DataProvider#tblDelete
+  @return number of removed rows
+  */
+  tblDelete() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHolder.html#tblSelect) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHolder.html#tblSelect Online Api}
+  @description returns an array of requested data
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelect
+  @overrides bcdui.core.DataProvider#tblSelect
+  @return array of objects holding the requested data
+  */
+  tblSelect() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHolder.html#tblSelectRow) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHolder.html#tblSelectRow Online Api}
+  @description returns one object representing the filtered data (either filter or rowId). In case of multiple filter matches, the first one is returned
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {string} [args.rowId]  rowId of row which should be queried (or use filter)
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelectRow
+  @overrides bcdui.core.DataProvider#tblSelectRow
+  @return array of objects holding the requested data
+  */
+  tblSelectRow() {}
+  /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHolder.html#serialize) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHolder.html#serialize Online Api}
   @description Serialize dataprovider's data if available
   @inherits bcdui.core.DataProvider#serialize
@@ -6744,6 +7228,63 @@ bcdui.core.DataProviderAlias = class extends bcdui.core.DataProviderHolder{
   promptData() {}
   debugIsWaitingFor() {}
   debugStatus() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#tblInsert) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#tblInsert Online Api}
+  @description inserts a new row in the wrs data, values given as object
+  @param {Object} args.values  object holding cell values which should be inserted, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:I syntax when this is true, otherwise wrs:R is used, rmi=true also prefills default values
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @inherits bcdui.core.DataProvider#tblInsert
+  @overrides bcdui.core.DataProviderHolder#tblInsert
+  @return row id of newly inserted row
+  */
+  tblInsert() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#tblUpdate) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#tblUpdate Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} args.values  object holding cell values which should be used for updating, e.g. { country: 'DE', flag: true }
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be update (or use filter)
+  @inherits bcdui.core.DataProvider#tblUpdate
+  @overrides bcdui.core.DataProviderHolder#tblUpdate
+  @return number of updated rows
+  */
+  tblUpdate() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#tblDelete) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#tblDelete Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be deleted (or use filter)
+  @inherits bcdui.core.DataProvider#tblDelete
+  @overrides bcdui.core.DataProviderHolder#tblDelete
+  @return number of removed rows
+  */
+  tblDelete() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#tblSelect) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#tblSelect Online Api}
+  @description returns an array of requested data
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelect
+  @overrides bcdui.core.DataProviderHolder#tblSelect
+  @return array of objects holding the requested data
+  */
+  tblSelect() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#tblSelectRow) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#tblSelectRow Online Api}
+  @description returns one object representing the filtered data (either filter or rowId). In case of multiple filter matches, the first one is returned
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {string} [args.rowId]  rowId of row which should be queried (or use filter)
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelectRow
+  @overrides bcdui.core.DataProviderHolder#tblSelectRow
+  @return array of objects holding the requested data
+  */
+  tblSelectRow() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#serialize) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderAlias.html#serialize Online Api}
   @description Serialize dataprovider's data if available
@@ -6981,6 +7522,63 @@ bcdui.core.DataProviderWithXPath = class extends bcdui.core.DataProviderHolder{
   debugIsWaitingFor() {}
   debugStatus() {}
   /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPath.html#tblInsert) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPath.html#tblInsert Online Api}
+  @description inserts a new row in the wrs data, values given as object
+  @param {Object} args.values  object holding cell values which should be inserted, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:I syntax when this is true, otherwise wrs:R is used, rmi=true also prefills default values
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @inherits bcdui.core.DataProvider#tblInsert
+  @overrides bcdui.core.DataProviderHolder#tblInsert
+  @return row id of newly inserted row
+  */
+  tblInsert() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPath.html#tblUpdate) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPath.html#tblUpdate Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} args.values  object holding cell values which should be used for updating, e.g. { country: 'DE', flag: true }
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be update (or use filter)
+  @inherits bcdui.core.DataProvider#tblUpdate
+  @overrides bcdui.core.DataProviderHolder#tblUpdate
+  @return number of updated rows
+  */
+  tblUpdate() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPath.html#tblDelete) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPath.html#tblDelete Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be deleted (or use filter)
+  @inherits bcdui.core.DataProvider#tblDelete
+  @overrides bcdui.core.DataProviderHolder#tblDelete
+  @return number of removed rows
+  */
+  tblDelete() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPath.html#tblSelect) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPath.html#tblSelect Online Api}
+  @description returns an array of requested data
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelect
+  @overrides bcdui.core.DataProviderHolder#tblSelect
+  @return array of objects holding the requested data
+  */
+  tblSelect() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPath.html#tblSelectRow) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPath.html#tblSelectRow Online Api}
+  @description returns one object representing the filtered data (either filter or rowId). In case of multiple filter matches, the first one is returned
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {string} [args.rowId]  rowId of row which should be queried (or use filter)
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelectRow
+  @overrides bcdui.core.DataProviderHolder#tblSelectRow
+  @return array of objects holding the requested data
+  */
+  tblSelectRow() {}
+  /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPath.html#serialize) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPath.html#serialize Online Api}
   @description Serialize dataprovider's data if available
   @inherits bcdui.core.DataProvider#serialize
@@ -7215,6 +7813,63 @@ bcdui.core.DataProviderWithXPathNodes = class extends bcdui.core.DataProviderHol
   debugIsWaitingFor() {}
   debugStatus() {}
   /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPathNodes.html#tblInsert) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPathNodes.html#tblInsert Online Api}
+  @description inserts a new row in the wrs data, values given as object
+  @param {Object} args.values  object holding cell values which should be inserted, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:I syntax when this is true, otherwise wrs:R is used, rmi=true also prefills default values
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @inherits bcdui.core.DataProvider#tblInsert
+  @overrides bcdui.core.DataProviderHolder#tblInsert
+  @return row id of newly inserted row
+  */
+  tblInsert() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPathNodes.html#tblUpdate) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPathNodes.html#tblUpdate Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} args.values  object holding cell values which should be used for updating, e.g. { country: 'DE', flag: true }
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be update (or use filter)
+  @inherits bcdui.core.DataProvider#tblUpdate
+  @overrides bcdui.core.DataProviderHolder#tblUpdate
+  @return number of updated rows
+  */
+  tblUpdate() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPathNodes.html#tblDelete) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPathNodes.html#tblDelete Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be deleted (or use filter)
+  @inherits bcdui.core.DataProvider#tblDelete
+  @overrides bcdui.core.DataProviderHolder#tblDelete
+  @return number of removed rows
+  */
+  tblDelete() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPathNodes.html#tblSelect) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPathNodes.html#tblSelect Online Api}
+  @description returns an array of requested data
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelect
+  @overrides bcdui.core.DataProviderHolder#tblSelect
+  @return array of objects holding the requested data
+  */
+  tblSelect() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPathNodes.html#tblSelectRow) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPathNodes.html#tblSelectRow Online Api}
+  @description returns one object representing the filtered data (either filter or rowId). In case of multiple filter matches, the first one is returned
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {string} [args.rowId]  rowId of row which should be queried (or use filter)
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelectRow
+  @overrides bcdui.core.DataProviderHolder#tblSelectRow
+  @return array of objects holding the requested data
+  */
+  tblSelectRow() {}
+  /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPathNodes.html#serialize) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderWithXPathNodes.html#serialize Online Api}
   @description Serialize dataprovider's data if available
   @inherits bcdui.core.DataProvider#serialize
@@ -7444,6 +8099,63 @@ bcdui.core.OptionsDataProvider = class extends bcdui.core.DataProviderHolder{
   debugIsWaitingFor() {}
   debugStatus() {}
   /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.OptionsDataProvider.html#tblInsert) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.OptionsDataProvider.html#tblInsert Online Api}
+  @description inserts a new row in the wrs data, values given as object
+  @param {Object} args.values  object holding cell values which should be inserted, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:I syntax when this is true, otherwise wrs:R is used, rmi=true also prefills default values
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @inherits bcdui.core.DataProvider#tblInsert
+  @overrides bcdui.core.DataProviderHolder#tblInsert
+  @return row id of newly inserted row
+  */
+  tblInsert() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.OptionsDataProvider.html#tblUpdate) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.OptionsDataProvider.html#tblUpdate Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} args.values  object holding cell values which should be used for updating, e.g. { country: 'DE', flag: true }
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be update (or use filter)
+  @inherits bcdui.core.DataProvider#tblUpdate
+  @overrides bcdui.core.DataProviderHolder#tblUpdate
+  @return number of updated rows
+  */
+  tblUpdate() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.OptionsDataProvider.html#tblDelete) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.OptionsDataProvider.html#tblDelete Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be deleted (or use filter)
+  @inherits bcdui.core.DataProvider#tblDelete
+  @overrides bcdui.core.DataProviderHolder#tblDelete
+  @return number of removed rows
+  */
+  tblDelete() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.OptionsDataProvider.html#tblSelect) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.OptionsDataProvider.html#tblSelect Online Api}
+  @description returns an array of requested data
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelect
+  @overrides bcdui.core.DataProviderHolder#tblSelect
+  @return array of objects holding the requested data
+  */
+  tblSelect() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.OptionsDataProvider.html#tblSelectRow) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.OptionsDataProvider.html#tblSelectRow Online Api}
+  @description returns one object representing the filtered data (either filter or rowId). In case of multiple filter matches, the first one is returned
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {string} [args.rowId]  rowId of row which should be queried (or use filter)
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelectRow
+  @overrides bcdui.core.DataProviderHolder#tblSelectRow
+  @return array of objects holding the requested data
+  */
+  tblSelectRow() {}
+  /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.OptionsDataProvider.html#serialize) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.OptionsDataProvider.html#serialize Online Api}
   @description Serialize dataprovider's data if available
   @inherits bcdui.core.DataProvider#serialize
@@ -7650,6 +8362,63 @@ bcdui.core.RequestDocumentDataProvider = class extends bcdui.core.DataProvider{
   @return text value stored at xPath (or null if no text was found and no defaultValue supplied)
   */
   read(xPath,fillParams,defaultValue) { console.log(xPath,fillParams,defaultValue); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.RequestDocumentDataProvider.html#tblInsert) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.RequestDocumentDataProvider.html#tblInsert Online Api}
+  @description inserts a new row in the wrs data, values given as object
+  @param {Object} args.values  object holding cell values which should be inserted, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:I syntax when this is true, otherwise wrs:R is used, rmi=true also prefills default values
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @inherits bcdui.core.DataProvider#tblInsert
+  @overrides bcdui.core.DataProvider#tblInsert
+  @return row id of newly inserted row
+  */
+  tblInsert() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.RequestDocumentDataProvider.html#tblUpdate) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.RequestDocumentDataProvider.html#tblUpdate Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} args.values  object holding cell values which should be used for updating, e.g. { country: 'DE', flag: true }
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be update (or use filter)
+  @inherits bcdui.core.DataProvider#tblUpdate
+  @overrides bcdui.core.DataProvider#tblUpdate
+  @return number of updated rows
+  */
+  tblUpdate() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.RequestDocumentDataProvider.html#tblDelete) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.RequestDocumentDataProvider.html#tblDelete Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be deleted (or use filter)
+  @inherits bcdui.core.DataProvider#tblDelete
+  @overrides bcdui.core.DataProvider#tblDelete
+  @return number of removed rows
+  */
+  tblDelete() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.RequestDocumentDataProvider.html#tblSelect) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.RequestDocumentDataProvider.html#tblSelect Online Api}
+  @description returns an array of requested data
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelect
+  @overrides bcdui.core.DataProvider#tblSelect
+  @return array of objects holding the requested data
+  */
+  tblSelect() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.RequestDocumentDataProvider.html#tblSelectRow) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.RequestDocumentDataProvider.html#tblSelectRow Online Api}
+  @description returns one object representing the filtered data (either filter or rowId). In case of multiple filter matches, the first one is returned
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {string} [args.rowId]  rowId of row which should be queried (or use filter)
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelectRow
+  @overrides bcdui.core.DataProvider#tblSelectRow
+  @return array of objects holding the requested data
+  */
+  tblSelectRow() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.RequestDocumentDataProvider.html#write) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.RequestDocumentDataProvider.html#write Online Api}
   @description Set a value to on a certain xPath and create the xPath where necessary. This combines Element.evaluate() for a single node with creating the path where necessary. It will prefer extending an existing start-part over creating a second one. After the operation the xPath (with the optional value) is guaranteed to exist (pre-existing or created or extended) and the addressed node is returned.
@@ -7872,6 +8641,63 @@ bcdui.core.DataProviderHtmlAttribute = class extends bcdui.core.DataProvider{
   @return text value stored at xPath (or null if no text was found and no defaultValue supplied)
   */
   read(xPath,fillParams,defaultValue) { console.log(xPath,fillParams,defaultValue); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHtmlAttribute.html#tblInsert) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHtmlAttribute.html#tblInsert Online Api}
+  @description inserts a new row in the wrs data, values given as object
+  @param {Object} args.values  object holding cell values which should be inserted, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:I syntax when this is true, otherwise wrs:R is used, rmi=true also prefills default values
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @inherits bcdui.core.DataProvider#tblInsert
+  @overrides bcdui.core.DataProvider#tblInsert
+  @return row id of newly inserted row
+  */
+  tblInsert() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHtmlAttribute.html#tblUpdate) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHtmlAttribute.html#tblUpdate Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} args.values  object holding cell values which should be used for updating, e.g. { country: 'DE', flag: true }
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be update (or use filter)
+  @inherits bcdui.core.DataProvider#tblUpdate
+  @overrides bcdui.core.DataProvider#tblUpdate
+  @return number of updated rows
+  */
+  tblUpdate() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHtmlAttribute.html#tblDelete) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHtmlAttribute.html#tblDelete Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be deleted (or use filter)
+  @inherits bcdui.core.DataProvider#tblDelete
+  @overrides bcdui.core.DataProvider#tblDelete
+  @return number of removed rows
+  */
+  tblDelete() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHtmlAttribute.html#tblSelect) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHtmlAttribute.html#tblSelect Online Api}
+  @description returns an array of requested data
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelect
+  @overrides bcdui.core.DataProvider#tblSelect
+  @return array of objects holding the requested data
+  */
+  tblSelect() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHtmlAttribute.html#tblSelectRow) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHtmlAttribute.html#tblSelectRow Online Api}
+  @description returns one object representing the filtered data (either filter or rowId). In case of multiple filter matches, the first one is returned
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {string} [args.rowId]  rowId of row which should be queried (or use filter)
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelectRow
+  @overrides bcdui.core.DataProvider#tblSelectRow
+  @return array of objects holding the requested data
+  */
+  tblSelectRow() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHtmlAttribute.html#write) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.DataProviderHtmlAttribute.html#write Online Api}
   @description Set a value to on a certain xPath and create the xPath where necessary. This combines Element.evaluate() for a single node with creating the path where necessary. It will prefer extending an existing start-part over creating a second one. After the operation the xPath (with the optional value) is guaranteed to exist (pre-existing or created or extended) and the addressed node is returned.
@@ -8109,6 +8935,63 @@ bcdui.core.StringDataProvider = class extends bcdui.core.DataProvider{
   */
   read(xPath,fillParams,defaultValue) { console.log(xPath,fillParams,defaultValue); }
   /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StringDataProvider.html#tblInsert) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StringDataProvider.html#tblInsert Online Api}
+  @description inserts a new row in the wrs data, values given as object
+  @param {Object} args.values  object holding cell values which should be inserted, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:I syntax when this is true, otherwise wrs:R is used, rmi=true also prefills default values
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @inherits bcdui.core.DataProvider#tblInsert
+  @overrides bcdui.core.DataProvider#tblInsert
+  @return row id of newly inserted row
+  */
+  tblInsert() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StringDataProvider.html#tblUpdate) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StringDataProvider.html#tblUpdate Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} args.values  object holding cell values which should be used for updating, e.g. { country: 'DE', flag: true }
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be update (or use filter)
+  @inherits bcdui.core.DataProvider#tblUpdate
+  @overrides bcdui.core.DataProvider#tblUpdate
+  @return number of updated rows
+  */
+  tblUpdate() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StringDataProvider.html#tblDelete) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StringDataProvider.html#tblDelete Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be deleted (or use filter)
+  @inherits bcdui.core.DataProvider#tblDelete
+  @overrides bcdui.core.DataProvider#tblDelete
+  @return number of removed rows
+  */
+  tblDelete() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StringDataProvider.html#tblSelect) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StringDataProvider.html#tblSelect Online Api}
+  @description returns an array of requested data
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelect
+  @overrides bcdui.core.DataProvider#tblSelect
+  @return array of objects holding the requested data
+  */
+  tblSelect() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StringDataProvider.html#tblSelectRow) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StringDataProvider.html#tblSelectRow Online Api}
+  @description returns one object representing the filtered data (either filter or rowId). In case of multiple filter matches, the first one is returned
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {string} [args.rowId]  rowId of row which should be queried (or use filter)
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelectRow
+  @overrides bcdui.core.DataProvider#tblSelectRow
+  @return array of objects holding the requested data
+  */
+  tblSelectRow() {}
+  /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StringDataProvider.html#write) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StringDataProvider.html#write Online Api}
   @description Set a value to on a certain xPath and create the xPath where necessary. This combines Element.evaluate() for a single node with creating the path where necessary. It will prefer extending an existing start-part over creating a second one. After the operation the xPath (with the optional value) is guaranteed to exist (pre-existing or created or extended) and the addressed node is returned.
   @param {string} xPath  xPath pointing to the node which is set to the value value or plain xPath to be created if not there. It tries to reuse all matching parts that are already there. If you provide for example "/n:Root/n:MyElem/&commat;attr2" and there is already "/n:Root/n:MyElem/&commat;attr1", then "/n:Root/n:MyElem" will be "re-used" and get an additional attribute attr2. Many expressions are allowed, for example "/n:Root/n:MyElem[&commat;attr1='attr1Value']/n:SubElem" is also ok. By nature, some xPath expressions are not allowed, for example using '//' or "/n:Root/n:MyElem/[&commat;attr1 or &commat;attr2]/n:SubElem" is obviously not unambiguous enough and will throw an error. This method is Wrs aware, use for example '/wrs:Wrs/wrs:Data/wrs:*[2]/wrs:C[3]' as xPath and it will turn wrs:R[wrs:C] into wrs:M[wrs:C and wrs:O], see Wrs format. (can include dot template placeholders which get filled with the given fillParams)
@@ -8340,6 +9223,63 @@ bcdui.core.JsDataProvider = class extends bcdui.core.DataProvider{
   @return text value stored at xPath (or null if no text was found and no defaultValue supplied)
   */
   read(xPath,fillParams,defaultValue) { console.log(xPath,fillParams,defaultValue); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.JsDataProvider.html#tblInsert) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.JsDataProvider.html#tblInsert Online Api}
+  @description inserts a new row in the wrs data, values given as object
+  @param {Object} args.values  object holding cell values which should be inserted, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:I syntax when this is true, otherwise wrs:R is used, rmi=true also prefills default values
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @inherits bcdui.core.DataProvider#tblInsert
+  @overrides bcdui.core.DataProvider#tblInsert
+  @return row id of newly inserted row
+  */
+  tblInsert() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.JsDataProvider.html#tblUpdate) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.JsDataProvider.html#tblUpdate Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} args.values  object holding cell values which should be used for updating, e.g. { country: 'DE', flag: true }
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be update (or use filter)
+  @inherits bcdui.core.DataProvider#tblUpdate
+  @overrides bcdui.core.DataProvider#tblUpdate
+  @return number of updated rows
+  */
+  tblUpdate() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.JsDataProvider.html#tblDelete) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.JsDataProvider.html#tblDelete Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be deleted (or use filter)
+  @inherits bcdui.core.DataProvider#tblDelete
+  @overrides bcdui.core.DataProvider#tblDelete
+  @return number of removed rows
+  */
+  tblDelete() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.JsDataProvider.html#tblSelect) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.JsDataProvider.html#tblSelect Online Api}
+  @description returns an array of requested data
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelect
+  @overrides bcdui.core.DataProvider#tblSelect
+  @return array of objects holding the requested data
+  */
+  tblSelect() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.JsDataProvider.html#tblSelectRow) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.JsDataProvider.html#tblSelectRow Online Api}
+  @description returns one object representing the filtered data (either filter or rowId). In case of multiple filter matches, the first one is returned
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {string} [args.rowId]  rowId of row which should be queried (or use filter)
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelectRow
+  @overrides bcdui.core.DataProvider#tblSelectRow
+  @return array of objects holding the requested data
+  */
+  tblSelectRow() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.JsDataProvider.html#write) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.JsDataProvider.html#write Online Api}
   @description Set a value to on a certain xPath and create the xPath where necessary. This combines Element.evaluate() for a single node with creating the path where necessary. It will prefer extending an existing start-part over creating a second one. After the operation the xPath (with the optional value) is guaranteed to exist (pre-existing or created or extended) and the addressed node is returned.
@@ -8579,6 +9519,63 @@ bcdui.core.AsyncJsDataProvider = class extends bcdui.core.DataProvider{
   */
   read(xPath,fillParams,defaultValue) { console.log(xPath,fillParams,defaultValue); }
   /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AsyncJsDataProvider.html#tblInsert) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AsyncJsDataProvider.html#tblInsert Online Api}
+  @description inserts a new row in the wrs data, values given as object
+  @param {Object} args.values  object holding cell values which should be inserted, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:I syntax when this is true, otherwise wrs:R is used, rmi=true also prefills default values
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @inherits bcdui.core.DataProvider#tblInsert
+  @overrides bcdui.core.DataProvider#tblInsert
+  @return row id of newly inserted row
+  */
+  tblInsert() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AsyncJsDataProvider.html#tblUpdate) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AsyncJsDataProvider.html#tblUpdate Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} args.values  object holding cell values which should be used for updating, e.g. { country: 'DE', flag: true }
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be update (or use filter)
+  @inherits bcdui.core.DataProvider#tblUpdate
+  @overrides bcdui.core.DataProvider#tblUpdate
+  @return number of updated rows
+  */
+  tblUpdate() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AsyncJsDataProvider.html#tblDelete) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AsyncJsDataProvider.html#tblDelete Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be deleted (or use filter)
+  @inherits bcdui.core.DataProvider#tblDelete
+  @overrides bcdui.core.DataProvider#tblDelete
+  @return number of removed rows
+  */
+  tblDelete() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AsyncJsDataProvider.html#tblSelect) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AsyncJsDataProvider.html#tblSelect Online Api}
+  @description returns an array of requested data
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelect
+  @overrides bcdui.core.DataProvider#tblSelect
+  @return array of objects holding the requested data
+  */
+  tblSelect() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AsyncJsDataProvider.html#tblSelectRow) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AsyncJsDataProvider.html#tblSelectRow Online Api}
+  @description returns one object representing the filtered data (either filter or rowId). In case of multiple filter matches, the first one is returned
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {string} [args.rowId]  rowId of row which should be queried (or use filter)
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelectRow
+  @overrides bcdui.core.DataProvider#tblSelectRow
+  @return array of objects holding the requested data
+  */
+  tblSelectRow() {}
+  /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AsyncJsDataProvider.html#write) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AsyncJsDataProvider.html#write Online Api}
   @description Set a value to on a certain xPath and create the xPath where necessary. This combines Element.evaluate() for a single node with creating the path where necessary. It will prefer extending an existing start-part over creating a second one. After the operation the xPath (with the optional value) is guaranteed to exist (pre-existing or created or extended) and the addressed node is returned.
   @param {string} xPath  xPath pointing to the node which is set to the value value or plain xPath to be created if not there. It tries to reuse all matching parts that are already there. If you provide for example "/n:Root/n:MyElem/&commat;attr2" and there is already "/n:Root/n:MyElem/&commat;attr1", then "/n:Root/n:MyElem" will be "re-used" and get an additional attribute attr2. Many expressions are allowed, for example "/n:Root/n:MyElem[&commat;attr1='attr1Value']/n:SubElem" is also ok. By nature, some xPath expressions are not allowed, for example using '//' or "/n:Root/n:MyElem/[&commat;attr1 or &commat;attr2]/n:SubElem" is obviously not unambiguous enough and will throw an error. This method is Wrs aware, use for example '/wrs:Wrs/wrs:Data/wrs:*[2]/wrs:C[3]' as xPath and it will turn wrs:R[wrs:C] into wrs:M[wrs:C and wrs:O], see Wrs format. (can include dot template placeholders which get filled with the given fillParams)
@@ -8813,6 +9810,63 @@ bcdui.core.AbstractUpdatableModel = class extends bcdui.core.DataProvider{
   @return text value stored at xPath (or null if no text was found and no defaultValue supplied)
   */
   read(xPath,fillParams,defaultValue) { console.log(xPath,fillParams,defaultValue); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AbstractUpdatableModel.html#tblInsert) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AbstractUpdatableModel.html#tblInsert Online Api}
+  @description inserts a new row in the wrs data, values given as object
+  @param {Object} args.values  object holding cell values which should be inserted, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:I syntax when this is true, otherwise wrs:R is used, rmi=true also prefills default values
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @inherits bcdui.core.DataProvider#tblInsert
+  @overrides bcdui.core.DataProvider#tblInsert
+  @return row id of newly inserted row
+  */
+  tblInsert() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AbstractUpdatableModel.html#tblUpdate) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AbstractUpdatableModel.html#tblUpdate Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} args.values  object holding cell values which should be used for updating, e.g. { country: 'DE', flag: true }
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be update (or use filter)
+  @inherits bcdui.core.DataProvider#tblUpdate
+  @overrides bcdui.core.DataProvider#tblUpdate
+  @return number of updated rows
+  */
+  tblUpdate() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AbstractUpdatableModel.html#tblDelete) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AbstractUpdatableModel.html#tblDelete Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be deleted (or use filter)
+  @inherits bcdui.core.DataProvider#tblDelete
+  @overrides bcdui.core.DataProvider#tblDelete
+  @return number of removed rows
+  */
+  tblDelete() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AbstractUpdatableModel.html#tblSelect) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AbstractUpdatableModel.html#tblSelect Online Api}
+  @description returns an array of requested data
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelect
+  @overrides bcdui.core.DataProvider#tblSelect
+  @return array of objects holding the requested data
+  */
+  tblSelect() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AbstractUpdatableModel.html#tblSelectRow) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AbstractUpdatableModel.html#tblSelectRow Online Api}
+  @description returns one object representing the filtered data (either filter or rowId). In case of multiple filter matches, the first one is returned
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {string} [args.rowId]  rowId of row which should be queried (or use filter)
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelectRow
+  @overrides bcdui.core.DataProvider#tblSelectRow
+  @return array of objects holding the requested data
+  */
+  tblSelectRow() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AbstractUpdatableModel.html#write) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AbstractUpdatableModel.html#write Online Api}
   @description Set a value to on a certain xPath and create the xPath where necessary. This combines Element.evaluate() for a single node with creating the path where necessary. It will prefer extending an existing start-part over creating a second one. After the operation the xPath (with the optional value) is guaranteed to exist (pre-existing or created or extended) and the addressed node is returned.
@@ -9078,6 +10132,63 @@ bcdui.core.SimpleModel = class extends bcdui.core.AbstractUpdatableModel{
   */
   read(xPath,fillParams,defaultValue) { console.log(xPath,fillParams,defaultValue); }
   /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.SimpleModel.html#tblInsert) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.SimpleModel.html#tblInsert Online Api}
+  @description inserts a new row in the wrs data, values given as object
+  @param {Object} args.values  object holding cell values which should be inserted, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:I syntax when this is true, otherwise wrs:R is used, rmi=true also prefills default values
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @inherits bcdui.core.DataProvider#tblInsert
+  @overrides bcdui.core.AbstractUpdatableModel#tblInsert
+  @return row id of newly inserted row
+  */
+  tblInsert() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.SimpleModel.html#tblUpdate) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.SimpleModel.html#tblUpdate Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} args.values  object holding cell values which should be used for updating, e.g. { country: 'DE', flag: true }
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be update (or use filter)
+  @inherits bcdui.core.DataProvider#tblUpdate
+  @overrides bcdui.core.AbstractUpdatableModel#tblUpdate
+  @return number of updated rows
+  */
+  tblUpdate() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.SimpleModel.html#tblDelete) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.SimpleModel.html#tblDelete Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be deleted (or use filter)
+  @inherits bcdui.core.DataProvider#tblDelete
+  @overrides bcdui.core.AbstractUpdatableModel#tblDelete
+  @return number of removed rows
+  */
+  tblDelete() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.SimpleModel.html#tblSelect) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.SimpleModel.html#tblSelect Online Api}
+  @description returns an array of requested data
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelect
+  @overrides bcdui.core.AbstractUpdatableModel#tblSelect
+  @return array of objects holding the requested data
+  */
+  tblSelect() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.SimpleModel.html#tblSelectRow) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.SimpleModel.html#tblSelectRow Online Api}
+  @description returns one object representing the filtered data (either filter or rowId). In case of multiple filter matches, the first one is returned
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {string} [args.rowId]  rowId of row which should be queried (or use filter)
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelectRow
+  @overrides bcdui.core.AbstractUpdatableModel#tblSelectRow
+  @return array of objects holding the requested data
+  */
+  tblSelectRow() {}
+  /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.SimpleModel.html#write) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.SimpleModel.html#write Online Api}
   @description Set a value to on a certain xPath and create the xPath where necessary. This combines Element.evaluate() for a single node with creating the path where necessary. It will prefer extending an existing start-part over creating a second one. After the operation the xPath (with the optional value) is guaranteed to exist (pre-existing or created or extended) and the addressed node is returned.
   @param {string} xPath  xPath pointing to the node which is set to the value value or plain xPath to be created if not there. It tries to reuse all matching parts that are already there. If you provide for example "/n:Root/n:MyElem/&commat;attr2" and there is already "/n:Root/n:MyElem/&commat;attr1", then "/n:Root/n:MyElem" will be "re-used" and get an additional attribute attr2. Many expressions are allowed, for example "/n:Root/n:MyElem[&commat;attr1='attr1Value']/n:SubElem" is also ok. By nature, some xPath expressions are not allowed, for example using '//' or "/n:Root/n:MyElem/[&commat;attr1 or &commat;attr2]/n:SubElem" is obviously not unambiguous enough and will throw an error. This method is Wrs aware, use for example '/wrs:Wrs/wrs:Data/wrs:*[2]/wrs:C[3]' as xPath and it will turn wrs:R[wrs:C] into wrs:M[wrs:C and wrs:O], see Wrs format. (can include dot template placeholders which get filled with the given fillParams)
@@ -9321,6 +10432,63 @@ bcdui.core.StaticModel = class extends bcdui.core.AbstractUpdatableModel{
   */
   read(xPath,fillParams,defaultValue) { console.log(xPath,fillParams,defaultValue); }
   /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StaticModel.html#tblInsert) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StaticModel.html#tblInsert Online Api}
+  @description inserts a new row in the wrs data, values given as object
+  @param {Object} args.values  object holding cell values which should be inserted, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:I syntax when this is true, otherwise wrs:R is used, rmi=true also prefills default values
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @inherits bcdui.core.DataProvider#tblInsert
+  @overrides bcdui.core.AbstractUpdatableModel#tblInsert
+  @return row id of newly inserted row
+  */
+  tblInsert() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StaticModel.html#tblUpdate) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StaticModel.html#tblUpdate Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} args.values  object holding cell values which should be used for updating, e.g. { country: 'DE', flag: true }
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be update (or use filter)
+  @inherits bcdui.core.DataProvider#tblUpdate
+  @overrides bcdui.core.AbstractUpdatableModel#tblUpdate
+  @return number of updated rows
+  */
+  tblUpdate() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StaticModel.html#tblDelete) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StaticModel.html#tblDelete Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be deleted (or use filter)
+  @inherits bcdui.core.DataProvider#tblDelete
+  @overrides bcdui.core.AbstractUpdatableModel#tblDelete
+  @return number of removed rows
+  */
+  tblDelete() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StaticModel.html#tblSelect) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StaticModel.html#tblSelect Online Api}
+  @description returns an array of requested data
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelect
+  @overrides bcdui.core.AbstractUpdatableModel#tblSelect
+  @return array of objects holding the requested data
+  */
+  tblSelect() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StaticModel.html#tblSelectRow) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StaticModel.html#tblSelectRow Online Api}
+  @description returns one object representing the filtered data (either filter or rowId). In case of multiple filter matches, the first one is returned
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {string} [args.rowId]  rowId of row which should be queried (or use filter)
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelectRow
+  @overrides bcdui.core.AbstractUpdatableModel#tblSelectRow
+  @return array of objects holding the requested data
+  */
+  tblSelectRow() {}
+  /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StaticModel.html#write) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.StaticModel.html#write Online Api}
   @description Set a value to on a certain xPath and create the xPath where necessary. This combines Element.evaluate() for a single node with creating the path where necessary. It will prefer extending an existing start-part over creating a second one. After the operation the xPath (with the optional value) is guaranteed to exist (pre-existing or created or extended) and the addressed node is returned.
   @param {string} xPath  xPath pointing to the node which is set to the value value or plain xPath to be created if not there. It tries to reuse all matching parts that are already there. If you provide for example "/n:Root/n:MyElem/&commat;attr2" and there is already "/n:Root/n:MyElem/&commat;attr1", then "/n:Root/n:MyElem" will be "re-used" and get an additional attribute attr2. Many expressions are allowed, for example "/n:Root/n:MyElem[&commat;attr1='attr1Value']/n:SubElem" is also ok. By nature, some xPath expressions are not allowed, for example using '//' or "/n:Root/n:MyElem/[&commat;attr1 or &commat;attr2]/n:SubElem" is obviously not unambiguous enough and will throw an error. This method is Wrs aware, use for example '/wrs:Wrs/wrs:Data/wrs:*[2]/wrs:C[3]' as xPath and it will turn wrs:R[wrs:C] into wrs:M[wrs:C and wrs:O], see Wrs format. (can include dot template placeholders which get filled with the given fillParams)
@@ -9505,7 +10673,7 @@ bcdui.core.AutoModel = class extends bcdui.core.SimpleModel{
   @param {modelXPath} [args.additionalFilterXPath]  Allows using additional filters not part of $guiStatus f:Filter. These filters are monitored for changes. The given xPath needs to point to the filter expression itself, not to a parent.
   @param {modelXPath} [args.additionalPassiveFilterXPath]  Optional, allows using additional filters not part of $guiStatus f:Filter, unlike 'additionalFilterXPath', this xPath is not monitored for changes.
   @param {number} [args.maxRows]  Optional, limits the request to n rows. Use distinct if you need a certain order.
-  @param {string} [args.id]  A globally unique id for use in declarative contexts
+  @param {string} [args.id]  Optional, a globally unique id for use in declarative contexts
   @param {boolean} [args.isAutoRefresh]  If true, will reload when any (other) filter regarding a bRefs or the additionalFilterXPath change.
   @param {Object} [args.reqDocParameters]  Optional parameters for a custom request document builder.
   @param {Array} [args.reqDocChain]  Optional custom chain for request document builder.
@@ -9531,6 +10699,7 @@ bcdui.core.AutoModel = class extends bcdui.core.SimpleModel{
     */
   constructor(args){ super(args); }
   getClassName() {}
+  destroy() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AutoModel.html#getReadyStatus) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AutoModel.html#getReadyStatus Online Api}
   @description The SimpleModel reaches its ready status when the XML document has been loaded from the URL and the optional model updates have run. The document can then be retrieved with the "getDataDoc" method. <p> The status transitions of the class are as follows:          </p> <p style="padding-left: 10px"><table><tr><td rowspan="10">&nbsp;</td><td style="border: 3px double black; text-align: center" colspan="2"> {@link bcdui.core.status.InitializedStatus InitializedStatus}  </td><td style="padding-left: 20px"> All variables have been initialized. </td></tr><tr><td>&nbsp;</td><td style="border-left: 1px solid black">&nbsp;</td><td></td></tr><tr><td style="border: 1px solid black; text-align: center" colspan="2"> <i> Loading </i>                                             </td><td style="padding-left: 20px"> If it is not ready execute URL data provider (<i>execute</i>). </td></tr><tr><td>&nbsp;</td><td style="border-left: 1px solid black">&nbsp;</td><td></td></tr><tr><td style="border: 1px solid black; text-align: center" colspan="2"> URLAvailable                                             </td><td style="padding-left: 20px"> The URL data provider is ready, start loading data. </td></tr><tr><td>&nbsp;</td><td style="border-left: 1px solid black">&nbsp;</td><td></td></tr><tr><td style="border: 1px solid black; text-align: center" colspan="2"> Loaded                                                   </td><td style="padding-left: 20px"> The data has been loaded from the URL. </td></tr><tr><td>&nbsp;</td><td style="border-left: 1px solid black">&nbsp;</td><td></td></tr><tr><td style="border: 1px solid black; text-align: center" colspan="2"> RefreshingModelUpdaters                                  </td><td style="padding-left: 20px"> ModelUpdaters are currently running. </td></tr><tr><td>&nbsp;</td><td style="border-left: 1px solid black">&nbsp;</td><td></td></tr><tr><td rowspan="5" style="padding: 5px 0px 5px 5px"><div style="height: 6em; width: 0.5em; border-left: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black">&nbsp;</div></td><td style="border: 3px double black; text-align: center" colspan="2"> <b>{@link bcdui.core.status.TransformedStatus TransformedStatus}</b></td><td style="padding-left: 20px"> All model updaters have run. (<b>ready</b>) </td></tr><tr><td>&nbsp;</td><td style="border-left: 1px solid black">&nbsp;</td><td></td></tr><tr><td style="border: 1px solid black; text-align: center" colspan="2"> Saving                                                   </td><td style="padding-left: 20px"> The posting of data will start. </td></tr><tr><td>&nbsp;</td><td style="border-left: 1px solid black">&nbsp;</td><td></td></tr><tr><td style="border: 1px solid black; text-align: center" colspan="2"> {@link bcdui.core.status.SavedStatus SavedStatus}        </td><td style="padding-left: 20px"> The data has been posted to the server.  </td></tr></table></p>
@@ -9604,6 +10773,63 @@ bcdui.core.AutoModel = class extends bcdui.core.SimpleModel{
   @return text value stored at xPath (or null if no text was found and no defaultValue supplied)
   */
   read(xPath,fillParams,defaultValue) { console.log(xPath,fillParams,defaultValue); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AutoModel.html#tblInsert) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AutoModel.html#tblInsert Online Api}
+  @description inserts a new row in the wrs data, values given as object
+  @param {Object} args.values  object holding cell values which should be inserted, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:I syntax when this is true, otherwise wrs:R is used, rmi=true also prefills default values
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @inherits bcdui.core.DataProvider#tblInsert
+  @overrides bcdui.core.SimpleModel#tblInsert
+  @return row id of newly inserted row
+  */
+  tblInsert() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AutoModel.html#tblUpdate) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AutoModel.html#tblUpdate Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} args.values  object holding cell values which should be used for updating, e.g. { country: 'DE', flag: true }
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be update (or use filter)
+  @inherits bcdui.core.DataProvider#tblUpdate
+  @overrides bcdui.core.SimpleModel#tblUpdate
+  @return number of updated rows
+  */
+  tblUpdate() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AutoModel.html#tblDelete) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AutoModel.html#tblDelete Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be deleted (or use filter)
+  @inherits bcdui.core.DataProvider#tblDelete
+  @overrides bcdui.core.SimpleModel#tblDelete
+  @return number of removed rows
+  */
+  tblDelete() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AutoModel.html#tblSelect) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AutoModel.html#tblSelect Online Api}
+  @description returns an array of requested data
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelect
+  @overrides bcdui.core.SimpleModel#tblSelect
+  @return array of objects holding the requested data
+  */
+  tblSelect() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AutoModel.html#tblSelectRow) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AutoModel.html#tblSelectRow Online Api}
+  @description returns one object representing the filtered data (either filter or rowId). In case of multiple filter matches, the first one is returned
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {string} [args.rowId]  rowId of row which should be queried (or use filter)
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelectRow
+  @overrides bcdui.core.SimpleModel#tblSelectRow
+  @return array of objects holding the requested data
+  */
+  tblSelectRow() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AutoModel.html#write) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.AutoModel.html#write Online Api}
   @description Set a value to on a certain xPath and create the xPath where necessary. This combines Element.evaluate() for a single node with creating the path where necessary. It will prefer extending an existing start-part over creating a second one. After the operation the xPath (with the optional value) is guaranteed to exist (pre-existing or created or extended) and the addressed node is returned.
@@ -9868,6 +11094,63 @@ bcdui.core.TransformationChain = class extends bcdui.core.DataProvider{
   @return text value stored at xPath (or null if no text was found and no defaultValue supplied)
   */
   read(xPath,fillParams,defaultValue) { console.log(xPath,fillParams,defaultValue); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.TransformationChain.html#tblInsert) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.TransformationChain.html#tblInsert Online Api}
+  @description inserts a new row in the wrs data, values given as object
+  @param {Object} args.values  object holding cell values which should be inserted, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:I syntax when this is true, otherwise wrs:R is used, rmi=true also prefills default values
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @inherits bcdui.core.DataProvider#tblInsert
+  @overrides bcdui.core.DataProvider#tblInsert
+  @return row id of newly inserted row
+  */
+  tblInsert() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.TransformationChain.html#tblUpdate) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.TransformationChain.html#tblUpdate Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} args.values  object holding cell values which should be used for updating, e.g. { country: 'DE', flag: true }
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be update (or use filter)
+  @inherits bcdui.core.DataProvider#tblUpdate
+  @overrides bcdui.core.DataProvider#tblUpdate
+  @return number of updated rows
+  */
+  tblUpdate() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.TransformationChain.html#tblDelete) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.TransformationChain.html#tblDelete Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be deleted (or use filter)
+  @inherits bcdui.core.DataProvider#tblDelete
+  @overrides bcdui.core.DataProvider#tblDelete
+  @return number of removed rows
+  */
+  tblDelete() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.TransformationChain.html#tblSelect) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.TransformationChain.html#tblSelect Online Api}
+  @description returns an array of requested data
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelect
+  @overrides bcdui.core.DataProvider#tblSelect
+  @return array of objects holding the requested data
+  */
+  tblSelect() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.TransformationChain.html#tblSelectRow) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.TransformationChain.html#tblSelectRow Online Api}
+  @description returns one object representing the filtered data (either filter or rowId). In case of multiple filter matches, the first one is returned
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {string} [args.rowId]  rowId of row which should be queried (or use filter)
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelectRow
+  @overrides bcdui.core.DataProvider#tblSelectRow
+  @return array of objects holding the requested data
+  */
+  tblSelectRow() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.TransformationChain.html#write) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.TransformationChain.html#write Online Api}
   @description Set a value to on a certain xPath and create the xPath where necessary. This combines Element.evaluate() for a single node with creating the path where necessary. It will prefer extending an existing start-part over creating a second one. After the operation the xPath (with the optional value) is guaranteed to exist (pre-existing or created or extended) and the addressed node is returned.
@@ -10161,6 +11444,63 @@ bcdui.core.Renderer = class extends bcdui.core.TransformationChain{
   */
   read(xPath,fillParams,defaultValue) { console.log(xPath,fillParams,defaultValue); }
   /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.Renderer.html#tblInsert) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.Renderer.html#tblInsert Online Api}
+  @description inserts a new row in the wrs data, values given as object
+  @param {Object} args.values  object holding cell values which should be inserted, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:I syntax when this is true, otherwise wrs:R is used, rmi=true also prefills default values
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @inherits bcdui.core.DataProvider#tblInsert
+  @overrides bcdui.core.TransformationChain#tblInsert
+  @return row id of newly inserted row
+  */
+  tblInsert() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.Renderer.html#tblUpdate) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.Renderer.html#tblUpdate Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} args.values  object holding cell values which should be used for updating, e.g. { country: 'DE', flag: true }
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be update (or use filter)
+  @inherits bcdui.core.DataProvider#tblUpdate
+  @overrides bcdui.core.TransformationChain#tblUpdate
+  @return number of updated rows
+  */
+  tblUpdate() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.Renderer.html#tblDelete) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.Renderer.html#tblDelete Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be deleted (or use filter)
+  @inherits bcdui.core.DataProvider#tblDelete
+  @overrides bcdui.core.TransformationChain#tblDelete
+  @return number of removed rows
+  */
+  tblDelete() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.Renderer.html#tblSelect) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.Renderer.html#tblSelect Online Api}
+  @description returns an array of requested data
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelect
+  @overrides bcdui.core.TransformationChain#tblSelect
+  @return array of objects holding the requested data
+  */
+  tblSelect() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.Renderer.html#tblSelectRow) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.Renderer.html#tblSelectRow Online Api}
+  @description returns one object representing the filtered data (either filter or rowId). In case of multiple filter matches, the first one is returned
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {string} [args.rowId]  rowId of row which should be queried (or use filter)
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelectRow
+  @overrides bcdui.core.TransformationChain#tblSelectRow
+  @return array of objects holding the requested data
+  */
+  tblSelectRow() {}
+  /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.Renderer.html#write) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.Renderer.html#write Online Api}
   @description Set a value to on a certain xPath and create the xPath where necessary. This combines Element.evaluate() for a single node with creating the path where necessary. It will prefer extending an existing start-part over creating a second one. After the operation the xPath (with the optional value) is guaranteed to exist (pre-existing or created or extended) and the addressed node is returned.
   @param {string} xPath  xPath pointing to the node which is set to the value value or plain xPath to be created if not there. It tries to reuse all matching parts that are already there. If you provide for example "/n:Root/n:MyElem/&commat;attr2" and there is already "/n:Root/n:MyElem/&commat;attr1", then "/n:Root/n:MyElem" will be "re-used" and get an additional attribute attr2. Many expressions are allowed, for example "/n:Root/n:MyElem[&commat;attr1='attr1Value']/n:SubElem" is also ok. By nature, some xPath expressions are not allowed, for example using '//' or "/n:Root/n:MyElem/[&commat;attr1 or &commat;attr2]/n:SubElem" is obviously not unambiguous enough and will throw an error. This method is Wrs aware, use for example '/wrs:Wrs/wrs:Data/wrs:*[2]/wrs:C[3]' as xPath and it will turn wrs:R[wrs:C] into wrs:M[wrs:C and wrs:O], see Wrs format. (can include dot template placeholders which get filled with the given fillParams)
@@ -10436,6 +11776,63 @@ bcdui.core.ModelWrapper = class extends bcdui.core.TransformationChain{
   */
   read(xPath,fillParams,defaultValue) { console.log(xPath,fillParams,defaultValue); }
   /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelWrapper.html#tblInsert) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelWrapper.html#tblInsert Online Api}
+  @description inserts a new row in the wrs data, values given as object
+  @param {Object} args.values  object holding cell values which should be inserted, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:I syntax when this is true, otherwise wrs:R is used, rmi=true also prefills default values
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @inherits bcdui.core.DataProvider#tblInsert
+  @overrides bcdui.core.TransformationChain#tblInsert
+  @return row id of newly inserted row
+  */
+  tblInsert() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelWrapper.html#tblUpdate) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelWrapper.html#tblUpdate Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} args.values  object holding cell values which should be used for updating, e.g. { country: 'DE', flag: true }
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be update (or use filter)
+  @inherits bcdui.core.DataProvider#tblUpdate
+  @overrides bcdui.core.TransformationChain#tblUpdate
+  @return number of updated rows
+  */
+  tblUpdate() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelWrapper.html#tblDelete) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelWrapper.html#tblDelete Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be deleted (or use filter)
+  @inherits bcdui.core.DataProvider#tblDelete
+  @overrides bcdui.core.TransformationChain#tblDelete
+  @return number of removed rows
+  */
+  tblDelete() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelWrapper.html#tblSelect) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelWrapper.html#tblSelect Online Api}
+  @description returns an array of requested data
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelect
+  @overrides bcdui.core.TransformationChain#tblSelect
+  @return array of objects holding the requested data
+  */
+  tblSelect() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelWrapper.html#tblSelectRow) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelWrapper.html#tblSelectRow Online Api}
+  @description returns one object representing the filtered data (either filter or rowId). In case of multiple filter matches, the first one is returned
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {string} [args.rowId]  rowId of row which should be queried (or use filter)
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelectRow
+  @overrides bcdui.core.TransformationChain#tblSelectRow
+  @return array of objects holding the requested data
+  */
+  tblSelectRow() {}
+  /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelWrapper.html#write) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelWrapper.html#write Online Api}
   @description Set a value to on a certain xPath and create the xPath where necessary. This combines Element.evaluate() for a single node with creating the path where necessary. It will prefer extending an existing start-part over creating a second one. After the operation the xPath (with the optional value) is guaranteed to exist (pre-existing or created or extended) and the addressed node is returned.
   @param {string} xPath  xPath pointing to the node which is set to the value value or plain xPath to be created if not there. It tries to reuse all matching parts that are already there. If you provide for example "/n:Root/n:MyElem/&commat;attr2" and there is already "/n:Root/n:MyElem/&commat;attr1", then "/n:Root/n:MyElem" will be "re-used" and get an additional attribute attr2. Many expressions are allowed, for example "/n:Root/n:MyElem[&commat;attr1='attr1Value']/n:SubElem" is also ok. By nature, some xPath expressions are not allowed, for example using '//' or "/n:Root/n:MyElem/[&commat;attr1 or &commat;attr2]/n:SubElem" is obviously not unambiguous enough and will throw an error. This method is Wrs aware, use for example '/wrs:Wrs/wrs:Data/wrs:*[2]/wrs:C[3]' as xPath and it will turn wrs:R[wrs:C] into wrs:M[wrs:C and wrs:O], see Wrs format. (can include dot template placeholders which get filled with the given fillParams)
@@ -10709,6 +12106,63 @@ bcdui.core.ModelUpdater = class extends bcdui.core.TransformationChain{
   @return text value stored at xPath (or null if no text was found and no defaultValue supplied)
   */
   read(xPath,fillParams,defaultValue) { console.log(xPath,fillParams,defaultValue); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#tblInsert) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#tblInsert Online Api}
+  @description inserts a new row in the wrs data, values given as object
+  @param {Object} args.values  object holding cell values which should be inserted, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:I syntax when this is true, otherwise wrs:R is used, rmi=true also prefills default values
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @inherits bcdui.core.DataProvider#tblInsert
+  @overrides bcdui.core.TransformationChain#tblInsert
+  @return row id of newly inserted row
+  */
+  tblInsert() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#tblUpdate) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#tblUpdate Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} args.values  object holding cell values which should be used for updating, e.g. { country: 'DE', flag: true }
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be update (or use filter)
+  @inherits bcdui.core.DataProvider#tblUpdate
+  @overrides bcdui.core.TransformationChain#tblUpdate
+  @return number of updated rows
+  */
+  tblUpdate() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#tblDelete) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#tblDelete Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be deleted (or use filter)
+  @inherits bcdui.core.DataProvider#tblDelete
+  @overrides bcdui.core.TransformationChain#tblDelete
+  @return number of removed rows
+  */
+  tblDelete() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#tblSelect) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#tblSelect Online Api}
+  @description returns an array of requested data
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelect
+  @overrides bcdui.core.TransformationChain#tblSelect
+  @return array of objects holding the requested data
+  */
+  tblSelect() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#tblSelectRow) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#tblSelectRow Online Api}
+  @description returns one object representing the filtered data (either filter or rowId). In case of multiple filter matches, the first one is returned
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {string} [args.rowId]  rowId of row which should be queried (or use filter)
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelectRow
+  @overrides bcdui.core.TransformationChain#tblSelectRow
+  @return array of objects holding the requested data
+  */
+  tblSelectRow() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#write) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.ModelUpdater.html#write Online Api}
   @description Set a value to on a certain xPath and create the xPath where necessary. This combines Element.evaluate() for a single node with creating the path where necessary. It will prefer extending an existing start-part over creating a second one. After the operation the xPath (with the optional value) is guaranteed to exist (pre-existing or created or extended) and the addressed node is returned.
@@ -11190,6 +12644,63 @@ bcdui.core.HTML2XMLDataProvider = class extends bcdui.core.DataProvider{
   */
   read(xPath,fillParams,defaultValue) { console.log(xPath,fillParams,defaultValue); }
   /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#tblInsert) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#tblInsert Online Api}
+  @description inserts a new row in the wrs data, values given as object
+  @param {Object} args.values  object holding cell values which should be inserted, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:I syntax when this is true, otherwise wrs:R is used, rmi=true also prefills default values
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @inherits bcdui.core.DataProvider#tblInsert
+  @overrides bcdui.core.DataProvider#tblInsert
+  @return row id of newly inserted row
+  */
+  tblInsert() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#tblUpdate) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#tblUpdate Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} args.values  object holding cell values which should be used for updating, e.g. { country: 'DE', flag: true }
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be update (or use filter)
+  @inherits bcdui.core.DataProvider#tblUpdate
+  @overrides bcdui.core.DataProvider#tblUpdate
+  @return number of updated rows
+  */
+  tblUpdate() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#tblDelete) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#tblDelete Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be deleted (or use filter)
+  @inherits bcdui.core.DataProvider#tblDelete
+  @overrides bcdui.core.DataProvider#tblDelete
+  @return number of removed rows
+  */
+  tblDelete() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#tblSelect) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#tblSelect Online Api}
+  @description returns an array of requested data
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelect
+  @overrides bcdui.core.DataProvider#tblSelect
+  @return array of objects holding the requested data
+  */
+  tblSelect() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#tblSelectRow) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#tblSelectRow Online Api}
+  @description returns one object representing the filtered data (either filter or rowId). In case of multiple filter matches, the first one is returned
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {string} [args.rowId]  rowId of row which should be queried (or use filter)
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelectRow
+  @overrides bcdui.core.DataProvider#tblSelectRow
+  @return array of objects holding the requested data
+  */
+  tblSelectRow() {}
+  /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#write) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.core.HTML2XMLDataProvider.html#write Online Api}
   @description Set a value to on a certain xPath and create the xPath where necessary. This combines Element.evaluate() for a single node with creating the path where necessary. It will prefer extending an existing start-part over creating a second one. After the operation the xPath (with the optional value) is guaranteed to exist (pre-existing or created or extended) and the addressed node is returned.
   @param {string} xPath  xPath pointing to the node which is set to the value value or plain xPath to be created if not there. It tries to reuse all matching parts that are already there. If you provide for example "/n:Root/n:MyElem/&commat;attr2" and there is already "/n:Root/n:MyElem/&commat;attr1", then "/n:Root/n:MyElem" will be "re-used" and get an additional attribute attr2. Many expressions are allowed, for example "/n:Root/n:MyElem[&commat;attr1='attr1Value']/n:SubElem" is also ok. By nature, some xPath expressions are not allowed, for example using '//' or "/n:Root/n:MyElem/[&commat;attr1 or &commat;attr2]/n:SubElem" is obviously not unambiguous enough and will throw an error. This method is Wrs aware, use for example '/wrs:Wrs/wrs:Data/wrs:*[2]/wrs:C[3]' as xPath and it will turn wrs:R[wrs:C] into wrs:M[wrs:C and wrs:O], see Wrs format. (can include dot template placeholders which get filled with the given fillParams)
@@ -11557,6 +13068,63 @@ bcdui.component.chart.Chart = class extends bcdui.core.DataProvider{
   promptData() {}
   debugIsWaitingFor() {}
   debugStatus() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.Chart.html#tblInsert) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.Chart.html#tblInsert Online Api}
+  @description inserts a new row in the wrs data, values given as object
+  @param {Object} args.values  object holding cell values which should be inserted, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:I syntax when this is true, otherwise wrs:R is used, rmi=true also prefills default values
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @inherits bcdui.core.DataProvider#tblInsert
+  @overrides bcdui.core.DataProvider#tblInsert
+  @return row id of newly inserted row
+  */
+  tblInsert() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.Chart.html#tblUpdate) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.Chart.html#tblUpdate Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} args.values  object holding cell values which should be used for updating, e.g. { country: 'DE', flag: true }
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be update (or use filter)
+  @inherits bcdui.core.DataProvider#tblUpdate
+  @overrides bcdui.core.DataProvider#tblUpdate
+  @return number of updated rows
+  */
+  tblUpdate() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.Chart.html#tblDelete) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.Chart.html#tblDelete Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be deleted (or use filter)
+  @inherits bcdui.core.DataProvider#tblDelete
+  @overrides bcdui.core.DataProvider#tblDelete
+  @return number of removed rows
+  */
+  tblDelete() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.Chart.html#tblSelect) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.Chart.html#tblSelect Online Api}
+  @description returns an array of requested data
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelect
+  @overrides bcdui.core.DataProvider#tblSelect
+  @return array of objects holding the requested data
+  */
+  tblSelect() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.Chart.html#tblSelectRow) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.Chart.html#tblSelectRow Online Api}
+  @description returns one object representing the filtered data (either filter or rowId). In case of multiple filter matches, the first one is returned
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {string} [args.rowId]  rowId of row which should be queried (or use filter)
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelectRow
+  @overrides bcdui.core.DataProvider#tblSelectRow
+  @return array of objects holding the requested data
+  */
+  tblSelectRow() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.Chart.html#serialize) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.Chart.html#serialize Online Api}
   @description Serialize dataprovider's data if available
@@ -11950,6 +13518,63 @@ bcdui.component.chart.XmlChart = class extends bcdui.component.chart.Chart{
   debugIsWaitingFor() {}
   debugStatus() {}
   /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.XmlChart.html#tblInsert) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.XmlChart.html#tblInsert Online Api}
+  @description inserts a new row in the wrs data, values given as object
+  @param {Object} args.values  object holding cell values which should be inserted, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:I syntax when this is true, otherwise wrs:R is used, rmi=true also prefills default values
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @inherits bcdui.core.DataProvider#tblInsert
+  @overrides bcdui.component.chart.Chart#tblInsert
+  @return row id of newly inserted row
+  */
+  tblInsert() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.XmlChart.html#tblUpdate) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.XmlChart.html#tblUpdate Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} args.values  object holding cell values which should be used for updating, e.g. { country: 'DE', flag: true }
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be update (or use filter)
+  @inherits bcdui.core.DataProvider#tblUpdate
+  @overrides bcdui.component.chart.Chart#tblUpdate
+  @return number of updated rows
+  */
+  tblUpdate() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.XmlChart.html#tblDelete) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.XmlChart.html#tblDelete Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be deleted (or use filter)
+  @inherits bcdui.core.DataProvider#tblDelete
+  @overrides bcdui.component.chart.Chart#tblDelete
+  @return number of removed rows
+  */
+  tblDelete() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.XmlChart.html#tblSelect) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.XmlChart.html#tblSelect Online Api}
+  @description returns an array of requested data
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelect
+  @overrides bcdui.component.chart.Chart#tblSelect
+  @return array of objects holding the requested data
+  */
+  tblSelect() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.XmlChart.html#tblSelectRow) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.XmlChart.html#tblSelectRow Online Api}
+  @description returns one object representing the filtered data (either filter or rowId). In case of multiple filter matches, the first one is returned
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {string} [args.rowId]  rowId of row which should be queried (or use filter)
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelectRow
+  @overrides bcdui.component.chart.Chart#tblSelectRow
+  @return array of objects holding the requested data
+  */
+  tblSelectRow() {}
+  /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.XmlChart.html#serialize) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.XmlChart.html#serialize Online Api}
   @description Serialize dataprovider's data if available
   @inherits bcdui.core.DataProvider#serialize
@@ -12215,6 +13840,63 @@ bcdui.component.chart.ChartEchart = class extends bcdui.core.Renderer{
   @return text value stored at xPath (or null if no text was found and no defaultValue supplied)
   */
   read(xPath,fillParams,defaultValue) { console.log(xPath,fillParams,defaultValue); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#tblInsert) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#tblInsert Online Api}
+  @description inserts a new row in the wrs data, values given as object
+  @param {Object} args.values  object holding cell values which should be inserted, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:I syntax when this is true, otherwise wrs:R is used, rmi=true also prefills default values
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @inherits bcdui.core.DataProvider#tblInsert
+  @overrides bcdui.core.Renderer#tblInsert
+  @return row id of newly inserted row
+  */
+  tblInsert() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#tblUpdate) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#tblUpdate Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} args.values  object holding cell values which should be used for updating, e.g. { country: 'DE', flag: true }
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be update (or use filter)
+  @inherits bcdui.core.DataProvider#tblUpdate
+  @overrides bcdui.core.Renderer#tblUpdate
+  @return number of updated rows
+  */
+  tblUpdate() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#tblDelete) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#tblDelete Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be deleted (or use filter)
+  @inherits bcdui.core.DataProvider#tblDelete
+  @overrides bcdui.core.Renderer#tblDelete
+  @return number of removed rows
+  */
+  tblDelete() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#tblSelect) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#tblSelect Online Api}
+  @description returns an array of requested data
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelect
+  @overrides bcdui.core.Renderer#tblSelect
+  @return array of objects holding the requested data
+  */
+  tblSelect() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#tblSelectRow) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#tblSelectRow Online Api}
+  @description returns one object representing the filtered data (either filter or rowId). In case of multiple filter matches, the first one is returned
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {string} [args.rowId]  rowId of row which should be queried (or use filter)
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelectRow
+  @overrides bcdui.core.Renderer#tblSelectRow
+  @return array of objects holding the requested data
+  */
+  tblSelectRow() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#write) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.chart.ChartEchart.html#write Online Api}
   @description Set a value to on a certain xPath and create the xPath where necessary. This combines Element.evaluate() for a single node with creating the path where necessary. It will prefer extending an existing start-part over creating a second one. After the operation the xPath (with the optional value) is guaranteed to exist (pre-existing or created or extended) and the addressed node is returned.
@@ -12482,6 +14164,63 @@ bcdui.component.cube.CubeModel = class extends bcdui.core.ModelWrapper{
   @return text value stored at xPath (or null if no text was found and no defaultValue supplied)
   */
   read(xPath,fillParams,defaultValue) { console.log(xPath,fillParams,defaultValue); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.CubeModel.html#tblInsert) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.CubeModel.html#tblInsert Online Api}
+  @description inserts a new row in the wrs data, values given as object
+  @param {Object} args.values  object holding cell values which should be inserted, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:I syntax when this is true, otherwise wrs:R is used, rmi=true also prefills default values
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @inherits bcdui.core.DataProvider#tblInsert
+  @overrides bcdui.core.ModelWrapper#tblInsert
+  @return row id of newly inserted row
+  */
+  tblInsert() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.CubeModel.html#tblUpdate) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.CubeModel.html#tblUpdate Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} args.values  object holding cell values which should be used for updating, e.g. { country: 'DE', flag: true }
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be update (or use filter)
+  @inherits bcdui.core.DataProvider#tblUpdate
+  @overrides bcdui.core.ModelWrapper#tblUpdate
+  @return number of updated rows
+  */
+  tblUpdate() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.CubeModel.html#tblDelete) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.CubeModel.html#tblDelete Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be deleted (or use filter)
+  @inherits bcdui.core.DataProvider#tblDelete
+  @overrides bcdui.core.ModelWrapper#tblDelete
+  @return number of removed rows
+  */
+  tblDelete() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.CubeModel.html#tblSelect) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.CubeModel.html#tblSelect Online Api}
+  @description returns an array of requested data
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelect
+  @overrides bcdui.core.ModelWrapper#tblSelect
+  @return array of objects holding the requested data
+  */
+  tblSelect() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.CubeModel.html#tblSelectRow) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.CubeModel.html#tblSelectRow Online Api}
+  @description returns one object representing the filtered data (either filter or rowId). In case of multiple filter matches, the first one is returned
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {string} [args.rowId]  rowId of row which should be queried (or use filter)
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelectRow
+  @overrides bcdui.core.ModelWrapper#tblSelectRow
+  @return array of objects holding the requested data
+  */
+  tblSelectRow() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.CubeModel.html#write) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.CubeModel.html#write Online Api}
   @description Set a value to on a certain xPath and create the xPath where necessary. This combines Element.evaluate() for a single node with creating the path where necessary. It will prefer extending an existing start-part over creating a second one. After the operation the xPath (with the optional value) is guaranteed to exist (pre-existing or created or extended) and the addressed node is returned.
@@ -12785,6 +14524,63 @@ bcdui.component.cube.Cube = class extends bcdui.core.Renderer{
   */
   read(xPath,fillParams,defaultValue) { console.log(xPath,fillParams,defaultValue); }
   /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.Cube.html#tblInsert) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.Cube.html#tblInsert Online Api}
+  @description inserts a new row in the wrs data, values given as object
+  @param {Object} args.values  object holding cell values which should be inserted, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:I syntax when this is true, otherwise wrs:R is used, rmi=true also prefills default values
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @inherits bcdui.core.DataProvider#tblInsert
+  @overrides bcdui.core.Renderer#tblInsert
+  @return row id of newly inserted row
+  */
+  tblInsert() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.Cube.html#tblUpdate) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.Cube.html#tblUpdate Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} args.values  object holding cell values which should be used for updating, e.g. { country: 'DE', flag: true }
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be update (or use filter)
+  @inherits bcdui.core.DataProvider#tblUpdate
+  @overrides bcdui.core.Renderer#tblUpdate
+  @return number of updated rows
+  */
+  tblUpdate() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.Cube.html#tblDelete) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.Cube.html#tblDelete Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be deleted (or use filter)
+  @inherits bcdui.core.DataProvider#tblDelete
+  @overrides bcdui.core.Renderer#tblDelete
+  @return number of removed rows
+  */
+  tblDelete() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.Cube.html#tblSelect) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.Cube.html#tblSelect Online Api}
+  @description returns an array of requested data
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelect
+  @overrides bcdui.core.Renderer#tblSelect
+  @return array of objects holding the requested data
+  */
+  tblSelect() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.Cube.html#tblSelectRow) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.Cube.html#tblSelectRow Online Api}
+  @description returns one object representing the filtered data (either filter or rowId). In case of multiple filter matches, the first one is returned
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {string} [args.rowId]  rowId of row which should be queried (or use filter)
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelectRow
+  @overrides bcdui.core.Renderer#tblSelectRow
+  @return array of objects holding the requested data
+  */
+  tblSelectRow() {}
+  /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.Cube.html#write) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.cube.Cube.html#write Online Api}
   @description Set a value to on a certain xPath and create the xPath where necessary. This combines Element.evaluate() for a single node with creating the path where necessary. It will prefer extending an existing start-part over creating a second one. After the operation the xPath (with the optional value) is guaranteed to exist (pre-existing or created or extended) and the addressed node is returned.
   @param {string} xPath  xPath pointing to the node which is set to the value value or plain xPath to be created if not there. It tries to reuse all matching parts that are already there. If you provide for example "/n:Root/n:MyElem/&commat;attr2" and there is already "/n:Root/n:MyElem/&commat;attr1", then "/n:Root/n:MyElem" will be "re-used" and get an additional attribute attr2. Many expressions are allowed, for example "/n:Root/n:MyElem[&commat;attr1='attr1Value']/n:SubElem" is also ok. By nature, some xPath expressions are not allowed, for example using '//' or "/n:Root/n:MyElem/[&commat;attr1 or &commat;attr2]/n:SubElem" is obviously not unambiguous enough and will throw an error. This method is Wrs aware, use for example '/wrs:Wrs/wrs:Data/wrs:*[2]/wrs:C[3]' as xPath and it will turn wrs:R[wrs:C] into wrs:M[wrs:C and wrs:O], see Wrs format. (can include dot template placeholders which get filled with the given fillParams)
@@ -13018,6 +14814,63 @@ bcdui.component.far.FarModel = class extends bcdui.core.AsyncJsDataProvider{
   @return text value stored at xPath (or null if no text was found and no defaultValue supplied)
   */
   read(xPath,fillParams,defaultValue) { console.log(xPath,fillParams,defaultValue); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.far.FarModel.html#tblInsert) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.far.FarModel.html#tblInsert Online Api}
+  @description inserts a new row in the wrs data, values given as object
+  @param {Object} args.values  object holding cell values which should be inserted, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:I syntax when this is true, otherwise wrs:R is used, rmi=true also prefills default values
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @inherits bcdui.core.DataProvider#tblInsert
+  @overrides bcdui.core.AsyncJsDataProvider#tblInsert
+  @return row id of newly inserted row
+  */
+  tblInsert() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.far.FarModel.html#tblUpdate) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.far.FarModel.html#tblUpdate Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} args.values  object holding cell values which should be used for updating, e.g. { country: 'DE', flag: true }
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be update (or use filter)
+  @inherits bcdui.core.DataProvider#tblUpdate
+  @overrides bcdui.core.AsyncJsDataProvider#tblUpdate
+  @return number of updated rows
+  */
+  tblUpdate() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.far.FarModel.html#tblDelete) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.far.FarModel.html#tblDelete Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be deleted (or use filter)
+  @inherits bcdui.core.DataProvider#tblDelete
+  @overrides bcdui.core.AsyncJsDataProvider#tblDelete
+  @return number of removed rows
+  */
+  tblDelete() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.far.FarModel.html#tblSelect) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.far.FarModel.html#tblSelect Online Api}
+  @description returns an array of requested data
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelect
+  @overrides bcdui.core.AsyncJsDataProvider#tblSelect
+  @return array of objects holding the requested data
+  */
+  tblSelect() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.far.FarModel.html#tblSelectRow) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.far.FarModel.html#tblSelectRow Online Api}
+  @description returns one object representing the filtered data (either filter or rowId). In case of multiple filter matches, the first one is returned
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {string} [args.rowId]  rowId of row which should be queried (or use filter)
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelectRow
+  @overrides bcdui.core.AsyncJsDataProvider#tblSelectRow
+  @return array of objects holding the requested data
+  */
+  tblSelectRow() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.far.FarModel.html#write) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.far.FarModel.html#write Online Api}
   @description Set a value to on a certain xPath and create the xPath where necessary. This combines Element.evaluate() for a single node with creating the path where necessary. It will prefer extending an existing start-part over creating a second one. After the operation the xPath (with the optional value) is guaranteed to exist (pre-existing or created or extended) and the addressed node is returned.
@@ -13290,6 +15143,63 @@ bcdui.component.scorecard.ScorecardModel = class extends bcdui.core.DataProvider
   @return text value stored at xPath (or null if no text was found and no defaultValue supplied)
   */
   read(xPath,fillParams,defaultValue) { console.log(xPath,fillParams,defaultValue); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.ScorecardModel.html#tblInsert) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.ScorecardModel.html#tblInsert Online Api}
+  @description inserts a new row in the wrs data, values given as object
+  @param {Object} args.values  object holding cell values which should be inserted, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:I syntax when this is true, otherwise wrs:R is used, rmi=true also prefills default values
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @inherits bcdui.core.DataProvider#tblInsert
+  @overrides bcdui.core.DataProvider#tblInsert
+  @return row id of newly inserted row
+  */
+  tblInsert() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.ScorecardModel.html#tblUpdate) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.ScorecardModel.html#tblUpdate Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} args.values  object holding cell values which should be used for updating, e.g. { country: 'DE', flag: true }
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be update (or use filter)
+  @inherits bcdui.core.DataProvider#tblUpdate
+  @overrides bcdui.core.DataProvider#tblUpdate
+  @return number of updated rows
+  */
+  tblUpdate() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.ScorecardModel.html#tblDelete) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.ScorecardModel.html#tblDelete Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be deleted (or use filter)
+  @inherits bcdui.core.DataProvider#tblDelete
+  @overrides bcdui.core.DataProvider#tblDelete
+  @return number of removed rows
+  */
+  tblDelete() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.ScorecardModel.html#tblSelect) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.ScorecardModel.html#tblSelect Online Api}
+  @description returns an array of requested data
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelect
+  @overrides bcdui.core.DataProvider#tblSelect
+  @return array of objects holding the requested data
+  */
+  tblSelect() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.ScorecardModel.html#tblSelectRow) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.ScorecardModel.html#tblSelectRow Online Api}
+  @description returns one object representing the filtered data (either filter or rowId). In case of multiple filter matches, the first one is returned
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {string} [args.rowId]  rowId of row which should be queried (or use filter)
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelectRow
+  @overrides bcdui.core.DataProvider#tblSelectRow
+  @return array of objects holding the requested data
+  */
+  tblSelectRow() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.ScorecardModel.html#write) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.ScorecardModel.html#write Online Api}
   @description Set a value to on a certain xPath and create the xPath where necessary. This combines Element.evaluate() for a single node with creating the path where necessary. It will prefer extending an existing start-part over creating a second one. After the operation the xPath (with the optional value) is guaranteed to exist (pre-existing or created or extended) and the addressed node is returned.
@@ -13601,6 +15511,63 @@ bcdui.component.scorecard.Scorecard = class extends bcdui.core.Renderer{
   */
   read(xPath,fillParams,defaultValue) { console.log(xPath,fillParams,defaultValue); }
   /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.Scorecard.html#tblInsert) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.Scorecard.html#tblInsert Online Api}
+  @description inserts a new row in the wrs data, values given as object
+  @param {Object} args.values  object holding cell values which should be inserted, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:I syntax when this is true, otherwise wrs:R is used, rmi=true also prefills default values
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @inherits bcdui.core.DataProvider#tblInsert
+  @overrides bcdui.core.Renderer#tblInsert
+  @return row id of newly inserted row
+  */
+  tblInsert() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.Scorecard.html#tblUpdate) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.Scorecard.html#tblUpdate Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} args.values  object holding cell values which should be used for updating, e.g. { country: 'DE', flag: true }
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be update (or use filter)
+  @inherits bcdui.core.DataProvider#tblUpdate
+  @overrides bcdui.core.Renderer#tblUpdate
+  @return number of updated rows
+  */
+  tblUpdate() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.Scorecard.html#tblDelete) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.Scorecard.html#tblDelete Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be deleted (or use filter)
+  @inherits bcdui.core.DataProvider#tblDelete
+  @overrides bcdui.core.Renderer#tblDelete
+  @return number of removed rows
+  */
+  tblDelete() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.Scorecard.html#tblSelect) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.Scorecard.html#tblSelect Online Api}
+  @description returns an array of requested data
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelect
+  @overrides bcdui.core.Renderer#tblSelect
+  @return array of objects holding the requested data
+  */
+  tblSelect() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.Scorecard.html#tblSelectRow) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.Scorecard.html#tblSelectRow Online Api}
+  @description returns one object representing the filtered data (either filter or rowId). In case of multiple filter matches, the first one is returned
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {string} [args.rowId]  rowId of row which should be queried (or use filter)
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelectRow
+  @overrides bcdui.core.Renderer#tblSelectRow
+  @return array of objects holding the requested data
+  */
+  tblSelectRow() {}
+  /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.Scorecard.html#write) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.scorecard.Scorecard.html#write Online Api}
   @description Set a value to on a certain xPath and create the xPath where necessary. This combines Element.evaluate() for a single node with creating the path where necessary. It will prefer extending an existing start-part over creating a second one. After the operation the xPath (with the optional value) is guaranteed to exist (pre-existing or created or extended) and the addressed node is returned.
   @param {string} xPath  xPath pointing to the node which is set to the value value or plain xPath to be created if not there. It tries to reuse all matching parts that are already there. If you provide for example "/n:Root/n:MyElem/&commat;attr2" and there is already "/n:Root/n:MyElem/&commat;attr1", then "/n:Root/n:MyElem" will be "re-used" and get an additional attribute attr2. Many expressions are allowed, for example "/n:Root/n:MyElem[&commat;attr1='attr1Value']/n:SubElem" is also ok. By nature, some xPath expressions are not allowed, for example using '//' or "/n:Root/n:MyElem/[&commat;attr1 or &commat;attr2]/n:SubElem" is obviously not unambiguous enough and will throw an error. This method is Wrs aware, use for example '/wrs:Wrs/wrs:Data/wrs:*[2]/wrs:C[3]' as xPath and it will turn wrs:R[wrs:C] into wrs:M[wrs:C and wrs:O], see Wrs format. (can include dot template placeholders which get filled with the given fillParams)
@@ -13845,6 +15812,63 @@ bcdui.component.grid.GridModel = class extends bcdui.core.SimpleModel{
   @return text value stored at xPath (or null if no text was found and no defaultValue supplied)
   */
   read(xPath,fillParams,defaultValue) { console.log(xPath,fillParams,defaultValue); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#tblInsert) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#tblInsert Online Api}
+  @description inserts a new row in the wrs data, values given as object
+  @param {Object} args.values  object holding cell values which should be inserted, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:I syntax when this is true, otherwise wrs:R is used, rmi=true also prefills default values
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @inherits bcdui.core.DataProvider#tblInsert
+  @overrides bcdui.core.SimpleModel#tblInsert
+  @return row id of newly inserted row
+  */
+  tblInsert() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#tblUpdate) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#tblUpdate Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} args.values  object holding cell values which should be used for updating, e.g. { country: 'DE', flag: true }
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be update (or use filter)
+  @inherits bcdui.core.DataProvider#tblUpdate
+  @overrides bcdui.core.SimpleModel#tblUpdate
+  @return number of updated rows
+  */
+  tblUpdate() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#tblDelete) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#tblDelete Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be deleted (or use filter)
+  @inherits bcdui.core.DataProvider#tblDelete
+  @overrides bcdui.core.SimpleModel#tblDelete
+  @return number of removed rows
+  */
+  tblDelete() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#tblSelect) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#tblSelect Online Api}
+  @description returns an array of requested data
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelect
+  @overrides bcdui.core.SimpleModel#tblSelect
+  @return array of objects holding the requested data
+  */
+  tblSelect() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#tblSelectRow) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#tblSelectRow Online Api}
+  @description returns one object representing the filtered data (either filter or rowId). In case of multiple filter matches, the first one is returned
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {string} [args.rowId]  rowId of row which should be queried (or use filter)
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelectRow
+  @overrides bcdui.core.SimpleModel#tblSelectRow
+  @return array of objects holding the requested data
+  */
+  tblSelectRow() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#write) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.GridModel.html#write Online Api}
   @description Set a value to on a certain xPath and create the xPath where necessary. This combines Element.evaluate() for a single node with creating the path where necessary. It will prefer extending an existing start-part over creating a second one. After the operation the xPath (with the optional value) is guaranteed to exist (pre-existing or created or extended) and the addressed node is returned.
@@ -14199,6 +16223,63 @@ bcdui.component.grid.Grid = class extends bcdui.core.Renderer{
   */
   read(xPath,fillParams,defaultValue) { console.log(xPath,fillParams,defaultValue); }
   /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.Grid.html#tblInsert) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.Grid.html#tblInsert Online Api}
+  @description inserts a new row in the wrs data, values given as object
+  @param {Object} args.values  object holding cell values which should be inserted, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:I syntax when this is true, otherwise wrs:R is used, rmi=true also prefills default values
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @inherits bcdui.core.DataProvider#tblInsert
+  @overrides bcdui.core.Renderer#tblInsert
+  @return row id of newly inserted row
+  */
+  tblInsert() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.Grid.html#tblUpdate) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.Grid.html#tblUpdate Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} args.values  object holding cell values which should be used for updating, e.g. { country: 'DE', flag: true }
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be update (or use filter)
+  @inherits bcdui.core.DataProvider#tblUpdate
+  @overrides bcdui.core.Renderer#tblUpdate
+  @return number of updated rows
+  */
+  tblUpdate() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.Grid.html#tblDelete) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.Grid.html#tblDelete Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be deleted (or use filter)
+  @inherits bcdui.core.DataProvider#tblDelete
+  @overrides bcdui.core.Renderer#tblDelete
+  @return number of removed rows
+  */
+  tblDelete() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.Grid.html#tblSelect) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.Grid.html#tblSelect Online Api}
+  @description returns an array of requested data
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelect
+  @overrides bcdui.core.Renderer#tblSelect
+  @return array of objects holding the requested data
+  */
+  tblSelect() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.Grid.html#tblSelectRow) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.Grid.html#tblSelectRow Online Api}
+  @description returns one object representing the filtered data (either filter or rowId). In case of multiple filter matches, the first one is returned
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {string} [args.rowId]  rowId of row which should be queried (or use filter)
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelectRow
+  @overrides bcdui.core.Renderer#tblSelectRow
+  @return array of objects holding the requested data
+  */
+  tblSelectRow() {}
+  /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.Grid.html#write) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.grid.Grid.html#write Online Api}
   @description Set a value to on a certain xPath and create the xPath where necessary. This combines Element.evaluate() for a single node with creating the path where necessary. It will prefer extending an existing start-part over creating a second one. After the operation the xPath (with the optional value) is guaranteed to exist (pre-existing or created or extended) and the addressed node is returned.
   @param {string} xPath  xPath pointing to the node which is set to the value value or plain xPath to be created if not there. It tries to reuse all matching parts that are already there. If you provide for example "/n:Root/n:MyElem/&commat;attr2" and there is already "/n:Root/n:MyElem/&commat;attr1", then "/n:Root/n:MyElem" will be "re-used" and get an additional attribute attr2. Many expressions are allowed, for example "/n:Root/n:MyElem[&commat;attr1='attr1Value']/n:SubElem" is also ok. By nature, some xPath expressions are not allowed, for example using '//' or "/n:Root/n:MyElem/[&commat;attr1 or &commat;attr2]/n:SubElem" is obviously not unambiguous enough and will throw an error. This method is Wrs aware, use for example '/wrs:Wrs/wrs:Data/wrs:*[2]/wrs:C[3]' as xPath and it will turn wrs:R[wrs:C] into wrs:M[wrs:C and wrs:O], see Wrs format. (can include dot template placeholders which get filled with the given fillParams)
@@ -14353,19 +16434,27 @@ bcdui.component.docUpload.Uploader = class extends bcdui.core.Renderer{
   /**
   @param args  The parameter map contains the following properties:
   @param {targetHtmlRef} args.targetHtml  A reference to the HTML DOM Element where to put the output
-  @param {string} args.scope  The scope identifier
-  @param {string} args.instance  The instance identifier
+  @param {string} args.scope  The scope identifier, can be a space separated string when you want to map multiple scopeId and instanceId
+  @param {string} args.instance  The instance identifier, can be a space separated string when you want to map multiple scopeId and instanceId
   @param {string} [args.id]  The object's id, needed only when later accessing via id. If given the docUpload registers itself at {@link bcdui.factory.objectRegistry}
+  @param {Object} [args.map]  scope/instance map, alternative way to specify multiple scope/instances
   @param {string} [args.addBRefs]  Space separated list of additional bRefs you want to load
+  @param {string} [args.bindingSetId]  Optional binding set id used for document storage, by default bcd_docUpload is used
+  @param {string} [args.doAcknowledge]  Set to true if acknowledge mode is required
+  @param {string} [args.downloadAll]  Set to true if you want to be able to download/zip all documents
   @param {function} [args.onBeforeSave]  Function which is called before each save operation. Parameter holds current wrs dataprovider. Function needs to return true to save or false for skipping save process and resetting data
   @param {filterBRefs} [args.filterBRefs]  The space separated list of binding Refs that will be used in filter clause of request document
+  @param {string} [args.zipName]  The filename for the generated zip, ensure it ends with .zip
+  @param {targetHtmlRef} [args.zipDownloadTargetHtml]  optional targetHml htmlElement or jQuery object for zip download button, if not present, it's rendered to its default place
   @param {chainDef} [args.renderChain]  A custom renderer chain
   @param {Object} [args.renderParameters]  Renderer parameters. Will be enrichted with docUploader default parameters
+  @param {bcdui.core.DataProvider} [args.config]  The model containing the docUpload configuration data. If it is not present the well known bcdui.wkModels.bcdDocUpload is used
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.docUpload.Uploader.html) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.docUpload.Uploader.html Online Api}
   @description Creates an Uploader
   @extends bcdui.core.Renderer
     */
   constructor(args){ super(args); }
+  setAcknowledge() {}
   getClassName() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.docUpload.Uploader.html#getUploadInfo) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.docUpload.Uploader.html#getUploadInfo Online Api}
@@ -14495,6 +16584,63 @@ bcdui.component.docUpload.Uploader = class extends bcdui.core.Renderer{
   @return text value stored at xPath (or null if no text was found and no defaultValue supplied)
   */
   read(xPath,fillParams,defaultValue) { console.log(xPath,fillParams,defaultValue); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.docUpload.Uploader.html#tblInsert) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.docUpload.Uploader.html#tblInsert Online Api}
+  @description inserts a new row in the wrs data, values given as object
+  @param {Object} args.values  object holding cell values which should be inserted, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:I syntax when this is true, otherwise wrs:R is used, rmi=true also prefills default values
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @inherits bcdui.core.DataProvider#tblInsert
+  @overrides bcdui.core.Renderer#tblInsert
+  @return row id of newly inserted row
+  */
+  tblInsert() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.docUpload.Uploader.html#tblUpdate) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.docUpload.Uploader.html#tblUpdate Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} args.values  object holding cell values which should be used for updating, e.g. { country: 'DE', flag: true }
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be update (or use filter)
+  @inherits bcdui.core.DataProvider#tblUpdate
+  @overrides bcdui.core.Renderer#tblUpdate
+  @return number of updated rows
+  */
+  tblUpdate() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.docUpload.Uploader.html#tblDelete) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.docUpload.Uploader.html#tblDelete Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be deleted (or use filter)
+  @inherits bcdui.core.DataProvider#tblDelete
+  @overrides bcdui.core.Renderer#tblDelete
+  @return number of removed rows
+  */
+  tblDelete() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.docUpload.Uploader.html#tblSelect) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.docUpload.Uploader.html#tblSelect Online Api}
+  @description returns an array of requested data
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelect
+  @overrides bcdui.core.Renderer#tblSelect
+  @return array of objects holding the requested data
+  */
+  tblSelect() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.docUpload.Uploader.html#tblSelectRow) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.docUpload.Uploader.html#tblSelectRow Online Api}
+  @description returns one object representing the filtered data (either filter or rowId). In case of multiple filter matches, the first one is returned
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {string} [args.rowId]  rowId of row which should be queried (or use filter)
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelectRow
+  @overrides bcdui.core.Renderer#tblSelectRow
+  @return array of objects holding the requested data
+  */
+  tblSelectRow() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.docUpload.Uploader.html#write) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.docUpload.Uploader.html#write Online Api}
   @description Set a value to on a certain xPath and create the xPath where necessary. This combines Element.evaluate() for a single node with creating the path where necessary. It will prefer extending an existing start-part over creating a second one. After the operation the xPath (with the optional value) is guaranteed to exist (pre-existing or created or extended) and the addressed node is returned.
@@ -14787,6 +16933,63 @@ bcdui.component.tree.Tree = class extends bcdui.core.Renderer{
   @return text value stored at xPath (or null if no text was found and no defaultValue supplied)
   */
   read(xPath,fillParams,defaultValue) { console.log(xPath,fillParams,defaultValue); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.tree.Tree.html#tblInsert) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.tree.Tree.html#tblInsert Online Api}
+  @description inserts a new row in the wrs data, values given as object
+  @param {Object} args.values  object holding cell values which should be inserted, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:I syntax when this is true, otherwise wrs:R is used, rmi=true also prefills default values
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @inherits bcdui.core.DataProvider#tblInsert
+  @overrides bcdui.core.Renderer#tblInsert
+  @return row id of newly inserted row
+  */
+  tblInsert() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.tree.Tree.html#tblUpdate) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.tree.Tree.html#tblUpdate Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} args.values  object holding cell values which should be used for updating, e.g. { country: 'DE', flag: true }
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be update (or use filter)
+  @inherits bcdui.core.DataProvider#tblUpdate
+  @overrides bcdui.core.Renderer#tblUpdate
+  @return number of updated rows
+  */
+  tblUpdate() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.tree.Tree.html#tblDelete) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.tree.Tree.html#tblDelete Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be deleted (or use filter)
+  @inherits bcdui.core.DataProvider#tblDelete
+  @overrides bcdui.core.Renderer#tblDelete
+  @return number of removed rows
+  */
+  tblDelete() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.tree.Tree.html#tblSelect) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.tree.Tree.html#tblSelect Online Api}
+  @description returns an array of requested data
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelect
+  @overrides bcdui.core.Renderer#tblSelect
+  @return array of objects holding the requested data
+  */
+  tblSelect() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.tree.Tree.html#tblSelectRow) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.tree.Tree.html#tblSelectRow Online Api}
+  @description returns one object representing the filtered data (either filter or rowId). In case of multiple filter matches, the first one is returned
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {string} [args.rowId]  rowId of row which should be queried (or use filter)
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelectRow
+  @overrides bcdui.core.Renderer#tblSelectRow
+  @return array of objects holding the requested data
+  */
+  tblSelectRow() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.tree.Tree.html#write) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.tree.Tree.html#write Online Api}
   @description Set a value to on a certain xPath and create the xPath where necessary. This combines Element.evaluate() for a single node with creating the path where necessary. It will prefer extending an existing start-part over creating a second one. After the operation the xPath (with the optional value) is guaranteed to exist (pre-existing or created or extended) and the addressed node is returned.
@@ -15091,6 +17294,63 @@ bcdui.component.textnavigation.TextNavigation = class extends bcdui.core.Rendere
   @return text value stored at xPath (or null if no text was found and no defaultValue supplied)
   */
   read(xPath,fillParams,defaultValue) { console.log(xPath,fillParams,defaultValue); }
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#tblInsert) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#tblInsert Online Api}
+  @description inserts a new row in the wrs data, values given as object
+  @param {Object} args.values  object holding cell values which should be inserted, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:I syntax when this is true, otherwise wrs:R is used, rmi=true also prefills default values
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @inherits bcdui.core.DataProvider#tblInsert
+  @overrides bcdui.core.Renderer#tblInsert
+  @return row id of newly inserted row
+  */
+  tblInsert() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#tblUpdate) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#tblUpdate Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} args.values  object holding cell values which should be used for updating, e.g. { country: 'DE', flag: true }
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be update (or use filter)
+  @inherits bcdui.core.DataProvider#tblUpdate
+  @overrides bcdui.core.Renderer#tblUpdate
+  @return number of updated rows
+  */
+  tblUpdate() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#tblDelete) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#tblDelete Online Api}
+  @description updates wrs rows with given data. Either a single row (via rowId) or singel/multiple ones (via filter)
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {boolean} [args.rmi]  use wrs:M syntax when this is true, otherwise row columns element name is not touched
+  @param {boolean} [args.fire]  fires dataprovider after insertion
+  @param {string} [args.rowId]  id specifying row which should be deleted (or use filter)
+  @inherits bcdui.core.DataProvider#tblDelete
+  @overrides bcdui.core.Renderer#tblDelete
+  @return number of removed rows
+  */
+  tblDelete() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#tblSelect) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#tblSelect Online Api}
+  @description returns an array of requested data
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelect
+  @overrides bcdui.core.Renderer#tblSelect
+  @return array of objects holding the requested data
+  */
+  tblSelect() {}
+  /**
+  @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#tblSelectRow) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#tblSelectRow Online Api}
+  @description returns one object representing the filtered data (either filter or rowId). In case of multiple filter matches, the first one is returned
+  @param {Object} [args.filter]  object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true }
+  @param {string} [args.rowId]  rowId of row which should be queried (or use filter)
+  @param {Array} [args.columns]  string array of requested columns, if not given, all columns are returned
+  @inherits bcdui.core.DataProvider#tblSelectRow
+  @overrides bcdui.core.Renderer#tblSelectRow
+  @return array of objects holding the requested data
+  */
+  tblSelectRow() {}
   /**
   @see [Online Api](https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#write) {@link https://businesscode.github.io/BCD-UI-Docu/jsdoc/bcdui.component.textnavigation.TextNavigation.html#write Online Api}
   @description Set a value to on a certain xPath and create the xPath where necessary. This combines Element.evaluate() for a single node with creating the path where necessary. It will prefer extending an existing start-part over creating a second one. After the operation the xPath (with the optional value) is guaranteed to exist (pre-existing or created or extended) and the addressed node is returned.
