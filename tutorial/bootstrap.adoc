@@ -66,7 +66,7 @@ At runtime the implementation is served from bcd-ui-core.jar. As you will see, t
 
 ==== HTML 5 Custom Elements
 
-All BCD-UI widgets, components and even core objects come with an HTML custom element API. This is especially usefull for visible objects. To make for example the Eclipse editor aware of these, import `https://businesscode.github.io/BCD-UI-Docu/xsd/bcduiCatalog.xml` at menu:Preferences[Web > HTML Files > Editor > Templates > Import...].
+All BCD-UI widgets, components and even core objects come with an HTML custom element API. This is especially useful for visible objects. To make for example the Eclipse editor aware of these, import `https://businesscode.github.io/BCD-UI-Docu/xsd/bcduiCatalog.xml` at menu:Preferences[Web > HTML Files > Editor > Templates > Import...].
 The elements should then appear in the template list.
 
 image::images/bootstrap_htmlTemplates.png[]

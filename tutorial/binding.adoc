@@ -13,7 +13,7 @@ i,e, for the current request the best fit (the highest aggregation) table is cho
 Relations, i.e. Joins:: The option to do joins only if needed based on the actual BindingItem (column) addressed
 Row level security:: The option to enforce constraints (Filter) on the SQL queries like user rights or language
 Server values:: The option to enforce values server-side, for example the user's id.
-Write pre- and processing:: The option to enforce additional processing of accesses to the database, for example application specific historization
+Write pre- and processing:: The option to enforce additional processing of accesses to the database, for example application specific way to keep track of changes.
 Datasource:: Each BindingSets can refer to a different database.
 
 Only tables and columns with a binding can be accessed by a BCD-UI application.

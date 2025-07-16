@@ -33,7 +33,7 @@ Default configuration apply:
 ----
 
 
-the bcd_db_properties table has following column definition:
+the bcd_db_properties table has the following column definition:
 
 
 |===

@@ -59,7 +59,7 @@ elements with undeclared namespaces inherit the default namespace of the (possib
 because they are embedded, use select="*[local-name()='output']" and so on instead.
 Also do not copy such elements into the output as they would keep the non-xsl namespace,
 create these elements with <xsl:element name="output" namespace="http://www.w3.org/1999/XSL/Transform"/> instead
-* For webkit it is not allowed to use variables in template match attributes, like <xsl:template match="*[@attr=$myVar/Values]">..
+* For webkit it is not allowed to use variables in template match attributes, like <xsl:template match="*[@attr=$myVar/Values]">...
 * When a node is provided to the XSLT processor as input, that node becomes the document root, for Gecko and IE "/" remains the root.
 * Mix of constant strings and AVT (Attribute Value Template) is not allowed. So use attr="{concat('abc ', $var)}" instead of attr="abc {$var}" for webkit."
 * For Webkit the imports are resolved by BCD-UI. This is done by including the imported stylesheet leaving out templates with the same
