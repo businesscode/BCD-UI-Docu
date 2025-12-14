@@ -1,0 +1,1 @@
+export * as bcdui from "../../bcdui/types/bcdui/index.d.ts";
