@@ -31,7 +31,7 @@ dependencies {
   implementation 'de.businesscode.bcdui:bcd-ui-theme-bcd:5.6.0-SNAPSHOT'
   
   // 3rd party
-  implementation group: 'com.h2database', name: 'h2', version: '2.1.210'
+  implementation group: 'org.duckdb', name: 'duckdb_jdbc', version: '1.4.3.0'
 }
 
 //*********************************************

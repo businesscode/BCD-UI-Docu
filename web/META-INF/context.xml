@@ -1,45 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context path="/">
-  <Environment name="bcdui/defaultConnection" type="java.lang.String" value="jdbc/connection_oracle"/>
 
-  <!-- Sample for Oracle
-  <Resource name="jdbc/connection_oracle"
-    auth="Container"
-    type="javax.sql.DataSource"
-    maxActive="200"
-    maxIdle ="-1"
-    maxWait="200"
-    logAbandoned="true"
-    removeAbandoned="true"
-    validationQuery="select sysdate from dual"
-    testOnBorrow="true"
-    driverClassName="oracle.jdbc.OracleDriver"
-    connectionProperties="defaultRowPrefetch=100;"
-    initConnectionSqls="ALTER SESSION SET NLS_SORT='BINARY' NLS_DATE_FORMAT='YYYY-MM-DD HH24:MI:SS' NLS_TIMESTAMP_FORMAT='YYYY-MM-DD HH24:MI:SS.FF'"
-    url="jdbc:oracle:thin:@serverXX:1521:dbInstanceXX"
-    username="XX"
-    password="XX" />
-  -->
+  <Environment name="bcdui/defaultConnection" type="java.lang.String" value="jdbc/bcdui_demo_duckdb"/>
 
-  <!-- Sample for MSSqlServer
-  <Resource name="jdbc/connection_mysql"
-    auth="Container"
-    type="javax.sql.DataSource"
-    maxActive="10"
-    maxIdle ="5"
-    maxWait="15000"
-    logAbandoned="true"
-    removeAbandoned="true"
-    validationQuery="select 1"
-    testOnBorrow="true"
-    driverClassName="net.sourceforge.jtds.jdbc.Driver"
-    url="jdbc:jtds:sqlserver://serverXX:1433/dbnameXX"
-    username="XX"
-    password="XX" />
-  -->
+  <!-- See samples for connections and settings to other database in BCD-UI online documentation -->
+  <!-- Do not use this for writing, this environment is meant to be stable -->
+  <Resource name="jdbc/bcdui_demo_duckdb"
+            factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+            auth="Container"
+            type="javax.sql.DataSource"
+            maxActive="10"
+            minIdle ="2"
+            maxIdle ="2"
+            maxWait="15000"
+            logAbandoned="true"
+            removeAbandoned="true"
+            removeAbandonedTimeout="300"
+            validationQuery="select 1"
+            testOnBorrow="true"
+            driverClassName="org.duckdb.DuckDBDriver"
+            url="jdbc:duckdb:/Users/martinbernemann/IdeaProjects/BCD-UI-Docu/web/WEB-INF/bcdui-demo.duckdb"
+            username=""
+            password="" />
+
 
   <!-- Sample for PostgreSQL
-  <Resource name="jdbc/connection_postgres"
+  <Resource name="jdbc/bcdui_demo_postgres"
     auth="Container"
     type="javax.sql.DataSource"
     maxActive="10"
