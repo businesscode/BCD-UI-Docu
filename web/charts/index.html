@@ -2,30 +2,74 @@
 <html>
 <head>
   <meta charset="UTF-8"/>
-  <title>BCD-UI Minimal Cube</title>
+  <title>BCD-UI Minimal Chart</title>
   <script type="text/javascript" src="../bcdui/bcdui.js"></script>
 </head>
 <body>
-  <div id="bcdMainContainer">
+  <div class="bcd__outer-wrapper">
+    <div class="bcd__wrapper">
+      <div class="bcd__horizontal-split">
 
-    <div id="bcdHeaderArea"><div id="bcdLogoImageArea"></div></div>
-    <div id="bcdSpacerArea"></div>
-
-    <div class="bcdContentContainer">
-
-      <div id="bcdSideBarContainer">
-        <div class="bcdSection">
+        <!-- Header -->
+        <div class="bcd__header">
+          <div class="bcd__header__upper">
+            <div class="bcd__header__logo"><img src="../bcdui/theme/images/bcd_logo.png" alt=""></div>
+            <div><bcd-credentialsMenu></bcd-credentialsMenu></div>
+          </div>
+          <div class="bcd__header__navigation"><bcd-menu></bcd-menu></div>
         </div>
-      </div>
 
-      <!-- tag::chartTH[] -->
-      <div id="bcdBodyContainer">
-        <div class="bcdCaption">Chart</div>
-        <div id="chartTH" style="width: 400px; height: 200px"></div> <!--1-->
+        <!-- Main area -->
+        <div class="bcd__vertical-split">
+
+          <!-- Left sidebar, there is also a right sidebar not shown here --> <!--4-->
+          <div class="bcd__sidebar-left">
+            <div class="bcd__sidebar-left__inner bcdEffectCollapse">
+
+              <div class="bcd__form-container">
+                <section>
+                  <div class="bcd__form-group">
+                    <div class="bcd__select-container">
+
+                      <!-- place your sidebar widgets here
+                      <bcd-inputNg label="my input"...></bcd-inputNg>
+                      -->
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </div>
+
+            <div class="bcd__sidebar-right">
+              <div class="bcd__sidebar-right__inner">
+              </div>
+            </div>
+          </div>
+
+          <!-- Main content area -->
+          <div class="bcd__content-container">
+            <!-- tag::chartTH[] -->
+            <div id="bcdBodyContainer">
+              <div class="bcdCaption">Chart</div>
+              <div id="chartTH" style="width: 400px; height: 200px"></div> <!--1-->
+            </div>
+            <!-- end::chartTH[] -->
+          </div>
+
+        </div>
+
+        <!-- Footer -->
+        <footer>
+          <p>&copy; 2026 BusinessCode GmbH</p>
+          <nav>
+            <ul>
+              <li><a href="#">Imprint</a></li>
+              <li><a href="#">Privacy</a></li>
+            </ul>
+          </nav>
+        </footer>
       </div>
-      <!-- end::chartTH[] -->
     </div>
-
   </div>
   <script type="text/javascript">
     // tag::chartJs[]

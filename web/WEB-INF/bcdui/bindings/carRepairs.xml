@@ -4,7 +4,7 @@
   <C id="id" caption="Id" isKey="true"> <!--(3)-->
     <Column>id</Column> <!--(4)-->
   </C>
-  <C id="dy" caption="Dy" type-name="DATE">
+  <C id="dy" caption="Date" type-name="DATE">
     <Column>dy</Column>
   </C>
   <C id="yr" caption="Year">

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Copyright 2010-2022 BusinessCode GmbH, Germany
+  Copyright 2010-2026 BusinessCode GmbH, Germany
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
@@ -17,15 +17,68 @@
 <!--
   Standard web.xml for BCD-UI 4 applications.
   -->
-<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
-         version="3.1">
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         id="WebApp_ID" version="6.0">
 
   <display-name>ProjectName</display-name>
 
   <!--
     BCD-UI 4 Filters
+  -->
+
+  <!-- http header security options -->
+  <filter>
+    <filter-name>httpHeaderSecurity</filter-name>
+    <filter-class>org.apache.catalina.filters.HttpHeaderSecurityFilter</filter-class>
+    <init-param>
+      <param-name>antiClickJackingEnabled</param-name>
+      <param-value>true</param-value>
+    </init-param>
+    <init-param>
+      <param-name>antiClickJackingOption</param-name>
+      <param-value>SAMEORIGIN</param-value>
+    </init-param>
+    <init-param>
+      <param-name>hstsEnabled</param-name>
+      <param-value>true</param-value>
+    </init-param>
+    <init-param>
+      <param-name>hstsMaxAgeSeconds</param-name>
+      <param-value>63072000</param-value>
+    </init-param>
+    <init-param>
+      <param-name>hstsIncludeSubDomains</param-name>
+      <param-value>true</param-value>
+    </init-param>
+    <init-param>
+      <param-name>hstsPreload</param-name>
+      <param-value>true</param-value>
+    </init-param>
+    <init-param>
+      <param-name>blockContentTypeSniffingEnabled</param-name>
+      <param-value>true</param-value>
+    </init-param>
+    <init-param>
+      <param-name>xssProtectionEnabled</param-name>
+      <param-value>true</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>httpHeaderSecurity</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <!-- CORS Filter, enable it if you want to allow cross origin resource sharing in your application.
+  <filter>
+    <filter-name>CorsFilter</filter-name>
+    <filter-class>de.businesscode.bcdui.web.filters.CorsFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>CorsFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
   -->
 
   <!-- filter for identifying requests from MS Office applications like Word or Excel to not redirect to login page, enable if needed -->
@@ -40,10 +93,24 @@
   </filter-mapping>
   -->
 
+  <!-- ensure utf8 character encoding, must be placed before shiro filter -->
+  <filter>
+    <filter-name>setCharacterEncodingFilter</filter-name>
+    <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>setCharacterEncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
   <!-- Security filter for authentication and authorization, see https://shiro.apache.org/configuration.html -->
   <filter>
     <filter-name>bcdui4.ShiroFilter</filter-name>
-    <filter-class>org.apache.shiro.web.servlet.ShiroFilter</filter-class>
+    <filter-class>de.businesscode.bcdui.web.filters.ShiroFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>bcdui4.ShiroFilter</filter-name>
@@ -54,6 +121,10 @@
   <filter>
     <filter-name>bcdui4.RequestLifeCycleFilter</filter-name>
     <filter-class>de.businesscode.bcdui.web.filters.RequestLifeCycleFilter</filter-class>
+    <init-param>
+      <param-name>ContentSecurityPolicy</param-name>
+      <param-value>default-src 'self' 'unsafe-eval' 'unsafe-inline';object-src 'none'; img-src 'self' blob: data:</param-value>
+    </init-param>
   </filter>
   <filter-mapping>
     <filter-name>bcdui4.RequestLifeCycleFilter</filter-name>
@@ -171,6 +242,8 @@
     <url-pattern>/bcdui/*</url-pattern>
     <url-pattern>/vfs/*</url-pattern>
     <url-pattern>*.vfsxml</url-pattern>
+    <url-pattern>*.js</url-pattern>
+    <url-pattern>*.zip</url-pattern>
   </servlet-mapping>
 
   <!-- I18nServlet -->
@@ -189,6 +262,10 @@
   <!-- servlet>
     <servlet-name>bcdui4.SubjectPreferences</servlet-name>
     <servlet-class>de.businesscode.bcdui.web.servlets.SubjectPreferences</servlet-class>
+    <init-param>
+      <param-name>cookieMaxAge</param-name>
+      <param-value>31536000</param-value>
+    </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
@@ -211,6 +288,44 @@
     <servlet-name>bcdui4.DataUploadServlet</servlet-name>
     <url-pattern>/bcdui/servlets/DataUploadServlet/*</url-pattern>
   </servlet-mapping> 
+-->
+
+  <!-- Download servlet
+  <servlet>
+    <servlet-name>bcdui4.SchedulerDownload</servlet-name>
+    <servlet-class>de.businesscode.bcdui.toolbox.DownloadServlet</servlet-class>
+    <init-param>
+      <param-name>clearDaysFiles</param-name>
+      <param-value>14</param-value>
+    </init-param>
+    <init-param>
+      <param-name>clearDaysStats</param-name>
+      <param-value>60</param-value>
+    </init-param>
+    <init-param>
+      <param-name>downloadFolder</param-name>
+      <param-value>your absolute path to the download folder (sftp) or file path to local files</param-value>
+    </init-param>
+    <init-param>
+      <param-name>sftpHost</param-name>
+      <param-value>your sftp host</param-value>
+    </init-param>
+    <init-param>
+      <param-name>sftpPwd</param-name>
+      <param-value>your sftp password</param-value>
+    </init-param>
+    <init-param>
+      <param-name>sftpUser</param-name>
+      <param-value>your sftp user name</param-value>
+    </init-param>
+    <init-param>
+      <param-name>sftpPort</param-name>
+      <param-value>your sftp port, default 22</param-value>
+    </init-param>
+    <init-param>
+      <param-name>downloadPage</param-name>
+      <param-value>your download html page for redirect</param-value>
+    </init-param>
 -->
 
   <!-- Evaluates and executes WrsRequests to the database -->
@@ -336,26 +451,14 @@
     <url-pattern>/bcdui/servlets/WrsNextIdentifierServlet/*</url-pattern>
   </servlet-mapping>
 
-  <!-- WYSIWYG Excel export Servlet -->
-  <!-- PLEASE NOTE: Consider setting maxPostSize in your server config -->
+  <!-- Binding id/caption/description getter -->
   <servlet>
-    <servlet-name>bcdui4.Html2ExcelServlet</servlet-name>
-    <servlet-class>de.businesscode.bcdui.toolbox.MirrorServlet</servlet-class>
-    <init-param>
-      <param-name>header:Content-Type</param-name>
-      <param-value>application/vnd.ms-excel</param-value>
-    </init-param>
-    
-    <!-- set this to true if your server.xml connector is not using UTF-8 URIEncoding, otherwise set it to false -->
-     <init-param>
-      <param-name>EncodeUTF8</param-name>
-      <param-value>true</param-value>
-    </init-param>
-
+    <servlet-name>bcdui4.BindingInfo</servlet-name>
+    <servlet-class>de.businesscode.bcdui.web.servlets.BindingInfo</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>bcdui4.Html2ExcelServlet</servlet-name>
-    <url-pattern>/bcdui/servlets/Html2ExcelServlet/*</url-pattern>
+    <servlet-name>bcdui4.BindingInfo</servlet-name>
+    <url-pattern>/bcdui/servlets/BindingInfo/*</url-pattern>
   </servlet-mapping>
 
   <!-- Session listener for session logging -->
@@ -374,7 +477,7 @@
        a thread which keeps the application from shutting down
        EHcache is for example used by shiro, check your web.xml -->
   <listener>
-    <listener-class>net.sf.ehcache.constructs.web.ShutdownListener</listener-class>
+    <listener-class>de.businesscode.bcdui.cache.ShutdownListener</listener-class>
   </listener>
 
   <!-- i18n configuration -->
@@ -398,4 +501,19 @@
     <tracking-mode>COOKIE</tracking-mode>
   </session-config>
 
+  <!-- require SSL -->
+  <!-- security-constraint>
+    <web-resource-collection>
+      <web-resource-name>SPNEGO AUTHENTICATION</web-resource-name>
+      <url-pattern>/*</url-pattern>
+    </web-resource-collection>
+    <user-data-constraint>
+      <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+    </user-data-constraint>
+  </security-constraint -->
+
+  <!-- welcome pages -->
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
 </web-app>

@@ -1,63 +1,94 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-  <meta charset="UTF-8"/>
+  <head>
+    <meta charset="UTF-8"/>
   <title>BCD-UI Export Detail</title>
-  <script type="text/javascript" src="../bcdui/bcdui.js"></script>
-</head>
-<body>
-  <div id="bcdMainContainer">
-
-    <div id="bcdContextMenuDiv" style="display:none"></div>
-    <div id="bcdTooltipDiv"     style="display:none"></div>
-    <div id="bcdModalBoxDiv"    style="display:none"></div>
-
-    <div id="bcdHeaderArea"><div id="bcdLogoImageArea"></div></div>
-    <div id="bcdSpacerArea"></div>
-
-    <div class="bcdContentContainer">
-      <div id="bcdSideBarContainer">
-        <div class="bcdSection">
-          <div class="bcdItem">
+    <script type="text/javascript" src="../bcdui/bcdui.js"></script>
+  </head>
+  <body>
+    <div class="bcd__outer-wrapper">
+      <div class="bcd__wrapper">
+        <div class="bcd__horizontal-split">
+  
+          <!-- Header -->
+          <div class="bcd__header">
+            <div class="bcd__header__upper">
+              <div class="bcd__header__logo"><img src="../bcdui/theme/images/bcd_logo.png" alt=""></div>
+              <div><bcd-credentialsMenu></bcd-credentialsMenu></div>
+            </div>
+            <div class="bcd__header__navigation"><bcd-menu></bcd-menu></div>
           </div>
+  
+          <!-- Main area -->
+          <div class="bcd__vertical-split">
+  
+            <div class="bcd__sidebar-left">
+              <div class="bcd__sidebar-left__inner bcdEffectCollapse">
+                <div class="bcd__form-container">
+                  <section>
+                    <div class="bcd__form-group">
+                      <div class="bcd__select-container">
+                       </div>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+
+            <div class="bcd__sidebar-right">
+              <div class="bcd__sidebar-right__inner">
+              </div>
+            </div>
+  
+            <!-- Main content area -->
+            <div class="bcd__content-container">
+              <div class="bcdCaption">Page Caption</div>
+
+              <!-- tag::exportHtml[] -->
+              <bcd-periodChooser
+                  caption="Export date"
+                  targetModelXPath="$wrq/*/wrq:Select/f:Filter/f:And[@id='dy']"></bcd-periodChooser> <!--1-->
+              <bcd-buttonNg caption="Export detail data" onClickAction="exportData()"></bcd-buttonNg>
+              <!-- end::exportHtml[] -->
+
+              <!-- tag::exportWysiwygExcel[] -->
+              <bcd-buttonNg
+                  caption="Export report to Excel"
+                  onClickAction="bcdui.component.exports.exportWysiwygAsExcel({rootElement: 'exportDiv'})"></bcd-buttonNg>
+              <!-- end::exportWysiwygExcel[] -->
+              <p></p>
+
+              <div id="exportDiv">
+                <bcd-renderer inputModel="wrs"></bcd-renderer>
+              </div>
+            </div>
+  
+          </div>
+  
+          <!-- Footer -->
+          <footer>
+            <p>&copy; 2026 BusinessCode GmbH</p>
+            <nav>
+              <ul>
+                <li><a href="#">Imprint</a></li>
+                <li><a href="#">Privacy</a></li>
+              </ul>
+            </nav>
+          </footer>
         </div>
-      </div>
-
-      <div id="bcdBodyContainer">
-        <div class="bcdCaption">Page Caption</div>
-
-        <!-- tag::exportHtml[] -->
-        <bcd-periodChooser
-            caption="Export date"
-            targetModelXPath="$wrq/*/wrq:Select/f:Filter/f:And[@id='dy']"></bcd-periodChooser> <!--1-->
-        <bcd-buttonNg caption="Export detail data" onClickAction="exportData()"></bcd-buttonNg>
-        <!-- end::exportHtml[] -->
-
-        <!-- tag::exportWysiwygExcel[] -->
-        <bcd-buttonNg
-            caption="Export report to Excel"
-            onClickAction="bcdui.component.exports.exportWysiwygAsExcel({rootElement: 'exportDiv'})"></bcd-buttonNg>
-        <!-- end::exportWysiwygExcel[] -->
-        <p></p>
-
-        <div id="exportDiv">
-          <bcd-renderer inputModel="wrs"></bcd-renderer>
-        </div>
-
       </div>
     </div>
 
-  </div>
-  <script type="text/javascript">
-    var wrs = new bcdui.core.SimpleModel( { id: "wrs", url: "../sampleWrs.xml" } );
+    <script type="text/javascript">
+      var wrs = new bcdui.core.SimpleModel( { id: "wrs", url: "../sampleWrs.xml" } );
 
-    // tag::exportJs[]
-    var wrq = new bcdui.core.SimpleModel( { id: "wrq", url: "wrq.xml" } );
-    function exportData() {
-      bcdui.component.exports.excel.detailExport( { wrq: wrq, fileName: 'exportFile.slk' } );
-    }
-    // end::exportJs[]
+      // tag::exportJs[]
+      var wrq = new bcdui.core.SimpleModel( { id: "wrq", url: "wrq.xml" } );
+      function exportData() {
+        bcdui.component.exports.excel.detailExport( { wrq: wrq, fileName: 'exportFile.slk' } );
+      }
+      // end::exportJs[]
   </script>
 
-</body>
+  </body>
 </html>

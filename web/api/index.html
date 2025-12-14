@@ -1,94 +1,132 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-  <meta charset="UTF-8"/>
+  <head>
+    <meta charset="UTF-8"/>
   <title>BCD-UI Tutorial</title>
   <!-- tag::jsinclude[] -->
-  <script type="text/javascript" src="../bcdui/bcdui.js"></script>
+    <script type="text/javascript" src="../bcdui/bcdui.js"></script>
   <!-- end::jsinclude[] -->
-</head>
-<body>
-<div id="bcdMainContainer">
+  </head>
+  <body>
+    <div class="bcd__outer-wrapper">
+      <div class="bcd__wrapper">
+        <div class="bcd__horizontal-split">
+  
+          <!-- Header -->
+          <div class="bcd__header">
+            <div class="bcd__header__upper">
+              <div class="bcd__header__logo"><img src="../bcdui/theme/images/bcd_logo.png" alt=""></div>
+              <div><bcd-credentialsMenu></bcd-credentialsMenu></div>
+            </div>
+            <div class="bcd__header__navigation"><bcd-menu></bcd-menu></div>
+          </div>
+  
+          <!-- Main area -->
+          <div class="bcd__vertical-split">
+  
+            <div class="bcd__sidebar-left">
+              <div class="bcd__sidebar-left__inner bcdEffectCollapse">
+                <div class="bcd__form-container">
+                  <section>
+                    <div class="bcd__form-group">
+                      <div class="bcd__select-container">
+                      </div>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
 
-  <div id="bcdHeaderArea"><div id="bcdLogoImageArea"></div></div>
-  <div id="bcdSpacerArea"></div>
+            <div class="bcd__sidebar-right">
+              <div class="bcd__sidebar-right__inner">
+              </div>
+            </div>
+  
+            <!-- Main content area -->
+            <div class="bcd__content-container">
+              <!-- tag::rendererTH[] -->
+              <div class="bcdCaption">Output of a Javascript renderer</div>
+              <div id="rendererTH"></div>
+              <!-- end::rendererTH[] -->
 
-  <div class="bcdContentContainer">
-    <div id="bcdSideBarContainer">
-      <div class="bcdSection">
+              <div class="bcdCaption">HTML5 Custom Element</div>
+              <!-- tag::renderer5[] -->
+              <bcd-renderer inputModel="myModel"></bcd-renderer> <!--1-->
+              <!-- end::renderer5[] -->
+
+              <!-- tag::rendererXsltTh[] -->
+              <div class="bcdCaption">Output of XSLT</div>
+              <div id="rendererXsltTH"></div>
+              <!-- end::rendererXsltTh[] -->
+
+              <!-- tag::rendererXapiTh[] -->
+              <div class="bcdCaption">Output of XAPI</div>
+              <div id="rendererXapiTH"></div>
+              <!-- end::rendererXapiTh[] -->
+
+              <!-- tag::rendererDslTh[] -->
+              <div class="bcdCaption">Output of DSL</div>
+              <div id="rendererDslTH"></div>
+              <!-- end::rendererDslTh[] -->
+            </div>
+  
+          </div>
+  
+          <!-- Footer -->
+          <footer>
+            <p>&copy; 2026 BusinessCode GmbH</p>
+            <nav>
+              <ul>
+                <li><a href="#">Imprint</a></li>
+                <li><a href="#">Privacy</a></li>
+              </ul>
+            </nav>
+          </footer>
+        </div>
       </div>
     </div>
 
-    <div id="bcdBodyContainer">
-      <!-- tag::rendererTH[] -->
-      <div class="bcdCaption">Output of a Javascript renderer</div>
-      <div id="rendererTH"></div>
-      <!-- end::rendererTH[] -->
+    <script type="text/javascript">
 
-      <div class="bcdCaption">HTML5 Custom Element</div>
-      <!-- tag::renderer5[] -->
-      <bcd-renderer inputModel="myModel"></bcd-renderer> <!--1-->
-      <!-- end::renderer5[] -->
+      // tag::jscode[]
+      var model = new bcdui.core.SimpleModel({ url: "../sampleWrs.xml" });
+      var renderer = new bcdui.core.Renderer({
+        chain: "../bcdui/xslt/renderer/htmlBuilder.xslt",
+        targetHtml: "rendererTH",
+        inputModel: model
+      });
+      // end::jscode[]
 
-      <!-- tag::rendererXsltTh[] -->
-      <div class="bcdCaption">Output of XSLT</div>
-      <div id="rendererXsltTH"></div>
-      <!-- end::rendererXsltTh[] -->
+      // tag::model5[]
+      var model5 = new bcdui.core.SimpleModel({
+        id: "myModel", // <1>
+        url: "../sampleWrs.xml"
+      });
+      // end::model5[]
 
-      <!-- tag::rendererXapiTh[] -->
-      <div class="bcdCaption">Output of XAPI</div>
-      <div id="rendererXapiTH"></div>
-      <!-- end::rendererXapiTh[] -->
+      // tag::rendererXslt[]
+      var rendererXslt = new bcdui.core.Renderer({
+        chain: "xsltApiSample.xslt",
+        targetHtml: "rendererXsltTH"
+      });
+      // end::rendererXslt[]
 
-      <!-- tag::rendererDslTh[] -->
-      <div class="bcdCaption">Output of DSL</div>
-      <div id="rendererDslTH"></div>
-      <!-- end::rendererDslTh[] -->
-    </div>
-  </div>
+      // tag::rendererXapi[]
+      var rendererXapi = new bcdui.core.Renderer({
+        chain: "xapiMinimalRenderer.xslt",
+        targetHtml: "rendererXapiTH",
+        inputModel: new bcdui.core.SimpleModel( "xapi.xml" ) // <1>
+      });
+      // end::rendererXapi[]
 
-</div>
-<script type="text/javascript">
+      // tag::rendererDsl[]
+      var rendererXapi = new bcdui.core.Renderer({
+        chain: "dslRenderer.xslt",
+        targetHtml: "rendererDslTH",
+        inputModel: new bcdui.core.SimpleModel( "dsl.xml" )
+      });
+      // end::rendererDsl[]
 
-  // tag::jscode[]
-  var model = new bcdui.core.SimpleModel({ url: "../sampleWrs.xml" });
-  var renderer = new bcdui.core.Renderer({
-    chain: "../bcdui/xslt/renderer/htmlBuilder.xslt",
-    targetHtml: "rendererTH",
-    inputModel: model
-  });
-  // end::jscode[]
-
-  // tag::model5[]
-  var model5 = new bcdui.core.SimpleModel({
-    id: "myModel", // <1>
-    url: "../sampleWrs.xml"
-  });
-  // end::model5[]
-
-  // tag::rendererXslt[]
-  var rendererXslt = new bcdui.core.Renderer({
-    chain: "xsltApiSample.xslt",
-    targetHtml: "rendererXsltTH"
-  });
-  // end::rendererXslt[]
-
-  // tag::rendererXapi[]
-  var rendererXapi = new bcdui.core.Renderer({
-    chain: "xapiMinimalRenderer.xslt",
-    targetHtml: "rendererXapiTH",
-    inputModel: new bcdui.core.SimpleModel( "xapi.xml" ) // <1>
-  });
-  // end::rendererXapi[]
-
-  // tag::rendererDsl[]
-  var rendererXapi = new bcdui.core.Renderer({
-    chain: "dslRenderer.xslt",
-    targetHtml: "rendererDslTH",
-    inputModel: new bcdui.core.SimpleModel( "dsl.xml" )
-  });
-  // end::rendererDsl[]
-
-</script>
-</body>
+    </script>
+  </body>
 </html>

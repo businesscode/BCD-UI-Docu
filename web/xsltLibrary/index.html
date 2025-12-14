@@ -1,39 +1,89 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-  <meta charset="UTF-8"/>
+  <head>
+    <meta charset="UTF-8"/>
   <title>BCD-UI Tutorial</title>
-  <script type="text/javascript" src="../bcdui/bcdui.js"></script>
-</head>
-<body>
-  <div id="bcdMainContainer">
+    <script type="text/javascript" src="../bcdui/bcdui.js"></script>
+  </head>
+  <body>
+    <div class="bcd__outer-wrapper">
+      <div class="bcd__wrapper">
+        <div class="bcd__horizontal-split">
+  
+          <!-- Header -->
+          <div class="bcd__header">
+            <div class="bcd__header__upper">
+              <div class="bcd__header__logo"><img src="../bcdui/theme/images/bcd_logo.png" alt=""></div>
+              <div><bcd-credentialsMenu></bcd-credentialsMenu></div>
+            </div>
+            <div class="bcd__header__navigation"><bcd-menu></bcd-menu></div>
+          </div>
+  
+          <!-- Main area -->
+          <div class="bcd__vertical-split">
+  
+            <div class="bcd__sidebar-left">
+              <div class="bcd__sidebar-left__inner bcdEffectCollapse">
+                <div class="bcd__form-container">
+                  <section>
+                    <div class="bcd__form-group">
+                      <div class="bcd__select-container">
+  
+                        <!-- place your sidebar widgets here
 
-    <div id="bcdHeaderArea"><div id="bcdLogoImageArea"></div></div>
-    <div id="bcdSpacerArea"></div>
+                        <bcd-periodChooser label="my period"...></bcd-periodChooser>
+                        <bcd-inputNg label="my input" ...></bcd-inputNg>
+                        <bcd-singleSelectNg label='my singleSelect'...></bcd-singleSelectNg>
+                        <bcd-multiSelect label='my multiselect'...></bcd-multiSelect>
+                        <bcd-inputNg label="my input"...></bcd-inputNg>
+                        -->
+  
+                        <bcd-buttonNg caption="Apply" onClickAction="bcdui.core.lifecycle.applyAction"></bcd-buttonNg>
+  
+                       </div>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
 
-    <div class="bcdContentContainer">
-      <div id="bcdSideBarContainer">
-        <div class="bcdSection">
+            <div class="bcd__sidebar-right">
+              <div class="bcd__sidebar-right__inner">
+              </div>
+            </div>
+  
+            <!-- Main content area -->
+            <div class="bcd__content-container">
+              <div class="bcdCaption">Page Caption</div>
+              <div id="myDataATh" style="display: inline-block; margin: 5px"></div>
+              <div id="myDataBTh" style="display: inline-block; margin: 5px"></div>
+              <div id="myDataPTh"></div>
+              <div id="myDataSUTh"></div>
+              <div id="myDataSRTh"></div>
+              <div id="myDataUTh"></div>
+            </div>
+  
+          </div>
+  
+          <!-- Footer -->
+          <footer>
+            <p>&copy; 2026 BusinessCode GmbH</p>
+            <nav>
+              <ul>
+                <li><a href="#">Imprint</a></li>
+                <li><a href="#">Privacy</a></li>
+              </ul>
+            </nav>
+          </footer>
         </div>
-      </div>
-
-      <div id="bcdBodyContainer">
-        <div class="bcdCaption">Page Caption</div>
-        <div id="myDataATh" style="display: inline-block; margin: 5px"></div>
-        <div id="myDataBTh" style="display: inline-block; margin: 5px"></div>
-        <div id="myDataPTh"></div>
-        <div id="myDataSUTh"></div>
-        <div id="myDataSRTh"></div>
-        <div id="myDataUTh"></div>
       </div>
     </div>
 
-  </div>
-  <script type="text/javascript">
-    // tag::xsltParam[]
-    // Create an inline XsltParameters document for HtmlBuilder with plain output,
-    // i.e. unsorted without row span
-    var xsltParams = new bcdui.core.StaticModel( // <1>
+    <script type="text/javascript">
+      // tag::xsltParam[]
+      // Create an inline XsltParameters document for HtmlBuilder with plain output,
+      // i.e. unsorted without row span
+      var xsltParams = new bcdui.core.StaticModel( // <1>
         "<xp:XSLTParameters " +
         "  xmlns:xp='http://www.businesscode.de/schema/bcdui/xsltParams-1.0.0'>" +
         "  <xp:HtmlBuilder>" + // <2>
@@ -42,39 +92,39 @@
         "  </xp:HtmlBuilder>" +
         "</xp:XSLTParameters>");
 
-    // HtmlBuilder with XsltParameters
-    var rendererB = new bcdui.core.Renderer({
-      targetHtml: "myDataATh",
-      inputModel: new bcdui.core.SimpleModel( "../sampleWrs2Dim.xml" ),
-      parameters: { paramModel: xsltParams } // <4>
-    });
-    // end::xsltParam[]
-    // Default output, sorted with row span
-    var data = new bcdui.core.SimpleModel( "../sampleWrs2Dim.xml" );
-    var rendererA = new bcdui.core.Renderer({
-      targetHtml: "myDataBTh",
-      inputModel: data
-    });
+      // HtmlBuilder with XsltParameters
+      var rendererB = new bcdui.core.Renderer({
+        targetHtml: "myDataATh",
+        inputModel: new bcdui.core.SimpleModel( "../sampleWrs2Dim.xml" ),
+        parameters: { paramModel: xsltParams } // <4>
+      });
+      // end::xsltParam[]
+      // Default output, sorted with row span
+      var data = new bcdui.core.SimpleModel( "../sampleWrs2Dim.xml" );
+      var rendererA = new bcdui.core.Renderer({
+        targetHtml: "myDataBTh",
+        inputModel: data
+      });
 
-    // tag::nodeSetSample[]
-    var nodeSetSample = new bcdui.core.ModelWrapper({ id:"nodeSetSample", chain: "nodeSetSample.xslt" });
-    bcdui.widget.visualizeXml.visualizeModel({ targetHtml: "myDataSUTh", idRef: "nodeSetSample" });
-    // end::nodeSetSample[]
+      // tag::nodeSetSample[]
+      var nodeSetSample = new bcdui.core.ModelWrapper({ id:"nodeSetSample", chain: "nodeSetSample.xslt" });
+      bcdui.widget.visualizeXml.visualizeModel({ targetHtml: "myDataSUTh", idRef: "nodeSetSample" });
+      // end::nodeSetSample[]
 
-    // tag::stringUtilReplaceSample[]
-    var stringReplaceSample = new bcdui.core.ModelWrapper({ id:"stringReplaceSample", chain: "stringReplaceSample.xslt" });
-    bcdui.widget.visualizeXml.visualizeModel({ targetHtml: "myDataSRTh", idRef: "stringReplaceSample" });
-    // end::stringUtilReplaceSample[]
+      // tag::stringUtilReplaceSample[]
+      var stringReplaceSample = new bcdui.core.ModelWrapper({ id:"stringReplaceSample", chain: "stringReplaceSample.xslt" });
+      bcdui.widget.visualizeXml.visualizeModel({ targetHtml: "myDataSRTh", idRef: "stringReplaceSample" });
+      // end::stringUtilReplaceSample[]
 
-    // tag::wrsUtilJsSample[]
-    var data = new bcdui.core.SimpleModel({ id:"data", url: "../sampleWrs.xml" });
-    data.onReady({ executeIfNotReady: true, onlyOnce: true, onSuccess: function() {
-      bcdui.wrs.wrsUtil.deleteRows({model: data, rowStartPos: 1, rowEndPos: 2});
-      bcdui.wrs.wrsUtil.insertRow({model: data, rowStartPos: 3, rowEndPos: 4});
-      bcdui.widget.visualizeXml.visualizeModel({ targetHtml: "myDataUTh", idRef: "data" });
-    }});
-    // end::wrsUtilJsSample[]
+      // tag::wrsUtilJsSample[]
+      var data = new bcdui.core.SimpleModel({ id:"data", url: "../sampleWrs.xml" });
+      data.onReady({ executeIfNotReady: true, onlyOnce: true, onSuccess: function() {
+          bcdui.wrs.wrsUtil.deleteRows({model: data, rowStartPos: 1, rowEndPos: 2});
+          bcdui.wrs.wrsUtil.insertRow({model: data, rowStartPos: 3, rowEndPos: 4});
+          bcdui.widget.visualizeXml.visualizeModel({ targetHtml: "myDataUTh", idRef: "data" });
+        }});
+      // end::wrsUtilJsSample[]
 
-  </script>
-</body>
+    </script>
+  </body>
 </html>

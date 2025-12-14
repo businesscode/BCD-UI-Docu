@@ -39,40 +39,58 @@
         border-radius: 10px;
       }
       .category-heading {
-        width: 100%; 
-        text-align: left; 
-        border-bottom: 1px solid #d8d8d8; 
+        width: 100%;
+        text-align: left;
+        border-bottom: 1px solid #d8d8d8;
         line-height: 0.1em;
         margin: 40px 0 20px;
       }
     </style>
-  
-  </head>
 
+  </head>
   <body>
-    <div id="bcdContextMenuDiv" style="display: none"></div>
-    <div id="bcdTooltipDiv" style="display: none"></div>
-    <div id="bcdModalBoxDiv" style="display: none"></div>
     <div class="bcd__outer-wrapper">
       <div class="bcd__wrapper">
         <div class="bcd__horizontal-split">
-          
+  
           <!-- Header -->
           <div class="bcd__header">
             <div class="bcd__header__upper">
-              <div class="bcd__header__logo">
-                <img src="bcdui/theme/images/bcd_logo.png" alt="">
-              </div>
-              
+              <div class="bcd__header__logo"><img src="./bcdui/theme/images/bcd_logo.png" alt=""></div>
+              <div><bcd-credentialsMenu></bcd-credentialsMenu></div>
             </div>
+            <div class="bcd__header__navigation"></div>
           </div>
-          
-          <!-- Main area (with side-bar, which we do not have here) -->
+  
+          <!-- Main area -->
           <div class="bcd__vertical-split">
-            
-            <!-- Main area with side-bar -->
+  
+            <!-- div class="bcd__sidebar-left">
+              <div class="bcd__sidebar-left__inner bcdEffectCollapse">
+                <div class="bcd__form-container">
+                  <section>
+                    <div class="bcd__form-group">
+                      <div class="bcd__select-container">
+                       </div>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+
+            <div class="bcd__sidebar-right">
+              <div class="bcd__sidebar-right__inner">
+              </div>
+            </div -->
+  
+            <!-- Main content area -->
             <div class="bcd__content-container">
               <div class="container menu-tile-container">
+
+                <h1>BusinessCode UI Tutorial Sources</h1>
+                <div>
+                  See tutorial <a href="https://businesscode.github.io/BCD-UI-Docu/tutorial" target="_blank">online</a>
+                  , and full documentation <a href="https://businesscode.github.io/BCD-UI-Docu/" target="_blank">here</a></div>
 
                 <div>
 
@@ -80,42 +98,42 @@
                   <div class='row'>
                     <h6 class='category-heading'><span>Intro</span></h6>
 
-                    <div class='col-md-2 home-card'><a target="_blank" href="api"><span class='card-body'>API</span></a></div>
                     <div class='col-md-2 home-card'><a target="_blank" href="binding"><span class='card-body'>Binding</span></a></div>
                     <div class='col-md-2 home-card'><a target="_blank" href="simpleReq"><span class='card-body'>Simple Request</span></a></div>
                     <div class='col-md-2 home-card'><a target="_blank" href="widgets"><span class='card-body'>Widgets</span></a></div>
+                    <div class='col-md-2 home-card'><a target="_blank" href="api"><span title="admin/pw123" class='card-body'>🔒 API</span></a></div>
                   </div>
 
-                  <!-- Widgets -->                    
+                  <!-- Widgets -->
                   <div class='row'>
                     <h6 class='category-heading'><span>Components</span></h6>
 
                     <div class='col-md-2 home-card'><a target="_blank" href="exports"><span class='card-body'>Exports</span></a></div>
                     <div class='col-md-2 home-card'><a target="_blank" href="minimalCube"><span class='card-body'>Minimal Cube</span></a></div>
-                    <div class='col-md-2 home-card'><a target="_blank" href="cube"><span class='card-body'>Cube</span></a></div>
+                    <div class='col-md-2 home-card'><a target="_blank" href="cube"><span title="cubeUser/pw456" class='card-body'>🔒 Cube</span></a></div>
                     <div class='col-md-2 home-card'><a target="_blank" href="charts"><span class='card-body'>Charts</span></a></div>
                     <div class='col-md-2 home-card'><a target="_blank" href="scorecard"><span class='card-body'>Scorecard</span></a></div>
                     <div class='col-md-2 home-card'><a target="_blank" href="treeReport"><span class='card-body'>Tree Report</span></a></div>
                     <div class='col-md-2 home-card'><a target="_blank" href="xsltLibrary"><span class='card-body'>XSLT Library</span></a></div>
                   </div>
                 </div>
-                
               </div>
             </div>
+
           </div>
-          
-          <!-- footer -->
+  
+          <!-- Footer -->
           <footer>
-            <p>&copy; 2022 BusinessCode GmbH</p>
+            <p>&copy; 2026 BusinessCode GmbH</p>
             <nav>
               <ul>
-                <li><a href="#">Impressum</a></li>
-                <li><a href="#">Datenschutz</a></li>
+                <li><a href="#">Imprint</a></li>
+                <li><a href="#">Privacy</a></li>
               </ul>
             </nav>
           </footer>
         </div>
-      </div> 
+      </div>
     </div>
   </body>
 </html>

@@ -1,37 +1,86 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-  <meta charset="UTF-8"/>
+  <head>
+    <meta charset="UTF-8"/>
   <title>BCD-UI Tutorial</title>
-  <script type="text/javascript" src="../bcdui/bcdui.js"></script>
-</head>
-<body>
-  <!-- tag::menuTh[] -->
-  <div id="bcdMainContainer">
-    <div id="bcdMenuBarArea"></div>
-    <!-- end::menuTh[] -->
+    <script type="text/javascript" src="../bcdui/bcdui.js"></script>
+  </head>
+  <body>
+    <div class="bcd__outer-wrapper">
+      <div class="bcd__wrapper">
+        <div class="bcd__horizontal-split">
+  
+          <!-- Header -->
+          <!-- tag::menuTh[] -->
+          <div class="bcd__header">
+            <div class="bcd__header__upper">
+              <div class="bcd__header__logo"><img src="../bcdui/theme/images/bcd_logo.png" alt=""></div>
+              <div><bcd-credentialsMenu></bcd-credentialsMenu></div>
+            </div>
+            <div class="bcd__header__navigation"></div>
+          </div>
+          <!-- end::menuTh[] -->
 
-    <div id="bcdHeaderArea"><div id="bcdLogoImageArea"></div></div>
-    <div id="bcdSpacerArea"></div>
+          <!-- Main area -->
+          <div class="bcd__vertical-split">
+  
+            <div class="bcd__sidebar-left">
+              <div class="bcd__sidebar-left__inner bcdEffectCollapse">
+                <div class="bcd__form-container">
+                  <section>
+                    <div class="bcd__form-group">
+                      <div class="bcd__select-container">
+  
+                        <!-- place your sidebar widgets here
 
-    <div class="bcdContentContainer">
-      <div id="bcdSideBarContainer">
-        <div class="bcdSection">
+                        <bcd-periodChooser label="my period"...></bcd-periodChooser>
+                        <bcd-inputNg label="my input" ...></bcd-inputNg>
+                        <bcd-singleSelectNg label='my singleSelect'...></bcd-singleSelectNg>
+                        <bcd-multiSelect label='my multiselect'...></bcd-multiSelect>
+                        <bcd-inputNg label="my input"...></bcd-inputNg>
+                        -->
+  
+                        <bcd-buttonNg caption="Apply" onClickAction="bcdui.core.lifecycle.applyAction"></bcd-buttonNg>
+  
+                       </div>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+
+            <div class="bcd__sidebar-right">
+              <div class="bcd__sidebar-right__inner">
+              </div>
+            </div>
+  
+            <!-- Main content area -->
+            <div class="bcd__content-container">
+              <div class="bcdCaption">Page Caption</div>
+              <div id="myData"></div>
+              <div id="myGuiStatus"></div>
+            </div>
+  
+          </div>
+  
+          <!-- Footer -->
+          <footer>
+            <p>&copy; 2026 BusinessCode GmbH</p>
+            <nav>
+              <ul>
+                <li><a href="#">Imprint</a></li>
+                <li><a href="#">Privacy</a></li>
+              </ul>
+            </nav>
+          </footer>
         </div>
-      </div>
-
-      <div id="bcdBodyContainer">
-        <div class="bcdCaption">Page Caption</div>
-        <div id="myData"></div>
-        <div id="myGuiStatus"></div>
       </div>
     </div>
 
-  </div>
-  <script type="text/javascript">
-    // tag::menuJs[]
-    bcdui.widget.createMenu({ targetHtml: "bcdMenuBarArea" });
-    // end::menuJs[]
-  </script>
-</body>
+    <script type="text/javascript">
+      // tag::menuJs[]
+      bcdui.widget.createMenu({ targetHtml: ".bcd__header__navigation" });
+      // end::menuJs[]
+    </script>
+  </body>
 </html>

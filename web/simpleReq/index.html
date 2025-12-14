@@ -1,138 +1,141 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-  <meta charset="UTF-8"/>
-  <title>Blank Page</title>
-  <link rel="shortcut icon" href="../favicon.ico"/>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Blank Page</title>
+    <link rel="shortcut icon" href="../favicon.ico"/>
   <script type="text/javascript" src="../bcdui/bcdui.js"></script> <!--1-->
-</head>
-<body>
+  </head>
+  <body>
 <div class="bcd__outer-wrapper"> <!--2-->
-  <div class="bcd__wrapper">
-    <div class="bcd__horizontal-split">
-
-      <!-- Header -->
-      <div class="bcd__header">
-        <div class="bcd__header__upper">
-          <div class="bcd__header__logo"><img src="../bcdui/theme/images/bcd_logo.png" alt=""></div>
-          <div></div>
-        </div>
-        <div class="bcd__header__navigation"></div> <!--3-->
-      </div>
-
-      <!-- Main area -->
-      <div class="bcd__vertical-split">
-
+      <div class="bcd__wrapper">
+        <div class="bcd__horizontal-split">
+  
+          <!-- Header -->
+          <div class="bcd__header">
+            <div class="bcd__header__upper">
+              <div class="bcd__header__logo"><img src="../bcdui/theme/images/bcd_logo.png" alt=""></div>
+              <div><bcd-credentialsMenu></bcd-credentialsMenu></div>
+            </div>
+            <div class="bcd__header__navigation"><bcd-menu></bcd-menu></div> <!--3-->
+          </div>
+  
+          <!-- Main area -->
+          <div class="bcd__vertical-split">
+  
         <!-- Sidebar --> <!--4-->
-        <div class="bcd__sidebar-left">
-          <div class="bcd__sidebar-left__inner bcdEffectCollapse">
+            <div class="bcd__sidebar-left">
+              <div class="bcd__sidebar-left__inner bcdEffectCollapse">
+                <div class="bcd__form-container">
+                  <section>
+                    <div class="bcd__form-group">
+                      <label>Period Chooser</label>
+                      <div class="bcd__select-container">
+                        <div id="periodChooserDiv"></div>
+                      </div>
 
-            <div class="bcd__form-container">
-              <!-- place your sidebar widgets here -->
-              <section>
-                <div class="bcd__form-group">
-                  <label>Period Chooser</label>
-                  <div class="bcd__select-container">
-                    <div id="periodChooserDiv"></div>
-                   </div>
-
-                  <label >Country</label>
-                  <div class="bcd__select-container">
-                    <div id="countryChooserDiv"></div>
-                      <bcd-singleselectng
-                          targetModelXPath = "/*/f:Filter/f:Expression[@bRef = 'country' and @op = '=']/@value"
-                          optionsModelXPath = "$countriesModel/wrs:Wrs/wrs:Data/wrs:R/wrs:C/@caption",
-                          optionsModelRelativeValueXPath = ".."></bcd-singleselectng>
-                  </div>
+                      <label >Country</label>
+                      <div class="bcd__select-container">
+                        <div id="countryChooserDiv"></div>
+                        <bcd-singleselectng
+                            targetModelXPath = "/*/f:Filter/f:Expression[@bRef = 'country' and @op = '=']/@value"
+                            optionsModelXPath = "$countriesModel/wrs:Wrs/wrs:Data/wrs:R/wrs:C/@caption",
+                            optionsModelRelativeValueXPath = ".."></bcd-singleselectng>
+                      </div>
+                    </div>
+                  </section>
+                  <section>
+                    <div class="bcd__form-group">
+                      <label>Apply</label>
+                      <div class="bcd__select-container">
+                        <div id="applyDiv"></div>
+                      </div>
+                    </div>
+                  </section>
                 </div>
-              </section>
-              <section>
-                <div class="bcd__form-group">
-                  <label for="s1">Apply</label>
-                  <div class="bcd__select-container">
-                    <div id="applyDiv"></div>
-                   </div>
-                </div>
-              </section>
+              </div>
             </div>
 
-          </div>
-        </div>
-
-        <!-- Main content area --> <!--5-->
-        <div class="bcd__content-container">
-          <h1>Blank Page</h1>
-          <div id="myGuiStatusDiv"></div>
-          <div id="myDataDiv"></div> <!--6-->
-          <bcd-renderer inputModel="staticData"></bcd-renderer>
-        </div>
-
-      </div>
-
-      <!-- Footer -->
-      <footer>
-        <p>&copy; 2022 BusinessCode GmbH</p>
-        <nav>
-          <ul>
-            <li><a href="#">Imprint</a></li>
-            <li><a href="#">Privacy</a></li>
-          </ul>
-        </nav>
-      </footer>
-    </div>
-  </div>
-</div>
-<!--7-->
-<script> 
-  var staticData = new bcdui.core.SimpleModel({ id: "staticData", url: "staticData.xml" });
-
-  var carRepairs = new bcdui.core.AutoModel({
-    bRefs: "dy country station carsSold carsRepaired",
-    filterBRefs: "country dy",
-    bindingSetId: "carRepairs",
-    isDistinct: false
-  });
-
-
-  var renderer = new bcdui.core.Renderer({
-    inputModel: carRepairs,
-    targetHtml: "myDataDiv"
-  });
-
+            <div class="bcd__sidebar-right">
+              <div class="bcd__sidebar-right__inner">
+              </div>
+            </div>
   
-  bcdui.widget.createPeriodChooser({
+            <!-- Main content area --> <!--5-->
+            <div class="bcd__content-container">
+              <h1>Blank Page</h1>
+              <div id="myGuiStatusDiv"></div>
+              <div id="myDataDiv"></div> <!--6-->
+              <bcd-renderer inputModel="staticData"></bcd-renderer>
+            </div>
+  
+          </div>
+  
+          <!-- Footer -->
+          <footer>
+            <p>&copy; 2026 BusinessCode GmbH</p>
+            <nav>
+              <ul>
+                <li><a href="#">Imprint</a></li>
+                <li><a href="#">Privacy</a></li>
+              </ul>
+            </nav>
+          </footer>
+        </div>
+      </div>
+    </div>
+
+  <!--7-->
+  <script>
+    var staticData = new bcdui.core.SimpleModel({ id: "staticData", url: "staticData.xml" });
+
+    var carRepairs = new bcdui.core.AutoModel({
+      bRefs: "dy country station carsSold carsRepaired",
+      filterBRefs: "country dy",
+      bindingSetId: "carRepairs",
+      isDistinct: false
+    });
+
+
+    var renderer = new bcdui.core.Renderer({
+      inputModel: carRepairs,
+      targetHtml: "myDataDiv"
+    });
+
+
+    bcdui.widget.createPeriodChooser({
       targetModelXPath: "$guiStatus/*/f:Filter/f:And[@id = 'myPeriodChooser']", // (1)
       targetHtml: 'periodChooserDiv', // (2)
       isWeekSelectable: true // (3)
-  });
-  bcdui.widgetNg.createButton({
-    onClickAction: bcdui.core.lifecycle.applyAction,
-    targetHtml: 'applyDiv',
-    caption: 'Apply'
-  });
-  
-  
-  var countriesModel= new bcdui.core.StaticModel({
-    id: "countriesModel",
-    data: '<Wrs xmlns="http://www.businesscode.de/schema/bcdui/wrs-1.0.0"><Data>' +
-          ' <R><C caption="Germany">DE</C></R>' +
-          ' <R><C caption="USA">US</C></R>' +
-          ' <R><C caption="Spain">ES</C></R>' +
-          '</Data></Wrs>'
-  });
-  
-  bcdui.widgetNg.createSingleSelect({
-    targetHtml: 'countryChooserDiv',
-    targetModelXPath: "/*/f:Filter/f:Expression[@bRef = 'country' and @op = '=']/@value",
-    optionsModelXPath: "$countriesModel/wrs:Wrs/wrs:Data/wrs:R/wrs:C/@caption",
-    optionsModelRelativeValueXPath: ".."
-  });
+    });
+    bcdui.widgetNg.createButton({
+      onClickAction: bcdui.core.lifecycle.applyAction,
+      targetHtml: 'applyDiv',
+      caption: 'Apply'
+    });
 
-  bcdui.widget.visualizeXml.visualizeModel({
-    inputModel: bcdui.wkModels.guiStatus,
-    targetHtml: "myGuiStatusDiv"
-  });
 
-</script>
-</body>
+    var countriesModel= new bcdui.core.StaticModel({
+      id: "countriesModel",
+      data: '<Wrs xmlns="http://www.businesscode.de/schema/bcdui/wrs-1.0.0"><Data>' +
+        ' <R><C caption="Germany">DE</C></R>' +
+        ' <R><C caption="USA">US</C></R>' +
+        ' <R><C caption="Spain">ES</C></R>' +
+        '</Data></Wrs>'
+    });
+
+    bcdui.widgetNg.createSingleSelect({
+      targetHtml: 'countryChooserDiv',
+      targetModelXPath: "/*/f:Filter/f:Expression[@bRef = 'country' and @op = '=']/@value",
+      optionsModelXPath: "$countriesModel/wrs:Wrs/wrs:Data/wrs:R/wrs:C/@caption",
+      optionsModelRelativeValueXPath: ".."
+    });
+
+    bcdui.widget.visualizeXml.visualizeModel({
+      inputModel: bcdui.wkModels.guiStatus,
+      targetHtml: "myGuiStatusDiv"
+    });
+
+  </script>
+  </body>
 </html>

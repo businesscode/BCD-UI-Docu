@@ -1,48 +1,126 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-  <meta charset="UTF-8"/>
-  <title>BCD-UI Tutorial - Login</title>
-  <link rel="stylesheet" href="bcdui/theme/css/allStyles.css">
-</head>
-<body>
-<div id="bcdMainContainer">
+  <head>
+    <meta charset="UTF-8"></meta>
+    <title>BCD-UI Tutorial Sources</title>
+    <link rel="shortcut icon" href="./favicon.ico"/>
+    <title>BCD-UI Tutorial - Login</title>
+    <link rel="stylesheet" href="./bcdui/theme/css/allStyles.css">
 
-  <div id="bcdHeaderArea"><div id="bcdLogoImageArea"></div></div>
-  <div id="bcdSpacerArea"></div>
+    <style type="text/css">
+      .menu-tile-container .home-card {
+        padding: 15px;
+      }
+      .menu-tile-container .home-card a:hover {
+        text-decoration: none;
+      }
+      .menu-tile-container .home-card .card-body {
+        background: #fff;
+        border: 1px solid #efefef;
+        box-shadow: 0px 1px 2px #e0e0e0;
+        border-top: .25em solid #369AFB;
+        height: 6em;
+        transition: all .2s ease-in-out;
+        font-weight: 500;
+        display: -webkit-flex;
+        display: flex;
+        align-items: center;
+      }
+      .menu-tile-container .home-card .card-body:hover {
+        border-top: .25em solid #161669;
+        box-shadow: 0px .10em .25em #161669;
+        transition: all .25s;
+        transform: scale(1.05);
+        color: #161669;
+      }
+      .category-heading span {
+        background: #e0e0e0;
+        padding: 0 20px;
+        border-radius: 10px;
+      }
+      .category-heading {
+        width: 100%;
+        text-align: left;
+        border-bottom: 1px solid #d8d8d8;
+        line-height: 0.1em;
+        margin: 40px 0 20px;
+      }
+    </style>
 
-  <div class="bcdContentContainer">
-    <div id="bcdSideBarContainer">
-      <div class="bcdSection">
+  </head>
+  <body>
+    <div class="bcd__outer-wrapper">
+      <div class="bcd__wrapper">
+        <div class="bcd__horizontal-split">
+  
+          <!-- Header -->
+          <div class="bcd__header">
+            <div class="bcd__header__upper">
+              <div class="bcd__header__logo"><img src="./bcdui/theme/images/bcd_logo.png" alt=""></div>
+              <div><bcd-credentialsMenu></bcd-credentialsMenu></div>
+            </div>
+            <div class="bcd__header__navigation"><bcd-menu></bcd-menu></div>
+          </div>
+  
+          <!-- Main area -->
+          <div class="bcd__vertical-split">
+  
+            <div class="bcd__sidebar-left">
+              <div class="bcd__sidebar-left__inner bcdEffectCollapse">
+                <div class="bcd__form-container">
+                  <section>
+                    <div class="bcd__form-group">
+                      <div class="bcd__select-container">
+                       </div>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+
+            <div class="bcd__sidebar-right">
+              <div class="bcd__sidebar-right__inner">
+              </div>
+            </div>
+  
+            <!-- Main content area -->
+            <div class="bcd__content-container">
+              <div class="bcdCaption">Login</div>
+              <!-- tag::inputs[] -->
+              <form name="loginform" action="" method="post" style="margin: 20px 0px 0px 20px;">
+                <table align="left" border="0" cellspacing="0" cellpadding="3">
+                  <tr>
+                    <td>Username:</td>
+                    <td><input type="text" name="username" maxlength="30" autofocus></td>
+                  </tr>
+                  <tr>
+                    <td>Password:</td>
+                    <td><input type="password" name="password" maxlength="30"></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" align="right" style="padding-top:10px;">
+                      <button caption="Login" type="submit">Login</button>
+                    </td>
+                  </tr>
+                </table>
+              </form>
+              <!-- end::inputs[] -->
+            </div>
+
+          </div>
+  
+          <!-- Footer -->
+          <footer>
+            <p>&copy; 2026 BusinessCode GmbH</p>
+            <nav>
+              <ul>
+                <li><a href="#">Imprint</a></li>
+                <li><a href="#">Privacy</a></li>
+              </ul>
+            </nav>
+          </footer>
+        </div>
       </div>
     </div>
-
-    <div id="bcdBodyContainer">
-      <div class="bcdCaption">Login</div>
-      <!-- tag::inputs[] -->
-      <form name="loginform" action="" method="post" style="margin: 20px 0px 0px 20px;">
-        <table align="left" border="0" cellspacing="0" cellpadding="3">
-          <tr>
-            <td>Username:</td>
-            <td><input type="text" name="username" maxlength="30" autofocus></td>
-          </tr>
-          <tr>
-            <td>Password:</td>
-            <td><input type="password" name="password" maxlength="30"></td>
-          </tr>
-          <tr>
-            <td colspan="2" align="right" style="padding-top:10px;">
-              <button caption="Login" type="submit">Login</button>
-            </td>
-          </tr>
-        </table>
-      </form>
-      <!-- end::inputs[] -->
-    </div>
-  </div>
-
-</div>
-<script type="text/javascript">
-</script>
-</body>
+  </body>
 </html>
