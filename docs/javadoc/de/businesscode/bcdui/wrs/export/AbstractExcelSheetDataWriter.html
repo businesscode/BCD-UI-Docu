@@ -194,7 +194,7 @@ loadScripts(document, 'script');</script>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#moveToNextLine()" class="member-name-link">moveToNextLine</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">moves cursor to next row and resets column cursor via #<a href="#resetColCursor()"><code>resetColCursor()</code></a>, no new row or column is inserted into excel sheet at this operation, till
- <code>de.businesscode.bcdui.wrs.export.Wrs2Excel.WrsContainerParser#writeCell(String, Map)</code></div>
+ <a href="#writeCell(java.lang.String)"><code>writeCell(String)</code></a></div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#openSheet()" class="member-name-link">openSheet</a>()</code></div>
@@ -204,7 +204,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#resetColCursor()" class="member-name-link">resetColCursor</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">reset column cursor to <a href="#setStartColIdx(int)"><code>setStartColIdx(int)</code></a> , such as <code>de.businesscode.bcdui.wrs.export.Wrs2Excel.WrsContainerParser#writeCell(String, Map)</code> would start writing with a first column</div>
+<div class="block">reset column cursor to <a href="#setStartColIdx(int)"><code>setStartColIdx(int)</code></a> , such as <a href="#writeCell(java.lang.String)"><code>writeCell(String)</code></a> would start writing with a first column</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#resetRowColCursor()" class="member-name-link">resetRowColCursor</a>()</code></div>
@@ -383,8 +383,6 @@ loadScripts(document, 'script');</script>
                   throws <span class="exceptions">de.businesscode.bcdui.wrs.export.ExcelWriterException</span></div>
 <div class="block">To be called after it is guaranteed that rnd:Wrs2Excel, if given, is already read</div>
 <dl class="notes">
-<dt>Parameters:</dt>
-<dd><code>sheetName</code> - </dd>
 <dt>Throws:</dt>
 <dd><code>de.businesscode.bcdui.wrs.export.ExcelWriterException</code></dd>
 </dl>
@@ -434,7 +432,7 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">moveToNextLine</span>()
                        throws <span class="exceptions">de.businesscode.bcdui.wrs.export.ExcelWriterException</span></div>
 <div class="block">moves cursor to next row and resets column cursor via #<a href="#resetColCursor()"><code>resetColCursor()</code></a>, no new row or column is inserted into excel sheet at this operation, till
- <code>de.businesscode.bcdui.wrs.export.Wrs2Excel.WrsContainerParser#writeCell(String, Map)</code></div>
+ <a href="#writeCell(java.lang.String)"><code>writeCell(String)</code></a></div>
 <dl class="notes">
 <dt>Throws:</dt>
 <dd><code>de.businesscode.bcdui.wrs.export.ExcelWriterException</code></dd>
@@ -445,7 +443,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="resetColCursor()">
 <h3>resetColCursor</h3>
 <div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">resetColCursor</span>()</div>
-<div class="block">reset column cursor to <a href="#setStartColIdx(int)"><code>setStartColIdx(int)</code></a> , such as <code>de.businesscode.bcdui.wrs.export.Wrs2Excel.WrsContainerParser#writeCell(String, Map)</code> would start writing with a first column</div>
+<div class="block">reset column cursor to <a href="#setStartColIdx(int)"><code>setStartColIdx(int)</code></a> , such as <a href="#writeCell(java.lang.String)"><code>writeCell(String)</code></a> would start writing with a first column</div>
 </section>
 </li>
 <li>

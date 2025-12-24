@@ -110,20 +110,20 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>protected static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#generateSingleColumnExpression(de.businesscode.bcdui.wrs.load.WrqInfo,org.w3c.dom.Element,java.util.Collection,org.w3c.dom.Document,boolean)" class="member-name-link">generateSingleColumnExpression</a><wbr>(<a href="WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a>&nbsp;wrqInfo,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#generateSingleColumnExpression(de.businesscode.bcdui.wrs.load.WrqInfo,org.w3c.dom.Element,java.util.List,org.w3c.dom.Document,boolean)" class="member-name-link">generateSingleColumnExpression</a><wbr>(<a href="WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a>&nbsp;wrqInfo,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.xml/org/w3c/dom/Element.html" title="class or interface in org.w3c.dom" class="external-link">Element</a>&nbsp;item,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Collection.html" title="class or interface in java.util" class="external-link">Collection</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.xml/org/w3c/dom/Element.html" title="class or interface in org.w3c.dom" class="external-link">Element</a>&gt;&nbsp;boundVariables,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.xml/org/w3c/dom/Element.html" title="class or interface in org.w3c.dom" class="external-link">Element</a>&gt;&nbsp;boundVariables,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.xml/org/w3c/dom/Document.html" title="class or interface in org.w3c.dom" class="external-link">Document</a>&nbsp;ownerDocument,
  boolean&nbsp;useAggr)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Helper for WHERE clause generation
  ignoreCase is only allowed for dimensions and non-numeric types
  TODO If a non-dim bindingItem is used multiple times with different aggr in the select list, the aggr of the last one wins
  This limitation could be removed by allowing to overwrite the aggr at the having-filter expression, for example</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getAsSql(java.util.Collection)" class="member-name-link">getAsSql</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Collection.html" title="class or interface in java.util" class="external-link">Collection</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.xml/org/w3c/dom/Element.html" title="class or interface in org.w3c.dom" class="external-link">Element</a>&gt;&nbsp;elementList)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getAsSql(java.util.List)" class="member-name-link">getAsSql</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.xml/org/w3c/dom/Element.html" title="class or interface in org.w3c.dom" class="external-link">Element</a>&gt;&nbsp;elementList)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getOperatorMapping(java.lang.String)" class="member-name-link">getOperatorMapping</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;op)</code></div>
@@ -167,25 +167,25 @@ loadScripts(document, 'script');</script>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="getAsSql(java.util.Collection)">
+<section class="detail" id="getAsSql(java.util.List)">
 <h3>getAsSql</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getAsSql</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Collection.html" title="class or interface in java.util" class="external-link">Collection</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.xml/org/w3c/dom/Element.html" title="class or interface in org.w3c.dom" class="external-link">Element</a>&gt;&nbsp;elementList)</span>
-                throws <span class="exceptions"><a href="../../binding/exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getAsSql</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.xml/org/w3c/dom/Element.html" title="class or interface in org.w3c.dom" class="external-link">Element</a>&gt;&nbsp;elementList)</span>
+                throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Exception.html" title="class or interface in java.lang" class="external-link">Exception</a></span></div>
 <dl class="notes">
 <dt>Throws:</dt>
-<dd><code><a href="../../binding/exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></code></dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Exception.html" title="class or interface in java.lang" class="external-link">Exception</a></code></dd>
 </dl>
 </section>
 </li>
 <li>
-<section class="detail" id="generateSingleColumnExpression(de.businesscode.bcdui.wrs.load.WrqInfo,org.w3c.dom.Element,java.util.Collection,org.w3c.dom.Document,boolean)">
+<section class="detail" id="generateSingleColumnExpression(de.businesscode.bcdui.wrs.load.WrqInfo,org.w3c.dom.Element,java.util.List,org.w3c.dom.Document,boolean)">
 <h3>generateSingleColumnExpression</h3>
-<div class="member-signature"><span class="modifiers">protected static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">generateSingleColumnExpression</span><wbr><span class="parameters">(<a href="WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a>&nbsp;wrqInfo,
+<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">generateSingleColumnExpression</span><wbr><span class="parameters">(<a href="WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a>&nbsp;wrqInfo,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.xml/org/w3c/dom/Element.html" title="class or interface in org.w3c.dom" class="external-link">Element</a>&nbsp;item,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Collection.html" title="class or interface in java.util" class="external-link">Collection</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.xml/org/w3c/dom/Element.html" title="class or interface in org.w3c.dom" class="external-link">Element</a>&gt;&nbsp;boundVariables,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.xml/org/w3c/dom/Element.html" title="class or interface in org.w3c.dom" class="external-link">Element</a>&gt;&nbsp;boundVariables,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.xml/org/w3c/dom/Document.html" title="class or interface in org.w3c.dom" class="external-link">Document</a>&nbsp;ownerDocument,
  boolean&nbsp;useAggr)</span>
-                                                throws <span class="exceptions"><a href="../../binding/exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></span></div>
+                                         throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Exception.html" title="class or interface in java.lang" class="external-link">Exception</a></span></div>
 <div class="block">Helper for WHERE clause generation
  ignoreCase is only allowed for dimensions and non-numeric types
  TODO If a non-dim bindingItem is used multiple times with different aggr in the select list, the aggr of the last one wins
@@ -199,7 +199,7 @@ loadScripts(document, 'script');</script>
 <dd><code>useAggr</code> - </dd>
 <dt>Returns:</dt>
 <dt>Throws:</dt>
-<dd><code><a href="../../binding/exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></code></dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Exception.html" title="class or interface in java.lang" class="external-link">Exception</a></code></dd>
 </dl>
 </section>
 </li>

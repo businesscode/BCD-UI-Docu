@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.18">
-<meta name="author" content="Version 5.6.0 (2025-07-16)">
+<meta name="author" content="Version 5.7.0 (2025-12-24)">
 <title>BCD-UI</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -640,7 +640,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <div id="header">
 <h1>BCD-UI</h1>
 <div class="details">
-<span id="author" class="author">Version 5.6.0 (2025-07-16)</span><br>
+<span id="author" class="author">Version 5.7.0 (2025-12-24)</span><br>
 <span id="revnumber">version unspecified</span>
 </div>
 <div id="toc" class="toc2">
@@ -1404,7 +1404,7 @@ If you don&#8217;t know how to make a vanilla application running with your IDE 
 
         <span class="comment">&lt;!-- Footer --&gt;</span>
         <span class="tag">&lt;footer&gt;</span>
-          <span class="tag">&lt;p&gt;</span><span class="entity">&amp;copy;</span> 2022 BusinessCode GmbH<span class="tag">&lt;/p&gt;</span>
+          <span class="tag">&lt;p&gt;</span><span class="entity">&amp;copy;</span> 2026 BusinessCode GmbH<span class="tag">&lt;/p&gt;</span>
           <span class="tag">&lt;nav&gt;</span>
             <span class="tag">&lt;ul&gt;</span>
               <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Imprint<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
@@ -1527,12 +1527,8 @@ While you can use any data format with BCD-UI including other XML formats or JSO
 <div class="paragraph">
 <p>Now add the following script block to <code>blankPage.js</code>:</p>
 </div>
-<div class="listingblock">
-<div class="title">Load static data</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">import</span> {bcdui} from <span class="string"><span class="delimiter">&quot;</span><span class="content">./bcdui/dev/bcduiApiStubs.js</span><span class="delimiter">&quot;</span></span>;
-<span class="keyword">var</span> staticData = <span class="keyword">new</span> bcdui.core.SimpleModel(<span class="string"><span class="delimiter">&quot;</span><span class="content">staticData.xml</span><span class="delimiter">&quot;</span></span>);</code></pre>
-</div>
+<div class="paragraph">
+<p>var staticData = new bcdui.core.SimpleModel("staticData.xml");</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -2227,7 +2223,7 @@ create a file <code>WEB-INF/bcdui/bindings/myReportData1.xml</code> and adjust t
 
         <span class="comment">&lt;!-- Footer --&gt;</span>
         <span class="tag">&lt;footer&gt;</span>
-          <span class="tag">&lt;p&gt;</span><span class="entity">&amp;copy;</span> 2022 BusinessCode GmbH<span class="tag">&lt;/p&gt;</span>
+          <span class="tag">&lt;p&gt;</span><span class="entity">&amp;copy;</span> 2026 BusinessCode GmbH<span class="tag">&lt;/p&gt;</span>
           <span class="tag">&lt;nav&gt;</span>
             <span class="tag">&lt;ul&gt;</span>
               <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Imprint<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
@@ -2291,13 +2287,13 @@ To add a model with the available data, add the following code to your script bl
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript">  <span class="comment">// Load the geo data for the chooser</span>
-  <span class="keyword">var</span> autoModel = <span class="keyword">new</span> bcdui.core.AutoModel({
-    <span class="key">id</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">geoData</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="1"></i><b>(1)</b>
-    <span class="key">bindingSetId</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myGeoData</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="2"></i><b>(2)</b>
-    <span class="key">bRefs</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">country</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="3"></i><b>(3)</b>
-    <span class="key">isDistinct</span>: <span class="predefined-constant">true</span>
-  });</code></pre>
+<pre class="CodeRay highlight"><code data-lang="javascript">      <span class="comment">// Load the geo data for the chooser</span>
+      <span class="keyword">var</span> autoModel = <span class="keyword">new</span> bcdui.core.AutoModel({
+        <span class="key">id</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">geoData</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="1"></i><b>(1)</b>
+        <span class="key">bindingSetId</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myGeoData</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="2"></i><b>(2)</b>
+        <span class="key">bRefs</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">country</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="3"></i><b>(3)</b>
+        <span class="key">isDistinct</span>: <span class="predefined-constant">true</span>
+      });</code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -2322,17 +2318,12 @@ We will add 2 widgets: A country chooser and a button to re-run the report.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="html">    <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdSideBarContainer</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>  <i class="conum" data-value="1"></i><b>(1)</b>
-      <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdSection</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-        <span class="tag">&lt;span</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdSectionCaption</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Settings<span class="tag">&lt;/span&gt;</span>
-        <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdItem</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-          <span class="tag">&lt;span</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdCaption</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Origin Country<span class="tag">&lt;/span&gt;</span>
-          <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">geoChooserTH</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span> <i class="conum" data-value="2"></i><b>(2)</b>
-          <span class="tag">&lt;span</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdCaption</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Run<span class="tag">&lt;/span&gt;</span>
-          <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">applyTH</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
-        <span class="tag">&lt;/div&gt;</span>
-      <span class="tag">&lt;/div&gt;</span>
-    <span class="tag">&lt;/div&gt;</span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="html">                      <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__select-container</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;span</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdCaption</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Origin Country<span class="tag">&lt;/span&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">geoChooserTH</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span> <i class="conum" data-value="2"></i><b>(2)</b>
+                        <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">applyTH</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
+  
+                      <span class="tag">&lt;/div&gt;</span></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -2365,18 +2356,18 @@ BCD-UI theme helps to create such an area, but there is no technical need to use
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript">  <span class="comment">// Create a chooser for geo data</span>
-  bcdui.widgetNg.createSingleSelect({
-    <span class="key">targetHtml</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">geoChooserTH</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="1"></i><b>(1)</b>
-    <span class="key">targetModelXPath</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">$guiStatus/*/f:Filter/f:Expression[@bRef = 'orig_country' and @op = '=']/@value</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="2"></i><b>(2)</b>
-    <span class="key">optionsModelXPath</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">$geoData//wrs:Data/wrs:R/wrs:C[1]</span><span class="delimiter">&quot;</span></span> <i class="conum" data-value="3"></i><b>(3)</b>
-  });
-  <span class="comment">// Create a button to re-execute the page</span>
-  bcdui.widgetNg.createButton({
-    <span class="key">onClickAction</span>: bcdui.core.lifecycle.applyAction, <i class="conum" data-value="4"></i><b>(4)</b>
-    <span class="key">targetHtml</span>: <span class="string"><span class="delimiter">'</span><span class="content">applyTH</span><span class="delimiter">'</span></span>,
-    <span class="key">caption</span>: <span class="string"><span class="delimiter">'</span><span class="content">Apply</span><span class="delimiter">'</span></span>
-  });</code></pre>
+<pre class="CodeRay highlight"><code data-lang="javascript">      <span class="comment">// Create a chooser for geo data</span>
+      bcdui.widgetNg.createSingleSelect({
+        <span class="key">targetHtml</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">geoChooserTH</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="1"></i><b>(1)</b>
+        <span class="key">targetModelXPath</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">$guiStatus/*/f:Filter/f:Expression[@bRef = 'orig_country' and @op = '=']/@value</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="2"></i><b>(2)</b>
+        <span class="key">optionsModelXPath</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">$geoData//wrs:Data/wrs:R/wrs:C[1]</span><span class="delimiter">&quot;</span></span> <i class="conum" data-value="3"></i><b>(3)</b>
+      });
+      <span class="comment">// Create a button to re-execute the page</span>
+      bcdui.widgetNg.createButton({
+        <span class="key">onClickAction</span>: bcdui.core.lifecycle.applyAction, <i class="conum" data-value="4"></i><b>(4)</b>
+        <span class="key">targetHtml</span>: <span class="string"><span class="delimiter">'</span><span class="content">applyTH</span><span class="delimiter">'</span></span>,
+        <span class="key">caption</span>: <span class="string"><span class="delimiter">'</span><span class="content">Apply</span><span class="delimiter">'</span></span>
+      });</code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -2493,8 +2484,8 @@ Add the following to the script at the page bottom:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript">  <span class="comment">// Create a Cube component</span>
-  <span class="keyword">var</span> cube = <span class="keyword">new</span> bcdui.component.cube.Cube({ <span class="key">targetHtml</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cubeTH</span><span class="delimiter">&quot;</span></span> });</code></pre>
+<pre class="CodeRay highlight"><code data-lang="javascript">      <span class="comment">// Create a Cube component</span>
+      <span class="keyword">var</span> cube = <span class="keyword">new</span> bcdui.component.cube.Cube({ <span class="key">targetHtml</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cubeTH</span><span class="delimiter">&quot;</span></span> });</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2521,13 +2512,13 @@ This one tells the CubConfigurator to just derive its content from dimensionsAnd
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript">  <span class="comment">// Create CubeConfigutator in form of a Drag and Drop Area</span>
-  bcdui.component.createCubeConfigurator({
-    <span class="key">targetHtml</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cubeConfiguratorTH</span><span class="delimiter">&quot;</span></span>,
-    <span class="key">cubeRenderer</span>: cube.id,
-    <span class="key">contextMenu</span>: <span class="predefined-constant">true</span>,
-    <span class="key">isDefaultHtmlLayout</span>: <span class="predefined-constant">true</span>
-  });</code></pre>
+<pre class="CodeRay highlight"><code data-lang="javascript">      <span class="comment">// Create CubeConfigutator in form of a Drag and Drop Area</span>
+      bcdui.component.createCubeConfigurator({
+        <span class="key">targetHtml</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cubeConfiguratorTH</span><span class="delimiter">&quot;</span></span>,
+        <span class="key">cubeRenderer</span>: cube.id,
+        <span class="key">contextMenu</span>: <span class="predefined-constant">true</span>,
+        <span class="key">isDefaultHtmlLayout</span>: <span class="predefined-constant">true</span>
+      });</code></pre>
 </div>
 </div>
 </div>
@@ -3233,7 +3224,7 @@ You can provide a static one like this or let the user build one with the CubeCo
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>This are the actually applied dimensions of the report, they can be row, column or both (all)</td>
+<td>These are the actually applied dimensions of the report, they can be row, column or both (all)</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
@@ -3606,12 +3597,12 @@ This can be done for any Wrs, may it be generated, loaded via a direct <a href="
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript">    <span class="keyword">var</span> rendererA = <span class="keyword">new</span> bcdui.core.Renderer({
-      <span class="key">chain</span>: [<span class="string"><span class="delimiter">&quot;</span><span class="content">../bcdui/js/component/treeView/generateTree.xslt</span><span class="delimiter">&quot;</span></span>,
-              <span class="string"><span class="delimiter">&quot;</span><span class="content">../bcdui/js/component/treeView/rendering.xslt</span><span class="delimiter">&quot;</span></span>],
-      <span class="key">targetHtml</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myDataPTh</span><span class="delimiter">&quot;</span></span>,
-      <span class="key">inputModel</span>: <span class="keyword">new</span> bcdui.core.SimpleModel( <span class="string"><span class="delimiter">&quot;</span><span class="content">parentWrs.xml</span><span class="delimiter">&quot;</span></span> )
-    });</code></pre>
+<pre class="CodeRay highlight"><code data-lang="javascript">      <span class="keyword">var</span> rendererA = <span class="keyword">new</span> bcdui.core.Renderer({
+        <span class="key">chain</span>: [<span class="string"><span class="delimiter">&quot;</span><span class="content">../bcdui/js/component/treeView/generateTree.xslt</span><span class="delimiter">&quot;</span></span>,
+          <span class="string"><span class="delimiter">&quot;</span><span class="content">../bcdui/js/component/treeView/rendering.xslt</span><span class="delimiter">&quot;</span></span>],
+        <span class="key">targetHtml</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myDataPTh</span><span class="delimiter">&quot;</span></span>,
+        <span class="key">inputModel</span>: <span class="keyword">new</span> bcdui.core.SimpleModel( <span class="string"><span class="delimiter">&quot;</span><span class="content">parentWrs.xml</span><span class="delimiter">&quot;</span></span> )
+      });</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3781,10 +3772,10 @@ For example drilling from an item of the chart or exporting data can be develope
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="html">      <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdBodyContainer</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-        <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdCaption</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Chart<span class="tag">&lt;/div&gt;</span>
-        <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">chartTH</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">width</span>: <span class="float">400px</span>; <span class="key">height</span>: <span class="float">200px</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
-      <span class="tag">&lt;/div&gt;</span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="html">            <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdBodyContainer</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+              <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdCaption</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Chart<span class="tag">&lt;/div&gt;</span>
+              <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">chartTH</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">width</span>: <span class="float">400px</span>; <span class="key">height</span>: <span class="float">200px</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
+            <span class="tag">&lt;/div&gt;</span></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -3936,27 +3927,27 @@ with the customer in the last 12 months.</p>
 <div class="listingblock">
 <div class="title">Where to place the chart</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="html">      <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">chartTH</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">width</span>: <span class="float">600px</span>; <span class="key">height</span>: <span class="float">150px</span>; <span class="key">display</span>:<span class="value">inline-block</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
-      <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">chartLegendTH</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">width</span>: <span class="float">50px</span>; <span class="key">height</span>: <span class="float">150px</span>; <span class="key">display</span>:<span class="value">inline-block</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="html">              <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">chartTH</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">width</span>: <span class="float">600px</span>; <span class="key">height</span>: <span class="float">150px</span>; <span class="key">display</span>:<span class="value">inline-block</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
+              <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">chartLegendTH</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">width</span>: <span class="float">50px</span>; <span class="key">height</span>: <span class="float">150px</span>; <span class="key">display</span>:<span class="value">inline-block</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Create the chart itself</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript">  <span class="comment">// Create CubeConfigutator in form of a Drag and Drop Area</span>
-  <span class="keyword">var</span> chartConfig = <span class="keyword">new</span> bcdui.core.ModelWrapper({
-    <span class="key">chain</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">../bcdui/js/component/chart/configurationFromWrs.xslt</span><span class="delimiter">&quot;</span></span>,
-    <span class="key">inputModel</span>: cube
-  });
-  <span class="keyword">var</span> chart = <span class="keyword">new</span> bcdui.component.chart.XmlChart({
-    <span class="key">id</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">chart</span><span class="delimiter">&quot;</span></span>,
-    <span class="key">targetHtml</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">chartTH</span><span class="delimiter">&quot;</span></span>,
-    <span class="key">config</span>: chartConfig
-  });
-  bcdui.component.chart.createChartLegend( {
-    <span class="key">targetHtml</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">chartLegendTH</span><span class="delimiter">&quot;</span></span>,
-    <span class="key">chartRendererId</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">chart</span><span class="delimiter">&quot;</span></span>
-  });</code></pre>
+<pre class="CodeRay highlight"><code data-lang="javascript">      <span class="comment">// Create CubeConfigutator in form of a Drag and Drop Area</span>
+      <span class="keyword">var</span> chartConfig = <span class="keyword">new</span> bcdui.core.ModelWrapper({
+        <span class="key">chain</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">../bcdui/js/component/chart/configurationFromWrs.xslt</span><span class="delimiter">&quot;</span></span>,
+        <span class="key">inputModel</span>: cube
+      });
+      <span class="keyword">var</span> chart = <span class="keyword">new</span> bcdui.component.chart.XmlChart({
+        <span class="key">id</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">chart</span><span class="delimiter">&quot;</span></span>,
+        <span class="key">targetHtml</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">chartTH</span><span class="delimiter">&quot;</span></span>,
+        <span class="key">config</span>: chartConfig
+      });
+      bcdui.component.chart.createChartLegend( {
+        <span class="key">targetHtml</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">chartLegendTH</span><span class="delimiter">&quot;</span></span>,
+        <span class="key">chartRendererId</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">chart</span><span class="delimiter">&quot;</span></span>
+      });</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4272,18 +4263,27 @@ It is picked-up on next restart.</p>
 <div class="listingblock">
 <div class="title">Sample menu.xml file</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;Menu</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.businesscode.de/schema/bcdui/menu-1.0.0</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">gettingStarted</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">isDefault</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-  <span class="tag">&lt;Entry</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">home</span><span class="delimiter">&quot;</span></span>      <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Home</span><span class="delimiter">&quot;</span></span>       <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/</span><span class="delimiter">&quot;</span></span>      <span class="attribute-name">title</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">start screen</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-  <span class="tag">&lt;Entry</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">tutorials</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Tutorials</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-    <span class="tag">&lt;Entry</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">scorecard</span><span class="delimiter">&quot;</span></span>   <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Scorecard</span><span class="delimiter">&quot;</span></span>    <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/scorecard</span><span class="delimiter">&quot;</span></span>   <span class="attribute-name">title</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Click here for Scorecard</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-    <span class="tag">&lt;Entry</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">minimalCube</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Minimal Cube</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/minimalCube</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">title</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Click here for Minimal Cube</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="comment">&lt;!-- Define Menu structure --&gt;</span>
+<span class="tag">&lt;Menu</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.businesscode.de/schema/bcdui/menu-1.0.0</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">gettingStarted</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">isDefault</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;Entry</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">home</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Home</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">title</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">start screen</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+  <span class="tag">&lt;Entry</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Intro</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Intro</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;Entry</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bindings</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Bindings</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/binding</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">title</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Click here for Bindings</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;Entry</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">simpleRequest</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Simple Request</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/simpleRequest</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">title</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Click here for a Simple Request</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
     <span class="tag">&lt;Entry</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">widgets</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Widgets</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/widgets</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">title</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Click here for Widgets</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-      <span class="tag">&lt;Entry</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">button</span><span class="delimiter">&quot;</span></span>       <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Button</span><span class="delimiter">&quot;</span></span>       <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/widgets/button</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-      <span class="tag">&lt;Entry</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">singleSelect</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">SingleSelect</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/widgets/singleSelect</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-      <span class="tag">&lt;Entry</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">multiSelect</span><span class="delimiter">&quot;</span></span>  <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">MultiSelect</span><span class="delimiter">&quot;</span></span>  <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/widgets/multiSelect</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+      <span class="tag">&lt;Entry</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">menu</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Menu</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/menu</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">title</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Click here for a Menu</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
     <span class="tag">&lt;/Entry&gt;</span>
+    <span class="tag">&lt;Entry</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">api</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">🔒Api</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/api</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">title</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Login with admin/pw123</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
   <span class="tag">&lt;/Entry&gt;</span>
-  <span class="tag">&lt;Entry</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">logout</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Logout</span><span class="delimiter">&quot;</span></span>       <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/logout</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">title</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Click here to logout</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+  <span class="tag">&lt;Entry</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">components</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Components</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;Entry</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">exports</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Exports</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/exports</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">title</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Click here for Exports</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;Entry</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">minimalCube</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Minimal Cube</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/minimalCube</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">title</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Click here for a Minimal Cube</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;Entry</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">cube</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">🔒 Cube</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/cube</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">title</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Login with cubeUser/pw456</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;Entry</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">charts</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Charts</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/charts</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">title</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Click here for Charts</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;Entry</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">scorecard</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Scorecard</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/scorecard</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">title</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Click here for Scorecard</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;Entry</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">treeReport</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Tree Report</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/treeReport</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">title</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Click here for Tree Report</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;Entry</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">xsltLibrary</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">XSLT Library</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/xsltLibrary</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">title</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Click here for XSLT Library</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+  <span class="tag">&lt;/Entry&gt;</span>
+  <span class="tag">&lt;Entry</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">logout</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Logout</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/logout</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">title</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Click here to logout</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 <span class="tag">&lt;/Menu&gt;</span></code></pre>
 </div>
 </div>
@@ -4292,8 +4292,13 @@ It is picked-up on next restart.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdMainContainer</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-  <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdMenuBarArea</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__header</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__header__upper</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__header__logo</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;img</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">../bcdui/theme/images/bcd_logo.png</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">alt</span>=<span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div&gt;</span><span class="tag">&lt;bcd-credentialsMenu&gt;</span><span class="tag">&lt;/bcd-credentialsMenu&gt;</span><span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcd__header__navigation</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4301,7 +4306,7 @@ It is picked-up on next restart.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript">    bcdui.widget.createMenu({ <span class="key">targetHtml</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">bcdMenuBarArea</span><span class="delimiter">&quot;</span></span> });</code></pre>
+<pre class="CodeRay highlight"><code data-lang="javascript">      bcdui.widget.createMenu({ <span class="key">targetHtml</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">.bcd__header__navigation</span><span class="delimiter">&quot;</span></span> });</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4447,7 +4452,7 @@ This is a blank empty page with all major parts:</p>
 
         <span class="comment">&lt;!-- Footer --&gt;</span>
         <span class="tag">&lt;footer&gt;</span>
-          <span class="tag">&lt;p&gt;</span><span class="entity">&amp;copy;</span> 2022 BusinessCode GmbH<span class="tag">&lt;/p&gt;</span>
+          <span class="tag">&lt;p&gt;</span><span class="entity">&amp;copy;</span> 2026 BusinessCode GmbH<span class="tag">&lt;/p&gt;</span>
           <span class="tag">&lt;nav&gt;</span>
             <span class="tag">&lt;ul&gt;</span>
               <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Imprint<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
@@ -5134,9 +5139,9 @@ While this mechanism may look a bit over-sized in small samples, it scales great
 <div class="listingblock">
 <div class="title">Sample for XsltParameters</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="js">    <span class="comment">// Create an inline XsltParameters document for HtmlBuilder with plain output,</span>
-    <span class="comment">// i.e. unsorted without row span</span>
-    <span class="keyword">var</span> xsltParams = <span class="keyword">new</span> bcdui.core.StaticModel( <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="CodeRay highlight"><code data-lang="js">      <span class="comment">// Create an inline XsltParameters document for HtmlBuilder with plain output,</span>
+      <span class="comment">// i.e. unsorted without row span</span>
+      <span class="keyword">var</span> xsltParams = <span class="keyword">new</span> bcdui.core.StaticModel( <i class="conum" data-value="1"></i><b>(1)</b>
         <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;xp:XSLTParameters </span><span class="delimiter">&quot;</span></span> +
         <span class="string"><span class="delimiter">&quot;</span><span class="content">  xmlns:xp='http://www.businesscode.de/schema/bcdui/xsltParams-1.0.0'&gt;</span><span class="delimiter">&quot;</span></span> +
         <span class="string"><span class="delimiter">&quot;</span><span class="content">  &lt;xp:HtmlBuilder&gt;</span><span class="delimiter">&quot;</span></span> + <i class="conum" data-value="2"></i><b>(2)</b>
@@ -5145,12 +5150,12 @@ While this mechanism may look a bit over-sized in small samples, it scales great
         <span class="string"><span class="delimiter">&quot;</span><span class="content">  &lt;/xp:HtmlBuilder&gt;</span><span class="delimiter">&quot;</span></span> +
         <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;/xp:XSLTParameters&gt;</span><span class="delimiter">&quot;</span></span>);
 
-    <span class="comment">// HtmlBuilder with XsltParameters</span>
-    <span class="keyword">var</span> rendererB = <span class="keyword">new</span> bcdui.core.Renderer({
-      <span class="key">targetHtml</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myDataATh</span><span class="delimiter">&quot;</span></span>,
-      <span class="key">inputModel</span>: <span class="keyword">new</span> bcdui.core.SimpleModel( <span class="string"><span class="delimiter">&quot;</span><span class="content">../sampleWrs2Dim.xml</span><span class="delimiter">&quot;</span></span> ),
-      <span class="key">parameters</span>: { <span class="key">paramModel</span>: xsltParams } <i class="conum" data-value="4"></i><b>(4)</b>
-    });</code></pre>
+      <span class="comment">// HtmlBuilder with XsltParameters</span>
+      <span class="keyword">var</span> rendererB = <span class="keyword">new</span> bcdui.core.Renderer({
+        <span class="key">targetHtml</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myDataATh</span><span class="delimiter">&quot;</span></span>,
+        <span class="key">inputModel</span>: <span class="keyword">new</span> bcdui.core.SimpleModel( <span class="string"><span class="delimiter">&quot;</span><span class="content">../sampleWrs2Dim.xml</span><span class="delimiter">&quot;</span></span> ),
+        <span class="key">parameters</span>: { <span class="key">paramModel</span>: xsltParams } <i class="conum" data-value="4"></i><b>(4)</b>
+      });</code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -5188,12 +5193,12 @@ While this mechanism may look a bit over-sized in small samples, it scales great
 <div class="listingblock">
 <div class="title">Sample for using bcdui.wrs.wrsUtil</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript">    <span class="keyword">var</span> data = <span class="keyword">new</span> bcdui.core.SimpleModel({ <span class="key">id</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">data</span><span class="delimiter">&quot;</span></span>, <span class="key">url</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">../sampleWrs.xml</span><span class="delimiter">&quot;</span></span> });
-    data.onReady({ <span class="key">executeIfNotReady</span>: <span class="predefined-constant">true</span>, <span class="key">onlyOnce</span>: <span class="predefined-constant">true</span>, <span class="function">onSuccess</span>: <span class="keyword">function</span>() {
-      bcdui.wrs.wrsUtil.deleteRows({<span class="key">model</span>: data, <span class="key">rowStartPos</span>: <span class="integer">1</span>, <span class="key">rowEndPos</span>: <span class="integer">2</span>});
-      bcdui.wrs.wrsUtil.insertRow({<span class="key">model</span>: data, <span class="key">rowStartPos</span>: <span class="integer">3</span>, <span class="key">rowEndPos</span>: <span class="integer">4</span>});
-      bcdui.widget.visualizeXml.visualizeModel({ <span class="key">targetHtml</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myDataUTh</span><span class="delimiter">&quot;</span></span>, <span class="key">idRef</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">data</span><span class="delimiter">&quot;</span></span> });
-    }});</code></pre>
+<pre class="CodeRay highlight"><code data-lang="javascript">      <span class="keyword">var</span> data = <span class="keyword">new</span> bcdui.core.SimpleModel({ <span class="key">id</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">data</span><span class="delimiter">&quot;</span></span>, <span class="key">url</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">../sampleWrs.xml</span><span class="delimiter">&quot;</span></span> });
+      data.onReady({ <span class="key">executeIfNotReady</span>: <span class="predefined-constant">true</span>, <span class="key">onlyOnce</span>: <span class="predefined-constant">true</span>, <span class="function">onSuccess</span>: <span class="keyword">function</span>() {
+          bcdui.wrs.wrsUtil.deleteRows({<span class="key">model</span>: data, <span class="key">rowStartPos</span>: <span class="integer">1</span>, <span class="key">rowEndPos</span>: <span class="integer">2</span>});
+          bcdui.wrs.wrsUtil.insertRow({<span class="key">model</span>: data, <span class="key">rowStartPos</span>: <span class="integer">3</span>, <span class="key">rowEndPos</span>: <span class="integer">4</span>});
+          bcdui.widget.visualizeXml.visualizeModel({ <span class="key">targetHtml</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myDataUTh</span><span class="delimiter">&quot;</span></span>, <span class="key">idRef</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">data</span><span class="delimiter">&quot;</span></span> });
+        }});</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -5753,10 +5758,10 @@ Such an XSLT may look like this:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript">  <span class="keyword">var</span> rendererXslt = <span class="keyword">new</span> bcdui.core.Renderer({
-    <span class="key">chain</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">xsltApiSample.xslt</span><span class="delimiter">&quot;</span></span>,
-    <span class="key">targetHtml</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">rendererXsltTH</span><span class="delimiter">&quot;</span></span>
-  });</code></pre>
+<pre class="CodeRay highlight"><code data-lang="javascript">      <span class="keyword">var</span> rendererXslt = <span class="keyword">new</span> bcdui.core.Renderer({
+        <span class="key">chain</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">xsltApiSample.xslt</span><span class="delimiter">&quot;</span></span>,
+        <span class="key">targetHtml</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">rendererXsltTH</span><span class="delimiter">&quot;</span></span>
+      });</code></pre>
 </div>
 </div>
 <div class="ulist">
@@ -5859,11 +5864,11 @@ In your version you may want to extend this by your DSL functionality.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript">  <span class="keyword">var</span> rendererXapi = <span class="keyword">new</span> bcdui.core.Renderer({
-    <span class="key">chain</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">xapiMinimalRenderer.xslt</span><span class="delimiter">&quot;</span></span>,
-    <span class="key">targetHtml</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">rendererXapiTH</span><span class="delimiter">&quot;</span></span>,
-    <span class="key">inputModel</span>: <span class="keyword">new</span> bcdui.core.SimpleModel( <span class="string"><span class="delimiter">&quot;</span><span class="content">xapi.xml</span><span class="delimiter">&quot;</span></span> ) <i class="conum" data-value="1"></i><b>(1)</b>
-  });</code></pre>
+<pre class="CodeRay highlight"><code data-lang="javascript">      <span class="keyword">var</span> rendererXapi = <span class="keyword">new</span> bcdui.core.Renderer({
+        <span class="key">chain</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">xapiMinimalRenderer.xslt</span><span class="delimiter">&quot;</span></span>,
+        <span class="key">targetHtml</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">rendererXapiTH</span><span class="delimiter">&quot;</span></span>,
+        <span class="key">inputModel</span>: <span class="keyword">new</span> bcdui.core.SimpleModel( <span class="string"><span class="delimiter">&quot;</span><span class="content">xapi.xml</span><span class="delimiter">&quot;</span></span> ) <i class="conum" data-value="1"></i><b>(1)</b>
+      });</code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -6669,7 +6674,7 @@ i,e, for the current request the best fit (the highest aggregation) table is cho
 </dd>
 <dt class="hdlist1">Write pre- and processing</dt>
 <dd>
-<p>The option to enforce additional processing of accesses to the database, for example application specific historization</p>
+<p>The option to enforce additional processing of accesses to the database, for example application specific way to keep track of changes.</p>
 </dd>
 <dt class="hdlist1">Datasource</dt>
 <dd>
@@ -7781,15 +7786,7 @@ You refresh them with the "Reload Entries" feature in Eclipse. Keep in mind that
 <div class="sect3">
 <h4 id="_javascript_api_stubs">JavaScript Api stubs</h4>
 <div class="paragraph">
-<p>BCD-UI provides a file with its JavaScript API. Add this to your IDE, and you will have auto-complete while editing JavaScript. The file can be found here: <a href="https://businesscode.github.io/BCD-UI-Docu/resources/bcduiApiStubs.js" class="bare" target="_blank" rel="noopener">https://businesscode.github.io/BCD-UI-Docu/resources/bcduiApiStubs.js</a>.<br></p>
-</div>
-<div class="paragraph">
-<p>Use the standard ECMA 6 mechanism to make them known in a file.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">import</span> {bcdui} from <span class="string"><span class="delimiter">&quot;</span><span class="content">./bcdui/dev/bcduiApiStubs.js</span><span class="delimiter">&quot;</span></span>;</code></pre>
-</div>
+<p>BCD-UI provides a file with its JavaScript API. Add this to your IDE, and you will have auto-complete while editing JavaScript. The file can be found here: <a href="https://businesscode.github.io/BCD-UI-Docu/resources/bcduiApiStubs.zip" class="bare" target="_blank" rel="noopener">https://businesscode.github.io/BCD-UI-Docu/resources/bcduiApiStubs.zip</a>.<br></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -7929,7 +7926,7 @@ The jndi entry</p>
 </div>
 </li>
 <li>
-<p>Copy <a href="https://businesscode.github.io/BCD-UI-Docu/resources/bcduiApiStubs.js" class="bare" target="_blank" rel="noopener">https://businesscode.github.io/BCD-UI-Docu/resources/bcduiApiStubs.js</a> into <code>WebContent/bcdui/dev/</code>.<br>
+<p>Unzip <a href="https://businesscode.github.io/BCD-UI-Docu/resources/bcduiApiStubs.zip" class="bare" target="_blank" rel="noopener">https://businesscode.github.io/BCD-UI-Docu/resources/bcduiApiStubs.zip</a> into <code>WebContent/bcdui/dev/</code>.<br>
 This file can be used for autocompletion of BCD-UI JavaScript classes in the editor by using</p>
 <div class="listingblock">
 <div class="content">
@@ -8447,7 +8444,7 @@ Also do not copy such elements into the output as they would keep the non-xsl na
 create these elements with &lt;xsl:element name="output" namespace="http://www.w3.org/1999/XSL/Transform"/&gt; instead</p>
 </li>
 <li>
-<p>For webkit it is not allowed to use variables in template match attributes, like &lt;xsl:template match="*[@attr=$myVar/Values]"&gt;..</p>
+<p>For webkit it is not allowed to use variables in template match attributes, like &lt;xsl:template match="*[@attr=$myVar/Values]"&gt;&#8230;&#8203;</p>
 </li>
 <li>
 <p>When a node is provided to the XSLT processor as input, that node becomes the document root, for Gecko and IE "/" remains the root.</p>
@@ -8528,7 +8525,7 @@ BindingSet "bcd_db_properties".</p>
 </div>
 </div>
 <div class="paragraph">
-<p>the bcd_db_properties table has following column definition:</p>
+<p>the bcd_db_properties table has the following column definition:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>

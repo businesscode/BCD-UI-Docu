@@ -85,10 +85,11 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">WrqBindingSetFromTableReference</span>
 <span class="extends-implements">extends <a href="WrqBindingSetVirtual.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingSetVirtual</a></span></div>
-<div class="block">Represents a virtual BindingSet resulting from the children of wrq:From, i.e. a table reference
+<div class="block">This class allows using the result of JOINed table references (BindingSets, sub-selects in joins) like a BindingSet
+ Represents a virtual BindingSet resulting from the children of wrq:From, i.e., is a table reference
  A table reference can be a plain table name or joined tables factors,
  i.e. table names, derived table expressions or references to CTE
- Mostly it deals with the handling of wrq:Join, but for consistency we also take care for cases without</div>
+ Mostly it deals with the handling of wrq:Join, but for consistency it also takes care of cases without</div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
@@ -127,12 +128,9 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color"><code>protected boolean</code></div>
 <div class="col-second even-row-color"><code><a href="#isAllowSelectAllColumns" class="member-name-link">isAllowSelectAllColumns</a></code></div>
 <div class="col-last even-row-color">&nbsp;</div>
-<div class="col-first odd-row-color"><code>protected static final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</code></div>
-<div class="col-second odd-row-color"><code><a href="#joinTypes" class="member-name-link">joinTypes</a></code></div>
+<div class="col-first odd-row-color"><code>protected static final long</code></div>
+<div class="col-second odd-row-color"><code><a href="#serialVersionUID" class="member-name-link">serialVersionUID</a></code></div>
 <div class="col-last odd-row-color">&nbsp;</div>
-<div class="col-first even-row-color"><code>protected static final long</code></div>
-<div class="col-second even-row-color"><code><a href="#serialVersionUID" class="member-name-link">serialVersionUID</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
 </div>
 <div class="inherited-list">
 <h3 id="fields-inherited-from-class-de.businesscode.bcdui.wrs.load.WrqBindingSetVirtual">Fields inherited from class&nbsp;de.businesscode.bcdui.wrs.load.<a href="WrqBindingSetVirtual.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingSetVirtual</a></h3>
@@ -180,7 +178,9 @@ loadScripts(document, 'script');</script>
 <div class="block">Adds the BindingItems for a table factor to the virtual one we are creating</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#collectBindingItems(java.util.Set,java.lang.String,boolean,de.businesscode.bcdui.binding.BindingSet)" class="member-name-link">collectBindingItems</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Set.html" title="class or interface in java.util" class="external-link">Set</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;&nbsp;allRawBRefsWoRel,
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#collectBindingItems(de.businesscode.bcdui.wrs.load.SqlFromSubSelect,org.w3c.dom.Element,java.util.Set,java.lang.String,boolean,de.businesscode.bcdui.binding.BindingSet)" class="member-name-link">collectBindingItems</a><wbr>(<a href="SqlFromSubSelect.html" title="class in de.businesscode.bcdui.wrs.load">SqlFromSubSelect</a>&nbsp;selectContext,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.xml/org/w3c/dom/Element.html" title="class or interface in org.w3c.dom" class="external-link">Element</a>&nbsp;teElem,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Set.html" title="class or interface in java.util" class="external-link">Set</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;&nbsp;allRawBRefsWoRel,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;wrqAlias,
  boolean&nbsp;selectAll,
  <a href="../../binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&nbsp;bs)</code></div>
@@ -218,10 +218,10 @@ loadScripts(document, 'script');</script>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">All Modifiers attached to StandardBindingSets used by us</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected boolean</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#handleJoinCondition(org.w3c.dom.Element,java.lang.String,boolean)" class="member-name-link">handleJoinCondition</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.xml/org/w3c/dom/Element.html" title="class or interface in org.w3c.dom" class="external-link">Element</a>&nbsp;elem,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;connect,
- boolean&nbsp;isFirst)</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#handleJoinCondition(de.businesscode.bcdui.wrs.load.SQLStatementWithParams,org.w3c.dom.Element,java.lang.String)" class="member-name-link">handleJoinCondition</a><wbr>(<a href="SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a>&nbsp;joinStmt,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.xml/org/w3c/dom/Element.html" title="class or interface in org.w3c.dom" class="external-link">Element</a>&nbsp;elem,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;connect)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Recursively handle join conditions</div>
 </div>
@@ -277,12 +277,6 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="joinTypes">
-<h3>joinTypes</h3>
-<div class="member-signature"><span class="modifiers">protected static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</span>&nbsp;<span class="element-name">joinTypes</span></div>
-</section>
-</li>
-<li>
 <section class="detail" id="connectorsTypes">
 <h3>connectorsTypes</h3>
 <div class="member-signature"><span class="modifiers">protected static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</span>&nbsp;<span class="element-name">connectorsTypes</span></div>
@@ -325,18 +319,18 @@ loadScripts(document, 'script');</script>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="handleJoinCondition(org.w3c.dom.Element,java.lang.String,boolean)">
+<section class="detail" id="handleJoinCondition(de.businesscode.bcdui.wrs.load.SQLStatementWithParams,org.w3c.dom.Element,java.lang.String)">
 <h3>handleJoinCondition</h3>
-<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">handleJoinCondition</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.xml/org/w3c/dom/Element.html" title="class or interface in org.w3c.dom" class="external-link">Element</a>&nbsp;elem,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;connect,
- boolean&nbsp;isFirst)</span>
-                               throws <span class="exceptions"><a href="../../binding/exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></span></div>
+<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">handleJoinCondition</span><wbr><span class="parameters">(<a href="SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a>&nbsp;joinStmt,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.xml/org/w3c/dom/Element.html" title="class or interface in org.w3c.dom" class="external-link">Element</a>&nbsp;elem,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;connect)</span>
+                              throws <span class="exceptions"><a href="../../binding/exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></span></div>
 <div class="block">Recursively handle join conditions</div>
 <dl class="notes">
 <dt>Parameters:</dt>
+<dd><code>joinStmt</code> - </dd>
 <dd><code>elem</code> - </dd>
 <dd><code>connect</code> - </dd>
-<dd><code>isFirst</code> - </dd>
 <dt>Returns:</dt>
 <dt>Throws:</dt>
 <dd><code><a href="../../binding/exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></code></dd>
@@ -388,9 +382,11 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="collectBindingItems(java.util.Set,java.lang.String,boolean,de.businesscode.bcdui.binding.BindingSet)">
+<section class="detail" id="collectBindingItems(de.businesscode.bcdui.wrs.load.SqlFromSubSelect,org.w3c.dom.Element,java.util.Set,java.lang.String,boolean,de.businesscode.bcdui.binding.BindingSet)">
 <h3>collectBindingItems</h3>
-<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">collectBindingItems</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Set.html" title="class or interface in java.util" class="external-link">Set</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;&nbsp;allRawBRefsWoRel,
+<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">collectBindingItems</span><wbr><span class="parameters">(<a href="SqlFromSubSelect.html" title="class in de.businesscode.bcdui.wrs.load">SqlFromSubSelect</a>&nbsp;selectContext,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.xml/org/w3c/dom/Element.html" title="class or interface in org.w3c.dom" class="external-link">Element</a>&nbsp;teElem,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Set.html" title="class or interface in java.util" class="external-link">Set</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;&nbsp;allRawBRefsWoRel,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;wrqAlias,
  boolean&nbsp;selectAll,
  <a href="../../binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a>&nbsp;bs)</span>

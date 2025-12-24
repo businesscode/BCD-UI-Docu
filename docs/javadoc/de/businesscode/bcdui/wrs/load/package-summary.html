@@ -130,16 +130,17 @@ loadScripts(document, 'script');</script>
 </div>
 <div class="col-first odd-row-color class-summary class-summary-tab2"><a href="SqlFromFullSelect.html" title="class in de.businesscode.bcdui.wrs.load">SqlFromFullSelect</a></div>
 <div class="col-last odd-row-color class-summary class-summary-tab2">
-<div class="block">Takes the parent node of SELECTs with SET operators (formally a "full-select") in Wrq format
- and generates SQL from it together with the bound variables, ready to be executed</div>
+<div class="block">Mainly handles SET operators like UNION and calls SqlFromSubSelect for each select.</div>
 </div>
 <div class="col-first even-row-color class-summary class-summary-tab2"><a href="SqlFromSubSelect.html" title="class in de.businesscode.bcdui.wrs.load">SqlFromSubSelect</a></div>
 <div class="col-last even-row-color class-summary class-summary-tab2">
-<div class="block">Takes a single wrq:Select (formally a "sub-select") and turns it into a SQLStatementWithParams</div>
+<div class="block">Takes a single wrq:Select (formally a "sub-select") and turns it into a SQLStatementWithParams
+ Each select taking part in UNIONs or being a sub-select is represented by an instance of this class.</div>
 </div>
 <div class="col-first odd-row-color class-summary class-summary-tab2"><a href="SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a></div>
 <div class="col-last odd-row-color class-summary class-summary-tab2">
-<div class="block">Represents part of an SQL string and the values for bound variables</div>
+<div class="block">Represents part of an SQL string and the values for bound variables
+ Can be a single clause or a whole SQL statement</div>
 </div>
 <div class="col-first even-row-color class-summary class-summary-tab2"><a href="SubjectSettings2Sql.html" title="class in de.businesscode.bcdui.wrs.load">SubjectSettings2Sql</a></div>
 <div class="col-last even-row-color class-summary class-summary-tab2">
@@ -165,14 +166,17 @@ loadScripts(document, 'script');</script>
 </div>
 <div class="col-first odd-row-color class-summary class-summary-tab2"><a href="WrqBindingSetFromDerivedTable.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingSetFromDerivedTable</a></div>
 <div class="col-last odd-row-color class-summary class-summary-tab2">
-<div class="block">Represents a virtual BindingSet resulting from a sub-select during the execution of a Wrq</div>
+<div class="block">This class allows using a sub-select (SqlFromSubSelect) like a BindingSet
+ I.e., it represents its output (selected columns) as a BindingSet
+ Represents a virtual BindingSet resulting from a sub-select during the execution of a Wrq</div>
 </div>
 <div class="col-first even-row-color class-summary class-summary-tab2"><a href="WrqBindingSetFromTableReference.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingSetFromTableReference</a></div>
 <div class="col-last even-row-color class-summary class-summary-tab2">
-<div class="block">Represents a virtual BindingSet resulting from the children of wrq:From, i.e. a table reference
+<div class="block">This class allows using the result of JOINed table references (BindingSets, sub-selects in joins) like a BindingSet
+ Represents a virtual BindingSet resulting from the children of wrq:From, i.e., is a table reference
  A table reference can be a plain table name or joined tables factors,
  i.e. table names, derived table expressions or references to CTE
- Mostly it deals with the handling of wrq:Join, but for consistency we also take care for cases without</div>
+ Mostly it deals with the handling of wrq:Join, but for consistency it also takes care of cases without</div>
 </div>
 <div class="col-first odd-row-color class-summary class-summary-tab2"><a href="WrqBindingSetRef.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingSetRef</a></div>
 <div class="col-last odd-row-color class-summary class-summary-tab2">
@@ -200,7 +204,7 @@ loadScripts(document, 'script');</script>
 </div>
 <div class="col-first even-row-color class-summary class-summary-tab2"><a href="WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a></div>
 <div class="col-last even-row-color class-summary class-summary-tab2">
-<div class="block">Collects knowledge about the Wrq.</div>
+<div class="block">The worker companion of a SqlFromSubSelect.</div>
 </div>
 <div class="col-first odd-row-color class-summary class-summary-tab2"><a href="WrqQueryBuilder.html" title="class in de.businesscode.bcdui.wrs.load">WrqQueryBuilder</a></div>
 <div class="col-last odd-row-color class-summary class-summary-tab2">

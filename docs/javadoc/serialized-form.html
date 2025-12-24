@@ -90,6 +90,10 @@ loadScripts(document, 'script');</script>
 <pre>boolean hasCustomItem</pre>
 </li>
 <li class="block-list">
+<h5>log</h5>
+<pre>org.apache.logging.log4j.Logger log</pre>
+</li>
+<li class="block-list">
 <h5>name</h5>
 <pre><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a> name</pre>
 </li>
@@ -191,6 +195,10 @@ loadScripts(document, 'script');</script>
 <section class="serialized-class-details" id="de.businesscode.bcdui.logging.LogEventBase">
 <h3>Class&nbsp;<a href="de/businesscode/bcdui/logging/LogEventBase.html" title="class in de.businesscode.bcdui.logging">de.businesscode.bcdui.logging.LogEventBase</a></h3>
 <div class="type-signature">class LogEventBase extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a> implements <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/Serializable.html" title="class or interface in java.io" class="external-link">Serializable</a></div>
+<dl class="name-value">
+<dt>serialVersionUID:</dt>
+<dd>1L</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -889,6 +897,10 @@ loadScripts(document, 'script');</script>
 <section class="serialized-class-details" id="de.businesscode.bcdui.web.errorLogging.ErrorLogEvent">
 <h3>Class&nbsp;<a href="de/businesscode/bcdui/web/errorLogging/ErrorLogEvent.html" title="class in de.businesscode.bcdui.web.errorLogging">de.businesscode.bcdui.web.errorLogging.ErrorLogEvent</a></h3>
 <div class="type-signature">class ErrorLogEvent extends <a href="de/businesscode/bcdui/logging/LogEventBase.html" title="class in de.businesscode.bcdui.logging">LogEventBase</a> implements <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/Serializable.html" title="class or interface in java.io" class="external-link">Serializable</a></div>
+<dl class="name-value">
+<dt>serialVersionUID:</dt>
+<dd>1L</dd>
+</dl>
 <ul class="block-list">
 <li>
 <section class="detail">
@@ -903,12 +915,32 @@ loadScripts(document, 'script');</script>
 <pre><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a> message</pre>
 </li>
 <li class="block-list">
-<h5>request</h5>
-<pre>jakarta.servlet.http.HttpServletRequest request</pre>
+<h5>refererUrl</h5>
+<pre><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a> refererUrl</pre>
+</li>
+<li class="block-list">
+<h5>remoteAddr</h5>
+<pre><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a> remoteAddr</pre>
+</li>
+<li class="block-list">
+<h5>requestHash</h5>
+<pre><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a> requestHash</pre>
+</li>
+<li class="block-list">
+<h5>requestUrl</h5>
+<pre><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a> requestUrl</pre>
 </li>
 <li class="block-list">
 <h5>thrwbl</h5>
 <pre><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Throwable.html" title="class or interface in java.lang" class="external-link">Throwable</a> thrwbl</pre>
+</li>
+<li class="block-list">
+<h5>userAgent</h5>
+<pre><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a> userAgent</pre>
+</li>
+<li class="block-list">
+<h5>userName</h5>
+<pre><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a> userName</pre>
 </li>
 </ul>
 </section>
@@ -1274,12 +1306,16 @@ loadScripts(document, 'script');</script>
 <pre>long executeDuration</pre>
 </li>
 <li class="block-list">
-<h5>request</h5>
-<pre>jakarta.servlet.http.HttpServletRequest request</pre>
-</li>
-<li class="block-list">
 <h5>requestDoc</h5>
 <pre><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.xml/org/w3c/dom/Document.html" title="class or interface in org.w3c.dom" class="external-link">Document</a> requestDoc</pre>
+</li>
+<li class="block-list">
+<h5>requestQueryString</h5>
+<pre><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a> requestQueryString</pre>
+</li>
+<li class="block-list">
+<h5>requestUrl</h5>
+<pre><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a> requestUrl</pre>
 </li>
 <li class="block-list">
 <h5>rowCount</h5>

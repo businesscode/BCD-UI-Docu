@@ -45,11 +45,7 @@ TIP: You refresh them with the "Reload Entries" feature in Eclipse. Keep in mind
 
 ==== JavaScript Api stubs
 
-BCD-UI provides a file with its JavaScript API. Add this to your IDE, and you will have auto-complete while editing JavaScript. The file can be found here: link:https://businesscode.github.io/BCD-UI-Docu/resources/bcduiApiStubs.js[^]. +
-
-Use the standard ECMA 6 mechanism to make them known in a file.
-[source,javascript]
-import {bcdui} from "./bcdui/dev/bcduiApiStubs.js";
+BCD-UI provides a file with its JavaScript API. Add this to your IDE, and you will have auto-complete while editing JavaScript. The file can be found here: link:https://businesscode.github.io/BCD-UI-Docu/resources/bcduiApiStubs.zip[^]. +
 
 image::images/bootstrap_addJsCodeCompletion.png[]
 will bring you, code completion and help tooltips while hovering with your mouse:

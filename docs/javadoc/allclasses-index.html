@@ -107,7 +107,7 @@ loadScripts(document, 'script');</script>
 </div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/web/AuthenticationListener.html" title="class in de.businesscode.bcdui.web">AuthenticationListener</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Support for bcd_log_login logging as well as further security enhancement, such as session-fixation {@link https://owasp.org/www-community/attacks/Session_fixation}</div>
+<div class="block">Support for bcd_log_login logging as well as further security enhancement, such as session-fixation, see <a href="https://owasp.org/www-community/attacks/Session_fixation">OWASP Session_fixation</a></div>
 </div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/config/AuthenticationType.html" title="class in de.businesscode.bcdui.subjectsettings.config">AuthenticationType</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
@@ -782,18 +782,19 @@ loadScripts(document, 'script');</script>
 </div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/SqlFromFullSelect.html" title="class in de.businesscode.bcdui.wrs.load">SqlFromFullSelect</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Takes the parent node of SELECTs with SET operators (formally a "full-select") in Wrq format
- and generates SQL from it together with the bound variables, ready to be executed</div>
+<div class="block">Mainly handles SET operators like UNION and calls SqlFromSubSelect for each select.</div>
 </div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/SqlFromSubSelect.html" title="class in de.businesscode.bcdui.wrs.load">SqlFromSubSelect</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Takes a single wrq:Select (formally a "sub-select") and turns it into a SQLStatementWithParams</div>
+<div class="block">Takes a single wrq:Select (formally a "sub-select") and turns it into a SQLStatementWithParams
+ Each select taking part in UNIONs or being a sub-select is represented by an instance of this class.</div>
 </div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/web/accessLogging/SqlLogAppender.html" title="class in de.businesscode.bcdui.web.accessLogging">SqlLogAppender</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Represents part of an SQL string and the values for bound variables</div>
+<div class="block">Represents part of an SQL string and the values for bound variables
+ Can be a single clause or a whole SQL statement</div>
 </div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/logging/SqlToDatabaseLogger.html" title="class in de.businesscode.bcdui.logging">SqlToDatabaseLogger</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
@@ -1041,8 +1042,8 @@ loadScripts(document, 'script');</script>
      &lt;param-value>
        MY_STEP_NAME: de.my.package.ClassName;
        MY_STEP_NAME2: de.my.package.ClassName2;
-     &lt;/param-value>
-   &lt;/init-param -->
+     &lt;/param-value>&lt;
+   &lt;/init-para -->
    Such Steps
   - need a Constructor getting (UploadControl uc, String userId)
   - implement IUploadStep
@@ -1160,14 +1161,17 @@ loadScripts(document, 'script');</script>
 </div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/WrqBindingSetFromDerivedTable.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingSetFromDerivedTable</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Represents a virtual BindingSet resulting from a sub-select during the execution of a Wrq</div>
+<div class="block">This class allows using a sub-select (SqlFromSubSelect) like a BindingSet
+ I.e., it represents its output (selected columns) as a BindingSet
+ Represents a virtual BindingSet resulting from a sub-select during the execution of a Wrq</div>
 </div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/WrqBindingSetFromTableReference.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingSetFromTableReference</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Represents a virtual BindingSet resulting from the children of wrq:From, i.e. a table reference
+<div class="block">This class allows using the result of JOINed table references (BindingSets, sub-selects in joins) like a BindingSet
+ Represents a virtual BindingSet resulting from the children of wrq:From, i.e., is a table reference
  A table reference can be a plain table name or joined tables factors,
  i.e. table names, derived table expressions or references to CTE
- Mostly it deals with the handling of wrq:Join, but for consistency we also take care for cases without</div>
+ Mostly it deals with the handling of wrq:Join, but for consistency it also takes care of cases without</div>
 </div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/WrqBindingSetRef.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingSetRef</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
@@ -1195,7 +1199,7 @@ loadScripts(document, 'script');</script>
 </div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Collects knowledge about the Wrq.</div>
+<div class="block">The worker companion of a SqlFromSubSelect.</div>
 </div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/WrqQueryBuilder.html" title="class in de.businesscode.bcdui.wrs.load">WrqQueryBuilder</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
@@ -1290,7 +1294,20 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/util/XPathUtils.html" title="class in de.businesscode.util">XPathUtils</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/web/servlets/ZipDownload.html" title="class in de.businesscode.bcdui.web.servlets">ZipDownload</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Class to provide zipping and downloading a specified number of files
+ which need to be accessible via ResourceServlet (which also provides the secured access)
+ Files are specified via a config
+ &lt;Vfs xmlns="http://www.businesscode.de/schema/bcdui/vfs-1.0.0">
+   &lt;Zip>
+     &lt;Folder name="folder1">
+       &lt;File name="/vfs/documents/ace9e8e7-548a-4410-aa52-c57fb32e34fa/xf"/>
+     &lt;/Folder>
+     &lt;Folder .... />
+   &lt;/Zip>
+ &lt;/Vfs>
+  As an alternative, you can also provide a scope/instance pair instead of a path name.</div>
+</div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/web/servlets/ZipLet.html" title="class in de.businesscode.bcdui.web.servlets">ZipLet</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Servlet for compression and uncompression of XML data.</div>

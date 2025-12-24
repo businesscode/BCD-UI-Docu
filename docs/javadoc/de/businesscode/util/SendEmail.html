@@ -423,12 +423,6 @@ loadScripts(document, 'script');</script>
 <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/security/GeneralSecurityException.html" title="class or interface in java.security" class="external-link">GeneralSecurityException</a></span></div>
 <div class="block">Reads email account settings from JNDI context</div>
 <dl class="notes">
-<dt>Parameters:</dt>
-<dd><code>host</code> - </dd>
-<dd><code>port</code> - </dd>
-<dd><code>sender</code> - </dd>
-<dd><code>user</code> - </dd>
-<dd><code>password</code> - </dd>
 <dt>Throws:</dt>
 <dd><code>jakarta.mail.internet.AddressException</code></dd>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.naming/javax/naming/NamingException.html" title="class or interface in javax.naming" class="external-link">NamingException</a></code></dd>
@@ -463,8 +457,6 @@ loadScripts(document, 'script');</script>
 <div class="block">Create a Session object to represent a mail session with the specified properties.
  Sessions do not need to be closed</div>
 <dl class="notes">
-<dt>Parameters:</dt>
-<dd><code>port</code> - </dd>
 <dt>Throws:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/security/GeneralSecurityException.html" title="class or interface in java.security" class="external-link">GeneralSecurityException</a></code></dd>
 </dl>
@@ -484,7 +476,7 @@ loadScripts(document, 'script');</script>
 <dd><code>receipients</code> - semicolon separated</dd>
 <dd><code>subject</code> - </dd>
 <dd><code>body</code> - </dd>
-<dd><code>attachments</code> - may be null</dd>
+<dd><code>html</code> - may be null</dd>
 <dt>Throws:</dt>
 <dd><code>jakarta.mail.MessagingException</code></dd>
 </dl>
@@ -506,7 +498,9 @@ loadScripts(document, 'script');</script>
 <dd><code>receipients</code> - semicolon separated</dd>
 <dd><code>subject</code> - </dd>
 <dd><code>body</code> - </dd>
-<dd><code>attachments</code> - may be null</dd>
+<dd><code>attachmentName</code> - may be null</dd>
+<dd><code>attachment</code> - </dd>
+<dd><code>html</code> - </dd>
 <dt>Throws:</dt>
 <dd><code>jakarta.mail.MessagingException</code></dd>
 </dl>
@@ -527,7 +521,8 @@ loadScripts(document, 'script');</script>
 <dd><code>receipients</code> - </dd>
 <dd><code>subject</code> - </dd>
 <dd><code>body</code> - </dd>
-<dd><code>attachments</code> - attachmentname - filename</dd>
+<dd><code>attachmentFilenames</code> - attachmentname - filename</dd>
+<dd><code>html</code> - </dd>
 <dt>Throws:</dt>
 <dd><code>jakarta.mail.MessagingException</code></dd>
 </dl>
@@ -548,7 +543,8 @@ loadScripts(document, 'script');</script>
 <dd><code>receipients</code> - semicolon separated</dd>
 <dd><code>subject</code> - </dd>
 <dd><code>body</code> - </dd>
-<dd><code>attachments</code> - attachmentname - file</dd>
+<dd><code>attachmentFiles</code> - attachmentname - file</dd>
+<dd><code>html</code> - </dd>
 <dt>Throws:</dt>
 <dd><code>jakarta.mail.MessagingException</code></dd>
 </dl>
@@ -590,10 +586,11 @@ loadScripts(document, 'script');</script>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>receipients</code> - semicolon separated</dd>
-<dd><code>cc</code> - receipients semicolon separated</dd>
+<dd><code>receipientsCc</code> - receipients semicolon separated</dd>
 <dd><code>subject</code> - </dd>
 <dd><code>body</code> - </dd>
 <dd><code>attachments</code> - </dd>
+<dd><code>html</code> - </dd>
 <dt>Throws:</dt>
 <dd><code>jakarta.mail.MessagingException</code></dd>
 </dl>

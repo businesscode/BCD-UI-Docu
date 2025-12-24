@@ -53,7 +53,7 @@ The jndi entry
 ----
 is important as it denotes the connection used of none is explicitly given in a BindingSet.
 
-. Copy link:https://businesscode.github.io/BCD-UI-Docu/resources/bcduiApiStubs.js[window=_blank] into `WebContent/bcdui/dev/`. +
+. Unzip link:https://businesscode.github.io/BCD-UI-Docu/resources/bcduiApiStubs.zip[window=_blank] into `WebContent/bcdui/dev/`. +
 This file can be used for autocompletion of BCD-UI JavaScript classes in the editor by using
 +
 [source,javascript]

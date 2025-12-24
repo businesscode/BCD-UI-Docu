@@ -115,8 +115,7 @@ implements <a href="../load/IDataWriter.html" title="interface in de.businesscod
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Stack.html" title="class or interface in java.util" class="external-link">Stack</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;&nbsp;pathStack,
  boolean&nbsp;includeHeader)</code></div>
 <div class="col-last even-row-color">
-<div class="block"><a href="AbstractExcelSheetDataWriter.html" title="class in de.businesscode.bcdui.wrs.export"><code>AbstractExcelSheetDataWriter</code></a>
- Handling a WrsRequest, we consume wrs:WrsRequest XMLEvent up to the closing tag</div>
+<div class="block">Constructs a <code>Wrq2ExcelSheetDataWriter</code> instance for exporting data into an Excel sheet by processing a WrsRequest.</div>
 </div>
 </div>
 </section>
@@ -200,15 +199,20 @@ implements <a href="../load/IDataWriter.html" title="interface in de.businesscod
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Stack.html" title="class or interface in java.util" class="external-link">Stack</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;&nbsp;pathStack,
  boolean&nbsp;includeHeader)</span>
                          throws <span class="exceptions">de.businesscode.bcdui.wrs.export.ExcelWriterException</span></div>
-<div class="block"><a href="AbstractExcelSheetDataWriter.html" title="class in de.businesscode.bcdui.wrs.export"><code>AbstractExcelSheetDataWriter</code></a>
- Handling a WrsRequest, we consume wrs:WrsRequest XMLEvent up to the closing tag</div>
+<div class="block">Constructs a <code>Wrq2ExcelSheetDataWriter</code> instance for exporting data into an Excel sheet by processing a WrsRequest.
+
+ This constructor initializes the writer with relevant request options, Excel workbook, XML event information,
+ and other configurations to prepare for the data writing process.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>eventReader</code> - </dd>
-<dd><code>event</code> - </dd>
+<dd><code>options</code> - The <code>IRequestOptions</code> defining the request's settings and environment, such as request document, bindings, or configurations.</dd>
+<dd><code>workbook</code> - The <code>Workbook</code> representing the Excel workbook where data will be written.</dd>
+<dd><code>eventRoot</code> - The <code>XMLEvent</code> representing the root event of the XML structure being processed.</dd>
+<dd><code>eventReader</code> - The <code>XMLEventReader</code> for consuming XML events in a streaming manner during processing.</dd>
+<dd><code>pathStack</code> - A <code>Stack&lt;String&gt;</code> representing the navigation path of the XML structure for context tracking.</dd>
+<dd><code>includeHeader</code> - A <code>boolean</code> flag indicating whether the Excel sheet should include header information.</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.xml/javax/xml/stream/XMLStreamException.html" title="class or interface in javax.xml.stream" class="external-link">XMLStreamException</a></code></dd>
-<dd><code>de.businesscode.bcdui.wrs.export.ExcelWriterException</code></dd>
+<dd><code>de.businesscode.bcdui.wrs.export.ExcelWriterException</code> - If an error occurs during the initialization or creation of the writer.</dd>
 </dl>
 </section>
 </li>

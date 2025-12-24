@@ -79,7 +79,10 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">SqlFromSubSelect</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">Takes a single wrq:Select (formally a "sub-select") and turns it into a SQLStatementWithParams</div>
+<div class="block">Takes a single wrq:Select (formally a "sub-select") and turns it into a SQLStatementWithParams
+ Each select taking part in UNIONs or being a sub-select is represented by an instance of this class.
+ It uses WrqInfo to collect all necessary information from the WRQ XML
+ There is a 1:1 relationship between SqlFromSubSelect and WrqInfo</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -92,41 +95,41 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Field</div>
 <div class="table-header col-last">Description</div>
+<div class="col-first even-row-color"><code>protected <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="WrqBindingSet.html" title="interface in de.businesscode.bcdui.wrs.load">WrqBindingSet</a>&gt;</code></div>
+<div class="col-second even-row-color"><code><a href="#bindingSetForWrqAlias" class="member-name-link">bindingSetForWrqAlias</a></code></div>
+<div class="col-last even-row-color">
+<div class="block">These BindingSets are our main BindingSet and all joined ones, i.e, all listed in our wrq:From</div>
+</div>
+<div class="col-first odd-row-color"><code>protected final <a href="SqlFromSubSelect.html" title="class in de.businesscode.bcdui.wrs.load">SqlFromSubSelect</a></code></div>
+<div class="col-second odd-row-color"><code><a href="#parent" class="member-name-link">parent</a></code></div>
+<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-first even-row-color"><code>protected <a href="WrqBindingSetFromDerivedTable.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingSetFromDerivedTable</a></code></div>
+<div class="col-second even-row-color"><code><a href="#representingBindingSet" class="member-name-link">representingBindingSet</a></code></div>
+<div class="col-last even-row-color">
+<div class="block">A virtual BindingSet representing the result set created by this sub-select</div>
+</div>
+<div class="col-first odd-row-color"><code>protected <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Set.html" title="class or interface in java.util" class="external-link">Set</a>&lt;<a href="../../binding/StandardBindingSet.html" title="class in de.businesscode.bcdui.binding">StandardBindingSet</a>&gt;</code></div>
+<div class="col-second odd-row-color"><code><a href="#resolvedBindingSets" class="member-name-link">resolvedBindingSets</a></code></div>
+<div class="col-last odd-row-color">
+<div class="block">All Standard BindingSets, which we or any of our sub-selects are using</div>
+</div>
 <div class="col-first even-row-color"><code>protected int</code></div>
-<div class="col-second even-row-color"><code><a href="#aliasCounter" class="member-name-link">aliasCounter</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
-<div class="col-first odd-row-color"><code>protected <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="WrqBindingSet.html" title="interface in de.businesscode.bcdui.wrs.load">WrqBindingSet</a>&gt;</code></div>
-<div class="col-second odd-row-color"><code><a href="#bindingSetForWrqAlias" class="member-name-link">bindingSetForWrqAlias</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
-<div class="col-first even-row-color"><code>protected final <a href="SqlFromSubSelect.html" title="class in de.businesscode.bcdui.wrs.load">SqlFromSubSelect</a></code></div>
-<div class="col-second even-row-color"><code><a href="#parent" class="member-name-link">parent</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
-<div class="col-first odd-row-color"><code>protected <a href="WrqBindingSetFromDerivedTable.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingSetFromDerivedTable</a></code></div>
-<div class="col-second odd-row-color"><code><a href="#representingBindingSet" class="member-name-link">representingBindingSet</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
-<div class="col-first even-row-color"><code>protected <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Set.html" title="class or interface in java.util" class="external-link">Set</a>&lt;<a href="../../binding/StandardBindingSet.html" title="class in de.businesscode.bcdui.binding">StandardBindingSet</a>&gt;</code></div>
-<div class="col-second even-row-color"><code><a href="#resolvedBindingSets" class="member-name-link">resolvedBindingSets</a></code></div>
+<div class="col-second even-row-color"><code><a href="#rowEnd" class="member-name-link">rowEnd</a></code></div>
 <div class="col-last even-row-color">&nbsp;</div>
 <div class="col-first odd-row-color"><code>protected int</code></div>
-<div class="col-second odd-row-color"><code><a href="#rowEnd" class="member-name-link">rowEnd</a></code></div>
+<div class="col-second odd-row-color"><code><a href="#rowStart" class="member-name-link">rowStart</a></code></div>
 <div class="col-last odd-row-color">&nbsp;</div>
-<div class="col-first even-row-color"><code>protected int</code></div>
-<div class="col-second even-row-color"><code><a href="#rowStart" class="member-name-link">rowStart</a></code></div>
+<div class="col-first even-row-color"><code>protected final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.xml/org/w3c/dom/Element.html" title="class or interface in org.w3c.dom" class="external-link">Element</a></code></div>
+<div class="col-second even-row-color"><code><a href="#selectElem" class="member-name-link">selectElem</a></code></div>
 <div class="col-last even-row-color">&nbsp;</div>
-<div class="col-first odd-row-color"><code>protected final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.xml/org/w3c/dom/Element.html" title="class or interface in org.w3c.dom" class="external-link">Element</a></code></div>
-<div class="col-second odd-row-color"><code><a href="#selectElem" class="member-name-link">selectElem</a></code></div>
+<div class="col-first odd-row-color"><code>protected <a href="SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a></code></div>
+<div class="col-second odd-row-color"><code><a href="#selectStatement" class="member-name-link">selectStatement</a></code></div>
 <div class="col-last odd-row-color">&nbsp;</div>
-<div class="col-first even-row-color"><code>protected <a href="SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a></code></div>
-<div class="col-second even-row-color"><code><a href="#selectStatement" class="member-name-link">selectStatement</a></code></div>
+<div class="col-first even-row-color"><code>protected final <a href="WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a></code></div>
+<div class="col-second even-row-color"><code><a href="#wrqInfo" class="member-name-link">wrqInfo</a></code></div>
 <div class="col-last even-row-color">&nbsp;</div>
-<div class="col-first odd-row-color"><code>protected final <a href="WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a></code></div>
-<div class="col-second odd-row-color"><code><a href="#wrqInfo" class="member-name-link">wrqInfo</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
-<div class="col-first even-row-color"><code>protected final <a href="WrqQueryBuilder.html" title="class in de.businesscode.bcdui.wrs.load">WrqQueryBuilder</a></code></div>
-<div class="col-second even-row-color"><code><a href="#wrqQueryBuilder" class="member-name-link">wrqQueryBuilder</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
-<div class="col-first odd-row-color"><code>protected static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
-<div class="col-second odd-row-color"><code><a href="#wrqTransformRowLimitXsltStatic" class="member-name-link">wrqTransformRowLimitXsltStatic</a></code></div>
+<div class="col-first odd-row-color"><code>protected final <a href="WrqQueryBuilder.html" title="class in de.businesscode.bcdui.wrs.load">WrqQueryBuilder</a></code></div>
+<div class="col-second odd-row-color"><code><a href="#wrqQueryBuilder" class="member-name-link">wrqQueryBuilder</a></code></div>
 <div class="col-last odd-row-color">&nbsp;</div>
 </div>
 </section>
@@ -159,11 +162,11 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#addBindingSetForWrqAlias(java.lang.String,de.businesscode.bcdui.wrs.load.WrqBindingSet)" class="member-name-link">addBindingSetForWrqAlias</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;wrqAlias,
  <a href="WrqBindingSet.html" title="interface in de.businesscode.bcdui.wrs.load">WrqBindingSet</a>&nbsp;bindingSet)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Set the BindingSet for a user provided table expression alias</div>
+<div class="block">Set the BindingSet for a user-provided table expression alias</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#createSelectStatement()" class="member-name-link">createSelectStatement</a>()</code></div>
@@ -189,66 +192,72 @@ loadScripts(document, 'script');</script>
 <div class="block">Generates Having SQL clause</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#generateOrderClause(de.businesscode.bcdui.wrs.load.WrqInfo,de.businesscode.bcdui.wrs.load.SQLStatementWithParams)" class="member-name-link">generateOrderClause</a><wbr>(<a href="WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a>&nbsp;wrqInfo,
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#generateOffsetFetchClause(de.businesscode.bcdui.wrs.load.WrqInfo,de.businesscode.bcdui.wrs.load.SQLStatementWithParams)" class="member-name-link">generateOffsetFetchClause</a><wbr>(<a href="WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a>&nbsp;wrqInfo,
  <a href="SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a>&nbsp;sqlStatement)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Generates Order-By clause</div>
+<div class="block">Optionally append 'OFFSET 10 FETCH NEXT 20 ROWS ONLY' for pagination</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#generateSelectClause(de.businesscode.bcdui.wrs.load.WrqInfo,de.businesscode.bcdui.wrs.load.SQLStatementWithParams)" class="member-name-link">generateSelectClause</a><wbr>(<a href="WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a>&nbsp;wrqInfo,
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#generateOrderClause(de.businesscode.bcdui.wrs.load.WrqInfo,de.businesscode.bcdui.wrs.load.SQLStatementWithParams)" class="member-name-link">generateOrderClause</a><wbr>(<a href="WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a>&nbsp;wrqInfo,
  <a href="SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a>&nbsp;sqlStatement)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Generates 'SELECT' plus the select list</div>
+<div class="block">Generates Order-By clause</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#generateWhereClause(de.businesscode.bcdui.wrs.load.WrqInfo,de.businesscode.bcdui.wrs.load.SQLStatementWithParams)" class="member-name-link">generateWhereClause</a><wbr>(<a href="WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a>&nbsp;wrqInfo,
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#generateSelectClause(de.businesscode.bcdui.wrs.load.WrqInfo,de.businesscode.bcdui.wrs.load.SQLStatementWithParams)" class="member-name-link">generateSelectClause</a><wbr>(<a href="WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a>&nbsp;wrqInfo,
  <a href="SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a>&nbsp;sqlStatement)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Generates 'WHERE ' plus the filter</div>
+<div class="block">Generates 'SELECT' plus the select list</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="WrqBindingSet.html" title="interface in de.businesscode.bcdui.wrs.load">WrqBindingSet</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getBindingSetForWrqAlias(java.lang.String)" class="member-name-link">getBindingSetForWrqAlias</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;wrqAlias)</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#generateWhereClause(de.businesscode.bcdui.wrs.load.WrqInfo,de.businesscode.bcdui.wrs.load.SQLStatementWithParams)" class="member-name-link">generateWhereClause</a><wbr>(<a href="WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a>&nbsp;wrqInfo,
+ <a href="SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a>&nbsp;sqlStatement)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Get the BindingSet for a user provided table expression alias</div>
+<div class="block">Generates 'WHERE' plus the filter</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.xml/org/w3c/dom/Element.html" title="class or interface in org.w3c.dom" class="external-link">Element</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getBoundVariables()" class="member-name-link">getBoundVariables</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getNextTableSqlAlias()" class="member-name-link">getNextTableSqlAlias</a>()</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="SqlFromSubSelect.html" title="class in de.businesscode.bcdui.wrs.load">SqlFromSubSelect</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getParent()" class="member-name-link">getParent</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Produce a new unique sql table alias for the current select scope</div>
+<div class="block">Access to parent select, which may be null
+ This is used, for example, to look up referenced columns</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="SqlFromSubSelect.html" title="class in de.businesscode.bcdui.wrs.load">SqlFromSubSelect</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getParent()" class="member-name-link">getParent</a>()</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="WrqBindingSet.html" title="interface in de.businesscode.bcdui.wrs.load">WrqBindingSet</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getRepresentingBindingSet()" class="member-name-link">getRepresentingBindingSet</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Access to parent select, may be null
- This is the namespace for table aliases</div>
+<div class="block">A BindingSet representing our result set as if we were a bnd:BindingSet</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="WrqBindingSet.html" title="interface in de.businesscode.bcdui.wrs.load">WrqBindingSet</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getRepresentingBindingSet()" class="member-name-link">getRepresentingBindingSet</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">A BindingSet representing us as if we where a bnd:BindingSet</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Set.html" title="class or interface in java.util" class="external-link">Set</a>&lt;<a href="../../binding/StandardBindingSet.html" title="class in de.businesscode.bcdui.binding">StandardBindingSet</a>&gt;</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getResolvedBindingSets()" class="member-name-link">getResolvedBindingSets</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/LinkedList.html" title="class or interface in java.util" class="external-link">LinkedList</a>&lt;<a href="WrsBindingItem.html" title="interface in de.businesscode.bcdui.wrs.load">WrsBindingItem</a>&gt;</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getSelectedBindingItems()" class="member-name-link">getSelectedBindingItems</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.xml/org/w3c/dom/Element.html" title="class or interface in org.w3c.dom" class="external-link">Element</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getSelectElem()" class="member-name-link">getSelectElem</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getSelectStatement()" class="member-name-link">getSelectStatement</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getWrqInfo()" class="member-name-link">getWrqInfo</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="WrqQueryBuilder.html" title="class in de.businesscode.bcdui.wrs.load">WrqQueryBuilder</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getWrqQueryBuilder()" class="member-name-link">getWrqQueryBuilder</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Access to the current overall query, there is only one per Wrq</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Set.html" title="class or interface in java.util" class="external-link">Set</a>&lt;<a href="../../binding/StandardBindingSet.html" title="class in de.businesscode.bcdui.binding">StandardBindingSet</a>&gt;</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getResolvedBindingSets()" class="member-name-link">getResolvedBindingSets</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/LinkedList.html" title="class or interface in java.util" class="external-link">LinkedList</a>&lt;<a href="WrsBindingItem.html" title="interface in de.businesscode.bcdui.wrs.load">WrsBindingItem</a>&gt;</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getSelectedBindingItems()" class="member-name-link">getSelectedBindingItems</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.xml/org/w3c/dom/Element.html" title="class or interface in org.w3c.dom" class="external-link">Element</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getSelectElem()" class="member-name-link">getSelectElem</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getSelectStatement()" class="member-name-link">getSelectStatement</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getWrqInfo()" class="member-name-link">getWrqInfo</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="WrqQueryBuilder.html" title="class in de.businesscode.bcdui.wrs.load">WrqQueryBuilder</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getWrqQueryBuilder()" class="member-name-link">getWrqQueryBuilder</a>()</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../../binding/BindingItem.html" title="class in de.businesscode.bcdui.binding">BindingItem</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#resolveBindingItemFromScope(java.lang.String)" class="member-name-link">resolveBindingItemFromScope</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;bRef)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Access to the current overall query</div>
+<div class="block">Retrieve a BindingItem bRef with alias from the current scope, i.e, the local wrq:From or any wrq:From from outer selects or CTEs</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="WrqBindingSet.html" title="interface in de.businesscode.bcdui.wrs.load">WrqBindingSet</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#resolveBindingSetFromScope(java.lang.String)" class="member-name-link">resolveBindingSetFromScope</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;wrqAlias)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Get the (Virtual)BindingSet for a user-provided table expression wrq alias.</div>
 </div>
 </div>
 </div>
@@ -307,30 +316,21 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="resolvedBindingSets">
 <h3>resolvedBindingSets</h3>
 <div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Set.html" title="class or interface in java.util" class="external-link">Set</a>&lt;<a href="../../binding/StandardBindingSet.html" title="class in de.businesscode.bcdui.binding">StandardBindingSet</a>&gt;</span>&nbsp;<span class="element-name">resolvedBindingSets</span></div>
+<div class="block">All Standard BindingSets, which we or any of our sub-selects are using</div>
 </section>
 </li>
 <li>
 <section class="detail" id="representingBindingSet">
 <h3>representingBindingSet</h3>
 <div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type"><a href="WrqBindingSetFromDerivedTable.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingSetFromDerivedTable</a></span>&nbsp;<span class="element-name">representingBindingSet</span></div>
+<div class="block">A virtual BindingSet representing the result set created by this sub-select</div>
 </section>
 </li>
 <li>
 <section class="detail" id="bindingSetForWrqAlias">
 <h3>bindingSetForWrqAlias</h3>
 <div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="WrqBindingSet.html" title="interface in de.businesscode.bcdui.wrs.load">WrqBindingSet</a>&gt;</span>&nbsp;<span class="element-name">bindingSetForWrqAlias</span></div>
-</section>
-</li>
-<li>
-<section class="detail" id="aliasCounter">
-<h3>aliasCounter</h3>
-<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">aliasCounter</span></div>
-</section>
-</li>
-<li>
-<section class="detail" id="wrqTransformRowLimitXsltStatic">
-<h3>wrqTransformRowLimitXsltStatic</h3>
-<div class="member-signature"><span class="modifiers">protected static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">wrqTransformRowLimitXsltStatic</span></div>
+<div class="block">These BindingSets are our main BindingSet and all joined ones, i.e, all listed in our wrq:From</div>
 </section>
 </li>
 <li>
@@ -422,7 +422,7 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">generateWhereClause</span><wbr><span class="parameters">(<a href="WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a>&nbsp;wrqInfo,
  <a href="SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a>&nbsp;sqlStatement)</span>
                             throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Exception.html" title="class or interface in java.lang" class="external-link">Exception</a></span></div>
-<div class="block">Generates 'WHERE ' plus the filter</div>
+<div class="block">Generates 'WHERE' plus the filter</div>
 <dl class="notes">
 <dt>Throws:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.xml/javax/xml/xpath/XPathExpressionException.html" title="class or interface in javax.xml.xpath" class="external-link">XPathExpressionException</a></code></dd>
@@ -449,8 +449,7 @@ loadScripts(document, 'script');</script>
 <h3>generateHavingClause</h3>
 <div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">generateHavingClause</span><wbr><span class="parameters">(<a href="WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a>&nbsp;wrqInfo,
  <a href="SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a>&nbsp;sqlStatement)</span>
-                             throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.xml/javax/xml/xpath/XPathExpressionException.html" title="class or interface in javax.xml.xpath" class="external-link">XPathExpressionException</a>,
-<a href="../../binding/exc/BindingException.html" title="class in de.businesscode.bcdui.binding.exc">BindingException</a></span></div>
+                             throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Exception.html" title="class or interface in java.lang" class="external-link">Exception</a></span></div>
 <div class="block">Generates Having SQL clause</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -459,6 +458,7 @@ loadScripts(document, 'script');</script>
 <dt>Throws:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.xml/javax/xml/xpath/XPathExpressionException.html" title="class or interface in javax.xml.xpath" class="external-link">XPathExpressionException</a></code></dd>
 <dd><code><a href="../../binding/exc/BindingException.html" title="class in de.businesscode.bcdui.binding.exc">BindingException</a></code></dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Exception.html" title="class or interface in java.lang" class="external-link">Exception</a></code></dd>
 </dl>
 </section>
 </li>
@@ -470,6 +470,22 @@ loadScripts(document, 'script');</script>
                             throws <span class="exceptions"><a href="../../binding/exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></span></div>
 <div class="block">Generates Order-By clause</div>
 <dl class="notes">
+<dt>Throws:</dt>
+<dd><code><a href="../../binding/exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></code></dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="generateOffsetFetchClause(de.businesscode.bcdui.wrs.load.WrqInfo,de.businesscode.bcdui.wrs.load.SQLStatementWithParams)">
+<h3>generateOffsetFetchClause</h3>
+<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">generateOffsetFetchClause</span><wbr><span class="parameters">(<a href="WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a>&nbsp;wrqInfo,
+ <a href="SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a>&nbsp;sqlStatement)</span>
+                                  throws <span class="exceptions"><a href="../../binding/exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></span></div>
+<div class="block">Optionally append 'OFFSET 10 FETCH NEXT 20 ROWS ONLY' for pagination</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>wrqInfo</code> - </dd>
+<dd><code>sqlStatement</code> - </dd>
 <dt>Throws:</dt>
 <dd><code><a href="../../binding/exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></code></dd>
 </dl>
@@ -492,7 +508,7 @@ loadScripts(document, 'script');</script>
 <h3>getRepresentingBindingSet</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WrqBindingSet.html" title="interface in de.businesscode.bcdui.wrs.load">WrqBindingSet</a></span>&nbsp;<span class="element-name">getRepresentingBindingSet</span>()
                                         throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Exception.html" title="class or interface in java.lang" class="external-link">Exception</a></span></div>
-<div class="block">A BindingSet representing us as if we where a bnd:BindingSet</div>
+<div class="block">A BindingSet representing our result set as if we were a bnd:BindingSet</div>
 <dl class="notes">
 <dt>Returns:</dt>
 <dt>Throws:</dt>
@@ -519,14 +535,31 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="getBindingSetForWrqAlias(java.lang.String)">
-<h3>getBindingSetForWrqAlias</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WrqBindingSet.html" title="interface in de.businesscode.bcdui.wrs.load">WrqBindingSet</a></span>&nbsp;<span class="element-name">getBindingSetForWrqAlias</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;wrqAlias)</span>
-                                       throws <span class="exceptions"><a href="../../binding/exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></span></div>
-<div class="block">Get the BindingSet for a user provided table expression alias</div>
+<section class="detail" id="resolveBindingSetFromScope(java.lang.String)">
+<h3>resolveBindingSetFromScope</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WrqBindingSet.html" title="interface in de.businesscode.bcdui.wrs.load">WrqBindingSet</a></span>&nbsp;<span class="element-name">resolveBindingSetFromScope</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;wrqAlias)</span>
+                                         throws <span class="exceptions"><a href="../../binding/exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></span></div>
+<div class="block">Get the (Virtual)BindingSet for a user-provided table expression wrq alias.
+ Can be a BindingSet or a sub-select acting as a table expression.
+ It can also be a (Virtual)BindingSet in an outer Select or a Cte.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>wrqAlias</code> - </dd>
+<dd><code>wrqAlias</code> - the wrq table alias</dd>
+<dt>Returns:</dt>
+<dt>Throws:</dt>
+<dd><code><a href="../../binding/exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></code></dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="resolveBindingItemFromScope(java.lang.String)">
+<h3>resolveBindingItemFromScope</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../../binding/BindingItem.html" title="class in de.businesscode.bcdui.binding">BindingItem</a></span>&nbsp;<span class="element-name">resolveBindingItemFromScope</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;bRef)</span>
+                                        throws <span class="exceptions"><a href="../../binding/exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></span></div>
+<div class="block">Retrieve a BindingItem bRef with alias from the current scope, i.e, the local wrq:From or any wrq:From from outer selects or CTEs</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>bRef</code> - including wrq table alias</dd>
 <dt>Returns:</dt>
 <dt>Throws:</dt>
 <dd><code><a href="../../binding/exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></code></dd>
@@ -536,9 +569,9 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="addBindingSetForWrqAlias(java.lang.String,de.businesscode.bcdui.wrs.load.WrqBindingSet)">
 <h3>addBindingSetForWrqAlias</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">addBindingSetForWrqAlias</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;wrqAlias,
+<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">addBindingSetForWrqAlias</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;wrqAlias,
  <a href="WrqBindingSet.html" title="interface in de.businesscode.bcdui.wrs.load">WrqBindingSet</a>&nbsp;bindingSet)</span></div>
-<div class="block">Set the BindingSet for a user provided table expression alias</div>
+<div class="block">Set the BindingSet for a user-provided table expression alias</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>wrqAlias</code> - </dd>
@@ -550,7 +583,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getWrqQueryBuilder()">
 <h3>getWrqQueryBuilder</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WrqQueryBuilder.html" title="class in de.businesscode.bcdui.wrs.load">WrqQueryBuilder</a></span>&nbsp;<span class="element-name">getWrqQueryBuilder</span>()</div>
-<div class="block">Access to the current overall query</div>
+<div class="block">Access to the current overall query, there is only one per Wrq</div>
 <dl class="notes">
 <dt>Returns:</dt>
 </dl>
@@ -560,18 +593,8 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getParent()">
 <h3>getParent</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="SqlFromSubSelect.html" title="class in de.businesscode.bcdui.wrs.load">SqlFromSubSelect</a></span>&nbsp;<span class="element-name">getParent</span>()</div>
-<div class="block">Access to parent select, may be null
- This is the namespace for table aliases</div>
-<dl class="notes">
-<dt>Returns:</dt>
-</dl>
-</section>
-</li>
-<li>
-<section class="detail" id="getNextTableSqlAlias()">
-<h3>getNextTableSqlAlias</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getNextTableSqlAlias</span>()</div>
-<div class="block">Produce a new unique sql table alias for the current select scope</div>
+<div class="block">Access to parent select, which may be null
+ This is used, for example, to look up referenced columns</div>
 <dl class="notes">
 <dt>Returns:</dt>
 </dl>

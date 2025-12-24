@@ -79,6 +79,23 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">ZipDownload</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Class to provide zipping and downloading a specified number of files
+ which need to be accessible via ResourceServlet (which also provides the secured access)
+ Files are specified via a config
+ &lt;Vfs xmlns="http://www.businesscode.de/schema/bcdui/vfs-1.0.0">
+   &lt;Zip>
+     &lt;Folder name="folder1">
+       &lt;File name="/vfs/documents/ace9e8e7-548a-4410-aa52-c57fb32e34fa/xf"/>
+     &lt;/Folder>
+     &lt;Folder .... />
+   &lt;/Zip>
+ &lt;/Vfs>
+  As an alternative, you can also provide a scope/instance pair instead of a path name.
+  This will get all matching entries from bcd_docUpload and adds them as files
+  &lt;File scope="..." instance="..."/>
+ 
+  This class is triggered by the StaticResourceServlet if you provide an url with parameter zipInfo
+  which is the compressed config xml</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -109,7 +126,11 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/ArrayList.html" title="class or interface in java.util" class="external-link">ArrayList</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getZip(jakarta.servlet.ServletContext,jakarta.servlet.ServletOutputStream)" class="member-name-link">getZip</a><wbr>(jakarta.servlet.ServletContext&nbsp;context,
  jakarta.servlet.ServletOutputStream&nbsp;outputStream)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">zips and downloads the files specified in the config
+ if a file is not accessible, it is skipped and
+ filenames within a subfolder are unique.</div>
+</div>
 </div>
 </div>
 </div>
@@ -147,7 +168,12 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/ArrayList.html" title="class or interface in java.util" class="external-link">ArrayList</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</span>&nbsp;<span class="element-name">getZip</span><wbr><span class="parameters">(jakarta.servlet.ServletContext&nbsp;context,
  jakarta.servlet.ServletOutputStream&nbsp;outputStream)</span>
                          throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></span></div>
+<div class="block">zips and downloads the files specified in the config
+ if a file is not accessible, it is skipped and
+ filenames within a subfolder are unique. In case there are more than one having the same name, a counter is added</div>
 <dl class="notes">
+<dt>Returns:</dt>
+<dd>ArrayList of skipped/bad files</dd>
 <dt>Throws:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></code></dd>
 </dl>

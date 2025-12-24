@@ -73,6 +73,20 @@ task buildTutorial(type: AsciidoctorTask) {
   }
 }
 
+/**
+ * Collect js Api subs and TypeScript .d.ts type files
+ */
+task zipJsApiStubs(type: Zip) {
+    from '../BCD-UI/Docu/build/jsApiStubs'
+    archiveFileName = "bcduiApiStubs-${getProperty('bcdui.version')}.zip"
+    destinationDirectory = file('resources')
+}
+task zipTypescriptApi(type: Zip) {
+    from '../BCD-UI/Docu/build/tsTypes'
+    archiveFileName = "bcduiTsTypes-${getProperty('bcdui.version')}.zip"
+    destinationDirectory = file('resources')
+}
+
 //*********************************************
 // This collects BCD-UI docu (tutorial, js-api, java-api) to /docs
 // The resulting structure is aligned with GitHub
@@ -80,7 +94,7 @@ task buildTutorial(type: AsciidoctorTask) {
 // GitHub pages is setup to use /docs
 task updateDocs( type: Copy ) {
   group 'bcdui'
-  dependsOn buildTutorial
+  dependsOn buildTutorial, zipJsApiStubs, zipTypescriptApi
 
   def bcduiDocuFolder = '../BCD-UI/Docu/build/htmldocs'
 
@@ -103,9 +117,7 @@ task updateDocs( type: Copy ) {
   from( '../BCD-UI/Docu/xsd' ) {
     into 'xsd'
   }
-  from( '../BCD-UI/Docu/build/jsApiStubs/bcduiApiStubs.js' ) {
-    into 'resources'
-  }
+
 
   // Replace version and date placeholders
   doLast {

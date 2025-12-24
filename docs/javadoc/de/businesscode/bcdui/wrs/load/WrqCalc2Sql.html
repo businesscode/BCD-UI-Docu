@@ -119,7 +119,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(de.businesscode.bcdui.wrs.load.WrqInfo)" class="member-name-link">WrqCalc2Sql</a><wbr>(<a href="WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a>&nbsp;wrqInfo)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Turns a wrq:Calc element into an SQL string</div>
+</div>
 </div>
 </section>
 </li>
@@ -137,10 +139,14 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#closeOperator(org.w3c.dom.Element,java.lang.StringBuffer)" class="member-name-link">closeOperator</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.xml/org/w3c/dom/Element.html" title="class or interface in org.w3c.dom" class="external-link">Element</a>&nbsp;e,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/StringBuffer.html" title="class or interface in java.lang" class="external-link">StringBuffer</a>&nbsp;sql)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Append DatabaseCompatibility operatorInfo[3]</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>protected static boolean</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#containsAggr(org.w3c.dom.Element)" class="member-name-link">containsAggr</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.xml/org/w3c/dom/Element.html" title="class or interface in org.w3c.dom" class="external-link">Element</a>&nbsp;calc)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Checks whether a wrq:Calc subtree contains any aggregation</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getWrqCalcAsSql(org.w3c.dom.Element,java.util.List,boolean,int,java.util.List)" class="member-name-link">getWrqCalcAsSql</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.xml/org/w3c/dom/Element.html" title="class or interface in org.w3c.dom" class="external-link">Element</a>&nbsp;calc,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.xml/org/w3c/dom/Element.html" title="class or interface in org.w3c.dom" class="external-link">Element</a>&gt;&nbsp;boundVariables,
@@ -148,17 +154,14 @@ loadScripts(document, 'script');</script>
  int&nbsp;dataType,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;&nbsp;wrqTableAlias)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Returns a list of strings representing parts of SQL
- All uneven pos (including first) belong to the aggregation level an all even pos give one un-aggregated sql calc
- Sample 1:  SUM(t38.f_k01)+AVG(t38.f_k01*3)
-            |1 |     2   |  3  |    4     | 5
- Sample 2:  SUM(SUM(t38.f_k01*t38.f_k01)) OVER (PARTITION BY orig_ctr)
-            |  1    |      2           |        3           |  4     |</div>
+<div class="block">Returns a string representing the SQL and Lists with the binding variables and the wrq table aliases found</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#openOperator(org.w3c.dom.Element,java.lang.StringBuffer)" class="member-name-link">openOperator</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.xml/org/w3c/dom/Element.html" title="class or interface in org.w3c.dom" class="external-link">Element</a>&nbsp;e,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/StringBuffer.html" title="class or interface in java.lang" class="external-link">StringBuffer</a>&nbsp;sql)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Append DatabaseCompatibility operatorInfo[1]</div>
+</div>
 </div>
 </div>
 </div>
@@ -218,6 +221,11 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;(de.businesscode.bcdui.wrs.load.WrqInfo)">
 <h3>WrqCalc2Sql</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">WrqCalc2Sql</span><wbr><span class="parameters">(<a href="WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a>&nbsp;wrqInfo)</span></div>
+<div class="block">Turns a wrq:Calc element into an SQL string</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>wrqInfo</code> - </dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -237,13 +245,14 @@ loadScripts(document, 'script');</script>
  int&nbsp;dataType,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;&nbsp;wrqTableAlias)</span>
                           throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Exception.html" title="class or interface in java.lang" class="external-link">Exception</a></span></div>
-<div class="block">Returns a list of strings representing parts of SQL
- All uneven pos (including first) belong to the aggregation level an all even pos give one un-aggregated sql calc
- Sample 1:  SUM(t38.f_k01)+AVG(t38.f_k01*3)
-            |1 |     2   |  3  |    4     | 5
- Sample 2:  SUM(SUM(t38.f_k01*t38.f_k01)) OVER (PARTITION BY orig_ctr)
-            |  1    |      2           |        3           |  4     |</div>
+<div class="block">Returns a string representing the SQL and Lists with the binding variables and the wrq table aliases found</div>
 <dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>calc</code> - Is the wrq:Calc element to be parsed and converted to SQL.</dd>
+<dd><code>boundVariables</code> - List will be filled with all constants found that should later be bound to the prepared statement. In SQL, they are represented as '?'</dd>
+<dd><code>enforceAggr</code> - If true, we will enforce an aggregation even if the wrq:Calc contains no aggregation using @aggr or the default aggregation</dd>
+<dd><code>dataType</code> - If it is numeric like Types.DECIMAL, we enforce an explicit cast for literal values</dd>
+<dd><code>wrqTableAlias</code> - List will be filled with all table aliases found in the wrq:Calc to be later translated into the SQL aliases</dd>
 <dt>Throws:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Exception.html" title="class or interface in java.lang" class="external-link">Exception</a></code></dd>
 </dl>
@@ -253,6 +262,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="containsAggr(org.w3c.dom.Element)">
 <h3>containsAggr</h3>
 <div class="member-signature"><span class="modifiers">protected static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">containsAggr</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.xml/org/w3c/dom/Element.html" title="class or interface in org.w3c.dom" class="external-link">Element</a>&nbsp;calc)</span></div>
+<div class="block">Checks whether a wrq:Calc subtree contains any aggregation</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>calc</code> - </dd>
+<dt>Returns:</dt>
+</dl>
 </section>
 </li>
 <li>
@@ -261,7 +276,11 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">openOperator</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.xml/org/w3c/dom/Element.html" title="class or interface in org.w3c.dom" class="external-link">Element</a>&nbsp;e,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/StringBuffer.html" title="class or interface in java.lang" class="external-link">StringBuffer</a>&nbsp;sql)</span>
                      throws <span class="exceptions"><a href="../../binding/exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></span></div>
+<div class="block">Append DatabaseCompatibility operatorInfo[1]</div>
 <dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>e</code> - </dd>
+<dd><code>sql</code> - </dd>
 <dt>Throws:</dt>
 <dd><code><a href="../../binding/exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></code></dd>
 </dl>
@@ -273,7 +292,11 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">closeOperator</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.xml/org/w3c/dom/Element.html" title="class or interface in org.w3c.dom" class="external-link">Element</a>&nbsp;e,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/StringBuffer.html" title="class or interface in java.lang" class="external-link">StringBuffer</a>&nbsp;sql)</span>
                       throws <span class="exceptions"><a href="../../binding/exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></span></div>
+<div class="block">Append DatabaseCompatibility operatorInfo[3]</div>
 <dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>e</code> - </dd>
+<dd><code>sql</code> - </dd>
 <dt>Throws:</dt>
 <dd><code><a href="../../binding/exc/BindingNotFoundException.html" title="class in de.businesscode.bcdui.binding.exc">BindingNotFoundException</a></code></dd>
 </dl>

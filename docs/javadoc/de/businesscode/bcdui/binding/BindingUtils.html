@@ -118,10 +118,16 @@ loadScripts(document, 'script');</script>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#addTableAlias(java.util.List,java.util.List)" class="member-name-link">addTableAlias</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;&nbsp;sCE,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;&nbsp;tableAliases)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Use output of splitColumnExpression to prepend table alias to column expressions
+<div class="block">Use output of splitColumnExpression to prepend table alias to column-expressions
  Column expressions prefixed with SimpleBindingItem.BCD_NO_TABLE_ALIAS by the user are excluded from this
- the user has to assure that this is only used in an unambiguous statement when using this in a join.</div>
+ the user has to ensure that this is only used in an unambiguous statement when using this in a join.</div>
 </div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static boolean</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#isDecimal(int)" class="member-name-link">isDecimal</a><wbr>(int&nbsp;jdbcType)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static boolean</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#isDecimal(java.lang.String)" class="member-name-link">isDecimal</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;typeName)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#isNumeric(int)" class="member-name-link">isNumeric</a><wbr>(int&nbsp;jdbcType)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
@@ -188,10 +194,10 @@ loadScripts(document, 'script');</script>
 <h3>addTableAlias</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">addTableAlias</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;&nbsp;sCE,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;&nbsp;tableAliases)</span></div>
-<div class="block">Use output of splitColumnExpression to prepend table alias to column expressions
+<div class="block">Use output of splitColumnExpression to prepend table alias to column-expressions
  Column expressions prefixed with SimpleBindingItem.BCD_NO_TABLE_ALIAS by the user are excluded from this
- the user has to assure that this is only used in an unambiguous statement when using this in a join.
- This is the case for example if the column refers to another table than the one assigned to this BindingSet
+ the user has to ensure that this is only used in an unambiguous statement when using this in a join.
+ This is the case, for example, if the column refers to another table than the one assigned to this BindingSet
  or for mySequence.nextval expressions (this, referring to a global name, needs to be prefixed with BCD_NO_TABLE_ALIAS.)</div>
 </section>
 </li>
@@ -218,7 +224,17 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isNumeric</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;typeName)</span></div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>true typeName represents a numeric type</dd>
+<dd>true typeName represents a numeric type, including integer types</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="isDecimal(java.lang.String)">
+<h3>isDecimal</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isDecimal</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;typeName)</span></div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>true typeName represents a decimal type, excluding integer types</dd>
 </dl>
 </section>
 </li>
@@ -228,7 +244,17 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isNumeric</span><wbr><span class="parameters">(int&nbsp;jdbcType)</span></div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>true if jdbcType represents a numeric type</dd>
+<dd>true if jdbcType represents a numeric type, including integer types</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="isDecimal(int)">
+<h3>isDecimal</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isDecimal</span><wbr><span class="parameters">(int&nbsp;jdbcType)</span></div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>true if jdbcType represents a decimal type, excluding integer types</dd>
 </dl>
 </section>
 </li>

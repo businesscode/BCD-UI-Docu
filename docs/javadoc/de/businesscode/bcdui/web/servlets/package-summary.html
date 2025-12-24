@@ -127,7 +127,20 @@ loadScripts(document, 'script');</script>
 <div class="block">represents a single resource to VFS</div>
 </div>
 <div class="col-first even-row-color class-summary class-summary-tab2"><a href="ZipDownload.html" title="class in de.businesscode.bcdui.web.servlets">ZipDownload</a></div>
-<div class="col-last even-row-color class-summary class-summary-tab2">&nbsp;</div>
+<div class="col-last even-row-color class-summary class-summary-tab2">
+<div class="block">Class to provide zipping and downloading a specified number of files
+ which need to be accessible via ResourceServlet (which also provides the secured access)
+ Files are specified via a config
+ &lt;Vfs xmlns="http://www.businesscode.de/schema/bcdui/vfs-1.0.0">
+   &lt;Zip>
+     &lt;Folder name="folder1">
+       &lt;File name="/vfs/documents/ace9e8e7-548a-4410-aa52-c57fb32e34fa/xf"/>
+     &lt;/Folder>
+     &lt;Folder .... />
+   &lt;/Zip>
+ &lt;/Vfs>
+  As an alternative, you can also provide a scope/instance pair instead of a path name.</div>
+</div>
 <div class="col-first odd-row-color class-summary class-summary-tab2"><a href="ZipLet.html" title="class in de.businesscode.bcdui.web.servlets">ZipLet</a></div>
 <div class="col-last odd-row-color class-summary class-summary-tab2">
 <div class="block">Servlet for compression and uncompression of XML data.</div>

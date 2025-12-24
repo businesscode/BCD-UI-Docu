@@ -91,7 +91,7 @@ loadScripts(document, 'script');</script>
  This worker has a Timer which is triggers queue-processing every queueDelayMs after a queue has been populated
  via <a href="#process(T)"><code>process(Object)</code></a> or <a href="#process(java.util.Collection)"><code>process(Collection)</code></a>, you implement the <a href="#processObjects(java.util.Collection)"><code>processObjects(Collection)</code></a>
  method to process batched objects gathered into the queue during queueDelayMs. In a container environment you can
- gracefully <code>#shutdownQueues()</code> all queues by calling the method i.e. from context listener, in a standalone
+ gracefully <a href="#shutdownQueues(boolean)"><code>shutdownQueues(boolean)</code></a> all queues by calling the method i.e. from context listener, in a standalone
  application you can do it via a shutdown hook or you can <code>shutdown(boolean)</code> s single instance.
  </p>
  

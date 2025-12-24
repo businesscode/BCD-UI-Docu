@@ -60,9 +60,6 @@ While you can use any data format with BCD-UI including other XML formats or JSO
 
 Now add the following script block to `blankPage.js`:
 
-.Load static data
-[source,javascript]
-import {bcdui} from "./bcdui/dev/bcduiApiStubs.js";
 var staticData = new bcdui.core.SimpleModel("staticData.xml");
 
 TIP: The import makes BCD-UI JavaScript API stubs available to the editor. It will be removed by during runtime by BCD-UI automatically and is only used during editing. The file with the subs can be downloaded here from link:https://businesscode.github.io/BCD-UI-Docu/resources/bcduiApiStubs.js[bcduiApiStubs.js^]
