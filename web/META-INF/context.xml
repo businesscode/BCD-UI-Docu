@@ -19,7 +19,7 @@
             validationQuery="select 1"
             testOnBorrow="true"
             driverClassName="org.duckdb.DuckDBDriver"
-            url="jdbc:duckdb:/Users/martinbernemann/IdeaProjects/BCD-UI-Docu/web/WEB-INF/bcdui-demo.duckdb"
+            url="jdbc:duckdb:/--Your-Path-to-Project--/BCD-UI-Docu/web/WEB-INF/bcdui-demo.duckdb"
             username=""
             password="" />
 

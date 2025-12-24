@@ -43,9 +43,9 @@ image::images/bootstrap_xmlSupport.png[]
 
 TIP: You refresh them with the "Reload Entries" feature in Eclipse. Keep in mind that online they always reflect the latest XML schemas, independent of the version of BCD-UI you are using.
 
-==== JavaScript Api stubs
+==== JavaScript / TypeScript Api
 
-BCD-UI provides a file with its JavaScript API. Add this to your IDE, and you will have auto-complete while editing JavaScript. The file can be found here: link:https://businesscode.github.io/BCD-UI-Docu/resources/bcduiApiStubs.zip[^]. +
+BCD-UI provides a file with its JavaScript API. Add this to your IDE, and you will have auto-complete while editing JavaScript. The file can be found here: link:https://github.com/businesscode/BCD-UI-Docu/tree/master/resources[^]. +
 
 image::images/bootstrap_addJsCodeCompletion.png[]
 will bring you, code completion and help tooltips while hovering with your mouse:
