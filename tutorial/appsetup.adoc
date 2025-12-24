@@ -53,11 +53,9 @@ The jndi entry
 ----
 is important as it denotes the connection used of none is explicitly given in a BindingSet.
 
-. Unzip bcduiApiStubs.zip at link:https://github.com/businesscode/BCD-UI-Docu/tree/master/resources[^] into `WebContent/bcdui/dev/`. +
-This file can be used for autocompletion of BCD-UI JavaScript classes in the editor by using
+. Unzip bcduiTsTypes.zip at link:https://github.com/businesscode/BCD-UI-Docu/tree/master/resources[^] into your project. +
+This file allows for autocompletion of BCD-UI JavaScript classes in the IDE
 +
-----
-During runtime when, served by the server, this `import` is automatically removed from the JavaScript files and the real API and the implementation is read from bcdui-core.jar.
 
 ////
 TODO

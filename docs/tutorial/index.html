@@ -998,6 +998,36 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <li><a href="#DocAppsetup">24. Application Setup</a>
 <ul class="sectlevel2">
 <li><a href="#_adding_bcd_ui">24.1. Adding BCD-UI</a></li>
+<li><a href="#_bcd_ui_folder_layout">24.2. BCD-UI folder layout</a></li>
+</ul>
+</li>
+<li><a href="#DocGeneralFeatures">25. General Features</a>
+<ul class="sectlevel2">
+<li><a href="#_general_features">25.1. General Features</a></li>
+<li><a href="#_transactions_and_connection_pooling">25.2. Transactions and connection pooling</a></li>
+<li><a href="#_xml_inclusion">25.3. XML Inclusion</a>
+<ul class="sectlevel3">
+<li><a href="#_use_cases">Use cases</a></li>
+<li><a href="#_implementation_2">Implementation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#DocCompatibility">26. Compatibility</a>
+<ul class="sectlevel2">
+<li><a href="#_compatibility_of_bcd_ui">26.1. Compatibility of BCD-UI</a></li>
+<li><a href="#_developing_for_specific_browsers">26.2. Developing for specific browsers</a>
+<ul class="sectlevel3">
+<li><a href="#_known_browser_limitations">Known browser limitations</a></li>
+<li><a href="#_working_with_webkit_browsers">Working with webkit browsers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#DocConfiguration">27. Configuration</a>
+<ul class="sectlevel2">
+<li><a href="#_configuration_overview">27.1. Configuration overview</a></li>
+<li><a href="#_dbproperties_setup">27.2. DbProperties setup</a></li>
 </ul>
 </li>
 </ul>
@@ -1507,7 +1537,8 @@ While you can use any data format with BCD-UI including other XML formats or JSO
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-The import makes BCD-UI JavaScript API stubs available to the editor. It will be removed by during runtime by BCD-UI automatically and is only used during editing. The file with the subs can be downloaded here from <a href="https://github.com/businesscode/BCD-UI-Docu/tree/master/resources" class="bare" target="_blank" rel="noopener">https://github.com/businesscode/BCD-UI-Docu/tree/master/resources</a>
+The import makes BCD-UI JavaScript and TypeScript API stubs available to the editor.
+The files with the subs can be downloaded here from <a href="https://github.com/businesscode/BCD-UI-Docu/tree/master/resources" class="bare" target="_blank" rel="noopener">https://github.com/businesscode/BCD-UI-Docu/tree/master/resources</a>
 </td>
 </tr>
 </table>
@@ -7756,7 +7787,7 @@ You refresh them with the "Reload Entries" feature in Eclipse. Keep in mind that
 <div class="sect3">
 <h4 id="_javascript_typescript_api">JavaScript / TypeScript Api</h4>
 <div class="paragraph">
-<p>BCD-UI provides a file with its JavaScript API. Add this to your IDE, and you will have auto-complete while editing JavaScript. The file can be found here: <a href="https://github.com/businesscode/BCD-UI-Docu/tree/master/resources" class="bare" target="_blank" rel="noopener">https://github.com/businesscode/BCD-UI-Docu/tree/master/resources</a>.<br></p>
+<p>BCD-UI provides a file with its JavaScript API. Add this to your IDE, and you will have auto-complete while editing JavaScript orTypeScript. The files can be found here: <a href="https://github.com/businesscode/BCD-UI-Docu/tree/master/resources" class="bare" target="_blank" rel="noopener">https://github.com/businesscode/BCD-UI-Docu/tree/master/resources</a>.<br></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -7896,352 +7927,642 @@ The jndi entry</p>
 </div>
 </li>
 <li>
-<p>Unzip bcduiApiStubs.zip at <a href="https://github.com/businesscode/BCD-UI-Docu/tree/master/resources" class="bare" target="_blank" rel="noopener">https://github.com/businesscode/BCD-UI-Docu/tree/master/resources</a> into <code>WebContent/bcdui/dev/</code>.<br>
-This file can be used for autocompletion of BCD-UI JavaScript classes in the editor by using</p>
-<div class="listingblock">
-<div class="content">
-<pre>During runtime when, served by the server, this `import` is automatically removed from the JavaScript files and the real API and the implementation is read from bcdui-core.jar.
-
-////
-TODO
-==== Optionally
-
-Add BCD-UI Java sources::
-For debugging of server components it might be helpful to add the java sources of BCD-UI to the eclipse workspace.
-The easiest way is to download or git-clone the BCD-UI project from GitHub to an extra folder outside your workspace.
-Then configure the source location via menu:Right-Click-Project(Build Path&gt;Configure Build Path), by selecting bcdui-core.jar
-and assign `Server/src/main/java` of the download location as source attachment.
-
-image::images/appsetup_addSources.png[]
-////
-
-=== BCD-UI folder layout
-
-BCD-UI follows standard Java Web Application layout.
-
-IMPORTANT: One thing less common though is that the JavaScript and other static sources come with the 2 BCD-UI jars mentioned. So they are in these jars which itself is in `WEB-INF/lib`. As you know, usually the browser cannot request any content from `WEB-INF/` directly, for example a css file. But BCD-UI's built-in StaticResourceServlet serves these files from the jar at the virtual folders `/bcdui/js`, `/bcdui/xslt` etc.
-
-Take a moment to understand the structure and what to expect physically in Eclipse (*strong font*) and what parts are only virtually there, once deployed (__italic font__).
-
-[grid=rows]
-[cols=" m,2 m,2 m,2 m,4 m,10"]
-|===
-4+|Project/||
-| 2+|build.gradle|| s|Taking care for jars below link:https://github.com/businesscode/maven-repo[template^]
-||src/main/||| s|Project's server side resources
-|||java/|| s|Project java sources
-|| 3+|resources/ s|Project's static server side resources
-||| 2+|log4j2.xml s|Logging settings link:https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/src/log4j2_debug_.xml[template^]
-| 2+|WebContent/|| s|Webapp itself
-|||...|| s|Project's HTML pages, JavaScript etc
-|||bcdui/|| e|BCD-UI's virtual main folder for client resources, blended here by a Servlet:
-||||js/| e|JavaScript library mapped from bcd-ui-core.jar
-||||xslt/| e|XSLT library mapped from bcd-ui-core.jar
-||||theme/| e|Themes library mapped from bcd-ui-theme.jar
-||| 2+|servlets/ e|BCD-UI's servlets are mapped here
-|| 2+|WEB-INF/||
-||||bcdui/| s|Configuration for BCD-UI
-|||||bindings/ s|Project's BCD-UI &lt;&lt;DocBinding,BindingSets&gt;&gt; are put here
-||||lib/| e|Gradle virtually puts the content here:
-|||||... e|3rd party and project libs
-|||||bcd-ui-core.jar e|Java classes and static sources (js,xslt) virtually mapped to and served to the client from `/bcdui/` at runtime
-|||||bcd-ui-theme.jar e|Themes, mapped to /bcdui/theme at runtime
-||||web.xml| s|Contains some BCD-UI library related entries link:https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/WebContent/WEB-INF/web.xml[template^]
-|| 2+|META-INF/||
-||| 2+|context.xml s|Contains JDBC database connections link:https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/tomcat/context.xml[template^]
-|===
-
-This tutorial itself is built around a fully functional BCD-UI application, which you inspect here link:https://github.com/businesscode/BCD-UI-Docu[window=_blank].
-
-[[DocGeneralFeatures]]
-== General Features
-
-=== General Features
-
-Bookmark feature:: Each page together with its settings like filter choosers or which parts are opened or hid. Can be bookmarked.
+<p>Unzip bcduiTsTypes.zip at <a href="https://github.com/businesscode/BCD-UI-Docu/tree/master/resources" class="bare" target="_blank" rel="noopener">https://github.com/businesscode/BCD-UI-Docu/tree/master/resources</a> into your project.<br>
+This file allows for autocompletion of BCD-UI JavaScript classes in the IDE</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_bcd_ui_folder_layout">24.2. BCD-UI folder layout</h3>
+<div class="paragraph">
+<p>BCD-UI follows standard Java Web Application layout.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+One thing less common though is that the JavaScript and other static sources come with the 2 BCD-UI jars mentioned. So they are in these jars which itself is in <code>WEB-INF/lib</code>. As you know, usually the browser cannot request any content from <code>WEB-INF/</code> directly, for example a css file. But BCD-UI&#8217;s built-in StaticResourceServlet serves these files from the jar at the virtual folders <code>/bcdui/js</code>, <code>/bcdui/xslt</code> etc.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Take a moment to understand the structure and what to expect physically in Eclipse (<strong>strong font</strong>) and what parts are only virtually there, once deployed (<em>italic font</em>).</p>
+</div>
+<table class="tableblock frame-all grid-rows stretch">
+<colgroup>
+<col style="width: 4.7619%;">
+<col style="width: 9.5238%;">
+<col style="width: 9.5238%;">
+<col style="width: 9.5238%;">
+<col style="width: 19.0476%;">
+<col style="width: 47.6191%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="4"><p class="tableblock"><code>Project/</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>build.gradle</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Taking care for jars below <a href="https://github.com/businesscode/maven-repo" target="_blank" rel="noopener">template</a></strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>src/main/</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Project&#8217;s server side resources</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>java/</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Project java sources</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top" colspan="3"><p class="tableblock"><code>resources/</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Project&#8217;s static server side resources</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>log4j2.xml</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Logging settings <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/src/log4j2_debug_.xml" target="_blank" rel="noopener">template</a></strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>WebContent/</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Webapp itself</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Project&#8217;s HTML pages, JavaScript etc</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bcdui/</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>BCD-UI&#8217;s virtual main folder for client resources, blended here by a Servlet:</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>js/</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>JavaScript library mapped from bcd-ui-core.jar</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>xslt/</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>XSLT library mapped from bcd-ui-core.jar</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>theme/</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Themes library mapped from bcd-ui-theme.jar</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>servlets/</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>BCD-UI&#8217;s servlets are mapped here</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>WEB-INF/</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bcdui/</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Configuration for BCD-UI</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bindings/</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Project&#8217;s BCD-UI <a href="#DocBinding">BindingSets</a> are put here</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>lib/</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Gradle virtually puts the content here:</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>3rd party and project libs</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bcd-ui-core.jar</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Java classes and static sources (js,xslt) virtually mapped to and served to the client from <code>/bcdui/</code> at runtime</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bcd-ui-theme.jar</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Themes, mapped to /bcdui/theme at runtime</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>web.xml</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Contains some BCD-UI library related entries <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/WebContent/WEB-INF/web.xml" target="_blank" rel="noopener">template</a></strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>META-INF/</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>context.xml</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Contains JDBC database connections <a href="https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/tomcat/context.xml" target="_blank" rel="noopener">template</a></strong></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>This tutorial itself is built around a fully functional BCD-UI application, which you inspect here <a href="https://github.com/businesscode/BCD-UI-Docu" class="bare" target="_blank" rel="noopener">https://github.com/businesscode/BCD-UI-Docu</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="DocGeneralFeatures">25. General Features</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_general_features">25.1. General Features</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Bookmark feature</dt>
+<dd>
+<p>Each page together with its settings like filter choosers or which parts are opened or hid. Can be bookmarked.
 Such a bookmark can be used as the starting point to enter the application and as a quick navigation link including
 previous settings.
-Additionally, the link can be passed to others in case they have sufficient rights to enter the page.
-
-=== Transactions and connection pooling
-
-Per default each request is associated with a transaction.
+Additionally, the link can be passed to others in case they have sufficient rights to enter the page.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_transactions_and_connection_pooling">25.2. Transactions and connection pooling</h3>
+<div class="paragraph">
+<p>Per default each request is associated with a transaction.
 Each server activity retrieves its connection from the request object, providing the data source name.
 All activities within the same request get the same connection when retrieving it from the request.
 The first database access in a request starts the transaction, and the request finishes transaction with commit unless
 a ServletException is uncatched, or a SOAPFault is returned, in this case a roll-back is executed.
-Still, each step may itself decide to commit or rollback its work.
-
-
-In case the client wants multiple writes to become part of one database transaction, it will a multi-WRS document.
-
-=== XML Inclusion
-
-The BCD-UI library makes use of XML inclusion to support some advanced XML features. These `include` are allowed in XML files read on the server and also on the client. The main reasons to use XML
-inclusion are as follows:
-
-==== Use cases
-
-Reusing XML parts in different documents:: XML inclusion is especially useful is some XML documents share common content.
+Still, each step may itself decide to commit or rollback its work.</p>
+</div>
+<div class="paragraph">
+<p>In case the client wants multiple writes to become part of one database transaction, it will a multi-WRS document.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_xml_inclusion">25.3. XML Inclusion</h3>
+<div class="paragraph">
+<p>The BCD-UI library makes use of XML inclusion to support some advanced XML features. These <code>include</code> are allowed in XML files read on the server and also on the client. The main reasons to use XML
+inclusion are as follows:</p>
+</div>
+<div class="sect3">
+<h4 id="_use_cases">Use cases</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Reusing XML parts in different documents</dt>
+<dd>
+<p>XML inclusion is especially useful is some XML documents share common content.
 Then this content can be put to a separate XML file. This use case is often applied in Binding
 files when two binding files have the same column names (e.g. for common dimension columns like
-period or geography).
-Merge different XML data sources:: Some XML documents require information from other sources (like reference data in grids)
+period or geography).</p>
+</dd>
+<dt class="hdlist1">Merge different XML data sources</dt>
+<dd>
+<p>Some XML documents require information from other sources (like reference data in grids)
 which can be implemented by defining a master document containing inclusions of other referenced
-documents.
-Lazy loading:: BCD-UI offers a special kind of include (bcdxml:include) for the client. This bcdxml:include
+documents.</p>
+</dd>
+<dt class="hdlist1">Lazy loading</dt>
+<dd>
+<p>BCD-UI offers a special kind of include (bcdxml:include) for the client. This bcdxml:include
 can be evaluated on demand rather that resolving it immediately on loading. It is the basis
-for most lazy loading mechanism on the client.
-Structuring large documents:: It can be useful to split very large XML documents into parts to make them more
-readable.
-
-==== Implementation
-
-There are three kinds of XML inclusion supported by BCD-UI:
-
-XInclude without any XPointer::
-This basic xinclude type is available on the server and on the client. These `include` are replaced with the whole document available on the specified href.
-Example:
-+
-[source,xml]</pre>
+for most lazy loading mechanism on the client.</p>
+</dd>
+<dt class="hdlist1">Structuring large documents</dt>
+<dd>
+<p>It can be useful to split very large XML documents into parts to make them more
+readable.</p>
+</dd>
+</dl>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_implementation_2">Implementation</h4>
 <div class="paragraph">
-<p>&lt;xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="myDoc.xml"/&gt;</p>
+<p>There are three kinds of XML inclusion supported by BCD-UI:</p>
 </div>
-</li>
-</ol>
-</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">XInclude without any XPointer</dt>
+<dd>
+<p>This basic xinclude type is available on the server and on the client. These <code>include</code> are replaced with the whole document available on the specified href.
+Example:</p>
 <div class="listingblock">
 <div class="content">
-<pre>+
-XInclude with XPointer element() Scheme::
-This xinclude is also available on the server and client, and it offers the selection of one single XML element to be included.
-Example:
-+
-[source,xml]</pre>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;xi:include</span> <span class="attribute-name">xmlns:xi</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.w3.org/2001/XInclude</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">myDoc.xml</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>&lt;xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="myDoc.xml" xpointer="element(/1/2)"/&gt;</p>
-</div>
+</dd>
+<dt class="hdlist1">XInclude with XPointer element() Scheme</dt>
+<dd>
+<p>This xinclude is also available on the server and client, and it offers the selection of one single XML element to be included.
+Example:</p>
 <div class="listingblock">
 <div class="content">
-<pre>+
-XInclude with xpointer() Scheme::
-The BCD-UI client processor also supports xincludes with a limited set of the xpointer()
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;xi:include</span> <span class="attribute-name">xmlns:xi</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.w3.org/2001/XInclude</span><span class="delimiter">&quot;</span></span>  <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">myDoc.xml</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xpointer</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">element(/1/2)</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span></code></pre>
+</div>
+</div>
+</dd>
+<dt class="hdlist1">XInclude with xpointer() Scheme</dt>
+<dd>
+<p>The BCD-UI client processor also supports xincludes with a limited set of the xpointer()
 Scheme. It supports all XPointers corresponding to one single XPath. With this XPath the
 target document is then filtered before it is inserted at the xinclude.
-Example:
-+
-[source,xml]</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>&lt;xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="myDoc.xml" xpointer="xpointer(/*/Country[. = 'DE']/City)"/&gt;</p>
-</div>
+Example:</p>
 <div class="listingblock">
 <div class="content">
-<pre>+
-bcdxml:include::
-Another client-only feature is the bcdxml:include. This is an extension to the standard
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;xi:include</span> <span class="attribute-name">xmlns:xi</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.w3.org/2001/XInclude</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">myDoc.xml</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xpointer</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">xpointer(/*/Country[. = 'DE']/City)</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span></code></pre>
+</div>
+</div>
+</dd>
+<dt class="hdlist1">bcdxml:include</dt>
+<dd>
+<p>Another client-only feature is the bcdxml:include. This is an extension to the standard
 XInclude in that it supports two additional features:
 It can contain a request document inside its body. If this is present it is compressed and then appended to the href.
-Example:
-+
-[source,xml]</pre>
+Example:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;bcdxml:include</span> <span class="attribute-name">xmlns:bcdxml</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.businesscode.de/schema/bcdui/bcdxml-1.0.0</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">myDoc.xml</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xpointer</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">xpointer(/*/*)</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>&lt;bcdxml:include xmlns:bcdxml="http://www.businesscode.de/schema/bcdui/bcdxml-1.0.0" href="myDoc.xml" xpointer="xpointer(/<strong>/</strong>)"/&gt;</p>
+<p>Example with nested status document:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>+
-Example with nested status document:
-+
-[source,xml]</pre>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;bcdxml:include</span> <span class="attribute-name">xmlns:bcdxml</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.businesscode.de/schema/bcdui/bcdxml-1.0.0</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">myDoc.xml</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;Status</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.businesscode.de/schema/bcdui/guiStatus-1.0.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;Filter</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.businesscode.de/schema/bcdui/filter-1.0.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+      <span class="tag">&lt;And</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">period</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;Expression</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">dy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">op</span>=<span class="string"><span class="delimiter">&quot;</span></span><span class="error">&gt;</span>=&quot; value=&quot;2010-01-01&quot;/<span class="error">&gt;</span>
+        <span class="tag">&lt;Expression</span> <span class="attribute-name">bRef</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">dy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">op</span>=<span class="string"><span class="delimiter">&quot;</span><span class="entity">&amp;lt;</span><span class="content">=</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">2010-12-31</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+      <span class="tag">&lt;/And&gt;</span>
+    <span class="tag">&lt;/Filter&gt;</span>
+  <span class="tag">&lt;/Status&gt;</span>
+<span class="tag">&lt;/bcdxml:include&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>&lt;bcdxml:include xmlns:bcdxml="http://www.businesscode.de/schema/bcdui/bcdxml-1.0.0" href="myDoc.xml"&gt;
-  &lt;Status xmlns="http://www.businesscode.de/schema/bcdui/guiStatus-1.0.0"&gt;
-    &lt;Filter xmlns="http://www.businesscode.de/schema/bcdui/filter-1.0.0"&gt;
-      &lt;And id="period"&gt;
-        &lt;Expression bRef="dy" op="&gt;=" value="2010-01-01"/&gt;
-        &lt;Expression bRef="dy" op="&lt;=" value="2010-12-31"/&gt;
-      &lt;/And&gt;
-    &lt;/Filter&gt;
-  &lt;/Status&gt;
-&lt;/bcdxml:include&gt;</p>
+<p>TODO: verify</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre>+
-TODO: verify
-
-
-[[DocCompatibility]]
-== Compatibility
-
-=== Compatibility of BCD-UI
-
-As of 2022, BCD-UI works without modifications within the following environments
-
-.Server
-* JDK 11+
-* Tomcat 8.5+ and other servers with Jakarta EE web profile
-
-.Browser
-* Recent Edge, Firefox, Safari and Chrome versions
-* Internet Explorer 11
-
-.Database
-* Oracle 11+
-* Postgres 10+
-* SQLServer 2016+
-* Teradata 10+ in EnterpriseEdition
-* MySQL with limitations, please contact BusinessCode
-
-.It makes use of current versions of technologies and specs
-* Java Jakarta EE web profile, JDBC, Servlet, JAXB and optionally JSP
-* ECMA/JS, DHTML, CSS, HTML, JSON and SVG
-* XML, XSLT, XPath and XSD
-* Ajax, webservices, XForms architecture and EXSLT
-* Apache commons, jQuery and various other open source libraries
-* Gradle, Eclipse and IntelliJ IDEA, git
-
-=== Developing for specific browsers
-
-==== Known browser limitations
-
-* favicon.ico is picked up by FireFox when found in webapp root, ie does not do this
-* IE does not allow setting the name attribute via DOM (helper function in corePackage.js)
-* FireFox throws exception when writing &lt;input&gt;text&lt;/input&gt;, this is in sync with the specs
-* IE ignores overflow when filter is set in css
-* IE: innerHTML (used by renderer) for &lt;script&gt; and &lt;style&gt; tags require both to start with a scoped element, like  `&lt;input type="hidden"/&gt;&lt;script defer="false"...`, and the script tag in addition requires an `defer="false"` attribute
-* IE has a maximum URL length of 2083 bytes, others do not. When copying URLs from other browsers, they may be less compressed (because it was not necessary), so they may be too long.
-* FireFox: the bookmarks created with the bookmark tag open in a sidebar window by default, unless the bookmark property is adjusted manually by the user or if the bookmark is opened in a new tag
-* Chrome/WebKit: don't support bookmark via JavaScript at all
-* IE seems to handle position() in xsl:key/@match expressions wrong. Sample: match="/*/Something[@pos&amp;gt;3][position()&amp;lt;2]". It will find an empty list instead of a list with two elements.
-* Due to a well-known bug in FireFox (at-least 10-24), you need to enable 3rd-party cookies or better add an exception for a webpage with BCD-UI. This flag is per default off ("disabled") since version 22.
-
-==== Working with webkit browsers
-
-Webkit/Chromium based browsers like Edge, Safari, Chrome and Opera compatibility requires the following to be taken into account
-
-* Declare all namespaces used by XSLT, since documents addressed via document() and xsl:import are included in the host XSLT and
-elements with undeclared namespaces inherit the default namespace of the (possibly generated) host XSLT
-* When using createElementWithPrototype or similar, always work with an explicit namespace, do not use the empty namespace.
-* xsl:include is not supported (use xsl:import instead)
-* xsl:apply-imports is not supported. (normally xsl:apply-templates will be sufficient)
-* when using xsl:sort, you are limited to use up to 15 successive ones
-* Do not use msxml:node-set(), declare and use exslt:node-set() even for IE.
-* When generating XSLT with the help of XSLT, use 'generateXSLT' as the generation mode
-* When generating XSLT and matching on an input template XSLT, be aware that those elements do not have xsl as namespace
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="DocCompatibility">26. Compatibility</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_compatibility_of_bcd_ui">26.1. Compatibility of BCD-UI</h3>
+<div class="paragraph">
+<p>As of 2022, BCD-UI works without modifications within the following environments</p>
+</div>
+<div class="ulist">
+<div class="title">Server</div>
+<ul>
+<li>
+<p>JDK 11+</p>
+</li>
+<li>
+<p>Tomcat 8.5+ and other servers with Jakarta EE web profile</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">Browser</div>
+<ul>
+<li>
+<p>Recent Edge, Firefox, Safari and Chrome versions</p>
+</li>
+<li>
+<p>Internet Explorer 11</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">Database</div>
+<ul>
+<li>
+<p>Oracle 11+</p>
+</li>
+<li>
+<p>Postgres 10+</p>
+</li>
+<li>
+<p>SQLServer 2016+</p>
+</li>
+<li>
+<p>Teradata 10+ in EnterpriseEdition</p>
+</li>
+<li>
+<p>MySQL with limitations, please contact BusinessCode</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">It makes use of current versions of technologies and specs</div>
+<ul>
+<li>
+<p>Java Jakarta EE web profile, JDBC, Servlet, JAXB and optionally JSP</p>
+</li>
+<li>
+<p>ECMA/JS, DHTML, CSS, HTML, JSON and SVG</p>
+</li>
+<li>
+<p>XML, XSLT, XPath and XSD</p>
+</li>
+<li>
+<p>Ajax, webservices, XForms architecture and EXSLT</p>
+</li>
+<li>
+<p>Apache commons, jQuery and various other open source libraries</p>
+</li>
+<li>
+<p>Gradle, Eclipse and IntelliJ IDEA, git</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_developing_for_specific_browsers">26.2. Developing for specific browsers</h3>
+<div class="sect3">
+<h4 id="_known_browser_limitations">Known browser limitations</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>favicon.ico is picked up by FireFox when found in webapp root, ie does not do this</p>
+</li>
+<li>
+<p>IE does not allow setting the name attribute via DOM (helper function in corePackage.js)</p>
+</li>
+<li>
+<p>FireFox throws exception when writing &lt;input&gt;text&lt;/input&gt;, this is in sync with the specs</p>
+</li>
+<li>
+<p>IE ignores overflow when filter is set in css</p>
+</li>
+<li>
+<p>IE: innerHTML (used by renderer) for &lt;script&gt; and &lt;style&gt; tags require both to start with a scoped element, like  <code>&lt;input type="hidden"/&gt;&lt;script defer="false"&#8230;&#8203;</code>, and the script tag in addition requires an <code>defer="false"</code> attribute</p>
+</li>
+<li>
+<p>IE has a maximum URL length of 2083 bytes, others do not. When copying URLs from other browsers, they may be less compressed (because it was not necessary), so they may be too long.</p>
+</li>
+<li>
+<p>FireFox: the bookmarks created with the bookmark tag open in a sidebar window by default, unless the bookmark property is adjusted manually by the user or if the bookmark is opened in a new tag</p>
+</li>
+<li>
+<p>Chrome/WebKit: don&#8217;t support bookmark via JavaScript at all</p>
+</li>
+<li>
+<p>IE seems to handle position() in xsl:key/@match expressions wrong. Sample: match="/*/Something[@pos&gt;3][position()&lt;2]". It will find an empty list instead of a list with two elements.</p>
+</li>
+<li>
+<p>Due to a well-known bug in FireFox (at-least 10-24), you need to enable 3rd-party cookies or better add an exception for a webpage with BCD-UI. This flag is per default off ("disabled") since version 22.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_working_with_webkit_browsers">Working with webkit browsers</h4>
+<div class="paragraph">
+<p>Webkit/Chromium based browsers like Edge, Safari, Chrome and Opera compatibility requires the following to be taken into account</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Declare all namespaces used by XSLT, since documents addressed via document() and xsl:import are included in the host XSLT and
+elements with undeclared namespaces inherit the default namespace of the (possibly generated) host XSLT</p>
+</li>
+<li>
+<p>When using createElementWithPrototype or similar, always work with an explicit namespace, do not use the empty namespace.</p>
+</li>
+<li>
+<p>xsl:include is not supported (use xsl:import instead)</p>
+</li>
+<li>
+<p>xsl:apply-imports is not supported. (normally xsl:apply-templates will be sufficient)</p>
+</li>
+<li>
+<p>when using xsl:sort, you are limited to use up to 15 successive ones</p>
+</li>
+<li>
+<p>Do not use msxml:node-set(), declare and use exslt:node-set() even for IE.</p>
+</li>
+<li>
+<p>When generating XSLT with the help of XSLT, use 'generateXSLT' as the generation mode</p>
+</li>
+<li>
+<p>When generating XSLT and matching on an input template XSLT, be aware that those elements do not have xsl as namespace
 because they are embedded, use select="*[local-name()='output']" and so on instead.
 Also do not copy such elements into the output as they would keep the non-xsl namespace,
-create these elements with &lt;xsl:element name="output" namespace="http://www.w3.org/1999/XSL/Transform"/&gt; instead
-* For webkit it is not allowed to use variables in template match attributes, like &lt;xsl:template match="*[@attr=$myVar/Values]"&gt;...
-* When a node is provided to the XSLT processor as input, that node becomes the document root, for Gecko and IE "/" remains the root.
-* Mix of constant strings and AVT (Attribute Value Template) is not allowed. So use attr="{concat('abc ', $var)}" instead of attr="abc {$var}" for webkit."
-* For Webkit the imports are resolved by BCD-UI. This is done by including the imported stylesheet leaving out templates with the same
+create these elements with &lt;xsl:element name="output" namespace="http://www.w3.org/1999/XSL/Transform"/&gt; instead</p>
+</li>
+<li>
+<p>For webkit it is not allowed to use variables in template match attributes, like &lt;xsl:template match="*[@attr=$myVar/Values]"&gt;&#8230;&#8203;</p>
+</li>
+<li>
+<p>When a node is provided to the XSLT processor as input, that node becomes the document root, for Gecko and IE "/" remains the root.</p>
+</li>
+<li>
+<p>Mix of constant strings and AVT (Attribute Value Template) is not allowed. So use attr="{concat('abc ', $var)}" instead of attr="abc {$var}" for webkit."</p>
+</li>
+<li>
+<p>For Webkit the imports are resolved by BCD-UI. This is done by including the imported stylesheet leaving out templates with the same
 @match/@name and @mode values for which already a template in the importing stylesheet exists.
 But since the others are included then an imported template with match="ns:E[@a]" will win over a template with match="ns:E" existing in the
 importing stylesheet. This will let Webkit behave differently than other browsers. Make sure to prevent this situation by defining
-exact matching templates in the importing stylesheet.
-* It is much faster if in wrs:C[indexExpr] indexExpr is a plain number (a variable holding a number) than an expression. Move such an expression to a helper variable.
-* Large documents slow Webkit down. Only provide the part of large documents, if possible.
-Use xsl:stylesheet/@bcdxml:wrsHeaderIsEnough to minimize the input for example for generating stylesheets only needed the header.
-* All known namespace declarations are repeated on the highest node of each subtree of explicitly written elements.
+exact matching templates in the importing stylesheet.</p>
+</li>
+<li>
+<p>It is much faster if in wrs:C[indexExpr] indexExpr is a plain number (a variable holding a number) than an expression. Move such an expression to a helper variable.</p>
+</li>
+<li>
+<p>Large documents slow Webkit down. Only provide the part of large documents, if possible.
+Use xsl:stylesheet/@bcdxml:wrsHeaderIsEnough to minimize the input for example for generating stylesheets only needed the header.</p>
+</li>
+<li>
+<p>All known namespace declarations are repeated on the highest node of each subtree of explicitly written elements.
 For example &lt;wrs:C/&gt; will hold all such namespace-nodes if all elements above are created via xsl:element or xsl:copy.
-As a workaround, write the root node (in this case wrs:Wrs) also explicitly &lt;wrs:Wrs&gt;...&lt;/wrs:Wrs&gt;, then this is the highest, and they will ony
-appear once. This improves performance, because Webkit is sensitive against documents with a large serialization representation.
-
-
-[[DocConfiguration]]
-== Configuration
-
-=== Configuration overview
-
-BCD-UI obtains its configuration from the parameters from JNDI context (as specified by servlet container) for the backend-part
+As a workaround, write the root node (in this case wrs:Wrs) also explicitly &lt;wrs:Wrs&gt;&#8230;&#8203;&lt;/wrs:Wrs&gt;, then this is the highest, and they will ony
+appear once. This improves performance, because Webkit is sensitive against documents with a large serialization representation.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="DocConfiguration">27. Configuration</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_configuration_overview">27.1. Configuration overview</h3>
+<div class="paragraph">
+<p>BCD-UI obtains its configuration from the parameters from JNDI context (as specified by servlet container) for the backend-part
 and provides client configuration parameters for the client part. The de.businesscode.bcdui.toolbox.Configuration is the API to retrieve
 that configuration. Additionally, the Configuration class maintains de.businesscode.bcdui.toolbox.config.DbProperties instance for
-well-known scopes: server and client allowing dynamic configuration.
-
-
-'server' scope:: are JNDI defined parameters, additionally parameters from database (DbProperties) with scope "server", DbProperties parameters
+well-known scopes: server and client allowing dynamic configuration.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">'server' scope</dt>
+<dd>
+<p>are JNDI defined parameters, additionally parameters from database (DbProperties) with scope "server", DbProperties parameters
 have precedence over JNDI defined parameters. Please always define a TYPE for this scope and stick to same type as originally
-defined in context.xml when overriding parameters.
-'client' scope:: The only way to enable configuration to be set to client is to enable DbProperties, the client parameters are held in "client" scope.
-These properties are emitted by the BCDUIConfig servlet and exposed into `bcdui.config` JS object. The TYPE for client-scope property is NOT evaluated,
-and the property value is ALWAYS exposed as a String, hence the value must not be quoted.
-
-=== DbProperties setup
-
-Setting up the DbProperties to be transparently reflected by the de.businesscode.bcdui.toolbox.Configuration API is a matter
+defined in context.xml when overriding parameters.</p>
+</dd>
+<dt class="hdlist1">'client' scope</dt>
+<dd>
+<p>The only way to enable configuration to be set to client is to enable DbProperties, the client parameters are held in "client" scope.
+These properties are emitted by the BCDUIConfig servlet and exposed into <code>bcdui.config</code> JS object. The TYPE for client-scope property is NOT evaluated,
+and the property value is ALWAYS exposed as a String, hence the value must not be quoted.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_dbproperties_setup">27.2. DbProperties setup</h3>
+<div class="paragraph">
+<p>Setting up the DbProperties to be transparently reflected by the de.businesscode.bcdui.toolbox.Configuration API is a matter
 of exposing the "bcd_db_properties" BindingSet. Configuration class will auto-detect this BindingSet upon initialization and if found, will
 initialize the DbProperties instance. DbProperties may refresh the configuration from Database asynchronously every period given to
 refresh, or the refresh can be controlled programmatically. This class is NOT a singleton so may be reused in projects, it takes a
 BindingSet of kind "bcd_db_properties" to initialize. The Configuration class yields an instance of DbProperties stuck to well-known
-BindingSet "bcd_db_properties".
-
-Default configuration apply:
-
-[source,xml]</pre>
-</div>
+BindingSet "bcd_db_properties".</p>
 </div>
 <div class="paragraph">
-<p>&lt;Environment name="bcdui/config/dbProperties/reloadFrequencySeconds" type="java.lang.Integer" value="30"/&gt;</p>
+<p>Default configuration apply:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>the bcd_db_properties table has the following column definition:
-
-
-|===
-|SCOPE|
-this is a scope for this parameter. When working with `de.businesscode.bcdui.toolbox.Configuration`, there are two well-defined scopes: server, client.
-While the server scope parameters are accessible through:
-
-
-* de.businesscode.bcdui.toolbox.Configuration.getConfigurationParameter(String)
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;Environment</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bcdui/config/dbProperties/reloadFrequencySeconds</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">java.lang.Integer</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">30</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>the bcd_db_properties table has the following column definition:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SCOPE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">this is a scope for this parameter. When working with <code>de.businesscode.bcdui.toolbox.Configuration</code>, there are two well-defined scopes: server, client.
+While the server scope parameters are accessible through:</p>
+<p class="tableblock">* de.businesscode.bcdui.toolbox.Configuration.getConfigurationParameter(String)
 * de.businesscode.bcdui.toolbox.Configuration.getConfigurationParameter(String, T)
-* de.businesscode.bcdui.toolbox.Configuration.getConfigurationParameterOrNull(String id)
-
-
-the client scope parameters can be retrieved via de.businesscode.bcdui.toolbox.Configuration.getClientParameters(),
-those are also exposed to the client and available in the `bcdui.config` JS object.
-
-The TYPE is obligatory for the parameter in server scope, while for client scope parameters the TYPE is ignored, and the
-value is always exposed as a string.
-
-|NAME|
-Parameter name. This is unique to the scope. For server scope the parameter names should follow JNDI naming convention like
+* de.businesscode.bcdui.toolbox.Configuration.getConfigurationParameterOrNull(String id)</p>
+<p class="tableblock">the client scope parameters can be retrieved via de.businesscode.bcdui.toolbox.Configuration.getClientParameters(),
+those are also exposed to the client and available in the <code>bcdui.config</code> JS object.</p>
+<p class="tableblock">The TYPE is obligatory for the parameter in server scope, while for client scope parameters the TYPE is ignored, and the
+value is always exposed as a string.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NAME</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parameter name. This is unique to the scope. For server scope the parameter names should follow JNDI naming convention like
 the parameters defined in context.xml, because those parameters are merged while parameters from database overwrite those
-defined statically. Pay attention to the TYPE here, as it has to be same as defined in context.xml
-
-For client scope you may take any name adhering to JS variable name syntax, so dots, spaces etc are not allowed.
-
-|TYPE|
-Type of parameter value. While client-scope parameters do not have typed values (the value is always exposed as a string),
+defined statically. Pay attention to the TYPE here, as it has to be same as defined in context.xml</p>
+<p class="tableblock">For client scope you may take any name adhering to JS variable name syntax, so dots, spaces etc are not allowed.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TYPE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of parameter value. While client-scope parameters do not have typed values (the value is always exposed as a string),
 server scope parameters values are parsed into given type (which is a fully qualified class name). The value evaluation happens
-via reflection API and the only method target class has to expose is a static valueOf(String value) method.
-
-Hence, a type 'java.lang.Boolean' for parameter name 'myBoolean' would evaluate the value 'true' to Boolean.TRUE, such that
+via reflection API and the only method target class has to expose is a static valueOf(String value) method.</p>
+<p class="tableblock">Hence, a type 'java.lang.Boolean' for parameter name 'myBoolean' would evaluate the value 'true' to Boolean.TRUE, such that
 de.businesscode.bcdui.toolbox.Configuration.getConfigurationParameter('myBoolean', false) would return Boolean.TRUE whereas
 de.businesscode.bcdui.toolbox.Configuration.getConfigurationParameter('myBoolean', "false") would throw a ClassCastException
-trying to cast Boolean to a String.
-
-Therefore, the type has to be really accurate and match types used in context.xml.
-
-|VALUE|
-a value for this parameter. For client scope parameter this value will be exposed as a String, hence must not be further quoted.
-The server scope value follows rules for its TYPE
-
-|===</pre>
-</div>
-</div>
+trying to cast Boolean to a String.</p>
+<p class="tableblock">Therefore, the type has to be really accurate and match types used in context.xml.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VALUE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">a value for this parameter. For client scope parameter this value will be exposed as a String, hence must not be further quoted.
+The server scope value follows rules for its TYPE</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>

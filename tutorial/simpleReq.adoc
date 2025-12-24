@@ -62,7 +62,8 @@ Now add the following script block to `blankPage.js`:
 
 var staticData = new bcdui.core.SimpleModel("staticData.xml");
 
-TIP: The import makes BCD-UI JavaScript API stubs available to the editor. It will be removed by during runtime by BCD-UI automatically and is only used during editing. The file with the subs can be downloaded here from link:https://github.com/businesscode/BCD-UI-Docu/tree/master/resources[^]
+TIP: The import makes BCD-UI JavaScript and TypeScript API stubs available to the editor. 
+The files with the subs can be downloaded here from link:https://github.com/businesscode/BCD-UI-Docu/tree/master/resources[^]
 
 image::images/ide_javascriptAutocomplete.png[]
 
