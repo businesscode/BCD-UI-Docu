@@ -1,0 +1,58 @@
+# createInputLookup()
+<span hidden class='htmlPackage'>bcdui.widgetNg</span>
+
+
+An easy to use suggestInput widget with server sided filling of a data given by binding and bindingItem.
+
+````js
+// Usage
+bcdui.widgetNg.createInputLookup({ bindingSetId, bRef, optionsModelXPath: "$myModel/wrs:Wrs/wrs:Data/wrs:R/wrs:C[1]", targetHtml: "#myDiv", targetModelXPath: "$guiStatus/cust:Elem/@value" });
+  ````
+**Parameters**:
+
+
+| Name     | Type     | Default  | Description |
+|----------|----------|----------|-------------|
+| args | Object |  | The parameter map contains the following properties. |
+| args.bindingSetId | string |  | Name of the binding set which is used for the lookup. |
+| args.bRef | string |  | BindingItem which is used for the lookup. |
+| args.optionsModelXPath | modelXPath |  | xPath pointing to an absolute xpath (starts with $model/..) providing a node-set of available options to display; especially this one supports cross references between models, i.e. $options / * / Value[@id = $guiStatus / * / MasterValue] |
+| args.targetHtml | targetHtmlRef |  | An existing HTML element this widget should be attached to, provide a dom element, a jQuery element or selector, or an element id. |
+| args.targetModelXPath | writableModelXPath |  | The xPath pointing to the root-node this input widget will place entered selected items into. The underlying XML format of data written is implemented by individual widget. If pointing into a Wrs, it switches to Wrs mode, i.e. the wrs:R will be marked as modified, target node will not be deleted. |
+| args.applyListItemSelectionFunction? | function |  | this function is called when applying value from a dropdown selection (custom rendering mode only), it gets following parameters: (instance, htmlElementId, bcdCaption, bcdId) the bcdCaption is the string provided by options model and the bcdId is the value, in case provided by options model, too. The default implementation is executing { instance._syncWrite(htmlElementId, bcdCaption); } |
+| args.asyncValidationFunction? | function |  | Like 'validationFunction' but this one must return a Promise resolving with validation result. While validating, the widget sets 'bcdValidationPending' CSS class on the owning html element. The value is written to the model after a positive validation result. If a Promise is rejected for any reason, the widget switches to invalid state. |
+| args.autofocus? | boolean |  | requests the widget to set the focus once it is rendered or enabled for the first time. Only one widget can have a focus, so in case the focus is requested by many widgets it is undefined which one will win. |
+| args.clearOption? | (boolean\|i18nToken) | false | if enabled, there will be an option to clear the selection. This attribute may be true|false or a string, in latter case the option is considered enabled and a string follows the i18nToken type definition. |
+| args.delay? | number | 500 | Time (in ms) which passes till the lookup is done. |
+| args.disabled? | boolean | false | All input widgets can be set to be disabled. If disabled, a widget cannot receive a focus, also a style cannot be changed in many browsers. There is no read-only. Also consult read-only vs disabled: http://www.w3.org/TR/html4/interact/forms.html#h-17.12. Since this is a HTML property not a real boolean attribute, specify this only if you want to disable the widget. The actual value is ignored. If it is specified, the widget is disabled. |
+| args.disableNativeSupport? | boolean | false | This parameter disables native HTML5 support for this widget. Please read more on side-effects in widget documentation. |
+| args.disableResetControl? | boolean | true | set this parameter to 'false' to enable built-in reset-control, which empties content once clicked. |
+| args.displayBalloon? | boolean | false | hints and validation messages are displayed in a fly-over if user moves the mouse over the widget. Additionally, they are also displayed in a balloon in bottom-left corner of a browser window in a balloon, which is static and appears as long as the widget has focus. |
+| args.doRetainInputSchema? | boolean | false | This option is 'false' per default, what means that the internal options model generates following schema: /Values/Value[@caption]+ per matched item. The Value element itself holds the ID with optional @caption attribute holding either ID or mapped caption in case optionsModelRelativeValueXPath is provided. In some cases you might want to work with internal options model and elements of the input document. Then you can enable this flag, which effictively disables any semantics, such as 'caption' or 'id' - as the internal options document will contain only matched elements from the input document, pay attention if you select an attribute in your xpath. |
+| args.doSortOptions? | boolean | false | Can be set to 'true' if the options should be sorted alphabetically. This is disabled per default to avoid CPU wasting. |
+| args.doTrimInput? | boolean | false | If enabled, the input is trimms leading/trailing spaces before writing to data model |
+| args.enableNavPath? | boolean | false | Set to true if widget should be added to navpath handling. |
+| args.filterElement? | string |  | Custom filter element (f:And, f:Or, f:Not, f:Expression) in wrs-filter format, see filter-1.0.0.xsd or a string as required by bcdui.wrs.wrsUtil.parseFilterExpression or the result of it - note that the function allows filling in values without escaping issues if the filter is not fixed. |
+| args.filterFunction? | string |  | function name of filtering function receiving keystrokes; it gets { value, onComplete } and must call onComplete() callback once its done |
+| args.hint? | i18nToken |  | A general feature is the hint indicator on the widget so user can hover it with a mouse to reveal information about it. image aus theme intern handled by tooltip. |
+| args.id? | string |  | Id of the widget, if not provided this id will be auto-generated. Must be unique. The id must not be used from jQuery UI API, the id should be used within declarative scope only, i.e. X-API / JSP. If provided, this id will overwrite targetHtml element's id. |
+| args.isSync? | boolean | false | Uses synchronously validation when set to true. This also disables the use of asyncValidationFunction. Only necessary for setups where you can't handle waiting for the async write of data (e.g. grid widgets) |
+| args.isTextSelectedOnFocus? | boolean | false | if set, the text will be selected once the field gets a focus, so that further user input will replace the content. In case 'setCursorPositionAtEnd' is also set to true - this option has precedence. |
+| args.keepEmptyValueExpression? | boolean | false | A flag that can be set to 'true' if the target node should not be removed as soon as the value is empty. TODO: better spec |
+| args.label? | i18nToken |  | If provided, enables widget to render a label element |
+| args.maxlength? | integer |  | if defined, limits the input to the given length. |
+| args.optionsModelRelativeValueXPath? | xPath | "." | xPath expression relative to 'optionsModelXPath' providing values |
+| args.optionsRendererId? | string |  | * only applies to non-native implementation of this widget - to use this option you have to flag disableNativeSupport * The renderer provided here *must* exist prior binding to widget, that is it has to be known to ObjectRegistry at this time. At is recommended to construct your renderer with suppressInitialRendering=true, so that it does not run at the construction time and also provide targetHTMLElementId pointing to invisible container, since the renderer would reset containers CSS class having visual effects at construction time. Default options rendering stylesheet is located at /bcdui/widgetNg/suggestInput/optionsRenderer.xslt but you can provide your own here; the transformation has to output HTML with root element DIV containing block elements each representing an inidivual value. The children elements provides the value via bcdValue attribute. The rendered list is displayed in a dialog so user can pick-up an item. After that, the value is written to model which is found at bcdValue attribute. This way you can render complex HTML content. Recommended format is: div[div[@bcdValue]*] You can also respect current widget value i.e. to implement prefiltering, the values are provided as parameters to the stylesheet. Please refer to original stylesheet documentation for more information and parameters which are provided during transformation. the targetHTMLElementId of the renderer is automatically bound to internal options list box, the input document to this renderer is the options-model of the widget. |
+| args.pattern? | string |  | regular expression pattern to validate the input |
+| args.placeholder? | i18nToken |  | A default text displayed if no content was entered, this is i18n key or true for default. May be empty to display nothing. |
+| args.required? | boolean | false | An empty string or not set value is not allowed if required is true. Disabled fields are not evaluated. |
+| args.rowEnd? | number | 30 | Limit the result of the SQL lookup. |
+| args.setCursorPositionAtEnd? | boolean | false | if set the cursor position will always be at the end of the input once the input field gets a focus |
+| args.suggestItemCount? | integer | 10 | Number of items to suggest during typing, this applies to non-native implementation only. |
+| args.tabindex? | integer |  | the HTML compliant tabIndex |
+| args.validationFunction? | string |  | Name of a widget validator function which will be attached additionally to implicit validators. the API of given function is: validatorFunction(htmlElementId) : returns either NULL or object containing validationMessage (String or array of Strings) property, i.e. { validationMessage : String } or { validationMessage[] : String[] }, the validationMessage carries the message to be displayed to the user. The String may start with bcdui.i18n.TAG character to classify an i18n-key of the message, rather than a message itself. the args parameter is the htmlElementId of the widget to validate. Please use: bcdui.widgetNg.validation.validators.widget.getValue(htmlElementId) to properly retrieve widgets value. There is only one validator function allowed. In order to use or re-use or combine existing validations please do so in your validationFunction (that is delegate to other validators) and simply aggregate validation results into array of validationMessage[] This validator MUST ignore NULL or empty value. |
+| args.widgetCaption? | string |  | A caption which is used as prefix for navPath generation for this widget. |
+| args.wildcard? | string | "startswith" | The wildcards apply to filtering within the drop down list and for server side filters. This option applies only if bound to a f:Expression element and is ignored otherwise. For a f:Filter with @op='like', this controls the prefilling with wildcards ('*') when the value is yet empty and the field gets the focus. Can be 'contains', 'startswith' or 'endswith'. The user can overwrite this by adding/removing wildcards when editing the field. |
+
+
+**Returns**: {void}

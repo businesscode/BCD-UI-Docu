@@ -112,12 +112,22 @@ task updateDocs( type: Copy ) {
     into "tutorial"
   }
 
+
   // From BCD-UI project
-  from( bcduiDocuFolder )
+  from( bcduiDocuFolder ) {
+    exclude "jsdoc/**"
+  }
   from( '../BCD-UI/Docu/xsd' ) {
     into 'xsd'
   }
 
+  // jsDoc is a mixture from BCD-UI and here
+  from( '../BCD-UI/Docu/build/md' ) {
+    into 'jsdoc'
+  }
+  from( './gradle/static/jsDoc' ) {
+    into 'jsdoc'
+  }
 
   // Replace version and date placeholders
   doLast {
