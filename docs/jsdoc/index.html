@@ -64,12 +64,12 @@
   <script>
     window.$docsify = {
       themeColor: "#222",
-      loadSidebar: true,
+      loadSidebar: 'sidebar.md',
       relativePath: true,
       alias: {
-        '/generated/index/_sidebar.md': '/_sidebar.md',
-        '/generated/.*/_sidebar.md': '/generated/elements/_sidebar.md',
-        '/.*/_sidebar.md': '/_sidebar.md'
+        '/generated/index/sidebar.md': '/sidebar.md',
+        '/generated/.*/sidebar.md': '/generated/elements/sidebar.md',
+        '/.*/sidebar.md': '/sidebar.md'
       },
       subMaxLevel: 3,
       auto2top: true,
@@ -186,6 +186,7 @@
   <script src="./srcipts/docsify.4.13.1.js"></script>
   <script src="./srcipts/docsify-search.js"></script>
   <script src="./srcipts/docsify-copy-code.js"></script>
+  <script src="./srcipts/docsify-sidebar-collapse.js"></script>
   <script src="./srcipts/docsify-darklight-theme.js"></script>
 </body>
 </html>
