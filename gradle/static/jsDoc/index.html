@@ -1,0 +1,191 @@
+<!-- Carrier page for doscsify -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="./css/vue.3.5.28.css"/>
+  <link rel="stylesheet" href="./css/docsify-darklight-theme.1.0.0.css"/>
+  <style type="text/css">
+    html {
+      --accent: #369afb !important;
+    }
+    .content a {
+      --accent: #88c !important;
+    }
+    .params {
+      font-size: 0.75em;
+      color: #999;
+      filter: brightness(1.75);
+    }
+    .markdown-section code {
+      padding: 0.5em 0;
+      white-space: nowrap;
+    }
+    .sidebar .sidebar-nav {
+      line-height: 1.5em;
+    }
+    #main h3::before {
+      content: '';
+      display: block;
+      width: 10%;
+      height: 1px;
+      background-color: #8888;
+      margin-bottom: 1rem;
+      right: 0;
+    }
+    .doc-name-badge {
+      font-size: 0.7em;
+      background: var(--borderColor);
+      padding: 2px 6px;
+      border-radius: 3px;
+      margin-left: 8px;
+      color: #666;
+    }
+    header {
+      background-color: #369afb;
+      color: #fff;
+      width: 100%;
+      text-align: right;
+      font-size: 20pt;
+      font-weight: bolder;
+      font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif;
+      padding: 0 21px 8px 8px;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    BCD-UI <span style="font-size: 0.6em; font-weight: normal">--bcd-dyn-replace-current-version-date--</span>
+  </header>
+
+  <div id="app"></div>
+  <script>
+    window.$docsify = {
+      themeColor: "#222",
+      loadSidebar: true,
+      relativePath: true,
+      alias: {
+        '/generated/index/_sidebar.md': '/_sidebar.md',
+        '/generated/.*/_sidebar.md': '/generated/elements/_sidebar.md',
+        '/.*/_sidebar.md': '/_sidebar.md'
+      },
+      subMaxLevel: 3,
+      auto2top: true,
+      search: {
+        placeholder: 'Search...',
+        noData: 'No results',
+        depth: 3,
+        maxAge: location.hostname === 'localhost' ? 0 : 86400000,
+        hideOtherSidebarContent: true // this prevents the sidebar from scrolling to the match and the other matches leaving the screen
+      },
+      homepage: '/manual/index/overview.md',
+      sidebarDisplayLevel: 1,
+      plugins: [
+
+        //------------------------
+        // Prevents the search sidebar from scrolling when clicking a link
+        function(hook) {
+          let fromSearch = false;
+          let sidebarScrollTop = 0;
+
+          hook.mounted(function() {
+            document.body.addEventListener('click', function(e) {
+              if (e.target.closest('.matching-post a')) {
+                fromSearch = true;
+                const sidebar = document.querySelector('.sidebar');
+                if (sidebar) sidebarScrollTop = sidebar.scrollTop;
+              }
+            });
+          });
+
+          hook.doneEach(function() {
+            if (fromSearch) {
+              const sidebar = document.querySelector('.sidebar');
+              if (sidebar) sidebar.scrollTop = sidebarScrollTop;
+              fromSearch = false;
+            }
+          });
+        },
+
+        //------------------------
+        // In search results add a "badge" with the document name, usually showing which class the match refers to
+        function(hook) {
+          hook.doneEach(function () {
+
+            const observer = new MutationObserver(function (mutations) {
+              observer.disconnect();
+              setTimeout(() => {
+                document.querySelectorAll('.matching-post:not([data-doc-added])').forEach(el => {
+                  el.setAttribute('data-doc-added', 'true');
+
+                  // Get document path from the link
+                  const link = el.querySelector('a')?.getAttribute('href') || '';
+                  const docName = link
+                    .replace(/^#\//, '')           // remove #/
+                    .replace(/\?.*$/, '')          // remove ?id=...
+                    .split('/')                    // split path
+                    .pop()                         // get last segment: "bcdui.component.cube.Cube"
+                    .split('.')                    // split by dot
+                    .pop();                        // get last: "Cube"
+
+                  // Add document name badge
+                  const badge = document.createElement('span');
+                  badge.className = 'doc-name-badge';
+                  badge.textContent = docName;
+
+                  const title = el.querySelector('h2');
+                  if (title) {
+                    title.appendChild(badge);
+              }
+                });
+                observer.observe(searchResults, {childList: true, subtree: true});
+              }, 0);
+
+            });
+
+            // Register observer
+            const searchResults = document.querySelector('.search');
+            if (searchResults) observer.observe(searchResults, {childList: true, subtree: true});
+          });
+        },
+
+        //------------------------
+        // Make signature visible. Was hidden so that it didn't interfere with the anchor links
+        function(hook) {
+          hook.doneEach(function () {
+            document.querySelectorAll('.htmlSignature').forEach(sig => {
+              const header = sig.parentElement.previousElementSibling;
+              if (header?.matches('h1, h2, h3, h4, h5, h6')) {
+                header.children[0].children[0].innerHTML += `<small>${sig.textContent}</small>`;
+                sig.remove();
+              }
+            });
+          });
+        },
+
+        //------------------------
+        // Make package visible.
+        // Was hidden so the function name could eb the first lien in markdown, need to create correct anchor links
+        function(hook) {
+          hook.doneEach(function() {
+            document.querySelectorAll('.htmlPackage').forEach(pkg => {
+              const header = pkg.parentElement.previousElementSibling;
+              if (header?.matches('h1, h2, h3, h4, h5, h6')) {
+                header.before(`package ${pkg.textContent}`);
+                header.before(document.createElement("p"));
+                pkg.remove();
+                }
+            });
+          });
+        }
+      ]
+    };
+  </script>
+  <script src="./srcipts/docsify.4.13.1.js"></script>
+  <script src="./srcipts/docsify-search.js"></script>
+  <script src="./srcipts/docsify-copy-code.js"></script>
+  <script src="./srcipts/docsify-darklight-theme.js"></script>
+</body>
+</html>

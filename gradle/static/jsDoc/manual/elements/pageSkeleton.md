@@ -1,0 +1,82 @@
+# Page structure
+Use this as the template for a page and add the 
+target divs or custom elements for widgets and Renderers
+either in sidebar bcd__select-container 
+or main content area bcd__content-container
+
+````html
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <title>Blank Page</title>
+  <link rel="shortcut icon" href="./favicon.ico"/>
+  <script type="text/javascript" src="./bcdui/bcdui.js"></script> <!--1-->
+</head>
+<body>
+  <div class="bcd__outer-wrapper"> <!--2-->
+    <div class="bcd__wrapper">
+      <div class="bcd__horizontal-split">
+
+        <!-- Header -->
+        <div class="bcd__header">
+          <div class="bcd__header__upper">
+            <div class="bcd__header__logo"><img src="../bcdui/theme/images/bcd_logo.png" alt=""></div>
+            <div></div>
+          </div>
+          <div class="bcd__header__navigation"></div> <!--3-->
+        </div>
+
+        <!-- Main area -->
+        <div class="bcd__vertical-split">
+
+          <!-- Left sidebar, there is also a right sidebar not shown here --> <!--4-->
+          <div class="bcd__sidebar-left">
+            <div class="bcd__sidebar-left__inner bcdEffectCollapse">
+
+              <div class="bcd__form-container">
+                <section>
+                  <div class="bcd__form-group">
+                    <div class="bcd__select-container">
+
+                      <!-- place your sidebar widgets here
+                      <bcd-inputNg label="my input"...></bcd-inputNg>
+                      -->
+
+                      <bcd-buttonNg caption="Apply" onClickAction="bcdui.core.lifecycle.applyAction()"></bcd-buttonNg>
+                     </div>
+                  </div>
+                </section>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Main content area --> <!--5-->
+          <div class="bcd__content-container">
+            <h1>Blank Page</h1>
+
+            <!-- place your main output here -->
+            <div id="myDataDiv"></div> <!--6-->
+          </div>
+
+        </div>
+
+        <!-- Footer -->
+        <footer>
+          <p>&copy; 2026 BusinessCode GmbH</p>
+          <nav>
+            <ul>
+              <li><a href="#">Imprint</a></li>
+              <li><a href="#">Privacy</a></li>
+            </ul>
+          </nav>
+        </footer>
+      </div>
+    </div>
+  </div>
+  <!-- Your JavaScript goes here. -->
+  <script type="text/javascript" src="./blankPage.js"></script> <!--7-->
+</body>
+</html>
+````
