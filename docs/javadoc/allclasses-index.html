@@ -279,8 +279,8 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab3"><a href="de/businesscode/bcdui/binding/subjectFilter/Connective.SYMBOL.html" title="enum class in de.businesscode.bcdui.binding.subjectFilter">Connective.SYMBOL</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab3">&nbsp;</div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/web/filters/CorsFilter.html" title="class in de.businesscode.bcdui.web.filters">CorsFilter</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
-<div class="block">special filter to handle CORS, allows credentials to be sent, allows to be loaded from any origin and allow any http header and method.</div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">Deprecated.
+<div class="deprecation-comment">5.7 Deprecated, use bcdui4.HttpHeaderSecurity Servlet in web.xml for better control</div>
 </div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/export/CsvDataWriter.html" title="class in de.businesscode.bcdui.wrs.export">CsvDataWriter</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
@@ -353,7 +353,10 @@ loadScripts(document, 'script');</script>
  is not thread-safe and this bean is used on per-request level</div>
 </div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/toolbox/DownloadServlet.html" title="class in de.businesscode.bcdui.toolbox">DownloadServlet</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Supports lazy mirroring SFTP files to local folder for download
+ Keeps track of download statistics and deletes files older than given days</div>
+</div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/el/ELEnvironment.html" title="class in de.businesscode.bcdui.el">ELEnvironment</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab5"><a href="de/businesscode/bcdui/binding/exc/EmptyBindingSetException.html" title="class in de.businesscode.bcdui.binding.exc">EmptyBindingSetException</a></div>
@@ -404,7 +407,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/ExternalAuthenticationToken.html" title="class in de.businesscode.bcdui.subjectsettings">ExternalAuthenticationToken</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">this token is used in conjunction to <a href="de/businesscode/bcdui/subjectsettings/AuthenticationFilter.html" title="class in de.businesscode.bcdui.subjectsettings"><code>AuthenticationFilter</code></a> which
- authenticates a subject by any different scheme, i.e.</div>
+ authenticates a subject</div>
 </div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/web/cacheControl/FileCachePersist.html" title="class in de.businesscode.bcdui.web.cacheControl">FileCachePersist</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
@@ -757,20 +760,16 @@ loadScripts(document, 'script');</script>
 <div class="block">
  Utility class to create a <code>SOAPFault</code></div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/SpnegoUtil.html" title="class in de.businesscode.bcdui.subjectsettings">SpnegoUtil</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
-<div class="block">utility class abstracting principal information from de.businesscode.bcdui.security.SpnegoValve</div>
-</div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab1"><a href="de/businesscode/bcdui/wrs/load/SqlConditionGenerator.html" title="interface in de.businesscode.bcdui.wrs.load">SqlConditionGenerator</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab1">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="de/businesscode/bcdui/wrs/load/SqlConditionGenerator.html" title="interface in de.businesscode.bcdui.wrs.load">SqlConditionGenerator</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
 <div class="block">the interface for condition generator in SQL clause.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab5"><a href="de/businesscode/util/jdbc/SQLDetailException.html" title="class in de.businesscode.util.jdbc">SQLDetailException</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab5">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab5"><a href="de/businesscode/util/jdbc/SQLDetailException.html" title="class in de.businesscode.util.jdbc">SQLDetailException</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab5">
 <div class="block">An exception with SQL details, which may not be save to be included in the message to the client</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/sqlengine/SQLEngine.html" title="class in de.businesscode.sqlengine">SQLEngine</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/sqlengine/SQLEngine.html" title="class in de.businesscode.sqlengine">SQLEngine</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">The SQL Engine can transform sql fragments containing references to BindingSets into pure sql, 
  resolving table and column names
  
@@ -780,261 +779,261 @@ loadScripts(document, 'script');</script>
  - In phase 2 it does then know the concrete BindingSet and BindingItem and can output the appropriate table and column names,
    using BindingsContextObject and BindingSetContextObject</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/SqlFromFullSelect.html" title="class in de.businesscode.bcdui.wrs.load">SqlFromFullSelect</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/SqlFromFullSelect.html" title="class in de.businesscode.bcdui.wrs.load">SqlFromFullSelect</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Mainly handles SET operators like UNION and calls SqlFromSubSelect for each select.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/SqlFromSubSelect.html" title="class in de.businesscode.bcdui.wrs.load">SqlFromSubSelect</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/SqlFromSubSelect.html" title="class in de.businesscode.bcdui.wrs.load">SqlFromSubSelect</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Takes a single wrq:Select (formally a "sub-select") and turns it into a SQLStatementWithParams
  Each select taking part in UNIONs or being a sub-select is represented by an instance of this class.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/web/accessLogging/SqlLogAppender.html" title="class in de.businesscode.bcdui.web.accessLogging">SqlLogAppender</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/web/accessLogging/SqlLogAppender.html" title="class in de.businesscode.bcdui.web.accessLogging">SqlLogAppender</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/SQLStatementWithParams.html" title="class in de.businesscode.bcdui.wrs.load">SQLStatementWithParams</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Represents part of an SQL string and the values for bound variables
  Can be a single clause or a whole SQL statement</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/logging/SqlToDatabaseLogger.html" title="class in de.businesscode.bcdui.logging">SqlToDatabaseLogger</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/logging/SqlToDatabaseLogger.html" title="class in de.businesscode.bcdui.logging">SqlToDatabaseLogger</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">a singleton logger for SQL statements, the binding set used for it is bcd_log_sql,
  record logged is <a href="de/businesscode/bcdui/logging/SqlToDatabaseLogger.LogRecord.html" title="class in de.businesscode.bcdui.logging"><code>SqlToDatabaseLogger.LogRecord</code></a>
  this class is not intended to be customized or extended in projects.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/logging/SqlToDatabaseLogger.LogRecord.html" title="class in de.businesscode.bcdui.logging">SqlToDatabaseLogger.LogRecord</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/logging/SqlToDatabaseLogger.LogRecord.html" title="class in de.businesscode.bcdui.logging">SqlToDatabaseLogger.LogRecord</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">record being logged into db</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/binding/StandardBindingSet.html" title="class in de.businesscode.bcdui.binding">StandardBindingSet</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/binding/StandardBindingSet.html" title="class in de.businesscode.bcdui.binding">StandardBindingSet</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">A BindingSet is a mapping from names to BindingItems.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/el/StandardELContext.html" title="class in de.businesscode.bcdui.el">StandardELContext</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/el/StandardFunctionMapper.html" title="class in de.businesscode.bcdui.el">StandardFunctionMapper</a></div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/el/StandardELContext.html" title="class in de.businesscode.bcdui.el">StandardELContext</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/el/StandardFunctions.html" title="class in de.businesscode.bcdui.el">StandardFunctions</a></div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/el/StandardFunctionMapper.html" title="class in de.businesscode.bcdui.el">StandardFunctionMapper</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/util/StandardNamespaceContext.html" title="class in de.businesscode.util">StandardNamespaceContext</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/el/StandardFunctions.html" title="class in de.businesscode.bcdui.el">StandardFunctions</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/util/StandardNamespaceContext.html" title="class in de.businesscode.util">StandardNamespaceContext</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Singleton to hold all well-known BCD-UI namespaces and their prefixes
  The prefixes must be used in client js code because they are made known to the browser's parser</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/el/StandardVariableMapper.html" title="class in de.businesscode.bcdui.el">StandardVariableMapper</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/web/servlets/StaticResourceServlet.html" title="class in de.businesscode.bcdui.web.servlets">StaticResourceServlet</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/el/StandardVariableMapper.html" title="class in de.businesscode.bcdui.el">StandardVariableMapper</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/web/servlets/StaticResourceServlet.html" title="class in de.businesscode.bcdui.web.servlets">StaticResourceServlet</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">This class enables the use of the database-backed virtual file system and jar files as source for seemingly static resources.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/web/servlets/StaticResourceServlet.LocalResource.html" title="class in de.businesscode.bcdui.web.servlets">StaticResourceServlet.LocalResource</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/web/servlets/StaticResourceServlet.LocalResource.html" title="class in de.businesscode.bcdui.web.servlets">StaticResourceServlet.LocalResource</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">This class represents one single resource which is either a file on the
  file system or a URL from the classpath.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="de/businesscode/bcdui/web/servlets/StaticResourceServlet.Resource.html" title="interface in de.businesscode.bcdui.web.servlets">StaticResourceServlet.Resource</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab1"><a href="de/businesscode/bcdui/web/servlets/StaticResourceServlet.Resource.html" title="interface in de.businesscode.bcdui.web.servlets">StaticResourceServlet.Resource</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab1">
 <div class="block">resource abstract descriptor implementing API to the content</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab1"><a href="de/businesscode/bcdui/web/servlets/StaticResourceServlet.ResourceProvider.html" title="interface in de.businesscode.bcdui.web.servlets">StaticResourceServlet.ResourceProvider</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab1">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="de/businesscode/bcdui/web/servlets/StaticResourceServlet.ResourceProvider.html" title="interface in de.businesscode.bcdui.web.servlets">StaticResourceServlet.ResourceProvider</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
 <div class="block">provider interface to resolve a <a href="de/businesscode/bcdui/web/servlets/StaticResourceServlet.Resource.html" title="interface in de.businesscode.bcdui.web.servlets"><code>StaticResourceServlet.Resource</code></a></div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/web/servlets/StaticResourceServlet.StaticResourceProvider.html" title="class in de.businesscode.bcdui.web.servlets">StaticResourceServlet.StaticResourceProvider</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/web/servlets/StaticResourceServlet.StaticResourceProvider.html" title="class in de.businesscode.bcdui.web.servlets">StaticResourceServlet.StaticResourceProvider</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">a static resource provider singleton</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/binding/subjectFilter/SubjectFilter.html" title="class in de.businesscode.bcdui.binding.subjectFilter">SubjectFilter</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/binding/subjectFilter/SubjectFilter.html" title="class in de.businesscode.bcdui.binding.subjectFilter">SubjectFilter</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">represents a SubjectFilter in BindingSet</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/binding/subjectFilter/SubjectFilterNode.html" title="class in de.businesscode.bcdui.binding.subjectFilter">SubjectFilterNode</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/binding/subjectFilter/SubjectFilterNode.html" title="class in de.businesscode.bcdui.binding.subjectFilter">SubjectFilterNode</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Common denominator for <a href="de/businesscode/bcdui/binding/subjectFilter/SubjectFilter.html" title="class in de.businesscode.bcdui.binding.subjectFilter"><code>SubjectFilter</code></a> and <a href="de/businesscode/bcdui/binding/subjectFilter/Connective.html" title="class in de.businesscode.bcdui.binding.subjectFilter"><code>Connective</code></a></div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/binding/write/SubjectFilterOnWriteCallback.html" title="class in de.businesscode.bcdui.binding.write">SubjectFilterOnWriteCallback</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/binding/write/SubjectFilterOnWriteCallback.html" title="class in de.businesscode.bcdui.binding.write">SubjectFilterOnWriteCallback</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Enforce SubjectFilters on write
  This callback is registered if SubjectFilters are declared for a BindingSet
  It applies its ruled for writing
  It does currently not support nested filter expressions (only flat AND or OR) and only '=' for comparison</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/binding/subjectFilter/SubjectFilters.html" title="class in de.businesscode.bcdui.binding.subjectFilter">SubjectFilters</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/binding/subjectFilter/SubjectFilters.html" title="class in de.businesscode.bcdui.binding.subjectFilter">SubjectFilters</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">SubjectFilters definition in BindingSet.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectFilterType</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectFilterType</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Java-Klasse fÃ¼r SubjectFilterType complex type.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.AssignableValues.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectFilterType.AssignableValues</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Java-Klasse fÃ¼r anonymous complex type.</div>
-</div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.BindingItems.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectFilterType.BindingItems</a></div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.AssignableValues.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectFilterType.AssignableValues</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Java-Klasse fÃ¼r anonymous complex type.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.BindingItems.C.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectFilterType.BindingItems.C</a></div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.BindingItems.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectFilterType.BindingItems</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Java-Klasse fÃ¼r anonymous complex type.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/web/servlets/SubjectPreferences.html" title="class in de.businesscode.bcdui.web.servlets">SubjectPreferences</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectPreferencesConfig.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectPreferencesConfig</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.BindingItems.C.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectFilterType.BindingItems.C</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Java-Klasse fÃ¼r anonymous complex type.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/web/servlets/SubjectPreferences.html" title="class in de.businesscode.bcdui.web.servlets">SubjectPreferences</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectPreferencesConfig.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectPreferencesConfig</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Java-Klasse fÃ¼r SubjectPreferencesConfig complex type.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectPreferencesConfig.Settings.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectPreferencesConfig.Settings</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Java-Klasse fÃ¼r anonymous complex type.</div>
-</div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectPreferencesConfig.Settings.Setting.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectPreferencesConfig.Settings.Setting</a></div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectPreferencesConfig.Settings.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectPreferencesConfig.Settings</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Java-Klasse fÃ¼r anonymous complex type.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectPreferencesConfig.Settings.Setting.SourceSetting.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectPreferencesConfig.Settings.Setting.SourceSetting</a></div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectPreferencesConfig.Settings.Setting.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectPreferencesConfig.Settings.Setting</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Java-Klasse fÃ¼r anonymous complex type.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectPreferencesConfig.Settings.Setting.Values.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectPreferencesConfig.Settings.Setting.Values</a></div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectPreferencesConfig.Settings.Setting.SourceSetting.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectPreferencesConfig.Settings.Setting.SourceSetting</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Java-Klasse fÃ¼r anonymous complex type.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectPreferencesConfig.Settings.Setting.Values.Value.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectPreferencesConfig.Settings.Setting.Values.Value</a></div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectPreferencesConfig.Settings.Setting.Values.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectPreferencesConfig.Settings.Setting.Values</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Java-Klasse fÃ¼r anonymous complex type.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/SubjectPreferencesRealm.html" title="class in de.businesscode.bcdui.subjectsettings">SubjectPreferencesRealm</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/SubjectSettings.html" title="class in de.businesscode.bcdui.subjectsettings">SubjectSettings</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectPreferencesConfig.Settings.Setting.Values.Value.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectPreferencesConfig.Settings.Setting.Values.Value</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Java-Klasse fÃ¼r anonymous complex type.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/SubjectPreferencesRealm.html" title="class in de.businesscode.bcdui.subjectsettings">SubjectPreferencesRealm</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/SubjectSettings.html" title="class in de.businesscode.bcdui.subjectsettings">SubjectSettings</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Subject settings are session settings in web and non-web environments
  It covers rights, i18n settings and so on</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/SubjectSettings2Sql.html" title="class in de.businesscode.bcdui.wrs.load">SubjectSettings2Sql</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/SubjectSettings2Sql.html" title="class in de.businesscode.bcdui.wrs.load">SubjectSettings2Sql</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Returns a where clause based on the SubjectFilters of the BindingSet and the current Subject's permissions Initially taken from WrsSqlGenerator.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectSettingsConfig.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectSettingsConfig</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectSettingsConfig.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectSettingsConfig</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Java-Klasse fÃ¼r SubjectSettingsConfig complex type.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectSettingsConfig.SubjectFilterTypes.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectSettingsConfig.SubjectFilterTypes</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Java-Klasse fÃ¼r anonymous complex type.</div>
-</div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectSettingsConfig.UserSettingsDefaults.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectSettingsConfig.UserSettingsDefaults</a></div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectSettingsConfig.SubjectFilterTypes.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectSettingsConfig.SubjectFilterTypes</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Java-Klasse fÃ¼r anonymous complex type.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectSettingsConfig.UserSettingsDefaults.Default.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectSettingsConfig.UserSettingsDefaults.Default</a></div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectSettingsConfig.UserSettingsDefaults.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectSettingsConfig.UserSettingsDefaults</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Java-Klasse fÃ¼r anonymous complex type.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectSettingsType.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectSettingsType</a></div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectSettingsConfig.UserSettingsDefaults.Default.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectSettingsConfig.UserSettingsDefaults.Default</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Java-Klasse fÃ¼r anonymous complex type.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectSettingsType.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectSettingsType</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Java-Klasse fÃ¼r SubjectSettingsType complex type.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectSettingsType.Jdbc.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectSettingsType.Jdbc</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Java-Klasse fÃ¼r anonymous complex type.</div>
-</div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectSettingsType.Jdbc.DataSource.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectSettingsType.Jdbc.DataSource</a></div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectSettingsType.Jdbc.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectSettingsType.Jdbc</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Java-Klasse fÃ¼r anonymous complex type.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectSettingsType.Jdbc.DefaultDataSource.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectSettingsType.Jdbc.DefaultDataSource</a></div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectSettingsType.Jdbc.DataSource.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectSettingsType.Jdbc.DataSource</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Java-Klasse fÃ¼r anonymous complex type.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/export/SylkDataWriter.html" title="class in de.businesscode.bcdui.wrs.export">SylkDataWriter</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/web/wrs/SylkServlet.html" title="class in de.businesscode.bcdui.web.wrs">SylkServlet</a></div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/subjectsettings/config/SubjectSettingsType.Jdbc.DefaultDataSource.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectSettingsType.Jdbc.DefaultDataSource</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Java-Klasse fÃ¼r anonymous complex type.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/export/SylkDataWriter.html" title="class in de.businesscode.bcdui.wrs.export">SylkDataWriter</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/web/cacheControl/server/wrapper/TeePrintWriterWrapper.html" title="class in de.businesscode.bcdui.web.cacheControl.server.wrapper">TeePrintWriterWrapper</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/web/wrs/SylkServlet.html" title="class in de.businesscode.bcdui.web.wrs">SylkServlet</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/web/cacheControl/server/wrapper/TeePrintWriterWrapper.html" title="class in de.businesscode.bcdui.web.cacheControl.server.wrapper">TeePrintWriterWrapper</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">This class wrapped the PrintWriter functionality in order to provide the possibility to write a data to two writers.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/web/cacheControl/server/wrapper/TeeWriterWrapper.html" title="class in de.businesscode.bcdui.web.cacheControl.server.wrapper">TeeWriterWrapper</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/web/cacheControl/server/wrapper/TeeWriterWrapper.html" title="class in de.businesscode.bcdui.web.cacheControl.server.wrapper">TeeWriterWrapper</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">tees the writer, ignores exceptions on a cloned object, however
  they are logged with warning level.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/toolbox/TextToUrl.html" title="class in de.businesscode.bcdui.toolbox">TextToUrl</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/toolbox/TextToUrl.html" title="class in de.businesscode.bcdui.toolbox">TextToUrl</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">This servlet allows POSTing a text and retrieve it (up to 24h) later via GET under a given name
  Each servlet instance has its only scope name.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/util/ThreadUtils.html" title="class in de.businesscode.util">ThreadUtils</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/binding/subjectFilter/jaxb/TypeSubjectFilter.html" title="class in de.businesscode.bcdui.binding.subjectFilter.jaxb">TypeSubjectFilter</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/util/ThreadUtils.html" title="class in de.businesscode.util">ThreadUtils</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/binding/subjectFilter/jaxb/TypeSubjectFilter.html" title="class in de.businesscode.bcdui.binding.subjectFilter.jaxb">TypeSubjectFilter</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Java-Klasse fuer TypeSubjectFilter complex type.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/binding/subjectFilter/jaxb/TypeSubjectFilterConnective.html" title="class in de.businesscode.bcdui.binding.subjectFilter.jaxb">TypeSubjectFilterConnective</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/binding/subjectFilter/jaxb/TypeSubjectFilterConnective.html" title="class in de.businesscode.bcdui.binding.subjectFilter.jaxb">TypeSubjectFilterConnective</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Java-Klasse fuer TypeSubjectFilterConnective complex type.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/binding/subjectFilter/jaxb/TypeSubjectFilters.html" title="class in de.businesscode.bcdui.binding.subjectFilter.jaxb">TypeSubjectFilters</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/binding/subjectFilter/jaxb/TypeSubjectFilters.html" title="class in de.businesscode.bcdui.binding.subjectFilter.jaxb">TypeSubjectFilters</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Java-Klasse fuer TypeSubjectFilters complex type.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/web/filters/UnZipFilter.html" title="class in de.businesscode.bcdui.web.filters">UnZipFilter</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/upload/data/steps/Upload2TargetBs.html" title="class in de.businesscode.bcdui.upload.data.steps">Upload2TargetBs</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/web/filters/UnZipFilter.html" title="class in de.businesscode.bcdui.web.filters">UnZipFilter</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/upload/data/steps/Upload2TargetBs.html" title="class in de.businesscode.bcdui.upload.data.steps">Upload2TargetBs</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">This class is responsible for transferring data from bcdui_upload_rowcol into the target BindingSet
  It relies on correct format of the data in bcdui_upload_rowcol.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/upload/data/steps/UploadBindingItemValidate.html" title="class in de.businesscode.bcdui.upload.data.steps">UploadBindingItemValidate</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/upload/data/steps/UploadBindingItemValidate.html" title="class in de.businesscode.bcdui.upload.data.steps">UploadBindingItemValidate</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">This class applies all validations which are possible based on the assigned BindingSet i.e. entries in mapping
  Validation issues are written to bcd_dataupload_validation</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab3"><a href="de/businesscode/bcdui/upload/data/steps/UploadBindingItemValidate.Check.html" title="enum class in de.businesscode.bcdui.upload.data.steps">UploadBindingItemValidate.Check</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab3">&nbsp;</div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab3"><a href="de/businesscode/bcdui/upload/data/steps/UploadBindingItemValidate.Severity.html" title="enum class in de.businesscode.bcdui.upload.data.steps">UploadBindingItemValidate.Severity</a></div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab3"><a href="de/businesscode/bcdui/upload/data/steps/UploadBindingItemValidate.Check.html" title="enum class in de.businesscode.bcdui.upload.data.steps">UploadBindingItemValidate.Check</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab3">&nbsp;</div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/upload/data/steps/UploadCleanup.html" title="class in de.businesscode.bcdui.upload.data.steps">UploadCleanup</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/upload/data/UploadControl.html" title="class in de.businesscode.bcdui.upload.data">UploadControl</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab3"><a href="de/businesscode/bcdui/upload/data/steps/UploadBindingItemValidate.Severity.html" title="enum class in de.businesscode.bcdui.upload.data.steps">UploadBindingItemValidate.Severity</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab3">&nbsp;</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/upload/data/steps/UploadCleanup.html" title="class in de.businesscode.bcdui.upload.data.steps">UploadCleanup</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/upload/data/UploadControl.html" title="class in de.businesscode.bcdui.upload.data">UploadControl</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Used for accessing bcd_dataupload_control table</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab3"><a href="de/businesscode/bcdui/upload/data/UploadControl.ReturnCode.html" title="enum class in de.businesscode.bcdui.upload.data">UploadControl.ReturnCode</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab3">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab3"><a href="de/businesscode/bcdui/upload/data/UploadControl.ReturnCode.html" title="enum class in de.businesscode.bcdui.upload.data">UploadControl.ReturnCode</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab3">
 <div class="block">Possible return codes for steps</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/upload/data/UploadControlSteps.html" title="class in de.businesscode.bcdui.upload.data">UploadControlSteps</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/upload/data/UploadControlSteps.html" title="class in de.businesscode.bcdui.upload.data">UploadControlSteps</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Handles access to bcd_dataupload_control_step
  i.e., provides a list of steps so far and can add new steps</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/upload/data/UploadControlSteps.Step.html" title="class in de.businesscode.bcdui.upload.data">UploadControlSteps.Step</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/upload/data/UploadControlSteps.Step.html" title="class in de.businesscode.bcdui.upload.data">UploadControlSteps.Step</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Plain POJO representing an upload set with detail data</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/upload/data/steps/UploadErrorDownload.html" title="class in de.businesscode.bcdui.upload.data.steps">UploadErrorDownload</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/upload/data/steps/UploadErrorDownload.html" title="class in de.businesscode.bcdui.upload.data.steps">UploadErrorDownload</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Retrieves the rows with errors together with their errors as CSV
  It prepends the header</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab5"><a href="de/businesscode/bcdui/upload/data/UploadException.html" title="class in de.businesscode.bcdui.upload.data">UploadException</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab5">&nbsp;</div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab3"><a href="de/businesscode/bcdui/upload/data/UploadException.Reason.html" title="enum class in de.businesscode.bcdui.upload.data">UploadException.Reason</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab3">&nbsp;</div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/upload/data/steps/UploadHeuristic.html" title="class in de.businesscode.bcdui.upload.data.steps">UploadHeuristic</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab5"><a href="de/businesscode/bcdui/upload/data/UploadException.html" title="class in de.businesscode.bcdui.upload.data">UploadException</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab5">&nbsp;</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab3"><a href="de/businesscode/bcdui/upload/data/UploadException.Reason.html" title="enum class in de.businesscode.bcdui.upload.data">UploadException.Reason</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab3">&nbsp;</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/upload/data/steps/UploadHeuristic.html" title="class in de.businesscode.bcdui.upload.data.steps">UploadHeuristic</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">This class tries to guess the data content semantics in bcd_dataupload_rowcol and updates bcd_dataupload_control
  1.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/upload/data/steps/UploadNormalization.html" title="class in de.businesscode.bcdui.upload.data.steps">UploadNormalization</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/upload/data/steps/UploadNormalization.html" title="class in de.businesscode.bcdui.upload.data.steps">UploadNormalization</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Trims and NULL-ifies columns in rowcol table which are of type NUMERIC, DATE or TIMESTAMP according to mapping information.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/upload/data/UploadServlet.html" title="class in de.businesscode.bcdui.upload.data">UploadServlet</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/upload/data/UploadServlet.html" title="class in de.businesscode.bcdui.upload.data">UploadServlet</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Entry point for all data data upload related steps, supports POST and PUT
  Add custom steps in web.xml in the following format:
  &lt;init-param>
@@ -1049,36 +1048,36 @@ loadScripts(document, 'script');</script>
   - implement IUploadStep
   - if writing, call UploadControl#addStepResult() at the end of their process()</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/upload/data/steps/UploadToRowCol.html" title="class in de.businesscode.bcdui.upload.data.steps">UploadToRowCol</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/upload/data/steps/UploadToRowCol.html" title="class in de.businesscode.bcdui.upload.data.steps">UploadToRowCol</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Base class for inserting a file available as BLOB column- and cell wise to bcd_dataupload_rowcol</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/upload/data/steps/UploadToRowColCsv.html" title="class in de.businesscode.bcdui.upload.data.steps">UploadToRowColCsv</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/upload/data/steps/UploadToRowColCsv.html" title="class in de.businesscode.bcdui.upload.data.steps">UploadToRowColCsv</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Responsible to insert a CSV file available as BLOB column-wise to staging
  Detects file encoding (ISO-8859-1, UTF-8 and UTF-16), row and cell boundaries, i.e. cell delimiter and quoteChar
  Does not convert number or date format, does not detect header</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/upload/data/steps/UploadToRowColExcel.html" title="class in de.businesscode.bcdui.upload.data.steps">UploadToRowColExcel</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/upload/data/steps/UploadToRowColExcel.html" title="class in de.businesscode.bcdui.upload.data.steps">UploadToRowColExcel</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Responsible to read an Excel xlsx file from a BLOB and write it row and cell to bcd_dataupload_rowcol</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/util/Utils.html" title="class in de.businesscode.util">Utils</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/vfs/provider/database/VFSDataWriter.html" title="class in de.businesscode.bcdui.vfs.provider.database">VFSDataWriter</a></div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/util/Utils.html" title="class in de.businesscode.util">Utils</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/vfs/provider/database/VFSManagerFactory.html" title="class in de.businesscode.bcdui.vfs.provider.database">VFSManagerFactory</a></div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/vfs/provider/database/VFSDataWriter.html" title="class in de.businesscode.bcdui.vfs.provider.database">VFSDataWriter</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/web/servlets/VfsResourceProvider.html" title="class in de.businesscode.bcdui.web.servlets">VfsResourceProvider</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/vfs/provider/database/VFSManagerFactory.html" title="class in de.businesscode.bcdui.vfs.provider.database">VFSManagerFactory</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/web/servlets/VfsResourceProvider.html" title="class in de.businesscode.bcdui.web.servlets">VfsResourceProvider</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">a thread safe <a href="de/businesscode/bcdui/web/servlets/StaticResourceServlet.ResourceProvider.html" title="interface in de.businesscode.bcdui.web.servlets"><code>StaticResourceServlet.ResourceProvider</code></a> which provides a resource from VFS</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/web/servlets/VfsResourceProvider.VfsResource.html" title="class in de.businesscode.bcdui.web.servlets">VfsResourceProvider.VfsResource</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/web/servlets/VfsResourceProvider.VfsResource.html" title="class in de.businesscode.bcdui.web.servlets">VfsResourceProvider.VfsResource</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">represents a single resource to VFS</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/vfs/web/VFSServlet.html" title="class in de.businesscode.bcdui.vfs.web">VFSServlet</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/vfs/web/VFSServlet.html" title="class in de.businesscode.bcdui.vfs.web">VFSServlet</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">implements following REST API to upload binary data using file streaming API of apache commons-fileupload,
  see http://commons.apache.org/proper/commons-fileupload/streaming.html
 
@@ -1089,40 +1088,40 @@ loadScripts(document, 'script');</script>
  folder-name: abstract name which is used as prefix for all incoming file-names,
  read documentation on <a href="de/businesscode/bcdui/vfs/web/VFSServlet.html#doPost(jakarta.servlet.http.HttpServletRequest,jakarta.servlet.http.HttpServletResponse)"><code>VFSServlet.doPost(HttpServletRequest, HttpServletResponse)</code></a> and <a href="de/businesscode/bcdui/vfs/web/VFSServlet.html#doDelete(jakarta.servlet.http.HttpServletRequest,jakarta.servlet.http.HttpServletResponse)"><code>VFSServlet.doDelete(HttpServletRequest, HttpServletResponse)</code></a> for more information and exception handling.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab1"><a href="de/businesscode/bcdui/vfs/web/VFSServlet.FileDAO.html" title="interface in de.businesscode.bcdui.vfs.web">VFSServlet.FileDAO</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab1">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="de/businesscode/bcdui/vfs/web/VFSServlet.FileDAO.html" title="interface in de.businesscode.bcdui.vfs.web">VFSServlet.FileDAO</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
 <div class="block">abstraction to write into VFS, client has finally to call <a href="de/businesscode/bcdui/vfs/web/VFSServlet.FileDAO.html#commit()"><code>VFSServlet.FileDAO.commit()</code></a></div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/vfs/web/VFSServlet.JdbcFileDAO.html" title="class in de.businesscode.bcdui.vfs.web">VFSServlet.JdbcFileDAO</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/vfs/web/VFSServlet.JdbcFileDAO.html" title="class in de.businesscode.bcdui.vfs.web">VFSServlet.JdbcFileDAO</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">unfortunately we cant work with DatabaseFileSystem / DatabaseFileObject directly to store data,
  so we do here lowlevel BLOB handling, works with bcd_virtualFileSystem binding-set
 
  NOT THREADSAFE</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/VirtualBindingItem.html" title="class in de.businesscode.bcdui.wrs.load">VirtualBindingItem</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/VirtualBindingItem.html" title="class in de.businesscode.bcdui.wrs.load">VirtualBindingItem</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Constructs a virtual BindingItem,
  behaves like a standard BindingItem but derives its sql expression and type-name from a wrq:Calc element</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab3"><a href="de/businesscode/bcdui/toolbox/WEEKDAY.html" title="enum class in de.businesscode.bcdui.toolbox">WEEKDAY</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab3">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab3"><a href="de/businesscode/bcdui/toolbox/WEEKDAY.html" title="enum class in de.businesscode.bcdui.toolbox">WEEKDAY</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab3">
 <div class="block">A Weekday enum.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/binding/write/WriteProcessing.html" title="class in de.businesscode.bcdui.binding.write">WriteProcessing</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/binding/write/WriteProcessingCallback.html" title="class in de.businesscode.bcdui.binding.write">WriteProcessingCallback</a></div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/binding/write/WriteProcessing.html" title="class in de.businesscode.bcdui.binding.write">WriteProcessing</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab3"><a href="de/businesscode/bcdui/binding/write/WriteProcessingCallback.ROW_TYPE.html" title="enum class in de.businesscode.bcdui.binding.write">WriteProcessingCallback.ROW_TYPE</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab3">&nbsp;</div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/binding/write/WriteProcessingCallbackFactory.html" title="class in de.businesscode.bcdui.binding.write">WriteProcessingCallbackFactory</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/binding/write/WriteProcessingCallback.html" title="class in de.businesscode.bcdui.binding.write">WriteProcessingCallback</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab3"><a href="de/businesscode/bcdui/binding/write/WriteProcessingCallback.ROW_TYPE.html" title="enum class in de.businesscode.bcdui.binding.write">WriteProcessingCallback.ROW_TYPE</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab3">&nbsp;</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/binding/write/WriteProcessingCallbackFactory.html" title="class in de.businesscode.bcdui.binding.write">WriteProcessingCallbackFactory</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">the <a href="de/businesscode/bcdui/binding/write/WriteProcessingCallback.html" title="class in de.businesscode.bcdui.binding.write"><code>WriteProcessingCallback</code></a> are non thread-safe and each WRS processing will obtain new own intsance of a callback, however the callback
  parameters supplied from binding-set definition are immutable so the factory will be configured already at binding bootstrapping while an instance
  of a callback will be provided when requested via createIntance()</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/binding/write/WriteProcessingCallbackParams.html" title="class in de.businesscode.bcdui.binding.write">WriteProcessingCallbackParams</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/binding/write/WriteProcessingCallbackParams.html" title="class in de.businesscode.bcdui.binding.write">WriteProcessingCallbackParams</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">callback params class scaffolding arbitrary parameters supplied to callback and
  providing access API,
 
@@ -1137,72 +1136,72 @@ loadScripts(document, 'script');</script>
 </code>
  the parameter api is a list of parameter-maps in the order they are defined.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/export/Wrq2ExcelSheetDataWriter.html" title="class in de.businesscode.bcdui.wrs.export">Wrq2ExcelSheetDataWriter</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/export/Wrq2ExcelSheetDataWriter.html" title="class in de.businesscode.bcdui.wrs.export">Wrq2ExcelSheetDataWriter</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Takes a wrq:WrsRequest an optional rnd:Wrs2Excel, executes it and writes the result into an Excel sheet via Poi Api
  The caller is responsible to create the Workbook containing the Sheet</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/Wrq2Sql.html" title="class in de.businesscode.bcdui.wrs.load">Wrq2Sql</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/Wrq2Sql.html" title="class in de.businesscode.bcdui.wrs.load">Wrq2Sql</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Takes a Wrq and generates SQL from it</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/web/wrs/Wrq2SqlServlet.html" title="class in de.businesscode.bcdui.web.wrs">Wrq2SqlServlet</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/web/wrs/Wrq2SqlServlet.html" title="class in de.businesscode.bcdui.web.wrs">Wrq2SqlServlet</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Returns the generated SQL statement for a Wrq.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/WrqBindingItem.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingItem</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/WrqBindingItem.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingItem</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Represents a BindingItem in a Wrq, it is it has knowledge of the underlying BindingItem and the current query
  There can be multiple WrqBindingItem for a BindingItem(FromRel), to reflect different behaviora like aggr for example in select and in grouping clause</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="de/businesscode/bcdui/wrs/load/WrqBindingSet.html" title="interface in de.businesscode.bcdui.wrs.load">WrqBindingSet</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab1"><a href="de/businesscode/bcdui/wrs/load/WrqBindingSet.html" title="interface in de.businesscode.bcdui.wrs.load">WrqBindingSet</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab1">
 <div class="block">A BindingSet used during the execution of a Statement</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/WrqBindingSetFromDerivedTable.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingSetFromDerivedTable</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/WrqBindingSetFromDerivedTable.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingSetFromDerivedTable</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">This class allows using a sub-select (SqlFromSubSelect) like a BindingSet
  I.e., it represents its output (selected columns) as a BindingSet
  Represents a virtual BindingSet resulting from a sub-select during the execution of a Wrq</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/WrqBindingSetFromTableReference.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingSetFromTableReference</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/WrqBindingSetFromTableReference.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingSetFromTableReference</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">This class allows using the result of JOINed table references (BindingSets, sub-selects in joins) like a BindingSet
  Represents a virtual BindingSet resulting from the children of wrq:From, i.e., is a table reference
  A table reference can be a plain table name or joined tables factors,
  i.e. table names, derived table expressions or references to CTE
  Mostly it deals with the handling of wrq:Join, but for consistency it also takes care of cases without</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/WrqBindingSetRef.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingSetRef</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/WrqBindingSetRef.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingSetRef</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Wrapper for BindingSets that can be referenced more than one in a query, mainly adds the sql table alias for the current occurrence
  This can be a StandardBindingSet and a CTE
  Implements WrqBindingSet</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/WrqBindingSetVirtual.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingSetVirtual</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/WrqBindingSetVirtual.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingSetVirtual</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Represents a virtual BindingSet derived on runtime from parts of a Wrs</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/WrqCalc2Sql.html" title="class in de.businesscode.bcdui.wrs.load">WrqCalc2Sql</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/WrqCalc2Sql.html" title="class in de.businesscode.bcdui.wrs.load">WrqCalc2Sql</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Parses a Wrq and outputs SQL</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/WrqFilter2Sql.html" title="class in de.businesscode.bcdui.wrs.load">WrqFilter2Sql</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/WrqFilter2Sql.html" title="class in de.businesscode.bcdui.wrs.load">WrqFilter2Sql</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Parses a f:Filter expression and returns the SQL Where expression
  For older change history, see WrsSqlGenerator</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/WrqGroupBy2Sql.html" title="class in de.businesscode.bcdui.wrs.load">WrqGroupBy2Sql</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/WrqGroupBy2Sql.html" title="class in de.businesscode.bcdui.wrs.load">WrqGroupBy2Sql</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Parses a wrq:WrsRequest//wrq:Grouping element and returns a sql GROUP BY [GROUPING SET] expression
  Initially taken from WrsSqlGenerator.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">The worker companion of a SqlFromSubSelect.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/WrqQueryBuilder.html" title="class in de.businesscode.bcdui.wrs.load">WrqQueryBuilder</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/WrqQueryBuilder.html" title="class in de.businesscode.bcdui.wrs.load">WrqQueryBuilder</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Takes a full Wrq query, formally a "select-statement" and generates SQL from it
  [WITH]* SELECT [UNION SELECT]* [ORDER BY]
 
@@ -1211,36 +1210,36 @@ loadScripts(document, 'script');</script>
  
  NOTE: We do not check the rights, use assurePermittedOnAllResolvedBindingSets() for verifying this</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/export/Wrs2Excel.html" title="class in de.businesscode.bcdui.wrs.export">Wrs2Excel</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/export/Wrs2Excel.html" title="class in de.businesscode.bcdui.wrs.export">Wrs2Excel</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Wrs to Excel (.xlsx) data exporter: exports data from Wrs into sheet(s) of target excel template, uses efficient streaming API when interfacing with input
  document and output.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab1"><a href="de/businesscode/bcdui/wrs/export/Wrs2Excel.TemplateResolver.html" title="interface in de.businesscode.bcdui.wrs.export">Wrs2Excel.TemplateResolver</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab1">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="de/businesscode/bcdui/wrs/export/Wrs2Excel.TemplateResolver.html" title="interface in de.businesscode.bcdui.wrs.export">Wrs2Excel.TemplateResolver</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
 <div class="block">resolves template file via templateName abstraction, usually implemented by container component, i.e. servlet and returns the input-stream to the template</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/web/wrs/WrsAccessLogEvent.html" title="class in de.businesscode.bcdui.web.wrs">WrsAccessLogEvent</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/web/wrs/WrsAccessLogEvent.html" title="class in de.businesscode.bcdui.web.wrs">WrsAccessLogEvent</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">This bean contains all information about the log-event</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab1"><a href="de/businesscode/bcdui/wrs/load/WrsBindingItem.html" title="interface in de.businesscode.bcdui.wrs.load">WrsBindingItem</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab1">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="de/businesscode/bcdui/wrs/load/WrsBindingItem.html" title="interface in de.businesscode.bcdui.wrs.load">WrsBindingItem</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
 <div class="block">Represents a BindingItem in a concrete Wrq, includes information like overwritten attributes
  See analogy SimpleBindingItem and its subclasses representing the input side, i.e.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/WrsDataWriter.html" title="class in de.businesscode.bcdui.wrs.load">WrsDataWriter</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/load/WrsDataWriter.html" title="class in de.businesscode.bcdui.wrs.load">WrsDataWriter</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">The default implementation of the IDataWriter - write wrs-xml-format using xml-stream <br>
  Write an empty document if the resultSet is null.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/binding/write/WrsModificationCallback.html" title="class in de.businesscode.bcdui.binding.write">WrsModificationCallback</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/binding/write/WrsModificationCallback.html" title="class in de.businesscode.bcdui.binding.write">WrsModificationCallback</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">preserves the update information on a record, takes following configuration parameters:
  the default values are marked with asterix (*), all parameters which have no default values are required.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/binding/write/WrsModificationLog.html" title="class in de.businesscode.bcdui.binding.write">WrsModificationLog</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/binding/write/WrsModificationLog.html" title="class in de.businesscode.bcdui.binding.write">WrsModificationLog</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">preserves the update information on a record, handles following items:
  
   bcdUpdateStamp
@@ -1254,47 +1253,47 @@ loadScripts(document, 'script');</script>
  
  in case none of binding-items above are found in the given binding-set an exception is thrown.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/web/wrs/WrsNextIdentifierServlet.html" title="class in de.businesscode.bcdui.web.wrs">WrsNextIdentifierServlet</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/web/wrs/WrsNextIdentifierServlet.html" title="class in de.businesscode.bcdui.web.wrs">WrsNextIdentifierServlet</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">provides next identifier - table based id generator,
  binding-set: bcd_identifier</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/web/wrs/WrsServlet.html" title="class in de.businesscode.bcdui.web.wrs">WrsServlet</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/web/wrs/WrsServlet.html" title="class in de.businesscode.bcdui.web.wrs">WrsServlet</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Servlet for calling Wrs services
  GET: It turns a WrsRequest into SQL and returns a Wrs document with wrs:R rows
  POST: It turns a Wrs into updates of the database based on wrs:M wrs:D rows</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab5"><a href="de/businesscode/bcdui/wrs/save/exc/WrsValidationException.html" title="class in de.businesscode.bcdui.wrs.save.exc">WrsValidationException</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab5">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab5"><a href="de/businesscode/bcdui/wrs/save/exc/WrsValidationException.html" title="class in de.businesscode.bcdui.wrs.save.exc">WrsValidationException</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab5">
 <div class="block">validation exception that may be thrown by <a href="de/businesscode/bcdui/wrs/save/DataSaver.html" title="class in de.businesscode.bcdui.wrs.save"><code>DataSaver</code></a> or another class of WRS components
  during web row set validation.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/validation/WrsValidationResult.html" title="class in de.businesscode.bcdui.wrs.validation">WrsValidationResult</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/validation/WrsValidationResult.html" title="class in de.businesscode.bcdui.wrs.validation">WrsValidationResult</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">read more about validation handling in the documentation of <a href="de/businesscode/bcdui/wrs/save/exc/WrsValidationException.html" title="class in de.businesscode.bcdui.wrs.save.exc"><code>WrsValidationException</code></a>,
  this class mainly holds data required to be rendered by validationMessages.xslt template</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/validation/WrsValidationResult.Record.html" title="class in de.businesscode.bcdui.wrs.validation">WrsValidationResult.Record</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/validation/WrsValidationResult.Serializer.html" title="class in de.businesscode.bcdui.wrs.validation">WrsValidationResult.Serializer</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/validation/WrsValidationResult.Record.html" title="class in de.businesscode.bcdui.wrs.validation">WrsValidationResult.Record</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/validation/WrsValidationResult.Serializer.html" title="class in de.businesscode.bcdui.wrs.validation">WrsValidationResult.Serializer</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">serializer for the <a href="de/businesscode/bcdui/wrs/save/exc/WrsValidationException.html" title="class in de.businesscode.bcdui.wrs.save.exc"><code>WrsValidationException</code></a>, creates web row set format compatible to wrs:ValidationResult</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/save/XMLStreamSplitter.html" title="class in de.businesscode.bcdui.wrs.save">XMLStreamSplitter</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/save/XMLToDataBase.html" title="class in de.businesscode.bcdui.wrs.save">XMLToDataBase</a></div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/save/XMLStreamSplitter.html" title="class in de.businesscode.bcdui.wrs.save">XMLStreamSplitter</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/save/XMLToDataBase.AttributeDelegate.html" title="class in de.businesscode.bcdui.wrs.save">XMLToDataBase.AttributeDelegate</a></div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/save/XMLToDataBase.html" title="class in de.businesscode.bcdui.wrs.save">XMLToDataBase</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="de/businesscode/bcdui/wrs/save/XMLToDataBase.IDelegate.html" title="interface in de.businesscode.bcdui.wrs.save">XMLToDataBase.IDelegate</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab1">&nbsp;</div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/save/XMLToDataBase.TextDelegate.html" title="class in de.businesscode.bcdui.wrs.save">XMLToDataBase.TextDelegate</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/util/XPathUtils.html" title="class in de.businesscode.util">XPathUtils</a></div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/save/XMLToDataBase.AttributeDelegate.html" title="class in de.businesscode.bcdui.wrs.save">XMLToDataBase.AttributeDelegate</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/web/servlets/ZipDownload.html" title="class in de.businesscode.bcdui.web.servlets">ZipDownload</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab1"><a href="de/businesscode/bcdui/wrs/save/XMLToDataBase.IDelegate.html" title="interface in de.businesscode.bcdui.wrs.save">XMLToDataBase.IDelegate</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab1">&nbsp;</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/wrs/save/XMLToDataBase.TextDelegate.html" title="class in de.businesscode.bcdui.wrs.save">XMLToDataBase.TextDelegate</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/util/XPathUtils.html" title="class in de.businesscode.util">XPathUtils</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/web/servlets/ZipDownload.html" title="class in de.businesscode.bcdui.web.servlets">ZipDownload</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Class to provide zipping and downloading a specified number of files
  which need to be accessible via ResourceServlet (which also provides the secured access)
  Files are specified via a config
@@ -1308,8 +1307,8 @@ loadScripts(document, 'script');</script>
  &lt;/Vfs>
   As an alternative, you can also provide a scope/instance pair instead of a path name.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/web/servlets/ZipLet.html" title="class in de.businesscode.bcdui.web.servlets">ZipLet</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="de/businesscode/bcdui/web/servlets/ZipLet.html" title="class in de.businesscode.bcdui.web.servlets">ZipLet</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Servlet for compression and uncompression of XML data.</div>
 </div>
 </div>

@@ -87,6 +87,8 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">DownloadServlet</span>
 <span class="extends-implements">extends jakarta.servlet.http.HttpServlet</span></div>
+<div class="block">Supports lazy mirroring SFTP files to local folder for download
+ Keeps track of download statistics and deletes files older than given days</div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
@@ -134,7 +136,9 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#doGet(jakarta.servlet.http.HttpServletRequest,jakarta.servlet.http.HttpServletResponse)" class="member-name-link">doGet</a><wbr>(jakarta.servlet.http.HttpServletRequest&nbsp;request,
  jakarta.servlet.http.HttpServletResponse&nbsp;response)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Handles the HTTP <code>GET</code> method for a file and check if it is already local or needs to be mirrored from SFTP.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#init(jakarta.servlet.ServletConfig)" class="member-name-link">init</a><wbr>(jakarta.servlet.ServletConfig&nbsp;config)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
@@ -197,9 +201,13 @@ loadScripts(document, 'script');</script>
  jakarta.servlet.http.HttpServletResponse&nbsp;response)</span>
               throws <span class="exceptions">jakarta.servlet.ServletException,
 <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></span></div>
+<div class="block">Handles the HTTP <code>GET</code> method for a file and check if it is already local or needs to be mirrored from SFTP.</div>
 <dl class="notes">
 <dt>Overrides:</dt>
 <dd><code>doGet</code>&nbsp;in class&nbsp;<code>jakarta.servlet.http.HttpServlet</code></dd>
+<dt>Parameters:</dt>
+<dd><code>request</code> - an <code>HttpServletRequest</code> object that contains the request the client has made of the servlet</dd>
+<dd><code>response</code> - an <code>HttpServletResponse</code> object that contains the response the servlet sends to the client</dd>
 <dt>Throws:</dt>
 <dd><code>jakarta.servlet.ServletException</code></dd>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></code></dd>
