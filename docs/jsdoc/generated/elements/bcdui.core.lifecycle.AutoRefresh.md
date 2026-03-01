@@ -1,5 +1,6 @@
 # Class AutoRefresh
-<span hidden class='htmlPackage'>bcdui.core.lifecycle</span>
+package bcdui.core.lifecycle
+
 Support for auto-refreshing a {bcdui.core.DataProvider} in the background and detecting, if new data is available.<br/>After trying to reload every periodSec, args.modifiedIf to see, if new data was sent.<br/>* If the server sent an 'expires' header in the future, our re-load attempts will not even go to the server but befullfilled from the cache.<br/>* If the server sent a 304, we keep using the latest data sent from server.<br/>Both is supported for example by DataRefreshedFilter for example.Once new data was received from the server, args.onModified will be executed.
 
 ## Constructor
@@ -9,9 +10,7 @@ var myAR = new bcdui.core.lifecycle.AutoRefresh({ model });
   ````
 
 
-
-
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {void}</span>
+---
 
 
 | Name     | Type     | Default  | Description |
@@ -27,11 +26,17 @@ var myAR = new bcdui.core.lifecycle.AutoRefresh({ model });
 ````js
 let arModel = myCube.getPrimaryModel().getPrimaryModel();new bcdui.core.lifecycle.AutoRefresh({ model: arModel });
 ````
+#### Examples
+````js
+let arModel = myCube.getPrimaryModel().getPrimaryModel();new bcdui.core.lifecycle.AutoRefresh({ model: arModel });
+````
+<!-- LLM_HINT DETAILS_STARTING -->
 ## Methods
 
 
 ### isActive
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {void}</span>
+isActive() &#x21FE; {void}
+
 
 Check whether we are still active according to args.activeIf\
 **Returns** {void}

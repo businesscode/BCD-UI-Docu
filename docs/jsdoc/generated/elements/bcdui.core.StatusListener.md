@@ -1,18 +1,19 @@
 # Class StatusListener
-<span hidden class='htmlPackage'>bcdui.core</span>
+package bcdui.core
+
 An interface that status listeners must implement.A StatusListener is informed by DataProviders (more precisely by [AbstractExecutables](bcdui.core.AbstractExecutable.md)) about status changes, becoming ready is the most important.
 
 ## Constructor
 
+---
 
-
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {void}</span>
-
+<!-- LLM_HINT DETAILS_STARTING -->
 ## Methods
 
 
 ### handleStatusEvent
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(statusEvent) &#x21FE; {void}</span>
+handleStatusEvent(statusEvent) &#x21FE; {void}
+
 
 This method is called when the status transition the listener is registeredfor occurs.
 

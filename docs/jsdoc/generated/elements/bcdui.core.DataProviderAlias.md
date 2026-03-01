@@ -1,5 +1,6 @@
 # Class DataProviderAlias
-<span hidden class='htmlPackage'>bcdui.core</span>
+package bcdui.core
+
 This class is a wrapper for a DataProvider giving it a new name (not id) andreducing its states to only initialized and loaded. It is useful forrenaming a DataProvider before passing it to a TransformationChain sothat a DataProvider can be mapped to an arbitrary xsl:param element.where the bcdui.core.DataProviderAlias' name is used as the xsl:param's name
 
 _Extends_ [bcdui.core.DataProviderHolder](bcdui.core.DataProviderHolder.md), can act as a DataProvider
@@ -10,9 +11,7 @@ var myDPA = new bcdui.core.DataProviderAlias({ source, name });
   ````
 
 
-
-
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {void}</span>
+---
 
 
 | Name     | Type     | Default  | Description |
@@ -21,11 +20,13 @@ var myDPA = new bcdui.core.DataProviderAlias({ source, name });
 | args.source | bcdui.core.DataProvider |  | The data provider to be wrapped |
 | args.name | string |  | The new name of the data provider |
 
+<!-- LLM_HINT DETAILS_STARTING -->
 ## Methods
 
 
 ### getClassName
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {string}</span>
+getClassName() &#x21FE; {string}
+
 
 Get className \
 _Overrides_ bcdui.core.DataProviderHolder#getClassName\
@@ -33,7 +34,8 @@ _Overrides_ bcdui.core.DataProviderHolder#getClassName\
 
 
 ### addStatusListener
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {void}</span>
+addStatusListener(args) &#x21FE; {void}
+
 
 Listen for any status to be reached. For use cases with the ready status (by far the most common), see onReady() and onceReady() convenience functions. \
 _Overrides_ bcdui.core.DataProviderHolder#addStatusListener
@@ -53,21 +55,24 @@ Type **AddStatusListenerParam**
 
 
 ### debugIsWaitingFor
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {string}</span>
+debugIsWaitingFor() &#x21FE; {string}
+
  \
 _Overrides_ bcdui.core.DataProviderHolder#debugIsWaitingFor\
 **Returns** {string}: Human readable message, which DataProviders, this DataProvider depends on, are not currently in ready state
 
 
 ### debugStatus
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {string}</span>
+debugStatus() &#x21FE; {string}
+
  \
 _Overrides_ bcdui.core.DataProviderHolder#debugStatus\
 **Returns** {string}: Human readable message about the current state state
 
 
 ### execute
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(doesRefresh?) &#x21FE; {void}</span>
+execute(doesRefresh?) &#x21FE; {void}
+
 
 <b>Instead of calling this method directly, better rely on a Renderer or on method onReady().</b><br/>Executes the process implemented by the concrete sub-classThis method is called by the Renderer when it is ready to render the modelIt is often asynchronous.Note, Renderer and sub-classes execute all input models recursively automatically.This means, usually you do not need to call this method directly. Note: it is asynchronous.Use method .onReady({executeIfNotReady: true, onSuccess: callback }) if no Renderer is involved. \
 _Overrides_ bcdui.core.DataProviderHolder#execute
@@ -80,15 +85,21 @@ _Overrides_ bcdui.core.DataProviderHolder#execute
 
 
 ### fetchData
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {Promise.\<bcdui.core.DataProvider>}</span>
+fetchData() &#x21FE; {Promise.\<bcdui.core.DataProvider>}
+
 
 asynchronously fetch data for this data provider. \
 _Overrides_ bcdui.core.DataProviderHolder#fetchData\
 **Returns** {Promise.\<bcdui.core.DataProvider>}: resolving once data has been loaded, first argument is this instance
+#### Examples
+````js
+new bcdui.core.SimpleModel("data.xml").fetchData().then((dp)=>{ console.info(dp.getData()); })
+````
 
 
 ### fire
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {void}</span>
+fire() &#x21FE; {void}
+
 
 Informs listeners that data was modified \
 _Overrides_ bcdui.core.DataProviderHolder#fire\
@@ -96,7 +107,8 @@ _Overrides_ bcdui.core.DataProviderHolder#fire\
 
 
 ### getData
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {*}</span>
+getData() &#x21FE; {*}
+
 
 Access to the data of this DataProvider for read and modification access \
 _Inherited from_ bcdui.core.DataProvider\
@@ -104,7 +116,8 @@ _Inherited from_ bcdui.core.DataProvider\
 
 
 ### getFailedStatus
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {Array.\<bcdui.core.Status>}</span>
+getFailedStatus() &#x21FE; {Array.\<bcdui.core.Status>}
+
 
 Getter for the list of error statuses of this class. This implementation returns anempty list. \
 _Overrides_ bcdui.core.DataProviderHolder#getFailedStatus\
@@ -112,7 +125,8 @@ _Overrides_ bcdui.core.DataProviderHolder#getFailedStatus\
 
 
 ### getName
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {string}</span>
+getName() &#x21FE; {string}
+
 
 Getter for the name of the data provider. This name is for example usedto set parameters names of a [bcdui.core.TransformationChain](bcdui.core.TransformationChain.md). \
 _Overrides_ bcdui.core.DataProviderHolder#getName\
@@ -120,7 +134,8 @@ _Overrides_ bcdui.core.DataProviderHolder#getName\
 
 
 ### getReadyStatus
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {bcdui.core.Status}</span>
+getReadyStatus() &#x21FE; {bcdui.core.Status}
+
 
 Getter for the ready status of the instance. This status is a final statedefined by each sub-class which is reached when the process has finishednormally. \
 _Overrides_ bcdui.core.DataProviderHolder#getReadyStatus\
@@ -128,7 +143,8 @@ _Overrides_ bcdui.core.DataProviderHolder#getReadyStatus\
 
 
 ### getStatus
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {bcdui.core.Status}</span>
+getStatus() &#x21FE; {bcdui.core.Status}
+
 
 Getter for the status of this object. See [bcdui.core.status](bcdui.core.status.md) for possible return values. \
 _Overrides_ bcdui.core.DataProviderHolder#getStatus\
@@ -136,7 +152,8 @@ _Overrides_ bcdui.core.DataProviderHolder#getStatus\
 
 
 ### hasFailed
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {boolean}</span>
+hasFailed() &#x21FE; {boolean}
+
 
 Tests if the object has reached a failure status. These status codes arereturned by the "getFailedStatus" method. \
 _Overrides_ bcdui.core.DataProviderHolder#hasFailed\
@@ -144,7 +161,8 @@ _Overrides_ bcdui.core.DataProviderHolder#hasFailed\
 
 
 ### isClean
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {boolean}</span>
+isClean() &#x21FE; {boolean}
+
 
 True, if DataProvider is ready and there are no uncommitted write transactions,see [isReady()](bcdui.core.AbstractExecutable#isReady.md) and [fire()](bcdui.core.DataProvider#onChange.md). \
 _Overrides_ bcdui.core.DataProviderHolder#isClean\
@@ -152,7 +170,8 @@ _Overrides_ bcdui.core.DataProviderHolder#isClean\
 
 
 ### isReady
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {boolean}</span>
+isReady() &#x21FE; {boolean}
+
 
 Tests if the current state is the readyStatus. This status is the samestatus as returned by "getReadyStatus". \
 _Overrides_ bcdui.core.DataProviderHolder#isReady\
@@ -160,7 +179,8 @@ _Overrides_ bcdui.core.DataProviderHolder#isReady\
 
 
 ### onceReady
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(listenerObject) &#x21FE; {void}</span>
+onceReady(listenerObject) &#x21FE; {void}
+
  \
 _Overrides_ bcdui.core.DataProviderHolder#onceReady
 
@@ -177,10 +197,15 @@ Type **OnceReadyParam**
 | executeIfNotReady | boolean | false | do execute [bcdui.core.AbstractExecutable](bcdui.core.AbstractExecutable.md) if it's not ready |
 
 **Returns** {void}
+#### Examples
+````js
+myModel.onceReady({onSuccess: myCallback, executeIfNotReady: true})
+````
 
 
 ### onChange
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(listenerObject, trackingXPath?) &#x21FE; {void}</span>
+onChange(listenerObject, trackingXPath?) &#x21FE; {void}
+
  \
 _Overrides_ bcdui.core.DataProviderHolder#onChange
 
@@ -202,7 +227,8 @@ Type **OnChangeParam**
 
 
 ### onReady
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(listenerObject) &#x21FE; {void}</span>
+onReady(listenerObject) &#x21FE; {void}
+
  \
 _Overrides_ bcdui.core.DataProviderHolder#onReady
 
@@ -221,10 +247,15 @@ Type **OnReadyParam**
 | executeIfNotReady | boolean | false | do execute [bcdui.core.AbstractExecutable](bcdui.core.AbstractExecutable.md) if it's not ready |
 
 **Returns** {void}
+#### Examples
+````js
+myModel.onReady({onSuccess: function(){ console.log("ready") }, executeIfNotReady: true, onlyFuture: true})
+````
 
 
 ### promptData
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {void}</span>
+promptData() &#x21FE; {void}
+
 
 Convenience method for debugging showing data in a prompt for copy-and-paste \
 _Overrides_ bcdui.core.DataProviderHolder#promptData\
@@ -232,7 +263,8 @@ _Overrides_ bcdui.core.DataProviderHolder#promptData\
 
 
 ### query
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(xPath) &#x21FE; {DomNode}</span>
+query(xPath) &#x21FE; {DomNode}
+
 
 Reads a single node from a given xPath \
 _Overrides_ bcdui.core.DataProviderHolder#query
@@ -245,7 +277,8 @@ _Overrides_ bcdui.core.DataProviderHolder#query
 
 
 ### queryNodes
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(xPath) &#x21FE; {Array.\<DomNode>}</span>
+queryNodes(xPath) &#x21FE; {Array.\<DomNode>}
+
 
 Get node list from a given xPath \
 _Overrides_ bcdui.core.DataProviderHolder#queryNodes
@@ -258,7 +291,8 @@ _Overrides_ bcdui.core.DataProviderHolder#queryNodes
 
 
 ### read
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(xPath, fillParams?, defaultValue?) &#x21FE; {string}</span>
+read(xPath, fillParams?, defaultValue?) &#x21FE; {string}
+
 
 Reads value from a given xPath (or optionally return default value) \
 _Overrides_ bcdui.core.DataProviderHolder#read
@@ -273,7 +307,8 @@ _Overrides_ bcdui.core.DataProviderHolder#read
 
 
 ### remove
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(xPath, fillParams?, fire?) &#x21FE; {void}</span>
+remove(xPath, fillParams?, fire?) &#x21FE; {void}
+
 
 removes given xPath \
 _Overrides_ bcdui.core.DataProviderHolder#remove
@@ -288,7 +323,8 @@ _Overrides_ bcdui.core.DataProviderHolder#remove
 
 
 ### removeDataListener
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(listenerObject) &#x21FE; {void}</span>
+removeDataListener(listenerObject) &#x21FE; {void}
+
  \
 _Overrides_ bcdui.core.DataProviderHolder#removeDataListener
 
@@ -307,7 +343,8 @@ Type **RemoveDataListenerParam**
 
 
 ### removeStatusListener
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {void}</span>
+removeStatusListener(args) &#x21FE; {void}
+
  \
 _Overrides_ bcdui.core.DataProviderHolder#removeStatusListener
 
@@ -326,7 +363,8 @@ Type **RemoveStatusListenerParam**
 
 
 ### sendData
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {void}</span>
+sendData() &#x21FE; {void}
+
 
 Sends the current data to the original URL \
 _Overrides_ bcdui.core.DataProviderHolder#sendData\
@@ -334,7 +372,8 @@ _Overrides_ bcdui.core.DataProviderHolder#sendData\
 
 
 ### serialize
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {string}</span>
+serialize() &#x21FE; {string}
+
 
 Serialize dataprovider's data if available \
 _Overrides_ bcdui.core.DataProviderHolder#serialize\
@@ -342,7 +381,8 @@ _Overrides_ bcdui.core.DataProviderHolder#serialize\
 
 
 ### setSource
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {void}</span>
+setSource() &#x21FE; {void}
+
 
 Set the underlying source delayed instead of via the constructor.The DataProviderHolder does only become ready after the source was set and is or becomes ready. \
 _Overrides_ bcdui.core.DataProviderHolder#setSource\
@@ -350,7 +390,8 @@ _Overrides_ bcdui.core.DataProviderHolder#setSource\
 
 
 ### setStatus
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {void}</span>
+setStatus(args) &#x21FE; {void}
+
 
 Makes a transition from the current status to the new status if theyare not equal. After the status is changed it fires the status eventto the registered listeners.<p/>Usually this method will only be called by the library but you can use it to re-trigger an action. For available statuses and their effect, see the concrete class, \
 _Overrides_ bcdui.core.DataProviderHolder#setStatus
@@ -363,7 +404,8 @@ _Overrides_ bcdui.core.DataProviderHolder#setStatus
 
 
 ### tblDelete
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {number}</span>
+tblDelete(args) &#x21FE; {number}
+
 
 updates wrs rows with given data. Either a single row (via rowId) or single/multiple ones (via filter) \
 _Overrides_ bcdui.core.DataProviderHolder#tblDelete
@@ -380,7 +422,8 @@ _Overrides_ bcdui.core.DataProviderHolder#tblDelete
 
 
 ### tblInsert
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {string}</span>
+tblInsert(args) &#x21FE; {string}
+
 
 inserts a new row in the wrs data, values given as object \
 _Overrides_ bcdui.core.DataProviderHolder#tblInsert
@@ -396,7 +439,8 @@ _Overrides_ bcdui.core.DataProviderHolder#tblInsert
 
 
 ### tblSelect
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {Array.\<Object>}</span>
+tblSelect(args) &#x21FE; {Array.\<Object>}
+
 
 returns an array of requested data \
 _Overrides_ bcdui.core.DataProviderHolder#tblSelect
@@ -411,7 +455,8 @@ _Overrides_ bcdui.core.DataProviderHolder#tblSelect
 
 
 ### tblSelectRow
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {Object}</span>
+tblSelectRow(args) &#x21FE; {Object}
+
 
 returns one object representing the filtered data (either filter or rowId). In case of multiple filter matches, the first one is returned \
 _Overrides_ bcdui.core.DataProviderHolder#tblSelectRow
@@ -427,7 +472,8 @@ _Overrides_ bcdui.core.DataProviderHolder#tblSelectRow
 
 
 ### tblUpdate
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {number}</span>
+tblUpdate(args) &#x21FE; {number}
+
 
 updates wrs rows with given data. Either a single row (via rowId) or single/multiple ones (via filter) \
 _Overrides_ bcdui.core.DataProviderHolder#tblUpdate
@@ -445,7 +491,8 @@ _Overrides_ bcdui.core.DataProviderHolder#tblUpdate
 
 
 ### toString
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {string}</span>
+toString() &#x21FE; {string}
+
 
 Useful for debugging. \
 _Overrides_ bcdui.core.DataProviderHolder#toString\
@@ -453,7 +500,8 @@ _Overrides_ bcdui.core.DataProviderHolder#toString\
 
 
 ### write
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(xPath, fillParams?, value?, fire?) &#x21FE; {DomNode}</span>
+write(xPath, fillParams?, value?, fire?) &#x21FE; {DomNode}
+
 
 Set a value to on a certain xPath and create the xPath where necessary. This combines Element.evaluate() for a single node with creating the path where necessary. It will prefer extending an existing start-part over creating a second one.After the operation the xPath (with the optional value) is guaranteed to exist (pre-existing or created or extended) and the addressed node is returned. \
 _Overrides_ bcdui.core.DataProviderHolder#write

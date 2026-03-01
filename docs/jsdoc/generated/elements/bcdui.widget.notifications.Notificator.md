@@ -1,12 +1,11 @@
 # Class Notificator
-<span hidden class='htmlPackage'>bcdui.widget.notifications</span>
+package bcdui.widget.notifications
+
 Notificator component displaying user notifications
 
 ## Constructor
 
-
-
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {void}</span>
+---
 
 
 | Name     | Type     | Default  | Description |
@@ -16,11 +15,13 @@ Notificator component displaying user notifications
 | args.attachMouseHandler? | boolean | false | if true, the mousehover/unhover will close the box |
 | args.autoHideMs? | integer | 0 | if greater 0, the box will autohide after that amount of ms, otherwise the box has to be closed manually |
 
+<!-- LLM_HINT DETAILS_STARTING -->
 ## Methods
 
 
 ### addMessage
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(message, type?, anchorId?) &#x21FE; {void}</span>
+addMessage(message, type?, anchorId?) &#x21FE; {void}
+
 
 adds a message to notificator and displays notificator if appropriate
 
@@ -34,28 +35,32 @@ adds a message to notificator and displays notificator if appropriate
 
 
 ### displayNotificationBar
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {void}</span>
+displayNotificationBar() &#x21FE; {void}
+
 
 displays notification bar rendering messages in the queue\
 **Returns** {void}
 
 
 ### hideNotificationBar
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {void}</span>
+hideNotificationBar() &#x21FE; {void}
+
 
 hides notification bar\
 **Returns** {void}
 
 
 ### removeAllMessages
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {void}</span>
+removeAllMessages() &#x21FE; {void}
+
 
 removes all messages and hides notification window\
 **Returns** {void}
 
 
 ### showNotificationBar
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {void}</span>
+showNotificationBar() &#x21FE; {void}
+
 
 shows notification bar\
 **Returns** {void}

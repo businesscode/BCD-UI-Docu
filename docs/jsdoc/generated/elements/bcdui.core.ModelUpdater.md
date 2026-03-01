@@ -1,5 +1,6 @@
 # Class ModelUpdater
-<span hidden class='htmlPackage'>bcdui.core</span>
+package bcdui.core
+
 A concrete subclass of [TransformationChain](bcdui.core.TransformationChain.md), replacing its targetModel's content with the result of the transformation applied to it.Can be applied to all concrete subclasses of [AbstractUpdatableModel](bcdui.core.AbstractUpdatableModel.md), like [StaticModel](bcdui.core.StaticModel.md) or [SimpleModel](bcdui.core.SimpleModel.md)Technically, this is a bcdui.core.TransformationChain object but it should not be executed, fired, modified or read from directly.
 
 _Extends_ [bcdui.core.TransformationChain](bcdui.core.TransformationChain.md), can act as a DataProvider
@@ -10,9 +11,7 @@ var myMU = new bcdui.core.ModelUpdater({ chain: ["myRenderer.xslt", finalCleanup
   ````
 
 
-
-
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {void}</span>
+---
 
 
 | Name     | Type     | Default  | Description |
@@ -28,11 +27,17 @@ var myMU = new bcdui.core.ModelUpdater({ chain: ["myRenderer.xslt", finalCleanup
 ````js
 // Example for a default value for the GuiStatus: If no filter is set, limit the id range new bcdui.core.ModelUpdater({ targetModel: bcdui.wkModels.guiStatus , autoUpdate: false,   chain: function guiStatusFilter(guiStatusDataDoc) {     if( guiStatusDataDoc.selectSingleNode("/guiStatus:Status/f:Filter" ) === null) {       bcdui.core.createElementWithPrototype(guiStatusDataDoc, "/guiStatus:Status/f:Filter/f:Expression[@bRef='id' and @op='>=' and @value='1030000']");       bcdui.core.createElementWithPrototype(guiStatusDataDoc, "/guiStatus:Status/f:Filter/f:Expression[@bRef='id' and @op='<=' and @value='1030125']");     }   } });
 ````
+#### Examples
+````js
+// Example for a default value for the GuiStatus: If no filter is set, limit the id range new bcdui.core.ModelUpdater({ targetModel: bcdui.wkModels.guiStatus , autoUpdate: false,   chain: function guiStatusFilter(guiStatusDataDoc) {     if( guiStatusDataDoc.selectSingleNode("/guiStatus:Status/f:Filter" ) === null) {       bcdui.core.createElementWithPrototype(guiStatusDataDoc, "/guiStatus:Status/f:Filter/f:Expression[@bRef='id' and @op='>=' and @value='1030000']");       bcdui.core.createElementWithPrototype(guiStatusDataDoc, "/guiStatus:Status/f:Filter/f:Expression[@bRef='id' and @op='<=' and @value='1030125']");     }   } });
+````
+<!-- LLM_HINT DETAILS_STARTING -->
 ## Methods
 
 
 ### getClassName
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {string}</span>
+getClassName() &#x21FE; {string}
+
 
 Get className \
 _Overrides_ bcdui.core.TransformationChain#getClassName\
@@ -40,7 +45,8 @@ _Overrides_ bcdui.core.TransformationChain#getClassName\
 
 
 ### addDataProvider
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(newDataProvider, newName?) &#x21FE; {bcdui.core.DataProvider}</span>
+addDataProvider(newDataProvider, newName?) &#x21FE; {bcdui.core.DataProvider}
+
 
 Adds a new data provider to the transformation chain. If there is already a data providerwith the given name it is replaced. \
 _Overrides_ bcdui.core.TransformationChain#addDataProvider
@@ -54,7 +60,8 @@ _Overrides_ bcdui.core.TransformationChain#addDataProvider
 
 
 ### addStatusListener
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {void}</span>
+addStatusListener(args) &#x21FE; {void}
+
 
 Listen for any status to be reached. For use cases with the ready status (by far the most common), see onReady() and onceReady() convenience functions. \
 _Overrides_ bcdui.core.TransformationChain#addStatusListener
@@ -74,21 +81,24 @@ Type **AddStatusListenerParam**
 
 
 ### debugIsWaitingFor
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {string}</span>
+debugIsWaitingFor() &#x21FE; {string}
+
  \
 _Overrides_ bcdui.core.TransformationChain#debugIsWaitingFor\
 **Returns** {string}: Human readable message, which DataProviders, this DataProvider depends on, are not currently in ready state
 
 
 ### debugStatus
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {string}</span>
+debugStatus() &#x21FE; {string}
+
  \
 _Overrides_ bcdui.core.TransformationChain#debugStatus\
 **Returns** {string}: Human readable message about the current state state
 
 
 ### execute
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(doesRefresh?) &#x21FE; {void}</span>
+execute(doesRefresh?) &#x21FE; {void}
+
 
 <b>Instead of calling this method directly, better rely on a Renderer or on method onReady().</b><br/>Executes the process implemented by the concrete sub-classThis method is called by the Renderer when it is ready to render the modelIt is often asynchronous.Note, Renderer and sub-classes execute all input models recursively automatically.This means, usually you do not need to call this method directly. Note: it is asynchronous.Use method .onReady({executeIfNotReady: true, onSuccess: callback }) if no Renderer is involved. \
 _Overrides_ bcdui.core.TransformationChain#execute
@@ -101,23 +111,34 @@ _Overrides_ bcdui.core.TransformationChain#execute
 
 
 ### fetchData
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {Promise.\<bcdui.core.DataProvider>}</span>
+fetchData() &#x21FE; {Promise.\<bcdui.core.DataProvider>}
+
 
 asynchronously fetch data for this data provider. \
 _Overrides_ bcdui.core.TransformationChain#fetchData\
 **Returns** {Promise.\<bcdui.core.DataProvider>}: resolving once data has been loaded, first argument is this instance
+#### Examples
+````js
+new bcdui.core.SimpleModel("data.xml").fetchData().then((dp)=>{ console.info(dp.getData()); })
+````
 
 
 ### fire
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {void}</span>
+fire() &#x21FE; {void}
+
 
 This informs modification listeners, registered via [onChange(args)](bcdui.core.DataProvider#onChange.md), that a change set was completedand data is consistent again. \
 _Overrides_ bcdui.core.TransformationChain#fire\
 **Returns** {void}
+#### Examples
+````js
+// Use of data modification eventsvar model = new bcdui.core.StaticModel({ data: { value: 3 } });model.execute();model.onChange( function(m) {  console.log(m.getData().value);});model.getData().value ++;model.fire(); // console prints '4'
+````
 
 
 ### getData
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {*}</span>
+getData() &#x21FE; {*}
+
 
 A getter for the document produced by the transformation chain. \
 _Overrides_ bcdui.core.TransformationChain#getData\
@@ -125,7 +146,8 @@ _Overrides_ bcdui.core.TransformationChain#getData\
 
 
 ### getDataProviderByName
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(name) &#x21FE; {bcdui.core.DataProvider}</span>
+getDataProviderByName(name) &#x21FE; {bcdui.core.DataProvider}
+
  \
 _Overrides_ bcdui.core.TransformationChain#getDataProviderByName
 
@@ -137,7 +159,8 @@ _Overrides_ bcdui.core.TransformationChain#getDataProviderByName
 
 
 ### getFailedStatus
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {Array.\<bcdui.core.Status>}</span>
+getFailedStatus() &#x21FE; {Array.\<bcdui.core.Status>}
+
 
 Getter for the list of error statuses of this class. This implementation returns anempty list. \
 _Overrides_ bcdui.core.TransformationChain#getFailedStatus\
@@ -145,7 +168,8 @@ _Overrides_ bcdui.core.TransformationChain#getFailedStatus\
 
 
 ### getName
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {string}</span>
+getName() &#x21FE; {string}
+
 
 Getter for the name of the data provider. This name is for example usedto set parameters names of a [bcdui.core.TransformationChain](bcdui.core.TransformationChain.md). \
 _Overrides_ bcdui.core.TransformationChain#getName\
@@ -153,7 +177,8 @@ _Overrides_ bcdui.core.TransformationChain#getName\
 
 
 ### getPrimaryModel
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {bcdui.core.DataProvider}</span>
+getPrimaryModel() &#x21FE; {bcdui.core.DataProvider}
+
 
 Getter for the primary model of the chain. The first transformation ofthe chain takes a document as input. This document comes from theprimary model. \
 _Overrides_ bcdui.core.TransformationChain#getPrimaryModel\
@@ -161,7 +186,8 @@ _Overrides_ bcdui.core.TransformationChain#getPrimaryModel\
 
 
 ### getReadyStatus
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {bcdui.core.Status}</span>
+getReadyStatus() &#x21FE; {bcdui.core.Status}
+
 
 The ready status for the transformation chain is reached as soon as alltransformations are finished.<p> The status transitions of the class are as follows:          </p>                                                              <p style="padding-left: 10px"><table><tr><td style="border: 3px double black; text-align: center" colspan="2">     Initialized                                              </td><td style="padding-left: 20px">         All variables have been initialized.                                                              </td></tr><tr><td>&nbsp;</td><td style="border-left: 1px solid black">&nbsp;</td><td></td></tr><tr><td style="border: 1px solid black; text-align: center" colspan="2">     Loading                                                  </td><td style="padding-left: 20px">         Start loading chain document.                                                              </td></tr><tr><td>&nbsp;</td><td style="border-left: 1px solid black">&nbsp;</td><td></td></tr><tr><td style="border: 1px solid black; text-align: center" colspan="2">     ChainLoaded                                              </td><td style="padding-left: 20px">         The chain document has been loaded. Start         loading chain stylesheets.                                                              </td></tr><tr><td>&nbsp;</td><td style="border-left: 1px solid black">&nbsp;</td><td></td></tr><tr><td style="border: 1px solid black; text-align: center" colspan="2"> <i> WaitingForParameters </i>                                </td><td style="padding-left: 20px">         Chain stylesheets loaded. Waiting for         parameter data providers (<i>execute</i>).                                                              </td></tr><tr><td>&nbsp;</td><td style="border-left: 1px solid black">&nbsp;</td><td></td></tr><tr><td style="border: 1px solid black; text-align: center" colspan="2">     Transforming                                             </td><td style="padding-left: 20px">         The chain stylesheets are running.                                                              </td></tr><tr><td>&nbsp;</td><td style="border-left: 1px solid black">&nbsp;</td><td></td></tr><tr><td style="border: 3px double black; text-align: center" colspan="2"> <b> Transformed </b>                                         </td><td style="padding-left: 20px">         The output has been generated. (<b>ready</b>)</td></tr></table></p> \
 _Overrides_ bcdui.core.TransformationChain#getReadyStatus\
@@ -169,7 +195,8 @@ _Overrides_ bcdui.core.TransformationChain#getReadyStatus\
 
 
 ### getStatus
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {bcdui.core.Status}</span>
+getStatus() &#x21FE; {bcdui.core.Status}
+
 
 Getter for the status of this object. See [bcdui.core.status](bcdui.core.status.md) for possible return values. \
 _Overrides_ bcdui.core.TransformationChain#getStatus\
@@ -177,7 +204,8 @@ _Overrides_ bcdui.core.TransformationChain#getStatus\
 
 
 ### hasFailed
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {boolean}</span>
+hasFailed() &#x21FE; {boolean}
+
 
 Tests if the object has reached a failure status. These status codes arereturned by the "getFailedStatus" method. \
 _Overrides_ bcdui.core.TransformationChain#hasFailed\
@@ -185,7 +213,8 @@ _Overrides_ bcdui.core.TransformationChain#hasFailed\
 
 
 ### isClean
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {boolean}</span>
+isClean() &#x21FE; {boolean}
+
 
 True, if DataProvider is ready and there are no uncommitted write transactions,see [isReady()](bcdui.core.AbstractExecutable#isReady.md) and [fire()](bcdui.core.DataProvider#onChange.md). \
 _Overrides_ bcdui.core.TransformationChain#isClean\
@@ -193,7 +222,8 @@ _Overrides_ bcdui.core.TransformationChain#isClean\
 
 
 ### isReady
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {boolean}</span>
+isReady() &#x21FE; {boolean}
+
 
 Tests if the current state is the readyStatus. This status is the samestatus as returned by "getReadyStatus". \
 _Overrides_ bcdui.core.TransformationChain#isReady\
@@ -201,7 +231,8 @@ _Overrides_ bcdui.core.TransformationChain#isReady\
 
 
 ### onceReady
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(listenerObject) &#x21FE; {void}</span>
+onceReady(listenerObject) &#x21FE; {void}
+
  \
 _Overrides_ bcdui.core.TransformationChain#onceReady
 
@@ -218,10 +249,15 @@ Type **OnceReadyParam**
 | executeIfNotReady | boolean | false | do execute [bcdui.core.AbstractExecutable](bcdui.core.AbstractExecutable.md) if it's not ready |
 
 **Returns** {void}
+#### Examples
+````js
+myModel.onceReady({onSuccess: myCallback, executeIfNotReady: true})
+````
 
 
 ### onChange
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(listenerObject, trackingXPath?) &#x21FE; {void}</span>
+onChange(listenerObject, trackingXPath?) &#x21FE; {void}
+
  \
 _Overrides_ bcdui.core.TransformationChain#onChange
 
@@ -243,7 +279,8 @@ Type **OnChangeParam**
 
 
 ### onReady
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(listenerObject) &#x21FE; {void}</span>
+onReady(listenerObject) &#x21FE; {void}
+
  \
 _Overrides_ bcdui.core.TransformationChain#onReady
 
@@ -262,10 +299,15 @@ Type **OnReadyParam**
 | executeIfNotReady | boolean | false | do execute [bcdui.core.AbstractExecutable](bcdui.core.AbstractExecutable.md) if it's not ready |
 
 **Returns** {void}
+#### Examples
+````js
+myModel.onReady({onSuccess: function(){ console.log("ready") }, executeIfNotReady: true, onlyFuture: true})
+````
 
 
 ### promptData
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {void}</span>
+promptData() &#x21FE; {void}
+
 
 Convenience method for debugging showing data in a prompt for copy-and-paste \
 _Overrides_ bcdui.core.TransformationChain#promptData\
@@ -273,7 +315,8 @@ _Overrides_ bcdui.core.TransformationChain#promptData\
 
 
 ### query
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(xPath, fillParams?) &#x21FE; {DomNode}</span>
+query(xPath, fillParams?) &#x21FE; {DomNode}
+
 
 Reads a single node from a given xPath \
 _Overrides_ bcdui.core.TransformationChain#query
@@ -287,7 +330,8 @@ _Overrides_ bcdui.core.TransformationChain#query
 
 
 ### queryNodes
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(xPath, fillParams?) &#x21FE; {Array.\<DomNode>}</span>
+queryNodes(xPath, fillParams?) &#x21FE; {Array.\<DomNode>}
+
 
 Get node list from a given xPath \
 _Overrides_ bcdui.core.TransformationChain#queryNodes
@@ -301,7 +345,8 @@ _Overrides_ bcdui.core.TransformationChain#queryNodes
 
 
 ### read
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(xPath, fillParams?, defaultValue?) &#x21FE; {string}</span>
+read(xPath, fillParams?, defaultValue?) &#x21FE; {string}
+
 
 Reads the string value from a given xPath (or optionally return default value). \
 _Overrides_ bcdui.core.TransformationChain#read
@@ -316,7 +361,8 @@ _Overrides_ bcdui.core.TransformationChain#read
 
 
 ### reloadStylesheets
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {void}</span>
+reloadStylesheets() &#x21FE; {void}
+
 
 Start the loading process of the stylesheets and executes the transformationsagain. \
 _Overrides_ bcdui.core.TransformationChain#reloadStylesheets\
@@ -324,7 +370,8 @@ _Overrides_ bcdui.core.TransformationChain#reloadStylesheets\
 
 
 ### remove
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(xPath, fillParams?, fire?) &#x21FE; {void}</span>
+remove(xPath, fillParams?, fire?) &#x21FE; {void}
+
 
 Deletes data at a given xPath from the model \
 _Overrides_ bcdui.core.TransformationChain#remove
@@ -339,7 +386,8 @@ _Overrides_ bcdui.core.TransformationChain#remove
 
 
 ### removeDataListener
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(listenerObject) &#x21FE; {void}</span>
+removeDataListener(listenerObject) &#x21FE; {void}
+
  \
 _Overrides_ bcdui.core.TransformationChain#removeDataListener
 
@@ -358,7 +406,8 @@ Type **RemoveDataListenerParam**
 
 
 ### removeStatusListener
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {void}</span>
+removeStatusListener(args) &#x21FE; {void}
+
  \
 _Overrides_ bcdui.core.TransformationChain#removeStatusListener
 
@@ -377,7 +426,8 @@ Type **RemoveStatusListenerParam**
 
 
 ### sendData
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {void}</span>
+sendData() &#x21FE; {void}
+
 
 Sends the current data to the original URL \
 _Overrides_ bcdui.core.TransformationChain#sendData\
@@ -385,7 +435,8 @@ _Overrides_ bcdui.core.TransformationChain#sendData\
 
 
 ### serialize
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {string}</span>
+serialize() &#x21FE; {string}
+
 
 Serialize dataprovider's data if available \
 _Overrides_ bcdui.core.TransformationChain#serialize\
@@ -393,7 +444,8 @@ _Overrides_ bcdui.core.TransformationChain#serialize\
 
 
 ### setPrimaryModel
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(primaryModel) &#x21FE; {void}</span>
+setPrimaryModel(primaryModel) &#x21FE; {void}
+
 
 Adds a new data provider to the list which becomes the new primary modelof the transformation chain. \
 _Overrides_ bcdui.core.TransformationChain#setPrimaryModel
@@ -406,7 +458,8 @@ _Overrides_ bcdui.core.TransformationChain#setPrimaryModel
 
 
 ### setStatus
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {void}</span>
+setStatus(args) &#x21FE; {void}
+
 
 Makes a transition from the current status to the new status if theyare not equal. After the status is changed it fires the status eventto the registered listeners.<p/>Usually this method will only be called by the library but you can use it to re-trigger an action. For available statuses and their effect, see the concrete class, \
 _Overrides_ bcdui.core.TransformationChain#setStatus
@@ -419,7 +472,8 @@ _Overrides_ bcdui.core.TransformationChain#setStatus
 
 
 ### tblDelete
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {number}</span>
+tblDelete(args) &#x21FE; {number}
+
 
 updates wrs rows with given data. Either a single row (via rowId) or single/multiple ones (via filter) \
 _Overrides_ bcdui.core.TransformationChain#tblDelete
@@ -436,7 +490,8 @@ _Overrides_ bcdui.core.TransformationChain#tblDelete
 
 
 ### tblInsert
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {string}</span>
+tblInsert(args) &#x21FE; {string}
+
 
 inserts a new row in the wrs data, values given as object \
 _Overrides_ bcdui.core.TransformationChain#tblInsert
@@ -452,7 +507,8 @@ _Overrides_ bcdui.core.TransformationChain#tblInsert
 
 
 ### tblSelect
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {Array.\<Object>}</span>
+tblSelect(args) &#x21FE; {Array.\<Object>}
+
 
 returns an array of requested data \
 _Overrides_ bcdui.core.TransformationChain#tblSelect
@@ -467,7 +523,8 @@ _Overrides_ bcdui.core.TransformationChain#tblSelect
 
 
 ### tblSelectRow
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {Object}</span>
+tblSelectRow(args) &#x21FE; {Object}
+
 
 returns one object representing the filtered data (either filter or rowId). In case of multiple filter matches, the first one is returned \
 _Overrides_ bcdui.core.TransformationChain#tblSelectRow
@@ -483,7 +540,8 @@ _Overrides_ bcdui.core.TransformationChain#tblSelectRow
 
 
 ### tblUpdate
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {number}</span>
+tblUpdate(args) &#x21FE; {number}
+
 
 updates wrs rows with given data. Either a single row (via rowId) or single/multiple ones (via filter) \
 _Overrides_ bcdui.core.TransformationChain#tblUpdate
@@ -501,7 +559,8 @@ _Overrides_ bcdui.core.TransformationChain#tblUpdate
 
 
 ### toString
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {string}</span>
+toString() &#x21FE; {string}
+
 
 Useful for debugging. \
 _Overrides_ bcdui.core.TransformationChain#toString\
@@ -509,16 +568,21 @@ _Overrides_ bcdui.core.TransformationChain#toString\
 
 
 ### write
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(xPath, fillParams?, value?, fire?) &#x21FE; {DomNode}</span>
+write(xPath, fillParams?, value?, fire?) &#x21FE; {DomNode}
+
 
 Set a value to on a certain xPath and create the xPath where necessary. This combines Element.evaluate() for a single node with creating the path where necessary. It will prefer extending an existing start-part over creating a second one.After the operation the xPath (with the optional value) is guaranteed to exist (pre-existing or created or extended) and the addressed node is returned. \
 _Overrides_ bcdui.core.TransformationChain#write
 
 | Name     | Type     | Default  | Description |
 |----------|----------|----------|-------------|
-| xPath | string |  | xPath pointing to the node which is set to the value or plain xPath to be created if not there.<br/>   It tries to reuse all matching parts that are already there. If you provide for example "/n:Root/n:MyElem/@attr2" and there is already "/n:Root/n:MyElem/@attr1", then "/n:Root/n:MyElem" will be "re-used" and get an additional attribute attr2.<br/>   Many expressions are allowed, for example "/n:Root/n:MyElem[@attr1='attr1Value']/n:SubElem" is also ok.<br/>   By nature, some xPath expressions are not allowed, for example using '//' or "/n:Root/n:MyElem/[@attr1 or @attr2]/n:SubElem" is obviously not unambiguous enough and will throw an error.<br/>   This method is Wrs aware, use for example '/wrs:Wrs/wrs:Data/wrs:*[2]/wrs:C[3]' as xPath and it will turn wrs:R[wrs:C] into wrs:M[wrs:C and wrs:O], see Wrs format.<br/>   (can include dot template placeholders which get filled with the given fillParams) |
-| fillParams? | Object |  | array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions<br/>    Example: bcdui.wkModels.guiStatus.write("/guiStatus:Status/guiStatus:ClientSettings/guiStatus:Test[@caption='{{=it[0]}}' and @caption2='{{=it[1]}}']", ["china's republic", "drag\"n drop"]) |
-| value? | string |  | Optional value which should be written, for example to "/n:Root/n:MyElem/@attr" or with "/n:Root/n:MyElem" as the element's text content.<br/>   If not provided, the xPath contains all values like in "/n:Root/n:MyElem[@attr='a' and @attr1='b']" or needs none like "/n:Root/n:MyElem" |
+| xPath | string |  | xPath pointing to the node which is set to the value or plain xPath to be created if not there.<br/>   It tries to reuse all matching parts that are already there. If you provide for example `/n:Root/n:MyElem/@attr2` and there is already `/n:Root/n:MyElem/@attr1`, then `/n:Root/n:MyElem` will be "re-used" and get an additional attribute attr2.<br/>   Many expressions are allowed, for example `/n:Root/n:MyElem[@attr1='attr1Value']/n:SubElem` is also ok.<br/>   By nature, some xPath expressions are not allowed, for example using '//' or `/n:Root/n:MyElem/[@attr1 or @attr2]/n:SubElem` is obviously not unambiguous enough and will throw an error.<br/>   This method is Wrs aware, use for example `/wrs:Wrs/wrs:Data/wrs:*[2]/wrs:C[3]` as xPath, and it will turn wrs:R[wrs:C] into wrs:M[wrs:C and wrs:O], see Wrs format.<br/>   (can include dot template placeholders which get filled with the given fillParams) |
+| fillParams? | Object |  | array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions<br/>    Example: `bcdui.wkModels.guiStatus.write("/guiStatus:Status/guiStatus:ClientSettings/guiStatus:Test[@caption='{{=it[0]}}' and @caption2='{{=it[1]}}']", ["china's republic", "drag\"n drop"])` |
+| value? | string |  | Optional value which should be written, for example to `/n:Root/n:MyElem/@attr` or with `/n:Root/n:MyElem` as the element's text content.<br/>   If not provided, the xPath contains all values like in `/n:Root/n:MyElem[@attr='a' and @attr1='b']` or needs none like `/n:Root/n:MyElem` |
 | fire? | boolean | false | If true a fire is triggered to inform data modification listeners |
 
 **Returns** {DomNode}: The xPath's node or null if dataProvider isn't ready
+#### Examples
+````js
+// To change an individual value, use this to set the second column in the 3rd row to 'HALLO'.// It turns the row into a proper `wrs:M`, if it detects the model is a Wrs.// Writing by pointing to a node. wrs:* makes sure that it matches wrs:R as well as wrs:MmyModel.write("/wrs:Wrs/wrs:Data/wrs:*[3]/wrs:C[2]", "HELLO")// Writing 2 values by describing, what xPath should match: wrs:*[3][..]// If the row 3 does not exist, it is created (wrs:I)myModel.write("/wrs:Wrs/wrs:Data/wrs:*[3][wrs:C[1]='{{=it[0]}}' and wrs:C[2]='{{=it[2]}}']", ["HELLO", "WORLD"])
+````

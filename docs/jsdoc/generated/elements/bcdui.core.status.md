@@ -1,18 +1,19 @@
 # Class Status
-<span hidden class='htmlPackage'>bcdui.core</span>
+package bcdui.core
+
 An abstract base class, representing a Status.See [bcdui.core.status](bcdui.core.status.md) for concrete sub classes.
 
 ## Constructor
 
+---
 
-
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {void}</span>
-
+<!-- LLM_HINT DETAILS_STARTING -->
 ## Methods
 
 
 ### equals
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(status) &#x21FE; {boolean}</span>
+equals(status) &#x21FE; {boolean}
+
 
 Test the status for logical equivalence to another status object. Usuallythis function should test if the target status is of the same class asthis status.
 
@@ -24,18 +25,21 @@ Test the status for logical equivalence to another status object. Usuallythis f
 
 
 ### getCode
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {string}</span>
+getCode() &#x21FE; {string}
+
 \
 **Returns** {string}: A short code for the Status which can be used for debugging.
 
 
 ### getDescription
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {string}</span>
+getDescription() &#x21FE; {string}
+
 \
 **Returns** {string}: A longer description of the Status.
 
 
 ### toString
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {string}</span>
+toString() &#x21FE; {string}
+
 \
 **Returns** {string}: A debug string summarizing this status object.

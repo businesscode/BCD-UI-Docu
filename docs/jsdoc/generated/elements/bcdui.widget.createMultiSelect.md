@@ -26,7 +26,7 @@ bcdui.widget.createMultiSelect({ targetModelXPath: "$guiStatus/cust:Elem/@value"
 | args.widgetCaption? | string |  | A caption which is used as prefix for navPath generation for this widget. |
 | args.enableNavPath? | boolean |  | Set to true if widget should not be added to navpath handling. |
 | args.doSortOptions? | boolean | false | Set to true if widget should sort options. |
-| args.label? | string |  | If provided, renders label element to this input, unless args.isCheckBox = true |
+| args.label? | string |  | If provided, renders label element to this input |
 
 
 **Returns**: {void}

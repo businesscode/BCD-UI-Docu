@@ -1,19 +1,20 @@
 # Class NullStatus
-<span hidden class='htmlPackage'>bcdui.core.status</span>
+package bcdui.core.status
+
 Initial status status indicating that the status of the respective executable object has not yet been set, the object was just created.Usually the object will change to InitializedStatus immediately.
 
 _Extends_ [bcdui.core.Status](bcdui.core.Status.md)
 ## Constructor
 
+---
 
-
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {void}</span>
-
+<!-- LLM_HINT DETAILS_STARTING -->
 ## Methods
 
 
 ### equals
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {boolean}</span>
+equals() &#x21FE; {boolean}
+
 
 Test the status for logical equivalence to another status object. Usuallythis function should test if the target status is of the same class asthis status. \
 _Overrides_ bcdui.core.Status#equals\
@@ -21,21 +22,24 @@ _Overrides_ bcdui.core.Status#equals\
 
 
 ### getCode
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {string}</span>
+getCode() &#x21FE; {string}
+
  \
 _Overrides_ bcdui.core.Status#getCode\
 **Returns** {string}: A short code for the Status which can be used for debugging.
 
 
 ### getDescription
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {string}</span>
+getDescription() &#x21FE; {string}
+
  \
 _Overrides_ bcdui.core.Status#getDescription\
 **Returns** {string}: A longer description of the Status.
 
 
 ### toString
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {string}</span>
+toString() &#x21FE; {string}
+
  \
 _Overrides_ bcdui.core.Status#toString\
 **Returns** {string}: A debug string summarizing this status object.

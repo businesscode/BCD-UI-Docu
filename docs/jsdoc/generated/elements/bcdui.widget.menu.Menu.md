@@ -1,5 +1,6 @@
 # Class Menu
-<span hidden class='htmlPackage'>bcdui.widget.menu</span>
+package bcdui.widget.menu
+
 
 
 ## Constructor
@@ -9,9 +10,7 @@ var myMn = new bcdui.widget.menu.Menu({ rootIdOrElement, name, customConfigFunct
   ````
 
 
-
-
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {void}</span>
+---
 
 
 | Name     | Type     | Default  | Description |
@@ -21,10 +20,12 @@ var myMn = new bcdui.widget.menu.Menu({ rootIdOrElement, name, customConfigFunct
 | args.name | string |  | name of the variable that stores the result<br/>                                                          of this constructor function |
 | args.customConfigFunction | function |  | optional config function to override the default settings<br/>                                                         for an example see Menu.prototype.config |
 
+<!-- LLM_HINT DETAILS_STARTING -->
 ## Methods
 
 
 ### getClassName
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {string}</span>
+getClassName() &#x21FE; {string}
+
 \
 **Returns** {string}: class name

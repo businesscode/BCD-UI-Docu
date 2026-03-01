@@ -11,7 +11,7 @@
 A FAR component.
 
 [FarModel](bcdui.component.far.FarModel.md)\
-Data provider implementation reading far:Configuration document and providing data according to it, you can use this model if you solely wantto read data using far:Configuration..
+DataProvider for Far if you need more fine-grained control.
 
 ----
 <h4>Functions</h4>

@@ -1,5 +1,6 @@
 # Class TreeSupport
-<span hidden class='htmlPackage'>bcdui.widgetNg.connectable</span>
+package bcdui.widgetNg.connectable
+
 Tree support class providing item rendering, controls binding and onItemMoved handler
 
 ## Constructor
@@ -9,9 +10,7 @@ var myTS = new bcdui.widgetNg.connectable.TreeSupport({ levelNodeName, itemNodeN
   ````
 
 
-
-
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(container, config) &#x21FE; {void}</span>
+---
 
 
 | Name     | Type     | Default  | Description |
@@ -25,4 +24,5 @@ var myTS = new bcdui.widgetNg.connectable.TreeSupport({ levelNodeName, itemNodeN
 | config.captionAttrName | string |  | Attribute name of caption attribute, i.e. "caption" |
 | config.leftPaddingLevel? | number | 14 | Left padding in pixels per level depth |
 
+<!-- LLM_HINT DETAILS_STARTING -->
 ## Methods

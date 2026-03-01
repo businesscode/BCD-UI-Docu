@@ -8,11 +8,9 @@ This namespace contains functionality directly related to BCD-UI grid
 
 
 
-[Grid](bcdui.component.grid.Grid.md)\
-Creates a grid UI based on given data or a configuration allowing to edit the data.
+[Grid](bcdui.component.grid.Grid.md)
 
-[GridModel](bcdui.component.grid.GridModel.md)\
-Creates a GridModel.
+[GridModel](bcdui.component.grid.GridModel.md)
 
 ----
 <h4>Functions</h4>

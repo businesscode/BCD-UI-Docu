@@ -1,5 +1,6 @@
 # Class validationToolTip
-<span hidden class='htmlPackage'>bcdui.widget</span>
+package bcdui.widget
+
 Tooltip for widget validation results
 
 ## Constructor
@@ -9,9 +10,7 @@ var myTT = new bcdui.widget.validationToolTip({ id, targetModelId, targetModelXP
   ````
 
 
-
-
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {void}</span>
+---
 
 Initializing tooltip widget
 
@@ -25,4 +24,5 @@ Initializing tooltip widget
 | args.validateWrapperUrl | url |  | xstl transformation which implement concrete validation logic |
 | args.validateWrapperParameters | object |  | parameters that should be passed to validateWrapper |
 
+<!-- LLM_HINT DETAILS_STARTING -->
 ## Methods

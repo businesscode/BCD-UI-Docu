@@ -1,5 +1,6 @@
 # Class XmlChart
-<span hidden class='htmlPackage'>bcdui.component.chart</span>
+package bcdui.component.chart
+
 Implements XML-definition interface. Extends the JS implementation of theChart class allowing an XML definition model as input.
 
 _Extends_ [bcdui.component.chart.Chart](bcdui.component.chart.Chart.md), can act as a DataProvider
@@ -10,9 +11,7 @@ var myXC = new bcdui.component.chart.XmlChart({ targetHtml: "#myDiv", config });
   ````
 
 
-
-
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {void}</span>
+---
 
 Constructor of bcdui.component.XmlChart, called by prototype.
 
@@ -29,11 +28,13 @@ Constructor of bcdui.component.XmlChart, called by prototype.
 | args.width? | number |  | Overwrite the chart's auto-width derived from targetHtml |
 | args.height? | number |  | Overwrite the chart's auto-height derived from targetHtml |
 
+<!-- LLM_HINT DETAILS_STARTING -->
 ## Methods
 
 
 ### getClassName
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {string}</span>
+getClassName() &#x21FE; {string}
+
 
 Get className \
 _Overrides_ bcdui.component.chart.Chart#getClassName\
@@ -41,7 +42,8 @@ _Overrides_ bcdui.component.chart.Chart#getClassName\
 
 
 ### getData
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {document}</span>
+getData() &#x21FE; {document}
+
 
 Not implemented for Chart \
 _Overrides_ bcdui.component.chart.Chart#getData\
@@ -49,7 +51,8 @@ _Overrides_ bcdui.component.chart.Chart#getData\
 
 
 ### getPrimaryModel
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {bcdui.core.DataProvider}</span>
+getPrimaryModel() &#x21FE; {bcdui.core.DataProvider}
+
 
 Not implemented for Chart \
 _Overrides_ bcdui.component.chart.Chart#getPrimaryModel\
@@ -57,7 +60,8 @@ _Overrides_ bcdui.component.chart.Chart#getPrimaryModel\
 
 
 ### addSeries
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {void}</span>
+addSeries(args) &#x21FE; {void}
+
 
 Adds a data series to the chart \
 _Overrides_ bcdui.component.chart.Chart#addSeries
@@ -68,7 +72,7 @@ _Overrides_ bcdui.component.chart.Chart#addSeries
 | args.yAxis1Or2? | integer |  | 1 for left and 2 for right axis |
 | args.yData? | Array.\<number> |  | Data array or provide yDataInfo |
 | args.yDataInfo? | DomNodeSet |  | XML nodeset with data |
-| args.sizeData? | Array.\<number> |  | 2nd value for scattered charts |
+| args.sizeData? | Array.\<number> |  | The 2nd value for scattered charts |
 | args.xValues? | Array.\<number> |  | For x-y charts |
 | args.chartType? | (integer\|string) |  | Either name or numeric value for chart type |
 | args.rgb? | string |  | Color |
@@ -83,7 +87,8 @@ _Overrides_ bcdui.component.chart.Chart#addSeries
 
 
 ### addStatusListener
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {void}</span>
+addStatusListener(args) &#x21FE; {void}
+
 
 Listen for any status to be reached. For use cases with the ready status (by far the most common), see onReady() and onceReady() convenience functions. \
 _Overrides_ bcdui.component.chart.Chart#addStatusListener
@@ -103,21 +108,24 @@ Type **AddStatusListenerParam**
 
 
 ### debugIsWaitingFor
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {string}</span>
+debugIsWaitingFor() &#x21FE; {string}
+
  \
 _Overrides_ bcdui.component.chart.Chart#debugIsWaitingFor\
 **Returns** {string}: Human readable message, which DataProviders, this DataProvider depends on, are not currently in ready state
 
 
 ### debugStatus
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {string}</span>
+debugStatus() &#x21FE; {string}
+
  \
 _Overrides_ bcdui.component.chart.Chart#debugStatus\
 **Returns** {string}: Human readable message about the current state state
 
 
 ### execute
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(doesRefresh?) &#x21FE; {void}</span>
+execute(doesRefresh?) &#x21FE; {void}
+
 
 <b>Instead of calling this method directly, better rely on a Renderer or on method onReady().</b><br/>Executes the process implemented by the concrete sub-classThis method is called by the Renderer when it is ready to render the modelIt is often asynchronous.Note, Renderer and sub-classes execute all input models recursively automatically.This means, usually you do not need to call this method directly. Note: it is asynchronous.Use method .onReady({executeIfNotReady: true, onSuccess: callback }) if no Renderer is involved. \
 _Overrides_ bcdui.component.chart.Chart#execute
@@ -130,23 +138,34 @@ _Overrides_ bcdui.component.chart.Chart#execute
 
 
 ### fetchData
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {Promise.\<bcdui.core.DataProvider>}</span>
+fetchData() &#x21FE; {Promise.\<bcdui.core.DataProvider>}
+
 
 asynchronously fetch data for this data provider. \
 _Overrides_ bcdui.component.chart.Chart#fetchData\
 **Returns** {Promise.\<bcdui.core.DataProvider>}: resolving once data has been loaded, first argument is this instance
+#### Examples
+````js
+new bcdui.core.SimpleModel("data.xml").fetchData().then((dp)=>{ console.info(dp.getData()); })
+````
 
 
 ### fire
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {void}</span>
+fire() &#x21FE; {void}
+
 
 This informs modification listeners, registered via [onChange(args)](bcdui.core.DataProvider#onChange.md), that a change set was completedand data is consistent again. \
 _Overrides_ bcdui.component.chart.Chart#fire\
 **Returns** {void}
+#### Examples
+````js
+// Use of data modification eventsvar model = new bcdui.core.StaticModel({ data: { value: 3 } });model.execute();model.onChange( function(m) {  console.log(m.getData().value);});model.getData().value ++;model.fire(); // console prints '4'
+````
 
 
 ### getFailedStatus
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {Array.\<bcdui.core.Status>}</span>
+getFailedStatus() &#x21FE; {Array.\<bcdui.core.Status>}
+
 
 Getter for the list of error statuses of this class. This implementation returns anempty list. \
 _Overrides_ bcdui.component.chart.Chart#getFailedStatus\
@@ -154,7 +173,8 @@ _Overrides_ bcdui.component.chart.Chart#getFailedStatus\
 
 
 ### getName
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {string}</span>
+getName() &#x21FE; {string}
+
 
 Getter for the name of the data provider. This name is for example usedto set parameters names of a [bcdui.core.TransformationChain](bcdui.core.TransformationChain.md). \
 _Overrides_ bcdui.component.chart.Chart#getName\
@@ -162,7 +182,8 @@ _Overrides_ bcdui.component.chart.Chart#getName\
 
 
 ### getReadyStatus
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {bcdui.core.Status}</span>
+getReadyStatus() &#x21FE; {bcdui.core.Status}
+
 
 Getter for the ready status of the instance. This status is a final statedefined by each sub-class which is reached when the process has finishednormally. \
 _Inherited from_ bcdui.core.AbstractExecutable\
@@ -170,7 +191,8 @@ _Inherited from_ bcdui.core.AbstractExecutable\
 
 
 ### getStatus
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {bcdui.core.Status}</span>
+getStatus() &#x21FE; {bcdui.core.Status}
+
 
 Getter for the status of this object. See [bcdui.core.status](bcdui.core.status.md) for possible return values. \
 _Overrides_ bcdui.component.chart.Chart#getStatus\
@@ -178,7 +200,8 @@ _Overrides_ bcdui.component.chart.Chart#getStatus\
 
 
 ### hasFailed
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {boolean}</span>
+hasFailed() &#x21FE; {boolean}
+
 
 Tests if the object has reached a failure status. These status codes arereturned by the "getFailedStatus" method. \
 _Overrides_ bcdui.component.chart.Chart#hasFailed\
@@ -186,7 +209,8 @@ _Overrides_ bcdui.component.chart.Chart#hasFailed\
 
 
 ### isClean
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {boolean}</span>
+isClean() &#x21FE; {boolean}
+
 
 True, if DataProvider is ready and there are no uncommitted write transactions,see [isReady()](bcdui.core.AbstractExecutable#isReady.md) and [fire()](bcdui.core.DataProvider#onChange.md). \
 _Overrides_ bcdui.component.chart.Chart#isClean\
@@ -194,7 +218,8 @@ _Overrides_ bcdui.component.chart.Chart#isClean\
 
 
 ### isReady
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {boolean}</span>
+isReady() &#x21FE; {boolean}
+
 
 Tests if the current state is the readyStatus. This status is the samestatus as returned by "getReadyStatus". \
 _Overrides_ bcdui.component.chart.Chart#isReady\
@@ -202,7 +227,8 @@ _Overrides_ bcdui.component.chart.Chart#isReady\
 
 
 ### onceReady
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(listenerObject) &#x21FE; {void}</span>
+onceReady(listenerObject) &#x21FE; {void}
+
  \
 _Overrides_ bcdui.component.chart.Chart#onceReady
 
@@ -219,10 +245,15 @@ Type **OnceReadyParam**
 | executeIfNotReady | boolean | false | do execute [bcdui.core.AbstractExecutable](bcdui.core.AbstractExecutable.md) if it's not ready |
 
 **Returns** {void}
+#### Examples
+````js
+myModel.onceReady({onSuccess: myCallback, executeIfNotReady: true})
+````
 
 
 ### onChange
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(listenerObject, trackingXPath?) &#x21FE; {void}</span>
+onChange(listenerObject, trackingXPath?) &#x21FE; {void}
+
  \
 _Overrides_ bcdui.component.chart.Chart#onChange
 
@@ -244,7 +275,8 @@ Type **OnChangeParam**
 
 
 ### onReady
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(listenerObject) &#x21FE; {void}</span>
+onReady(listenerObject) &#x21FE; {void}
+
  \
 _Overrides_ bcdui.component.chart.Chart#onReady
 
@@ -263,10 +295,15 @@ Type **OnReadyParam**
 | executeIfNotReady | boolean | false | do execute [bcdui.core.AbstractExecutable](bcdui.core.AbstractExecutable.md) if it's not ready |
 
 **Returns** {void}
+#### Examples
+````js
+myModel.onReady({onSuccess: function(){ console.log("ready") }, executeIfNotReady: true, onlyFuture: true})
+````
 
 
 ### promptData
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {void}</span>
+promptData() &#x21FE; {void}
+
 
 Convenience method for debugging showing data in a prompt for copy-and-paste \
 _Overrides_ bcdui.component.chart.Chart#promptData\
@@ -274,7 +311,8 @@ _Overrides_ bcdui.component.chart.Chart#promptData\
 
 
 ### removeDataListener
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(listenerObject) &#x21FE; {void}</span>
+removeDataListener(listenerObject) &#x21FE; {void}
+
  \
 _Overrides_ bcdui.component.chart.Chart#removeDataListener
 
@@ -293,7 +331,8 @@ Type **RemoveDataListenerParam**
 
 
 ### removeStatusListener
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {void}</span>
+removeStatusListener(args) &#x21FE; {void}
+
  \
 _Overrides_ bcdui.component.chart.Chart#removeStatusListener
 
@@ -312,7 +351,8 @@ Type **RemoveStatusListenerParam**
 
 
 ### sendData
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {void}</span>
+sendData() &#x21FE; {void}
+
 
 Sends the current data to the original URL \
 _Overrides_ bcdui.component.chart.Chart#sendData\
@@ -320,7 +360,8 @@ _Overrides_ bcdui.component.chart.Chart#sendData\
 
 
 ### serialize
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {string}</span>
+serialize() &#x21FE; {string}
+
 
 Serialize dataprovider's data if available \
 _Overrides_ bcdui.component.chart.Chart#serialize\
@@ -328,7 +369,8 @@ _Overrides_ bcdui.component.chart.Chart#serialize\
 
 
 ### setStacked
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {void}</span>
+setStacked(args) &#x21FE; {void}
+
 
 Define series as being stacked \
 _Overrides_ bcdui.component.chart.Chart#setStacked
@@ -345,7 +387,8 @@ _Overrides_ bcdui.component.chart.Chart#setStacked
 
 
 ### setStatus
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {void}</span>
+setStatus(args) &#x21FE; {void}
+
 
 Makes a transition from the current status to the new status if theyare not equal. After the status is changed it fires the status eventto the registered listeners.<p/>Usually this method will only be called by the library but you can use it to re-trigger an action. For available statuses and their effect, see the concrete class, \
 _Overrides_ bcdui.component.chart.Chart#setStatus
@@ -358,7 +401,8 @@ _Overrides_ bcdui.component.chart.Chart#setStatus
 
 
 ### setXAxis
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {void}</span>
+setXAxis(args) &#x21FE; {void}
+
 
 Defines x (horizontal) axis \
 _Overrides_ bcdui.component.chart.Chart#setXAxis
@@ -376,7 +420,8 @@ _Overrides_ bcdui.component.chart.Chart#setXAxis
 
 
 ### setYAxis1
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {void}</span>
+setYAxis1(args) &#x21FE; {void}
+
 
 Defines left y axis \
 _Overrides_ bcdui.component.chart.Chart#setYAxis1
@@ -395,7 +440,8 @@ _Overrides_ bcdui.component.chart.Chart#setYAxis1
 
 
 ### setYAxis2
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {void}</span>
+setYAxis2(args) &#x21FE; {void}
+
 
 Defines right y axis \
 _Overrides_ bcdui.component.chart.Chart#setYAxis2
@@ -413,7 +459,8 @@ _Overrides_ bcdui.component.chart.Chart#setYAxis2
 
 
 ### tblDelete
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {number}</span>
+tblDelete(args) &#x21FE; {number}
+
 
 updates wrs rows with given data. Either a single row (via rowId) or single/multiple ones (via filter) \
 _Overrides_ bcdui.component.chart.Chart#tblDelete
@@ -430,7 +477,8 @@ _Overrides_ bcdui.component.chart.Chart#tblDelete
 
 
 ### tblInsert
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {string}</span>
+tblInsert(args) &#x21FE; {string}
+
 
 inserts a new row in the wrs data, values given as object \
 _Overrides_ bcdui.component.chart.Chart#tblInsert
@@ -446,7 +494,8 @@ _Overrides_ bcdui.component.chart.Chart#tblInsert
 
 
 ### tblSelect
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {Array.\<Object>}</span>
+tblSelect(args) &#x21FE; {Array.\<Object>}
+
 
 returns an array of requested data \
 _Overrides_ bcdui.component.chart.Chart#tblSelect
@@ -461,7 +510,8 @@ _Overrides_ bcdui.component.chart.Chart#tblSelect
 
 
 ### tblSelectRow
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {Object}</span>
+tblSelectRow(args) &#x21FE; {Object}
+
 
 returns one object representing the filtered data (either filter or rowId). In case of multiple filter matches, the first one is returned \
 _Overrides_ bcdui.component.chart.Chart#tblSelectRow
@@ -477,7 +527,8 @@ _Overrides_ bcdui.component.chart.Chart#tblSelectRow
 
 
 ### tblUpdate
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {number}</span>
+tblUpdate(args) &#x21FE; {number}
+
 
 updates wrs rows with given data. Either a single row (via rowId) or single/multiple ones (via filter) \
 _Overrides_ bcdui.component.chart.Chart#tblUpdate
@@ -495,7 +546,8 @@ _Overrides_ bcdui.component.chart.Chart#tblUpdate
 
 
 ### toString
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {string}</span>
+toString() &#x21FE; {string}
+
 
 Debugging function showing a text for this class. \
 _Overrides_ bcdui.component.chart.Chart#toString\

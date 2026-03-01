@@ -1,13 +1,12 @@
 # Class SVGDrawer
-<span hidden class='htmlPackage'>bcdui.component.chart</span>
+package bcdui.component.chart
+
 A SVG drawer, drawing basic geometries
 
 _Extends_ [bcdui.component.chart.SVGVMLDrawer](bcdui.component.chart.SVGVMLDrawer.md)
 ## Constructor
 
-
-
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {void}</span>
+---
 
 
 | Name     | Type     | Default  | Description |
@@ -19,11 +18,13 @@ _Extends_ [bcdui.component.chart.SVGVMLDrawer](bcdui.component.chart.SVGVMLDrawe
 | args.createToolTipCb? | function |  | Call back getting the source element, returning the tool tip HTML</li> |
 | args.addAttr? | Object |  | A set of additional string attributes to be attached to the root element</li> |
 
+<!-- LLM_HINT DETAILS_STARTING -->
 ## Methods
 
 
 ### arc
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {void}</span>
+arc(args) &#x21FE; {void}
+
 
 Draw a SVG arc
 
@@ -47,7 +48,8 @@ Draw a SVG arc
 
 
 ### box
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {void}</span>
+box(args) &#x21FE; {void}
+
 
 Draw a SVG box
 
@@ -68,7 +70,8 @@ Draw a SVG box
 
 
 ### circle
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {void}</span>
+circle(args) &#x21FE; {void}
+
 
 Draw a SVG circle
 
@@ -88,7 +91,8 @@ Draw a SVG circle
 
 
 ### image
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {void}</span>
+image(args) &#x21FE; {void}
+
 
 Draw an SVG image element
 
@@ -107,7 +111,8 @@ Draw an SVG image element
 
 
 ### line
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {void}</span>
+line(args) &#x21FE; {void}
+
 
 Draw a SVG line
 
@@ -126,7 +131,8 @@ Draw a SVG line
 
 
 ### text
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {void}</span>
+text(args) &#x21FE; {void}
+
 
 Draw a SVG text
 
@@ -144,7 +150,8 @@ Draw a SVG text
 
 
 ### getResult
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {DomElement}</span>
+getResult() &#x21FE; {DomElement}
+
 
 Returns the a DOM element containing the SVG drawing \
 _Overrides_ bcdui.component.chart.SVGVMLDrawer#getResult\
@@ -152,7 +159,8 @@ _Overrides_ bcdui.component.chart.SVGVMLDrawer#getResult\
 
 
 ### setTransScale
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {void}</span>
+setTransScale(args) &#x21FE; {void}
+
 
 Set transform and scale \
 _Overrides_ bcdui.component.chart.SVGVMLDrawer#setTransScale

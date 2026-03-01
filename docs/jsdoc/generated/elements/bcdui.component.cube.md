@@ -8,11 +8,10 @@ This namespace contains functionality directly related to BCD-UI cube
 
 
 
-[Cube](bcdui.component.cube.Cube.md)\
-Creates a cube front end based on given data or a configuration.
+[Cube](bcdui.component.cube.Cube.md)
 
 [CubeModel](bcdui.component.cube.CubeModel.md)\
-Creates a cube model, provides data with calculations and col dimensions applied.
+Creates a CubeModel for use by Cube, if you need more fine-grained control or only want the data.
 
 ----
 <h4>Functions</h4>

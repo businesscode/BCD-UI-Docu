@@ -1,12 +1,11 @@
 # Class AbstractExecutable
-<span hidden class='htmlPackage'>bcdui.core</span>
+package bcdui.core
+
 The abstract executable class is a base class for asynchronous operating status-based classes in BCD-UI library. It offers a basic set ofmethods that these classes share. Most methods deal with status handling, transitions, listeners and synchronization.<br/>Most common implementations are:[bcdui.core.StaticModel](bcdui.core.StaticModel.md) and [bcdui.core.SimpleModel](bcdui.core.SimpleModel.md)
 
 ## Constructor
 
-
-
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args?) &#x21FE; {void}</span>
+---
 
 The constructor which must be called by all sub-classes. It initializes the listeners, status and id fields.This class is abstract and not meant to be instantiated directly
 
@@ -16,11 +15,13 @@ The constructor which must be called by all sub-classes. It initializes the list
 | args.id? | string |  | A unique id for declarative contexts |
 | args.bcdPreInit? | function |  | a function which can be used to execute code before any super code of derived classes |
 
+<!-- LLM_HINT DETAILS_STARTING -->
 ## Methods
 
 
 ### addStatusListener
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {void}</span>
+addStatusListener(args) &#x21FE; {void}
+
 
 Listen for any status to be reached. For use cases with the ready status (by far the most common), see onReady() and onceReady() convenience functions.
 
@@ -39,7 +40,8 @@ Type **AddStatusListenerParam**
 
 
 ### execute
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(doesRefresh?) &#x21FE; {void}</span>
+execute(doesRefresh?) &#x21FE; {void}
+
 
 <b>Instead of calling this method directly, better rely on a Renderer or on method onReady().</b><br/>Executes the process implemented by the concrete sub-classThis method is called by the Renderer when it is ready to render the modelIt is often asynchronous.Note, Renderer and sub-classes execute all input models recursively automatically.This means, usually you do not need to call this method directly. Note: it is asynchronous.Use method .onReady({executeIfNotReady: true, onSuccess: callback }) if no Renderer is involved.
 
@@ -51,49 +53,56 @@ Type **AddStatusListenerParam**
 
 
 ### getClassName
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {string}</span>
+getClassName() &#x21FE; {string}
+
 
 Get className\
 **Returns** {string}: className
 
 
 ### getFailedStatus
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {Array.\<bcdui.core.Status>}</span>
+getFailedStatus() &#x21FE; {Array.\<bcdui.core.Status>}
+
 
 Getter for the list of error statuses of this class. This implementation returns anempty list.\
 **Returns** {Array.\<bcdui.core.Status>}: The status objects corresponding to failures in the object'sprocess.
 
 
 ### getReadyStatus
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {bcdui.core.Status}</span>
+getReadyStatus() &#x21FE; {bcdui.core.Status}
+
 
 Getter for the ready status of the instance. This status is a final statedefined by each sub-class which is reached when the process has finishednormally.\
 **Returns** {bcdui.core.Status}: The status object indicating that the process belongingto this class is finished.
 
 
 ### getStatus
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {bcdui.core.Status}</span>
+getStatus() &#x21FE; {bcdui.core.Status}
+
 
 Getter for the status of this object. See [bcdui.core.status](bcdui.core.status.md) for possible return values.\
 **Returns** {bcdui.core.Status}: The current status.
 
 
 ### hasFailed
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {boolean}</span>
+hasFailed() &#x21FE; {boolean}
+
 
 Tests if the object has reached a failure status. These status codes arereturned by the "getFailedStatus" method.\
 **Returns** {boolean}: True, if the object's process has failed.
 
 
 ### isReady
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {boolean}</span>
+isReady() &#x21FE; {boolean}
+
 
 Tests if the current state is the readyStatus. This status is the samestatus as returned by "getReadyStatus".\
 **Returns** {boolean}: True, if the object is ready.
 
 
 ### onceReady
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(listenerObject) &#x21FE; {void}</span>
+onceReady(listenerObject) &#x21FE; {void}
+
 
 
 | Name     | Type     | Default  | Description |
@@ -109,10 +118,15 @@ Type **OnceReadyParam**
 | executeIfNotReady | boolean | false | do execute [bcdui.core.AbstractExecutable](bcdui.core.AbstractExecutable.md) if it's not ready |
 
 **Returns** {void}
+#### Examples
+````js
+myModel.onceReady({onSuccess: myCallback, executeIfNotReady: true})
+````
 
 
 ### onReady
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(listenerObject) &#x21FE; {void}</span>
+onReady(listenerObject) &#x21FE; {void}
+
 
 
 | Name     | Type     | Default  | Description |
@@ -130,10 +144,15 @@ Type **OnReadyParam**
 | executeIfNotReady | boolean | false | do execute [bcdui.core.AbstractExecutable](bcdui.core.AbstractExecutable.md) if it's not ready |
 
 **Returns** {void}
+#### Examples
+````js
+myModel.onReady({onSuccess: function(){ console.log("ready") }, executeIfNotReady: true, onlyFuture: true})
+````
 
 
 ### removeStatusListener
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {void}</span>
+removeStatusListener(args) &#x21FE; {void}
+
 
 
 | Name     | Type     | Default  | Description |
@@ -151,7 +170,8 @@ Type **RemoveStatusListenerParam**
 
 
 ### setStatus
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>(args) &#x21FE; {void}</span>
+setStatus(args) &#x21FE; {void}
+
 
 Makes a transition from the current status to the new status if theyare not equal. After the status is changed it fires the status eventto the registered listeners.<p/>Usually this method will only be called by the library but you can use it to re-trigger an action. For available statuses and their effect, see the concrete class,
 
@@ -163,6 +183,7 @@ Makes a transition from the current status to the new status if theyare not equ
 
 
 ### toString
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {string}</span>
+toString() &#x21FE; {string}
+
 \
 **Returns** {string}: Debug string with this class and its id.

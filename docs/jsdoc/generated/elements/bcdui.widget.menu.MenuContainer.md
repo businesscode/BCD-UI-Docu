@@ -1,17 +1,18 @@
 # Class MenuContainer
-<span hidden class='htmlPackage'>bcdui.widget.menu</span>
+package bcdui.widget.menu
+
 MenuContainer
 
 ## Constructor
 
+---
 
-
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {void}</span>
-
+<!-- LLM_HINT DETAILS_STARTING -->
 ## Methods
 
 
 ### getClassName
-<span style='display: none; font-size: 0.75em' class='htmlSignature' data-id='+docu.name'>() &#x21FE; {string}</span>
+getClassName() &#x21FE; {string}
+
 \
 **Returns** {string}: class name

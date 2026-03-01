@@ -7,12 +7,12 @@
  |------|---------|--------|
  | [Chart](../elements/bcdui.component.chart.Chart.md) | This class represents a chart | Is a DataProvider |
  | [ChartEchart](../elements/bcdui.component.chart.ChartEchart.md) | Create a chart based on http://www.businesscode.de/schema/bcdui/charts-1.0.0 XML | Is a Renderer |
- | [Cube](../elements/bcdui.component.cube.Cube.md) | Creates a Cube, i.e | Is a Renderer |
- | [CubeModel](../elements/bcdui.component.cube.CubeModel.md) | Creates a CubeModel for use by Cube, if you need more fine-grained control or only want the data | Is a DataProvider |
+ | [Cube](../elements/bcdui.component.cube.Cube.md) | Creates a cube front end based on given data or a configuration | Is a Renderer |
+ | [CubeModel](../elements/bcdui.component.cube.CubeModel.md) | Creates a cube model, provides data with calculations and col dimensions applied | Is a DataProvider |
  | [Far](../elements/bcdui.component.far.Far.md) | A FAR component |  |
- | [FarModel](../elements/bcdui.component.far.FarModel.md) | DataProvider for Far if you need more fine-grained control | Is a DataProvider |
- | [Grid](../elements/bcdui.component.grid.Grid.md) | Creates an editable Grid-UI based on given data or a configuration allowing to edit the data | Is a Renderer |
- | [GridModel](../elements/bcdui.component.grid.GridModel.md) | Creates a GridModel for use by Grid if you need more fine-grained control | Is a DataProvider |
+ | [FarModel](../elements/bcdui.component.far.FarModel.md) | Data provider implementation reading far:Configuration document and providing data according to it, you can use this model if you solely want | Is a DataProvider |
+ | [Grid](../elements/bcdui.component.grid.Grid.md) | Creates a grid UI based on given data or a configuration allowing to edit the data | Is a Renderer |
+ | [GridModel](../elements/bcdui.component.grid.GridModel.md) | Creates a GridModel | Is a DataProvider |
  | [Scorecard](../elements/bcdui.component.scorecard.Scorecard.md) | Creates a convenience standard scorecard renderer | Is a Renderer |
  | [ScorecardModel](../elements/bcdui.component.scorecard.ScorecardModel.md) | Creates a scorecard-model from a scorecard definition, the scorecard model is derived DataProvider | Is a DataProvider |
  | [TextNavigation](../elements/bcdui.component.textnavigation.TextNavigation.md) | Create a text navigation based on http://www.businesscode.de/schema/bcdui/textnavigation-1.0.0 XSD | Is a Renderer |
