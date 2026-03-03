@@ -76,15 +76,22 @@ task buildTutorial(type: AsciidoctorTask) {
 /**
  * Collect js Api subs and TypeScript .d.ts type files
  */
-task zipJsApiStubs(type: Zip) {
-    from '../BCD-UI/Docu/build/jsApiStubs'
-    archiveFileName = "bcduiApiStubs-${getProperty('bcdui.version')}.zip"
-    destinationDirectory = file('resources')
+task zipJsApiStubs(type: Tar) {
+  from '../BCD-UI/Docu/build/jsApiStubs'
+  archiveFileName = "bcduiApiStubs-${getProperty('bcdui.version')}.tgz"
+  destinationDirectory = file('resources')
+  compression = Compression.GZIP
 }
-task zipTypescriptApi(type: Zip) {
-    from '../BCD-UI/Docu/build/tsTypes'
-    archiveFileName = "bcduiTsTypes-${getProperty('bcdui.version')}.zip"
-    destinationDirectory = file('resources')
+task zipTypescriptApi(type: Tar) {
+  from '../BCD-UI/Docu/build/tsTypes'
+  archiveFileName = "bcduiTsTypes-${getProperty('bcdui.version')}.tgz"
+  destinationDirectory = file('resources')
+  compression = Compression.GZIP
+}
+task updateResources( type: Copy ) {
+  dependsOn zipJsApiStubs, zipTypescriptApi
+  from( './gradle/static/resources' )
+  into "resources"
 }
 
 //*********************************************
@@ -93,8 +100,7 @@ task zipTypescriptApi(type: Zip) {
 // This task requires BCD-UI cloned next to BCD-UI-Docu and task bcduiBuildDocu being executed there already
 // GitHub pages is setup to use /docs
 task updateDocs( type: Copy ) {
-  group 'bcdui'
-  dependsOn buildTutorial, zipJsApiStubs, zipTypescriptApi
+  dependsOn buildTutorial
 
   def bcduiDocuFolder = '../BCD-UI/Docu/build/htmldocs'
 
@@ -129,9 +135,22 @@ task updateDocs( type: Copy ) {
     into 'jsdoc'
   }
 
+}
+
+/**
+ * Update /docs and /resources folders
+ */
+task updateAll(type: DefaultTask) {
+  group 'bcdui'
+  
+  description 'Updates and collects all docs and resources, makes the project ready to commit and push'
+  
+  dependsOn updateDocs, updateResources
+
   // Replace version and date placeholders
   doLast {
-    fileTree( dir: "docs" ).each { f ->
+    (fileTree( dir: "docs" ) + fileTree( dir: "resources" )).each { f ->
+      if (f.name ==~ /.*\.(zip|tgz|tar|gz|jar|war|ear)/) return
       String content = f.getText("UTF-8")
       if( content.contains("--bcd-dyn-replace-current-version-date--") ) {
         content = content.replaceAll('--bcd-dyn-replace-current-version-date--', (getProperty('bcdui.version') + " (" + (String) new Date().format('yyyy-MM-dd'))+")")
@@ -139,9 +158,7 @@ task updateDocs( type: Copy ) {
       }
     }
   }
-
 }
-
 
 
 //*********************************************
