@@ -1,10 +1,14 @@
 # Project Layout
 
 ## Directory Layout
-- Static client files go to /web/pageName/
-    - Avoid inlining of client files in HTML
-    - Call the page index.html
-- BindingSets go to /web/WEB-INF/bcdui/bindings
+- Your static client files go to /web/pageName/
+  - Avoid inlining of client files in HTML
+  - Call the page index.html
+- [BindingSets](/manual/elements/bindingSet.md) go to `/WEB-INF/bcdui/bindings`
+- BCD-UI's jar not only holds the Java classes but also all static JavaSctipt, HTML and css resources.
+  - This makes it easy to turn your project into a BCD-UI by just adding a jar and entries in web.xml.
+  - From a browser's perspective, all BCD-UI resources are being made available at runtime under `/bcdui`.
+    This applies to BCD-UI's client resources as well as to built-in web services.
 
 ## Gradle
 Add dependencies to BCD-UI with
@@ -19,3 +23,28 @@ dependencies {
   implementation 'de.businesscode.bcdui:bcd-ui-theme-bcd:5.7.0-SNAPSHOT'
 }
 ````
+
+<!-- LLM_HINT DETAILS_STARTING -->
+
+## IDE support
+
+### Javascript Code Assist
+BCD-UI's JavaScript API is available as Typescript types files, which maes code assist available for Typescript as well as for plain JavaScript projects.
+
+To make them available just add this
+````json
+{
+  "devDependencies": {
+    "bcdui": "https://github.com/businesscode/BCD-UI-Docu/raw/refs/heads/master/resources/bcduiTsTypes-5.7.0.tgz"
+  }
+}
+````
+to your package.json and execute `npm install`.
+
+You may check online for [more details or alternatives](https://github.com/businesscode/BCD-UI-Docu/tree/refs/heads/master/resources).
+
+### XML Schemata
+BCD-UI provides [related XML schema files](https://github.com/businesscode/BCD-UI-Docu/tree/refs/heads/master/docs/xsd) .xsd not only for validation but with extensive documentation.
+for development support. Add these files to your IDE to get support when setting up configuration files.
+
+This is usually done by downloading the files and adding the catalog file to the IDE setup.
