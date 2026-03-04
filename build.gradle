@@ -16,8 +16,19 @@ apply plugin: 'idea'
 apply plugin: 'eclipse-wtp'
 import org.asciidoctor.gradle.jvm.AsciidoctorTask
 
+
+//*******************************************************
+// Inherit version number bcdui.version of main project's properties
+def bcduiMainProps = new Properties();
+file("../BCD-UI/gradle.properties").withInputStream { stream -> bcduiMainProps.load(stream) }
+ext {
+  bcduiVersion = bcduiMainProps["bcdui.version"]
+}
+
+
 //*********************************************
 // Required to build a BCD-UI webapp
+//*********************************************
 dependencies {
   repositories {
     mavenCentral()
@@ -25,6 +36,7 @@ dependencies {
       url "https://github.com/businesscode/maven-repo/raw/master"
     }
   }
+
   
   // BCD-UI
   // For list of loaded dependencies, check Docu/development/bcdui_dependencies.gradle
@@ -44,6 +56,16 @@ war {
   archiveBaseName   = "bcduidocu"
   includeEmptyDirs = false
 }
+
+
+
+
+
+//*********************************************
+//
+// All following is updating the docu project
+//
+//*********************************************
 
 
 //*********************************************
@@ -78,13 +100,13 @@ task buildTutorial(type: AsciidoctorTask) {
  */
 task zipJsApiStubs(type: Tar) {
   from '../BCD-UI/Docu/build/jsApiStubs'
-  archiveFileName = "bcduiApiStubs-${getProperty('bcdui.version')}.tgz"
+  archiveFileName = "bcduiApiStubs-${bcduiVersion}.tgz"
   destinationDirectory = file('resources')
   compression = Compression.GZIP
 }
 task zipTypescriptApi(type: Tar) {
   from '../BCD-UI/Docu/build/tsTypes/node_modules/@types'
-  archiveFileName = "bcduiTsTypes-${getProperty('bcdui.version')}.tgz"
+  archiveFileName = "bcduiTsTypes-${bcduiVersion}.tgz"
   destinationDirectory = file('resources')
   compression = Compression.GZIP
 }
@@ -153,7 +175,7 @@ task updateAll(type: DefaultTask) {
       if (f.name ==~ /.*\.(zip|tgz|tar|gz|jar|war|ear)/) return
       String content = f.getText("UTF-8")
       if( content.contains("--bcd-dyn-replace-current-version-date--") ) {
-        content = content.replaceAll('--bcd-dyn-replace-current-version-date--', (getProperty('bcdui.version') + " (" + (String) new Date().format('yyyy-MM-dd'))+")")
+        content = content.replaceAll('--bcd-dyn-replace-current-version-date--', (bcduiVersion + " (" + (String) new Date().format('yyyy-MM-dd'))+")")
         f.write(content, "UTF-8")
       }
     }
