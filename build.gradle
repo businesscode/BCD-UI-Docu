@@ -83,7 +83,7 @@ task zipJsApiStubs(type: Tar) {
   compression = Compression.GZIP
 }
 task zipTypescriptApi(type: Tar) {
-  from '../BCD-UI/Docu/build/tsTypes'
+  from '../BCD-UI/Docu/build/tsTypes/node_modules/@types'
   archiveFileName = "bcduiTsTypes-${getProperty('bcdui.version')}.tgz"
   destinationDirectory = file('resources')
   compression = Compression.GZIP
