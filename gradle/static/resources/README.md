@@ -23,6 +23,29 @@ to your `package.json` and run `npm install`.
 
 This is already enough for Eclipse, IntelliJ IDEA and Visual Studio Code.
 
+- Eclipse also needs tsconfig.json for WWD to start the Language Server. Typically it looks like this:
+
+````json
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "typeRoots": [
+      "./node_modules/@types",
+      "./node_modules"
+    ],
+    "types": ["bcdui"],
+    "noEmit": true
+    
+  },
+  "include": ["./WebContent/**/*.js"],
+  "exclude": ["node_modules", "WebContent/WEB-INF"]
+}
+````
+Adjust `WebContent` to point to your web resources and remove `"noEmit": true` for TypeScript projects.
+
+This file also works for IDEA and VSC, but is not required.
+
 
 ### Manually
 

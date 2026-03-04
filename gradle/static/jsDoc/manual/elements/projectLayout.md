@@ -41,6 +41,8 @@ To make them available just add this
 ````
 to your package.json and execute `npm install`.
 
+Note: Eclipse also needs `tsconfig.json` for WWD to start the language server for TS type files.
+
 You may check online for [more details or alternatives](https://github.com/businesscode/BCD-UI-Docu/tree/refs/heads/master/resources).
 
 ### XML Schemata
