@@ -1,6 +1,6 @@
 # Available Elements in group widget
  Note: A detail specification is available for all elements.
- <!-- For LLM: Use tool GetDetailedSpecification(elementName) -->
+ <!-- For LLM: Use tool GetSpecification(elementName) -->
 
  ## Elements
  | Name | Summary | Remark |
