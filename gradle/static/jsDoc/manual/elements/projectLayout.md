@@ -47,7 +47,7 @@ To make them available just add this
 ````json
 {
   "devDependencies": {
-    "bcdui": "https://github.com/businesscode/BCD-UI-Docu/raw/refs/heads/master/resources/bcduiTsTypes-5.7.0.tgz"
+    "bcdui": "https://github.com/businesscode/BCD-UI-Docu/raw/refs/heads/master/resources/bcduiTsTypes---bcd-dyn-replace-current-version--.tgz"
   }
 }
 ````

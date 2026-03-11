@@ -12,6 +12,7 @@
 
 ## Gradle
 Add dependencies to BCD-UI with
+
 ````groovy
 dependencies {
   repositories {
@@ -24,7 +25,18 @@ dependencies {
 }
 ````
 
+## Required config in WEB-INF
+BCD-UI needs a set of specific entries in `web.xml` to function.
+The a typical `web.xml` can be found here [web.xml](https://raw.githubusercontent.com/businesscode/BCD-UI/refs/heads/master/Server/configFiles/WebContent/WEB-INF/web.xml), merge it with any project-specific settings
+and put it to `WEB-INF/web.xml`.
+
+BCD-UI relies on Apache Shiro framework for security. 
+Use this [`shiro.ini`](https://raw.githubusercontent.com/businesscode/BCD-UI/refs/heads/master/Server/configFiles/WebContent/WEB-INF/shiro.ini) and use it as `WEB-INF/shiro.init` as a starting point.
+
 <!-- LLM_HINT DETAILS_STARTING -->
+
+## Optional files
+See [here](https://github.com/businesscode/BCD-UI/tree/master/Server/configFiles) for optional additional config files for your server.
 
 ## IDE support
 
