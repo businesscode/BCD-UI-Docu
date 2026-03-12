@@ -1,7 +1,7 @@
 # Class Renderer
 package bcdui.core
 
-A concrete subclass of [TransformationChain](bcdui.core.TransformationChain.md), inserting its output into targetHtml.Renderers execute() automatically on creation, and execute and wait for their dependencies (i.e. parameters) automatically.Logic of Renderers can be implemented as JavaScript functions or XSLTs
+This class renders data to HTML, per default a Wrs into a table, but can support any kind of input and HTML output by providing a `chain`.A Renderer is started on page entry and makes asks its DataProviders to become ready and waits if necessary.The chain represents the exact logic of the Renderer can be implemented as JavaScript functions or XSLTs,default is htmlBuilder.xslt, which is ideal for showing Wrs tabular data.
 
 _Extends_ [bcdui.core.TransformationChain](bcdui.core.TransformationChain.md), is a Renderer, can act as a DataProvider
 ## Constructor

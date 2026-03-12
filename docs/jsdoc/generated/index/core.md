@@ -19,7 +19,7 @@
  | [ModelWrapper](../elements/bcdui.core.ModelWrapper.md) | A concrete subclass of TransformationChain, being a DataProvider itself, providing the transformed input. | Is a DataProvider |
  | [OptionsDataProvider](../elements/bcdui.core.OptionsDataProvider.md) | This class creates a static model with a top level element '&lt | Is a DataProvider |
  | [PromptDataProvider](../elements/bcdui.core.PromptDataProvider.md) | This is a data provider showing the user a prompt on each execute() and returning the value the user has entered | Is a DataProvider |
- | [Renderer](../elements/bcdui.core.Renderer.md) | A concrete subclass of TransformationChain, inserting its output into targetHtml | Is a Renderer |
+ | [Renderer](../elements/bcdui.core.Renderer.md) | This class renders data to HTML, per default a Wrs into a table, but can support any kind of input and HTML output by providing a `chain` | Is a Renderer |
  | [RequestDocumentDataProvider](../elements/bcdui.core.RequestDocumentDataProvider.md) | Turns a DataProvider into a URL provider for SimpleModel | Is a DataProvider |
  | [SimpleModel](../elements/bcdui.core.SimpleModel.md) | This class represents the standard case of a model where the data is loaded from a specified URL | Is a DataProvider |
  | [StaticModel](../elements/bcdui.core.StaticModel.md) | Create a StaticModel and provide the data. | Is a DataProvider |

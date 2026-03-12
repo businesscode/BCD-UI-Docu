@@ -50,7 +50,7 @@ This class creates a static model with a top level element '&lt;cust:Options/>' 
 This is a data provider showing the user a prompt on each execute() and returning the value the user has entered.
 
 [Renderer](bcdui.core.Renderer.md)\
-A concrete subclass of [TransformationChain](bcdui.core.TransformationChain.md), inserting its output into targetHtml.
+This class renders data to HTML, per default a Wrs into a table, but can support any kind of input and HTML output by providing a `chain`.
 
 [RequestDocumentDataProvider](bcdui.core.RequestDocumentDataProvider.md)\
 Turns a DataProvider into a URL provider for SimpleModel.<p/>We do reflect the status of the requestModel transparently as we are just glueware.
