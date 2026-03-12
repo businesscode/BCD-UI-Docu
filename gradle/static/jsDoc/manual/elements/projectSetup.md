@@ -26,12 +26,18 @@ dependencies {
 ````
 
 ## Required config in WEB-INF
+
+**web.xml**
+
 BCD-UI needs a set of specific entries in `web.xml` to function.
 The a typical `web.xml` can be found here [web.xml](https://raw.githubusercontent.com/businesscode/BCD-UI/refs/heads/master/Server/configFiles/WebContent/WEB-INF/web.xml), merge it with any project-specific settings
 and put it to `WEB-INF/web.xml`.
 
+**shiro.ini**
+
 BCD-UI relies on Apache Shiro framework for security. 
 Use this [`shiro.ini`](https://raw.githubusercontent.com/businesscode/BCD-UI/refs/heads/master/Server/configFiles/WebContent/WEB-INF/shiro.ini) and use it as `WEB-INF/shiro.init` as a starting point.
+
 
 <!-- LLM_HINT DETAILS_STARTING -->
 
@@ -41,7 +47,7 @@ See [here](https://github.com/businesscode/BCD-UI/tree/master/Server/configFiles
 ## IDE support
 
 ### Javascript Code Assist
-BCD-UI's JavaScript API is available as Typescript types files, which maes code assist available for Typescript as well as for plain JavaScript projects.
+BCD-UI's JavaScript API is available as TypeScript types files, which makes code assist available for TypeScript as well as for plain JavaScript projects.
 
 To make them available just add this
 ````json
@@ -53,7 +59,7 @@ To make them available just add this
 ````
 to your package.json and execute `npm install`.
 
-Note: Eclipse also needs `tsconfig.json` for WWD to start the language server for TS type files.
+Note: Eclipse also needs `tsconfig.json` for WWD to start the language server for TypeScript type files.
 
 You may check online for [more details or alternatives](https://github.com/businesscode/BCD-UI-Docu/tree/refs/heads/master/resources).
 

@@ -224,7 +224,7 @@ See [Wrs](/manual/elements/wrs.md) for how data modification works.
 
 ## Project Layout
 
-See [Project Layout](/manual/elements/projectLayout.md) for the required file and directory structure of a BCD-UI project.
+See [Project Layout](/manual/elements/projectSetup.md) for the required file and directory structure of a BCD-UI project.
 
-<!-- LLM_HINT: see MCP GetSpecification(projectLayout) -->
+<!-- LLM_HINT: see MCP GetSpecification(projectSetup) -->
 

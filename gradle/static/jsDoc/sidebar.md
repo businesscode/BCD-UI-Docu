@@ -14,5 +14,5 @@
     * [BindingSet](/manual/elements/bindingSet.md)
   * **More**
     * [BCD-UI Concepts](/manual/index/concepts.md)
-    * [Project Layout](/manual/elements/projectLayout.md)
+    * [Project Layout](/manual/elements/projectSetup.md)
     * [Internationalization](/manual/elements/i18n.md)
