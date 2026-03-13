@@ -1,4 +1,4 @@
-# Project Layout
+# Project Setup
 
 ## Directory Layout
 - Your static client files go to /web/pageName/
@@ -36,8 +36,21 @@ and put it to `WEB-INF/web.xml`.
 **shiro.ini**
 
 BCD-UI relies on Apache Shiro framework for security. 
-Use this [`shiro.ini`](https://raw.githubusercontent.com/businesscode/BCD-UI/refs/heads/master/Server/configFiles/WebContent/WEB-INF/shiro.ini) and use it as `WEB-INF/shiro.init` as a starting point.
+You need at least this `WEB-INF/shiro.ini` file to avoid Shiro failing:
 
+````
+# No authentication setup yet
+# See BCD-UI documentation in how to setup Security
+[main]
+
+[users]
+dummy = dummy
+
+[urls]
+/** = anon
+````
+
+If you later want to setup access restrictions, see [security](/manual/elements/security.md) for more details.
 
 <!-- LLM_HINT DETAILS_STARTING -->
 
