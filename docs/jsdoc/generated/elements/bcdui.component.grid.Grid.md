@@ -13,13 +13,13 @@ var myGrd = new bcdui.component.grid.Grid({ targetHtml: "#myDiv" });
 
 ---
 
-Creates an editable Grid-UI based on given data or a configuration allowing to edit the data.It creates a GridModel in the background, if none is given.To use Grid or GridModel, make sure to load `bcdui.js?bcduiLoadFiles=bcduiGrid`
+Creates a Grid-UI for editing tabular, data complete range copy-paste and validation.If not provided, it creates its GridModel in the background.To use Grid or GridModel, make sure to load `bcdui.js?bcduiLoadFiles=bcduiGrid`
 
 | Name     | Type     | Default  | Description |
 |----------|----------|----------|-------------|
 | args |  |  | The parameter map contains the following properties: |
 | args.targetHtml | targetHtmlRef |  | A reference to the HTML DOM Element where to put the output |
-| args.config? | bcdui.core.DataProvider | "./gridConfiguration.xml" | The model containing the grid configuration data. If it is not present a SimpleModel with the url  './gridConfiguration.xml' is created. |
+| args.config? | bcdui.core.DataProvider | "./gridConfiguration.xml" | The model containing the grid configuration data, default is './gridConfiguration.xml', which must be present then. |
 | args.statusModel? | bcdui.core.DataProvider | bcdui.wkModels.guiStatusEstablished | StatusModel (default is 'guiStatusEstablished'), containing the filters as /SomeRoot/f:Filter |
 | args.inputModel? | bcdui.core.DataProvider |  | WRS or GridModel which is used. If not provided, it is generated based on the config. If provided, config is ignored unless it is set explicitly |
 | args.id? | string |  | The object's id, needed only when later accessing via id. If given the Grid registers itself at [bcdui.factory.objectRegistry](bcdui.factory.objectRegistry.md) |
@@ -55,10 +55,6 @@ Creates an editable Grid-UI based on given data or a configuration allowing to e
 | args.exportFileName? | string |  | Filename for grid export |
 | args.disableExport? | boolean | false | Disable export functionality. |
 
-#### Examples
-````js
-<grid:GridConfiguration    xmlns:grid="http://www.businesscode.de/schema/bcdui/grid-1.0.0"    xmlns:wrq="http://www.businesscode.de/schema/bcdui/wrs-request-1.0.0">  <wrq:BindingSet>mdStation</wrq:BindingSet>  <grid:SelectColumns>    <grid:C bRef="lastUpdate" isReadOnly="true"/>    <grid:C bRef="country" isKey="true"/>    <grid:C bRef="station" isKey="true"/>    <grid:C bRef="isGateway" isCheckbox="1|0" class='bcdCheckbox'/>  </grid:SelectColumns>  <grid:OrderColumns>    <grid:C bRef="lastUpdate" order="desc"/>  </grid:OrderColumns></grid:GridConfiguration>
-````
 #### Examples
 ````js
 <grid:GridConfiguration    xmlns:grid="http://www.businesscode.de/schema/bcdui/grid-1.0.0"    xmlns:wrq="http://www.businesscode.de/schema/bcdui/wrs-request-1.0.0">  <wrq:BindingSet>mdStation</wrq:BindingSet>  <grid:SelectColumns>    <grid:C bRef="lastUpdate" isReadOnly="true"/>    <grid:C bRef="country" isKey="true"/>    <grid:C bRef="station" isKey="true"/>    <grid:C bRef="isGateway" isCheckbox="1|0" class='bcdCheckbox'/>  </grid:SelectColumns>  <grid:OrderColumns>    <grid:C bRef="lastUpdate" order="desc"/>  </grid:OrderColumns></grid:GridConfiguration>

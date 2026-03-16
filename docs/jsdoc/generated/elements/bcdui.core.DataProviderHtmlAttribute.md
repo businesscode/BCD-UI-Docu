@@ -24,10 +24,6 @@ var myDPHA = new bcdui.core.DataProviderHtmlAttribute({ htmlElementId, attribute
 ````js
 <div id="myDiv" attr="123"><div><script type="text/javascript">  var dp = new bcdui.core.DataProviderHtmlAttribute({ htmlElementId: 'myDiv', attributeName: 'attr'});  dp.onceReady( () => console.log(dp.getData()) ); // -> '123'<script>
 ````
-#### Examples
-````js
-<div id="myDiv" attr="123"><div><script type="text/javascript">  var dp = new bcdui.core.DataProviderHtmlAttribute({ htmlElementId: 'myDiv', attributeName: 'attr'});  dp.onceReady( () => console.log(dp.getData()) ); // -> '123'<script>
-````
 <!-- LLM_HINT DETAILS_STARTING -->
 ## Methods
 

@@ -12,7 +12,7 @@ This package contains the BCDUI core components.It is composed of three blocks 
 Allows providing a js callback function for deferred execution which has to execute .setData(data) on provided instance once data is available.<p/>As all DataProviders, AsyncJsDataProvider will not become ready until data is available, i.e.
 
 [AutoModel](bcdui.core.AutoModel.md)\
-An AutoModel is an easy way for loading data from a BindingSet in many cases.
+An AutoModel is an easy way for loading data from a BindingSet in many cases, using `$guiStatus/guiStatus:Status/f:Filter` per default.
 
 [ConstantDataProvider](bcdui.core.ConstantDataProvider.md)\
 A data provider for constant values.
@@ -50,7 +50,7 @@ This class creates a static model with a top level element '&lt;cust:Options/>' 
 This is a data provider showing the user a prompt on each execute() and returning the value the user has entered.
 
 [Renderer](bcdui.core.Renderer.md)\
-This class renders data to HTML, per default a Wrs into a table, but can support any kind of input and HTML output by providing a `chain`.
+This class renders data to HTML, per default a table view of Wrs, but it does support any kind of input and HTML output when providing a `chain`.
 
 [RequestDocumentDataProvider](bcdui.core.RequestDocumentDataProvider.md)\
 Turns a DataProvider into a URL provider for SimpleModel.<p/>We do reflect the status of the requestModel transparently as we are just glueware.

@@ -6,7 +6,7 @@
  | Name | Summary | Remark |
  |------|---------|--------|
  | [AsyncJsDataProvider](../elements/bcdui.core.AsyncJsDataProvider.md) | Allows providing a js callback function for deferred execution which has to execute .setData(data) on provided instance once data is available | Is a DataProvider |
- | [AutoModel](../elements/bcdui.core.AutoModel.md) | An AutoModel is an easy way for loading data from a BindingSet in many cases | Is a DataProvider |
+ | [AutoModel](../elements/bcdui.core.AutoModel.md) | An AutoModel is an easy way for loading data from a BindingSet in many cases, using `$guiStatus/guiStatus:Status/f:Filter` per default | Is a DataProvider |
  | [AutoRefresh](../elements/bcdui.core.lifecycle.AutoRefresh.md) | Support for auto-refreshing a {bcdui.core.DataProvider} in the background and detecting, if new data is available |  |
  | [ConstantDataProvider](../elements/bcdui.core.ConstantDataProvider.md) | A data provider for constant values | Is a DataProvider |
  | [DataProviderAlias](../elements/bcdui.core.DataProviderAlias.md) | This class is a wrapper for a DataProvider giving it a new name (not id) and | Is a DataProvider |
@@ -19,7 +19,7 @@
  | [ModelWrapper](../elements/bcdui.core.ModelWrapper.md) | A concrete subclass of TransformationChain, being a DataProvider itself, providing the transformed input. | Is a DataProvider |
  | [OptionsDataProvider](../elements/bcdui.core.OptionsDataProvider.md) | This class creates a static model with a top level element '&lt | Is a DataProvider |
  | [PromptDataProvider](../elements/bcdui.core.PromptDataProvider.md) | This is a data provider showing the user a prompt on each execute() and returning the value the user has entered | Is a DataProvider |
- | [Renderer](../elements/bcdui.core.Renderer.md) | This class renders data to HTML, per default a Wrs into a table, but can support any kind of input and HTML output by providing a `chain` | Is a Renderer |
+ | [Renderer](../elements/bcdui.core.Renderer.md) | This class renders data to HTML, per default a table view of Wrs, but it does support any kind of input and HTML output when providing a `chain` | Is a Renderer |
  | [RequestDocumentDataProvider](../elements/bcdui.core.RequestDocumentDataProvider.md) | Turns a DataProvider into a URL provider for SimpleModel | Is a DataProvider |
  | [SimpleModel](../elements/bcdui.core.SimpleModel.md) | This class represents the standard case of a model where the data is loaded from a specified URL | Is a DataProvider |
  | [StaticModel](../elements/bcdui.core.StaticModel.md) | Create a StaticModel and provide the data. | Is a DataProvider |

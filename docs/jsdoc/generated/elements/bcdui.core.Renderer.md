@@ -1,7 +1,7 @@
 # Class Renderer
 package bcdui.core
 
-This class renders data to HTML, per default a Wrs into a table, but can support any kind of input and HTML output by providing a `chain`.A Renderer is started on page entry and makes asks its DataProviders to become ready and waits if necessary.The chain represents the exact logic of the Renderer can be implemented as JavaScript functions or XSLTs,default is htmlBuilder.xslt, which is ideal for showing Wrs tabular data.
+This class renders data to HTML, per default a table view of Wrs, but it does support any kind of input and HTML output when providing a `chain`.A Renderer is started on page entry and makes asks its DataProviders to become ready and waits if necessary.The chain represents the exact logic of the Renderer can be implemented as JavaScript functions or XSLTs,default is htmlBuilder.xslt, which is ideal for showing Wrs tabular data.
 
 _Extends_ [bcdui.core.TransformationChain](bcdui.core.TransformationChain.md), is a Renderer, can act as a DataProvider
 ## Constructor
@@ -25,6 +25,13 @@ var myRnd = new bcdui.core.Renderer({ inputModel: myModel });
 | args.suppressInitialRendering? | boolean | false | If true, the renderer does not initially auto execute but waits for an explicit execute |
 | args.postHtmlAttachProcess? | function |  | synchronous js function called after attaching html fragment to dom (either partitially or fully). Note: custom elements will not be applied, wait for isRead() if you need that |
 
+#### Examples
+````js
+// Show the data on page load, applying any filer in $guiStatus/guiStatus:Status/f:Filterconst companiesModel = new bcdui.core.AutoModel({ bindingSetId: "Companies", bRefs: "id, name, address, country" });const renderer = new bcdui.core.Renderer({ targetHtml: "#companiesDiv", inputModel: companiesModel });
+````
+````js
+// Wait for country to be selected (mandatoryFilterBRefsSubset), and re-display the data whenever $guiStatus/guiStatus:Status/f:Filter changes (isAutoRefresh, onReady)const companiesModel = new bcdui.core.AutoModel({ bindingSetId: "Companies", bRefs: "id, name, address, country",  mandatoryFilterBRefsSubset: "country",  isAutoRefresh: true});const renderer = new bcdui.core.Renderer({  targetHtml: "#companiesDiv",  inputModel: companiesModel});companiesModel.onReady( () => renderer.execute(true) );
+````
 <!-- LLM_HINT DETAILS_STARTING -->
 ## Methods
 

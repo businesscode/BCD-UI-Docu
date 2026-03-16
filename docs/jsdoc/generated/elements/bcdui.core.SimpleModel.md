@@ -26,17 +26,10 @@ Type **SimpleModelParam**
 
 #### Examples
 ````js
-// Load plain content and use it in a renderervar bookModel = new bcdui.core.SimpleModel( "../docs/allBooks.xml" );var renderer  = new bcdui.core.Renderer({ targetHtml: "booksDiv", chain: "renderer.xslt", inputModel: bookModel });
+// Load fix xml content and use a renderer to display itvar bookModel = new bcdui.core.SimpleModel( "../docs/allBooks.xml" );var renderer  = new bcdui.core.Renderer({ targetHtml: "booksDiv", chain: "renderer.xslt", inputModel: bookModel });
 ````
 ````js
-// Load a model using a Wrs request document from Wrs servlet// Provide data as a [DataProvider](bcdui.core.DataProvider.md)var myModel = new bcdui.core.SimpleModel({ id: "dayModel", url: new bcdui.core.RequestDocumentDataProvider({ url: "requestDoc.xml"}) });// Reference by idbcdui.widgetNg.createSingleSelect({ targetHtml: "selectDayHtml", optionsModelXPath: "$dayModel/Values/V", targetModelXPath: "$guiStatus/guiStatus:Status/guiStatus:SelectedDay/@value" });// Note: Only if using in plain JS, execute the model to load the data. Renderers and Widgets do that for you automatically.myModel.onceReady({ executeIfNotReady: true, onSuccess: () => {  var myVal = myModel.getData().selectSingleNode("/wrs:Wrs/wrs:Data/wrs:R[1]/wrs:C[3]").nodeValue;  // ...});// Add a row and save itmyModel.tblInsert({author: 'Descartes', title: "Principles of Philosophy", year: "1644"});myModel.sendData();
-````
-#### Examples
-````js
-// Load plain content and use it in a renderervar bookModel = new bcdui.core.SimpleModel( "../docs/allBooks.xml" );var renderer  = new bcdui.core.Renderer({ targetHtml: "booksDiv", chain: "renderer.xslt", inputModel: bookModel });
-````
-````js
-// Load a model using a Wrs request document from Wrs servlet// Provide data as a [DataProvider](bcdui.core.DataProvider.md)var myModel = new bcdui.core.SimpleModel({ id: "dayModel", url: new bcdui.core.RequestDocumentDataProvider({ url: "requestDoc.xml"}) });// Reference by idbcdui.widgetNg.createSingleSelect({ targetHtml: "selectDayHtml", optionsModelXPath: "$dayModel/Values/V", targetModelXPath: "$guiStatus/guiStatus:Status/guiStatus:SelectedDay/@value" });// Note: Only if using in plain JS, execute the model to load the data. Renderers and Widgets do that for you automatically.myModel.onceReady({ executeIfNotReady: true, onSuccess: () => {  var myVal = myModel.getData().selectSingleNode("/wrs:Wrs/wrs:Data/wrs:R[1]/wrs:C[3]").nodeValue;  // ...});// Add a row and save itmyModel.tblInsert({author: 'Descartes', title: "Principles of Philosophy", year: "1644"});myModel.sendData();
+// Load a model using a Wrs request document Wrq from Wrs servlet// Provide data as a [DataProvider](bcdui.core.DataProvider.md)var myModel = new bcdui.core.SimpleModel({ id: "dayModel", url: new bcdui.core.RequestDocumentDataProvider({ url: "daysWrq.xml"}) });// Reference by id in an xPath in a widget ($dayModel)bcdui.widgetNg.createSingleSelect({ targetHtml: "selectDayHtml", optionsModelXPath: "$dayModel/Values/V", targetModelXPath: "$guiStatus/guiStatus:Status/guiStatus:SelectedDay/@value" });// Note: Only if using in plain JS, execute the model to load the data. Renderers and Widgets do that for you automatically.myModel.onceReady({ executeIfNotReady: true, onSuccess: () => {  var myVal = myModel.getData().selectSingleNode("/wrs:Wrs/wrs:Data/wrs:R[1]/wrs:C[3]").nodeValue;  // ...});// Add a row and save itmyModel.tblInsert({author: 'Descartes', title: "Principles of Philosophy", year: "1644"});myModel.sendData();
 ````
 <!-- LLM_HINT DETAILS_STARTING -->
 ## Methods

@@ -28,13 +28,6 @@ Type **StaticModelParam**
 ````js
 Provide data as a [DataProvider](bcdui.core.DataProvider.md)var myModel = new bcdui.core.StaticModel( "<Root myAttr='Test'></Root>" );// Widgets and Renderers automatically execute and wait for the model to be ready. If using it in plain JavaScript, do it yourself.myModel.onceReady({ executeIfNotReady: true, onSuccess: () => {  var myAttr = myModel.getData().selectSingleNode("/Root/@myAttr").nodeValue;  // ...}});
 ````
-#### Examples
-````js
-// Provide data as a [DataProvider](bcdui.core.DataProvider.md) with an id or use in a declarative context by idvar m = new bcdui.core.StaticModel({ id: "dayModel", data: "<Values> <V>Mon</V> <V>Wed</V> </Values>" });bcdui.widgetNg.createSingleSelect({ targetHtml: "selectDayHtml", optionsModelXPath: "$dayModel/Values/V", targetModelXPath: "$guiStatus/guiStatus:Status/guiStatus:SelectedDay/@value" });
-````
-````js
-Provide data as a [DataProvider](bcdui.core.DataProvider.md)var myModel = new bcdui.core.StaticModel( "<Root myAttr='Test'></Root>" );// Widgets and Renderers automatically execute and wait for the model to be ready. If using it in plain JavaScript, do it yourself.myModel.onceReady({ executeIfNotReady: true, onSuccess: () => {  var myAttr = myModel.getData().selectSingleNode("/Root/@myAttr").nodeValue;  // ...}});
-````
 <!-- LLM_HINT DETAILS_STARTING -->
 ## Methods
 

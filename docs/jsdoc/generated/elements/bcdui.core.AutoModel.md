@@ -1,7 +1,7 @@
 # Class AutoModel
 package bcdui.core
 
-An AutoModel is an easy way for loading data from a BindingSet in many cases. At minimum just provide the BindingSet id and a list of bRefs.
+An AutoModel is an easy way for loading data from a BindingSet in many cases, using `$guiStatus/guiStatus:Status/f:Filter` per default.At minimum just provide the BindingSet id and a list of bRefs.To trigger a data re-load, prefer `args.isAutoRefresh` to whatch for changed f:Filters instead of `execute(true)`.
 
 _Extends_ [bcdui.core.SimpleModel](bcdui.core.SimpleModel.md), can act as a DataProvider
 ## Constructor
@@ -18,18 +18,18 @@ var myAM = new bcdui.core.AutoModel({ bindingSetId, bRefs });
 |----------|----------|----------|-------------|
 | args | Object |  | The parameter map contains the following properties. Most parameters only apply when using default wrq-stylesheet. |
 | args.bindingSetId | string |  | Id of BindingSet to read from. |
-| args.bRefs | string |  | Space separated list of bRefs to be loaded. |
-| args.filterBRefs? | string |  | Space separated list of bRefs in $guiStatus f:Filter to be used as filters. TODO: add static |
+| args.bRefs | string |  | Space separated list of bRefs to be loaded, also defines the order of columns. |
+| args.filterBRefs? | string |  | Space separated list of bRefs to be used from `$guiStatus/guiStatus:Status/f:Filter`, default is all. |
 | args.orderByBRefs? | string |  | Space separated list of bRefs that will be used to order the data. This ordering has a higher priority over possible auto ordering by useCaptions or isDistinct. A minus(-) sign at the end indicates descending sorting. |
-| args.initialFilterBRefs? | string |  | Space separated list of bRefs in $guiStatus f:Filter to be used as filters for initial, very first request only. Unlike filterBRefs, these filter values are not monitored for changes. |
-| args.mandatoryFilterBRefsSubset? | string |  | Space separated subset of bRefs that needs to be set before the AutoModel gets data. Until available, no request will be run. |
+| args.initialFilterBRefs? | string |  | Space separated list of bRefs in `$guiStatus/guiStatus:Status/f:Filter` to be used as filters for very first request only. Filters are ignored for later requests or for isAutoRefresh=true. |
+| args.mandatoryFilterBRefsSubset? | string |  | Space separated subset of bRefs that needs to be set before the AutoModel gets data. Until available, no request will be run. Usefull if user needs to male selections first. |
 | args.isDistinct? | boolean | false | If true, a group-by across all columns is generated. Parameter .groupByBRefs is ignored in this case. |
 | args.useCaptions? | boolean | false | If true, @bRef+'_caption' will be used as bRef for the caption. |
-| args.additionalFilterXPath? | modelXPath |  | Allows using additional filters not part of $guiStatus f:Filter. These filters are monitored for changes. The given xPath needs to point to the filter expression itself, not to a parent. |
-| args.additionalPassiveFilterXPath? | modelXPath |  | Optional, allows using additional filters not part of $guiStatus f:Filter, unlike 'additionalFilterXPath', this xPath is not monitored for changes. |
+| args.additionalFilterXPath? | modelXPath |  | Allows using additional filters not part of `$guiStatus/guiStatus:Status/f:Filter`. These filters are monitored for changes. The given xPath needs to point to the filter expression itself, not to a parent. |
+| args.additionalPassiveFilterXPath? | modelXPath |  | Optional, allows using additional filters not part of `$guiStatus/guiStatus:Status/f:Filter`, unlike 'additionalFilterXPath', this xPath is not monitored for changes. |
 | args.maxRows? | number |  | Optional, limits the request to n rows. Use distinct if you need a certain order. |
 | args.id? | string |  | Optional, a globally unique id for use in declarative contexts |
-| args.isAutoRefresh? | boolean | false | If true, will reload when any (other) filter regarding a bRefs or the additionalFilterXPath change. |
+| args.isAutoRefresh? | boolean | false | If true, will reload data when (filterBRefs in) `$guiStatus/guiStatus:Status/f:Filter` or any of additionalFilterXPath changes. |
 | args.reqDocParameters? | Object |  | Optional parameters for a custom request document builder. |
 | args.reqDocChain? | Array.\<string> | ['wrs/requestDocumentBuilder.xslt'] | Optional custom chain for request document builder. |
 | args.statusModel? | bcdui.core.DataProvider | bcdui.wkModels.guiStatus | the status model to resolve .filterBRefs against |
@@ -45,10 +45,6 @@ var myAM = new bcdui.core.AutoModel({ bindingSetId, bRefs });
 | args.saveOptions.onWrsValidationFailure? | function |  | Callback on serverside validate failure, if omitted the onFailure is used in case of validation failures |
 | args.saveOptions.urlProvider? | bcdui.core.DataProvider |  | DataProvider holding the request url (by default taken from the underlying simple model url) |
 
-#### Examples
-````js
-// Create a simple AutoModel, reading distinct bindingItems 'country', 'region' and 'city' from BindingSet 'md_geo'var am = new bcdui.core.AutoModel({ bindingSetId: "md_geo", bRefs: "country region city", isDistinct: true, filterElement: "country='DE'" });// Show datalet rnd = new bcdui.core.Renderer({inputModel: am, targetHtml: "#myDataDiv"});// Get a valueam.onceReady({ executeIfNotReady: true, onSuccess: () => {  let costPos = am.read("/wrs:Wrs/wrs:Header/wrs:Columns/wrs:C[id='cost']");  let cost = am.read("/wrs:Wrs/wrs:Data/wrs:R[3]/wrs:C["+costPos+"]");}});// Add a row and save itam.tblInsert({author: 'Descartes', title: "Principles of Philosophy", year: "1644"});am.sendData();
-````
 #### Examples
 ````js
 // Create a simple AutoModel, reading distinct bindingItems 'country', 'region' and 'city' from BindingSet 'md_geo'var am = new bcdui.core.AutoModel({ bindingSetId: "md_geo", bRefs: "country region city", isDistinct: true, filterElement: "country='DE'" });// Show datalet rnd = new bcdui.core.Renderer({inputModel: am, targetHtml: "#myDataDiv"});// Get a valueam.onceReady({ executeIfNotReady: true, onSuccess: () => {  let costPos = am.read("/wrs:Wrs/wrs:Header/wrs:Columns/wrs:C[id='cost']");  let cost = am.read("/wrs:Wrs/wrs:Data/wrs:R[3]/wrs:C["+costPos+"]");}});// Add a row and save itam.tblInsert({author: 'Descartes', title: "Principles of Philosophy", year: "1644"});am.sendData();

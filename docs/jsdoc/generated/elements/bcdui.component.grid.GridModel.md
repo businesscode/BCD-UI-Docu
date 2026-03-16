@@ -31,10 +31,6 @@ Creates a GridModel for use by Grid if you need more fine-grained control.To us
 ````js
 <grid:GridConfiguration    xmlns:grid="http://www.businesscode.de/schema/bcdui/grid-1.0.0"    xmlns:wrq="http://www.businesscode.de/schema/bcdui/wrs-request-1.0.0">  <wrq:BindingSet>mdStation</wrq:BindingSet>  <grid:SelectColumns>    <grid:C bRef="lastUpdate" isReadOnly="true"/>    <grid:C bRef="country" isKey="true"/>    <grid:C bRef="station" isKey="true"/>    <grid:C bRef="isGateway" isCheckbox="1|0" class='bcdCheckbox'/>  </grid:SelectColumns>  <grid:OrderColumns>    <grid:C bRef="lastUpdate" order="desc"/>  </grid:OrderColumns></grid:GridConfiguration>
 ````
-#### Examples
-````js
-<grid:GridConfiguration    xmlns:grid="http://www.businesscode.de/schema/bcdui/grid-1.0.0"    xmlns:wrq="http://www.businesscode.de/schema/bcdui/wrs-request-1.0.0">  <wrq:BindingSet>mdStation</wrq:BindingSet>  <grid:SelectColumns>    <grid:C bRef="lastUpdate" isReadOnly="true"/>    <grid:C bRef="country" isKey="true"/>    <grid:C bRef="station" isKey="true"/>    <grid:C bRef="isGateway" isCheckbox="1|0" class='bcdCheckbox'/>  </grid:SelectColumns>  <grid:OrderColumns>    <grid:C bRef="lastUpdate" order="desc"/>  </grid:OrderColumns></grid:GridConfiguration>
-````
 <!-- LLM_HINT DETAILS_STARTING -->
 ## Methods
 

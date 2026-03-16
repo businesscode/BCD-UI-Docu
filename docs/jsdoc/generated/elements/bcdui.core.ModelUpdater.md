@@ -27,10 +27,6 @@ var myMU = new bcdui.core.ModelUpdater({ chain: ["myRenderer.xslt", finalCleanup
 ````js
 // Example for a default value for the GuiStatus: If no filter is set, limit the id range new bcdui.core.ModelUpdater({ targetModel: bcdui.wkModels.guiStatus , autoUpdate: false,   chain: function guiStatusFilter(guiStatusDataDoc) {     if( guiStatusDataDoc.selectSingleNode("/guiStatus:Status/f:Filter" ) === null) {       bcdui.core.createElementWithPrototype(guiStatusDataDoc, "/guiStatus:Status/f:Filter/f:Expression[@bRef='id' and @op='>=' and @value='1030000']");       bcdui.core.createElementWithPrototype(guiStatusDataDoc, "/guiStatus:Status/f:Filter/f:Expression[@bRef='id' and @op='<=' and @value='1030125']");     }   } });
 ````
-#### Examples
-````js
-// Example for a default value for the GuiStatus: If no filter is set, limit the id range new bcdui.core.ModelUpdater({ targetModel: bcdui.wkModels.guiStatus , autoUpdate: false,   chain: function guiStatusFilter(guiStatusDataDoc) {     if( guiStatusDataDoc.selectSingleNode("/guiStatus:Status/f:Filter" ) === null) {       bcdui.core.createElementWithPrototype(guiStatusDataDoc, "/guiStatus:Status/f:Filter/f:Expression[@bRef='id' and @op='>=' and @value='1030000']");       bcdui.core.createElementWithPrototype(guiStatusDataDoc, "/guiStatus:Status/f:Filter/f:Expression[@bRef='id' and @op='<=' and @value='1030125']");     }   } });
-````
 <!-- LLM_HINT DETAILS_STARTING -->
 ## Methods
 

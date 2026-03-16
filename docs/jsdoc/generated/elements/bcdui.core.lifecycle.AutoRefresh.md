@@ -26,10 +26,6 @@ var myAR = new bcdui.core.lifecycle.AutoRefresh({ model });
 ````js
 let arModel = myCube.getPrimaryModel().getPrimaryModel();new bcdui.core.lifecycle.AutoRefresh({ model: arModel });
 ````
-#### Examples
-````js
-let arModel = myCube.getPrimaryModel().getPrimaryModel();new bcdui.core.lifecycle.AutoRefresh({ model: arModel });
-````
 <!-- LLM_HINT DETAILS_STARTING -->
 ## Methods
 
