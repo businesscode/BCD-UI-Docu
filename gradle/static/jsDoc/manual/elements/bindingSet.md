@@ -38,9 +38,7 @@ BindingSets rely on data sources defined in `context.xml`.
 The attribute `@dbSourceName` can be set explicitly or omitted:
 
 **Explicit** — `@dbSourceName` must match a `Resource` entry in `context.xml`:
-```xml
 `<Resource factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"` with the same `name="jdbc/myDb`
-```
 
 **Omitted** — the BindingSet uses the default connection, resolved via an Environment entry in `META-INF/context.xml`
 
