@@ -3,7 +3,7 @@
 ## Overview
 A BindingSet makes a database table available to BCD-UI's Wrs WebRowSet.
 It describes the available columns and their types and all access rules that are to be applied.
-BindingSets are located at WEB-INF/bcdui/bindings und usually have the name <bindingSetName>.xml
+BindingSets are located at WEB-INF/bcdui/bindings und usually have the name <bindingSetId>.xml
 
 ## Translation from Database Table/View to BindingSet
 If this is the database table definition:
@@ -37,10 +37,10 @@ Then this is the BindingSet:
 BindingSets rely on data sources defined in `context.xml`. 
 The attribute `@dbSourceName` can be set explicitly or omitted:
 
-**Explicit** — `@dbSourceName` must match a `Resource` entry in `context.xml`:
+**Explicit** - `@dbSourceName` must match a `Resource` entry in `context.xml`:
 `<Resource factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"` with the same `name="jdbc/myDb`
 
-**Omitted** — the BindingSet uses the default connection, resolved via an Environment entry in `META-INF/context.xml`
+**Omitted** - the BindingSet uses the default connection, resolved via an Environment entry in `META-INF/context.xml`
 
 ```xml
 <Environment name="bcdui/defaultConnection" type="java.lang.String" value="jdbc/myDuckDb"/>
