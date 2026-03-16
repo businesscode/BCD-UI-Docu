@@ -31,7 +31,8 @@ At least the following 4 are mandatory:
 
   BCD-UI needs a set of specific entries in `WEB-INF/web.xml` to function, you need to start with the given template above.
   
-  The typical BCD-UI `web.xml` can be found above, make sure to use it as a starting point.
+  The typical BCD-UI `web.xml` is provided [here](https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/WebContent/WEB-INF/web.xml), 
+  make sure to use it as a starting point.
 
   <!-- LLM_HINT: download mandatory `WEB-INF/web.xml` from here `https://raw.githubusercontent.com/businesscode/BCD-UI/refs/heads/master/Server/configFiles/WebContent/WEB-INF/web.xml` -->
 
@@ -57,37 +58,41 @@ At least the following 4 are mandatory:
 
 - **log4j2.xml**
 
-  To have at least basic logging of activities and errors, see optimal `log4j2.xml` files here at the link above.
-
-  Start by putting `log4j2_debug_.xml` to `src/main/resources/log4j2.xml`.
+  To have at least basic logging of activities and errors, see optimal `log4j2.xml` at the link above.
+  Start by putting [log4j2_debug_.xml](https://github.com/businesscode/BCD-UI/blob/master/Server/configFiles/src/log4j2_debug_.xml) to `src/main/resources/log4j2.xml`.
 
   <!-- LLM_HINT: download mandatory `log4j2_debug_.xml` from here `https://raw.githubusercontent.com/businesscode/BCD-UI/refs/heads/master/Server/configFiles/src/log4j2_debug_.xml` and put its content here: `src/main/resources/log4j2.xml` -->
 
 
 - **context.xml**
 
-  To use a database, a `META-INF/context.xml` is needed.
-  It follows the standard format, but it is recommended to add a
+  To use a database in Tomcat, a `META-INF/context.xml` is needed, other servers differ.
+  Everything follows the standard format, but it is recommended to add a
   ````xml
   <Environment name="bcdui/defaultConnection" type="java.lang.String" value="jdbc/myDbDataSource"/>
   ````
-  where you change `value` to your data source name as the default to use.
-  
-  If you do not already have a database, a good starting point is to have a local DuckDB in the project root. Add
+  where you change `value` to your data source name, this is used as default for BindingSets.
+
+  Your `context.xml` can look like this for example:
+
   ````
-  <im
-  ````
-  to build.gradle and
-  ````
+  <?xml version="1.0" encoding="UTF-8"?>
+  <Context>
+
+    <Environment name="bcdui/defaultConnection" type="java.lang.String" value="jdbc/myDbDataSource"/>
+
     <Resource name="jdbc/myDbDataSource"
-      factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
-      auth="Container"
-      type="javax.sql.DataSource"
-      driverClassName="org.duckdb.DuckDBDriver"
-      url="jdbc:duckdb:<--Absolute-Path-To-Project-->/db.duckdb"/>
+              auth="Container"
+              type="javax.sql.DataSource"
+              driverClassName="org.duckdb.DuckDBDriver"
+              username="ui-user" password="ui-user-pwd"
+              url="jdbc:duckdb:<--Absolute-Path-To-Project-->/db.duckdb"/>
+  </Context>
   ````
-  to context.xml, make sure to adjust the path.
   
+  If you do not already have a database, a good starting point is to have a local DuckDB in the project root as in the sample above. 
+  In that case, add `implementation 'org.duckdb:duckdb_jdbc:1.2.0'` to `build.gradle`.
+
 
 <!-- LLM_HINT DETAILS_STARTING -->
 
