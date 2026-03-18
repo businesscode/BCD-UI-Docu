@@ -30,7 +30,7 @@ A DataProvider retrieving its content on getData() from an attribute in the HTML
 Reading a single data item from an XPath on getData() as string.
 
 [DataProviderWithXPathNodes](bcdui.core.DataProviderWithXPathNodes.md)\
-This class creates a static model with a top level element '<Root/>' and appends all the elements that are found by xpath as children.
+This class creates a static model with a top level element '&lt;Root/>' and appends all the elements that are found by xpath as children.
 
 [HTML2XMLDataProvider](bcdui.core.HTML2XMLDataProvider.md)
 

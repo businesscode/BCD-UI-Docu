@@ -408,25 +408,29 @@ _Overrides_ bcdui.core.DataProviderHolder#setStatus
 tblDelete(args) &#x21FE; {number}
 
 
-updates wrs rows with given data. Either a single row (via rowId) or single/multiple ones (via filter) \
+Delete Wrs rows. Either a single row (via rowId) or single/multiple ones via filterThe filter's property names refer to the columns ids. \
 _Overrides_ bcdui.core.DataProviderHolder#tblDelete
 
 | Name     | Type     | Default  | Description |
 |----------|----------|----------|-------------|
 | args | Object |  | parameter bag |
-| args.filter? | Object |  | object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true } |
+| args.filter? | Object |  | affected row(s) for example `{ country: 'DE', flag: true }` |
 | args.rmi? | boolean | true | use wrs:M syntax when this is true, otherwise row columns element name is not touched |
 | args.fire? | boolean | true | lets the listeners know, that the update was finished |
 | args.rowId? | string |  | id specifying row which should be deleted (or use filter) |
 
 **Returns** {number}: count of removed rows
+#### Examples
+````js
+// Update all values for 'AT', for example, even it has 3 sitesmyModel.tblDelete({ filter: {country: 'AT'} });
+````
 
 
 ### tblInsert
 tblInsert(args) &#x21FE; {string}
 
 
-inserts a new row in the wrs data, values given as object \
+Inserts a new row in the Wrs. The property names match the Wrs header ids. \
 _Overrides_ bcdui.core.DataProviderHolder#tblInsert
 
 | Name     | Type     | Default  | Description |
@@ -437,13 +441,17 @@ _Overrides_ bcdui.core.DataProviderHolder#tblInsert
 | args.fire? | boolean | true | lets the listeners know, that the update was finished |
 
 **Returns** {string}: row id of newly inserted row
+#### Examples
+````js
+// Wrs has columns with matching ids wrs:header/wrs:Columns/wrs:C/@id='author' etcmyModel.tblInsert({ values: {author: 'Descartes', title: "Principles of Philosophy", year: "1644"} });
+````
 
 
 ### tblSelect
 tblSelect(args) &#x21FE; {Array.\<Object>}
 
 
-returns an array of requested data \
+Selects an array of row values like `[{ctr: 'DE', site: 'HAM', flag: true}, {ctr: 'DE', site: 'BER', flag: false}];` for a given filter.The filter's and the returned property names match the column ids. \
 _Overrides_ bcdui.core.DataProviderHolder#tblSelect
 
 | Name     | Type     | Default  | Description |
@@ -453,13 +461,20 @@ _Overrides_ bcdui.core.DataProviderHolder#tblSelect
 | args.columns? | Array.\<string> |  | string array of requested columns, if not given, all columns are returned |
 
 **Returns** {Array.\<Object>}: Array of objects holding the requested data
+#### Examples
+````js
+// Select all rows with country 'DE'let ret = myModel.tblSelect({ filter: { ctr: 'DE' } });// ret equals [{ctr: 'DE', site: 'Hamburg', flag: true}, {ctr: 'DE', site: 'Berlin', flag: false}]
+````
+````js
+// Select only books names and publishing years for author 'Hobbes'let ret = myModel.tblSelect({ filter: { author: 'Hobbes' }, columns: ['title', 'year'] });// ret equals [{title: 'De Cive', year: '1642'}, {title: 'Problemata Physica', year: '1662'}]
+````
 
 
 ### tblSelectRow
 tblSelectRow(args) &#x21FE; {Object}
 
 
-returns one object representing the filtered data (either filter or rowId). In case of multiple filter matches, the first one is returned \
+Returns an object with the values of a single row, which is either identified by its `wrs:/@id` if given, or the first one matching the filter.The filter's and the returned property names match the column ids. \
 _Overrides_ bcdui.core.DataProviderHolder#tblSelectRow
 
 | Name     | Type     | Default  | Description |
@@ -470,25 +485,36 @@ _Overrides_ bcdui.core.DataProviderHolder#tblSelectRow
 | args.columns? | Array.\<string> |  | string array of requested columns, if not given, all columns are returned |
 
 **Returns** {Object}: Array  of objects holding the requested data
+#### Examples
+````js
+// Select only books names and publishing years for author 'Hobbes'let ret = myModel.tblSelectRow({ filter: { ctr: 'US', state: 'CA' }, columns: ['area', 'population'] });// ret equals {area: '423.970', population: '39.538.223'}}
+````
 
 
 ### tblUpdate
 tblUpdate(args) &#x21FE; {number}
 
 
-updates wrs rows with given data. Either a single row (via rowId) or single/multiple ones (via filter) \
+Updates one or multiple Wrs rows with given data.Either a single row (via rowId) or single/multiple ones (via filter)The filter's and the given values' property names refer to the columns ids. \
 _Overrides_ bcdui.core.DataProviderHolder#tblUpdate
 
 | Name     | Type     | Default  | Description |
 |----------|----------|----------|-------------|
 | args | Object |  | parameter bag |
-| args.values | Object |  | object holding cell values which should be used for updating, e.g. { country: 'DE', flag: true } |
-| args.filter? | Object |  | object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true } |
+| args.values | Object |  | columns and values to be updated. This sets 2 columns { country: 'DE', flag: true } |
+| args.filter? | Object |  | affected row(s) for example `{ country: 'DE', flag: true }` |
 | args.rmi? | boolean | true | use wrs:M syntax when this is true, otherwise row columns element name is not touched |
 | args.fire? | boolean | true | lets the listeners know, that the update was finished |
 | args.rowId? | string |  | id specifying row which should be updated (or use filter) |
 
 **Returns** {number}: count of updated rows
+#### Examples
+````js
+// Update sales information for a bookmyModel.tblUpdate({ values: {sold: 16, lastSold: new Date()},                    filter: {author: 'Descartes', title: "Principles of Philosophy"} });
+````
+````js
+// Update all values for 'AT', for example, even it has 3 sitesmyModel.tblUpdate({ values: {supervisor: 'Karl Popper'}, filter: {country: 'AT'} });
+````
 
 
 ### toString

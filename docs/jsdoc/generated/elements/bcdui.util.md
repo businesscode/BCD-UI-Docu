@@ -32,6 +32,9 @@ returns an object map holding information for a binding's items (id, description
 [getUuid()](bcdui.util.getUuid.md)\
 Generates a new UUID.
 
+[htmlBuilderOnLoad()](bcdui.util.htmlBuilderOnLoad.md)\
+wrapper function for effects htmlBuilderOnLoad.
+
 [interpolateXPath()](bcdui.util.interpolateXPath.md)\
 transforms a xpath string with placeholders.
 

@@ -11,7 +11,7 @@
  | [CubeModel](../elements/bcdui.component.cube.CubeModel.md) | Creates a CubeModel for use by Cube, if you need more fine-grained control or only want the data | Is a DataProvider |
  | [Far](../elements/bcdui.component.far.Far.md) | A FAR component |  |
  | [FarModel](../elements/bcdui.component.far.FarModel.md) | DataProvider for Far if you need more fine-grained control | Is a DataProvider |
- | [Grid](../elements/bcdui.component.grid.Grid.md) | Creates a Grid-UI for editing tabular, data complete range copy-paste and validation | Is a Renderer |
+ | [Grid](../elements/bcdui.component.grid.Grid.md) | Creates a Grid-UI for editing tabular data, complete with range copy-paste and validation | Is a Renderer |
  | [GridModel](../elements/bcdui.component.grid.GridModel.md) | Creates a GridModel for use by Grid if you need more fine-grained control | Is a DataProvider |
  | [Renderer](../elements/bcdui.core.Renderer.md) | This class renders data to HTML, per default a table view of Wrs, but it does support any kind of input and HTML output when providing a `chain` | Is a Renderer |
  | [Scorecard](../elements/bcdui.component.scorecard.Scorecard.md) | Creates a convenience standard scorecard renderer | Is a Renderer |

@@ -184,6 +184,7 @@
     * [escapeHtml()](bcdui.util.escapeHtml.md)
     * [getBindingInfo()](bcdui.util.getBindingInfo.md)
     * [getUuid()](bcdui.util.getUuid.md)
+    * [htmlBuilderOnLoad()](bcdui.util.htmlBuilderOnLoad.md)
     * [interpolateXPath()](bcdui.util.interpolateXPath.md)
     * [setSubjectPreference()](bcdui.util.setSubjectPreference.md)
     * [template()](bcdui.util.template.md)

@@ -423,25 +423,29 @@ _Overrides_ bcdui.core.DataProvider#setStatus
 tblDelete(args) &#x21FE; {number}
 
 
-updates wrs rows with given data. Either a single row (via rowId) or single/multiple ones (via filter) \
+Delete Wrs rows. Either a single row (via rowId) or single/multiple ones via filterThe filter's property names refer to the columns ids. \
 _Overrides_ bcdui.core.DataProvider#tblDelete
 
 | Name     | Type     | Default  | Description |
 |----------|----------|----------|-------------|
 | args | Object |  | parameter bag |
-| args.filter? | Object |  | object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true } |
+| args.filter? | Object |  | affected row(s) for example `{ country: 'DE', flag: true }` |
 | args.rmi? | boolean | true | use wrs:M syntax when this is true, otherwise row columns element name is not touched |
 | args.fire? | boolean | true | lets the listeners know, that the update was finished |
 | args.rowId? | string |  | id specifying row which should be deleted (or use filter) |
 
 **Returns** {number}: count of removed rows
+#### Examples
+````js
+// Update all values for 'AT', for example, even it has 3 sitesmyModel.tblDelete({ filter: {country: 'AT'} });
+````
 
 
 ### tblInsert
 tblInsert(args) &#x21FE; {string}
 
 
-inserts a new row in the wrs data, values given as object \
+Inserts a new row in the Wrs. The property names match the Wrs header ids. \
 _Overrides_ bcdui.core.DataProvider#tblInsert
 
 | Name     | Type     | Default  | Description |
@@ -452,13 +456,17 @@ _Overrides_ bcdui.core.DataProvider#tblInsert
 | args.fire? | boolean | true | lets the listeners know, that the update was finished |
 
 **Returns** {string}: row id of newly inserted row
+#### Examples
+````js
+// Wrs has columns with matching ids wrs:header/wrs:Columns/wrs:C/@id='author' etcmyModel.tblInsert({ values: {author: 'Descartes', title: "Principles of Philosophy", year: "1644"} });
+````
 
 
 ### tblSelect
 tblSelect(args) &#x21FE; {Array.\<Object>}
 
 
-returns an array of requested data \
+Selects an array of row values like `[{ctr: 'DE', site: 'HAM', flag: true}, {ctr: 'DE', site: 'BER', flag: false}];` for a given filter.The filter's and the returned property names match the column ids. \
 _Overrides_ bcdui.core.DataProvider#tblSelect
 
 | Name     | Type     | Default  | Description |
@@ -468,13 +476,20 @@ _Overrides_ bcdui.core.DataProvider#tblSelect
 | args.columns? | Array.\<string> |  | string array of requested columns, if not given, all columns are returned |
 
 **Returns** {Array.\<Object>}: Array of objects holding the requested data
+#### Examples
+````js
+// Select all rows with country 'DE'let ret = myModel.tblSelect({ filter: { ctr: 'DE' } });// ret equals [{ctr: 'DE', site: 'Hamburg', flag: true}, {ctr: 'DE', site: 'Berlin', flag: false}]
+````
+````js
+// Select only books names and publishing years for author 'Hobbes'let ret = myModel.tblSelect({ filter: { author: 'Hobbes' }, columns: ['title', 'year'] });// ret equals [{title: 'De Cive', year: '1642'}, {title: 'Problemata Physica', year: '1662'}]
+````
 
 
 ### tblSelectRow
 tblSelectRow(args) &#x21FE; {Object}
 
 
-returns one object representing the filtered data (either filter or rowId). In case of multiple filter matches, the first one is returned \
+Returns an object with the values of a single row, which is either identified by its `wrs:/@id` if given, or the first one matching the filter.The filter's and the returned property names match the column ids. \
 _Overrides_ bcdui.core.DataProvider#tblSelectRow
 
 | Name     | Type     | Default  | Description |
@@ -485,25 +500,36 @@ _Overrides_ bcdui.core.DataProvider#tblSelectRow
 | args.columns? | Array.\<string> |  | string array of requested columns, if not given, all columns are returned |
 
 **Returns** {Object}: Array  of objects holding the requested data
+#### Examples
+````js
+// Select only books names and publishing years for author 'Hobbes'let ret = myModel.tblSelectRow({ filter: { ctr: 'US', state: 'CA' }, columns: ['area', 'population'] });// ret equals {area: '423.970', population: '39.538.223'}}
+````
 
 
 ### tblUpdate
 tblUpdate(args) &#x21FE; {number}
 
 
-updates wrs rows with given data. Either a single row (via rowId) or single/multiple ones (via filter) \
+Updates one or multiple Wrs rows with given data.Either a single row (via rowId) or single/multiple ones (via filter)The filter's and the given values' property names refer to the columns ids. \
 _Overrides_ bcdui.core.DataProvider#tblUpdate
 
 | Name     | Type     | Default  | Description |
 |----------|----------|----------|-------------|
 | args | Object |  | parameter bag |
-| args.values | Object |  | object holding cell values which should be used for updating, e.g. { country: 'DE', flag: true } |
-| args.filter? | Object |  | object holding cell values which should be used for selecting the rows for update, e.g. { country: 'DE', flag: true } |
+| args.values | Object |  | columns and values to be updated. This sets 2 columns { country: 'DE', flag: true } |
+| args.filter? | Object |  | affected row(s) for example `{ country: 'DE', flag: true }` |
 | args.rmi? | boolean | true | use wrs:M syntax when this is true, otherwise row columns element name is not touched |
 | args.fire? | boolean | true | lets the listeners know, that the update was finished |
 | args.rowId? | string |  | id specifying row which should be updated (or use filter) |
 
 **Returns** {number}: count of updated rows
+#### Examples
+````js
+// Update sales information for a bookmyModel.tblUpdate({ values: {sold: 16, lastSold: new Date()},                    filter: {author: 'Descartes', title: "Principles of Philosophy"} });
+````
+````js
+// Update all values for 'AT', for example, even it has 3 sitesmyModel.tblUpdate({ values: {supervisor: 'Karl Popper'}, filter: {country: 'AT'} });
+````
 
 
 ### toString
@@ -524,13 +550,13 @@ _Overrides_ bcdui.core.DataProvider#write
 
 | Name     | Type     | Default  | Description |
 |----------|----------|----------|-------------|
-| xPath | string |  | xPath pointing to the node which is set to the value or plain xPath to be created if not there.<br/>   It tries to reuse all matching parts that are already there. If you provide for example `/n:Root/n:MyElem/@attr2` and there is already `/n:Root/n:MyElem/@attr1`, then `/n:Root/n:MyElem` will be "re-used" and get an additional attribute attr2.<br/>   Many expressions are allowed, for example `/n:Root/n:MyElem[@attr1='attr1Value']/n:SubElem` is also ok.<br/>   By nature, some xPath expressions are not allowed, for example using '//' or `/n:Root/n:MyElem/[@attr1 or @attr2]/n:SubElem` is obviously not unambiguous enough and will throw an error.<br/>   This method is Wrs aware, use for example `/wrs:Wrs/wrs:Data/wrs:*[2]/wrs:C[3]` as xPath, and it will turn wrs:R[wrs:C] into wrs:M[wrs:C and wrs:O], see Wrs format.<br/>   (can include dot template placeholders which get filled with the given fillParams) |
+| xPath | string |  | xPath pointing to the node which is to be modified. Only the first match will be modified.<br/>   If it does not exist, it will be created.<br/>   For example, if you provide `/n:Root/n:MyElem/@attr2` and there is already `/n:Root/n:MyElem/@attr1`, then `/n:Root/n:MyElem` will be "re-used" and get an additional attribute attr2.<br/>   Even complex expressions are allowed, like predicates `/n:Root/n:MyElem[@attr1='attr1Value']/n:SubElem`.<br/>   Ambiguous xPaths are not allowed, for example, using `//` or `/n:Root/n:MyElem/[@attr1 or @attr2]/n:SubElem`, and will throw an error.<br/>   The method is Wrs aware, for Wrs it turns wrs:R into wrs:M etc., see Wrs format.<br/>   Using {{=it[0]}} templates makes sure values are escaped correctly. |
 | fillParams? | Object |  | array or object holding the values for the dot placeholders in the xpath. Values with "'" get 'escaped' with a concat operation to avoid bad xpath expressions<br/>    Example: `bcdui.wkModels.guiStatus.write("/guiStatus:Status/guiStatus:ClientSettings/guiStatus:Test[@caption='{{=it[0]}}' and @caption2='{{=it[1]}}']", ["china's republic", "drag\"n drop"])` |
-| value? | string |  | Optional value which should be written, for example to `/n:Root/n:MyElem/@attr` or with `/n:Root/n:MyElem` as the element's text content.<br/>   If not provided, the xPath contains all values like in `/n:Root/n:MyElem[@attr='a' and @attr1='b']` or needs none like `/n:Root/n:MyElem` |
+| value? | string |  | Optional value which should be written, for example to `/n:Root/n:MyElem/@attr` or with `/n:Root/n:MyElem` as the element's text content.<br/>   If not provided, the xPath contains all values and either there is a full match or it will be created. |
 | fire? | boolean | false | If true a fire is triggered to inform data modification listeners |
 
 **Returns** {DomNode}: The xPath's node or null if dataProvider isn't ready
 #### Examples
 ````js
-// To change an individual value, use this to set the second column in the 3rd row to 'HALLO'.// It turns the row into a proper `wrs:M`, if it detects the model is a Wrs.// Writing by pointing to a node. wrs:* makes sure that it matches wrs:R as well as wrs:MmyModel.write("/wrs:Wrs/wrs:Data/wrs:*[3]/wrs:C[2]", "HELLO")// Writing 2 values by describing, what xPath should match: wrs:*[3][..]// If the row 3 does not exist, it is created (wrs:I)myModel.write("/wrs:Wrs/wrs:Data/wrs:*[3][wrs:C[1]='{{=it[0]}}' and wrs:C[2]='{{=it[2]}}']", ["HELLO", "WORLD"])
+// Set column 2 for 'UK' to 'Hello UK'.// For Wrs, it also turns the row into a proper `wrs:M`, ready to be saved.// If there is no row for 'UK' in the first column, it will create it (wrs:I), and then set the second column.myModel.write("/wrs:Wrs/wrs:Data/wrs:*[wrs:C[1]='{{=it[0]}}']/wrs:C[2]", ['UK'], "Hello UK")
 ````

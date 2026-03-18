@@ -22,11 +22,11 @@ Then this is the BindingSet:
 ````xml
 <BindingSet xmlns="http://www.businesscode.de/schema/bcdui/bindings-1.0.0"
   id="carRepairs" table="car_repairs" allowSelectAllColumns="true" dbSourceName="jdbc/myDb">
-  <C id="id" caption="Id" isKey="true" type-name="INTEGER"> <Column>id</Column> </C>
-  <C id="dy" caption="Dy" nullable=false type-name="DATE"> <Column>dy</Column> </C>
+  <C id="id" caption="Id" nullable="0" isKey="true" type-name="INTEGER"> <Column>id</Column> </C>
+  <C id="dy" caption="Dy" type-name="DATE"> <Column>dy</Column> </C>
   <C id="yr" caption="Year" type-name="INTEGER"> <Column>EXTRACT( YEAR from dy)</Column> </C>
   <C id="country" caption="Country" type-name="VARCHAR"> <Column>country</Column> </C>
-  <C id="station" caption="Station" nullable=false type-name="VARCHAR"> <Column>station</Column> </C>
+  <C id="station" caption="Station" nullable="0" type-name="VARCHAR"> <Column>station</Column> </C>
   <C id="carsSold" caption="Cars Sold" type-name="INTEGER"> <Column>cars_sold</Column> </C>
   <C id="carsRepaired" caption="Cars Repaired" type-name="INTEGER"> <Column>cars_repaired</Column> </C>
 </BindingSet>        

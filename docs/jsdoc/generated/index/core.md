@@ -13,7 +13,7 @@
  | [DataProviderHolder](../elements/bcdui.core.DataProviderHolder.md) | This acts as a holder for the real DataProvider and behaves like a DataProvider itself | Is a DataProvider |
  | [DataProviderHtmlAttribute](../elements/bcdui.core.DataProviderHtmlAttribute.md) | A DataProvider retrieving its content on getData() from an attribute in the HTML DOM tree. | Is a DataProvider |
  | [DataProviderWithXPath](../elements/bcdui.core.DataProviderWithXPath.md) | Reading a single data item from an XPath on getData() as string | Is a DataProvider |
- | [DataProviderWithXPathNodes](../elements/bcdui.core.DataProviderWithXPathNodes.md) | This class creates a static model with a top level element '<Root/>' and appends all | Is a DataProvider |
+ | [DataProviderWithXPathNodes](../elements/bcdui.core.DataProviderWithXPathNodes.md) | This class creates a static model with a top level element '&lt | Is a DataProvider |
  | [JsDataProvider](../elements/bcdui.core.JsDataProvider.md) | Allows providing a custom js callback function returning a value. | Is a DataProvider |
  | [ModelUpdater](../elements/bcdui.core.ModelUpdater.md) | A concrete subclass of TransformationChain, replacing its targetModel's content with the result of the transformation applied to it | Is a DataProvider |
  | [ModelWrapper](../elements/bcdui.core.ModelWrapper.md) | A concrete subclass of TransformationChain, being a DataProvider itself, providing the transformed input. | Is a DataProvider |
