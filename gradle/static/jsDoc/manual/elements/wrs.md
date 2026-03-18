@@ -48,9 +48,21 @@ Structure of the Wrs:
 </Wrs>
 ````
 
+## Read Data
+Often you will just pass a DataProvider with its Wrs to the Renderer or a component to show it.
+
+To access Wrs data from Javascript, you can use
+- `let v = myModel.tblSelect({ filter: { author: "Galilei" }, columns: ['title', ''year'] })`
+  - it returns an array with matching row values like when books where published: 
+    `[{title: 'Il Saggiatore', year: '1623'}, {title: 'Le Mecaniche', year: '1654'}]`
+- `let v = myModel.read("/wrs:Wrs/wrs:Data/wrs:*[wrs:C[1]='DE']/@caption")`
+  - returns the caption of 'DE'
+- `let attr = myModel.query("/wrs:Wrs/wrs:Data/wrs:*[wrs:C[1]='DE']/@caption")`
+  - returns the node, which can also be assigned `attr = "Deutschland"`
+
 <!-- LLM_HINT DETAILS_STARTING -->
 
-## Modify Data
+## Modify Data Internal Wrs Format
 If data is modified at the client, new row-types appear:
 - wrs:I insert this row
 - wrs:D delete row with the same isKey="true" column values
@@ -60,41 +72,68 @@ If data is modified at the client, new row-types appear:
 Wrs send to the server will apply these changes.
 With the help of SubjectSettings, the server will validate that the user is allowed to delete and create the touched rows.
 
-### Use the editable Grid
+### 1. Use the editable Grid
 You can use a [Grid](../../generated/elements/bcdui.component.grid.Grid.md) to allow tabular data being edited.
 A Grid also supports copy/pasting data from other sources.
 Ad grid also automatically validates the data on entry and hint the user about issues.
 
-### Programmatic Changes
+### 2. Programmatic Changes
 
 #### Javascript
-Usually you will load the initial data with a 
-[SimpleModel](../../generated/elements/bcdui.core.SimpleModel.md) or [AutoModel](../../generated/elements/bcdui.core.AutoModel.md) and then modify it with
-for example `myModel.tblDelete(args)`, `myModel.tblUpdate(args)` or `myModel.tblInsert(args)`,
-and then save it with `myModel.sendData(args)`. Check the DataProviders for more details about the methods. \
+Usually you will load the initial data with a [SimpleModel](../../generated/elements/bcdui.core.SimpleModel.md) or [AutoModel](../../generated/elements/bcdui.core.AutoModel.md).
+Both allow for easily filter the wanted data.
 
-To change an individual value, use write().
-For example the following sets the second column in the 3rd row to 'HALLO'.
+If they hold data of type Wrs, they can be easily modified with
+- `myModel.tblUpdate({ filter: { festival: 'Tomorrow Land', year: 2025 }, values: { visitors: 160.000} );`
+  - updates all rows matching the filter with the given values
+- `myModel.tblInsert({ values: { festival: 'Tomorrow Land', year: 2026 } );`
+  - creates a new row with the given values
+- `myModel.tblDelete({ filter: { festival: 'Yesterday Land' } );`
+  - deletes all rows matching the filter
+- `sendData()` will write the changes back to the database.
+
+For example to get all values for countries selected in the side-bar, use
 ````js
-myModel.write("/wrs:Wrs/wrs:Data/wrs:*[3]/wrs:C[2]", "HELLO")
+let esFr = new bcdui.core.AutoModel({ bindingSet: 'geoData', bRefs: 'country area population', filterBRefs: "country" });
 ````
-It also turns the row into a proper `wrs:M`, if it detects the model is a Wrs.
-Writing by pointing to a node. `wrs:*` makes sure that it matches `wrs:R` as well as `wrs:M`.
-If the 3rd row does not exist, it is created (`wrs:I`) \
-This writes 2 values by describing, what xPath should match: `wrs:*[3][..]`
+  
+To create data, you may want to get an empty template for a BindingSet, use `maxRows: 0`
 ````js
-myModel.write("/wrs:Wrs/wrs:Data/wrs:*[3][ wrs:C[1]='{{=it[0]}}' and wrs:C[2]='{{=it[2]}}' ]", ["HELLO", "WORLD"])
+let empty = new bcdui.core.AutoModel({ bindingSet: 'geoData', bRefs: 'country area population', maxRows: 0 });
+empty.onceReady({ executeIfNotReady: true, onSuccess: () => {
+  empty.tblInsert({ values: { country: "DE", area: 357022, population: 83783942 } });
+  empty.sendData();
+}});
 ````
 
-You can also call static package functions to modify models.
-See [util package](../../generated/elements/bcdui.wrs.wrsUtil.md) for an overview of other functions to add, modify or delete rows.
+If you want the user to input the data, use Renderer creating the form and passing the Wrs to it.
+````js
+let empty = new bcdui.core.AutoModel({ bindingSet: 'geoData', bRefs: 'country area population', maxRows: 0 });
+function createWidzardFct() {
+  let values = { country: "", area: "", population: 0 };
+  
+  // Call this once a new row is to be inserted
+  empty.once("wrs:I",
+  
+  // Create the form
+  let html = "<div><input type='text' name='country' value='" + values.country + "'/><input type='text' name='area' value='" + values.area + "'/><input type='text' name='population' value='" + values.population + "'/></div>";
+  return html;
+}
+let rnd = new bcdui.core.Renderer({ inputModel: empty, targetHtml: "#myWidzard", chain: createWidzardFct });
+````
 
-#### ModelUpdater
-A [ModelUpdater](../../generated/elements/bcdui.core.ModelUpdater) gets a DataProvider as inputModel
-and applies the transformation on its data whenever it is executed, changing the input-model's data.
+
+### Deriving Data from Existing Data
+
+Use ModelWrapper or ModelUpdater to compute derived data from existing sources.
 
 #### ModelWrapper
-Use a [ModelWrapper](../../generated/elements/bcdui.core.ModelWrapper), if you need values to be changed or derived,
-but you do not need to write the values back to the database. \
-A ModelWrapper acts like a kind of client-side view on a DataProvider and applies its transformation
-on its inputModel without modifying the input itself.
+Works like a database view - it takes a DataProvider as `inputModel`, 
+applies transformation logic `chain`, and exposes the result as a new, separate DataProvider. 
+The result can be used as input for other DataProviders or Renderer and even be written back to the database.
+The input is not modified.
+
+#### ModelUpdater
+Like a ModelWrapper, but writes the result back into the input DataProvider 
+instead of producing a separate one.
+
