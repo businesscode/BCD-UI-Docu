@@ -1,7 +1,7 @@
 # Class Renderer
 package bcdui.core
 
-This class renders data to HTML, per default a table view of Wrs, but it does support any kind of input and HTML output when providing a `chain`.A Renderer is started on page entry and makes asks its DataProviders to become ready and waits if necessary.The chain represents the exact logic of the Renderer can be implemented as JavaScript functions or XSLTs,default is htmlBuilder.xslt, which is ideal for showing Wrs tabular data.
+This class renders data to HTML, per default a table view of Wrs, but it does support any kind of input and HTML output when providing a `chain`.A Renderer is started on page entry and makes sure its DataProviders become ready.The chain represents the exact logic of the Renderer can be implemented as JavaScript functions or XSLTs.The default is htmlBuilder.xslt, which is ideal for showing Wrs tabular data. It renders an HTML table, applies number-formats, and aligns dimensions left.To identify the corresponding row in Wrs, use a `tr`s attribute `bcdrowident`, which is set to the `wrs:R`'s id.
 
 _Extends_ [bcdui.core.TransformationChain](bcdui.core.TransformationChain.md), is a Renderer, can act as a DataProvider
 ## Constructor
@@ -30,7 +30,7 @@ var myRnd = new bcdui.core.Renderer({ inputModel: myModel });
 // Show the data on page load, applying any filer in $guiStatus/guiStatus:Status/f:Filterconst companiesModel = new bcdui.core.AutoModel({ bindingSetId: "Companies", bRefs: "id, name, address, country" });const renderer = new bcdui.core.Renderer({ targetHtml: "#companiesDiv", inputModel: companiesModel });
 ````
 ````js
-// Wait for country to be selected (mandatoryFilterBRefsSubset), and re-display the data whenever $guiStatus/guiStatus:Status/f:Filter changes (isAutoRefresh, onReady)const companiesModel = new bcdui.core.AutoModel({ bindingSetId: "Companies", bRefs: "id, name, address, country",  mandatoryFilterBRefsSubset: "country",  isAutoRefresh: true});const renderer = new bcdui.core.Renderer({  targetHtml: "#companiesDiv",  inputModel: companiesModel});companiesModel.onReady( () => renderer.execute(true) );
+// Wait for country to be selected (mandatoryFilterBRefsSubset),// and re-display the data whenever $guiStatus/guiStatus:Status/f:Filter changes (isAutoRefresh, onReady)const companiesModel = new bcdui.core.AutoModel({ bindingSetId: "Companies", bRefs: "id, name, address, country",  mandatoryFilterBRefsSubset: "country",  isAutoRefresh: true});const renderer = new bcdui.core.Renderer({  targetHtml: "#companiesDiv",  inputModel: companiesModel});// Not needed for initial rendering// But reacts on model reloads due to filter changes (isAutoRefresh) or manual updates (doUpdate)companiesModel.onReady( () => renderer.execute(true) );// Laterfunction doUpdate(companyId, address) {  companiesModel.tblUpdate({ values: {address}, filter: {id: companyId} });  companiesModel.fire(); // Changes done}
 ````
 <!-- LLM_HINT DETAILS_STARTING -->
 ## Methods
@@ -563,7 +563,7 @@ _Overrides_ bcdui.core.TransformationChain#tblSelect
 // Select all rows with country 'DE'let ret = myModel.tblSelect({ filter: { ctr: 'DE' } });// ret equals [{ctr: 'DE', site: 'Hamburg', flag: true}, {ctr: 'DE', site: 'Berlin', flag: false}]
 ````
 ````js
-// Select only books names and publishing years for author 'Hobbes'let ret = myModel.tblSelect({ filter: { author: 'Hobbes' }, columns: ['title', 'year'] });// ret equals [{title: 'De Cive', year: '1642'}, {title: 'Problemata Physica', year: '1662'}]
+// Select all book titles and publishing years for author 'Hobbes'let ret = myModel.tblSelect({ filter: { author: 'Hobbes' }, columns: ['title', 'year'] });// ret equals [{title: 'De Cive', year: '1642'}, {title: 'Problemata Physica', year: '1662'}]
 ````
 
 
@@ -571,7 +571,7 @@ _Overrides_ bcdui.core.TransformationChain#tblSelect
 tblSelectRow(args) &#x21FE; {Object}
 
 
-Returns an object with the values of a single row, which is either identified by its `wrs:/@id` if given, or the first one matching the filter.The filter's and the returned property names match the column ids. \
+Get the values of a single row, identified either by its `wrs:/@id`, or the first one matching the filter.The filter's and the returned property names match the column ids. \
 _Overrides_ bcdui.core.TransformationChain#tblSelectRow
 
 | Name     | Type     | Default  | Description |
@@ -584,7 +584,7 @@ _Overrides_ bcdui.core.TransformationChain#tblSelectRow
 **Returns** {Object}: Array  of objects holding the requested data
 #### Examples
 ````js
-// Select only books names and publishing years for author 'Hobbes'let ret = myModel.tblSelectRow({ filter: { ctr: 'US', state: 'CA' }, columns: ['area', 'population'] });// ret equals {area: '423.970', population: '39.538.223'}}
+// Select area and population for Californialet ret = myModel.tblSelectRow({ filter: { ctr: 'US', state: 'CA' }, columns: ['area', 'population'] });// ret equals {area: '423.970', population: '39.538.223'}}
 ````
 
 
@@ -627,7 +627,7 @@ _Overrides_ bcdui.core.TransformationChain#toString\
 write(xPath, fillParams?, value?, fire?) &#x21FE; {DomNode}
 
 
-Set a value to on a certain xPath and create the xPath where necessary. This combines Element.evaluate() for a single node with creating the path where necessary. It will prefer extending an existing start-part over creating a second one.After the operation the xPath (with the optional value) is guaranteed to exist (pre-existing or created or extended) and the addressed node is returned. \
+Set a value to on a certain xPath and create the xPath where necessary.This combines Element.evaluate() for a single node with creating the path where necessary. It will prefer extending an existing start-part over creating a second one.After the operation the xPath (with the optional value) is guaranteed to exist (pre-existing or created or extended) and the addressed node is returned. \
 _Overrides_ bcdui.core.TransformationChain#write
 
 | Name     | Type     | Default  | Description |

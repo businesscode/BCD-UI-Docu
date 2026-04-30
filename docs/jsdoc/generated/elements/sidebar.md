@@ -211,6 +211,7 @@
       * [prettyPrintDateRange()](bcdui.util.datetime.prettyPrintDateRange.md)
     * [**_bcdui.util.Event_**](bcdui.util.Event.md)
     * [**_bcdui.util.url_**](bcdui.util.url.md)
+      * [classifyLink()](bcdui.util.url.classifyLink.md)
       * [extractFolderFromURL()](bcdui.util.url.extractFolderFromURL.md)
       * [isAbsoluteURL()](bcdui.util.url.isAbsoluteURL.md)
       * [resolveToFullURLPathWithCurrentURL()](bcdui.util.url.resolveToFullURLPathWithCurrentURL.md)

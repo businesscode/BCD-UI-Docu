@@ -35,7 +35,7 @@ var myAM = new bcdui.core.AutoModel({ bindingSetId, bRefs });
 | args.statusModel? | bcdui.core.DataProvider | bcdui.wkModels.guiStatus | the status model to resolve .filterBRefs against |
 | args.statusModelEstablished? | bcdui.core.DataProvider |  | the established status model to provide to ModelWrapper creating request document as 'statusModelEstablished' parameter |
 | args.groupByBRefs? | string |  | Space separated list of bRefs for grouping. Is not effective when using .isDistinct=true parameter. |
-| args.filterElement? | (DomDocument\|DomElement\|string) |  | custom filter element (f:And, f:Or, f:Not, f:Expression) in wrs-filter format, see filter-1.0.0.xsd<br/>    or a string as required by [bcdui.wrs.wrsUtil.parseFilterExpression](bcdui.wrs.wrsUtil.parseFilterExpression.md) or the result of it - note that the function allows filling in values without escaping issues if the filter is not fixed. |
+| args.filterElement? | (DomDocument\|DomElement\|string) |  | custom filter element (f:And, f:Or, f:Not, f:Expression) in wrs-filter format, see filter-1.0.0.xsd<br/>    or a string as required by [bcdui.wrs.wrsUtil.parseFilterExpression](bcdui.wrs.wrsUtil.parseFilterExpression.md) `filterElement: 'ctr='DE' and (product='AMS' or product='WWS')`<br/>    or the result of it `filterElement: bcdui.wrs.wrsUtil.parseFilterExpression(region='Asia' and ctr='${{}}', "People's Republic of China")`- note that this allows filling in values without escaping issues. |
 | args.saveOptions? | Object |  | An object, with the following elements |
 | args.saveOptions.saveChain? | chainDef |  | The definition of the transformation chain |
 | args.saveOptions.saveParameters? | Object |  | An object, where each property holds a DataProvider, used as a transformation parameters. |
@@ -500,7 +500,7 @@ _Overrides_ bcdui.core.SimpleModel#tblSelect
 // Select all rows with country 'DE'let ret = myModel.tblSelect({ filter: { ctr: 'DE' } });// ret equals [{ctr: 'DE', site: 'Hamburg', flag: true}, {ctr: 'DE', site: 'Berlin', flag: false}]
 ````
 ````js
-// Select only books names and publishing years for author 'Hobbes'let ret = myModel.tblSelect({ filter: { author: 'Hobbes' }, columns: ['title', 'year'] });// ret equals [{title: 'De Cive', year: '1642'}, {title: 'Problemata Physica', year: '1662'}]
+// Select all book titles and publishing years for author 'Hobbes'let ret = myModel.tblSelect({ filter: { author: 'Hobbes' }, columns: ['title', 'year'] });// ret equals [{title: 'De Cive', year: '1642'}, {title: 'Problemata Physica', year: '1662'}]
 ````
 
 
@@ -508,7 +508,7 @@ _Overrides_ bcdui.core.SimpleModel#tblSelect
 tblSelectRow(args) &#x21FE; {Object}
 
 
-Returns an object with the values of a single row, which is either identified by its `wrs:/@id` if given, or the first one matching the filter.The filter's and the returned property names match the column ids. \
+Get the values of a single row, identified either by its `wrs:/@id`, or the first one matching the filter.The filter's and the returned property names match the column ids. \
 _Overrides_ bcdui.core.SimpleModel#tblSelectRow
 
 | Name     | Type     | Default  | Description |
@@ -521,7 +521,7 @@ _Overrides_ bcdui.core.SimpleModel#tblSelectRow
 **Returns** {Object}: Array  of objects holding the requested data
 #### Examples
 ````js
-// Select only books names and publishing years for author 'Hobbes'let ret = myModel.tblSelectRow({ filter: { ctr: 'US', state: 'CA' }, columns: ['area', 'population'] });// ret equals {area: '423.970', population: '39.538.223'}}
+// Select area and population for Californialet ret = myModel.tblSelectRow({ filter: { ctr: 'US', state: 'CA' }, columns: ['area', 'population'] });// ret equals {area: '423.970', population: '39.538.223'}}
 ````
 
 
@@ -564,7 +564,7 @@ _Overrides_ bcdui.core.SimpleModel#toString\
 write(xPath, fillParams?, value?, fire?) &#x21FE; {DomNode}
 
 
-Set a value to on a certain xPath and create the xPath where necessary. This combines Element.evaluate() for a single node with creating the path where necessary. It will prefer extending an existing start-part over creating a second one.After the operation the xPath (with the optional value) is guaranteed to exist (pre-existing or created or extended) and the addressed node is returned. \
+Set a value to on a certain xPath and create the xPath where necessary.This combines Element.evaluate() for a single node with creating the path where necessary. It will prefer extending an existing start-part over creating a second one.After the operation the xPath (with the optional value) is guaranteed to exist (pre-existing or created or extended) and the addressed node is returned. \
 _Overrides_ bcdui.core.SimpleModel#write
 
 | Name     | Type     | Default  | Description |

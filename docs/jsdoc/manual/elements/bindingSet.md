@@ -26,11 +26,27 @@ Then this is the BindingSet:
   <C id="dy" caption="Dy" type-name="DATE"> <Column>dy</Column> </C>
   <C id="yr" caption="Year" type-name="INTEGER"> <Column>EXTRACT( YEAR from dy)</Column> </C>
   <C id="country" caption="Country" type-name="VARCHAR"> <Column>country</Column> </C>
-  <C id="station" caption="Station" nullable="0" type-name="VARCHAR"> <Column>station</Column> </C>
+  <C id="station" caption="Station" nullable="0" type-name="VARCHAR" myAttribute="myValue"> <Column>station</Column> </C>
   <C id="carsSold" caption="Cars Sold" type-name="INTEGER"> <Column>cars_sold</Column> </C>
-  <C id="carsRepaired" caption="Cars Repaired" type-name="INTEGER"> <Column>cars_repaired</Column> </C>
+  <C id="color" caption="Status" type-name="VARCHAR">
+    <!-- List of allowed values -->
+    <References xmlns="http://www.businesscode.de/schema/bcdui/wrs-1.0.0">
+      <Wrs>
+        <Header><Columns><C pos="1" id="color" caption="Color"/></Columns></Header>
+        <Data>
+          <R><C>#e00</C></R>
+          <R><C>#0e0</C></R>
+          <R><C>#00e</C></R>
+        </Data>
+      </Wrs>
+    </References>
+    <Column>color</Column>
+  </C>
 </BindingSet>        
 ````
+- `References` allows for adding a static list of allowed values to the column.
+- Besides the pre-defined attributes of BCD-UI, you can add any additional custom attributes like `myAttribute` above. They are passed to the Wrs WebRowSet wrs:Header/wrs:Column/wrs:C and can support rendering the data in specific ways.
+
 
 ### @dbSourceName
 

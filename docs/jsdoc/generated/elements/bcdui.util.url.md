@@ -13,6 +13,9 @@ Utilities for working with URLs
 
 
 
+[classifyLink()](bcdui.util.url.classifyLink.md)\
+Classifies a link as either internal, external, or injection (i.e.
+
 [extractFolderFromURL()](bcdui.util.url.extractFolderFromURL.md)\
 Gets the folder containing the document identified by the URL.
 
@@ -32,6 +35,9 @@ This utility function applies a relative URL to a base URL and returns theresul
 <h4>Members</h4>
 
 
+
+**CLASSIFY_LINK_RESULT** {string}\
+Classification of a URL
 
 ----
 <h4>Subpackages</h4>
