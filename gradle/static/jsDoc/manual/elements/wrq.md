@@ -19,7 +19,7 @@ Sending a Wrq returns a [Wrs WebRowSet](wrs.md) document with the requested data
     <wrq:Columns>
       <wrq:C bRef="dy" caption="Date (desc)"/> 
       <wrq:C bRef="dest_country"/>
-      <wrq:C bRef="weight"/>
+      <wrq:C bRef="weight" myCustomAttr="myValue"/>
       <wrq:C bRef="cost"/>
     </wrq:Columns>
     <!-- FROM clause -->
@@ -48,6 +48,9 @@ Sending a Wrq returns a [Wrs WebRowSet](wrs.md) document with the requested data
 </wrq:WrsRequest>
 ````
 Tip: When manually creating a Wrq, make sure to register the xsd with your IDE to get autosuggest and validation support.
+
+- If you add further attributes to the wrq:C element, they will be available in the response at the corresponding wrs:Header/wrs:Columns/wrs:C.
+- If SubjectSettings are defined, only allowed rows are read, by extending the f:Filter on the server.
 
 <!-- LLM_HINT DETAILS_STARTING -->
 
