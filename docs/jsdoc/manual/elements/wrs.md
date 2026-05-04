@@ -1,4 +1,4 @@
-# Wrs — WebRowSet
+# Wrs -> WebRowSet
 
 A Wrs is the standard data format in BCD-UI for tabular data.
 It holds the data as well as meta information about the columns and its source BindingSet.
@@ -9,8 +9,8 @@ It is retrieved from the Wrs Servlet as the result of a [Wrq](wrq.md) query agai
 The easiest way to retrieve a Wrs is with an [AutoModel](../../generated/elements/bcdui.core.AutoModel.md). For more complex queries, use a [SimpleModel](../../generated/elements/bcdui.core.SimpleModel.md). Components like Grid and Cube retrieve and manage their own data based on their configuration.
 
 A Wrs has two sections:
-- `wrs:Header` — column metadata (type, key flags, display info)
-- `wrs:Data` — the rows
+- `wrs:Header` -> column metadata (type, key flags, display info)
+- `wrs:Data` -> the rows
 
 ### Example
 
@@ -72,7 +72,7 @@ When data is modified on the client, rows are marked with a type instead of plai
 | `wrs:R` | Unmodified row |
 | `wrs:I` | Insert this row |
 | `wrs:D` | Delete the row matching the key columns |
-| `wrs:M` | Modify row — `wrs:O` holds the original value, `wrs:C` the new value |
+| `wrs:M` | Modify row -> `wrs:O` holds the original value, `wrs:C` the new value |
 
 For `wrs:M`, the key columns' `wrs:O` values identify which database row to update. The `wrs:O` values are also used for client-side undo and displaying original values in tooltips.
 
@@ -111,9 +111,9 @@ node = "Deutschland";
 
 Use **ModelWrapper** or **ModelUpdater** to compute derived data from an existing DataProvider.
 
-**ModelWrapper** — like a database view. Takes an `inputModel`, applies a `chain` transformation, and exposes the result as a new DataProvider. The input is never modified. The result can be used as input elsewhere or written back to the database.
+**ModelWrapper** -> like a database view. Takes an `inputModel`, applies a `chain` transformation, and exposes the result as a new DataProvider. The input is never modified. The result can be used as input elsewhere or written back to the database.
 
-**ModelUpdater** — like a ModelWrapper, but writes the result back into the original `inputModel` instead of producing a new one.
+**ModelUpdater** -> like a ModelWrapper, but writes the result back into the original `inputModel` instead of producing a new one.
 
 ---
 

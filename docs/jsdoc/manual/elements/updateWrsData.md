@@ -4,7 +4,7 @@ BCD-UI offers several ways to edit data that is exchanged with the server.
 Each DataProvider also offers tbl<Type> methods to select, insert, update, and delete rows.
 These respect the [Wrs](/manual/elements/wrs.md) format and make it easy to send the data back to the server.
 
-## Option 1 — Programmatic Changes
+## Option 1 -> Programmatic Changes
 
 Load data with an [AutoModel](../../generated/elements/bcdui.core.AutoModel.md) or [SimpleModel](../../generated/elements/bcdui.core.SimpleModel.md), then modify it:
 
@@ -36,7 +36,7 @@ empty.onceReady({ executeIfNotReady: true, onSuccess: () => {
 }});
 ```
 
-## Option 2 — Wizard / Custom Form
+## Option 2 -> Wizard / Custom Form
 
 Use a Renderer to build a form and wire it to insert and update operations:
 
@@ -58,7 +58,7 @@ function onSave(rowId, values) {
 let rnd = new bcdui.core.Renderer({ inputModel: model, targetHtml: '#myWizard', chain: buildForm });
 ```
 
-## Option 3 — BCD-UI Widgets
+## Option 3 -> BCD-UI Widgets
 
 BCD-UI widgets bind directly to Wrs XPaths and handle the format automatically:
 
@@ -74,7 +74,7 @@ bcdui.widgetNg.createInput({
 });
 ```
 
-## Option 4 — Editable Grid for Tabular Data
+## Option 4 -> Editable Grid for Tabular Data
 
 For bulk editing of tabular data use a [Grid](../../generated/elements/bcdui.component.grid.Grid.md). 
 Grid supports copy/paste, automatic validation, and user feedback.
