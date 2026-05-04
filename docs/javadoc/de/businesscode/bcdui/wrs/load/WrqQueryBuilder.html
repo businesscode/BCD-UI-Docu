@@ -221,6 +221,11 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Set the BindingSet for a user provided table expression alias</div>
 </div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isMetaDataRequest()" class="member-name-link">isMetaDataRequest</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">current wrq is a metadata only request, based on the rowStart/End info at first select</div>
+</div>
 </div>
 </div>
 </div>
@@ -467,6 +472,16 @@ loadScripts(document, 'script');</script>
 <h3>getJdbcResourceName</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getJdbcResourceName</span>()</div>
 <div class="block">The database source name our query goes to</div>
+<dl class="notes">
+<dt>Returns:</dt>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="isMetaDataRequest()">
+<h3>isMetaDataRequest</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isMetaDataRequest</span>()</div>
+<div class="block">current wrq is a metadata only request, based on the rowStart/End info at first select</div>
 <dl class="notes">
 <dt>Returns:</dt>
 </dl>

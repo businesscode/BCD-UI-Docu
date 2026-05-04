@@ -1,4 +1,4 @@
-# BCD-UI JavaScript API stubs <span style="font-size: 0.6em; font-weight: normal">5.7.0 (2026-04-30)</span>
+# BCD-UI JavaScript API stubs <span style="font-size: 0.6em; font-weight: normal">6.0.0 (2026-05-04)</span>
 
 This folder contains stubs for the BCD-UI JavaScript API.
 These can be used for auto-suggest in your IDE like VisualStudioCode, IntelliJ IDEA and Eclipse.
@@ -14,7 +14,7 @@ Add
 ````json
 {
   "devDependencies": {
-    "bcdui": "https://github.com/businesscode/BCD-UI-Docu/raw/refs/heads/master/resources/bcduiTsTypes-5.7.0.tgz"
+    "bcdui": "https://github.com/businesscode/BCD-UI-Docu/raw/refs/heads/master/resources/bcduiTsTypes-6.0.0.tgz"
   }
 }
 ````

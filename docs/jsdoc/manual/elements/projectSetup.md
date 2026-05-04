@@ -17,8 +17,8 @@ dependencies {
       url "https://github.com/businesscode/maven-repo/raw/master"
     }
   }
-  implementation 'de.businesscode.bcdui:bcd-ui-core:5.7.0-SNAPSHOT'
-  implementation 'de.businesscode.bcdui:bcd-ui-theme-bcd:5.7.0-SNAPSHOT'
+  implementation 'de.businesscode.bcdui:bcd-ui-core:6.0.0-SNAPSHOT'
+  implementation 'de.businesscode.bcdui:bcd-ui-theme-bcd:6.0.0-SNAPSHOT'
 }
 ````
 
@@ -106,7 +106,7 @@ To make them available just add this
 ````json
 {
   "devDependencies": {
-    "bcdui": "https://github.com/businesscode/BCD-UI-Docu/raw/refs/heads/master/resources/bcduiTsTypes-5.7.0.tgz"
+    "bcdui": "https://github.com/businesscode/BCD-UI-Docu/raw/refs/heads/master/resources/bcduiTsTypes-6.0.0.tgz"
   }
 }
 ````
