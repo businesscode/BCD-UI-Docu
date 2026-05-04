@@ -432,6 +432,37 @@ _Overrides_ bcdui.core.DataProviderHolder#tblDelete
 ````
 
 
+### tblGetColumnMetadata
+tblGetColumnMetadata(args?) &#x21FE; {Array.\<Object>}
+
+
+Returns an array of columns of a Wrs with their metadata attributes like id, caption, type-name etc.Includes id, caption, pos, type-name, display-size, scale, isKey, nullable, references etc.For example: `[{id: 'ctr', caption: 'Country', pos: '1'}, {id: 'state', caption: 'State', pos: '2', references: [ {value: '#e00', caption: 'Red'}, {value: '#0e0', caption: 'Green'} ]}]` \
+_Overrides_ bcdui.core.DataProviderHolder#tblGetColumnMetadata
+
+| Name     | Type     | Default  | Description |
+|----------|----------|----------|-------------|
+| args? | object |  |  |
+| args.columns? | Array.\<string> |  | Limit to these column ids |
+| args.doSort? | boolean | false | Sort the columns according to the given columns list. If not given, the columns are returned in the order they are defined in the WRS. |
+
+**Returns** {Array.\<Object>}: column metadata
+
+
+### tblGetRowIds
+tblGetRowIds(args) &#x21FE; {Array.\<string>}
+
+
+Returns an array of row ids (wrs:R/@id) of the rows matching the filter.If no filter is given, all row ids are returned.The order of ids matches the order of the rows in the Wrs. \
+_Overrides_ bcdui.core.DataProviderHolder#tblGetRowIds
+
+| Name     | Type     | Default  | Description |
+|----------|----------|----------|-------------|
+| args | object |  |  |
+| args.filter? | object |  | object holding requested filter conditions, e.g. `{ country: 'DE', flag: true }` |
+
+**Returns** {Array.\<string>}: row ids
+
+
 ### tblInsert
 tblInsert(args) &#x21FE; {string}
 
@@ -520,6 +551,27 @@ _Overrides_ bcdui.core.DataProviderHolder#tblUpdate
 ````
 ````js
 // Update all values for 'AT', for example, even it has 3 sitesmyModel.tblUpdate({ values: {supervisor: 'Karl Popper'}, filter: {country: 'AT'} });
+````
+
+
+### tblValidateRowChange
+tblValidateRowChange(args) &#x21FE; {Array.\<{colId: string, errorCode: string}>}
+
+
+Validates a set of column values against the WRS header constraints of this DataProvider.The check is purely client-side (no server round-trip): type, scale, display-size, nullable,embedded header References, and key uniqueness within the loaded data are all covered.Only columns present in args.values are validated.For a planned tblUpdate, provide rowId or filter to exclude the changed row from uniqueness check.For a planned tblInsert, rowId is not needed as the uniqueness check is performed against all current loaded data. \
+_Overrides_ bcdui.core.DataProviderHolder#tblValidateRowChange
+
+| Name     | Type     | Default  | Description |
+|----------|----------|----------|-------------|
+| args | Object |  | parameter bag |
+| args.values | Object |  | { colId: value } map of values to validate |
+| args.rowId? | string |  | only needed for key uniqueness: identifies the row being validated so it is excluded from the duplicate check. If not given values is treated like a new row to be inserted |
+| args.filter? | Object |  | alternative to rowId, only needed for key uniqueness exclusion; first matching row is used |
+
+**Returns** {Array.\<{colId: string, errorCode: string}>}: list of validation errors
+#### Examples
+````js
+const errors = myModel.tblValidateRowChange({ rowId: 'R1', values: { amount: 'abc', color: '#xyz' } });// errors: [{ colId: 'amount', errorCode: 'bcd_ValidTypeName_NUMERIC' },//          { colId: 'color',  errorCode: 'bcd_ValidReferences' }]
 ````
 
 
