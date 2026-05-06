@@ -22,8 +22,6 @@ Tooltip for widget validation results.
 
 
 
-[_filterClickAction()](bcdui.widget._filterClickAction.md)
-
 [createBlindUpDownArea()](bcdui.widget.createBlindUpDownArea.md)\
 Creates a BlindUpDown Area..
 

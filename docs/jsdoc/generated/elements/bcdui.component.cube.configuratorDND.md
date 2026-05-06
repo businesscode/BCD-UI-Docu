@@ -12,10 +12,6 @@
 
 
 
-[_addGroupManagerContextMenu()](bcdui.component.cube.configuratorDND._addGroupManagerContextMenu.md)
-
-[_markGroupingDimensions()](bcdui.component.cube.configuratorDND._markGroupingDimensions.md)
-
 [fillBucketModel()](bcdui.component.cube.configuratorDND.fillBucketModel.md)\
 Used for initial filling but can also be used to reinitialize bucket model (e.g.
 

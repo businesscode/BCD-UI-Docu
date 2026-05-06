@@ -13,8 +13,6 @@ A namespace for the BCD-UI dimensionChooser widget. For creation @see [bcdui.wid
 
 
 
-[_cleanupListener()](bcdui.widget.dimensionChooser._cleanupListener.md)
-
 [getNavPath()](bcdui.widget.dimensionChooser.getNavPath.md)
 
 ----

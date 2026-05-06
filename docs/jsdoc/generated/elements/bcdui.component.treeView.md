@@ -13,10 +13,6 @@ This namespace contains the functions for expanding and collapsing tree nodes in
 
 
 
-[_init()](bcdui.component.treeView._init.md)
-
-[_toggleAction()](bcdui.component.treeView._toggleAction.md)
-
 [expandCollapse()](bcdui.component.treeView.expandCollapse.md)\
 Expand or collapse a level for a treeView renderer.
 

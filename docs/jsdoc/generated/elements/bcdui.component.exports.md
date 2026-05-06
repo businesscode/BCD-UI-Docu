@@ -13,14 +13,6 @@ Export package is the API to the WYSIWYG and detail exports of BCD-UIWYSIWYG ca
 
 
 
-[_clickActionCancel()](bcdui.component.exports._clickActionCancel.md)
-
-[_clickActionExport()](bcdui.component.exports._clickActionExport.md)
-
-[_clickActionSave()](bcdui.component.exports._clickActionSave.md)
-
-[_doExport()](bcdui.component.exports._doExport.md)
-
 [detailExport()](bcdui.component.exports.detailExport.md)\
 Uses SylkServlet, CsvServlet or ExcelExportServlet export servlets to provide the data of a WrsRequest, the response opens asynchronously in an extra window.
 

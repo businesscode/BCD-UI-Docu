@@ -7,7 +7,7 @@
  |------|---------|--------|
  | [Chart](../elements/bcdui.component.chart.Chart.md) | This class represents a chart | Is a DataProvider |
  | [ChartEchart](../elements/bcdui.component.chart.ChartEchart.md) | Create a chart based on http://www.businesscode.de/schema/bcdui/charts-1.0.0 XML | Is a Renderer |
- | [Cube](../elements/bcdui.component.cube.Cube.md) | Creates a Cube, i.e | Is a Renderer |
+ | [Cube](../elements/bcdui.component.cube.Cube.md) | Creates a Cube, which is a pivot-like view based on given data or a configuration | Is a Renderer |
  | [CubeModel](../elements/bcdui.component.cube.CubeModel.md) | Creates a CubeModel for use by Cube, if you need more fine-grained control or only want the data | Is a DataProvider |
  | [Far](../elements/bcdui.component.far.Far.md) | A FAR component |  |
  | [FarModel](../elements/bcdui.component.far.FarModel.md) | DataProvider for Far if you need more fine-grained control | Is a DataProvider |

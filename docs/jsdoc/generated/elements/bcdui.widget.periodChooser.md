@@ -13,8 +13,6 @@ A namespace for the BCD-UI periodChooser widget. For creation @see [bcdui.widget
 
 
 
-[_getValidPostfix()](bcdui.widget.periodChooser._getValidPostfix.md)
-
 [getNavPath()](bcdui.widget.periodChooser.getNavPath.md)
 
 [init()](bcdui.widget.periodChooser.init.md)

@@ -13,8 +13,6 @@ A namespace for the BCD-UI scorecardConfigurator widget. For creation @see [bcdu
 
 
 
-[_itemRendererAspects()](bcdui.component.scorecardConfigurator._itemRendererAspects.md)
-
 [reDisplay()](bcdui.component.scorecardConfigurator.reDisplay.md)\
 Refreshes the scorecard drag'n drop areaThis is e.g.
 

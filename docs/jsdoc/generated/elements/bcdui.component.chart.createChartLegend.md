@@ -13,7 +13,7 @@ var ret = bcdui.component.chart.createChartLegend({ inputModel: myModel, targetH
 
 | Name     | Type     | Default  | Description |
 |----------|----------|----------|-------------|
-| args | Object |  | Paramater object |
+| args | Object |  | Parameter object |
 | args.inputModel | bcdui.core.DataProvider |  | Input model to renderer |
 | args.targetHtmlElementId | string |  | Target HTML element ID |
 | args.id? | string |  | Renderer ID |

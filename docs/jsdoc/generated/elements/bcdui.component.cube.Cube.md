@@ -13,7 +13,7 @@ var myCb = new bcdui.component.cube.Cube({ targetHtml: "#myDiv" });
 
 ---
 
-Creates a Cube, i.e. pivot-like front end based on given data or a configuration.This class will create in implicit CubeModel if not provided as inputModel parameter.See [bcdui.component.cube.CubeModel](bcdui.component.cube.CubeModel.md) for an example of a cube:CubeConfigurationTo use Cube or CubeModel, make sure to load `bcdui.js?bcduiLoadFiles=bcduiCube`
+Creates a Cube, which is a pivot-like view based on given data or a configuration.This class will create in implicit CubeModel if not provided as inputModel parameter.See [bcdui.component.cube.CubeModel](bcdui.component.cube.CubeModel.md) for an example of a cube:CubeConfigurationTo use Cube or CubeModel, make sure to load `bcdui.js?bcduiLoadFiles=bcduiCube`
 
 | Name     | Type     | Default  | Description |
 |----------|----------|----------|-------------|
