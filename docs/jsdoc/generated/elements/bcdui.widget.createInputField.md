@@ -42,6 +42,9 @@ bcdui.widget.createInputField({ targetModelXPath: "$guiStatus/cust:Elem/@value",
 | args.isPassword? | boolean |  | If true, input element type will be 'password'. |
 | args.label? | string |  | If provided, renders label element to this input |
 | args.hideWildcardChar? | boolean |  | If true, no asterisk characters are shown |
+| args.selectOrFocus? | boolean |  | If true and optionsModel is given, it either focus the selection box if multiple entries are available or - if only 1 is available - automatically selects it |
+| args.placeholder? | string |  | HTML placeholder property, can be an i18n key if prefixed with the i18n token |
+| args.wildcardSplitCharacter? | string |  | Character which is used for splitting words in the wildcard search. Default is space. If you use a special, not used character you can also create a starts with filter which always works on the 1st word. |
 
 
 **Returns**: {void}

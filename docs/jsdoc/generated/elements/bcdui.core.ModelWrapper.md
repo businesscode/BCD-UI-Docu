@@ -19,7 +19,7 @@ var myMW = new bcdui.core.ModelWrapper({ chain: ["myRenderer.xslt", finalCleanup
 | args | Object |  | An argument object with the following properties: |
 | args.chain | chainDef |  | The definition of the transformation chain<br/><ul><br/>  <li>a single string with the URL of the transformation XSLT or doTjs template</li><br/>  <li>or a JS transformator function</li><br/>  <li>or an array with a mixture of URLs and JS transformators</li><br/>  <li>or a DataProvider with an XML document following xsd http://www.businesscode.de/schema/bcdui/chain-1.0.0</li><br/></ul> |
 | args.inputModel | bcdui.core.DataProvider |  | The model with the data to be transformed |
-| args.parameters? | Object |  | An object, where each property holds a DataProvideras a transformation parameter<br/>Once this ModelWapper is [executed](bcdui.core.AbstractExecutable#execute.md), it will check each parameter and execute it, if it is not [.isReady()](bcdui.core.AbstractExecutable.md) |
+| args.parameters? | Object |  | An object, where each property holds a DataProvideras a transformation parameter<br/>Once this ModelWrapper is [executed](bcdui.core.AbstractExecutable#execute.md), it will check each parameter and execute it, if it is not [.isReady()](bcdui.core.AbstractExecutable.md) |
 | args.id? | string |  | Globally unique id for use in declarative contexts |
 | args.statusModel? | bcdui.core.DataProvider | bcdui.wkModels.guiStatus | custom model to use as 'guiStatus' parameter |
 | args.statusModelEstablished? | bcdui.core.DataProvider | bcdui.wkModels.guiStatusEstablished | custom model to use as 'guiStatusEstablished' parameter |
@@ -620,15 +620,15 @@ _Overrides_ bcdui.core.TransformationChain#tblUpdate
 tblValidateRowChange(args) &#x21FE; {Array.\<{colId: string, errorCode: string}>}
 
 
-Validates a set of column values against the WRS header constraints of this DataProvider.The check is purely client-side (no server round-trip): type, scale, display-size, nullable,embedded header References, and key uniqueness within the loaded data are all covered.Only columns present in args.values are validated.For a planned tblUpdate, provide rowId or filter to exclude the changed row from uniqueness check.For a planned tblInsert, rowId is not needed as the uniqueness check is performed against all current loaded data. \
+Validates a set of column values against the WRS header constraints of this DataProvider, i.e., would these values be valid.The check is purely client-side (no server round-trip): type, scale, display-size, nullable,embedded header References, and key uniqueness within the loaded data are all covered.Only columns present in args.values are validated.For a planned tblUpdate, provide rowId or filter to exclude the changed row from uniqueness check.For a planned tblInsert, rowId is not needed as the uniqueness check is performed against all current loaded data. \
 _Overrides_ bcdui.core.TransformationChain#tblValidateRowChange
 
 | Name     | Type     | Default  | Description |
 |----------|----------|----------|-------------|
 | args | Object |  | parameter bag |
 | args.values | Object |  | { colId: value } map of values to validate |
-| args.rowId? | string |  | only needed for key uniqueness: identifies the row being validated so it is excluded from the duplicate check. If not given values is treated like a new row to be inserted |
-| args.filter? | Object |  | alternative to rowId, only needed for key uniqueness exclusion; first matching row is used |
+| args.rowId? | string |  | only needed for key uniqueness: identifies the row being validated so it is excluded from the duplicate check. <br/>   If not given values is treated like a new row to be inserted |
+| args.filter? | Object |  | alternative to parameter rowId; first matching row is used |
 
 **Returns** {Array.\<{colId: string, errorCode: string}>}: list of validation errors
 #### Examples

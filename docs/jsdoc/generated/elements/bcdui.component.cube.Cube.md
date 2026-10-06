@@ -662,15 +662,15 @@ _Overrides_ bcdui.core.Renderer#tblUpdate
 tblValidateRowChange(args) &#x21FE; {Array.\<{colId: string, errorCode: string}>}
 
 
-Validates a set of column values against the WRS header constraints of this DataProvider.The check is purely client-side (no server round-trip): type, scale, display-size, nullable,embedded header References, and key uniqueness within the loaded data are all covered.Only columns present in args.values are validated.For a planned tblUpdate, provide rowId or filter to exclude the changed row from uniqueness check.For a planned tblInsert, rowId is not needed as the uniqueness check is performed against all current loaded data. \
+Validates a set of column values against the WRS header constraints of this DataProvider, i.e., would these values be valid.The check is purely client-side (no server round-trip): type, scale, display-size, nullable,embedded header References, and key uniqueness within the loaded data are all covered.Only columns present in args.values are validated.For a planned tblUpdate, provide rowId or filter to exclude the changed row from uniqueness check.For a planned tblInsert, rowId is not needed as the uniqueness check is performed against all current loaded data. \
 _Overrides_ bcdui.core.Renderer#tblValidateRowChange
 
 | Name     | Type     | Default  | Description |
 |----------|----------|----------|-------------|
 | args | Object |  | parameter bag |
 | args.values | Object |  | { colId: value } map of values to validate |
-| args.rowId? | string |  | only needed for key uniqueness: identifies the row being validated so it is excluded from the duplicate check. If not given values is treated like a new row to be inserted |
-| args.filter? | Object |  | alternative to rowId, only needed for key uniqueness exclusion; first matching row is used |
+| args.rowId? | string |  | only needed for key uniqueness: identifies the row being validated so it is excluded from the duplicate check. <br/>   If not given values is treated like a new row to be inserted |
+| args.filter? | Object |  | alternative to parameter rowId; first matching row is used |
 
 **Returns** {Array.\<{colId: string, errorCode: string}>}: list of validation errors
 #### Examples

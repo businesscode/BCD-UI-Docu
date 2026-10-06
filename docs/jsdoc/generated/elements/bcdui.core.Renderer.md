@@ -1,7 +1,7 @@
 # Class Renderer
 package bcdui.core
 
-This class renders data to HTML, per default a table view of Wrs, but it does support any kind of input and HTML output when providing a `chain`.A Renderer is started on page entry and makes sure its DataProviders become ready.The chain represents the exact logic of the Renderer can be implemented as JavaScript functions or XSLTs.The default is htmlBuilder.xslt, which is ideal for showing Wrs tabular data. It renders an HTML table, applies number-formats, and aligns dimensions left.To identify the corresponding row in Wrs, use a `tr`s attribute `bcdrowident`, which is set to the `wrs:R`'s id.
+This class renders data to HTML, per default a table view of Wrs, but it does support any kind of input and HTML output when providing a `chain`.A Renderer is started on page entry and makes sure its DataProviders are or become ready and waits if necessary.The chain represents the exact logic of the Renderer can be implemented as JavaScript functions or XSLTs.The default is htmlBuilder, which is ideal for showing Wrs tabular data. It renders an HTML table, applies number-formats, and aligns dimensions left.To identify the corresponding row in Wrs, use a `tr`s attribute `bcdrowident`, which is set to the `wrs:R`'s id.
 
 _Extends_ [bcdui.core.TransformationChain](bcdui.core.TransformationChain.md), is a Renderer, can act as a DataProvider
 ## Constructor
@@ -18,7 +18,7 @@ var myRnd = new bcdui.core.Renderer({ inputModel: myModel });
 |----------|----------|----------|-------------|
 | args | Object |  | An argument object with the following properties: |
 | args.inputModel | bcdui.core.DataProvider |  | The model with the data to be transformed in html |
-| args.chain? | chainDef | "/bcdui/xslt/renderer/htmlBuilder.xslt" | The definition of the transformation chain<br/><ul><br/>  <li>Default is a WRS-to-table renderer, capable of row and column dimensions and aware of all Wrs format specifications like scale and @caption</li><br/>  <li>But it can be a single string with the URL of the transformation XSLT or doTjs template</li><br/>  <li>or a JS transformator function</li><br/>  <li>or an array with a mixture of URLs and JS transformators</li><br/>  <li>or a DataProvider with an XML document following xsd http://www.businesscode.de/schema/bcdui/chain-1.0.0</li><br/></ul><br/>Make sure the last transformation outputs html, for example in case of XSLT set the last stylesheet to &lt;xsl:output method="html" |
+| args.chain? | chainDef | bcdui.wrs.htmlBuilder | The definition of the transformation chain<br/><ul><br/>  <li>Default is a WRS-to-table renderer, capable of row and column dimensions and aware of all Wrs format specifications like scale and @caption</li><br/>  <li>But it can be a single string with the URL of the transformation XSLT or doTjs template</li><br/>  <li>or a JS transformator function</li><br/>  <li>or an array with a mixture of URLs and JS transformators</li><br/>  <li>or a DataProvider with an XML document following xsd http://www.businesscode.de/schema/bcdui/chain-1.0.0</li><br/></ul><br/>Make sure the last transformation outputs html, for example in case of XSLT set the last stylesheet to &lt;xsl:output method="html" |
 | args.targetHtml? | targetHtmlRef |  | A reference to the HTML DOM Element where to put the output |
 | args.parameters? | Object |  | An object, where each property holds a DataProvider as a transformation parameter<br/>Once this Renderer is [executed](bcdui.core.AbstractExecutable#execute.md), it will check each parameter and execute it if it is not [.isReady()](bcdui.core.AbstractExecutable.md) before executing itself. |
 | args.id? | string |  | Globally unique id for use in declarative contexts |
@@ -56,6 +56,15 @@ Type **Type_RendererExecute_Args**
 | shouldRefresh | boolean |  | "false" if this method should do nothing when the object is already in the ready status. Default is "true"false". |
 
 **Returns** {void}
+
+
+### getClassName
+getClassName() &#x21FE; {string}
+
+
+Get className \
+_Overrides_ bcdui.core.TransformationChain#getClassName\
+**Returns** {string}: className
 
 
 ### getTargetHtml
@@ -155,15 +164,6 @@ _Overrides_ bcdui.core.TransformationChain#fire\
 ````js
 // Use of data modification eventsvar model = new bcdui.core.StaticModel({ data: { value: 3 } });model.execute();model.onChange( function(m) {  console.log(m.getData().value);});model.getData().value ++;model.fire(); // console prints '4'
 ````
-
-
-### getClassName
-getClassName() &#x21FE; {string}
-
-
-Get className \
-_Inherited from_ bcdui.core.AbstractExecutable\
-**Returns** {string}: className
 
 
 ### getData
@@ -649,15 +649,15 @@ _Overrides_ bcdui.core.TransformationChain#tblUpdate
 tblValidateRowChange(args) &#x21FE; {Array.\<{colId: string, errorCode: string}>}
 
 
-Validates a set of column values against the WRS header constraints of this DataProvider.The check is purely client-side (no server round-trip): type, scale, display-size, nullable,embedded header References, and key uniqueness within the loaded data are all covered.Only columns present in args.values are validated.For a planned tblUpdate, provide rowId or filter to exclude the changed row from uniqueness check.For a planned tblInsert, rowId is not needed as the uniqueness check is performed against all current loaded data. \
+Validates a set of column values against the WRS header constraints of this DataProvider, i.e., would these values be valid.The check is purely client-side (no server round-trip): type, scale, display-size, nullable,embedded header References, and key uniqueness within the loaded data are all covered.Only columns present in args.values are validated.For a planned tblUpdate, provide rowId or filter to exclude the changed row from uniqueness check.For a planned tblInsert, rowId is not needed as the uniqueness check is performed against all current loaded data. \
 _Overrides_ bcdui.core.TransformationChain#tblValidateRowChange
 
 | Name     | Type     | Default  | Description |
 |----------|----------|----------|-------------|
 | args | Object |  | parameter bag |
 | args.values | Object |  | { colId: value } map of values to validate |
-| args.rowId? | string |  | only needed for key uniqueness: identifies the row being validated so it is excluded from the duplicate check. If not given values is treated like a new row to be inserted |
-| args.filter? | Object |  | alternative to rowId, only needed for key uniqueness exclusion; first matching row is used |
+| args.rowId? | string |  | only needed for key uniqueness: identifies the row being validated so it is excluded from the duplicate check. <br/>   If not given values is treated like a new row to be inserted |
+| args.filter? | Object |  | alternative to parameter rowId; first matching row is used |
 
 **Returns** {Array.\<{colId: string, errorCode: string}>}: list of validation errors
 #### Examples

@@ -180,6 +180,13 @@ loadScripts(document, 'script');</script>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#hasOperation(de.businesscode.bcdui.subjectsettings.config.Security,java.lang.String)" class="member-name-link">hasOperation</a><wbr>(<a href="config/Security.html" title="class in de.businesscode.bcdui.subjectsettings.config">Security</a>&nbsp;security,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;operationName)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static boolean</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#isUrlAllowed(java.lang.String,jakarta.servlet.ServletContext)" class="member-name-link">isUrlAllowed</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;path,
+ jakarta.servlet.ServletContext&nbsp;servletContext)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Check if the user would be allowed to call GET on a certain application url
+ Since Shiro does not allow this per se, we simulate a call here</div>
+</div>
 </div>
 </div>
 </div>
@@ -408,6 +415,19 @@ loadScripts(document, 'script');</script>
 <dd>empty/non-empty set of permissions</dd>
 <dt>Throws:</dt>
 <dd><code><a href="SecurityException.html" title="class in de.businesscode.bcdui.subjectsettings">SecurityException</a></code> - in case the subject is not authenticated</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="isUrlAllowed(java.lang.String,jakarta.servlet.ServletContext)">
+<h3>isUrlAllowed</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isUrlAllowed</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;path,
+ jakarta.servlet.ServletContext&nbsp;servletContext)</span></div>
+<div class="block">Check if the user would be allowed to call GET on a certain application url
+ Since Shiro does not allow this per se, we simulate a call here</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>true, if the user is allowed that URL</dd>
 </dl>
 </section>
 </li>

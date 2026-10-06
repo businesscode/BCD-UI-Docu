@@ -70,6 +70,9 @@ Creates tab menu widget..
 [createTooltip()](bcdui.widget.createTooltip.md)\
 Generates a tooltip for another renderer..
 
+[filterRows()](bcdui.widget.filterRows.md)\
+js implementation of filterRowsTemplate.xsltAllows filtering of rows of a wrs input document by specifying column filters.
+
 [getCurrentNavPath()](bcdui.widget.getCurrentNavPath.md)\
 Get current navpath widget information for the given widget targets..
 

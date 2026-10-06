@@ -19,6 +19,8 @@ Creates a new element whose name can contain a well-known prefix (like "wrs")an
 [asyncCreateXsltProcessor()](bcdui.core.browserCompatibility.asyncCreateXsltProcessor.md)\
 Asynchronous creation of an XSLTProcessor object from a DOM document..
 
+[asyncCreateXsltProcessor()](bcdui.core.browserCompatibility.asyncCreateXsltProcessor.md)
+
 [cleanupGeneratedXslt()](bcdui.core.browserCompatibility.cleanupGeneratedXslt.md)
 
 [cloneDocument()](bcdui.core.browserCompatibility.cloneDocument.md)

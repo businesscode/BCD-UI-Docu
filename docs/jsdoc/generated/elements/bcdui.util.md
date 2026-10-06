@@ -41,6 +41,8 @@ transforms a xpath string with placeholders.
 [setSubjectPreference()](bcdui.util.setSubjectPreference.md)\
 sets a subject preference.
 
+[showSessionTimeoutMessage()](bcdui.util.showSessionTimeoutMessage.md)
+
 [template()](bcdui.util.template.md)\
 returns a function which resolves basic doT like placeholder expressions.
 

@@ -26,6 +26,9 @@ Creates a scorecard configurator, providing the scc:Layout section of the scorec
 
 [resolveContextMenuDnd()](bcdui.component.scorecard.resolveContextMenuDnd.md)
 
+[verticalizeKpis()](bcdui.component.scorecard.verticalizeKpis.md)\
+Applies the verticalizeKpis transformation to a WRS scorecard result.
+
 ----
 <h4>Members</h4>
 

@@ -286,6 +286,12 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Asserts that the submitted AuthenticationToken's credentials match the stored account AuthenticationInfo's credentials, and if not, throws an AuthenticationException.</div>
 </dd>
+<dt><a href="de/businesscode/bcdui/subjectsettings/services/OnBehalfIdentityRealm.html#assertCredentialsMatch(org.apache.shiro.authc.AuthenticationToken,org.apache.shiro.authc.AuthenticationInfo)" class="member-name-link">assertCredentialsMatch(AuthenticationToken, AuthenticationInfo)</a> - Method in class de.businesscode.bcdui.subjectsettings.services.<a href="de/businesscode/bcdui/subjectsettings/services/OnBehalfIdentityRealm.html" title="class in de.businesscode.bcdui.subjectsettings.services">OnBehalfIdentityRealm</a></dt>
+<dd>
+<div class="block">Verification already happened in doGetAuthenticationInfo below - there is nothing left for Shiro's
+ generic CredentialsMatcher to meaningfully compare here (same pattern as JdbcRealm uses for other
+ externally-verified tokens).</div>
+</dd>
 <dt><a href="de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.html#assignableValues" class="member-name-link">assignableValues</a> - Variable in class de.businesscode.bcdui.subjectsettings.config.<a href="de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectFilterType</a></dt>
 <dd>
 <div class="block">Configuration of the user-rights editor</div>
@@ -323,6 +329,8 @@ loadScripts(document, 'script');</script>
 <div class="block">reads attribute</div>
 </dd>
 <dt><a href="de/businesscode/bcdui/wrs/save/XMLToDataBase.AttributeDelegate.html#%3Cinit%3E()" class="member-name-link">AttributeDelegate()</a> - Constructor for class de.businesscode.bcdui.wrs.save.<a href="de/businesscode/bcdui/wrs/save/XMLToDataBase.AttributeDelegate.html" title="class in de.businesscode.bcdui.wrs.save">XMLToDataBase.AttributeDelegate</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="de/businesscode/bcdui/binding/StandardBindingSet.html#attributes" class="member-name-link">attributes</a> - Variable in class de.businesscode.bcdui.binding.<a href="de/businesscode/bcdui/binding/StandardBindingSet.html" title="class in de.businesscode.bcdui.binding">StandardBindingSet</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/subjectsettings/oauth2/OAuthToken.html#authCode" class="member-name-link">authCode</a> - Variable in class de.businesscode.bcdui.subjectsettings.oauth2.<a href="de/businesscode/bcdui/subjectsettings/oauth2/OAuthToken.html" title="class in de.businesscode.bcdui.subjectsettings.oauth2">OAuthToken</a></dt>
 <dd>&nbsp;</dd>
@@ -765,6 +773,8 @@ loadScripts(document, 'script');</script>
 <dt><a href="de/businesscode/bcdui/subjectsettings/oauth2/OAuthToken.html#clientId" class="member-name-link">clientId</a> - Variable in class de.businesscode.bcdui.subjectsettings.oauth2.<a href="de/businesscode/bcdui/subjectsettings/oauth2/OAuthToken.html" title="class in de.businesscode.bcdui.subjectsettings.oauth2">OAuthToken</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/wrs/load/Wrq2Sql.html#clientProvidedMaxRows" class="member-name-link">clientProvidedMaxRows</a> - Variable in class de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/Wrq2Sql.html" title="class in de.businesscode.bcdui.wrs.load">Wrq2Sql</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="de/businesscode/bcdui/subjectsettings/services/RequestSession.html#close()" class="member-name-link">close()</a> - Method in class de.businesscode.bcdui.subjectsettings.services.<a href="de/businesscode/bcdui/subjectsettings/services/RequestSession.html" title="class in de.businesscode.bcdui.subjectsettings.services">RequestSession</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/upload/data/UploadControl.html#close()" class="member-name-link">close()</a> - Method in class de.businesscode.bcdui.upload.data.<a href="de/businesscode/bcdui/upload/data/UploadControl.html" title="class in de.businesscode.bcdui.upload.data">UploadControl</a></dt>
 <dd>
@@ -1246,6 +1256,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block"><code>AuthenticatingFilter.createToken(jakarta.servlet.ServletRequest, jakarta.servlet.ServletResponse)</code></div>
 </dd>
+<dt><a href="de/businesscode/bcdui/subjectsettings/services/RequestAuthenticationFilter.html#createToken(java.lang.String,java.lang.String,java.lang.String,jakarta.servlet.http.HttpServletRequest)" class="member-name-link">createToken(String, String, String, HttpServletRequest)</a> - Method in class de.businesscode.bcdui.subjectsettings.services.<a href="de/businesscode/bcdui/subjectsettings/services/RequestAuthenticationFilter.html" title="class in de.businesscode.bcdui.subjectsettings.services">RequestAuthenticationFilter</a></dt>
+<dd>
+<div class="block">Extension point to allow subclasses to create a token with additional information.</div>
+</dd>
 <dt><a href="de/businesscode/bcdui/binding/subjectFilter/jaxb/ObjectFactory.html#createTypeSubjectFilter()" class="member-name-link">createTypeSubjectFilter()</a> - Method in class de.businesscode.bcdui.binding.subjectFilter.jaxb.<a href="de/businesscode/bcdui/binding/subjectFilter/jaxb/ObjectFactory.html" title="class in de.businesscode.bcdui.binding.subjectFilter.jaxb">ObjectFactory</a></dt>
 <dd>
 <div class="block">Create an instance of <a href="de/businesscode/bcdui/binding/subjectFilter/jaxb/TypeSubjectFilter.html" title="class in de.businesscode.bcdui.binding.subjectFilter.jaxb"><code>TypeSubjectFilter</code></a></div>
@@ -1321,6 +1335,10 @@ loadScripts(document, 'script');</script>
 <dt><a href="de/businesscode/util/StandardNamespaceContext.html#CUST_NAMESPACE" class="member-name-link">CUST_NAMESPACE</a> - Static variable in class de.businesscode.util.<a href="de/businesscode/util/StandardNamespaceContext.html" title="class in de.businesscode.util">StandardNamespaceContext</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/util/StandardNamespaceContext.html#CUST_PREFIX" class="member-name-link">CUST_PREFIX</a> - Static variable in class de.businesscode.util.<a href="de/businesscode/util/StandardNamespaceContext.html" title="class in de.businesscode.util">StandardNamespaceContext</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="de/businesscode/bcdui/web/servlets/StaticResourceServlet.html#customElementsReplace1" class="member-name-link">customElementsReplace1</a> - Static variable in class de.businesscode.bcdui.web.servlets.<a href="de/businesscode/bcdui/web/servlets/StaticResourceServlet.html" title="class in de.businesscode.bcdui.web.servlets">StaticResourceServlet</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="de/businesscode/bcdui/web/servlets/StaticResourceServlet.html#customElementsReplace2" class="member-name-link">customElementsReplace2</a> - Static variable in class de.businesscode.bcdui.web.servlets.<a href="de/businesscode/bcdui/web/servlets/StaticResourceServlet.html" title="class in de.businesscode.bcdui.web.servlets">StaticResourceServlet</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/binding/write/CustomJdbcTypeSupport.html" class="type-name-link" title="class in de.businesscode.bcdui.binding.write">CustomJdbcTypeSupport</a> - Class in <a href="de/businesscode/bcdui/binding/write/package-summary.html">de.businesscode.bcdui.binding.write</a></dt>
 <dd>
@@ -1492,6 +1510,11 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/subjectsettings/oauth2/package-summary.html">de.businesscode.bcdui.subjectsettings.oauth2</a> - package de.businesscode.bcdui.subjectsettings.oauth2</dt>
 <dd>&nbsp;</dd>
+<dt><a href="de/businesscode/bcdui/subjectsettings/services/package-summary.html">de.businesscode.bcdui.subjectsettings.services</a> - package de.businesscode.bcdui.subjectsettings.services</dt>
+<dd>
+<div class="block">Authenticates a trusted backend caller acting on behalf of a BCD-UI user for a single request, with no
+ browser session involved (e.g. a bot acting for a user, or an AI agent's MCP endpoint).</div>
+</dd>
 <dt><a href="de/businesscode/bcdui/toolbox/package-summary.html">de.businesscode.bcdui.toolbox</a> - package de.businesscode.bcdui.toolbox</dt>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/toolbox/config/package-summary.html">de.businesscode.bcdui.toolbox.config</a> - package de.businesscode.bcdui.toolbox.config</dt>
@@ -1607,6 +1630,14 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/wrs/export/AbstractExcelSheetDataWriter.html#defaultSheetName" class="member-name-link">defaultSheetName</a> - Static variable in class de.businesscode.bcdui.wrs.export.<a href="de/businesscode/bcdui/wrs/export/AbstractExcelSheetDataWriter.html" title="class in de.businesscode.bcdui.wrs.export">AbstractExcelSheetDataWriter</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="de/businesscode/bcdui/subjectsettings/services/DefaultUserIdResolver.html" class="type-name-link" title="class in de.businesscode.bcdui.subjectsettings.services">DefaultUserIdResolver</a> - Class in <a href="de/businesscode/bcdui/subjectsettings/services/package-summary.html">de.businesscode.bcdui.subjectsettings.services</a></dt>
+<dd>
+<div class="block">Default <a href="de/businesscode/bcdui/subjectsettings/services/UserIdResolver.html" title="interface in de.businesscode.bcdui.subjectsettings.services"><code>UserIdResolver</code></a>: treats idType as the id of a BindingItem on bcd_sec_user, and
+ looks up the user whose trimmed value there contains idValue in its list
+ e.g. idType "phone" matches a project-added "phone" BindingItem in bcd_sec_user.</div>
+</dd>
+<dt><a href="de/businesscode/bcdui/subjectsettings/services/DefaultUserIdResolver.html#%3Cinit%3E()" class="member-name-link">DefaultUserIdResolver()</a> - Constructor for class de.businesscode.bcdui.subjectsettings.services.<a href="de/businesscode/bcdui/subjectsettings/services/DefaultUserIdResolver.html" title="class in de.businesscode.bcdui.subjectsettings.services">DefaultUserIdResolver</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/vfs/web/VFSServlet.FileDAO.html#delete(java.util.Collection)" class="member-name-link">delete(Collection&lt;String&gt;)</a> - Method in interface de.businesscode.bcdui.vfs.web.<a href="de/businesscode/bcdui/vfs/web/VFSServlet.FileDAO.html" title="interface in de.businesscode.bcdui.vfs.web">VFSServlet.FileDAO</a></dt>
 <dd>
 <div class="block">deletes uris</div>
@@ -1668,6 +1699,8 @@ loadScripts(document, 'script');</script>
 
  not implemented yet</div>
 </dd>
+<dt><a href="de/businesscode/bcdui/subjectsettings/services/RequestAuthenticationFilter.html#doFilter(jakarta.servlet.ServletRequest,jakarta.servlet.ServletResponse,jakarta.servlet.FilterChain)" class="member-name-link">doFilter(ServletRequest, ServletResponse, FilterChain)</a> - Method in class de.businesscode.bcdui.subjectsettings.services.<a href="de/businesscode/bcdui/subjectsettings/services/RequestAuthenticationFilter.html" title="class in de.businesscode.bcdui.subjectsettings.services">RequestAuthenticationFilter</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/toolbox/MapsRequestFilter.html#doFilter(jakarta.servlet.ServletRequest,jakarta.servlet.ServletResponse,jakarta.servlet.FilterChain)" class="member-name-link">doFilter(ServletRequest, ServletResponse, FilterChain)</a> - Method in class de.businesscode.bcdui.toolbox.<a href="de/businesscode/bcdui/toolbox/MapsRequestFilter.html" title="class in de.businesscode.bcdui.toolbox">MapsRequestFilter</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/web/cacheControl/ClientCachingFilter.html#doFilter(jakarta.servlet.ServletRequest,jakarta.servlet.ServletResponse,jakarta.servlet.FilterChain)" class="member-name-link">doFilter(ServletRequest, ServletResponse, FilterChain)</a> - Method in class de.businesscode.bcdui.web.cacheControl.<a href="de/businesscode/bcdui/web/cacheControl/ClientCachingFilter.html" title="class in de.businesscode.bcdui.web.cacheControl">ClientCachingFilter</a></dt>
@@ -1735,6 +1768,10 @@ loadScripts(document, 'script');</script>
  - login_name is the same for local and oauth
  - fullName we use from oauth if configured (fullNamePropertyName is set), otherwise local
  - same for email.</div>
+</dd>
+<dt><a href="de/businesscode/bcdui/subjectsettings/services/OnBehalfIdentityRealm.html#doGetAuthenticationInfo(org.apache.shiro.authc.AuthenticationToken)" class="member-name-link">doGetAuthenticationInfo(AuthenticationToken)</a> - Method in class de.businesscode.bcdui.subjectsettings.services.<a href="de/businesscode/bcdui/subjectsettings/services/OnBehalfIdentityRealm.html" title="class in de.businesscode.bcdui.subjectsettings.services">OnBehalfIdentityRealm</a></dt>
+<dd>
+<div class="block">Take the AuthenticationToken and turns it into an actual Principial if the AuthenticationToken is valid.</div>
 </dd>
 <dt><a href="de/businesscode/bcdui/subjectsettings/SubjectPreferencesRealm.html#doGetAuthenticationInfo(org.apache.shiro.authc.AuthenticationToken)" class="member-name-link">doGetAuthenticationInfo(AuthenticationToken)</a> - Method in class de.businesscode.bcdui.subjectsettings.<a href="de/businesscode/bcdui/subjectsettings/SubjectPreferencesRealm.html" title="class in de.businesscode.bcdui.subjectsettings">SubjectPreferencesRealm</a></dt>
 <dd>&nbsp;</dd>
@@ -2135,6 +2172,10 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="de/businesscode/bcdui/web/cacheControl/server/wrapper/TeeWriterWrapper.html#flush()" class="member-name-link">flush()</a> - Method in class de.businesscode.bcdui.web.cacheControl.server.wrapper.<a href="de/businesscode/bcdui/web/cacheControl/server/wrapper/TeeWriterWrapper.html" title="class in de.businesscode.bcdui.web.cacheControl.server.wrapper">TeeWriterWrapper</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="de/businesscode/bcdui/wrs/save/DatabaseWriter.html#flushBatch()" class="member-name-link">flushBatch()</a> - Method in class de.businesscode.bcdui.wrs.save.<a href="de/businesscode/bcdui/wrs/save/DatabaseWriter.html" title="class in de.businesscode.bcdui.wrs.save">DatabaseWriter</a></dt>
+<dd>
+<div class="block">executes and available D/I/M collected batches if available (and in that order)</div>
+</dd>
 <dt><a href="de/businesscode/bcdui/web/cacheControl/ServerCachingFilter.html#flushCachedResponse(java.lang.String,java.io.OutputStream)" class="member-name-link">flushCachedResponse(String, OutputStream)</a> - Method in class de.businesscode.bcdui.web.cacheControl.<a href="de/businesscode/bcdui/web/cacheControl/ServerCachingFilter.html" title="class in de.businesscode.bcdui.web.cacheControl">ServerCachingFilter</a></dt>
 <dd>
 <div class="block">flushes previously saved response to the stream</div>
@@ -2333,6 +2374,8 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/web/wrs/WrsAccessLogEvent.html#getAccessType()" class="member-name-link">getAccessType()</a> - Method in class de.businesscode.bcdui.web.wrs.<a href="de/businesscode/bcdui/web/wrs/WrsAccessLogEvent.html" title="class in de.businesscode.bcdui.web.wrs">WrsAccessLogEvent</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="de/businesscode/bcdui/subjectsettings/services/RequestAuthenticationToken.html#getAddInfo()" class="member-name-link">getAddInfo()</a> - Method in class de.businesscode.bcdui.subjectsettings.services.<a href="de/businesscode/bcdui/subjectsettings/services/RequestAuthenticationToken.html" title="class in de.businesscode.bcdui.subjectsettings.services">RequestAuthenticationToken</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/wrs/export/ExcelSylkTemplate.html#getAddInfo()" class="member-name-link">getAddInfo()</a> - Method in class de.businesscode.bcdui.wrs.export.<a href="de/businesscode/bcdui/wrs/export/ExcelSylkTemplate.html" title="class in de.businesscode.bcdui.wrs.export">ExcelSylkTemplate</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/wrs/export/SylkDataWriter.html#getAddInfo()" class="member-name-link">getAddInfo()</a> - Method in class de.businesscode.bcdui.wrs.export.<a href="de/businesscode/bcdui/wrs/export/SylkDataWriter.html" title="class in de.businesscode.bcdui.wrs.export">SylkDataWriter</a></dt>
@@ -2397,6 +2440,10 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/binding/BindingItem.html#getAttribute(java.lang.String)" class="member-name-link">getAttribute(String)</a> - Method in class de.businesscode.bcdui.binding.<a href="de/businesscode/bcdui/binding/BindingItem.html" title="class in de.businesscode.bcdui.binding">BindingItem</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="de/businesscode/bcdui/binding/StandardBindingSet.html#getAttribute(java.lang.String)" class="member-name-link">getAttribute(String)</a> - Method in class de.businesscode.bcdui.binding.<a href="de/businesscode/bcdui/binding/StandardBindingSet.html" title="class in de.businesscode.bcdui.binding">StandardBindingSet</a></dt>
+<dd>
+<div class="block">Get an attribute for this BindingSet.</div>
+</dd>
 <dt><a href="de/businesscode/bcdui/wrs/load/WrqBindingItem.html#getAttribute(java.lang.String)" class="member-name-link">getAttribute(String)</a> - Method in class de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqBindingItem.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingItem</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/wrs/load/WrsBindingItem.html#getAttribute(java.lang.String)" class="member-name-link">getAttribute(String)</a> - Method in interface de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrsBindingItem.html" title="interface in de.businesscode.bcdui.wrs.load">WrsBindingItem</a></dt>
@@ -2409,6 +2456,10 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/binding/BindingItem.html#getAttributes()" class="member-name-link">getAttributes()</a> - Method in class de.businesscode.bcdui.binding.<a href="de/businesscode/bcdui/binding/BindingItem.html" title="class in de.businesscode.bcdui.binding">BindingItem</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="de/businesscode/bcdui/binding/StandardBindingSet.html#getAttributes()" class="member-name-link">getAttributes()</a> - Method in class de.businesscode.bcdui.binding.<a href="de/businesscode/bcdui/binding/StandardBindingSet.html" title="class in de.businesscode.bcdui.binding">StandardBindingSet</a></dt>
+<dd>
+<div class="block">Get all attributes.</div>
+</dd>
 <dt><a href="de/businesscode/bcdui/wrs/load/BindingItemWithMetaData.html#getAttributes()" class="member-name-link">getAttributes()</a> - Method in class de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/BindingItemWithMetaData.html" title="class in de.businesscode.bcdui.wrs.load">BindingItemWithMetaData</a></dt>
 <dd>
 <div class="block">Additional attributes at (plain attributes, not wrs:A) are returned here
@@ -2963,6 +3014,8 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/web/cacheControl/AbstractCacheFilter.html#getExpiresValue()" class="member-name-link">getExpiresValue()</a> - Method in class de.businesscode.bcdui.web.cacheControl.<a href="de/businesscode/bcdui/web/cacheControl/AbstractCacheFilter.html" title="class in de.businesscode.bcdui.web.cacheControl">AbstractCacheFilter</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="de/businesscode/bcdui/subjectsettings/services/RequestAuthenticationToken.html#getFailureReason()" class="member-name-link">getFailureReason()</a> - Method in class de.businesscode.bcdui.subjectsettings.services.<a href="de/businesscode/bcdui/subjectsettings/services/RequestAuthenticationToken.html" title="class in de.businesscode.bcdui.subjectsettings.services">RequestAuthenticationToken</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/upload/data/steps/UploadBindingItemValidate.Check.html#getFct(java.lang.String)" class="member-name-link">getFct(String)</a> - Method in enum class de.businesscode.bcdui.upload.data.steps.<a href="de/businesscode/bcdui/upload/data/steps/UploadBindingItemValidate.Check.html" title="enum class in de.businesscode.bcdui.upload.data.steps">UploadBindingItemValidate.Check</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/upload/data/steps/UploadBindingItemValidate.Check.html#getFct(java.lang.String,int)" class="member-name-link">getFct(String, int)</a> - Method in enum class de.businesscode.bcdui.upload.data.steps.<a href="de/businesscode/bcdui/upload/data/steps/UploadBindingItemValidate.Check.html" title="enum class in de.businesscode.bcdui.upload.data.steps">UploadBindingItemValidate.Check</a></dt>
@@ -3070,6 +3123,8 @@ loadScripts(document, 'script');</script>
 <dt><a href="de/businesscode/bcdui/wrs/load/WrqBindingItem.html#getId()" class="member-name-link">getId()</a> - Method in class de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqBindingItem.html" title="class in de.businesscode.bcdui.wrs.load">WrqBindingItem</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/wrs/load/WrsBindingItem.html#getId()" class="member-name-link">getId()</a> - Method in interface de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrsBindingItem.html" title="interface in de.businesscode.bcdui.wrs.load">WrsBindingItem</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="de/businesscode/bcdui/subjectsettings/services/RequestAuthenticationToken.html#getIdType()" class="member-name-link">getIdType()</a> - Method in class de.businesscode.bcdui.subjectsettings.services.<a href="de/businesscode/bcdui/subjectsettings/services/RequestAuthenticationToken.html" title="class in de.businesscode.bcdui.subjectsettings.services">RequestAuthenticationToken</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/binding/write/WrsModificationCallback.html#getIgnoreUpdateBRefs()" class="member-name-link">getIgnoreUpdateBRefs()</a> - Method in class de.businesscode.bcdui.binding.write.<a href="de/businesscode/bcdui/binding/write/WrsModificationCallback.html" title="class in de.businesscode.bcdui.binding.write">WrsModificationCallback</a></dt>
 <dd>&nbsp;</dd>
@@ -3476,6 +3531,8 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">returns size of columns</div>
 </dd>
+<dt><a href="de/businesscode/bcdui/subjectsettings/services/RequestAuthenticationToken.html#getOnBehalfId()" class="member-name-link">getOnBehalfId()</a> - Method in class de.businesscode.bcdui.subjectsettings.services.<a href="de/businesscode/bcdui/subjectsettings/services/RequestAuthenticationToken.html" title="class in de.businesscode.bcdui.subjectsettings.services">RequestAuthenticationToken</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/menu/config/Entry.html#getOnClick()" class="member-name-link">getOnClick()</a> - Method in class de.businesscode.bcdui.menu.config.<a href="de/businesscode/bcdui/menu/config/Entry.html" title="class in de.businesscode.bcdui.menu.config">Entry</a></dt>
 <dd>
 <div class="block">Ruft den Wert der onClick-Eigenschaft ab.</div>
@@ -3886,6 +3943,8 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Check whether we have a a last-modified for the scope and return it.</div>
 </dd>
+<dt><a href="de/businesscode/bcdui/subjectsettings/services/RequestAuthenticationToken.html#getSecret()" class="member-name-link">getSecret()</a> - Method in class de.businesscode.bcdui.subjectsettings.services.<a href="de/businesscode/bcdui/subjectsettings/services/RequestAuthenticationToken.html" title="class in de.businesscode.bcdui.subjectsettings.services">RequestAuthenticationToken</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/binding/BindingSet.html#getSecurity()" class="member-name-link">getSecurity()</a> - Method in interface de.businesscode.bcdui.binding.<a href="de/businesscode/bcdui/binding/BindingSet.html" title="interface in de.businesscode.bcdui.binding">BindingSet</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/binding/StandardBindingSet.html#getSecurity()" class="member-name-link">getSecurity()</a> - Method in class de.businesscode.bcdui.binding.<a href="de/businesscode/bcdui/binding/StandardBindingSet.html" title="class in de.businesscode.bcdui.binding">StandardBindingSet</a></dt>
@@ -4555,6 +4614,12 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/wrs/export/ExcelSylkTemplate.html#header" class="member-name-link">header</a> - Variable in class de.businesscode.bcdui.wrs.export.<a href="de/businesscode/bcdui/wrs/export/ExcelSylkTemplate.html" title="class in de.businesscode.bcdui.wrs.export">ExcelSylkTemplate</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="de/businesscode/bcdui/subjectsettings/services/RequestAuthenticationFilter.html#HEADER_CLIENT_SECRET" class="member-name-link">HEADER_CLIENT_SECRET</a> - Static variable in class de.businesscode.bcdui.subjectsettings.services.<a href="de/businesscode/bcdui/subjectsettings/services/RequestAuthenticationFilter.html" title="class in de.businesscode.bcdui.subjectsettings.services">RequestAuthenticationFilter</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="de/businesscode/bcdui/subjectsettings/services/RequestAuthenticationFilter.html#HEADER_ONBEHALF_ID" class="member-name-link">HEADER_ONBEHALF_ID</a> - Static variable in class de.businesscode.bcdui.subjectsettings.services.<a href="de/businesscode/bcdui/subjectsettings/services/RequestAuthenticationFilter.html" title="class in de.businesscode.bcdui.subjectsettings.services">RequestAuthenticationFilter</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="de/businesscode/bcdui/subjectsettings/services/RequestAuthenticationFilter.html#HEADER_ONBEHALF_ID_TYPE" class="member-name-link">HEADER_ONBEHALF_ID_TYPE</a> - Static variable in class de.businesscode.bcdui.subjectsettings.services.<a href="de/businesscode/bcdui/subjectsettings/services/RequestAuthenticationFilter.html" title="class in de.businesscode.bcdui.subjectsettings.services">RequestAuthenticationFilter</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/upload/data/steps/UploadToRowColExcel.html#headerFooter(java.lang.String,boolean,java.lang.String)" class="member-name-link">headerFooter(String, boolean, String)</a> - Method in class de.businesscode.bcdui.upload.data.steps.<a href="de/businesscode/bcdui/upload/data/steps/UploadToRowColExcel.html" title="class in de.businesscode.bcdui.upload.data.steps">UploadToRowColExcel</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/upload/data/UploadException.Reason.html#HEURISTIC_FAILED" class="member-name-link">HEURISTIC_FAILED</a> - Enum constant in enum class de.businesscode.bcdui.upload.data.<a href="de/businesscode/bcdui/upload/data/UploadException.Reason.html" title="enum class in de.businesscode.bcdui.upload.data">UploadException.Reason</a></dt>
@@ -5045,6 +5110,11 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/wrs/export/ExcelSylkTemplate.html#isTranslated" class="member-name-link">isTranslated</a> - Variable in class de.businesscode.bcdui.wrs.export.<a href="de/businesscode/bcdui/wrs/export/ExcelSylkTemplate.html" title="class in de.businesscode.bcdui.wrs.export">ExcelSylkTemplate</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="de/businesscode/bcdui/subjectsettings/SecurityHelper.html#isUrlAllowed(java.lang.String,jakarta.servlet.ServletContext)" class="member-name-link">isUrlAllowed(String, ServletContext)</a> - Static method in class de.businesscode.bcdui.subjectsettings.<a href="de/businesscode/bcdui/subjectsettings/SecurityHelper.html" title="class in de.businesscode.bcdui.subjectsettings">SecurityHelper</a></dt>
+<dd>
+<div class="block">Check if the user would be allowed to call GET on a certain application url
+ Since Shiro does not allow this per se, we simulate a call here</div>
+</dd>
 <dt><a href="de/businesscode/bcdui/vfs/provider/database/VFSManagerFactory.html#isVFSactive()" class="member-name-link">isVFSactive()</a> - Static method in class de.businesscode.bcdui.vfs.provider.database.<a href="de/businesscode/bcdui/vfs/provider/database/VFSManagerFactory.html" title="class in de.businesscode.bcdui.vfs.provider.database">VFSManagerFactory</a></dt>
 <dd>
 <div class="block">if virtual file system is in current application active</div>
@@ -5540,6 +5610,15 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">1. handles internal Shiro flow.</div>
 </dd>
+<dt><a href="de/businesscode/bcdui/subjectsettings/services/OnBehalfIdentityRealm.html" class="type-name-link" title="class in de.businesscode.bcdui.subjectsettings.services">OnBehalfIdentityRealm</a> - Class in <a href="de/businesscode/bcdui/subjectsettings/services/package-summary.html">de.businesscode.bcdui.subjectsettings.services</a></dt>
+<dd>
+<div class="block">Verifies a trusted backend caller's on-behalf-of identity assertion (see
+ <a href="de/businesscode/bcdui/subjectsettings/services/RequestAuthenticationFilter.html" title="class in de.businesscode.bcdui.subjectsettings.services"><code>RequestAuthenticationFilter</code></a>/<a href="de/businesscode/bcdui/subjectsettings/services/RequestAuthenticationToken.html" title="class in de.businesscode.bcdui.subjectsettings.services"><code>RequestAuthenticationToken</code></a>): a shared secret establishes
+ that the caller is a trusted client at all, then the asserted idType/onBehalfId is resolved to a
+ BCD-UI technical user id.</div>
+</dd>
+<dt><a href="de/businesscode/bcdui/subjectsettings/services/OnBehalfIdentityRealm.html#%3Cinit%3E()" class="member-name-link">OnBehalfIdentityRealm()</a> - Constructor for class de.businesscode.bcdui.subjectsettings.services.<a href="de/businesscode/bcdui/subjectsettings/services/OnBehalfIdentityRealm.html" title="class in de.businesscode.bcdui.subjectsettings.services">OnBehalfIdentityRealm</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/menu/config/Entry.html#onClick" class="member-name-link">onClick</a> - Variable in class de.businesscode.bcdui.menu.config.<a href="de/businesscode/bcdui/menu/config/Entry.html" title="class in de.businesscode.bcdui.menu.config">Entry</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/web/AuthenticationListener.html#onFailure(org.apache.shiro.authc.AuthenticationToken,org.apache.shiro.authc.AuthenticationException)" class="member-name-link">onFailure(AuthenticationToken, AuthenticationException)</a> - Method in class de.businesscode.bcdui.web.<a href="de/businesscode/bcdui/web/AuthenticationListener.html" title="class in de.businesscode.bcdui.web">AuthenticationListener</a></dt>
@@ -5704,6 +5783,8 @@ loadScripts(document, 'script');</script>
 <dt><a href="de/businesscode/bcdui/vfs/provider/database/DatabaseFileSystemConfigBuilder.html#pathBindingSetItemId" class="member-name-link">pathBindingSetItemId</a> - Static variable in class de.businesscode.bcdui.vfs.provider.database.<a href="de/businesscode/bcdui/vfs/provider/database/DatabaseFileSystemConfigBuilder.html" title="class in de.businesscode.bcdui.vfs.provider.database">DatabaseFileSystemConfigBuilder</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/wrs/export/AbstractExcelSheetDataWriter.html#pathStack" class="member-name-link">pathStack</a> - Variable in class de.businesscode.bcdui.wrs.export.<a href="de/businesscode/bcdui/wrs/export/AbstractExcelSheetDataWriter.html" title="class in de.businesscode.bcdui.wrs.export">AbstractExcelSheetDataWriter</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="de/businesscode/bcdui/web/servlets/StaticResourceServlet.html#patternExports" class="member-name-link">patternExports</a> - Static variable in class de.businesscode.bcdui.web.servlets.<a href="de/businesscode/bcdui/web/servlets/StaticResourceServlet.html" title="class in de.businesscode.bcdui.web.servlets">StaticResourceServlet</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/logging/LoginSqlLogger.LOGIN_RESULTS.html#PENDING" class="member-name-link">PENDING</a> - Enum constant in enum class de.businesscode.bcdui.logging.<a href="de/businesscode/bcdui/logging/LoginSqlLogger.LOGIN_RESULTS.html" title="enum class in de.businesscode.bcdui.logging">LoginSqlLogger.LOGIN_RESULTS</a></dt>
 <dd>&nbsp;</dd>
@@ -5887,7 +5968,8 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="de/businesscode/bcdui/binding/Bindings.html#readBindingDefaults(java.lang.String,java.util.Map)" class="member-name-link">readBindingDefaults(String, Map&lt;String, Map&lt;String, String&gt;&gt;)</a> - Method in class de.businesscode.bcdui.binding.<a href="de/businesscode/bcdui/binding/Bindings.html" title="class in de.businesscode.bcdui.binding">Bindings</a></dt>
 <dd>
-<div class="block">recursively reading binding default files and creating a map of bindingItem id and a map of the collected attributes</div>
+<div class="block">Handling BindingDefaults
+ recursively reading binding default files and creating a map of bindingItem id and a map of the collected attributes</div>
 </dd>
 <dt><a href="de/businesscode/bcdui/binding/Bindings.html#readBindings(java.lang.Class)" class="member-name-link">readBindings(Class&lt;? extends ReadBindingSet&gt;)</a> - Method in class de.businesscode.bcdui.binding.<a href="de/businesscode/bcdui/binding/Bindings.html" title="class in de.businesscode.bcdui.binding">Bindings</a></dt>
 <dd>
@@ -6032,6 +6114,21 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/wrs/load/WrqInfo.html#reqHasGroupingFunction()" class="member-name-link">reqHasGroupingFunction()</a> - Method in class de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqInfo.html" title="class in de.businesscode.bcdui.wrs.load">WrqInfo</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="de/businesscode/bcdui/subjectsettings/services/RequestAuthenticationFilter.html" class="type-name-link" title="class in de.businesscode.bcdui.subjectsettings.services">RequestAuthenticationFilter</a> - Class in <a href="de/businesscode/bcdui/subjectsettings/services/package-summary.html">de.businesscode.bcdui.subjectsettings.services</a></dt>
+<dd>
+<div class="block">Servlet filter for a trusted backend caller acting on behalf of a BCD-UI user without that user
+ having a browser session - e.g. a bot acting for a user.</div>
+</dd>
+<dt><a href="de/businesscode/bcdui/subjectsettings/services/RequestAuthenticationFilter.html#%3Cinit%3E()" class="member-name-link">RequestAuthenticationFilter()</a> - Constructor for class de.businesscode.bcdui.subjectsettings.services.<a href="de/businesscode/bcdui/subjectsettings/services/RequestAuthenticationFilter.html" title="class in de.businesscode.bcdui.subjectsettings.services">RequestAuthenticationFilter</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="de/businesscode/bcdui/subjectsettings/services/RequestAuthenticationToken.html" class="type-name-link" title="class in de.businesscode.bcdui.subjectsettings.services">RequestAuthenticationToken</a> - Class in <a href="de/businesscode/bcdui/subjectsettings/services/package-summary.html">de.businesscode.bcdui.subjectsettings.services</a></dt>
+<dd>
+<div class="block">Carries the raw, not-yet-verified assertion (the shared client secret plus the asserted on-behalf
+ idType/id, and any additional project-specific attributes) - verifying the secret and resolving the
+ identity to a BCD-UI user id is <a href="de/businesscode/bcdui/subjectsettings/services/OnBehalfIdentityRealm.html" title="class in de.businesscode.bcdui.subjectsettings.services"><code>OnBehalfIdentityRealm</code></a>'s job (via <code>subject.login(token)</code>),</div>
+</dd>
+<dt><a href="de/businesscode/bcdui/subjectsettings/services/RequestAuthenticationToken.html#%3Cinit%3E(java.lang.String,java.lang.String,java.lang.String,java.util.Map)" class="member-name-link">RequestAuthenticationToken(String, String, String, Map&lt;String, String&gt;)</a> - Constructor for class de.businesscode.bcdui.subjectsettings.services.<a href="de/businesscode/bcdui/subjectsettings/services/RequestAuthenticationToken.html" title="class in de.businesscode.bcdui.subjectsettings.services">RequestAuthenticationToken</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/subjectsettings/oauth2/OAuthAuthenticatingFilter.RequestContext.html#%3Cinit%3E(java.lang.String,java.lang.String)" class="member-name-link">RequestContext(String, String)</a> - Constructor for class de.businesscode.bcdui.subjectsettings.oauth2.<a href="de/businesscode/bcdui/subjectsettings/oauth2/OAuthAuthenticatingFilter.RequestContext.html" title="class in de.businesscode.bcdui.subjectsettings.oauth2">OAuthAuthenticatingFilter.RequestContext</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/wrs/load/Wrq2Sql.html#requestDoc" class="member-name-link">requestDoc</a> - Variable in class de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/Wrq2Sql.html" title="class in de.businesscode.bcdui.wrs.load">Wrq2Sql</a></dt>
@@ -6057,6 +6154,16 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">HttpRequestOptions</div>
 </dd>
+<dt><a href="de/businesscode/bcdui/subjectsettings/services/RequestSession.html" class="type-name-link" title="class in de.businesscode.bcdui.subjectsettings.services">RequestSession</a> - Class in <a href="de/businesscode/bcdui/subjectsettings/services/package-summary.html">de.businesscode.bcdui.subjectsettings.services</a></dt>
+<dd>
+<div class="block">Scopes a Shiro login to just the current request: logs in the given (not yet verified - see
+ <a href="de/businesscode/bcdui/subjectsettings/services/OnBehalfIdentityRealm.html" title="class in de.businesscode.bcdui.subjectsettings.services"><code>OnBehalfIdentityRealm</code></a>) on-behalf-of identity assertion, binds the resulting Subject to the
+ current thread, and on close() unbinds it again and destroys any session that got created along the
+ way - so these short-lived, per-call sessions never outlive the request or linger in the session store
+ until they time out naturally.</div>
+</dd>
+<dt><a href="de/businesscode/bcdui/subjectsettings/services/RequestSession.html#%3Cinit%3E(de.businesscode.bcdui.subjectsettings.services.RequestAuthenticationToken,jakarta.servlet.http.HttpServletRequest,jakarta.servlet.http.HttpServletResponse)" class="member-name-link">RequestSession(RequestAuthenticationToken, HttpServletRequest, HttpServletResponse)</a> - Constructor for class de.businesscode.bcdui.subjectsettings.services.<a href="de/businesscode/bcdui/subjectsettings/services/RequestSession.html" title="class in de.businesscode.bcdui.subjectsettings.services">RequestSession</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="de/businesscode/util/jdbc/wrapper/BcdSqlLogger.html#reset()" class="member-name-link">reset()</a> - Static method in class de.businesscode.util.jdbc.wrapper.<a href="de/businesscode/util/jdbc/wrapper/BcdSqlLogger.html" title="class in de.businesscode.util.jdbc.wrapper">BcdSqlLogger</a></dt>
 <dd>
 <div class="block">resets logging switch for current thread, which is usually:enabled</div>
@@ -6098,6 +6205,10 @@ loadScripts(document, 'script');</script>
 <dt><a href="de/businesscode/bcdui/wrs/load/WrqQueryBuilder.html#resolvedBindingSets" class="member-name-link">resolvedBindingSets</a> - Variable in class de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/WrqQueryBuilder.html" title="class in de.businesscode.bcdui.wrs.load">WrqQueryBuilder</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/el/StandardFunctionMapper.html#resolveFunction(java.lang.String,java.lang.String)" class="member-name-link">resolveFunction(String, String)</a> - Method in class de.businesscode.bcdui.el.<a href="de/businesscode/bcdui/el/StandardFunctionMapper.html" title="class in de.businesscode.bcdui.el">StandardFunctionMapper</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="de/businesscode/bcdui/subjectsettings/services/DefaultUserIdResolver.html#resolveUserId(java.lang.String,java.lang.String,java.util.Map)" class="member-name-link">resolveUserId(String, String, Map&lt;String, String&gt;)</a> - Method in class de.businesscode.bcdui.subjectsettings.services.<a href="de/businesscode/bcdui/subjectsettings/services/DefaultUserIdResolver.html" title="class in de.businesscode.bcdui.subjectsettings.services">DefaultUserIdResolver</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="de/businesscode/bcdui/subjectsettings/services/UserIdResolver.html#resolveUserId(java.lang.String,java.lang.String,java.util.Map)" class="member-name-link">resolveUserId(String, String, Map&lt;String, String&gt;)</a> - Method in interface de.businesscode.bcdui.subjectsettings.services.<a href="de/businesscode/bcdui/subjectsettings/services/UserIdResolver.html" title="interface in de.businesscode.bcdui.subjectsettings.services">UserIdResolver</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/el/StandardVariableMapper.html#resolveVariable(java.lang.String)" class="member-name-link">resolveVariable(String)</a> - Method in class de.businesscode.bcdui.el.<a href="de/businesscode/bcdui/el/StandardVariableMapper.html" title="class in de.businesscode.bcdui.el">StandardVariableMapper</a></dt>
 <dd>&nbsp;</dd>
@@ -6156,6 +6267,8 @@ loadScripts(document, 'script');</script>
 <dt><a href="de/businesscode/bcdui/wrs/save/event/SaveEvent.html#%3Cinit%3E(java.sql.Connection,de.businesscode.bcdui.wrs.save.event.SaveEventState)" class="member-name-link">SaveEvent(Connection, SaveEventState)</a> - Constructor for class de.businesscode.bcdui.wrs.save.event.<a href="de/businesscode/bcdui/wrs/save/event/SaveEvent.html" title="class in de.businesscode.bcdui.wrs.save.event">SaveEvent</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/wrs/save/event/SaveEventState.html" class="type-name-link" title="enum class in de.businesscode.bcdui.wrs.save.event">SaveEventState</a> - Enum Class in <a href="de/businesscode/bcdui/wrs/save/event/package-summary.html">de.businesscode.bcdui.wrs.save.event</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="de/businesscode/bcdui/toolbox/Configuration.html#SAXON_SEF_DIR" class="member-name-link">SAXON_SEF_DIR</a> - Static variable in class de.businesscode.bcdui.toolbox.<a href="de/businesscode/bcdui/toolbox/Configuration.html" title="class in de.businesscode.bcdui.toolbox">Configuration</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/util/StandardNamespaceContext.html#SCHEDULER_NAMESPACE" class="member-name-link">SCHEDULER_NAMESPACE</a> - Static variable in class de.businesscode.util.<a href="de/businesscode/util/StandardNamespaceContext.html" title="class in de.businesscode.util">StandardNamespaceContext</a></dt>
 <dd>&nbsp;</dd>
@@ -6412,6 +6525,10 @@ loadScripts(document, 'script');</script>
 <dt><a href="de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.html#setAssignableValues(de.businesscode.bcdui.subjectsettings.config.SubjectFilterType.AssignableValues)" class="member-name-link">setAssignableValues(SubjectFilterType.AssignableValues)</a> - Method in class de.businesscode.bcdui.subjectsettings.config.<a href="de/businesscode/bcdui/subjectsettings/config/SubjectFilterType.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectFilterType</a></dt>
 <dd>
 <div class="block">Legt den Wert der assignableValues-Eigenschaft fest.</div>
+</dd>
+<dt><a href="de/businesscode/bcdui/binding/StandardBindingSet.html#setAttribute(java.lang.String,java.lang.String)" class="member-name-link">setAttribute(String, String)</a> - Method in class de.businesscode.bcdui.binding.<a href="de/businesscode/bcdui/binding/StandardBindingSet.html" title="class in de.businesscode.bcdui.binding">StandardBindingSet</a></dt>
+<dd>
+<div class="block">Set an attribute for this BindingSet.</div>
 </dd>
 <dt><a href="de/businesscode/bcdui/wrs/save/XMLToDataBase.AttributeDelegate.html#setAttributeName(java.lang.String)" class="member-name-link">setAttributeName(String)</a> - Method in class de.businesscode.bcdui.wrs.save.<a href="de/businesscode/bcdui/wrs/save/XMLToDataBase.AttributeDelegate.html" title="class in de.businesscode.bcdui.wrs.save">XMLToDataBase.AttributeDelegate</a></dt>
 <dd>&nbsp;</dd>
@@ -6783,6 +6900,13 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Legt den Wert der op-Eigenschaft fest.</div>
 </dd>
+<dt><a href="de/businesscode/bcdui/subjectsettings/services/RequestAuthenticationFilter.html#setOptional(boolean)" class="member-name-link">setOptional(boolean)</a> - Method in class de.businesscode.bcdui.subjectsettings.services.<a href="de/businesscode/bcdui/subjectsettings/services/RequestAuthenticationFilter.html" title="class in de.businesscode.bcdui.subjectsettings.services">RequestAuthenticationFilter</a></dt>
+<dd>
+<div class="block">Set from shiro.ini: when true, a request without the <a href="de/businesscode/bcdui/subjectsettings/services/RequestAuthenticationFilter.html#HEADER_CLIENT_SECRET">"X-BCD.ClientSecret"</a> header is passed
+ through to the next filter in the chain instead of being rejected - use this to let the same URL serve
+ both trusted per-request callers and regular browser sessions (chain this filter ahead of e.g. bcdAuthc
+ on that path).</div>
+</dd>
 <dt><a href="de/businesscode/bcdui/subjectsettings/oauth2/OAuthAuthenticatingFilter.html#setOptionalProviderId(java.lang.String)" class="member-name-link">setOptionalProviderId(String)</a> - Method in class de.businesscode.bcdui.subjectsettings.oauth2.<a href="de/businesscode/bcdui/subjectsettings/oauth2/OAuthAuthenticatingFilter.html" title="class in de.businesscode.bcdui.subjectsettings.oauth2">OAuthAuthenticatingFilter</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/wrs/load/BindingItemWithMetaData.html#setOrderByDescending(boolean)" class="member-name-link">setOrderByDescending(boolean)</a> - Method in class de.businesscode.bcdui.wrs.load.<a href="de/businesscode/bcdui/wrs/load/BindingItemWithMetaData.html" title="class in de.businesscode.bcdui.wrs.load">BindingItemWithMetaData</a></dt>
@@ -6998,6 +7122,10 @@ loadScripts(document, 'script');</script>
 <div class="block">Set in shiro.ini
  sets the endpoint to /token API</div>
 </dd>
+<dt><a href="de/businesscode/bcdui/subjectsettings/services/OnBehalfIdentityRealm.html#setTrustedClientsSecrets(java.lang.String)" class="member-name-link">setTrustedClientsSecrets(String)</a> - Method in class de.businesscode.bcdui.subjectsettings.services.<a href="de/businesscode/bcdui/subjectsettings/services/OnBehalfIdentityRealm.html" title="class in de.businesscode.bcdui.subjectsettings.services">OnBehalfIdentityRealm</a></dt>
+<dd>
+<div class="block">Set from shiro.ini: comma-separated shared secrets, any of which a trusted client may present.</div>
+</dd>
 <dt><a href="de/businesscode/bcdui/binding/rel/impl/AbstractConstrain.html#setType(de.businesscode.bcdui.binding.rel.impl.AbstractConstrain.Type)" class="member-name-link">setType(AbstractConstrain.Type)</a> - Method in class de.businesscode.bcdui.binding.rel.impl.<a href="de/businesscode/bcdui/binding/rel/impl/AbstractConstrain.html" title="class in de.businesscode.bcdui.binding.rel.impl">AbstractConstrain</a></dt>
 <dd>
 <div class="block">setType</div>
@@ -7024,6 +7152,11 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/upload/data/UploadControl.html#setUserId(java.lang.String)" class="member-name-link">setUserId(String)</a> - Method in class de.businesscode.bcdui.upload.data.<a href="de/businesscode/bcdui/upload/data/UploadControl.html" title="class in de.businesscode.bcdui.upload.data">UploadControl</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="de/businesscode/bcdui/subjectsettings/services/OnBehalfIdentityRealm.html#setUserIdResolverClass(java.lang.String)" class="member-name-link">setUserIdResolverClass(String)</a> - Method in class de.businesscode.bcdui.subjectsettings.services.<a href="de/businesscode/bcdui/subjectsettings/services/OnBehalfIdentityRealm.html" title="class in de.businesscode.bcdui.subjectsettings.services">OnBehalfIdentityRealm</a></dt>
+<dd>
+<div class="block">Set from shiro.ini: overwrite if the default BindingItem-based lookup of DefaultUserIdResolver
+ does not fit the project.</div>
+</dd>
 <dt><a href="de/businesscode/bcdui/subjectsettings/oauth2/OAuthRealm.html#setUserInfoEndpoint(java.lang.String)" class="member-name-link">setUserInfoEndpoint(String)</a> - Method in class de.businesscode.bcdui.subjectsettings.oauth2.<a href="de/businesscode/bcdui/subjectsettings/oauth2/OAuthRealm.html" title="class in de.businesscode.bcdui.subjectsettings.oauth2">OAuthRealm</a></dt>
 <dd>
 <div class="block">Set in shiro.ini
@@ -7521,13 +7654,16 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/subjectsettings/JdbcRealm.html#supports(org.apache.shiro.authc.AuthenticationToken)" class="member-name-link">supports(AuthenticationToken)</a> - Method in class de.businesscode.bcdui.subjectsettings.<a href="de/businesscode/bcdui/subjectsettings/JdbcRealm.html" title="class in de.businesscode.bcdui.subjectsettings">JdbcRealm</a></dt>
 <dd>
-<div class="block">ExternalAuthenticationToken indicates that the authentication has already happened externally
- We let the user through here.</div>
+<div class="block">ExternalAuthenticationToken (and its subtypes OAuthToken, RequestAuthenticationToken) indicates
+ that the authentication either already happened externally (OAuthToken, see doGetAuthenticationInfo)
+ or is handled by another realm (RequestAuthenticationToken, see OnBehalfIdentityRealm).</div>
 </dd>
 <dt><a href="de/businesscode/bcdui/subjectsettings/oauth2/OAuthRealm.html#supports(org.apache.shiro.authc.AuthenticationToken)" class="member-name-link">supports(AuthenticationToken)</a> - Method in class de.businesscode.bcdui.subjectsettings.oauth2.<a href="de/businesscode/bcdui/subjectsettings/oauth2/OAuthRealm.html" title="class in de.businesscode.bcdui.subjectsettings.oauth2">OAuthRealm</a></dt>
 <dd>
 <div class="block">accepts <a href="de/businesscode/bcdui/subjectsettings/oauth2/OAuthToken.html" title="class in de.businesscode.bcdui.subjectsettings.oauth2"><code>OAuthToken</code></a> and only from given authenticator, if provided</div>
 </dd>
+<dt><a href="de/businesscode/bcdui/subjectsettings/services/OnBehalfIdentityRealm.html#supports(org.apache.shiro.authc.AuthenticationToken)" class="member-name-link">supports(AuthenticationToken)</a> - Method in class de.businesscode.bcdui.subjectsettings.services.<a href="de/businesscode/bcdui/subjectsettings/services/OnBehalfIdentityRealm.html" title="class in de.businesscode.bcdui.subjectsettings.services">OnBehalfIdentityRealm</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/wrs/export/SylkDataWriter.html" class="type-name-link" title="class in de.businesscode.bcdui.wrs.export">SylkDataWriter</a> - Class in <a href="de/businesscode/bcdui/wrs/export/package-summary.html">de.businesscode.bcdui.wrs.export</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="de/businesscode/bcdui/wrs/export/SylkDataWriter.html#%3Cinit%3E()" class="member-name-link">SylkDataWriter()</a> - Constructor for class de.businesscode.bcdui.wrs.export.<a href="de/businesscode/bcdui/wrs/export/SylkDataWriter.html" title="class in de.businesscode.bcdui.wrs.export">SylkDataWriter</a></dt>
@@ -7921,6 +8057,11 @@ loadScripts(document, 'script');</script>
 <dt><a href="de/businesscode/bcdui/subjectsettings/oauth2/OAuthRealm.PrincipalInfo.html#userId()" class="member-name-link">userId()</a> - Method in record class de.businesscode.bcdui.subjectsettings.oauth2.<a href="de/businesscode/bcdui/subjectsettings/oauth2/OAuthRealm.PrincipalInfo.html" title="class in de.businesscode.bcdui.subjectsettings.oauth2">OAuthRealm.PrincipalInfo</a></dt>
 <dd>
 <div class="block">Returns the value of the <code>userId</code> record component.</div>
+</dd>
+<dt><a href="de/businesscode/bcdui/subjectsettings/services/UserIdResolver.html" class="type-name-link" title="interface in de.businesscode.bcdui.subjectsettings.services">UserIdResolver</a> - Interface in <a href="de/businesscode/bcdui/subjectsettings/services/package-summary.html">de.businesscode.bcdui.subjectsettings.services</a></dt>
+<dd>
+<div class="block">Resolves an arbitrary identifying attribute (already established to come from a trusted client - see
+ <a href="de/businesscode/bcdui/subjectsettings/services/RequestAuthenticationFilter.html" title="class in de.businesscode.bcdui.subjectsettings.services"><code>RequestAuthenticationFilter</code></a>) to a BCD-UI technical user id.</div>
 </dd>
 <dt><a href="de/businesscode/bcdui/subjectsettings/config/SubjectSettingsConfig.html#userSettingsDefaults" class="member-name-link">userSettingsDefaults</a> - Variable in class de.businesscode.bcdui.subjectsettings.config.<a href="de/businesscode/bcdui/subjectsettings/config/SubjectSettingsConfig.html" title="class in de.businesscode.bcdui.subjectsettings.config">SubjectSettingsConfig</a></dt>
 <dd>&nbsp;</dd>

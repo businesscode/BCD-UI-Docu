@@ -14,6 +14,7 @@ de.businesscode.bcdui.menu.config
 de.businesscode.bcdui.subjectsettings
 de.businesscode.bcdui.subjectsettings.config
 de.businesscode.bcdui.subjectsettings.oauth2
+de.businesscode.bcdui.subjectsettings.services
 de.businesscode.bcdui.toolbox
 de.businesscode.bcdui.toolbox.config
 de.businesscode.bcdui.upload.data
